@@ -1,0 +1,2598 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Polygon?>
+<?import javafx.scene.text.Font?>
+
+<ScrollPane fitToWidth="true" maxHeight="-Infinity" prefHeight="7500.0" style="-fx-background-color: e6e6ff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kontroleri.KontrolerFormeZaPopisivanjeStanovnika">
+   <content>
+      <GridPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="7211.0" style="-fx-background-color: e6e6ff;">
+        <columnConstraints>
+          <ColumnConstraints hgrow="ALWAYS" minWidth="95.0" percentWidth="8.75" prefWidth="95.0" />
+            <ColumnConstraints hgrow="ALWAYS" minWidth="95.0" prefWidth="121.0" />
+            <ColumnConstraints hgrow="ALWAYS" minWidth="170.0" prefWidth="170.0" />
+            <ColumnConstraints hgrow="ALWAYS" minWidth="180.0" prefWidth="180.0" />
+            <ColumnConstraints hgrow="ALWAYS" minWidth="180.0" prefWidth="180.0" />
+          <ColumnConstraints hgrow="ALWAYS" minWidth="180.0" percentWidth="17.0" prefWidth="185.0" />
+            <ColumnConstraints hgrow="ALWAYS" minWidth="180.0" percentWidth="16.6" prefWidth="180.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="45.0" minHeight="45.0" prefHeight="45.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="75.0" minHeight="75.0" prefHeight="75.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="50.0" minHeight="50.0" prefHeight="50.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="50.0" minHeight="50.0" prefHeight="50.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="50.0" minHeight="50.0" prefHeight="50.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="50.0" minHeight="50.0" prefHeight="50.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="50.0" minHeight="50.0" prefHeight="50.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="120.0" minHeight="120.0" prefHeight="120.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="80.0" minHeight="80.0" prefHeight="80.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="80.0" minHeight="80.0" prefHeight="80.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="90.0" minHeight="90.0" prefHeight="90.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="90.0" minHeight="90.0" prefHeight="90.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="150.0" minHeight="150.0" prefHeight="150.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="90.0" minHeight="90.0" prefHeight="90.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="150.0" minHeight="150.0" prefHeight="150.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="150.0" minHeight="150.0" prefHeight="150.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="90.0" minHeight="90.0" prefHeight="90.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="180.0" minHeight="180.0" prefHeight="180.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="170.0" minHeight="170.0" prefHeight="170.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="180.0" minHeight="180.0" prefHeight="180.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="90.0" minHeight="90.0" prefHeight="90.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="120.0" minHeight="120.0" prefHeight="120.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="150.0" minHeight="150.0" prefHeight="150.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="90.0" minHeight="90.0" prefHeight="90.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="90.0" minHeight="90.0" prefHeight="90.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="130.0" minHeight="130.0" prefHeight="130.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="110.0" minHeight="110.0" prefHeight="110.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="130.0" minHeight="130.0" prefHeight="130.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="90.0" minHeight="90.0" prefHeight="90.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="70.0" minHeight="70.0" prefHeight="70.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="150.0" minHeight="150.0" prefHeight="150.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="180.0" minHeight="180.0" prefHeight="180.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="210.0" minHeight="210.0" prefHeight="210.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="140.0" minHeight="140.0" prefHeight="140.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="170.0" minHeight="170.0" prefHeight="170.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="250.0" minHeight="250.0" prefHeight="250.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="280.0" minHeight="280.0" prefHeight="280.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="90.0" minHeight="90.0" prefHeight="90.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="380.0" minHeight="380.0" prefHeight="380.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="110.0" minHeight="110.0" prefHeight="110.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="110.0" minHeight="110.0" prefHeight="110.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="90.0" minHeight="90.0" prefHeight="90.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="170.0" minHeight="170.0" prefHeight="170.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="90.0" minHeight="90.0" prefHeight="90.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="190.0" minHeight="190.0" prefHeight="190.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="75.0" minHeight="75.0" prefHeight="75.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="100.0" minHeight="100.0" prefHeight="100.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="150.0" minHeight="150.0" prefHeight="150.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="280.0" minHeight="280.0" prefHeight="280.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="90.0" minHeight="330.0" prefHeight="330.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="190.0" minHeight="190.0" prefHeight="190.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="220.0" minHeight="220.0" prefHeight="220.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="90.0" minHeight="90.0" prefHeight="90.0" vgrow="SOMETIMES" />
+            <RowConstraints prefHeight="90.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label text="OBRAZAC" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP">
+               <GridPane.margin>
+                  <Insets top="10.0" />
+               </GridPane.margin>
+            </Label>
+            <Label text="ENTITET" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP">
+               <GridPane.margin>
+                  <Insets top="10.0" />
+               </GridPane.margin>
+            </Label>
+            <Label text="OPŠTINA" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP">
+               <GridPane.margin>
+                  <Insets top="10.0" />
+               </GridPane.margin>
+            </Label>
+            <Label text="POPISNI KRUG" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP">
+               <GridPane.margin>
+                  <Insets top="10.0" />
+               </GridPane.margin>
+            </Label>
+            <Label text="STAN" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP">
+               <GridPane.margin>
+                  <Insets top="10.0" />
+               </GridPane.margin>
+            </Label>
+            <Label text="DOMAĆINSTVO" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP">
+               <padding>
+                  <Insets top="10.0" />
+               </padding>
+            </Label>
+            <Label text="LICE" GridPane.columnIndex="6" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP">
+               <GridPane.margin>
+                  <Insets top="10.0" />
+               </GridPane.margin>
+            </Label>
+            <TextField maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="30.0" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="15.0" />
+               </GridPane.margin>
+            </TextField>
+            <TextField maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="30.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="15.0" />
+               </GridPane.margin>
+            </TextField>
+            <Separator prefWidth="200.0" GridPane.columnSpan="7" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" />
+            <Separator prefWidth="200.0" GridPane.columnSpan="7" GridPane.valignment="BOTTOM" />
+            <Label text="Popis stanovništva, domaćinstava i stanova u Bosni i Hercegovini" GridPane.columnSpan="6" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="33.0" fitWidth="82.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6">
+               <image>
+                  <Image url="@ZastavaBosneIHercegovine.png" />
+               </image>
+               <GridPane.margin>
+                  <Insets left="30.0" />
+               </GridPane.margin>
+            </ImageView>
+            <Label text="IME:" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2" />
+            <TextField GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="2">
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
+            </TextField>
+            <Label text="IME OCA ILI MAJKE:" GridPane.columnSpan="2" GridPane.halignment="RIGHT" GridPane.rowIndex="3" />
+            <TextField GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="3">
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
+            </TextField>
+            <Label text="PREZIME:" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="4" />
+            <TextField GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="4">
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
+            </TextField>
+            <TextField GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="5">
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
+            </TextField>
+            <Label text="JMB:" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="5" />
+            <Label text="POL:" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="6" />
+            <ComboBox prefHeight="30.0" prefWidth="150.0" promptText="Odaberi pol..." GridPane.columnIndex="2" GridPane.rowIndex="6">
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
+            </ComboBox>
+            <Separator prefWidth="200.0" GridPane.columnSpan="7" GridPane.rowIndex="6" GridPane.valignment="BOTTOM" />
+            <Label text="1. LICE KOJE SE POPISUJE JE:" GridPane.columnSpan="2" GridPane.rowIndex="7" GridPane.valignment="TOP">
+               <GridPane.margin>
+                  <Insets left="30.0" top="10.0" />
+               </GridPane.margin>
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <RadioButton mnemonicParsing="false" text="Član domaćinstva koji živi u mjestu popisa godinu dana ili duže ili se doselio sa namjerom da tu živi" GridPane.columnIndex="2" GridPane.columnSpan="4" GridPane.rowIndex="7">
+               <GridPane.margin>
+                  <Insets bottom="20.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Član domaćinstva odsutan iz mjesta popisa zbog rada/školovanja ili boravka u drugom mjestu u BiH ili inostranstvu" GridPane.columnIndex="2" GridPane.columnSpan="4" GridPane.rowIndex="7" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="40.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Privremeno prisutno u mjestu popisa kraće ili duže od godinu dana zbog rada/školovanja ili boravka" GridPane.columnIndex="2" GridPane.columnSpan="4" GridPane.rowIndex="7" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="15.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <Separator prefWidth="200.0" GridPane.columnSpan="7" GridPane.rowIndex="7" GridPane.valignment="BOTTOM" />
+            <Line endX="-78.70710754394531" endY="0.15684586763381958" startX="-100.0" GridPane.columnIndex="5" GridPane.rowIndex="7">
+               <GridPane.margin>
+                  <Insets bottom="18.0" left="30.0" />
+               </GridPane.margin>
+            </Line>
+            <Polygon points="0.0, -18.5, 9.0, -22.5, 0.0, -27.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="5" GridPane.rowIndex="7">
+               <GridPane.margin>
+                  <Insets bottom="20.0" left="50.0" />
+               </GridPane.margin>
+            </Polygon>
+            <Line endX="-78.70710754394531" endY="0.15684586763381958" startX="-100.0" GridPane.columnIndex="5" GridPane.rowIndex="7">
+               <GridPane.margin>
+                  <Insets left="115.0" top="25.0" />
+               </GridPane.margin>
+            </Line>
+            <Line endX="-78.70710754394531" endY="0.15684586763381958" startX="-100.0" GridPane.columnIndex="5" GridPane.rowIndex="7" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="20.0" left="35.0" />
+               </GridPane.margin>
+            </Line>
+            <Polygon points="0.0, -18.5, 9.0, -22.5, 0.0, -27.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="5" GridPane.rowIndex="7">
+               <GridPane.margin>
+                  <Insets left="135.0" top="25.0" />
+               </GridPane.margin>
+            </Polygon>
+            <Polygon points="0.0, -18.5, 9.0, -22.5, 0.0, -27.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="5" GridPane.rowIndex="7" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="18.0" left="55.0" />
+               </GridPane.margin>
+            </Polygon>
+            <Label text="Pitanje 2." GridPane.columnIndex="5" GridPane.rowIndex="7">
+               <GridPane.margin>
+                  <Insets bottom="20.0" left="70.0" />
+               </GridPane.margin>
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label text="Pitanje 3a." GridPane.columnIndex="5" GridPane.columnSpan="2" GridPane.rowIndex="7">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="157.0" top="24.0" />
+               </GridPane.margin>
+            </Label>
+            <Label text="Pitanje 3b." GridPane.columnIndex="5" GridPane.rowIndex="7" GridPane.valignment="BOTTOM">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="13.0" left="78.0" />
+               </GridPane.margin>
+            </Label>
+            <Label text="2. DA LI JE LICE PRISUTNO U MJESTU POPISA?" GridPane.columnSpan="3" GridPane.rowIndex="8" GridPane.valignment="TOP">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="30.0" top="10.0" />
+               </GridPane.margin>
+            </Label>
+            <RadioButton mnemonicParsing="false" text="Da" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="8">
+               <GridPane.margin>
+                  <Insets bottom="5.0" right="1.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Ne" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="8" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="10.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <Separator prefWidth="200.0" GridPane.columnSpan="7" GridPane.rowIndex="8" GridPane.valignment="BOTTOM" />
+            <Line endX="-78.70710754394531" endY="0.15684586763381958" startX="-100.0" GridPane.columnIndex="3" GridPane.rowIndex="8">
+               <GridPane.margin>
+                  <Insets bottom="2.0" left="15.0" />
+               </GridPane.margin>
+            </Line>
+            <Line endX="-78.70710754394531" endY="0.15684586763381958" startX="-100.0" GridPane.columnIndex="3" GridPane.rowIndex="8" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="15.0" left="15.0" />
+               </GridPane.margin>
+            </Line>
+            <Polygon points="0.0, -18.5, 9.0, -22.5, 0.0, -27.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="3" GridPane.rowIndex="8">
+               <GridPane.margin>
+                  <Insets bottom="2.0" left="35.0" />
+               </GridPane.margin>
+            </Polygon>
+            <Polygon points="0.0, -18.5, 9.0, -22.5, 0.0, -27.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="3" GridPane.rowIndex="8" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="13.0" left="35.0" />
+               </GridPane.margin>
+            </Polygon>
+            <Label text="Pitanje 8." GridPane.columnIndex="3" GridPane.rowIndex="8">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="2.0" left="55.0" />
+               </GridPane.margin>
+            </Label>
+            <Label text="Pitanje 3a." GridPane.columnIndex="3" GridPane.rowIndex="8" GridPane.valignment="BOTTOM">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="8.0" left="55.0" />
+               </GridPane.margin>
+            </Label>
+            <Label text="3a. RAZLOG ODSUSTVA IZ MJESTA POPISA?" GridPane.columnSpan="3" GridPane.rowIndex="9" GridPane.valignment="TOP">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="30.0" top="10.0" />
+               </GridPane.margin>
+            </Label>
+            <Label text="3b. RAZLOG PRISUSTVA U MJESTU POPISA?" GridPane.columnSpan="3" GridPane.rowIndex="9">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="30.0" />
+               </GridPane.margin>
+            </Label>
+            <ComboBox prefWidth="150.0" promptText="Odaberi razlog..." GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="9" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="10.0" left="70.0" />
+               </GridPane.margin>
+            </ComboBox>
+            <Separator prefWidth="200.0" GridPane.columnSpan="7" GridPane.rowIndex="9" GridPane.valignment="BOTTOM" />
+            <Label text="4. DUŽINA ODSUSTVA/PRISUSTVA?" GridPane.columnSpan="3" GridPane.rowIndex="10" GridPane.valignment="TOP">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="30.0" top="10.0" />
+               </GridPane.margin>
+            </Label>
+            <Label text="Jedna godina i duže (broj godina):" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="10">
+               <GridPane.margin>
+                  <Insets bottom="15.0" left="90.0" />
+               </GridPane.margin>
+            </Label>
+            <Label text="Kraće od jedne godine (broj mjeseci):" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="10" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="15.0" left="90.0" />
+               </GridPane.margin>
+            </Label>
+            <TextField GridPane.columnIndex="3" GridPane.rowIndex="10">
+               <GridPane.margin>
+                  <Insets bottom="15.0" left="130.0" />
+               </GridPane.margin>
+            </TextField>
+            <TextField GridPane.columnIndex="3" GridPane.rowIndex="10" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="10.0" left="130.0" />
+               </GridPane.margin>
+            </TextField>
+            <Separator prefWidth="200.0" GridPane.columnSpan="7" GridPane.rowIndex="10" GridPane.valignment="BOTTOM" />
+            <Line endX="-78.70710754394531" endY="0.15684586763381958" startX="-100.0" GridPane.columnIndex="4" GridPane.rowIndex="10">
+               <GridPane.margin>
+                  <Insets bottom="10.0" left="20.0" />
+               </GridPane.margin>
+            </Line>
+            <Line endX="-78.70710754394531" endY="0.15684586763381958" startX="-100.0" GridPane.columnIndex="4" GridPane.rowIndex="10" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="20.0" left="20.0" />
+               </GridPane.margin>
+            </Line>
+            <Polygon points="0.0, -18.5, 9.0, -22.5, 0.0, -27.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="4" GridPane.rowIndex="10">
+               <GridPane.margin>
+                  <Insets bottom="10.0" left="40.0" />
+               </GridPane.margin>
+            </Polygon>
+            <Polygon points="0.0, -18.5, 9.0, -22.5, 0.0, -27.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="4" GridPane.rowIndex="10" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="18.0" left="40.0" />
+               </GridPane.margin>
+            </Polygon>
+            <Label text="Pitanje 6." GridPane.columnIndex="4" GridPane.rowIndex="10">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="10.0" left="70.0" />
+               </GridPane.margin>
+            </Label>
+            <Label text="Pitanje 5." GridPane.columnIndex="4" GridPane.rowIndex="10" GridPane.valignment="BOTTOM">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="15.0" left="70.0" />
+               </GridPane.margin>
+            </Label>
+            <Label text="5. KOLIKO JOŠ LICE NAMJERAVA DA BUDE ODSUTNO/PRISUTNO?" GridPane.columnSpan="4" GridPane.rowIndex="11" GridPane.valignment="TOP">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="30.0" top="10.0" />
+               </GridPane.margin>
+            </Label>
+            <RadioButton mnemonicParsing="false" text="Jednu godinu i duže." GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowIndex="11">
+               <GridPane.margin>
+                  <Insets bottom="5.0" left="80.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Kraće od jedne godine (broj mjeseci):" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowIndex="11" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="15.0" left="80.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <Separator prefWidth="200.0" GridPane.columnSpan="7" GridPane.rowIndex="11" GridPane.valignment="BOTTOM" />
+            <TextField GridPane.columnIndex="4" GridPane.rowIndex="11" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="10.0" left="130.0" />
+               </GridPane.margin>
+            </TextField>
+            <Label text="6. MJESTO U KOME SE NALAZI ODSUTNO LICE/MJESTO STALNOG STANOVANJA PRIVREMENO PRISUTNOG LICA?" GridPane.columnSpan="5" GridPane.rowIndex="12" GridPane.valignment="TOP">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="30.0" top="10.0" />
+               </GridPane.margin>
+            </Label>
+            <RadioButton mnemonicParsing="false" text="U Bosni i Hercegovini" GridPane.columnIndex="2" GridPane.rowIndex="12">
+               <GridPane.margin>
+                  <Insets bottom="5.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="U drugoj državi (naziv druge države):" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="12" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="20.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <TextField GridPane.columnIndex="3" GridPane.columnSpan="3" GridPane.rowIndex="12" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="15.0" left="120.0" />
+               </GridPane.margin>
+            </TextField>
+            <Label text="Naseljeno mjesto:" GridPane.columnIndex="3" GridPane.rowIndex="12">
+               <GridPane.margin>
+                  <Insets bottom="60.0" left="5.0" />
+               </GridPane.margin>
+            </Label>
+            <Label text="Opština:" GridPane.columnIndex="3" GridPane.rowIndex="12">
+               <GridPane.margin>
+                  <Insets left="5.0" top="20.0" />
+               </GridPane.margin>
+            </Label>
+            <TextField GridPane.columnIndex="3" GridPane.columnSpan="3" GridPane.rowIndex="12">
+               <GridPane.margin>
+                  <Insets bottom="60.0" left="120.0" />
+               </GridPane.margin>
+            </TextField>
+            <TextField GridPane.columnIndex="3" GridPane.columnSpan="3" GridPane.rowIndex="12">
+               <GridPane.margin>
+                  <Insets left="120.0" top="20.0" />
+               </GridPane.margin>
+            </TextField>
+            <Line endX="346.0" endY="-116.71063995361328" startX="370.29290771484375" startY="-138.4888153076172" GridPane.columnIndex="2" GridPane.rowIndex="12">
+               <GridPane.margin>
+                  <Insets bottom="30.0" left="145.0" />
+               </GridPane.margin>
+            </Line>
+            <Line endX="-72.70710754394531" endY="17.292892456054688" startX="-45.414215087890625" startY="30.585784912109375" GridPane.columnIndex="2" GridPane.rowIndex="12">
+               <GridPane.margin>
+                  <Insets left="145.0" top="10.0" />
+               </GridPane.margin>
+            </Line>
+            <Separator prefWidth="200.0" GridPane.columnSpan="7" GridPane.rowIndex="12" GridPane.valignment="BOTTOM" />
+            <Label text="7. UČESTALOST VRAĆANJA U MJESTO POPISA/MJESTO STALNOG STANOVANJA PRIVREMENO PRISUTNOG LICA?" GridPane.columnSpan="5" GridPane.rowIndex="13" GridPane.valignment="TOP">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="30.0" top="10.0" />
+               </GridPane.margin>
+            </Label>
+            <RadioButton mnemonicParsing="false" text="Rjeđe od jednom nedeljno" GridPane.columnIndex="3" GridPane.rowIndex="13">
+               <GridPane.margin>
+                  <Insets top="5.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Najmanje jednom nedeljno" GridPane.columnIndex="3" GridPane.rowIndex="13" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="10.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <Separator prefWidth="200.0" GridPane.columnSpan="7" GridPane.rowIndex="13" GridPane.valignment="BOTTOM" />
+            <Label layoutX="40.0" layoutY="850.0" text="8. MJESTO ROĐENJA?" GridPane.columnSpan="2" GridPane.rowIndex="14" GridPane.valignment="TOP">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="30.0" top="10.0" />
+               </GridPane.margin>
+            </Label>
+            <RadioButton layoutX="200.0" layoutY="904.0" mnemonicParsing="false" text="U Bosni i Hercegovini" GridPane.columnIndex="2" GridPane.rowIndex="14">
+               <GridPane.margin>
+                  <Insets bottom="5.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton layoutX="200.0" layoutY="953.0" mnemonicParsing="false" text="U drugoj državi (naziv druge države):" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="14" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="20.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <TextField layoutX="490.0" layoutY="950.0" GridPane.columnIndex="3" GridPane.columnSpan="3" GridPane.rowIndex="14">
+               <GridPane.margin>
+                  <Insets left="120.0" top="20.0" />
+               </GridPane.margin>
+            </TextField>
+            <Label layoutX="375.0" layoutY="877.0" text="Naseljeno mjesto:" GridPane.columnIndex="3" GridPane.rowIndex="14">
+               <GridPane.margin>
+                  <Insets bottom="60.0" left="5.0" />
+               </GridPane.margin>
+            </Label>
+            <Label layoutX="375.0" layoutY="917.0" text="Opština:" GridPane.columnIndex="3" GridPane.rowIndex="14">
+               <GridPane.margin>
+                  <Insets left="5.0" top="20.0" />
+               </GridPane.margin>
+            </Label>
+            <TextField layoutX="490.0" layoutY="873.0" GridPane.columnIndex="3" GridPane.columnSpan="3" GridPane.rowIndex="14" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="15.0" left="120.0" />
+               </GridPane.margin>
+            </TextField>
+            <TextField layoutX="490.0" layoutY="913.0" GridPane.columnIndex="3" GridPane.columnSpan="3" GridPane.rowIndex="14">
+               <GridPane.margin>
+                  <Insets bottom="60.0" left="120.0" />
+               </GridPane.margin>
+            </TextField>
+            <Line endX="346.0" endY="-116.71063995361328" layoutY="1027.0" startX="370.29290771484375" startY="-138.4888153076172" GridPane.columnIndex="2" GridPane.rowIndex="14">
+               <GridPane.margin>
+                  <Insets bottom="30.0" left="145.0" />
+               </GridPane.margin>
+            </Line>
+            <Line endX="-72.70710754394531" endY="17.292892456054688" layoutX="418.0" layoutY="896.0" startX="-45.414215087890625" startY="30.585784912109375" GridPane.columnIndex="2" GridPane.rowIndex="14">
+               <GridPane.margin>
+                  <Insets left="145.0" top="10.0" />
+               </GridPane.margin>
+            </Line>
+            <Separator prefWidth="200.0" GridPane.columnSpan="7" GridPane.rowIndex="14" GridPane.valignment="BOTTOM" />
+            <Label layoutX="40.0" layoutY="1090.0" text="9. MJESTO STALNOG STANOVANJA MAJKE U VRIJEME KADA JE LICE ROĐENO?" GridPane.columnSpan="4" GridPane.rowIndex="15" GridPane.valignment="TOP">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="30.0" top="10.0" />
+               </GridPane.margin>
+            </Label>
+            <RadioButton layoutX="200.0" layoutY="1144.0" mnemonicParsing="false" text="U Bosni i Hercegovini" GridPane.columnIndex="2" GridPane.rowIndex="15">
+               <GridPane.margin>
+                  <Insets bottom="5.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton layoutX="200.0" layoutY="1193.0" mnemonicParsing="false" text="U drugoj državi (naziv druge države):" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="15" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="20.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <TextField layoutX="490.0" layoutY="1153.0" GridPane.columnIndex="3" GridPane.columnSpan="3" GridPane.rowIndex="15" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="15.0" left="120.0" />
+               </GridPane.margin>
+            </TextField>
+            <Label layoutX="375.0" layoutY="1117.0" text="Naseljeno mjesto:" GridPane.columnIndex="3" GridPane.rowIndex="15">
+               <GridPane.margin>
+                  <Insets bottom="60.0" left="5.0" />
+               </GridPane.margin>
+            </Label>
+            <Label layoutX="375.0" layoutY="1157.0" text="Opština:" GridPane.columnIndex="3" GridPane.rowIndex="15">
+               <GridPane.margin>
+                  <Insets left="5.0" top="20.0" />
+               </GridPane.margin>
+            </Label>
+            <TextField layoutX="490.0" layoutY="1190.0" GridPane.columnIndex="3" GridPane.columnSpan="3" GridPane.rowIndex="15">
+               <GridPane.margin>
+                  <Insets left="120.0" top="20.0" />
+               </GridPane.margin>
+            </TextField>
+            <TextField layoutX="490.0" layoutY="1113.0" GridPane.columnIndex="3" GridPane.columnSpan="3" GridPane.rowIndex="15">
+               <GridPane.margin>
+                  <Insets bottom="60.0" left="120.0" />
+               </GridPane.margin>
+            </TextField>
+            <Line endX="346.0" endY="-116.71063995361328" layoutY="1267.0" startX="370.29290771484375" startY="-138.4888153076172" GridPane.columnIndex="2" GridPane.rowIndex="15">
+               <GridPane.margin>
+                  <Insets bottom="30.0" left="145.0" />
+               </GridPane.margin>
+            </Line>
+            <Line endX="-72.70710754394531" endY="17.292892456054688" layoutX="418.0" layoutY="1136.0" startX="-45.414215087890625" startY="30.585784912109375" GridPane.columnIndex="2" GridPane.rowIndex="15">
+               <GridPane.margin>
+                  <Insets left="145.0" top="10.0" />
+               </GridPane.margin>
+            </Line>
+            <Separator prefWidth="200.0" GridPane.columnSpan="7" GridPane.rowIndex="15" GridPane.valignment="BOTTOM" />
+            <Separator prefWidth="200.0" GridPane.columnSpan="7" GridPane.rowIndex="16" GridPane.valignment="BOTTOM" />
+            <Label text="NA PITANJA 10. I 11. NE ODGOVARAJU LICA PRIVREMENO PRISUTNA U MJESTU POPISA." GridPane.columnIndex="2" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="16">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="40.0" layoutY="510.0" text="10. DA LI SE LICE DOSELILO U MJESTO POPISA IZ DRUGOG NASELJENOG MJESTA U BIH ILI IZ DRUGE DRŽAVE?" GridPane.columnSpan="5" GridPane.rowIndex="17" GridPane.valignment="TOP">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="30.0" top="10.0" />
+               </GridPane.margin>
+            </Label>
+            <RadioButton layoutX="333.0" layoutY="529.0" mnemonicParsing="false" text="Da" GridPane.columnIndex="3" GridPane.rowIndex="17">
+               <GridPane.margin>
+                  <Insets top="10.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton layoutX="333.0" layoutY="553.0" mnemonicParsing="false" text="Ne" GridPane.columnIndex="3" GridPane.rowIndex="17" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="10.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <Line endX="-78.70710754394531" endY="0.15684586763381958" layoutX="486.0" layoutY="539.0" startX="-100.0" GridPane.columnIndex="3" GridPane.rowIndex="17" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="17.0" left="55.0" />
+               </GridPane.margin>
+            </Line>
+            <Polygon layoutX="405.0" layoutY="562.0" points="0.0, -18.5, 9.0, -22.5, 0.0, -27.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="3" GridPane.rowIndex="17" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="15.0" left="75.0" />
+               </GridPane.margin>
+            </Polygon>
+            <Label layoutX="425.0" layoutY="531.0" text="Pitanje 12." GridPane.columnIndex="3" GridPane.rowIndex="17" GridPane.valignment="BOTTOM">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="10.0" left="100.0" />
+               </GridPane.margin>
+            </Label>
+            <Label layoutX="40.0" layoutY="1240.0" text="11. ODAKLE SE LICE DOSELILO U MJESTO POPISA?" GridPane.columnSpan="3" GridPane.rowIndex="18" GridPane.valignment="TOP">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="30.0" top="10.0" />
+               </GridPane.margin>
+            </Label>
+            <RadioButton layoutX="200.0" layoutY="1294.0" mnemonicParsing="false" text="U Bosni i Hercegovini" GridPane.columnIndex="2" GridPane.rowIndex="18">
+               <GridPane.margin>
+                  <Insets bottom="30.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton layoutX="200.0" layoutY="1343.0" mnemonicParsing="false" text="U drugoj državi (naziv druge države):" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="18" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="50.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <TextField layoutX="490.0" layoutY="1340.0" GridPane.columnIndex="3" GridPane.columnSpan="3" GridPane.rowIndex="18" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="45.0" left="120.0" />
+               </GridPane.margin>
+            </TextField>
+            <Label layoutX="375.0" layoutY="1267.0" text="Naseljeno mjesto:" GridPane.columnIndex="3" GridPane.rowIndex="18">
+               <GridPane.margin>
+                  <Insets bottom="85.0" left="5.0" />
+               </GridPane.margin>
+            </Label>
+            <Label layoutX="375.0" layoutY="1307.0" text="Opština:" GridPane.columnIndex="3" GridPane.rowIndex="18">
+               <GridPane.margin>
+                  <Insets bottom="25.0" left="5.0" top="20.0" />
+               </GridPane.margin>
+            </Label>
+            <TextField layoutX="490.0" layoutY="1303.0" GridPane.columnIndex="3" GridPane.columnSpan="3" GridPane.rowIndex="18">
+               <GridPane.margin>
+                  <Insets bottom="25.0" left="120.0" top="20.0" />
+               </GridPane.margin>
+            </TextField>
+            <TextField layoutX="490.0" layoutY="1263.0" GridPane.columnIndex="3" GridPane.columnSpan="3" GridPane.rowIndex="18">
+               <GridPane.margin>
+                  <Insets bottom="85.0" left="120.0" />
+               </GridPane.margin>
+            </TextField>
+            <Line endX="346.0" endY="-116.71063995361328" layoutY="1417.0" startX="370.29290771484375" startY="-138.4888153076172" GridPane.columnIndex="2" GridPane.rowIndex="18">
+               <GridPane.margin>
+                  <Insets bottom="55.0" left="145.0" />
+               </GridPane.margin>
+            </Line>
+            <Line endX="-72.70710754394531" endY="17.292892456054688" layoutX="418.0" layoutY="1286.0" startX="-45.414215087890625" startY="30.585784912109375" GridPane.columnIndex="2" GridPane.rowIndex="18">
+               <GridPane.margin>
+                  <Insets bottom="25.0" left="145.0" top="10.0" />
+               </GridPane.margin>
+            </Line>
+            <Separator prefWidth="200.0" GridPane.columnSpan="7" GridPane.rowIndex="17" GridPane.valignment="BOTTOM" />
+            <Label text="Datum doseljenja:" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="18" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="15.0" right="10.0" />
+               </GridPane.margin>
+            </Label>
+            <DatePicker GridPane.columnIndex="3" GridPane.rowIndex="18" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="10.0" />
+               </GridPane.margin>
+            </DatePicker>
+            <Label text="12. DA LI JE LICE IKADA ŽIVJELO IZVAN BIH NEPREKIDNO GODINU DANA I DUŽE?" GridPane.columnSpan="4" GridPane.rowIndex="19" GridPane.valignment="TOP">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="30.0" top="10.0" />
+               </GridPane.margin>
+            </Label>
+            <RadioButton mnemonicParsing="false" text="Da (država u kojoj je lice živjelo):" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="19">
+               <GridPane.margin>
+                  <Insets bottom="60.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <TextField GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowIndex="19">
+               <GridPane.margin>
+                  <Insets bottom="60.0" left="40.0" />
+               </GridPane.margin>
+            </TextField>
+            <Label text="Datum doseljenja u BiH:" GridPane.columnIndex="5" GridPane.rowIndex="19">
+               <GridPane.margin>
+                  <Insets bottom="60.0" left="20.0" />
+               </GridPane.margin>
+            </Label>
+            <DatePicker GridPane.columnIndex="6" GridPane.rowIndex="19">
+               <GridPane.margin>
+                  <Insets bottom="60.0" right="30.0" />
+               </GridPane.margin>
+            </DatePicker>
+            <Label text="Razlog doseljenja u BiH:" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="19">
+               <GridPane.margin>
+                  <Insets bottom="30.0" right="5.0" top="35.0" />
+               </GridPane.margin>
+            </Label>
+            <ComboBox prefWidth="150.0" promptText="Odaberi razlog..." GridPane.columnIndex="3" GridPane.rowIndex="19">
+               <GridPane.margin>
+                  <Insets bottom="30.0" top="35.0" />
+               </GridPane.margin>
+            </ComboBox>
+            <RadioButton mnemonicParsing="false" text="Ne." GridPane.columnIndex="2" GridPane.rowIndex="19" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="35.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Lice je u inostranstvu." GridPane.columnIndex="2" GridPane.rowIndex="19" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="10.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <Line endX="-78.70710754394531" endY="0.15684586763381958" startX="-100.0" GridPane.columnIndex="2" GridPane.rowIndex="19">
+               <GridPane.margin>
+                  <Insets left="50.0" top="85.0" />
+               </GridPane.margin>
+            </Line>
+            <Polygon points="0.0, -18.5, 9.0, -22.5, 0.0, -27.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="2" GridPane.rowIndex="19">
+               <GridPane.margin>
+                  <Insets left="70.0" top="85.0" />
+               </GridPane.margin>
+            </Polygon>
+            <Label text="Pitanje 13." GridPane.columnIndex="2" GridPane.rowIndex="19">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="90.0" top="85.0" />
+               </GridPane.margin>
+            </Label>
+            <Line endX="-78.70710754394531" endY="0.15684586763381958" layoutX="351.0" layoutY="1818.0" startX="-100.0" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="19" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="16.0" />
+               </GridPane.margin>
+            </Line>
+            <Polygon layoutX="270.0" layoutY="1840.0" points="0.0, -18.5, 9.0, -22.5, 0.0, -27.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="19" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="14.0" right="5.0" />
+               </GridPane.margin>
+            </Polygon>
+            <Label layoutX="290.0" layoutY="1809.0" text="Pitanje 13." GridPane.columnIndex="3" GridPane.rowIndex="19" GridPane.valignment="BOTTOM">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="10.0" left="25.0" />
+               </GridPane.margin>
+            </Label>
+            <Separator prefWidth="200.0" GridPane.columnSpan="7" GridPane.rowIndex="18" GridPane.valignment="BOTTOM" />
+            <Separator prefWidth="200.0" GridPane.columnSpan="7" GridPane.rowIndex="19" GridPane.valignment="BOTTOM" />
+            <Label layoutX="40.0" layoutY="1240.0" text="13. MJESTO U KOME JE LICE ŽIVJELO ZA VRIJEME POPISA 2013. GODINE?" GridPane.columnSpan="4" GridPane.rowIndex="20" GridPane.valignment="TOP">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="30.0" top="10.0" />
+               </GridPane.margin>
+            </Label>
+            <RadioButton layoutX="200.0" layoutY="1294.0" mnemonicParsing="false" text="U drugom mjestu u BiH" GridPane.columnIndex="2" GridPane.rowIndex="20">
+               <GridPane.margin>
+                  <Insets top="30.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton layoutX="200.0" layoutY="1343.0" mnemonicParsing="false" text="U drugoj državi (naziv druge države):" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="20" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="13.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <TextField layoutX="490.0" layoutY="1340.0" GridPane.columnIndex="3" GridPane.columnSpan="3" GridPane.rowIndex="20">
+               <GridPane.margin>
+                  <Insets bottom="10.0" left="120.0" />
+               </GridPane.margin>
+            </TextField>
+            <Label layoutX="375.0" layoutY="1267.0" text="Naseljeno mjesto:" GridPane.columnIndex="3" GridPane.rowIndex="20">
+               <GridPane.margin>
+                  <Insets bottom="10.0" left="5.0" />
+               </GridPane.margin>
+            </Label>
+            <Label layoutX="375.0" layoutY="1307.0" text="Opština:" GridPane.columnIndex="3" GridPane.rowIndex="20">
+               <GridPane.margin>
+                  <Insets left="5.0" top="60.0" />
+               </GridPane.margin>
+            </Label>
+            <TextField layoutX="490.0" layoutY="1303.0" GridPane.columnIndex="3" GridPane.columnSpan="3" GridPane.rowIndex="20">
+               <GridPane.margin>
+                  <Insets left="120.0" top="60.0" />
+               </GridPane.margin>
+            </TextField>
+            <TextField layoutX="490.0" layoutY="1263.0" GridPane.columnIndex="3" GridPane.columnSpan="3" GridPane.rowIndex="20" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="10.0" left="120.0" />
+               </GridPane.margin>
+            </TextField>
+            <Line endX="347.7574462890625" endY="-121.6959228515625" layoutY="1417.0" startX="370.29290771484375" startY="-138.4888153076172" GridPane.columnIndex="2" GridPane.rowIndex="20">
+               <GridPane.margin>
+                  <Insets left="148.0" top="15.0" />
+               </GridPane.margin>
+            </Line>
+            <Line endX="-72.70710754394531" endY="17.292892456054688" layoutX="418.0" layoutY="1286.0" startX="-54.414215087890625" startY="29.585784912109375" GridPane.columnIndex="2" GridPane.rowIndex="20">
+               <GridPane.margin>
+                  <Insets bottom="3.0" left="148.0" top="50.0" />
+               </GridPane.margin>
+            </Line>
+            <RadioButton mnemonicParsing="false" text="U naseljenom mjestu gdje i danas živi" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="20">
+               <GridPane.margin>
+                  <Insets bottom="80.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <Line endX="-78.70710754394531" endY="0.15684586763381958" layoutX="448.0" layoutY="1843.0" startX="-100.0" GridPane.columnIndex="3" GridPane.rowIndex="20">
+               <GridPane.margin>
+                  <Insets bottom="80.0" left="70.0" />
+               </GridPane.margin>
+            </Line>
+            <Polygon layoutX="368.0" layoutY="1865.0" points="0.0, -18.5, 9.0, -22.5, 0.0, -27.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="3" GridPane.rowIndex="20">
+               <GridPane.margin>
+                  <Insets bottom="81.0" left="90.0" />
+               </GridPane.margin>
+            </Polygon>
+            <Label layoutX="395.0" layoutY="1833.0" text="Pitanje 14." GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="20" GridPane.valignment="TOP">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets right="5.0" top="40.0" />
+               </GridPane.margin>
+            </Label>
+            <Separator prefWidth="200.0" GridPane.columnSpan="7" GridPane.rowIndex="20" GridPane.valignment="BOTTOM" />
+            <Label layoutX="40.0" layoutY="1430.0" text="14. DA LI JE LICE BILO IZBJEGLICA IZ BIH (POSLIJE POPISA 2013.)?" GridPane.columnSpan="4" GridPane.rowIndex="21" GridPane.valignment="TOP">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="30.0" top="10.0" />
+               </GridPane.margin>
+            </Label>
+            <RadioButton layoutX="370.0" layoutY="1462.0" mnemonicParsing="false" text="Da" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="21" />
+            <RadioButton layoutX="370.0" layoutY="1483.0" mnemonicParsing="false" text="Ne" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="21" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="15.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <Line endX="-78.70710754394531" endY="0.15684586763381958" layoutX="526.0" layoutY="1492.0" startX="-100.0" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="21" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="22.0" left="100.0" />
+               </GridPane.margin>
+            </Line>
+            <Polygon layoutX="445.0" layoutY="1514.0" points="0.0, -18.5, 9.0, -22.5, 0.0, -27.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="21" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="20.0" left="130.0" />
+               </GridPane.margin>
+            </Polygon>
+            <Label layoutX="470.0" layoutY="1483.0" text="Pitanje 16." GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="21" GridPane.valignment="BOTTOM">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="15.0" left="40.0" />
+               </GridPane.margin>
+            </Label>
+            <Separator prefWidth="200.0" GridPane.columnSpan="7" GridPane.rowIndex="21" GridPane.valignment="BOTTOM" />
+            <Label text="15. DA LI SE LICE VRATILO IZ IZBJEGLIŠTVA?" GridPane.columnSpan="3" GridPane.rowIndex="22" GridPane.valignment="TOP">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="30.0" top="10.0" />
+               </GridPane.margin>
+            </Label>
+            <RadioButton mnemonicParsing="false" text="Da, u mjesto iz koga je izbjeglo" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.halignment="LEFT" GridPane.rowIndex="22">
+               <GridPane.margin>
+                  <Insets bottom="20.0" left="100.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Da, u drugo mjesto u BiH" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.halignment="LEFT" GridPane.rowIndex="22">
+               <GridPane.margin>
+                  <Insets left="100.0" top="30.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Ne, nije se vratilo u BiH" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="22" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="12.0" left="100.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <Separator prefWidth="200.0" GridPane.columnSpan="7" GridPane.rowIndex="22" GridPane.valignment="BOTTOM" />
+            <Label layoutX="40.0" layoutY="1240.0" text="16. DA LI JE LICE BILO RASELJENO U BIH (POSLIJE POPISA 2013.)?" GridPane.columnSpan="4" GridPane.rowIndex="23" GridPane.valignment="TOP">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="30.0" top="10.0" />
+               </GridPane.margin>
+            </Label>
+            <RadioButton layoutX="200.0" layoutY="1343.0" mnemonicParsing="false" text="Da" GridPane.columnIndex="2" GridPane.rowIndex="23" />
+            <Label layoutX="375.0" layoutY="1267.0" text="Naseljeno mjesto odakle je raseljeno:" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="23">
+               <GridPane.margin>
+                  <Insets bottom="30.0" left="80.0" />
+               </GridPane.margin>
+            </Label>
+            <Label layoutX="375.0" layoutY="1307.0" text="Opština:" GridPane.columnIndex="3" GridPane.rowIndex="23">
+               <GridPane.margin>
+                  <Insets top="50.0" />
+               </GridPane.margin>
+            </Label>
+            <TextField layoutX="490.0" layoutY="1303.0" GridPane.columnIndex="3" GridPane.columnSpan="3" GridPane.rowIndex="23">
+               <GridPane.margin>
+                  <Insets left="120.0" top="50.0" />
+               </GridPane.margin>
+            </TextField>
+            <TextField layoutX="490.0" layoutY="1263.0" GridPane.columnIndex="3" GridPane.columnSpan="3" GridPane.rowIndex="23">
+               <GridPane.margin>
+                  <Insets bottom="30.0" left="120.0" />
+               </GridPane.margin>
+            </TextField>
+            <Line endX="399.5858154296875" endY="-144.3592071533203" layoutY="1417.0" startX="370.29290771484375" startY="-138.4888153076172" GridPane.columnIndex="2" GridPane.rowIndex="23">
+               <GridPane.margin>
+                  <Insets bottom="10.0" left="40.0" />
+               </GridPane.margin>
+            </Line>
+            <Line endX="-72.70710754394531" endY="17.292892456054688" layoutX="418.0" layoutY="1286.0" startX="48.585784912109375" startY="35.585784912109375" GridPane.columnIndex="2" GridPane.rowIndex="23">
+               <GridPane.margin>
+                  <Insets left="40.0" top="30.0" />
+               </GridPane.margin>
+            </Line>
+            <RadioButton layoutX="300.0" layoutY="2221.0" mnemonicParsing="false" text="Ne" GridPane.columnIndex="2" GridPane.rowIndex="23" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="10.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <Separator prefWidth="200.0" GridPane.columnSpan="7" GridPane.rowIndex="23" GridPane.valignment="BOTTOM" />
+            <Line endX="-78.70710754394531" endY="0.15684586763381958" layoutX="600.0" layoutY="2107.0" startX="-100.0" GridPane.columnIndex="2" GridPane.rowIndex="23" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="16.0" left="55.0" />
+               </GridPane.margin>
+            </Line>
+            <Polygon layoutX="521.0" layoutY="2129.0" points="0.0, -18.5, 9.0, -22.5, 0.0, -27.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="2" GridPane.rowIndex="23" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="13.0" left="75.0" />
+               </GridPane.margin>
+            </Polygon>
+            <Label layoutX="540.0" layoutY="2098.0" text="Pitanje 19." GridPane.columnIndex="2" GridPane.rowIndex="23" GridPane.valignment="BOTTOM">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <padding>
+                  <Insets bottom="10.0" />
+               </padding>
+               <GridPane.margin>
+                  <Insets left="100.0" />
+               </GridPane.margin>
+            </Label>
+            <Label layoutX="40.0" layoutY="510.0" text="17. DA LI SE LICE VRATILO U NASELJENO MJESTO IZ KOGA JE RASELJENO?" GridPane.columnSpan="4" GridPane.rowIndex="24" GridPane.valignment="TOP">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="30.0" top="10.0" />
+               </GridPane.margin>
+            </Label>
+            <RadioButton layoutX="333.0" layoutY="529.0" mnemonicParsing="false" text="Da" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="24" />
+            <Line endX="-78.70710754394531" endY="0.15684586763381958" layoutX="486.0" layoutY="539.0" startX="-100.0" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="24" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="15.0" left="90.0" />
+               </GridPane.margin>
+            </Line>
+            <Line endX="-78.70710754394531" endY="0.15684586763381958" layoutX="486.0" layoutY="564.0" startX="-100.0" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="24">
+               <GridPane.margin>
+                  <Insets left="90.0" />
+               </GridPane.margin>
+            </Line>
+            <Polygon layoutX="405.0" layoutY="562.0" points="0.0, -18.5, 9.0, -22.5, 0.0, -27.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="24" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="12.0" left="120.0" />
+               </GridPane.margin>
+            </Polygon>
+            <Polygon layoutX="405.0" layoutY="586.0" points="0.0, -18.5, 9.0, -22.5, 0.0, -27.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="24">
+               <GridPane.margin>
+                  <Insets bottom="2.0" left="120.0" />
+               </GridPane.margin>
+            </Polygon>
+            <Label layoutX="425.0" layoutY="531.0" text="Pitanje 18." GridPane.columnIndex="4" GridPane.rowIndex="24" GridPane.valignment="BOTTOM">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="10.0" />
+               </GridPane.margin>
+            </Label>
+            <Label layoutX="425.0" layoutY="555.0" text="Pitanje 19." GridPane.columnIndex="4" GridPane.rowIndex="24">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <RadioButton layoutX="441.0" layoutY="2098.0" mnemonicParsing="false" text="Ne" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="24" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="10.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <Separator prefWidth="200.0" GridPane.columnSpan="7" GridPane.rowIndex="24" GridPane.valignment="BOTTOM" />
+            <Label layoutX="40.0" layoutY="2410.0" text="18. DA LI LICE JOŠ UVIJEK IMA FORMALNO-PRAVNI STATUS RASELJENOG LICA U BIH?" GridPane.columnSpan="4" GridPane.rowIndex="25" GridPane.valignment="TOP">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="30.0" top="10.0" />
+               </GridPane.margin>
+            </Label>
+            <RadioButton layoutX="441.0" layoutY="2437.0" mnemonicParsing="false" text="Da" GridPane.columnIndex="4" GridPane.rowIndex="25" />
+            <RadioButton layoutX="441.0" layoutY="2463.0" mnemonicParsing="false" text="Ne" GridPane.columnIndex="4" GridPane.rowIndex="25" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="10.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <Separator prefWidth="200.0" GridPane.columnSpan="7" GridPane.rowIndex="25" GridPane.valignment="BOTTOM" />
+            <Label text="19. DRŽAVLJANSTVO DRŽAVE?" GridPane.columnSpan="3" GridPane.rowIndex="26" GridPane.valignment="TOP">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="30.0" top="10.0" />
+               </GridPane.margin>
+            </Label>
+            <RadioButton mnemonicParsing="false" text="BiH" GridPane.columnIndex="2" GridPane.rowIndex="26" GridPane.valignment="TOP">
+               <GridPane.margin>
+                  <Insets left="30.0" top="40.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="BiH i druge države" GridPane.columnIndex="2" GridPane.rowIndex="26">
+               <GridPane.margin>
+                  <Insets left="30.0" top="10.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Druge države" GridPane.columnIndex="2" GridPane.rowIndex="26">
+               <GridPane.margin>
+                  <Insets left="30.0" top="50.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Bez državljanstva" GridPane.columnIndex="2" GridPane.rowIndex="26" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="10.0" left="30.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <Label text="Državljanstvo druge države:" GridPane.columnIndex="3" GridPane.rowIndex="26">
+               <GridPane.margin>
+                  <Insets left="10.0" top="35.0" />
+               </GridPane.margin>
+            </Label>
+            <TextField GridPane.columnIndex="4" GridPane.columnSpan="2" GridPane.rowIndex="26">
+               <GridPane.margin>
+                  <Insets top="35.0" />
+               </GridPane.margin>
+            </TextField>
+            <Line endX="-80.70710754394531" endY="14.792893409729004" startX="-107.12132263183594" startY="5.378679275512695" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="26">
+               <GridPane.margin>
+                  <Insets right="20.0" top="20.0" />
+               </GridPane.margin>
+            </Line>
+            <Line endX="-81.36396789550781" endY="-13.142138481140137" startX="-130.6568603515625" startY="-5.935031890869141" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="26">
+               <GridPane.margin>
+                  <Insets right="43.0" top="50.0" />
+               </GridPane.margin>
+            </Line>
+            <Label text="19.1. DRŽAVLJANSTVO ENTITETA?" GridPane.columnSpan="3" GridPane.rowIndex="27" GridPane.valignment="TOP">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="30.0" top="10.0" />
+               </GridPane.margin>
+            </Label>
+            <Separator prefWidth="200.0" GridPane.columnSpan="7" GridPane.rowIndex="26" GridPane.valignment="BOTTOM" />
+            <RadioButton mnemonicParsing="false" text="FBiH" GridPane.columnIndex="2" GridPane.rowIndex="27">
+               <GridPane.margin>
+                  <Insets bottom="20.0" left="70.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="RS" GridPane.columnIndex="2" GridPane.rowIndex="27">
+               <GridPane.margin>
+                  <Insets left="70.0" top="27.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Ne izjašnjava se" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="27" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="10.0" left="70.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <Separator prefWidth="200.0" GridPane.columnSpan="7" GridPane.rowIndex="27" GridPane.valignment="BOTTOM" />
+            <Label text="20. ZAKONSKO BRAČNO STANJE?" GridPane.columnSpan="3" GridPane.rowIndex="28" GridPane.valignment="TOP">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="30.0" top="10.0" />
+               </GridPane.margin>
+            </Label>
+            <RadioButton mnemonicParsing="false" text="Nikad oženjen/udata" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="28">
+               <GridPane.margin>
+                  <Insets bottom="50.0" left="50.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Oženjen/udata" GridPane.columnIndex="2" GridPane.rowIndex="28">
+               <GridPane.margin>
+                  <Insets bottom="2.0" left="50.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Razveden/razvedena" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="28" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="33.0" left="50.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Udovac/udovica" GridPane.columnIndex="2" GridPane.rowIndex="28" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="10.0" left="50.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <Separator prefWidth="200.0" GridPane.columnSpan="7" GridPane.rowIndex="28" GridPane.valignment="BOTTOM" />
+            <Label layoutX="40.0" layoutY="2500.0" text="21. DA LI LICE ŽIVI U NEFORMALNOJ ZAJEDNICI?" GridPane.columnSpan="3" GridPane.rowIndex="29" GridPane.valignment="TOP">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="30.0" top="10.0" />
+               </GridPane.margin>
+            </Label>
+            <RadioButton layoutX="550.0" layoutY="2527.0" mnemonicParsing="false" text="Da" GridPane.columnIndex="2" GridPane.rowIndex="29">
+               <GridPane.margin>
+                  <Insets left="130.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton layoutX="550.0" layoutY="2553.0" mnemonicParsing="false" text="Ne" GridPane.columnIndex="2" GridPane.rowIndex="29" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="10.0" left="130.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <Separator prefWidth="200.0" GridPane.columnSpan="7" GridPane.rowIndex="29" GridPane.valignment="BOTTOM" />
+            <Label text="22. UKUPAN BROJ ŽIVOROĐENE DJECE UKLJUČUJUĆI I ONU KOJA NISU ŽIVA?" GridPane.columnSpan="4" GridPane.rowIndex="30" GridPane.valignment="TOP">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="30.0" top="10.0" />
+               </GridPane.margin>
+            </Label>
+            <TextField GridPane.columnIndex="3" GridPane.rowIndex="30" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="15.0" left="120.0" />
+               </GridPane.margin>
+            </TextField>
+            <Separator prefWidth="200.0" GridPane.columnSpan="7" GridPane.rowIndex="30" GridPane.valignment="BOTTOM" />
+            <Label text="23. DATUMI ROĐENJA ŽIVOROĐENE DJECE?" GridPane.columnSpan="3" GridPane.rowIndex="31" GridPane.valignment="TOP">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="30.0" top="10.0" />
+               </GridPane.margin>
+            </Label>
+            <Label text="Prvog:" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="31">
+               <GridPane.margin>
+                  <Insets bottom="50.0" right="10.0" />
+               </GridPane.margin>
+            </Label>
+            <DatePicker GridPane.columnIndex="3" GridPane.rowIndex="31">
+               <GridPane.margin>
+                  <Insets bottom="50.0" />
+               </GridPane.margin>
+            </DatePicker>
+            <Label text="Drugog:" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="31">
+               <GridPane.margin>
+                  <Insets right="10.0" top="20.0" />
+               </GridPane.margin>
+            </Label>
+            <DatePicker GridPane.columnIndex="3" GridPane.rowIndex="31">
+               <GridPane.margin>
+                  <Insets top="20.0" />
+               </GridPane.margin>
+            </DatePicker>
+            <Label text="Najmlađeg:" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="31" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="20.0" right="10.0" />
+               </GridPane.margin>
+            </Label>
+            <DatePicker GridPane.columnIndex="3" GridPane.rowIndex="31" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="15.0" />
+               </GridPane.margin>
+            </DatePicker>
+            <Separator prefWidth="200.0" GridPane.columnSpan="7" GridPane.rowIndex="31" GridPane.valignment="BOTTOM" />
+            <Label text="24. ETNIČKO/NACIONALNO IZJAŠNJAVANJE?" GridPane.columnSpan="3" GridPane.rowIndex="32" GridPane.valignment="TOP">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="30.0" top="10.0" />
+               </GridPane.margin>
+            </Label>
+            <RadioButton mnemonicParsing="false" text="Bošnjak/Bošnjakinja" GridPane.columnIndex="3" GridPane.rowIndex="32" GridPane.valignment="TOP">
+               <GridPane.margin>
+                  <Insets top="35.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Hrvat/Hrvatica" GridPane.columnIndex="3" GridPane.rowIndex="32">
+               <GridPane.margin>
+                  <Insets bottom="38.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Srbin/Srpkinja" GridPane.columnIndex="3" GridPane.rowIndex="32">
+               <GridPane.margin>
+                  <Insets top="18.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Drugo:" GridPane.columnIndex="3" GridPane.rowIndex="32">
+               <GridPane.margin>
+                  <Insets top="75.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <TextField GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowIndex="32">
+               <GridPane.margin>
+                  <Insets left="70.0" right="60.0" top="75.0" />
+               </GridPane.margin>
+            </TextField>
+            <RadioButton mnemonicParsing="false" text="Ne izjašnjava se" GridPane.columnIndex="3" GridPane.rowIndex="32" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="15.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <Label text="25. IZJAŠNJAVANJE O VJEROISPOVJESTI?" GridPane.columnSpan="3" GridPane.rowIndex="33" GridPane.valignment="TOP">
+               <GridPane.margin>
+                  <Insets left="30.0" top="10.0" />
+               </GridPane.margin>
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Separator prefWidth="200.0" GridPane.columnSpan="7" GridPane.rowIndex="32" GridPane.valignment="BOTTOM" />
+            <RadioButton mnemonicParsing="false" text="Islamska" GridPane.columnIndex="3" GridPane.rowIndex="33" GridPane.valignment="TOP">
+               <GridPane.margin>
+                  <Insets top="35.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Katolička" GridPane.columnIndex="3" GridPane.rowIndex="33">
+               <GridPane.margin>
+                  <Insets bottom="75.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Pravoslavna" GridPane.columnIndex="3" GridPane.rowIndex="33">
+               <GridPane.margin>
+                  <Insets bottom="25.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Agnostik" GridPane.columnIndex="3" GridPane.rowIndex="33">
+               <GridPane.margin>
+                  <Insets top="25.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Ateist" GridPane.columnIndex="3" GridPane.rowIndex="33">
+               <GridPane.margin>
+                  <Insets top="75.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Drugo:" GridPane.columnIndex="3" GridPane.rowIndex="33" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="35.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Ne izjašnjava se" GridPane.columnIndex="3" GridPane.rowIndex="33" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="10.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <Separator prefWidth="200.0" GridPane.columnSpan="7" GridPane.rowIndex="33" GridPane.valignment="BOTTOM" />
+            <TextField GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowIndex="33" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="30.0" left="70.0" right="60.0" />
+               </GridPane.margin>
+            </TextField>
+            <Label text="26. MATERNJI JEZIK?" GridPane.columnSpan="2" GridPane.rowIndex="34" GridPane.valignment="TOP">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="30.0" top="10.0" />
+               </GridPane.margin>
+            </Label>
+            <RadioButton mnemonicParsing="false" text="Bosanski" GridPane.columnIndex="2" GridPane.rowIndex="34">
+               <GridPane.margin>
+                  <Insets bottom="50.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Hrvatski" GridPane.columnIndex="2" GridPane.rowIndex="34" />
+            <RadioButton mnemonicParsing="false" text="Srpski" GridPane.columnIndex="2" GridPane.rowIndex="34">
+               <GridPane.margin>
+                  <Insets top="53.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Drugo:" GridPane.columnIndex="2" GridPane.rowIndex="34" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="10.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <Separator prefWidth="200.0" GridPane.columnSpan="7" GridPane.rowIndex="34" GridPane.valignment="BOTTOM" />
+            <TextField GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="34" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="8.0" left="70.0" right="60.0" />
+               </GridPane.margin>
+            </TextField>
+            <Label text="27. KOJE AKTIVNOSTI LICE ZNA OBAVLJATI NA RAČUNARU?" GridPane.columnSpan="4" GridPane.rowIndex="35" GridPane.valignment="TOP">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="30.0" top="10.0" />
+               </GridPane.margin>
+            </Label>
+            <CheckBox mnemonicParsing="false" text="Obrada teksta" GridPane.columnIndex="3" GridPane.rowIndex="35" GridPane.valignment="TOP">
+               <GridPane.margin>
+                  <Insets left="30.0" top="40.0" />
+               </GridPane.margin>
+            </CheckBox>
+            <CheckBox mnemonicParsing="false" text="Izrada tabela" GridPane.columnIndex="3" GridPane.rowIndex="35">
+               <GridPane.margin>
+                  <Insets bottom="22.0" left="30.0" />
+               </GridPane.margin>
+            </CheckBox>
+            <CheckBox mnemonicParsing="false" text="Korišćenje elektronske pošte" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowIndex="35">
+               <GridPane.margin>
+                  <Insets left="30.0" top="30.0" />
+               </GridPane.margin>
+            </CheckBox>
+            <CheckBox mnemonicParsing="false" text="Korišćenje interneta" GridPane.columnIndex="3" GridPane.rowIndex="35">
+               <GridPane.margin>
+                  <Insets left="30.0" top="83.0" />
+               </GridPane.margin>
+            </CheckBox>
+            <CheckBox mnemonicParsing="false" text="Ništa od navedenog" GridPane.columnIndex="3" GridPane.rowIndex="35" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="10.0" left="30.0" />
+               </GridPane.margin>
+            </CheckBox>
+            <Separator prefWidth="200.0" GridPane.columnSpan="7" GridPane.rowIndex="35" GridPane.valignment="BOTTOM" />
+            <Label text="28. NAJVIŠA ZAVRŠENA ŠKOLA?" GridPane.columnSpan="3" GridPane.rowIndex="36" GridPane.valignment="TOP">
+               <GridPane.margin>
+                  <Insets left="30.0" top="10.0" />
+               </GridPane.margin>
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <RadioButton mnemonicParsing="false" text="Bez ikakvog obrazovanja" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="36" GridPane.valignment="TOP">
+               <GridPane.margin>
+                  <Insets left="40.0" top="30.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Nepotpuno osnovno obrazovanje (upisati najviši razred koji je lice završilo)" GridPane.columnIndex="2" GridPane.columnSpan="3" GridPane.rowIndex="36">
+               <GridPane.margin>
+                  <Insets bottom="125.0" left="40.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <TextField GridPane.columnIndex="2" GridPane.rowIndex="36">
+               <GridPane.margin>
+                  <Insets bottom="63.0" left="40.0" right="90.0" />
+               </GridPane.margin>
+            </TextField>
+            <Label prefHeight="34.0" prefWidth="68.0" text="8-godišnji program" wrapText="true" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="36">
+               <GridPane.margin>
+                  <Insets bottom="65.0" left="90.0" />
+               </GridPane.margin>
+            </Label>
+            <TextField GridPane.columnIndex="3" GridPane.rowIndex="36">
+               <GridPane.margin>
+                  <Insets bottom="63.0" left="135.0" />
+               </GridPane.margin>
+            </TextField>
+            <Label prefHeight="35.0" prefWidth="72.0" text="9-godišnji program" wrapText="true" GridPane.columnIndex="4" GridPane.rowIndex="36">
+               <GridPane.margin>
+                  <Insets bottom="65.0" left="10.0" />
+               </GridPane.margin>
+            </Label>
+            <RadioButton mnemonicParsing="false" text="Osnovna škola" GridPane.columnIndex="2" GridPane.rowIndex="36">
+               <GridPane.margin>
+                  <Insets left="40.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <Line endX="-78.70710754394531" endY="0.15684586763381958" layoutX="595.0" layoutY="2445.0" startX="-100.0" GridPane.columnIndex="3" GridPane.rowIndex="36">
+               <GridPane.margin>
+                  <Insets bottom="65.0" />
+               </GridPane.margin>
+            </Line>
+            <Polygon layoutX="516.0" layoutY="2467.0" points="0.0, -18.5, 9.0, -22.5, 0.0, -27.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="3" GridPane.rowIndex="36">
+               <GridPane.margin>
+                  <Insets bottom="65.0" left="20.0" />
+               </GridPane.margin>
+            </Polygon>
+            <Label layoutX="550.0" layoutY="2437.0" text="Pitanje 30." GridPane.columnIndex="3" GridPane.rowIndex="36">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="65.0" left="40.0" />
+               </GridPane.margin>
+            </Label>
+            <Line endX="-78.70710754394531" endY="0.15684586763381958" startX="-100.0" GridPane.columnIndex="3" GridPane.rowIndex="36" GridPane.valignment="TOP">
+               <GridPane.margin>
+                  <Insets left="30.0" top="40.0" />
+               </GridPane.margin>
+            </Line>
+            <Polygon layoutX="390.0" layoutY="4075.0" points="0.0, -18.5, 9.0, -22.5, 0.0, -27.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="3" GridPane.rowIndex="36" GridPane.valignment="TOP">
+               <GridPane.margin>
+                  <Insets left="50.0" top="36.0" />
+               </GridPane.margin>
+            </Polygon>
+            <Label layoutX="410.0" layoutY="4044.0" text="Pitanje 30." GridPane.columnIndex="3" GridPane.rowIndex="36" GridPane.valignment="TOP">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="75.0" top="30.0" />
+               </GridPane.margin>
+            </Label>
+            <Line endX="-78.70710754394531" endY="0.15684586763381958" startX="-100.0" GridPane.columnIndex="4" GridPane.rowIndex="36">
+               <GridPane.margin>
+                  <Insets bottom="60.0" left="80.0" />
+               </GridPane.margin>
+            </Line>
+            <Polygon points="0.0, -18.5, 9.0, -22.5, 0.0, -27.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="4" GridPane.rowIndex="36">
+               <GridPane.margin>
+                  <Insets bottom="61.0" left="100.0" />
+               </GridPane.margin>
+            </Polygon>
+            <Label text="Pitanje 30." GridPane.columnIndex="4" GridPane.rowIndex="36">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="62.0" left="120.0" />
+               </GridPane.margin>
+            </Label>
+            <Line endX="-78.70710754394531" endY="0.15684586763381958" startX="-100.0" GridPane.columnIndex="3" GridPane.rowIndex="36" />
+            <Polygon points="0.0, -18.5, 9.0, -22.5, 0.0, -27.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="3" GridPane.rowIndex="36">
+               <GridPane.margin>
+                  <Insets bottom="2.0" left="20.0" />
+               </GridPane.margin>
+            </Polygon>
+            <Label text="Pitanje 31." GridPane.columnIndex="3" GridPane.rowIndex="36">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="2.0" left="40.0" />
+               </GridPane.margin>
+            </Label>
+            <RadioButton mnemonicParsing="false" text="Srednja škola" GridPane.columnIndex="2" GridPane.rowIndex="36">
+               <GridPane.margin>
+                  <Insets left="40.0" top="60.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <Line endX="-78.70710754394531" endY="0.15684586763381958" startX="-100.0" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="36">
+               <GridPane.margin>
+                  <Insets right="25.0" top="63.0" />
+               </GridPane.margin>
+            </Line>
+            <Polygon points="0.0, -18.5, 9.0, -22.5, 0.0, -27.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="3" GridPane.rowIndex="36">
+               <GridPane.margin>
+                  <Insets top="62.0" />
+               </GridPane.margin>
+            </Polygon>
+            <RadioButton mnemonicParsing="false" prefHeight="17.0" prefWidth="151.0" text="1-godišnja ili 2-godišnja" wrapText="true" GridPane.columnIndex="3" GridPane.rowIndex="36">
+               <GridPane.margin>
+                  <Insets left="20.0" top="60.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="3-godišnja" GridPane.columnIndex="4" GridPane.rowIndex="36">
+               <GridPane.margin>
+                  <Insets top="60.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="4-godišnja ili 5-godišnja" GridPane.columnIndex="4" GridPane.columnSpan="2" GridPane.rowIndex="36">
+               <GridPane.margin>
+                  <Insets left="100.0" top="60.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Specijalizacija poslije srednje škole" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="36">
+               <GridPane.margin>
+                  <Insets left="40.0" top="110.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Viša škola i 1. stepen fakulteta" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="36">
+               <GridPane.margin>
+                  <Insets left="40.0" top="165.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Visoka škola/fakultet/akademija/univerzitet" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="36" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="10.0" left="40.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <Separator prefWidth="200.0" GridPane.columnSpan="7" GridPane.rowIndex="36" GridPane.valignment="BOTTOM" />
+            <Line endX="-78.70710754394531" endY="0.15684586763381958" startX="-100.0" GridPane.columnIndex="3" GridPane.rowIndex="36">
+               <GridPane.margin>
+                  <Insets left="80.0" top="110.0" />
+               </GridPane.margin>
+            </Line>
+            <Polygon points="0.0, -18.5, 9.0, -22.5, 0.0, -27.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="3" GridPane.rowIndex="36">
+               <GridPane.margin>
+                  <Insets left="100.0" top="109.0" />
+               </GridPane.margin>
+            </Polygon>
+            <Label text="Pitanje 31." GridPane.columnIndex="3" GridPane.rowIndex="36">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="120.0" top="110.0" />
+               </GridPane.margin>
+            </Label>
+            <Line endX="-78.70710754394531" endY="0.15684586763381958" startX="-100.0" GridPane.columnIndex="3" GridPane.rowIndex="36" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="40.0" left="60.0" />
+               </GridPane.margin>
+            </Line>
+            <Polygon points="0.0, -18.5, 9.0, -22.5, 0.0, -27.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="3" GridPane.rowIndex="36" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="38.0" left="80.0" />
+               </GridPane.margin>
+            </Polygon>
+            <Label text="Pitanje 31." GridPane.columnIndex="3" GridPane.rowIndex="36" GridPane.valignment="BOTTOM">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="34.0" left="100.0" />
+               </GridPane.margin>
+            </Label>
+            <Line endX="-78.70710754394531" endY="0.15684586763381958" startX="-100.0" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="36" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="17.0" right="18.0" />
+               </GridPane.margin>
+            </Line>
+            <Polygon points="0.0, -18.5, 9.0, -22.5, 0.0, -27.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="36" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="15.0" right="10.0" />
+               </GridPane.margin>
+            </Polygon>
+            <Label text="Pitanje 29." GridPane.columnIndex="4" GridPane.rowIndex="36" GridPane.valignment="BOTTOM">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="10.0" />
+               </GridPane.margin>
+            </Label>
+            <Line endX="-20.707107543945312" endY="0.5428932309150696" startX="-100.0" GridPane.columnIndex="5" GridPane.halignment="RIGHT" GridPane.rowIndex="36">
+               <GridPane.margin>
+                  <Insets right="25.0" top="62.0" />
+               </GridPane.margin>
+            </Line>
+            <Polygon points="0.0, -18.5, 9.0, -22.5, 0.0, -27.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="5" GridPane.halignment="RIGHT" GridPane.rowIndex="36">
+               <GridPane.margin>
+                  <Insets right="17.0" top="62.0" />
+               </GridPane.margin>
+            </Polygon>
+            <RadioButton mnemonicParsing="false" text="Gimnazije" GridPane.columnIndex="6" GridPane.rowIndex="36">
+               <GridPane.margin>
+                  <Insets bottom="110.0" />
+               </GridPane.margin>
+               <padding>
+                  <Insets left="10.0" />
+               </padding>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" prefHeight="34.0" prefWidth="90.0" text="Tehničke i srodne škole" wrapText="true" GridPane.columnIndex="6" GridPane.rowIndex="36">
+               <GridPane.margin>
+                  <Insets bottom="40.0" left="10.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Stručne škole" GridPane.columnIndex="6" GridPane.rowIndex="36">
+               <GridPane.margin>
+                  <Insets left="10.0" top="25.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Vjerske škole" GridPane.columnIndex="6" GridPane.rowIndex="36">
+               <GridPane.margin>
+                  <Insets left="10.0" top="80.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Umjetničke škole" GridPane.columnIndex="6" GridPane.rowIndex="36">
+               <GridPane.margin>
+                  <Insets left="10.0" top="130.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Učiteljske škole" GridPane.columnIndex="6" GridPane.rowIndex="36">
+               <GridPane.margin>
+                  <Insets left="10.0" top="180.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <Label text="Nakon označene srednje škole prelazi se na pitanje 31." wrapText="true" GridPane.columnIndex="6" GridPane.rowIndex="36" GridPane.valignment="TOP">
+               <GridPane.margin>
+                  <Insets left="10.0" top="10.0" />
+               </GridPane.margin>
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label text="29. STEČENO ZVANJE?" GridPane.columnSpan="2" GridPane.rowIndex="37" GridPane.valignment="TOP">
+               <GridPane.margin>
+                  <Insets left="30.0" top="10.0" />
+               </GridPane.margin>
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label text="STARI PROGRAM:" GridPane.columnIndex="2" GridPane.rowIndex="37" GridPane.valignment="TOP">
+               <GridPane.margin>
+                  <Insets top="30.0" />
+               </GridPane.margin>
+            </Label>
+            <RadioButton mnemonicParsing="false" text="Diplomirani (broj godina studija):" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="37">
+               <GridPane.margin>
+                  <Insets bottom="160.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Specijalista" GridPane.columnIndex="2" GridPane.rowIndex="37">
+               <GridPane.margin>
+                  <Insets bottom="110.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Magistar" GridPane.columnIndex="2" GridPane.rowIndex="37">
+               <GridPane.margin>
+                  <Insets bottom="60.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Doktor nauka" GridPane.columnIndex="2" GridPane.rowIndex="37">
+               <GridPane.margin>
+                  <Insets bottom="10.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <Label text="PROGRAM PO BOLONJI:" GridPane.columnIndex="2" GridPane.rowIndex="37">
+               <GridPane.margin>
+                  <Insets top="70.0" />
+               </GridPane.margin>
+            </Label>
+            <RadioButton mnemonicParsing="false" text="Bachelor i diplomirani (studije I ciklusa)" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="37">
+               <GridPane.margin>
+                  <Insets top="120.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Magistar (studije II ciklusa i integrisane studije)" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="37">
+               <GridPane.margin>
+                  <Insets top="170.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Doktor nauka (studije III ciklusa)" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="37" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="20.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <TextField GridPane.columnIndex="3" GridPane.rowIndex="37" GridPane.valignment="TOP">
+               <GridPane.margin>
+                  <Insets left="45.0" right="70.0" top="50.0" />
+               </GridPane.margin>
+            </TextField>
+            <Label text="Nakon odgovorenog pitanja prelazi se na pitanje 31." wrapText="true" GridPane.columnIndex="4" GridPane.rowIndex="37">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Separator prefWidth="200.0" GridPane.columnSpan="7" GridPane.rowIndex="37" GridPane.valignment="BOTTOM" />
+            <Label text="30. DA LI LICE ZNA DA PROČITA I DA NAPIŠE KRATAK TEKST?" GridPane.columnSpan="4" GridPane.rowIndex="38" GridPane.valignment="TOP">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="30.0" top="10.0" />
+               </GridPane.margin>
+            </Label>
+            <RadioButton mnemonicParsing="false" text="Da" GridPane.columnIndex="3" GridPane.rowIndex="38">
+               <GridPane.margin>
+                  <Insets left="30.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Ne" GridPane.columnIndex="3" GridPane.rowIndex="38" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="10.0" left="30.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <Label text="31. ŠKOLA KOJU LICE POHAĐA?" GridPane.columnSpan="3" GridPane.rowIndex="39" GridPane.valignment="TOP">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="30.0" top="10.0" />
+               </GridPane.margin>
+            </Label>
+            <RadioButton mnemonicParsing="false" text="Ne školuje se" GridPane.columnIndex="2" GridPane.rowIndex="39" GridPane.valignment="TOP">
+               <GridPane.margin>
+                  <Insets left="30.0" top="30.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Predškolsko obrazovanje" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="39" GridPane.valignment="TOP">
+               <GridPane.margin>
+                  <Insets left="30.0" top="55.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Osnovna škola" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="39" GridPane.valignment="TOP">
+               <GridPane.margin>
+                  <Insets left="30.0" top="80.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Srednja škola" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="39" GridPane.valignment="TOP">
+               <GridPane.margin>
+                  <Insets left="30.0" top="105.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Specijalizacija poslije srednje škole" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="39">
+               <GridPane.margin>
+                  <Insets bottom="105.0" left="30.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Viša škola" GridPane.columnIndex="2" GridPane.rowIndex="39">
+               <GridPane.margin>
+                  <Insets bottom="55.0" left="30.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Osnovne akademske studije - stari program" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="39">
+               <GridPane.margin>
+                  <Insets bottom="5.0" left="30.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Specijalističke studije - stari program" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="39">
+               <GridPane.margin>
+                  <Insets left="30.0" top="40.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Magistarske studije - stari program" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="39" GridPane.valignment="CENTER">
+               <GridPane.margin>
+                  <Insets left="30.0" top="90.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Doktorske studije - stari program" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="39" GridPane.valignment="CENTER">
+               <GridPane.margin>
+                  <Insets left="30.0" top="140.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Studije I ciklusa" GridPane.columnIndex="2" GridPane.rowIndex="39" GridPane.valignment="CENTER">
+               <GridPane.margin>
+                  <Insets left="30.0" top="190.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Studije II ciklusa" GridPane.columnIndex="2" GridPane.rowIndex="39">
+               <GridPane.margin>
+                  <Insets left="30.0" top="240.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Studije III ciklusa" GridPane.columnIndex="2" GridPane.rowIndex="39" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="10.0" left="30.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Studije integrisanog I i II ciklusa" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="39" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="35.0" left="30.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <Separator prefWidth="200.0" GridPane.columnSpan="7" GridPane.rowIndex="38" GridPane.valignment="BOTTOM" />
+            <Separator prefWidth="200.0" GridPane.columnSpan="7" GridPane.rowIndex="39" GridPane.valignment="BOTTOM" />
+            <Label text="32. DA LI JE LICE TOKOM PRETHODNE SEDMICE RADILO/OBAVLJALO AKTIVNOST BAREM JEDAN ČAS, DA BI STEKLO SREDSTVA ZA ŽIVOT ILI JE BILO NEPLAĆENI POMAŽUĆI ČLAN?" GridPane.columnSpan="7" GridPane.rowIndex="40" GridPane.valignment="TOP">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="30.0" top="10.0" />
+               </GridPane.margin>
+            </Label>
+            <RadioButton mnemonicParsing="false" text="Da" GridPane.columnIndex="3" GridPane.rowIndex="40">
+               <GridPane.margin>
+                  <Insets bottom="20.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Ne" GridPane.columnIndex="3" GridPane.rowIndex="40" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="10.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <Separator prefWidth="200.0" GridPane.columnSpan="7" GridPane.rowIndex="40" GridPane.valignment="BOTTOM" />
+            <RadioButton mnemonicParsing="false" text="Ne, ali ima posao na koji će se vratiti" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowIndex="40">
+               <GridPane.margin>
+                  <Insets top="28.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <Line endX="-78.70710754394531" endY="0.15684586763381958" startX="-100.0" GridPane.columnIndex="3" GridPane.rowIndex="40">
+               <GridPane.margin>
+                  <Insets bottom="20.0" left="47.0" />
+               </GridPane.margin>
+            </Line>
+            <Polygon points="0.0, -18.5, 9.0, -22.5, 0.0, -27.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="3" GridPane.rowIndex="40">
+               <GridPane.margin>
+                  <Insets bottom="21.0" left="68.0" />
+               </GridPane.margin>
+            </Polygon>
+            <Label text="Pitanje 37." GridPane.columnIndex="3" GridPane.rowIndex="40">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="20.0" left="90.0" />
+               </GridPane.margin>
+            </Label>
+            <Line endX="-78.70710754394531" endY="0.15684586763381958" startX="-100.0" GridPane.columnIndex="4" GridPane.rowIndex="40">
+               <GridPane.margin>
+                  <Insets left="50.0" top="30.0" />
+               </GridPane.margin>
+            </Line>
+            <Polygon points="0.0, -18.5, 9.0, -22.5, 0.0, -27.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="4" GridPane.rowIndex="40">
+               <GridPane.margin>
+                  <Insets left="70.0" top="29.0" />
+               </GridPane.margin>
+            </Polygon>
+            <Label text="Pitanje 37." GridPane.columnIndex="4" GridPane.rowIndex="40">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="90.0" top="30.0" />
+               </GridPane.margin>
+            </Label>
+            <Label text="33. DA LI JE LICE TRAŽILO POSAO TOKOM PRETHODNIH MJESEC DANA?" GridPane.columnSpan="4" GridPane.rowIndex="41" GridPane.valignment="TOP">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="30.0" top="10.0" />
+               </GridPane.margin>
+            </Label>
+            <RadioButton mnemonicParsing="false" text="Da" GridPane.columnIndex="3" GridPane.rowIndex="41">
+               <GridPane.margin>
+                  <Insets bottom="20.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Ne" GridPane.columnIndex="3" GridPane.rowIndex="41" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="10.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Ne, našlo je posao koji će uskoro početi da radi" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowIndex="41">
+               <GridPane.margin>
+                  <Insets top="28.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <Line endX="-78.70710754394531" endY="0.15684586763381958" startX="-100.0" GridPane.columnIndex="3" GridPane.rowIndex="41" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="17.0" left="51.0" />
+               </GridPane.margin>
+            </Line>
+            <Polygon points="0.0, -18.5, 9.0, -22.5, 0.0, -27.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="3" GridPane.rowIndex="41" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="14.0" left="73.0" />
+               </GridPane.margin>
+            </Polygon>
+            <Label text="Pitanje 35." GridPane.columnIndex="3" GridPane.rowIndex="41" GridPane.valignment="BOTTOM">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="10.0" left="100.0" />
+               </GridPane.margin>
+            </Label>
+            <Separator prefWidth="200.0" GridPane.columnSpan="7" GridPane.rowIndex="41" GridPane.valignment="BOTTOM" />
+            <Label text="34. AKO BI LICU POSAO BIO PONUĐEN SADA, DA LI BI MOGLO POČETI DA RADI?" GridPane.columnSpan="4" GridPane.rowIndex="42" GridPane.valignment="TOP">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="30.0" top="10.0" />
+               </GridPane.margin>
+            </Label>
+            <RadioButton mnemonicParsing="false" text="Da" GridPane.columnIndex="3" GridPane.rowIndex="42" />
+            <RadioButton mnemonicParsing="false" text="Ne" GridPane.columnIndex="3" GridPane.rowIndex="42" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="10.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <Line endX="-78.70710754394531" endY="0.15684586763381958" startX="-100.0" GridPane.columnIndex="3" GridPane.rowIndex="42">
+               <GridPane.margin>
+                  <Insets left="50.0" />
+               </GridPane.margin>
+            </Line>
+            <Polygon points="0.0, -18.5, 9.0, -22.5, 0.0, -27.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="3" GridPane.rowIndex="42">
+               <GridPane.margin>
+                  <Insets bottom="1.0" left="70.0" />
+               </GridPane.margin>
+            </Polygon>
+            <Label text="Pitanje 36." GridPane.columnIndex="3" GridPane.rowIndex="42">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="90.0" />
+               </GridPane.margin>
+            </Label>
+            <Label text="35. STATUS LICA KOJE JE NEAKTIVNO?" GridPane.columnSpan="3" GridPane.rowIndex="43" GridPane.valignment="TOP">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="30.0" top="10.0" />
+               </GridPane.margin>
+            </Label>
+            <RadioButton mnemonicParsing="false" text="Učenik/učenica (15 godina ili više) ili student/studentkinja" GridPane.columnIndex="2" GridPane.columnSpan="3" GridPane.rowIndex="43">
+               <GridPane.margin>
+                  <Insets bottom="80.0" left="70.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Penzioner/penzionerka" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="43">
+               <GridPane.margin>
+                  <Insets bottom="30.0" left="70.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Domaćica/lice koje obavlja kućne poslove" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="43">
+               <GridPane.margin>
+                  <Insets left="70.0" top="20.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Nesposobno za rad" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="43">
+               <GridPane.margin>
+                  <Insets left="70.0" top="70.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Ostala ekonomski neaktivna lica" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="43" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="15.0" left="70.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <Separator prefWidth="200.0" GridPane.columnSpan="7" GridPane.rowIndex="42" GridPane.valignment="BOTTOM" />
+            <Separator prefWidth="200.0" GridPane.columnSpan="7" GridPane.rowIndex="43" GridPane.valignment="BOTTOM" />
+            <Label prefHeight="45.0" prefWidth="176.0" text="Nakon odgovorenog pitanja prelazi se na pitanje 40." wrapText="true" GridPane.columnIndex="4" GridPane.columnSpan="2" GridPane.rowIndex="43">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="70.0" top="20.0" />
+               </GridPane.margin>
+            </Label>
+            <Label text="36. DA LI JE LICE NEKADA RADILO?" GridPane.columnSpan="3" GridPane.rowIndex="44" GridPane.valignment="TOP">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="30.0" top="10.0" />
+               </GridPane.margin>
+            </Label>
+            <RadioButton mnemonicParsing="false" text="Da" GridPane.columnIndex="2" GridPane.rowIndex="44">
+               <GridPane.margin>
+                  <Insets left="50.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Ne" GridPane.columnIndex="2" GridPane.rowIndex="44" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="10.0" left="50.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <Line endX="-78.70710754394531" endY="0.15684586763381958" startX="-100.0" GridPane.columnIndex="2" GridPane.rowIndex="44" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="17.0" left="100.0" />
+               </GridPane.margin>
+            </Line>
+            <Polygon points="0.0, -18.5, 9.0, -22.5, 0.0, -27.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="2" GridPane.rowIndex="44" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="14.0" left="120.0" />
+               </GridPane.margin>
+            </Polygon>
+            <Label text="Pitanje 40." GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="44" GridPane.valignment="BOTTOM">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="10.0" />
+               </GridPane.margin>
+            </Label>
+            <Label text="37. POLOŽAJ LICA KOJE JE ZAPOSLENO?" GridPane.columnSpan="3" GridPane.rowIndex="45" GridPane.valignment="TOP">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="30.0" top="10.0" />
+               </GridPane.margin>
+            </Label>
+            <RadioButton mnemonicParsing="false" text="Radnik/radnica (radi kod poslodavca)" GridPane.columnIndex="2" GridPane.columnSpan="3" GridPane.rowIndex="45">
+               <GridPane.margin>
+                  <Insets bottom="100.0" left="80.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Poslodavac/poslodavka (zapošljava druge)" GridPane.columnIndex="2" GridPane.columnSpan="3" GridPane.rowIndex="45">
+               <GridPane.margin>
+                  <Insets bottom="50.0" left="80.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Samozaposlen/samozaposlena (ne zapošljava druge)" GridPane.columnIndex="2" GridPane.columnSpan="3" GridPane.rowIndex="45">
+               <GridPane.margin>
+                  <Insets left="80.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Poljoprivrednik/poljoprivrednica na vlastitom imanju sa zaposlenima" GridPane.columnIndex="2" GridPane.columnSpan="3" GridPane.rowIndex="45">
+               <GridPane.margin>
+                  <Insets left="80.0" top="50.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Poljoprivrednik/poljoprivrednica na vlastitom imanju bez zaposlenih" GridPane.columnIndex="2" GridPane.columnSpan="3" GridPane.rowIndex="45">
+               <GridPane.margin>
+                  <Insets left="80.0" top="100.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Neplaćeni pomažući član domaćinstva" GridPane.columnIndex="2" GridPane.columnSpan="3" GridPane.rowIndex="45" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="10.0" left="80.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <Separator prefWidth="200.0" GridPane.columnSpan="7" GridPane.rowIndex="44" GridPane.valignment="BOTTOM" />
+            <Separator prefWidth="200.0" GridPane.columnSpan="7" GridPane.rowIndex="45" GridPane.valignment="BOTTOM" />
+            <Label text="38. ZANIMANJE (ZA LICA KOJA RADE ILI SU RADILA)?" GridPane.columnSpan="3" GridPane.rowIndex="46" GridPane.valignment="TOP">
+               <GridPane.margin>
+                  <Insets left="30.0" top="10.0" />
+               </GridPane.margin>
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label text="Naziv zanimanja:" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="46">
+               <GridPane.margin>
+                  <Insets right="10.0" top="20.0" />
+               </GridPane.margin>
+            </Label>
+            <TextField GridPane.columnIndex="3" GridPane.columnSpan="3" GridPane.rowIndex="46">
+               <GridPane.margin>
+                  <Insets top="20.0" />
+               </GridPane.margin>
+            </TextField>
+            <Separator prefWidth="200.0" GridPane.columnSpan="7" GridPane.rowIndex="46" GridPane.valignment="BOTTOM" />
+            <Label text="39. DJELATNOST PREDUZEĆA, USTANOVE, RADNJE, ZANATA I SL. (ZA LICA KOJA RADE ILI SU RADILA)?" GridPane.columnSpan="5" GridPane.rowIndex="47" GridPane.valignment="TOP">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="30.0" top="10.0" />
+               </GridPane.margin>
+            </Label>
+            <Label text="Naziv djelatnosti:" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="47">
+               <GridPane.margin>
+                  <Insets right="10.0" />
+               </GridPane.margin>
+            </Label>
+            <TextField GridPane.columnIndex="3" GridPane.columnSpan="3" GridPane.rowIndex="47" />
+            <Label text="Naziv preduzeća, ustanove, radnje, zanata i sl.:" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.halignment="RIGHT" GridPane.rowIndex="47" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="10.0" right="10.0" />
+               </GridPane.margin>
+            </Label>
+            <TextField GridPane.columnIndex="3" GridPane.columnSpan="3" GridPane.rowIndex="47" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="7.0" />
+               </GridPane.margin>
+            </TextField>
+            <Separator prefWidth="200.0" GridPane.columnSpan="7" GridPane.rowIndex="47" GridPane.valignment="BOTTOM" />
+            <Label text="40. MJESTO RADA/ŠKOLOVANJA (ODGOVARAJU SAMO LICA KOJA TRENUTNO RADE ILI SE ŠKOLUJU)?" GridPane.columnSpan="5" GridPane.rowIndex="48" GridPane.valignment="TOP">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="30.0" top="10.0" />
+               </GridPane.margin>
+            </Label>
+            <RadioButton mnemonicParsing="false" text="U Bosni i Hercegovini" GridPane.columnIndex="2" GridPane.rowIndex="48">
+               <GridPane.margin>
+                  <Insets bottom="5.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="U drugoj državi (naziv druge države):" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="48" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="20.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <TextField GridPane.columnIndex="3" GridPane.columnSpan="3" GridPane.rowIndex="48">
+               <GridPane.margin>
+                  <Insets bottom="60.0" left="120.0" />
+               </GridPane.margin>
+            </TextField>
+            <Label text="Naseljeno mjesto:" GridPane.columnIndex="3" GridPane.rowIndex="48">
+               <GridPane.margin>
+                  <Insets bottom="60.0" left="5.0" />
+               </GridPane.margin>
+            </Label>
+            <Label text="Opština:" GridPane.columnIndex="3" GridPane.rowIndex="48">
+               <GridPane.margin>
+                  <Insets left="5.0" top="20.0" />
+               </GridPane.margin>
+            </Label>
+            <TextField GridPane.columnIndex="3" GridPane.columnSpan="3" GridPane.rowIndex="48">
+               <GridPane.margin>
+                  <Insets left="120.0" top="20.0" />
+               </GridPane.margin>
+            </TextField>
+            <TextField GridPane.columnIndex="3" GridPane.columnSpan="3" GridPane.rowIndex="48" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="15.0" left="120.0" />
+               </GridPane.margin>
+            </TextField>
+            <Line endX="346.0" endY="-116.71063995361328" startX="370.29290771484375" startY="-138.4888153076172" GridPane.columnIndex="2" GridPane.rowIndex="48">
+               <GridPane.margin>
+                  <Insets bottom="30.0" left="145.0" />
+               </GridPane.margin>
+            </Line>
+            <Line endX="-72.70710754394531" endY="17.292892456054688" startX="-45.414215087890625" startY="30.585784912109375" GridPane.columnIndex="2" GridPane.rowIndex="48">
+               <GridPane.margin>
+                  <Insets left="145.0" top="10.0" />
+               </GridPane.margin>
+            </Line>
+            <Separator prefWidth="200.0" GridPane.columnSpan="7" GridPane.rowIndex="48" GridPane.valignment="BOTTOM" />
+            <Label text="41. SREDSTVO SVAKODNEVNOG PUTOVANJA NA POSAO/U ŠKOLU?" GridPane.columnSpan="4" GridPane.rowIndex="49" GridPane.valignment="TOP">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="30.0" top="10.0" />
+               </GridPane.margin>
+            </Label>
+            <CheckBox mnemonicParsing="false" text="Automobil" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowIndex="49">
+               <GridPane.margin>
+                  <Insets bottom="200.0" left="80.0" />
+               </GridPane.margin>
+            </CheckBox>
+            <CheckBox mnemonicParsing="false" text="Autobus" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowIndex="49">
+               <GridPane.margin>
+                  <Insets bottom="150.0" left="80.0" />
+               </GridPane.margin>
+            </CheckBox>
+            <CheckBox mnemonicParsing="false" text="Tramvaj" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowIndex="49">
+               <GridPane.margin>
+                  <Insets bottom="100.0" left="80.0" />
+               </GridPane.margin>
+            </CheckBox>
+            <CheckBox mnemonicParsing="false" text="Trolejbus" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowIndex="49">
+               <GridPane.margin>
+                  <Insets bottom="50.0" left="80.0" />
+               </GridPane.margin>
+            </CheckBox>
+            <CheckBox mnemonicParsing="false" text="Voz" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowIndex="49">
+               <GridPane.margin>
+                  <Insets left="80.0" />
+               </GridPane.margin>
+            </CheckBox>
+            <CheckBox mnemonicParsing="false" text="Motocikl" GridPane.columnIndex="3" GridPane.rowIndex="49">
+               <GridPane.margin>
+                  <Insets left="80.0" top="50.0" />
+               </GridPane.margin>
+            </CheckBox>
+            <CheckBox mnemonicParsing="false" text="Bicikl" GridPane.columnIndex="3" GridPane.rowIndex="49">
+               <GridPane.margin>
+                  <Insets left="80.0" top="100.0" />
+               </GridPane.margin>
+            </CheckBox>
+            <CheckBox mnemonicParsing="false" text="Pješice" GridPane.columnIndex="3" GridPane.rowIndex="49">
+               <GridPane.margin>
+                  <Insets left="80.0" top="150.0" />
+               </GridPane.margin>
+            </CheckBox>
+            <CheckBox mnemonicParsing="false" text="Ostalo" GridPane.columnIndex="3" GridPane.rowIndex="49">
+               <GridPane.margin>
+                  <Insets left="80.0" top="200.0" />
+               </GridPane.margin>
+            </CheckBox>
+            <CheckBox mnemonicParsing="false" text="Ne putuje" GridPane.columnIndex="3" GridPane.rowIndex="49" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="7.0" left="80.0" />
+               </GridPane.margin>
+            </CheckBox>
+            <Separator prefWidth="200.0" GridPane.columnSpan="7" GridPane.rowIndex="49" GridPane.valignment="BOTTOM" />
+            <Label text="42. GLAVNI IZVOR SREDSTAVA ZA ŽIVOT U POSLJEDNJIH 12 MJESECI?" GridPane.columnSpan="4" GridPane.rowIndex="50" GridPane.valignment="TOP">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="30.0" top="10.0" />
+               </GridPane.margin>
+            </Label>
+            <RadioButton mnemonicParsing="false" text="Plata ili druga naknada po osnovu zaposlenja, osim iz poljoprivrede" GridPane.columnIndex="2" GridPane.columnSpan="4" GridPane.rowIndex="50">
+               <GridPane.margin>
+                  <Insets bottom="230.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Prihodi od iznajmljivanja stana, zemlje, poslovnog prostora ili druge imovine, ili prihodi od imovinskih prava" GridPane.columnIndex="2" GridPane.columnSpan="4" GridPane.rowIndex="50">
+               <GridPane.margin>
+                  <Insets bottom="180.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Penzija" GridPane.columnIndex="2" GridPane.columnSpan="4" GridPane.rowIndex="50">
+               <GridPane.margin>
+                  <Insets bottom="130.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Naknade za bolovanje ili porodiljsko odsustvo" GridPane.columnIndex="2" GridPane.columnSpan="4" GridPane.rowIndex="50">
+               <GridPane.margin>
+                  <Insets bottom="80.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Novčana pomoć za lica koja su ostala bez posla (zbog bankrota, tehnološki višak i sl.)" GridPane.columnIndex="2" GridPane.columnSpan="4" GridPane.rowIndex="50">
+               <GridPane.margin>
+                  <Insets bottom="30.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Socijalna pomoć" GridPane.columnIndex="2" GridPane.columnSpan="4" GridPane.rowIndex="50">
+               <GridPane.margin>
+                  <Insets top="20.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Druge beneficije ili primanja (stipendija, studentski ili đački krediti, krediti, alimentacija i sl.)" GridPane.columnIndex="2" GridPane.columnSpan="4" GridPane.rowIndex="50">
+               <GridPane.margin>
+                  <Insets top="70.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Pozajmice ili trošenje ušteđevine" GridPane.columnIndex="2" GridPane.columnSpan="4" GridPane.rowIndex="50">
+               <GridPane.margin>
+                  <Insets top="120.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Prihodi iz poljoprivrede" GridPane.columnIndex="2" GridPane.columnSpan="4" GridPane.rowIndex="50">
+               <GridPane.margin>
+                  <Insets top="170.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Drugi nespomenuti prihodi" GridPane.columnIndex="2" GridPane.columnSpan="4" GridPane.rowIndex="50">
+               <GridPane.margin>
+                  <Insets top="220.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Izdržavano lice" GridPane.columnIndex="2" GridPane.columnSpan="4" GridPane.rowIndex="50" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="20.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <Separator prefWidth="200.0" GridPane.columnSpan="7" GridPane.rowIndex="50" GridPane.valignment="BOTTOM" />
+            <Line endX="-78.70710754394531" endY="0.15684586763381958" startX="-100.0" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="50" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="25.0" right="25.0" />
+               </GridPane.margin>
+            </Line>
+            <Polygon points="0.0, -18.5, 9.0, -22.5, 0.0, -27.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="50" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="22.0" right="18.0" />
+               </GridPane.margin>
+            </Polygon>
+            <Label text="Pitanje 43." GridPane.columnIndex="3" GridPane.rowIndex="50" GridPane.valignment="BOTTOM">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="20.0" />
+               </GridPane.margin>
+            </Label>
+            <Label prefHeight="71.0" prefWidth="181.0" text="Ukoliko je odgovor na pitanje bilo koji odgovor osim posljednjeg, prelazi se na pitanje 44." wrapText="true" GridPane.columnIndex="5" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="50">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label text="43. IZDRŽAVALAC/IZDRŽAVATELJICA LICA KOJE JE POPISUJE?" GridPane.columnSpan="4" GridPane.rowIndex="51" GridPane.valignment="TOP">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="30.0" top="10.0" />
+               </GridPane.margin>
+            </Label>
+            <RadioButton mnemonicParsing="false" text="Lice koje obavlja nepoljoprivredno zanimanje" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="51">
+               <GridPane.margin>
+                  <Insets bottom="100.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Lice koje obavlja poljoprivredno zanimanje" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="51">
+               <GridPane.margin>
+                  <Insets bottom="50.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Penzioner/penzionerka" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="51" />
+            <RadioButton mnemonicParsing="false" text="Lice sa drugim ličnim prihodom" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="51">
+               <GridPane.margin>
+                  <Insets top="50.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Lice na radu u inostranstvu" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="51">
+               <GridPane.margin>
+                  <Insets top="100.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Pravno lice" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="51" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="10.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <Separator prefWidth="200.0" GridPane.columnSpan="7" GridPane.rowIndex="51" GridPane.valignment="BOTTOM" />
+            <Label text="45. DA LI LICE SA NAVEDENIM POTEŠKOĆAMA KORISTI POMOĆ DRUGOG LICA (ODGOVARAJU SAMO LICA SA POTEŠKOĆAMA)?" GridPane.columnSpan="6" GridPane.rowIndex="53" GridPane.valignment="TOP">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="30.0" top="10.0" />
+               </GridPane.margin>
+            </Label>
+            <RadioButton mnemonicParsing="false" text="Da" GridPane.columnIndex="3" GridPane.rowIndex="53" />
+            <RadioButton mnemonicParsing="false" text="Ne" GridPane.columnIndex="3" GridPane.rowIndex="53" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="10.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <Label text="44. DA LI LICE IMA POTEŠKOĆE PRILIKOM OBAVLJANJA SVAKODNEVNIH AKTIVNOSTI KOD KUĆE, NA POSLU ILI U ŠKOLI?" GridPane.columnSpan="6" GridPane.rowIndex="52" GridPane.valignment="TOP">
+               <GridPane.margin>
+                  <Insets left="30.0" top="10.0" />
+               </GridPane.margin>
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label text="Vid, iako nosi naočare" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="52">
+               <GridPane.margin>
+                  <Insets bottom="120.0" />
+               </GridPane.margin>
+            </Label>
+            <Label text="Sluh, iako koristi slušni aparat" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="52">
+               <GridPane.margin>
+                  <Insets bottom="60.0" />
+               </GridPane.margin>
+            </Label>
+            <Label text="Pamćenje ili koncentracija" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="52">
+               <GridPane.margin>
+                  <Insets top="60.0" />
+               </GridPane.margin>
+            </Label>
+            <Label text="Odijevanje ili održavanje lične higijene" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="52">
+               <GridPane.margin>
+                  <Insets top="120.0" />
+               </GridPane.margin>
+            </Label>
+            <Label text="Hod ili penjanje uz stepenice" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="52" />
+            <Label text="Komunikacija (sporazumijevanje sa drugima)" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="52" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="10.0" />
+               </GridPane.margin>
+            </Label>
+            <Separator prefWidth="200.0" GridPane.columnSpan="7" GridPane.rowIndex="52" GridPane.valignment="BOTTOM" />
+            <ComboBox prefWidth="150.0" promptText="Stepen poteškoće..." GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="52">
+               <GridPane.margin>
+                  <Insets bottom="120.0" />
+               </GridPane.margin>
+            </ComboBox>
+            <ComboBox prefWidth="150.0" promptText="Stepen poteškoće..." GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="52" />
+            <ComboBox prefWidth="150.0" promptText="Stepen poteškoće..." GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="52">
+               <GridPane.margin>
+                  <Insets bottom="60.0" />
+               </GridPane.margin>
+            </ComboBox>
+            <ComboBox prefWidth="150.0" promptText="Stepen poteškoće..." GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="52">
+               <GridPane.margin>
+                  <Insets top="60.0" />
+               </GridPane.margin>
+            </ComboBox>
+            <ComboBox prefWidth="150.0" promptText="Stepen poteškoće..." GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="52">
+               <GridPane.margin>
+                  <Insets top="120.0" />
+               </GridPane.margin>
+            </ComboBox>
+            <ComboBox prefWidth="150.0" promptText="Stepen poteškoće..." GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="52" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="7.0" />
+               </GridPane.margin>
+            </ComboBox>
+            <ComboBox prefWidth="150.0" promptText="Uzrok poteškoće..." GridPane.columnIndex="4" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="52">
+               <GridPane.margin>
+                  <Insets bottom="120.0" />
+               </GridPane.margin>
+            </ComboBox>
+            <ComboBox prefWidth="150.0" promptText="Uzrok poteškoće..." GridPane.columnIndex="4" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="52">
+               <GridPane.margin>
+                  <Insets bottom="60.0" />
+               </GridPane.margin>
+            </ComboBox>
+            <ComboBox prefWidth="150.0" promptText="Uzrok poteškoće..." GridPane.columnIndex="4" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="52" />
+            <ComboBox prefWidth="150.0" promptText="Uzrok poteškoće..." GridPane.columnIndex="4" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="52">
+               <GridPane.margin>
+                  <Insets top="60.0" />
+               </GridPane.margin>
+            </ComboBox>
+            <ComboBox prefWidth="150.0" promptText="Uzrok poteškoće..." GridPane.columnIndex="4" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="52">
+               <GridPane.margin>
+                  <Insets top="120.0" />
+               </GridPane.margin>
+            </ComboBox>
+            <ComboBox prefWidth="150.0" promptText="Uzrok poteškoće..." GridPane.columnIndex="4" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="52" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="7.0" />
+               </GridPane.margin>
+            </ComboBox>
+            <Button mnemonicParsing="false" onAction="#posaljiPopisnicuButtonAction" prefHeight="34.0" prefWidth="126.0" text="Pošalji popisnicu" GridPane.columnSpan="7" GridPane.halignment="CENTER" GridPane.rowIndex="54" />
+            <Separator prefWidth="200.0" GridPane.columnSpan="7" GridPane.rowIndex="53" GridPane.valignment="BOTTOM" />
+            <GridPane GridPane.columnIndex="2" GridPane.rowIndex="1">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <TextField maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="30.0" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
+                     <GridPane.margin>
+                        <Insets bottom="15.0" />
+                     </GridPane.margin>
+                  </TextField>
+                  <TextField maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="30.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
+                     <GridPane.margin>
+                        <Insets bottom="15.0" />
+                     </GridPane.margin>
+                  </TextField>
+                  <TextField maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="30.0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
+                     <GridPane.margin>
+                        <Insets bottom="15.0" />
+                     </GridPane.margin>
+                  </TextField>
+                  <TextField maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="30.0" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
+                     <GridPane.margin>
+                        <Insets bottom="15.0" />
+                     </GridPane.margin>
+                  </TextField>
+                  <TextField maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="30.0" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
+                     <GridPane.margin>
+                        <Insets bottom="15.0" />
+                     </GridPane.margin>
+                  </TextField>
+               </children>
+            </GridPane>
+            <GridPane GridPane.columnIndex="3" GridPane.rowIndex="1">
+              <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <TextField maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="30.0" GridPane.halignment="RIGHT" GridPane.valignment="BOTTOM">
+                     <GridPane.margin>
+                        <Insets bottom="15.0" />
+                     </GridPane.margin>
+                  </TextField>
+                  <TextField maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="30.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
+                     <GridPane.margin>
+                        <Insets bottom="15.0" />
+                     </GridPane.margin>
+                  </TextField>
+                  <TextField maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="30.0" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.valignment="BOTTOM">
+                     <GridPane.margin>
+                        <Insets bottom="15.0" />
+                     </GridPane.margin>
+                  </TextField>
+               </children>
+            </GridPane>
+            <GridPane GridPane.columnIndex="4" GridPane.rowIndex="1">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <TextField maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="30.0" GridPane.halignment="RIGHT" GridPane.valignment="BOTTOM">
+                     <GridPane.margin>
+                        <Insets bottom="15.0" />
+                     </GridPane.margin>
+                  </TextField>
+                  <TextField maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="30.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
+                     <GridPane.margin>
+                        <Insets bottom="15.0" />
+                     </GridPane.margin>
+                  </TextField>
+                  <TextField maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="30.0" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.valignment="BOTTOM">
+                     <GridPane.margin>
+                        <Insets bottom="15.0" />
+                     </GridPane.margin>
+                  </TextField>
+               </children>
+            </GridPane>
+            <GridPane GridPane.columnIndex="5" GridPane.rowIndex="1">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <TextField maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="30.0" GridPane.halignment="RIGHT" GridPane.valignment="BOTTOM">
+                     <GridPane.margin>
+                        <Insets bottom="15.0" />
+                     </GridPane.margin>
+                  </TextField>
+                  <TextField maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="30.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
+                     <GridPane.margin>
+                        <Insets bottom="15.0" />
+                     </GridPane.margin>
+                  </TextField>
+                  <TextField maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="30.0" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.valignment="BOTTOM">
+                     <GridPane.margin>
+                        <Insets bottom="15.0" />
+                     </GridPane.margin>
+                  </TextField>
+               </children>
+            </GridPane>
+            <GridPane GridPane.columnIndex="6" GridPane.rowIndex="1">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <TextField maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="30.0" GridPane.halignment="RIGHT" GridPane.valignment="BOTTOM">
+                     <GridPane.margin>
+                        <Insets bottom="15.0" />
+                     </GridPane.margin>
+                  </TextField>
+                  <TextField maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="30.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
+                     <GridPane.margin>
+                        <Insets bottom="15.0" />
+                     </GridPane.margin>
+                  </TextField>
+                  <TextField maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="30.0" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.valignment="BOTTOM">
+                     <GridPane.margin>
+                        <Insets bottom="15.0" />
+                     </GridPane.margin>
+                  </TextField>
+               </children>
+            </GridPane>
+         </children>
+      </GridPane>
+   </content>
+</ScrollPane>

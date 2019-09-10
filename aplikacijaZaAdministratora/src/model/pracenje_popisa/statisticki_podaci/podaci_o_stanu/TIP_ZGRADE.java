@@ -1,0 +1,9 @@
+package model.pracenje_popisa.statisticki_podaci.podaci_o_stanu;
+
+public enum TIP_ZGRADE {
+    STAMBENA_ZGRADA_KUCA_SA_JEDNIM_STANOM,
+    STAMBENA_ZGRADA_KUCA_SA_DVA_STANA,
+    STAMBENA_ZGRADA_KUCA_U_NIZU,
+    STAMBENA_ZGRADA_SA_TRI_PLUS_STANOVA,
+    PRETEZNO_NESTAMBENA_ZGRADA
+}

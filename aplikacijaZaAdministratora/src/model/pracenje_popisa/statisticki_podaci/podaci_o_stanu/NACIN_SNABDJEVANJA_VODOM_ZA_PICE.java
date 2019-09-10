@@ -1,0 +1,17 @@
+package model.pracenje_popisa.statisticki_podaci.podaci_o_stanu;
+
+public enum NACIN_SNABDJEVANJA_VODOM_ZA_PICE {
+    JAVNI_VODOVOD,
+    SEOSKI_VODOVOD,
+    VLASTITI_VODOVOD,
+    CESMA_SA_JAVNOG_VODOVODA,
+    CESMA_SA_VLASTITOG_HIDROFORA,
+    ULICNA_CESMA,
+    KOPANI_BUNAR,
+    BUSENI_BUNAR,
+    ARTESKI_BUNAR,
+    UREDJENI_IZVOR,
+    CISTERNA,
+    FLASIRANA_VODA,
+    OSTALO
+}
