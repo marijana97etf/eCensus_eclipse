@@ -12,6 +12,7 @@ import java.io.IOException;
 
 public class KontrolerFormeZaRadPopisivaca {
     static Stage popisStanovnikaStage;
+    static Stage popisDomacinstvaStage;
 
     @FXML
     private void popisiStanovnikaButtonAction() {
@@ -32,6 +33,19 @@ public class KontrolerFormeZaRadPopisivaca {
 
     @FXML
     private void popisiDomacinstvoButtonAction() {
+        try {
+            Stage popisDomacinstvaStage = new Stage();
+            KontrolerFormeZaRadPopisivaca.popisDomacinstvaStage = popisDomacinstvaStage;
+            popisDomacinstvaStage.initModality(Modality.APPLICATION_MODAL);
+
+            Parent root = FXMLLoader.load(getClass().getResource("/forme" + File.separator + "FormaZaPopisivanjeDomacinstva.fxml"));
+            popisDomacinstvaStage.setScene(new Scene(root,1115,600));
+            popisDomacinstvaStage.setResizable(true);
+            popisDomacinstvaStage.show();
+        }
+        catch(IOException e){
+            e.printStackTrace();
+        }
     }
 
     @FXML

@@ -375,7 +375,7 @@ public class KontrolerFormeZaPopisivanjeStanovnika {
 
     private void inicijalizujKomponente(){
         List<String> listaPolova = new ArrayList<>();
-        listaPolova.add("Ženski");
+        listaPolova.add("Å½enski");
         listaPolova.add("Muški");
         ObservableList observableList = FXCollections.observableList(listaPolova);
         odabirPolaComboBox.setItems(observableList);

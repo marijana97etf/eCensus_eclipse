@@ -1,0 +1,1781 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Polygon?>
+<?import javafx.scene.text.Font?>
+
+<ScrollPane fitToWidth="true" maxHeight="-Infinity" prefHeight="6057.0" prefWidth="1132.0" style="-fx-background-color: e6e6ff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kontroleri.KontrolerFormeZaPopisivanjeDomacinstva">
+    <content>
+        <GridPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="6049.0" prefWidth="1130.0" style="-fx-background-color: e6e6ff;">
+            <columnConstraints>
+                <ColumnConstraints hgrow="ALWAYS" minWidth="95.0" percentWidth="8.75" prefWidth="95.0" />
+                <ColumnConstraints hgrow="ALWAYS" minWidth="95.0" prefWidth="121.0" />
+                <ColumnConstraints hgrow="ALWAYS" minWidth="170.0" prefWidth="170.0" />
+                <ColumnConstraints hgrow="ALWAYS" minWidth="180.0" prefWidth="180.0" />
+                <ColumnConstraints hgrow="ALWAYS" minWidth="180.0" prefWidth="180.0" />
+                <ColumnConstraints hgrow="ALWAYS" minWidth="180.0" percentWidth="17.0" prefWidth="185.0" />
+                <ColumnConstraints hgrow="ALWAYS" minWidth="180.0" percentWidth="16.6" prefWidth="180.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints maxHeight="45.0" minHeight="45.0" prefHeight="45.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="75.0" minHeight="75.0" prefHeight="75.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="50.0" minHeight="50.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="50.0" minHeight="50.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="50.0" minHeight="50.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="50.0" minHeight="50.0" prefHeight="50.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="160.0" minHeight="160.0" prefHeight="160.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="190.0" minHeight="190.0" prefHeight="190.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="240.0" minHeight="240.0" prefHeight="240.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="80.0" minHeight="80.0" prefHeight="80.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="90.0" minHeight="90.0" prefHeight="90.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="90.0" minHeight="90.0" prefHeight="90.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="90.0" minHeight="90.0" prefHeight="90.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="90.0" minHeight="90.0" prefHeight="90.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="90.0" minHeight="90.0" prefHeight="90.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="120.0" minHeight="120.0" prefHeight="120.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="180.0" minHeight="180.0" prefHeight="180.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="180.0" minHeight="180.0" prefHeight="180.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="120.0" minHeight="120.0" prefHeight="120.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="120.0" minHeight="120.0" prefHeight="120.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="120.0" minHeight="120.0" prefHeight="120.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="180.0" minHeight="180.0" prefHeight="180.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="90.0" minHeight="90.0" prefHeight="90.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="260.0" minHeight="260.0" prefHeight="260.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="110.0" minHeight="110.0" prefHeight="110.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="210.0" minHeight="210.0" prefHeight="210.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="90.0" minHeight="90.0" prefHeight="90.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="130.0" minHeight="130.0" prefHeight="130.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="110.0" minHeight="110.0" prefHeight="110.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="50.0" minHeight="50.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="190.0" minHeight="190.0" prefHeight="190.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="170.0" minHeight="170.0" prefHeight="170.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="200.0" minHeight="200.0" prefHeight="200.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="360.0" minHeight="360.0" prefHeight="360.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="50.0" minHeight="50.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="200.0" minHeight="200.0" prefHeight="200.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="120.0" minHeight="120.0" prefHeight="120.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="320.0" minHeight="320.0" prefHeight="320.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="350.0" minHeight="350.0" prefHeight="350.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="90.0" minHeight="90.0" prefHeight="90.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="90.0" minHeight="90.0" prefHeight="90.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="50.0" minHeight="50.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="130.0" minHeight="130.0" prefHeight="130.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="50.0" minHeight="50.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="90.0" minHeight="49.0" prefHeight="90.0" vgrow="SOMETIMES" />
+            </rowConstraints>
+            <children>
+                <Label text="OBRAZAC" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP">
+                    <GridPane.margin>
+                        <Insets top="10.0" />
+                    </GridPane.margin>
+                </Label>
+                <Label text="ENTITET" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP">
+                    <GridPane.margin>
+                        <Insets top="10.0" />
+                    </GridPane.margin>
+                </Label>
+                <Label text="OPŠTINA" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP">
+                    <GridPane.margin>
+                        <Insets top="10.0" />
+                    </GridPane.margin>
+                </Label>
+                <Label text="POPISNI KRUG" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP">
+                    <GridPane.margin>
+                        <Insets top="10.0" />
+                    </GridPane.margin>
+                </Label>
+                <Label text="STAN" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP">
+                    <GridPane.margin>
+                        <Insets top="10.0" />
+                    </GridPane.margin>
+                </Label>
+                <Label text="DOMAĆINSTVO" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP">
+                    <padding>
+                        <Insets top="10.0" />
+                    </padding>
+                </Label>
+                <Label text="ZGRADA" GridPane.columnIndex="6" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP">
+                    <GridPane.margin>
+                        <Insets top="10.0" />
+                    </GridPane.margin>
+                </Label>
+                <TextField fx:id="obrazacTextField" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="30.0" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
+                    <GridPane.margin>
+                        <Insets bottom="15.0" />
+                    </GridPane.margin>
+                </TextField>
+                <TextField fx:id="entitetTextField" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="30.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
+                    <GridPane.margin>
+                        <Insets bottom="15.0" />
+                    </GridPane.margin>
+                </TextField>
+                <Separator prefWidth="200.0" GridPane.columnSpan="7" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" />
+                <Separator prefWidth="200.0" GridPane.columnSpan="7" GridPane.valignment="BOTTOM" />
+                <Label text="Popis stanovništva, domaćinstava i stanova u Bosni i Hercegovini" GridPane.columnSpan="6" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                </Label>
+                <ImageView fitHeight="33.0" fitWidth="82.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6">
+                    <image>
+                        <Image url="ZastavaBosneIHercegovine.png" />
+                    </image>
+                    <GridPane.margin>
+                        <Insets left="30.0" />
+                    </GridPane.margin>
+                </ImageView>
+                <Label text="ULICA:" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2" />
+                <TextField fx:id="ulicaTextField" GridPane.columnIndex="2" GridPane.columnSpan="3" GridPane.rowIndex="2">
+                    <GridPane.margin>
+                        <Insets left="10.0" />
+                    </GridPane.margin>
+                </TextField>
+                <Label text="KUĆNI BROJ:" GridPane.columnSpan="2" GridPane.halignment="RIGHT" GridPane.rowIndex="3" />
+                <TextField fx:id="kucniBrojTextField" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                    <GridPane.margin>
+                        <Insets left="10.0" />
+                    </GridPane.margin>
+                </TextField>
+                <Label text="DODATAK:" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="3" />
+                <TextField fx:id="dodatakTextField" GridPane.columnIndex="4" GridPane.rowIndex="3">
+                    <GridPane.margin>
+                        <Insets left="10.0" />
+                    </GridPane.margin>
+                </TextField>
+                <TextField fx:id="ulazTextField" GridPane.columnIndex="2" GridPane.rowIndex="4">
+                    <GridPane.margin>
+                        <Insets left="10.0" />
+                    </GridPane.margin>
+                </TextField>
+                <Label text="ULAZ:" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="4" />
+                <Label text="ID - BROJ:" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="5" />
+                <Label text="1. VRSTA JEDINICE ZA STANOVANJE?" GridPane.columnSpan="3" GridPane.rowIndex="7" GridPane.valignment="TOP">
+                    <GridPane.margin>
+                        <Insets left="30.0" top="10.0" />
+                    </GridPane.margin>
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font>
+                </Label>
+                <RadioButton mnemonicParsing="false" text="Stan (u zgradi/kući)" GridPane.columnIndex="2" GridPane.columnSpan="4" GridPane.rowIndex="7">
+                    <GridPane.margin>
+                        <Insets bottom="60.0" />
+                    </GridPane.margin>
+                    <toggleGroup>
+                        <ToggleGroup fx:id="grupa1" />
+                    </toggleGroup>
+                </RadioButton>
+                <RadioButton mnemonicParsing="false" text="Kolektivni (institucionalni) stan" toggleGroup="$grupa1" GridPane.columnIndex="2" GridPane.columnSpan="4" GridPane.rowIndex="7" GridPane.valignment="CENTER">
+                    <GridPane.margin>
+                        <Insets bottom="10.0" />
+                    </GridPane.margin>
+                </RadioButton>
+                <RadioButton mnemonicParsing="false" text="Naseljen poslovni prostor" toggleGroup="$grupa1" GridPane.columnIndex="2" GridPane.columnSpan="4" GridPane.rowIndex="7" GridPane.valignment="CENTER">
+                    <GridPane.margin>
+                        <Insets top="35.0" />
+                    </GridPane.margin>
+                </RadioButton>
+                <Separator prefWidth="200.0" GridPane.columnSpan="7" GridPane.rowIndex="7" GridPane.valignment="BOTTOM" />
+                <Line endX="-78.70710754394531" endY="0.15684586763381958" startX="-100.0" GridPane.columnIndex="3" GridPane.rowIndex="7">
+                    <GridPane.margin>
+                        <Insets bottom="58.0" />
+                    </GridPane.margin>
+                </Line>
+                <Polygon points="0.0, -18.5, 9.0, -22.5, 0.0, -27.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="3" GridPane.rowIndex="7">
+                    <GridPane.margin>
+                        <Insets bottom="60.0" left="20.0" />
+                    </GridPane.margin>
+                </Polygon>
+                <Line endX="-78.70710754394531" endY="0.15684586763381958" startX="-100.0" GridPane.columnIndex="3" GridPane.rowIndex="7">
+                    <GridPane.margin>
+                        <Insets bottom="8.0" left="40.0" />
+                    </GridPane.margin>
+                </Line>
+                <Polygon points="0.0, -18.5, 9.0, -22.5, 0.0, -27.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="3" GridPane.rowIndex="7">
+                    <GridPane.margin>
+                        <Insets bottom="10.0" left="60.0" />
+                    </GridPane.margin>
+                </Polygon>
+                <Label text="Pitanje 3." GridPane.columnIndex="3" GridPane.rowIndex="7">
+                    <GridPane.margin>
+                        <Insets bottom="60.0" left="40.0" />
+                    </GridPane.margin>
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font>
+                </Label>
+                <Label text="Pitanje 2." GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowIndex="7">
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font>
+                    <GridPane.margin>
+                        <Insets bottom="10.0" left="80.0" />
+                    </GridPane.margin>
+                </Label>
+                <Label text="3. KORIŠĆENJE STANA?" GridPane.columnSpan="3" GridPane.rowIndex="9" GridPane.valignment="TOP">
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font>
+                    <GridPane.margin>
+                        <Insets left="30.0" top="10.0" />
+                    </GridPane.margin>
+                </Label>
+                <RadioButton mnemonicParsing="false" text="Samo za stanovanje" GridPane.columnIndex="2" GridPane.rowIndex="9">
+                    <GridPane.margin>
+                        <Insets bottom="150.0" />
+                    </GridPane.margin>
+               <toggleGroup>
+                        <ToggleGroup fx:id="grupa3" />
+               </toggleGroup>
+                </RadioButton>
+                <RadioButton mnemonicParsing="false" text="Za stanovanje i obavljanje djelatnosti" toggleGroup="$grupa3" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.halignment="LEFT" GridPane.rowIndex="9">
+                    <GridPane.margin>
+                        <Insets bottom="100.0" />
+                    </GridPane.margin>
+                </RadioButton>
+                <Separator prefWidth="200.0" GridPane.columnSpan="7" GridPane.rowIndex="9" GridPane.valignment="BOTTOM" />
+                <Label text="4. SPRAT NA KOME SE NALAZI STAN?" GridPane.columnSpan="3" GridPane.rowIndex="10" GridPane.valignment="TOP">
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font>
+                    <GridPane.margin>
+                        <Insets left="30.0" top="10.0" />
+                    </GridPane.margin>
+                </Label>
+                <Separator prefWidth="200.0" GridPane.columnSpan="7" GridPane.rowIndex="10" GridPane.valignment="BOTTOM" />
+                <Label text="5. DA LI JE STAN NA VIŠE NIVOA?" GridPane.columnSpan="3" GridPane.rowIndex="11" GridPane.valignment="TOP">
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font>
+                    <GridPane.margin>
+                        <Insets left="30.0" top="10.0" />
+                    </GridPane.margin>
+                </Label>
+                <Separator prefWidth="200.0" GridPane.columnSpan="7" GridPane.rowIndex="11" GridPane.valignment="BOTTOM" />
+                <Label text="6. POVRŠINA STANA (U KVADRATNIM METRIMA)?" GridPane.columnSpan="4" GridPane.rowIndex="12" GridPane.valignment="TOP">
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font>
+                    <GridPane.margin>
+                        <Insets left="30.0" top="10.0" />
+                    </GridPane.margin>
+                </Label>
+                <Separator prefWidth="200.0" GridPane.columnSpan="7" GridPane.rowIndex="12" GridPane.valignment="BOTTOM" />
+                <TextField fx:id="pitanje6TextField" GridPane.columnIndex="3" GridPane.rowIndex="12" GridPane.valignment="BOTTOM">
+                    <GridPane.margin>
+                        <Insets bottom="20.0" right="70.0" />
+                    </GridPane.margin>
+                </TextField>
+                <Label text="7. UKUPAN BROJ SOBA U STANU?" GridPane.columnSpan="5" GridPane.rowIndex="13" GridPane.valignment="TOP">
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font>
+                    <GridPane.margin>
+                        <Insets left="30.0" top="10.0" />
+                    </GridPane.margin>
+                </Label>
+                <TextField fx:id="pitanje7TextField" GridPane.columnIndex="3" GridPane.rowIndex="13" GridPane.valignment="BOTTOM">
+                    <GridPane.margin>
+                        <Insets bottom="20.0" right="70.0" />
+                    </GridPane.margin>
+                </TextField>
+                <Separator prefWidth="200.0" GridPane.columnSpan="7" GridPane.rowIndex="13" GridPane.valignment="BOTTOM" />
+                <Label text="8. KUHINJA?" GridPane.columnSpan="5" GridPane.rowIndex="14" GridPane.valignment="TOP">
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font>
+                    <GridPane.margin>
+                        <Insets left="30.0" top="10.0" />
+                    </GridPane.margin>
+                </Label>
+                <RadioButton fx:id="pitanje8Button1" mnemonicParsing="false" text="Ima (površina kuhinje):" GridPane.columnIndex="2" GridPane.rowIndex="14">
+                    <GridPane.margin>
+                        <Insets top="5.0" />
+                    </GridPane.margin>
+               <toggleGroup>
+                  <ToggleGroup fx:id="grupa6" />
+               </toggleGroup>
+                </RadioButton>
+                <RadioButton fx:id="pitanje8Button2" mnemonicParsing="false" text="Nema kuhinje (priprema hrane se obavlja u drugoj prostoriji)" toggleGroup="$grupa6" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="14" GridPane.valignment="BOTTOM">
+                    <GridPane.margin>
+                        <Insets bottom="10.0" />
+                    </GridPane.margin>
+                </RadioButton>
+                <Separator prefWidth="200.0" GridPane.columnSpan="7" GridPane.rowIndex="14" GridPane.valignment="BOTTOM" />
+                <Label layoutX="40.0" layoutY="850.0" text="9. KUPATILO?" GridPane.columnSpan="2" GridPane.rowIndex="15" GridPane.valignment="TOP">
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font>
+                    <GridPane.margin>
+                        <Insets left="30.0" top="10.0" />
+                    </GridPane.margin>
+                </Label>
+                <RadioButton layoutX="200.0" layoutY="904.0" mnemonicParsing="false" text="Ima" GridPane.columnIndex="2" GridPane.rowIndex="15">
+                    <GridPane.margin>
+                        <Insets top="5.0" />
+                    </GridPane.margin>
+               <toggleGroup>
+                  <ToggleGroup fx:id="grupa7" />
+               </toggleGroup>
+                </RadioButton>
+                <RadioButton layoutX="200.0" layoutY="953.0" mnemonicParsing="false" text="Nema" toggleGroup="$grupa7" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="15" GridPane.valignment="BOTTOM">
+                    <GridPane.margin>
+                        <Insets bottom="10.0" />
+                    </GridPane.margin>
+                </RadioButton>
+                <Separator prefWidth="200.0" GridPane.columnSpan="7" GridPane.rowIndex="15" GridPane.valignment="BOTTOM" />
+                <Label layoutX="40.0" layoutY="1090.0" text="10. TOALET/WC (ZASEBAN I/ILI SA KUPATILOM)?" GridPane.columnSpan="4" GridPane.rowIndex="16" GridPane.valignment="TOP">
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font>
+                    <GridPane.margin>
+                        <Insets left="30.0" top="10.0" />
+                    </GridPane.margin>
+                </Label>
+                <RadioButton layoutX="200.0" layoutY="1144.0" mnemonicParsing="false" text="Sa vodenim ispiranjem" GridPane.columnIndex="3" GridPane.rowIndex="16">
+                    <GridPane.margin>
+                        <Insets bottom="30.0" />
+                    </GridPane.margin>
+               <toggleGroup>
+                  <ToggleGroup fx:id="grupa8" />
+               </toggleGroup>
+                </RadioButton>
+                <RadioButton layoutX="200.0" layoutY="1193.0" mnemonicParsing="false" text="Bez vodenog ispiranja" toggleGroup="$grupa8" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowIndex="16" GridPane.valignment="BOTTOM">
+                    <GridPane.margin>
+                        <Insets bottom="40.0" />
+                    </GridPane.margin>
+                </RadioButton>
+                <Separator prefWidth="200.0" GridPane.columnSpan="7" GridPane.rowIndex="16" GridPane.valignment="BOTTOM" />
+                <Separator prefWidth="200.0" GridPane.columnSpan="7" GridPane.rowIndex="22" GridPane.valignment="BOTTOM" />
+                <Label text="PODACI O ZGRADI/KUĆI" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="22">
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font>
+                </Label>
+                <Label layoutX="40.0" layoutY="510.0" text="12. ODVOD OTPADNE VODE (KANALIZACIJA)?" GridPane.columnSpan="5" GridPane.rowIndex="18" GridPane.valignment="TOP">
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font>
+                    <GridPane.margin>
+                        <Insets left="30.0" top="10.0" />
+                    </GridPane.margin>
+                </Label>
+                <RadioButton layoutX="333.0" layoutY="529.0" mnemonicParsing="false" text="Otpadna voda se izliva u cijevi priključene na javnu kanalizaciju" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowIndex="18" GridPane.valignment="TOP">
+                    <GridPane.margin>
+                        <Insets top="35.0" />
+                    </GridPane.margin>
+               <toggleGroup>
+                  <ToggleGroup fx:id="grupa10" />
+               </toggleGroup>
+                </RadioButton>
+                <RadioButton layoutX="333.0" layoutY="553.0" mnemonicParsing="false" text="Otpadna voda se izliva u cijevi priključene na zatvorenu septičku jamu" toggleGroup="$grupa10" GridPane.columnIndex="3" GridPane.columnSpan="3" GridPane.rowIndex="18">
+                    <GridPane.margin>
+                        <Insets bottom="38.0" />
+                    </GridPane.margin>
+                </RadioButton>
+                <Label layoutX="40.0" layoutY="1240.0" text="13. ELEKTRIČNA ENERGIJA?" GridPane.columnSpan="3" GridPane.rowIndex="19" GridPane.valignment="TOP">
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font>
+                    <GridPane.margin>
+                        <Insets left="30.0" top="10.0" />
+                    </GridPane.margin>
+                </Label>
+                <RadioButton layoutX="200.0" layoutY="1294.0" mnemonicParsing="false" text="Ima" GridPane.columnIndex="2" GridPane.rowIndex="19">
+                    <GridPane.margin>
+                        <Insets bottom="20.0" />
+                    </GridPane.margin>
+               <toggleGroup>
+                  <ToggleGroup fx:id="grupa11" />
+               </toggleGroup>
+                </RadioButton>
+                <RadioButton layoutX="200.0" layoutY="1343.0" mnemonicParsing="false" text="Ima instalaciju, ali nije priključena" toggleGroup="$grupa11" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="19">
+                    <GridPane.margin>
+                        <Insets top="30.0" />
+                    </GridPane.margin>
+                </RadioButton>
+                <Separator prefWidth="200.0" GridPane.columnSpan="7" GridPane.rowIndex="18" GridPane.valignment="BOTTOM" />
+                <Label text="14. PRIRODNI GAS?" GridPane.columnSpan="4" GridPane.rowIndex="20" GridPane.valignment="TOP">
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font>
+                    <GridPane.margin>
+                        <Insets left="30.0" top="10.0" />
+                    </GridPane.margin>
+                </Label>
+                <RadioButton mnemonicParsing="false" text="Ima" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="20">
+                    <GridPane.margin>
+                        <Insets bottom="20.0" />
+                    </GridPane.margin>
+               <toggleGroup>
+                  <ToggleGroup fx:id="grupa12" />
+               </toggleGroup>
+                </RadioButton>
+                <RadioButton mnemonicParsing="false" text="Ima instalaciju, ali nije priključena" toggleGroup="$grupa12" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="20">
+                    <GridPane.margin>
+                        <Insets top="30.0" />
+                    </GridPane.margin>
+                </RadioButton>
+                <RadioButton mnemonicParsing="false" text="Nema" toggleGroup="$grupa12" GridPane.columnIndex="2" GridPane.rowIndex="20" GridPane.valignment="BOTTOM">
+                    <GridPane.margin>
+                        <Insets bottom="12.0" />
+                    </GridPane.margin>
+                </RadioButton>
+                <Separator prefWidth="200.0" GridPane.columnSpan="7" GridPane.rowIndex="19" GridPane.valignment="BOTTOM" />
+                <Separator prefWidth="200.0" GridPane.columnSpan="7" GridPane.rowIndex="20" GridPane.valignment="BOTTOM" />
+                <Label layoutX="40.0" layoutY="1240.0" text="15. CENTRALNO GRIJANJE?" GridPane.columnSpan="4" GridPane.rowIndex="21" GridPane.valignment="TOP">
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font>
+                    <GridPane.margin>
+                        <Insets left="30.0" top="10.0" />
+                    </GridPane.margin>
+                </Label>
+                <RadioButton layoutX="200.0" layoutY="1294.0" mnemonicParsing="false" text="Ima instalaciju, ali nije priključena" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="21">
+                    <GridPane.margin>
+                        <Insets top="30.0" />
+                    </GridPane.margin>
+               <toggleGroup>
+                  <ToggleGroup fx:id="grupa13" />
+               </toggleGroup>
+                </RadioButton>
+                <RadioButton layoutX="200.0" layoutY="1343.0" mnemonicParsing="false" text="Nema" toggleGroup="$grupa13" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="21" GridPane.valignment="BOTTOM">
+                    <GridPane.margin>
+                        <Insets bottom="12.0" />
+                    </GridPane.margin>
+                </RadioButton>
+                <RadioButton mnemonicParsing="false" text="Ima" toggleGroup="$grupa13" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="21">
+                    <GridPane.margin>
+                        <Insets bottom="20.0" />
+                    </GridPane.margin>
+                </RadioButton>
+                <Separator prefWidth="200.0" GridPane.columnSpan="7" GridPane.rowIndex="21" GridPane.valignment="BOTTOM" />
+                <Label layoutX="40.0" layoutY="1430.0" text="17. GODINA IZGRADNJE ZGRADE/KUĆE?" GridPane.columnSpan="4" GridPane.rowIndex="24" GridPane.valignment="TOP">
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font>
+                    <GridPane.margin>
+                        <Insets left="30.0" top="10.0" />
+                    </GridPane.margin>
+                </Label>
+                <Separator prefWidth="200.0" GridPane.columnSpan="7" GridPane.rowIndex="24" GridPane.valignment="BOTTOM" />
+                <Label text="16. TIP ZGRADE/KUĆE U KOJOJ SE NALAZI STAN?" GridPane.columnSpan="3" GridPane.rowIndex="23" GridPane.valignment="TOP">
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font>
+                    <GridPane.margin>
+                        <Insets left="30.0" top="10.0" />
+                    </GridPane.margin>
+                </Label>
+                <RadioButton mnemonicParsing="false" text="Stambena zgrada/kuća sa jednim stanom" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.halignment="LEFT" GridPane.rowIndex="23" GridPane.valignment="TOP">
+                    <GridPane.margin>
+                        <Insets bottom="20.0" top="35.0" />
+                    </GridPane.margin>
+                    <toggleGroup>
+                        <ToggleGroup fx:id="grupa14" />
+                    </toggleGroup>
+                </RadioButton>
+                <RadioButton mnemonicParsing="false" text="Stambena zgrada/kuća sa dva stana" toggleGroup="$grupa14" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.halignment="LEFT" GridPane.rowIndex="23">
+                    <GridPane.margin>
+                        <Insets bottom="38.0" />
+                    </GridPane.margin>
+                </RadioButton>
+                <RadioButton mnemonicParsing="false" text="Pretežno nestambena zgrada" toggleGroup="$grupa14" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowIndex="23" GridPane.valignment="BOTTOM">
+                    <GridPane.margin>
+                        <Insets bottom="15.0" />
+                    </GridPane.margin>
+                </RadioButton>
+                <Separator prefWidth="200.0" GridPane.columnSpan="7" GridPane.rowIndex="23" GridPane.valignment="BOTTOM" />
+                <Label layoutX="40.0" layoutY="1240.0" text="18. SPRATNOST ZGRADE/KUĆE?" GridPane.columnSpan="4" GridPane.rowIndex="25" GridPane.valignment="TOP">
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font>
+                    <GridPane.margin>
+                        <Insets left="30.0" top="10.0" />
+                    </GridPane.margin>
+                </Label>
+                <RadioButton layoutX="200.0" layoutY="1343.0" mnemonicParsing="false" text="P (samo prizemlje, visoko ili nisko)" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowIndex="25" GridPane.valignment="TOP">
+                    <toggleGroup>
+                        <ToggleGroup fx:id="grupa15" />
+                    </toggleGroup>
+               <GridPane.margin>
+                  <Insets top="40.0" />
+               </GridPane.margin></RadioButton>
+                <RadioButton layoutX="300.0" layoutY="2221.0" mnemonicParsing="false" text="P + 20 i više" toggleGroup="$grupa15" GridPane.columnIndex="3" GridPane.rowIndex="25" GridPane.valignment="BOTTOM">
+                    <GridPane.margin>
+                        <Insets bottom="15.0" />
+                    </GridPane.margin>
+                </RadioButton>
+                <Separator prefWidth="200.0" GridPane.columnSpan="7" GridPane.rowIndex="25" GridPane.valignment="BOTTOM" />
+                <Label layoutX="40.0" layoutY="510.0" text="19. MATERIJAL OD KOGA JE IZGRAĐEN NOSEĆI SISTEM ZGRADE/KUĆE?" GridPane.columnSpan="4" GridPane.rowIndex="26" GridPane.valignment="TOP">
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font>
+                    <GridPane.margin>
+                        <Insets left="30.0" top="10.0" />
+                    </GridPane.margin>
+                </Label>
+                <RadioButton layoutX="333.0" layoutY="529.0" mnemonicParsing="false" text="Armirani beton, čellik" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="26">
+                    <toggleGroup>
+                        <ToggleGroup fx:id="grupa16" />
+                    </toggleGroup>
+               <GridPane.margin>
+                  <Insets bottom="20.0" />
+               </GridPane.margin></RadioButton>
+                <RadioButton layoutX="441.0" layoutY="2098.0" mnemonicParsing="false" text="Drvo, slabi materijali" toggleGroup="$grupa16" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="26" GridPane.valignment="BOTTOM">
+                    <GridPane.margin>
+                        <Insets bottom="10.0" right="5.0" />
+                    </GridPane.margin>
+                </RadioButton>
+                <Separator prefWidth="200.0" GridPane.columnSpan="7" GridPane.rowIndex="26" GridPane.valignment="BOTTOM" />
+                <Label layoutX="40.0" layoutY="2410.0" text="20. MATERIJAL OD KOGA JE NAPRAVLJEN KROVNI POKRIVAČ ZGRADE/KUĆE?" GridPane.columnSpan="4" GridPane.rowIndex="27" GridPane.valignment="TOP">
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font>
+                    <GridPane.margin>
+                        <Insets left="30.0" top="10.0" />
+                    </GridPane.margin>
+                </Label>
+                <RadioButton layoutX="441.0" layoutY="2437.0" mnemonicParsing="false" text="Opeka (glineni crijep i sl.)" GridPane.columnIndex="4" GridPane.rowIndex="27" GridPane.valignment="TOP">
+                    <toggleGroup>
+                        <ToggleGroup fx:id="grupa17" />
+                    </toggleGroup>
+               <GridPane.margin>
+                  <Insets top="35.0" />
+               </GridPane.margin></RadioButton>
+                <RadioButton layoutX="441.0" layoutY="2463.0" mnemonicParsing="false" text="Ostalo" toggleGroup="$grupa17" GridPane.columnIndex="4" GridPane.rowIndex="27" GridPane.valignment="BOTTOM">
+                    <GridPane.margin>
+                        <Insets bottom="10.0" />
+                    </GridPane.margin>
+                </RadioButton>
+                <Separator prefWidth="200.0" GridPane.columnSpan="7" GridPane.rowIndex="27" GridPane.valignment="BOTTOM" />
+                <Label text="22. PRISTUPNOST DO ULAZA U ZGRADU/KUĆU?" GridPane.columnSpan="3" GridPane.rowIndex="29" GridPane.valignment="TOP">
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font>
+                    <GridPane.margin>
+                        <Insets left="30.0" top="10.0" />
+                    </GridPane.margin>
+                </Label>
+                <RadioButton mnemonicParsing="false" text="Pristup bez stepenica ili rampe" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowIndex="29" GridPane.valignment="TOP">
+                    <GridPane.margin>
+                        <Insets top="40.0" />
+                    </GridPane.margin>
+               <toggleGroup>
+                        <ToggleGroup fx:id="grupa19" />
+               </toggleGroup>
+                </RadioButton>
+                <RadioButton mnemonicParsing="false" text="Pristup samo sa stepenicama" toggleGroup="$grupa19" GridPane.columnIndex="3" GridPane.rowIndex="29">
+                    <GridPane.margin>
+                        <Insets top="10.0" />
+                    </GridPane.margin>
+                </RadioButton>
+                <RadioButton mnemonicParsing="false" text="Pristup sa stepenicama i rampom" toggleGroup="$grupa19" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowIndex="29">
+                    <GridPane.margin>
+                        <Insets top="50.0" />
+                    </GridPane.margin>
+                </RadioButton>
+                <RadioButton mnemonicParsing="false" text="Pristup sa stepenicama i liftom za invalide" toggleGroup="$grupa19" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowIndex="29" GridPane.valignment="BOTTOM">
+                    <GridPane.margin>
+                        <Insets bottom="10.0" />
+                    </GridPane.margin>
+                </RadioButton>
+                <Label text="23. STANJE U KOME SE ZGRADA/KUĆA NALAZI?" GridPane.columnSpan="3" GridPane.rowIndex="30" GridPane.valignment="TOP">
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font>
+                    <GridPane.margin>
+                        <Insets left="30.0" top="10.0" />
+                    </GridPane.margin>
+                </Label>
+                <Separator prefWidth="200.0" GridPane.columnSpan="7" GridPane.rowIndex="29" GridPane.valignment="BOTTOM" />
+                <RadioButton mnemonicParsing="false" text="Nije potrebna popravka" GridPane.columnIndex="3" GridPane.rowIndex="30">
+                    <GridPane.margin>
+                        <Insets bottom="20.0" />
+                    </GridPane.margin>
+               <toggleGroup>
+                        <ToggleGroup fx:id="grupa20" />
+               </toggleGroup>
+                </RadioButton>
+                <RadioButton mnemonicParsing="false" text="Potrebna je popravka" toggleGroup="$grupa20" GridPane.columnIndex="3" GridPane.rowIndex="30">
+                    <GridPane.margin>
+                        <Insets top="27.0" />
+                    </GridPane.margin>
+                </RadioButton>
+                <RadioButton mnemonicParsing="false" text="Nije moguće popraviti" toggleGroup="$grupa20" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowIndex="30" GridPane.valignment="BOTTOM">
+                    <GridPane.margin>
+                        <Insets bottom="10.0" />
+                    </GridPane.margin>
+                </RadioButton>
+                <Separator prefWidth="200.0" GridPane.columnSpan="7" GridPane.rowIndex="30" GridPane.valignment="BOTTOM" />
+                <Label text="24. OSNOV KORIŠĆENJA JEDINICE ZA STANOVANJE?" GridPane.columnSpan="3" GridPane.rowIndex="32" GridPane.valignment="TOP">
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font>
+                    <GridPane.margin>
+                        <Insets left="30.0" top="10.0" />
+                    </GridPane.margin>
+                </Label>
+                <RadioButton mnemonicParsing="false" text="Suvlasništvo" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowIndex="32">
+                    <GridPane.margin>
+                        <Insets bottom="50.0" />
+                    </GridPane.margin>
+               <toggleGroup>
+                  <ToggleGroup fx:id="grupa21" />
+               </toggleGroup>
+                </RadioButton>
+                <RadioButton mnemonicParsing="false" text="Srodstvo sa vlasnikom stana" toggleGroup="$grupa21" GridPane.columnIndex="3" GridPane.rowIndex="32">
+                    <GridPane.margin>
+                        <Insets bottom="2.0" />
+                    </GridPane.margin>
+                </RadioButton>
+                <RadioButton mnemonicParsing="false" text="Zakup stana - državno vlasništvo" toggleGroup="$grupa21" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowIndex="32" GridPane.valignment="BOTTOM">
+                    <GridPane.margin>
+                        <Insets bottom="35.0" />
+                    </GridPane.margin>
+                </RadioButton>
+                <RadioButton mnemonicParsing="false" text="Drugo" toggleGroup="$grupa21" GridPane.columnIndex="3" GridPane.rowIndex="32" GridPane.valignment="BOTTOM">
+                    <GridPane.margin>
+                        <Insets bottom="10.0" />
+                    </GridPane.margin>
+                </RadioButton>
+                <Separator prefWidth="200.0" GridPane.columnSpan="7" GridPane.rowIndex="32" GridPane.valignment="BOTTOM" />
+                <Label layoutX="40.0" layoutY="2500.0" text="21. LIFT U ZGRADI/KUĆI?" GridPane.columnSpan="3" GridPane.rowIndex="28" GridPane.valignment="TOP">
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font>
+                    <GridPane.margin>
+                        <Insets left="30.0" top="10.0" />
+                    </GridPane.margin>
+                </Label>
+                <RadioButton layoutX="550.0" layoutY="2527.0" mnemonicParsing="false" text="Ima" GridPane.columnIndex="2" GridPane.rowIndex="28">
+                    <GridPane.margin>
+                        <Insets />
+                    </GridPane.margin>
+               <toggleGroup>
+                  <ToggleGroup fx:id="grupa18" />
+               </toggleGroup>
+                </RadioButton>
+                <RadioButton layoutX="550.0" layoutY="2553.0" mnemonicParsing="false" text="Nema" toggleGroup="$grupa18" GridPane.columnIndex="2" GridPane.rowIndex="28" GridPane.valignment="BOTTOM">
+                    <GridPane.margin>
+                        <Insets bottom="10.0" />
+                    </GridPane.margin>
+                </RadioButton>
+                <Separator prefWidth="200.0" GridPane.columnSpan="7" GridPane.rowIndex="28" GridPane.valignment="BOTTOM" />
+                <Label text="25. NAČIN ZAGRIJAVANJA JEDINICE ZA STANOVANJE?" GridPane.columnSpan="4" GridPane.rowIndex="33" GridPane.valignment="TOP">
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font>
+                    <GridPane.margin>
+                        <Insets left="30.0" top="10.0" />
+                    </GridPane.margin>
+                </Label>
+                <Separator prefWidth="200.0" GridPane.columnSpan="7" GridPane.rowIndex="33" GridPane.valignment="BOTTOM" />
+                <Label text="27. NAČIN SNABDIJEVANJA DOMAĆINSTVA VODOM ZA PIĆE?" GridPane.columnSpan="3" GridPane.rowIndex="35" GridPane.valignment="TOP">
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font>
+                    <GridPane.margin>
+                        <Insets left="30.0" top="10.0" />
+                    </GridPane.margin>
+                </Label>
+                <Separator prefWidth="200.0" GridPane.columnSpan="7" GridPane.rowIndex="35" GridPane.valignment="BOTTOM" />
+                <Label text="11. VODA U STANU?" GridPane.columnSpan="3" GridPane.rowIndex="17" GridPane.valignment="TOP">
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font>
+                    <GridPane.margin>
+                        <Insets left="30.0" top="10.0" />
+                    </GridPane.margin>
+                </Label>
+                <RadioButton mnemonicParsing="false" text="Ima, iz cijevi javne vodovodne mreže" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowIndex="17" GridPane.valignment="TOP">
+                    <GridPane.margin>
+                        <Insets top="35.0" />
+                    </GridPane.margin>
+               <toggleGroup>
+                  <ToggleGroup fx:id="grupa9" />
+               </toggleGroup>
+                </RadioButton>
+                <RadioButton mnemonicParsing="false" text="Ima, iz cijevi priključenih na seoski ili mjesni vodovod" toggleGroup="$grupa9" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowIndex="17">
+                    <GridPane.margin>
+                        <Insets bottom="38.0" />
+                    </GridPane.margin>
+                </RadioButton>
+                <RadioButton mnemonicParsing="false" text="Ima, iz cijevi priključenih na vlastiti hidrofor" toggleGroup="$grupa9" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowIndex="17">
+                    <GridPane.margin>
+                        <Insets top="18.0" />
+                    </GridPane.margin>
+                </RadioButton>
+                <RadioButton mnemonicParsing="false" text="Ima instalacije za vodu, ali nisu u funkciji" toggleGroup="$grupa9" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowIndex="17">
+                    <GridPane.margin>
+                        <Insets top="75.0" />
+                    </GridPane.margin>
+                </RadioButton>
+                <RadioButton mnemonicParsing="false" text="Nema vodovodne instalacije" toggleGroup="$grupa9" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowIndex="17" GridPane.valignment="BOTTOM">
+                    <GridPane.margin>
+                        <Insets bottom="15.0" />
+                    </GridPane.margin>
+                </RadioButton>
+                <Separator prefWidth="200.0" GridPane.columnSpan="7" GridPane.rowIndex="17" GridPane.valignment="BOTTOM" />
+                <Separator prefWidth="200.0" GridPane.columnSpan="7" GridPane.rowIndex="36" GridPane.valignment="BOTTOM" />
+                <Label text="26. VRSTE ENERGENATA KOJI SE KORISTE ZA ZAGRIJAVANJE JEDINICE ZA STANOVANJE?" GridPane.columnSpan="4" GridPane.rowIndex="34" GridPane.valignment="TOP">
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font>
+                    <GridPane.margin>
+                        <Insets left="30.0" top="10.0" />
+                    </GridPane.margin>
+                </Label>
+                <CheckBox fx:id="pitanje26CheckBox1" mnemonicParsing="false" text="Ugalj" GridPane.columnIndex="3" GridPane.rowIndex="34" GridPane.valignment="TOP">
+                    <GridPane.margin>
+                        <Insets top="40.0" />
+                    </GridPane.margin>
+                </CheckBox>
+                <CheckBox fx:id="pitanje26CheckBox3" mnemonicParsing="false" text="Nafta i naftni derivati" GridPane.columnIndex="3" GridPane.rowIndex="34">
+                    <GridPane.margin>
+                        <Insets />
+                    </GridPane.margin>
+                </CheckBox>
+                <CheckBox fx:id="pitanje26CheckBox4" mnemonicParsing="false" text="Prirodni gas" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowIndex="34">
+                    <GridPane.margin>
+                        <Insets top="55.0" />
+                    </GridPane.margin>
+                </CheckBox>
+                <CheckBox fx:id="pitanje26CheckBox5" mnemonicParsing="false" text="Električna energija" GridPane.columnIndex="3" GridPane.rowIndex="34">
+                    <GridPane.margin>
+                        <Insets top="110.0" />
+                    </GridPane.margin>
+                </CheckBox>
+                <CheckBox fx:id="pitanje26CheckBox6" mnemonicParsing="false" text="Drugo" GridPane.columnIndex="3" GridPane.rowIndex="34" GridPane.valignment="BOTTOM">
+                    <GridPane.margin>
+                        <Insets bottom="10.0" />
+                    </GridPane.margin>
+                </CheckBox>
+                <Separator prefWidth="200.0" GridPane.columnSpan="7" GridPane.rowIndex="34" GridPane.valignment="BOTTOM" />
+                <Label text="28. RASPOLOŽIVO ZEMLJIŠTE DOMAĆINSTVA U BiH?" GridPane.columnSpan="4" GridPane.rowIndex="37" GridPane.valignment="TOP">
+                    <GridPane.margin>
+                        <Insets left="30.0" top="10.0" />
+                    </GridPane.margin>
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font>
+                </Label>
+                <Separator prefWidth="200.0" GridPane.columnSpan="7" GridPane.rowIndex="37" GridPane.valignment="BOTTOM" />
+                <Label text="29. DA LI JE VAŠE DOMAĆINSTVO U ZADNJIH 12 MJESECI KORISTILO/OBRAĐIVALO POLJOPRIVREDNO ZEMLJIŠTE ZA POLJOPRIVREDNU PROIZVODNJU I/ILI NA DAN POPISA UZGAJALO STOKU, PERAD ILI PČELE UKLJUČUJUĆI I UZGOJ RIBE I GLJIVA?" wrapText="true" GridPane.columnSpan="6" GridPane.rowIndex="38" GridPane.valignment="TOP">
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font>
+                    <GridPane.margin>
+                        <Insets left="30.0" top="10.0" />
+                    </GridPane.margin>
+                </Label>
+                <RadioButton fx:id="pitanje29Button1" mnemonicParsing="false" text="Da" GridPane.columnIndex="3" GridPane.halignment="LEFT" GridPane.rowIndex="38">
+                    <GridPane.margin>
+                        <Insets top="30.0" />
+                    </GridPane.margin>
+               <toggleGroup>
+                  <ToggleGroup fx:id="grupa24" />
+               </toggleGroup>
+                </RadioButton>
+                <RadioButton fx:id="pitanje29Button2" mnemonicParsing="false" text="Ne" toggleGroup="$grupa24" GridPane.columnIndex="3" GridPane.halignment="LEFT" GridPane.rowIndex="38" GridPane.valignment="BOTTOM">
+                    <GridPane.margin>
+                        <Insets bottom="10.0" />
+                    </GridPane.margin>
+                </RadioButton>
+                <Label text="30. UPISATI POVRŠINE KORIŠĆENOG POLJOPRIVREDNOG ZEMLJIŠTA, RIBNJAKA I GLJIVARNIKA?" GridPane.columnSpan="5" GridPane.rowIndex="39" GridPane.valignment="TOP">
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font>
+                    <GridPane.margin>
+                        <Insets left="30.0" top="10.0" />
+                    </GridPane.margin>
+                </Label>
+                <Separator prefWidth="200.0" GridPane.columnSpan="7" GridPane.rowIndex="38" GridPane.valignment="BOTTOM" />
+                <Separator prefWidth="200.0" GridPane.columnSpan="7" GridPane.rowIndex="39" GridPane.valignment="BOTTOM" />
+                <RadioButton fx:id="pitanje33Button1" mnemonicParsing="false" text="Da" GridPane.columnIndex="3" GridPane.halignment="LEFT" GridPane.rowIndex="42">
+               <GridPane.margin>
+                  <Insets />
+               </GridPane.margin>
+               <toggleGroup>
+                  <ToggleGroup fx:id="grupa26" />
+               </toggleGroup></RadioButton>
+                <RadioButton fx:id="pitanje33Button2" mnemonicParsing="false" text="Ne (naziv opštine):" toggleGroup="$grupa26" GridPane.columnIndex="3" GridPane.halignment="LEFT" GridPane.rowIndex="42" GridPane.valignment="BOTTOM">
+                    <GridPane.margin>
+                        <Insets bottom="13.0" />
+                    </GridPane.margin>
+                </RadioButton>
+                <Separator prefWidth="200.0" GridPane.columnSpan="7" GridPane.rowIndex="39" GridPane.valignment="BOTTOM" />
+                <Label text="32. DA LI DOMAĆINSTVO PRODAJE VLASTITE POLJOPRIVREDNE PROIZVODE NA TRŽIŠTU?" GridPane.columnSpan="5" GridPane.rowIndex="41" GridPane.valignment="TOP">
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font>
+                    <GridPane.margin>
+                        <Insets left="30.0" top="10.0" />
+                    </GridPane.margin>
+                </Label>
+                <RadioButton mnemonicParsing="false" text="Da" GridPane.columnIndex="4" GridPane.rowIndex="41">
+                    <GridPane.margin>
+                        <Insets />
+                    </GridPane.margin>
+               <toggleGroup>
+                  <ToggleGroup fx:id="grupa25" />
+               </toggleGroup>
+                </RadioButton>
+                <RadioButton mnemonicParsing="false" text="Ne" toggleGroup="$grupa25" GridPane.columnIndex="4" GridPane.rowIndex="41" GridPane.valignment="BOTTOM">
+                    <GridPane.margin>
+                        <Insets bottom="10.0" />
+                    </GridPane.margin>
+                </RadioButton>
+                <Label text="2. VRSTA KOLEKTIVNOG STANA?" GridPane.columnSpan="3" GridPane.rowIndex="8" GridPane.valignment="TOP">
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font>
+                    <GridPane.margin>
+                        <Insets left="30.0" top="10.0" />
+                    </GridPane.margin>
+                </Label>
+                <RadioButton mnemonicParsing="false" text="Studentski ili đački dom, internat i sl." GridPane.columnIndex="2" GridPane.columnSpan="3" GridPane.rowIndex="8">
+                    <GridPane.margin>
+                        <Insets bottom="100.0" />
+                    </GridPane.margin>
+               <toggleGroup>
+                  <ToggleGroup fx:id="grupa2" />
+               </toggleGroup>
+                </RadioButton>
+                <RadioButton mnemonicParsing="false" text="Zdravstvene i ustanove za socijalnu zaštitu" toggleGroup="$grupa2" GridPane.columnIndex="2" GridPane.columnSpan="3" GridPane.rowIndex="8">
+                    <GridPane.margin>
+                        <Insets bottom="50.0" />
+                    </GridPane.margin>
+                </RadioButton>
+                <RadioButton mnemonicParsing="false" text="Vjerske ustanove" toggleGroup="$grupa2" GridPane.columnIndex="2" GridPane.columnSpan="3" GridPane.rowIndex="8">
+                    <GridPane.margin>
+                        <Insets />
+                    </GridPane.margin>
+                </RadioButton>
+                <RadioButton mnemonicParsing="false" text="Objekti za smještaj izbjeglih i raseljenih lica" toggleGroup="$grupa2" GridPane.columnIndex="2" GridPane.columnSpan="3" GridPane.rowIndex="8">
+                    <GridPane.margin>
+                        <Insets top="50.0" />
+                    </GridPane.margin>
+                </RadioButton>
+                <RadioButton mnemonicParsing="false" text="Hoteli" toggleGroup="$grupa2" GridPane.columnIndex="2" GridPane.columnSpan="3" GridPane.rowIndex="8">
+                    <GridPane.margin>
+                        <Insets top="100.0" />
+                    </GridPane.margin>
+                </RadioButton>
+                <RadioButton mnemonicParsing="false" text="Ostale ustanove" toggleGroup="$grupa2" GridPane.columnIndex="2" GridPane.columnSpan="3" GridPane.rowIndex="8" GridPane.valignment="BOTTOM">
+                    <GridPane.margin>
+                        <Insets bottom="10.0" />
+                    </GridPane.margin>
+                </RadioButton>
+                <Separator prefWidth="200.0" GridPane.columnSpan="7" GridPane.rowIndex="41" GridPane.valignment="BOTTOM" />
+                <Separator prefWidth="200.0" GridPane.columnSpan="7" GridPane.rowIndex="8" GridPane.valignment="BOTTOM" />
+                <Label text="31. UPISATI BROJ STOKE, PERADI ILI KOŠNICA NA DAN POPISA?" GridPane.columnSpan="4" GridPane.rowIndex="40" GridPane.valignment="TOP">
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font>
+                    <GridPane.margin>
+                        <Insets left="30.0" top="10.0" />
+                    </GridPane.margin>
+                </Label>
+                <Separator prefWidth="200.0" GridPane.columnSpan="7" GridPane.rowIndex="40" GridPane.valignment="BOTTOM" />
+                <Label text="33. DA LI SE CJELOKUPNA POLJOPRIVREDNA PROIZVODNJA ILI NJEN VEĆI DIO ODVIJA U OPŠTINI POPISA?" GridPane.columnSpan="6" GridPane.rowIndex="42" GridPane.valignment="TOP">
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font>
+                    <GridPane.margin>
+                        <Insets left="30.0" top="10.0" />
+                    </GridPane.margin>
+                </Label>
+                <Label text="Broj domaćinstava u stanu:" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="44" GridPane.valignment="BOTTOM">
+                    <GridPane.margin>
+                        <Insets bottom="17.0" />
+                    </GridPane.margin>
+                </Label>
+                <Label text="Broj lica u stanu:" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="44" GridPane.valignment="CENTER">
+                    <GridPane.margin>
+                        <Insets />
+                    </GridPane.margin>
+                </Label>
+                <Label text="Broj članova domaćinstva:" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="44" GridPane.valignment="TOP">
+               <GridPane.margin>
+                  <Insets left="30.0" top="20.0" />
+               </GridPane.margin></Label>
+                <Button mnemonicParsing="false" onAction="#posaljiPopisnicuButtonAction" prefHeight="34.0" prefWidth="126.0" text="Pošalji popisnicu" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="46" />
+                <Separator prefWidth="200.0" GridPane.columnSpan="7" GridPane.rowIndex="43" GridPane.valignment="BOTTOM" />
+                <GridPane GridPane.columnIndex="2" GridPane.rowIndex="1">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                    <children>
+                        <TextField fx:id="opstinaTextField1" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="30.0" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
+                            <GridPane.margin>
+                                <Insets bottom="15.0" />
+                            </GridPane.margin>
+                        </TextField>
+                        <TextField fx:id="opstinaTextField2" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="30.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
+                            <GridPane.margin>
+                                <Insets bottom="15.0" />
+                            </GridPane.margin>
+                        </TextField>
+                        <TextField fx:id="opstinaTextField3" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="30.0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
+                            <GridPane.margin>
+                                <Insets bottom="15.0" />
+                            </GridPane.margin>
+                        </TextField>
+                        <TextField fx:id="opstinaTextField4" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="30.0" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
+                            <GridPane.margin>
+                                <Insets bottom="15.0" />
+                            </GridPane.margin>
+                        </TextField>
+                        <TextField fx:id="opstinaTextField5" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="30.0" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
+                            <GridPane.margin>
+                                <Insets bottom="15.0" />
+                            </GridPane.margin>
+                        </TextField>
+                    </children>
+                </GridPane>
+                <GridPane GridPane.columnIndex="3" GridPane.rowIndex="1">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                    <children>
+                        <TextField fx:id="popisniKrugTextField1" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="30.0" GridPane.halignment="RIGHT" GridPane.valignment="BOTTOM">
+                            <GridPane.margin>
+                                <Insets bottom="15.0" />
+                            </GridPane.margin>
+                        </TextField>
+                        <TextField fx:id="popisniKrugTextField2" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="30.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
+                            <GridPane.margin>
+                                <Insets bottom="15.0" />
+                            </GridPane.margin>
+                        </TextField>
+                        <TextField fx:id="popisniKrugTextField3" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="30.0" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.valignment="BOTTOM">
+                            <GridPane.margin>
+                                <Insets bottom="15.0" />
+                            </GridPane.margin>
+                        </TextField>
+                    </children>
+                </GridPane>
+                <GridPane GridPane.columnIndex="4" GridPane.rowIndex="1">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                    <children>
+                        <TextField fx:id="stanTextField1" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="30.0" GridPane.halignment="RIGHT" GridPane.valignment="BOTTOM">
+                            <GridPane.margin>
+                                <Insets bottom="15.0" />
+                            </GridPane.margin>
+                        </TextField>
+                        <TextField fx:id="stanTextField2" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="30.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
+                            <GridPane.margin>
+                                <Insets bottom="15.0" />
+                            </GridPane.margin>
+                        </TextField>
+                        <TextField fx:id="stanTextField3" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="30.0" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.valignment="BOTTOM">
+                            <GridPane.margin>
+                                <Insets bottom="15.0" />
+                            </GridPane.margin>
+                        </TextField>
+                    </children>
+                </GridPane>
+                <GridPane GridPane.columnIndex="5" GridPane.rowIndex="1">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                    <children>
+                        <TextField fx:id="domacinstvoTextField1" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="30.0" GridPane.halignment="RIGHT" GridPane.valignment="BOTTOM">
+                            <GridPane.margin>
+                                <Insets bottom="15.0" />
+                            </GridPane.margin>
+                        </TextField>
+                        <TextField fx:id="domacinstvoTextField2" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="30.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
+                            <GridPane.margin>
+                                <Insets bottom="15.0" />
+                            </GridPane.margin>
+                        </TextField>
+                        <TextField fx:id="domacinstvoTextField3" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="30.0" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.valignment="BOTTOM">
+                            <GridPane.margin>
+                                <Insets bottom="15.0" />
+                            </GridPane.margin>
+                        </TextField>
+                    </children>
+                </GridPane>
+                <GridPane GridPane.columnIndex="6" GridPane.rowIndex="1">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                    <children>
+                        <TextField fx:id="zgradaTextField1" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="30.0" GridPane.halignment="RIGHT" GridPane.valignment="BOTTOM">
+                            <GridPane.margin>
+                                <Insets bottom="15.0" />
+                            </GridPane.margin>
+                        </TextField>
+                        <TextField fx:id="zgradaTextField2" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="30.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
+                            <GridPane.margin>
+                                <Insets bottom="15.0" />
+                            </GridPane.margin>
+                        </TextField>
+                        <TextField fx:id="zgradaTextField3" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="30.0" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.valignment="BOTTOM">
+                            <GridPane.margin>
+                                <Insets bottom="15.0" />
+                            </GridPane.margin>
+                        </TextField>
+                    </children>
+                </GridPane>
+                <RadioButton mnemonicParsing="false" text="Da" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="11">
+                    <GridPane.margin>
+                        <Insets bottom="15.0" left="70.0" />
+                    </GridPane.margin>
+               <toggleGroup>
+                  <ToggleGroup fx:id="grupa5" />
+               </toggleGroup>
+                </RadioButton>
+                <RadioButton mnemonicParsing="false" text="Ne" toggleGroup="$grupa5" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="11" GridPane.valignment="BOTTOM">
+                    <GridPane.margin>
+                        <Insets bottom="15.0" left="70.0" />
+                    </GridPane.margin>
+                </RadioButton>
+            <TextField fx:id="brojStanaTextField" GridPane.columnIndex="4" GridPane.rowIndex="4">
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
+            </TextField>
+            <Label text="BROJ STANA:" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="4" />
+            <TextField fx:id="idBrojTextField" GridPane.columnIndex="3" GridPane.rowIndex="5">
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
+            </TextField>
+            <RadioButton mnemonicParsing="false" text="Druga jedinica stanovanja (šator, vagon, koliba i sl.)" toggleGroup="$grupa1" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="7" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="30.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Beskućništvo" toggleGroup="$grupa1" GridPane.columnIndex="2" GridPane.rowIndex="7" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="8.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <Label text="Nakon odgovorenog pitanja prelazi se na pitanje 24." wrapText="true" GridPane.columnIndex="4" GridPane.rowIndex="8">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Line endX="-78.70710754394531" endY="0.15684586763381958" startX="-100.0" GridPane.columnIndex="3" GridPane.rowIndex="7">
+               <GridPane.margin>
+                  <Insets top="33.0" />
+               </GridPane.margin>
+            </Line>
+            <Polygon points="0.0, -18.5, 9.0, -22.5, 0.0, -27.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="3" GridPane.rowIndex="7">
+               <GridPane.margin>
+                  <Insets left="22.0" top="34.0" />
+               </GridPane.margin>
+            </Polygon>
+            <Label text="Pitanje 24." GridPane.columnIndex="3" GridPane.rowIndex="7">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="50.0" top="35.0" />
+               </GridPane.margin>
+            </Label>
+            <Line endX="-78.70710754394531" endY="0.15684586763381958" startX="-100.0" GridPane.columnIndex="3" GridPane.rowIndex="7" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="35.0" left="130.0" />
+               </GridPane.margin>
+            </Line>
+            <Polygon points="0.0, -18.5, 9.0, -22.5, 0.0, -27.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="3" GridPane.rowIndex="7" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="32.0" left="150.0" />
+               </GridPane.margin>
+            </Polygon>
+            <Label text="Pitanje 24." GridPane.columnIndex="4" GridPane.rowIndex="7" GridPane.valignment="BOTTOM">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="30.0" />
+               </GridPane.margin>
+            </Label>
+            <Line endX="-78.70710754394531" endY="0.15684586763381958" startX="-100.0" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="7" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="12.0" right="28.0" />
+               </GridPane.margin>
+            </Line>
+            <Polygon points="0.0, -18.5, 9.0, -22.5, 0.0, -27.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="7" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="10.0" right="20.0" />
+               </GridPane.margin>
+            </Polygon>
+            <Label text="Pitanje 24." GridPane.columnIndex="3" GridPane.halignment="LEFT" GridPane.rowIndex="7" GridPane.valignment="BOTTOM">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="8.0" />
+               </GridPane.margin>
+            </Label>
+            <RadioButton mnemonicParsing="false" text="Samo za obavljanje djelatnosti" toggleGroup="$grupa3" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="9">
+               <GridPane.margin>
+                  <Insets bottom="50.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Za odmor i rekreaciju" toggleGroup="$grupa3" GridPane.columnIndex="2" GridPane.rowIndex="9" />
+            <RadioButton mnemonicParsing="false" text="Za korišćenje u vrijeme sezonskih radova u poljoprivredi" toggleGroup="$grupa3" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="9">
+               <GridPane.margin>
+                  <Insets top="50.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Drugi stan koji domaćinstvo koristi i koji se nalazi u istom objektu" toggleGroup="$grupa3" GridPane.columnIndex="2" GridPane.columnSpan="3" GridPane.rowIndex="9">
+               <GridPane.margin>
+                  <Insets top="100.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Koristi se od strane privremeno prisutnog lica" toggleGroup="$grupa3" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="9" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="35.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Prazan stan" toggleGroup="$grupa3" GridPane.columnIndex="2" GridPane.rowIndex="9" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="10.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <Line endX="0.2928924560546875" endY="-7.551908493041992E-5" startX="-100.0" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="9">
+               <GridPane.margin>
+                  <Insets bottom="45.0" left="40.0" />
+               </GridPane.margin>
+            </Line>
+            <Polygon points="0.0, -18.5, 9.0, -22.5, 0.0, -27.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="9">
+               <GridPane.margin>
+                  <Insets bottom="45.0" />
+               </GridPane.margin>
+            </Polygon>
+            <RadioButton mnemonicParsing="false" text="Iznajmljivanje turistima" GridPane.columnIndex="4" GridPane.halignment="RIGHT" GridPane.rowIndex="9">
+               <GridPane.margin>
+                  <Insets bottom="45.0" />
+               </GridPane.margin>
+               <toggleGroup>
+                  <ToggleGroup fx:id="grupa4" />
+               </toggleGroup>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Ostale djelatnosti" toggleGroup="$grupa4" GridPane.columnIndex="5" GridPane.halignment="RIGHT" GridPane.rowIndex="9">
+               <GridPane.margin>
+                  <Insets bottom="45.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <TextField fx:id="pitanje4TextField" GridPane.columnIndex="2" GridPane.rowIndex="10">
+               <GridPane.margin>
+                  <Insets left="60.0" top="20.0" />
+               </GridPane.margin>
+            </TextField>
+            <TextField fx:id="pitanje8TextField" GridPane.columnIndex="3" GridPane.rowIndex="14">
+               <GridPane.margin>
+                  <Insets right="70.0" top="2.0" />
+               </GridPane.margin>
+            </TextField>
+            <RadioButton mnemonicParsing="false" text="Nema toaleta/WC-a u stanu" toggleGroup="$grupa8" GridPane.columnIndex="3" GridPane.rowIndex="16" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="15.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Otpadna voda se izliva u cijevi priključene na zatvorenu septičku jamu sa prelivom" toggleGroup="$grupa10" GridPane.columnIndex="3" GridPane.columnSpan="3" GridPane.rowIndex="18">
+               <GridPane.margin>
+                  <Insets top="18.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Druga rješenja (otpadna voda se izliva u otvoreni kanal, rijeku, brazdu i sl.)" toggleGroup="$grupa10" GridPane.columnIndex="3" GridPane.columnSpan="3" GridPane.rowIndex="18">
+               <GridPane.margin>
+                  <Insets top="75.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Nema nikakvu instalaciju za odvod otpadne vode" toggleGroup="$grupa10" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowIndex="18" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="15.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Nema" toggleGroup="$grupa11" GridPane.columnIndex="2" GridPane.rowIndex="19" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="12.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Stambena zgrada/kuća u nizu (sa najmanje tri pripojena stana od kojih svaki ima svoj ulaz)" toggleGroup="$grupa14" GridPane.columnIndex="3" GridPane.columnSpan="3" GridPane.rowIndex="23">
+               <GridPane.margin>
+                  <Insets top="18.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Stambena zgrada sa tri ili više stanova" toggleGroup="$grupa14" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowIndex="23">
+               <GridPane.margin>
+                  <Insets top="75.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <TextField fx:id="pitanje17TextField" GridPane.columnIndex="2" GridPane.rowIndex="24">
+               <GridPane.margin>
+                  <Insets left="60.0" top="20.0" />
+               </GridPane.margin>
+            </TextField>
+            <RadioButton mnemonicParsing="false" text="P + 1 (prizemlje i jedan sprat)" toggleGroup="$grupa15" GridPane.columnIndex="3" GridPane.rowIndex="25" GridPane.valignment="TOP">
+               <GridPane.margin>
+                  <Insets top="65.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="P + 2" toggleGroup="$grupa15" GridPane.columnIndex="3" GridPane.rowIndex="25">
+               <GridPane.margin>
+                  <Insets bottom="60.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="P + 3" toggleGroup="$grupa15" GridPane.columnIndex="3" GridPane.rowIndex="25">
+               <GridPane.margin>
+                  <Insets bottom="5.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="P + 4" toggleGroup="$grupa15" GridPane.columnIndex="3" GridPane.rowIndex="25">
+               <GridPane.margin>
+                  <Insets top="50.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="P + 5 do P + 9" toggleGroup="$grupa15" GridPane.columnIndex="3" GridPane.rowIndex="25">
+               <GridPane.margin>
+                  <Insets top="105.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="P + 10 do P + 19" toggleGroup="$grupa15" GridPane.columnIndex="3" GridPane.rowIndex="25">
+               <GridPane.margin>
+                  <Insets top="160.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Opeka, kamen, beton" toggleGroup="$grupa16" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="26">
+               <GridPane.margin>
+                  <Insets top="28.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Beton (betonski crijep, ravni betonski krovovi i sl.)" toggleGroup="$grupa17" GridPane.columnIndex="4" GridPane.columnSpan="2" GridPane.rowIndex="27">
+               <GridPane.margin>
+                  <Insets bottom="75.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Limovi (profilisani, u obliku crijepa, ravni i sl.)" toggleGroup="$grupa17" GridPane.columnIndex="4" GridPane.columnSpan="2" GridPane.rowIndex="27">
+               <GridPane.margin>
+                  <Insets bottom="25.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Vlakno-cementni (talasaste i ravne ploče)" toggleGroup="$grupa17" GridPane.columnIndex="4" GridPane.columnSpan="2" GridPane.rowIndex="27">
+               <GridPane.margin>
+                  <Insets top="25.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Bitumen, tegola" toggleGroup="$grupa17" GridPane.columnIndex="4" GridPane.rowIndex="27">
+               <GridPane.margin>
+                  <Insets top="75.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Od prirodnih materijala (drvo, kamen, slama...)" toggleGroup="$grupa17" GridPane.columnIndex="4" GridPane.columnSpan="2" GridPane.rowIndex="27" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="35.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <Label text="PODACI O JEDINICI ZA STANOVANJE" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="6">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Separator prefWidth="200.0" GridPane.columnSpan="7" GridPane.rowIndex="6" GridPane.valignment="BOTTOM" />
+            <Separator prefWidth="200.0" GridPane.columnSpan="7" GridPane.rowIndex="5" GridPane.valignment="BOTTOM" />
+            <Label alignment="CENTER" contentDisplay="CENTER" text="PODACI O DOMAĆINSTVU" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="31">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <RadioButton mnemonicParsing="false" text="Zakup stana - privatno vlasništvo" toggleGroup="$grupa21" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowIndex="32">
+               <GridPane.margin>
+                  <Insets top="50.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Vlasništvo" toggleGroup="$grupa21" GridPane.columnIndex="3" GridPane.rowIndex="32">
+               <GridPane.margin>
+                  <Insets bottom="97.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <Separator prefWidth="200.0" GridPane.columnSpan="7" GridPane.rowIndex="31" GridPane.valignment="BOTTOM" />
+            <RadioButton mnemonicParsing="false" text="Centralno grijanje sa vlastitom instalacijom" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowIndex="33">
+               <GridPane.margin>
+                  <Insets bottom="80.0" />
+               </GridPane.margin>
+               <toggleGroup>
+                  <ToggleGroup fx:id="grupa22" />
+               </toggleGroup>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Centralno grijanje iz javne mreže" toggleGroup="$grupa22" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowIndex="33">
+               <GridPane.margin>
+                  <Insets bottom="30.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Drugi način zagrijavanja cijele jedinice za stanovanje" toggleGroup="$grupa22" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowIndex="33">
+               <GridPane.margin>
+                  <Insets top="20.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Pojedinačno zagrijavanje prostorija" toggleGroup="$grupa22" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowIndex="33">
+               <GridPane.margin>
+                  <Insets top="70.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Jedinica za stanovanje se uopšte ne grije" toggleGroup="$grupa22" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowIndex="33" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="15.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Česma u dvorištu priključena na javni vodovod" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowIndex="35">
+               <GridPane.margin>
+                  <Insets bottom="115.0" />
+               </GridPane.margin>
+               <toggleGroup>
+                  <ToggleGroup fx:id="grupa23" />
+               </toggleGroup>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Česma u dvorištu priključena na vlastiti hidrofor" toggleGroup="$grupa23" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowIndex="35">
+               <GridPane.margin>
+                  <Insets bottom="65.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Ulična česma" toggleGroup="$grupa23" GridPane.columnIndex="3" GridPane.rowIndex="35">
+               <GridPane.margin>
+                  <Insets bottom="15.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Kopani bunar" toggleGroup="$grupa23" GridPane.columnIndex="3" GridPane.rowIndex="35">
+               <GridPane.margin>
+                  <Insets top="35.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Flaširana voda iz trgovine" toggleGroup="$grupa23" GridPane.columnIndex="3" GridPane.rowIndex="35" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="32.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Drugi način" toggleGroup="$grupa23" GridPane.columnIndex="3" GridPane.rowIndex="35" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="10.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <CheckBox fx:id="pitanje26CheckBox2" mnemonicParsing="false" text="Drvo" GridPane.columnIndex="3" GridPane.rowIndex="34">
+               <GridPane.margin>
+                  <Insets bottom="52.0" />
+               </GridPane.margin>
+            </CheckBox>
+            <RadioButton mnemonicParsing="false" text="Bušeni (cijevni) bunar" toggleGroup="$grupa23" GridPane.columnIndex="3" GridPane.rowIndex="35">
+               <GridPane.margin>
+                  <Insets top="85.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Arteški bunar " toggleGroup="$grupa23" GridPane.columnIndex="3" GridPane.rowIndex="35">
+               <GridPane.margin>
+                  <Insets top="135.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Uređeni izvor" toggleGroup="$grupa23" GridPane.columnIndex="3" GridPane.rowIndex="35">
+               <GridPane.margin>
+                  <Insets top="185.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Voda u stanu sa priključkom na vlastiti hidrofor" toggleGroup="$grupa23" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowIndex="35" GridPane.valignment="TOP">
+               <GridPane.margin>
+                  <Insets top="90.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Voda u stanu sa priključkom na seoski ili mjesni vodovod" toggleGroup="$grupa23" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowIndex="35" GridPane.valignment="TOP">
+               <GridPane.margin>
+                  <Insets top="65.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Voda u stanu sa priključkom na javni vodovod" toggleGroup="$grupa23" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowIndex="35" GridPane.valignment="TOP">
+               <GridPane.margin>
+                  <Insets top="40.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Cisterna (rezervoar) sa vodom" toggleGroup="$grupa23" GridPane.columnIndex="3" GridPane.rowIndex="35" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="55.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <Label text="PODACI O POLJOPRIVREDI" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="36">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label text="Dunum" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="37" GridPane.valignment="TOP">
+               <GridPane.margin>
+                  <Insets top="30.0" />
+               </GridPane.margin>
+            </Label>
+            <TextField fx:id="ukupnoZemljisteDunumTextField" GridPane.columnIndex="3" GridPane.rowIndex="37">
+               <GridPane.margin>
+                  <Insets bottom="60.0" left="20.0" right="20.0" />
+               </GridPane.margin>
+            </TextField>
+            <TextField fx:id="poljoprivrednoZemljisteDunumTextField" GridPane.columnIndex="3" GridPane.rowIndex="37">
+               <GridPane.margin>
+                  <Insets left="20.0" right="20.0" top="10.0" />
+               </GridPane.margin>
+            </TextField>
+            <TextField fx:id="ZemljisteSumaDunumTextField" GridPane.columnIndex="3" GridPane.rowIndex="37">
+               <GridPane.margin>
+                  <Insets left="20.0" right="20.0" top="85.0" />
+               </GridPane.margin>
+            </TextField>
+            <TextField fx:id="ostaloZemljisteDunumTextField" GridPane.columnIndex="3" GridPane.rowIndex="37" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="10.0" left="20.0" right="20.0" />
+               </GridPane.margin>
+            </TextField>
+            <TextField fx:id="ostaloZemljisteKvadratniMetarTextField" GridPane.columnIndex="4" GridPane.rowIndex="37" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="10.0" left="20.0" right="20.0" />
+               </GridPane.margin>
+            </TextField>
+            <TextField fx:id="zemljisteSumaKvadratniMetarTextField" GridPane.columnIndex="4" GridPane.rowIndex="37">
+               <GridPane.margin>
+                  <Insets left="20.0" right="20.0" top="85.0" />
+               </GridPane.margin>
+            </TextField>
+            <TextField fx:id="poljoprivrednoZemljisteKvadratniMetarTextField" GridPane.columnIndex="4" GridPane.rowIndex="37">
+               <GridPane.margin>
+                  <Insets left="20.0" right="20.0" top="10.0" />
+               </GridPane.margin>
+            </TextField>
+            <TextField fx:id="ukupnoZemljisteKvadratniMetarTextField" GridPane.columnIndex="4" GridPane.rowIndex="37">
+               <GridPane.margin>
+                  <Insets bottom="60.0" left="20.0" right="20.0" />
+               </GridPane.margin>
+            </TextField>
+            <Label text="Kvadratni metar" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="37" GridPane.valignment="TOP">
+               <GridPane.margin>
+                  <Insets top="30.0" />
+               </GridPane.margin>
+            </Label>
+            <Label text="Ostalo zemljište:" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="37" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="15.0" />
+               </GridPane.margin>
+            </Label>
+            <Label text="Zemljište pod šumom:" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="37">
+               <GridPane.margin>
+                  <Insets top="85.0" />
+               </GridPane.margin>
+            </Label>
+            <Label text="Poljoprivredno zemljište:" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="37">
+               <GridPane.margin>
+                  <Insets top="10.0" />
+               </GridPane.margin>
+            </Label>
+            <Label text="Ukupno:" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="37">
+               <GridPane.margin>
+                  <Insets bottom="60.0" />
+               </GridPane.margin>
+            </Label>
+            <Line endX="-78.70710754394531" endY="0.15684586763381958" layoutX="551.0" layoutY="5405.0" startX="-100.0" GridPane.columnIndex="3" GridPane.rowIndex="38">
+               <GridPane.margin>
+                  <Insets left="70.0" top="33.0" />
+               </GridPane.margin>
+            </Line>
+            <Polygon layoutX="470.0" layoutY="5427.0" points="0.0, -18.5, 9.0, -22.5, 0.0, -27.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="3" GridPane.rowIndex="38">
+               <GridPane.margin>
+                  <Insets left="90.0" top="33.0" />
+               </GridPane.margin>
+            </Polygon>
+            <Label layoutX="490.0" layoutY="5397.0" text="Pitanje 30." GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="38">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets top="30.0" />
+               </GridPane.margin>
+            </Label>
+            <Line endX="-78.70710754394531" endY="0.15684586763381958" layoutX="571.0" layoutY="4847.0" startX="-100.0" GridPane.columnIndex="3" GridPane.rowIndex="38" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="15.0" left="70.0" />
+               </GridPane.margin>
+            </Line>
+            <Polygon layoutX="490.0" layoutY="4869.0" points="0.0, -18.5, 9.0, -22.5, 0.0, -27.0" stroke="BLACK" strokeType="INSIDE" GridPane.columnIndex="3" GridPane.rowIndex="38" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="13.0" left="90.0" />
+               </GridPane.margin>
+            </Polygon>
+            <Label layoutX="520.0" layoutY="4837.0" text="Kraj" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="38" GridPane.valignment="BOTTOM">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="10.0" right="37.0" />
+               </GridPane.margin>
+            </Label>
+            <Label text="Dunum" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="39" GridPane.valignment="TOP">
+               <GridPane.margin>
+                  <Insets top="40.0" />
+               </GridPane.margin>
+            </Label>
+            <TextField fx:id="vinogradiDunumTextField" GridPane.columnIndex="3" GridPane.rowIndex="39">
+               <GridPane.margin>
+                  <Insets left="20.0" right="20.0" />
+               </GridPane.margin>
+            </TextField>
+            <TextField fx:id="ribnjaciDunumTextField" GridPane.columnIndex="3" GridPane.rowIndex="39" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="45.0" left="20.0" right="20.0" />
+               </GridPane.margin>
+            </TextField>
+            <TextField fx:id="gljivarniciDunumTextField" GridPane.columnIndex="3" GridPane.rowIndex="39" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="10.0" left="20.0" right="20.0" />
+               </GridPane.margin>
+            </TextField>
+            <TextField fx:id="vocnaciDunumTextField" GridPane.columnIndex="3" GridPane.rowIndex="39">
+               <GridPane.margin>
+                  <Insets bottom="70.0" left="20.0" right="20.0" />
+               </GridPane.margin>
+            </TextField>
+            <TextField fx:id="oraniceDunumTextField" GridPane.columnIndex="3" GridPane.rowIndex="39">
+               <GridPane.margin>
+                  <Insets bottom="140.0" left="20.0" right="20.0" />
+               </GridPane.margin>
+            </TextField>
+            <TextField fx:id="livadeDunumTextField" GridPane.columnIndex="3" GridPane.rowIndex="39">
+               <GridPane.margin>
+                  <Insets left="20.0" right="20.0" top="140.0" />
+               </GridPane.margin>
+            </TextField>
+            <TextField fx:id="rasadniciDunumTextField" GridPane.columnIndex="3" GridPane.rowIndex="39">
+               <GridPane.margin>
+                  <Insets left="20.0" right="20.0" top="70.0" />
+               </GridPane.margin>
+            </TextField>
+            <TextField fx:id="ribnjaciMetarTextField" GridPane.columnIndex="4" GridPane.rowIndex="39" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="45.0" left="20.0" right="20.0" />
+               </GridPane.margin>
+            </TextField>
+            <TextField fx:id="livadeMetarTextField" GridPane.columnIndex="4" GridPane.rowIndex="39">
+               <GridPane.margin>
+                  <Insets left="20.0" right="20.0" top="140.0" />
+               </GridPane.margin>
+            </TextField>
+            <TextField fx:id="rasadniciMetarTextField" GridPane.columnIndex="4" GridPane.rowIndex="39">
+               <GridPane.margin>
+                  <Insets left="20.0" right="20.0" top="70.0" />
+               </GridPane.margin>
+            </TextField>
+            <TextField fx:id="oraniceMetarTextField" GridPane.columnIndex="4" GridPane.rowIndex="39">
+               <GridPane.margin>
+                  <Insets bottom="140.0" left="20.0" right="20.0" />
+               </GridPane.margin>
+            </TextField>
+            <TextField fx:id="vocnaciMetarTextField" GridPane.columnIndex="4" GridPane.rowIndex="39">
+               <GridPane.margin>
+                  <Insets bottom="70.0" left="20.0" right="20.0" />
+               </GridPane.margin>
+            </TextField>
+            <TextField fx:id="gljivarniciMetarTextField" GridPane.columnIndex="4" GridPane.rowIndex="39" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="10.0" left="20.0" right="20.0" />
+               </GridPane.margin>
+            </TextField>
+            <TextField fx:id="vinogradiMetarTextField" GridPane.columnIndex="4" GridPane.rowIndex="39">
+               <GridPane.margin>
+                  <Insets left="20.0" right="20.0" />
+               </GridPane.margin>
+            </TextField>
+            <Label text="Kvadratni metar" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="39" GridPane.valignment="TOP">
+               <GridPane.margin>
+                  <Insets top="40.0" />
+               </GridPane.margin>
+            </Label>
+            <Label text="Oranice, bašte i vrtovi:" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="39">
+               <GridPane.margin>
+                  <Insets bottom="140.0" />
+               </GridPane.margin>
+            </Label>
+            <Label text="Vinogradi:" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="39" />
+            <Label text="Efektivna površina gljivarnika:" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="39" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="15.0" />
+               </GridPane.margin>
+            </Label>
+            <Label text="Površina ribnjaka:" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="39" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="48.0" />
+               </GridPane.margin>
+            </Label>
+            <Label text="Livade i pašnjaci:" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="39">
+               <GridPane.margin>
+                  <Insets top="140.0" />
+               </GridPane.margin>
+            </Label>
+            <Label text="Rasadnici:" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="39">
+               <GridPane.margin>
+                  <Insets top="70.0" />
+               </GridPane.margin>
+            </Label>
+            <Label text="Voćnjaci:" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="39">
+               <GridPane.margin>
+                  <Insets bottom="70.0" />
+               </GridPane.margin>
+            </Label>
+            <Separator prefWidth="200.0" GridPane.columnSpan="7" GridPane.rowIndex="42" GridPane.valignment="BOTTOM" />
+            <TextField fx:id="pitanje33TextField" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowIndex="42" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="10.0" left="130.0" />
+               </GridPane.margin>
+            </TextField>
+            <Label text="POPUNJAVA POPISIVAČ" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="43" GridPane.valignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <TextField fx:id="brojLicaUStanuTextField" GridPane.columnIndex="4" GridPane.rowIndex="44" GridPane.valignment="CENTER">
+               <GridPane.margin>
+                  <Insets left="30.0" right="80.0" />
+               </GridPane.margin>
+            </TextField>
+            <TextField fx:id="brojClanovaDomacinstvaTextField" prefHeight="25.0" prefWidth="59.0" GridPane.columnIndex="4" GridPane.rowIndex="44" GridPane.valignment="TOP">
+               <GridPane.margin>
+                  <Insets left="30.0" right="80.0" top="18.0" />
+               </GridPane.margin>
+            </TextField>
+            <TextField fx:id="brojDomacinstavaUStanuTextField" GridPane.columnIndex="4" GridPane.rowIndex="44" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="10.0" left="30.0" right="80.0" />
+               </GridPane.margin>
+            </TextField>
+            <TextField fx:id="ovceTextField" GridPane.columnIndex="4" GridPane.rowIndex="40">
+               <GridPane.margin>
+                  <Insets right="50.0" />
+               </GridPane.margin>
+            </TextField>
+            <TextField fx:id="kosniceTextField" GridPane.columnIndex="4" GridPane.rowIndex="40" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="20.0" right="50.0" />
+               </GridPane.margin>
+            </TextField>
+            <TextField fx:id="peradTextField" GridPane.columnIndex="4" GridPane.rowIndex="40">
+               <GridPane.margin>
+                  <Insets right="50.0" top="210.0" />
+               </GridPane.margin>
+            </TextField>
+            <TextField fx:id="konjiTextField" GridPane.columnIndex="4" GridPane.rowIndex="40">
+               <GridPane.margin>
+                  <Insets right="50.0" top="140.0" />
+               </GridPane.margin>
+            </TextField>
+            <TextField fx:id="kozeTextField" GridPane.columnIndex="4" GridPane.rowIndex="40">
+               <GridPane.margin>
+                  <Insets right="50.0" top="70.0" />
+               </GridPane.margin>
+            </TextField>
+            <TextField fx:id="svinjeTextField" GridPane.columnIndex="4" GridPane.rowIndex="40">
+               <GridPane.margin>
+                  <Insets bottom="70.0" right="50.0" />
+               </GridPane.margin>
+            </TextField>
+            <TextField fx:id="kraveTextField" GridPane.columnIndex="4" GridPane.rowIndex="40" GridPane.valignment="TOP">
+               <GridPane.margin>
+                  <Insets right="50.0" top="90.0" />
+               </GridPane.margin>
+            </TextField>
+            <TextField fx:id="govedaTextField" GridPane.columnIndex="4" GridPane.rowIndex="40" GridPane.valignment="TOP">
+               <GridPane.margin>
+                  <Insets right="50.0" top="50.0" />
+               </GridPane.margin>
+            </TextField>
+            <Label text="Ovce, ukupno:" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="40">
+               <GridPane.margin>
+                  <Insets right="25.0" />
+               </GridPane.margin>
+            </Label>
+            <Label text="Košnice, ukupno:" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="40" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="23.0" right="25.0" />
+               </GridPane.margin>
+            </Label>
+            <Label text="Perad, ukupno:" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="40">
+               <GridPane.margin>
+                  <Insets right="25.0" top="213.0" />
+               </GridPane.margin>
+            </Label>
+            <Label text="Konji, ukupno:" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="40">
+               <GridPane.margin>
+                  <Insets right="25.0" top="143.0" />
+               </GridPane.margin>
+            </Label>
+            <Label text="Koze, ukupno:" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="40">
+               <GridPane.margin>
+                  <Insets right="25.0" top="73.0" />
+               </GridPane.margin>
+            </Label>
+            <Label text="Svinje, ukupno:" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="40">
+               <GridPane.margin>
+                  <Insets bottom="67.0" right="25.0" />
+               </GridPane.margin>
+            </Label>
+            <Label text="Od toga muzne krave:" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="40" GridPane.valignment="TOP">
+               <GridPane.margin>
+                  <Insets right="25.0" top="93.0" />
+               </GridPane.margin>
+            </Label>
+            <Label text="Goveda, ukupno:" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="40" GridPane.valignment="TOP">
+               <GridPane.margin>
+                  <Insets right="25.0" top="53.0" />
+               </GridPane.margin>
+            </Label>
+            <Separator prefWidth="200.0" GridPane.columnSpan="7" GridPane.rowIndex="45" GridPane.valignment="BOTTOM" />
+            <Button mnemonicParsing="false" onAction="#popuniSpisakLica" prefHeight="33.0" prefWidth="159.0" text="Popuni spisak lica" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="45">
+               <GridPane.margin>
+                  <Insets bottom="10.0" />
+               </GridPane.margin>
+            </Button>
+            </children>
+        </GridPane>
+    </content>
+</ScrollPane>
