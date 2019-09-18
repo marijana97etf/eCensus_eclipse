@@ -21,6 +21,7 @@ public class PopisnicaZaDomacinstvo {
     private int brojClanovaDomacinstva;
     private int brojLicaUStanu;
     private int brojDomacinstavaUStanu;
+    private List<ClanDomacinstva> spisakLica;
 
     private Map<Integer, List<String>> odgovoriNaPitanja;
 
@@ -173,8 +174,16 @@ public class PopisnicaZaDomacinstvo {
     public void setBrojDomacinstavaUStanu(int brojDomacinstavaUStanu) {
         this.brojDomacinstavaUStanu = brojDomacinstavaUStanu;
     }
+    
+    public List<ClanDomacinstva> getSpisakLica() {
+		return spisakLica;
+	}
 
-    public Map<Integer, List<String>> getOdgovoriNaPitanja() {
+	public void setSpisakLica(List<ClanDomacinstva> spisakLica) {
+		this.spisakLica = spisakLica;
+	}
+
+	public Map<Integer, List<String>> getOdgovoriNaPitanja() {
         return odgovoriNaPitanja;
     }
 

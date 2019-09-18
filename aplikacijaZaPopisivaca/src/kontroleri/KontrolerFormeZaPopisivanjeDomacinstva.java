@@ -10,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import model.ClanDomacinstva;
 import model.PopisnicaZaDomacinstvo;
 
 import java.io.File;
@@ -20,6 +21,9 @@ import java.util.List;
 import java.util.Map;
 
 public class KontrolerFormeZaPopisivanjeDomacinstva {
+	public static Stage spisakLicaStage;
+	public static List<ClanDomacinstva> spisakLica;
+	
     @FXML
     private TextField obrazacTextField;
     @FXML
@@ -1024,7 +1028,11 @@ public class KontrolerFormeZaPopisivanjeDomacinstva {
             }
         }
 
-        //TODO: Spisak lica
+        if(Integer.parseInt(brojDomacinstavaUStanuString) > 0 && spisakLica == null)
+        	prikaziUpozorenje("Morate popuniti spisak lica.");
+        else
+        	popisnica.setSpisakLica(spisakLica);
+        
         //TODO: Poslati popisnicu za domacinstvo na server
     }
 
@@ -1377,7 +1385,7 @@ public class KontrolerFormeZaPopisivanjeDomacinstva {
     @FXML
     public void popuniSpisakLica() {
         try {
-            Stage spisakLicaStage = new Stage();
+            spisakLicaStage = new Stage();
             spisakLicaStage.initModality(Modality.APPLICATION_MODAL);
 
             Parent root = FXMLLoader.load(getClass().getResource("/forme" + File.separator + "FormaZaPopunjavanjeSpiskaLica.fxml"));

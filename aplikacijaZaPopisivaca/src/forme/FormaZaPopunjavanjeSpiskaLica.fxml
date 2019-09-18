@@ -35,20 +35,20 @@
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Label>
-                  <TextField GridPane.rowIndex="2" />
+                  <TextField fx:id="imeTextField" GridPane.rowIndex="2" />
                   <Label text="JMBG" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Label>
-                  <TextField GridPane.columnIndex="2" GridPane.rowIndex="2" />
-                  <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <TextField fx:id="JMBGTextField" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                  <TextField fx:id="prezimeTextField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                   <Label text="Prezime" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Label>
-                  <ComboBox maxWidth="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="200.0" promptText="Odaberi tip odnosa..." GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                  <ComboBox fx:id="odnosComboBox" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="200.0" promptText="Odaberi tip odnosa..." GridPane.columnIndex="3" GridPane.rowIndex="2" />
                   <Label prefHeight="38.0" prefWidth="120.0" text="Odnos prema nosiocu domaćinstva" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1">
                      <font>
                         <Font name="System Bold" size="12.0" />
@@ -59,13 +59,13 @@
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Label>
-                  <TextField GridPane.columnIndex="4" GridPane.rowIndex="2" />
+                  <TextField fx:id="redniBrojPorodiceTextField" GridPane.columnIndex="4" GridPane.rowIndex="2" />
                   <Label text="Položaj člana u porodici" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="1">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Label>
-                  <ComboBox maxWidth="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="200.0" promptText="Odaberi položaj..." GridPane.columnIndex="5" GridPane.rowIndex="2" />
+                  <ComboBox fx:id="polozajComboBox" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="200.0" promptText="Odaberi položaj..." GridPane.columnIndex="5" GridPane.rowIndex="2" />
                </children>
             </GridPane>
             <GridPane>
@@ -79,7 +79,7 @@
               </rowConstraints>
                <children>
                   <Button alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" minHeight="-Infinity" mnemonicParsing="false" onAction="#dodajVrstu" prefHeight="30.0" prefWidth="106.0" text="Dodaj osobu..." GridPane.halignment="CENTER" GridPane.rowIndex="1" />
-                  <Button mnemonicParsing="false" prefHeight="33.0" prefWidth="182.0" text="Sačuvaj i vrati se na popisnicu" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+                  <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#sacuvajSpisakLica" prefHeight="33.0" prefWidth="197.0" text="Sačuvaj i vrati se na popisnicu" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
                </children>
             </GridPane>
          </children>
