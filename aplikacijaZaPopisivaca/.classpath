@@ -8,5 +8,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/JavaFX12"/>
+	<classpathentry kind="lib" path="C:/Users/PC/Downloads/org.eclipse.core.resources.jar/org.eclipse.core.resources.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

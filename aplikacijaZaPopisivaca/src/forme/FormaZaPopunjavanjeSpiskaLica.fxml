@@ -79,7 +79,7 @@
               </rowConstraints>
                <children>
                   <Button alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" minHeight="-Infinity" mnemonicParsing="false" onAction="#dodajVrstu" prefHeight="30.0" prefWidth="106.0" text="Dodaj osobu..." GridPane.halignment="CENTER" GridPane.rowIndex="1" />
-                  <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#sacuvajSpisakLica" prefHeight="33.0" prefWidth="197.0" text="Sačuvaj i vrati se na popisnicu" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+                  <Button mnemonicParsing="false" prefHeight="33.0" prefWidth="182.0" text="Sačuvaj i vrati se na popisnicu" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
                </children>
             </GridPane>
          </children>

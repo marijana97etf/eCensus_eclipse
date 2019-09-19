@@ -370,7 +370,7 @@ public class KontrolerFormeZaPopisivanjeStanovnika {
     private ToggleGroup grupa40;
 
     public KontrolerFormeZaPopisivanjeStanovnika(){
-        KontrolerFormeZaRadPopisivaca.popisStanovnikaStage.setOnShowing((event) -> inicijalizujKomponente());
+//        KontrolerFormeZaRadPopisivaca.popisStanovnikaStage.setOnShowing((event) -> inicijalizujKomponente());
     }
 
     private void inicijalizujKomponente(){

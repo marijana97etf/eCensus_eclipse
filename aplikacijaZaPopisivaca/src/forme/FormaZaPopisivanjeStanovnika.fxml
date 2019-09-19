@@ -406,7 +406,7 @@
                         <ToggleGroup fx:id="grupa4" />
                     </toggleGroup>
                 </RadioButton>
-                <RadioButton fx:id="pitanje5Button2" mnemonicParsing="false" text="Kraće od jedne godine (broj mjeseci):" toggleGroup="$grupa4" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowIndex="12" GridPane.valignment="BOTTOM">
+                <RadioButton fx:id="pitanje5Button2" mnemonicParsing="false" text="Kraće od jedne godine - broj mjeseci:" toggleGroup="$grupa4" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowIndex="12" GridPane.valignment="BOTTOM">
                     <GridPane.margin>
                         <Insets bottom="15.0" left="80.0" />
                     </GridPane.margin>
@@ -417,7 +417,7 @@
                         <Insets bottom="10.0" left="130.0" />
                     </GridPane.margin>
                 </TextField>
-                <Label text="6. MJESTO U KOME SE NALAZI ODSUTNO LICE/MJESTO STALNOG STANOVANJA PRIVREMENO PRISUTNOG LICA?" GridPane.columnSpan="5" GridPane.rowIndex="13" GridPane.valignment="TOP">
+                <Label text="6. MJESTO U KOME SE NALAZI ODSUTNO LICE/MJESTO STALNOG STANOVANjA PRIVREMENO PRISUTNOG LICA?" GridPane.columnSpan="5" GridPane.rowIndex="13" GridPane.valignment="TOP">
                     <font>
                         <Font name="System Bold" size="12.0" />
                     </font>
@@ -433,7 +433,7 @@
                         <ToggleGroup fx:id="grupa5" />
                     </toggleGroup>
                 </RadioButton>
-                <RadioButton fx:id="pitanje6Button2" mnemonicParsing="false" text="U drugoj državi (naziv druge države):" toggleGroup="$grupa5" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="13" GridPane.valignment="BOTTOM">
+                <RadioButton fx:id="pitanje6Button2" mnemonicParsing="false" text="U drugoj državi - naziv druge države:" toggleGroup="$grupa5" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="13" GridPane.valignment="BOTTOM">
                     <GridPane.margin>
                         <Insets bottom="20.0" />
                     </GridPane.margin>
@@ -463,18 +463,18 @@
                         <Insets left="120.0" top="20.0" />
                     </GridPane.margin>
                 </TextField>
-                <Line endX="346.0" endY="-116.71063995361328" startX="370.29290771484375" startY="-138.4888153076172" GridPane.columnIndex="2" GridPane.rowIndex="13">
+                <Line endX="346.0" endY="-116.71063995361328" startX="370.29290771484375" startY="-138.4888153076172" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="13">
                     <GridPane.margin>
-                        <Insets bottom="30.0" left="145.0" />
+                        <Insets bottom="30.0" />
                     </GridPane.margin>
                 </Line>
-                <Line endX="-72.70710754394531" endY="17.292892456054688" startX="-45.414215087890625" startY="30.585784912109375" GridPane.columnIndex="2" GridPane.rowIndex="13">
+                <Line endX="-72.70710754394531" endY="17.292892456054688" startX="-45.414215087890625" startY="30.585784912109375" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="13">
                     <GridPane.margin>
-                        <Insets left="145.0" top="10.0" />
+                        <Insets top="8.0" />
                     </GridPane.margin>
                 </Line>
                 <Separator prefWidth="200.0" GridPane.columnSpan="7" GridPane.rowIndex="13" GridPane.valignment="BOTTOM" />
-                <Label text="7. UČESTALOST VRAĆANJA U MJESTO POPISA/MJESTO STALNOG STANOVANJA PRIVREMENO PRISUTNOG LICA?" GridPane.columnSpan="5" GridPane.rowIndex="14" GridPane.valignment="TOP">
+                <Label text="7. UČESTALOST VRAĆANjA U MJESTO POPISA/MJESTO STALNOG STANOVANjA PRIVREMENO PRISUTNOG LICA?" GridPane.columnSpan="5" GridPane.rowIndex="14" GridPane.valignment="TOP">
                     <font>
                         <Font name="System Bold" size="12.0" />
                     </font>
@@ -496,7 +496,7 @@
                     </GridPane.margin>
                 </RadioButton>
                 <Separator prefWidth="200.0" GridPane.columnSpan="7" GridPane.rowIndex="14" GridPane.valignment="BOTTOM" />
-                <Label layoutX="40.0" layoutY="850.0" text="8. MJESTO ROĐENJA?" GridPane.columnSpan="2" GridPane.rowIndex="15" GridPane.valignment="TOP">
+                <Label layoutX="40.0" layoutY="850.0" text="8. MJESTO ROĐENjA?" GridPane.columnSpan="2" GridPane.rowIndex="15" GridPane.valignment="TOP">
                     <font>
                         <Font name="System Bold" size="12.0" />
                     </font>
@@ -512,7 +512,7 @@
                         <ToggleGroup fx:id="grupa7" />
                     </toggleGroup>
                 </RadioButton>
-                <RadioButton fx:id="pitanje8Button2" layoutX="200.0" layoutY="953.0" mnemonicParsing="false" text="U drugoj državi (naziv druge države):" toggleGroup="$grupa7" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="15" GridPane.valignment="BOTTOM">
+                <RadioButton fx:id="pitanje8Button2" layoutX="200.0" layoutY="953.0" mnemonicParsing="false" text="U drugoj državi  - naziv druge države:" toggleGroup="$grupa7" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="15" GridPane.valignment="BOTTOM">
                     <GridPane.margin>
                         <Insets bottom="20.0" />
                     </GridPane.margin>
@@ -542,18 +542,18 @@
                         <Insets bottom="60.0" left="120.0" />
                     </GridPane.margin>
                 </TextField>
-                <Line endX="346.0" endY="-116.71063995361328" layoutY="1027.0" startX="370.29290771484375" startY="-138.4888153076172" GridPane.columnIndex="2" GridPane.rowIndex="15">
+                <Line endX="346.0" endY="-116.71063995361328" layoutY="1027.0" startX="370.29290771484375" startY="-138.4888153076172" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="15">
                     <GridPane.margin>
-                        <Insets bottom="30.0" left="145.0" />
+                        <Insets bottom="30.0" />
                     </GridPane.margin>
                 </Line>
-                <Line endX="-72.70710754394531" endY="17.292892456054688" layoutX="418.0" layoutY="896.0" startX="-45.414215087890625" startY="30.585784912109375" GridPane.columnIndex="2" GridPane.rowIndex="15">
+                <Line endX="-72.70710754394531" endY="17.292892456054688" layoutX="418.0" layoutY="896.0" startX="-45.414215087890625" startY="30.585784912109375" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="15">
                     <GridPane.margin>
-                        <Insets left="145.0" top="10.0" />
+                        <Insets top="8.0" />
                     </GridPane.margin>
                 </Line>
                 <Separator prefWidth="200.0" GridPane.columnSpan="7" GridPane.rowIndex="15" GridPane.valignment="BOTTOM" />
-                <Label layoutX="40.0" layoutY="1090.0" text="9. MJESTO STALNOG STANOVANJA MAJKE U VRIJEME KADA JE LICE ROĐENO?" GridPane.columnSpan="4" GridPane.rowIndex="16" GridPane.valignment="TOP">
+                <Label layoutX="40.0" layoutY="1090.0" text="9. MJESTO STALNOG STANOVANjA MAJKE U VRIJEME KADA JE LICE ROĐENO?" GridPane.columnSpan="4" GridPane.rowIndex="16" GridPane.valignment="TOP">
                     <font>
                         <Font name="System Bold" size="12.0" />
                     </font>
@@ -569,7 +569,7 @@
                         <ToggleGroup fx:id="grupa8" />
                     </toggleGroup>
                 </RadioButton>
-                <RadioButton fx:id="pitanje9Button2" layoutX="200.0" layoutY="1193.0" mnemonicParsing="false" text="U drugoj državi (naziv druge države):" toggleGroup="$grupa8" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="16" GridPane.valignment="BOTTOM">
+                <RadioButton fx:id="pitanje9Button2" layoutX="200.0" layoutY="1193.0" mnemonicParsing="false" text="U drugoj državi - naziv druge države:" toggleGroup="$grupa8" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="16" GridPane.valignment="BOTTOM">
                     <GridPane.margin>
                         <Insets bottom="20.0" />
                     </GridPane.margin>
@@ -599,24 +599,24 @@
                         <Insets bottom="60.0" left="120.0" />
                     </GridPane.margin>
                 </TextField>
-                <Line endX="346.0" endY="-116.71063995361328" layoutY="1267.0" startX="370.29290771484375" startY="-138.4888153076172" GridPane.columnIndex="2" GridPane.rowIndex="16">
+                <Line endX="346.0" endY="-116.71063995361328" layoutY="1267.0" startX="370.29290771484375" startY="-138.4888153076172" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="16">
                     <GridPane.margin>
-                        <Insets bottom="30.0" left="145.0" />
+                        <Insets bottom="30.0" />
                     </GridPane.margin>
                 </Line>
-                <Line endX="-72.70710754394531" endY="17.292892456054688" layoutX="418.0" layoutY="1136.0" startX="-45.414215087890625" startY="30.585784912109375" GridPane.columnIndex="2" GridPane.rowIndex="16">
+                <Line endX="-72.70710754394531" endY="17.292892456054688" layoutX="418.0" layoutY="1136.0" startX="-45.414215087890625" startY="30.585784912109375" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="16">
                     <GridPane.margin>
-                        <Insets left="145.0" top="10.0" />
+                        <Insets top="8.0" />
                     </GridPane.margin>
                 </Line>
                 <Separator prefWidth="200.0" GridPane.columnSpan="7" GridPane.rowIndex="16" GridPane.valignment="BOTTOM" />
                 <Separator prefWidth="200.0" GridPane.columnSpan="7" GridPane.rowIndex="17" GridPane.valignment="BOTTOM" />
-                <Label text="NA PITANJA 10. I 11. NE ODGOVARAJU LICA PRIVREMENO PRISUTNA U MJESTU POPISA." GridPane.columnIndex="2" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="17">
+                <Label text="NA PITANjA 10. I 11. NE ODGOVARAJU LICA PRIVREMENO PRISUTNA U MJESTU POPISA." GridPane.columnIndex="2" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="17">
                     <font>
                         <Font name="System Bold" size="12.0" />
                     </font>
                 </Label>
-                <Label layoutX="40.0" layoutY="510.0" text="10. DA LI SE LICE DOSELILO U MJESTO POPISA IZ DRUGOG NASELJENOG MJESTA U BIH ILI IZ DRUGE DRŽAVE?" GridPane.columnSpan="5" GridPane.rowIndex="18" GridPane.valignment="TOP">
+                <Label layoutX="40.0" layoutY="510.0" text="10. DA LI SE LICE DOSELILO U MJESTO POPISA IZ DRUGOG NASELjENOG MJESTA U BIH ILI IZ DRUGE DRŽAVE?" GridPane.columnSpan="5" GridPane.rowIndex="18" GridPane.valignment="TOP">
                     <font>
                         <Font name="System Bold" size="12.0" />
                     </font>
@@ -671,7 +671,7 @@
                         <ToggleGroup fx:id="grupa10" />
                     </toggleGroup>
                 </RadioButton>
-                <RadioButton fx:id="pitanje11Button2" layoutX="200.0" layoutY="1343.0" mnemonicParsing="false" text="Iz druge države (naziv druge države):" toggleGroup="$grupa10" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="19" GridPane.valignment="BOTTOM">
+                <RadioButton fx:id="pitanje11Button2" layoutX="200.0" layoutY="1343.0" mnemonicParsing="false" text="Iz druge države - naziv druge države:" toggleGroup="$grupa10" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="19" GridPane.valignment="BOTTOM">
                     <GridPane.margin>
                         <Insets bottom="50.0" />
                     </GridPane.margin>
@@ -701,14 +701,14 @@
                         <Insets bottom="85.0" left="120.0" />
                     </GridPane.margin>
                 </TextField>
-                <Line endX="346.0" endY="-116.71063995361328" layoutY="1417.0" startX="370.29290771484375" startY="-138.4888153076172" GridPane.columnIndex="2" GridPane.rowIndex="19">
+                <Line endX="346.0" endY="-116.71063995361328" layoutY="1417.0" startX="370.29290771484375" startY="-138.4888153076172" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="19">
                     <GridPane.margin>
-                        <Insets bottom="55.0" left="145.0" />
+                        <Insets bottom="55.0" />
                     </GridPane.margin>
                 </Line>
-                <Line endX="-72.70710754394531" endY="17.292892456054688" layoutX="418.0" layoutY="1286.0" startX="-45.414215087890625" startY="30.585784912109375" GridPane.columnIndex="2" GridPane.rowIndex="19">
+                <Line endX="-72.70710754394531" endY="17.292892456054688" layoutX="418.0" layoutY="1286.0" startX="-45.414215087890625" startY="30.585784912109375" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="19">
                     <GridPane.margin>
-                        <Insets bottom="25.0" left="145.0" top="10.0" />
+                        <Insets bottom="25.0" top="8.0" />
                     </GridPane.margin>
                 </Line>
                 <Separator prefWidth="200.0" GridPane.columnSpan="7" GridPane.rowIndex="18" GridPane.valignment="BOTTOM" />
@@ -730,7 +730,7 @@
                         <Insets left="30.0" top="10.0" />
                     </GridPane.margin>
                 </Label>
-                <RadioButton mnemonicParsing="false" text="Da (država u kojoj je lice živjelo):" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="20">
+                <RadioButton mnemonicParsing="false" text="Da - država u kojoj je lice živjelo:" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="20">
                     <GridPane.margin>
                         <Insets bottom="60.0" />
                     </GridPane.margin>
@@ -791,7 +791,7 @@
                         <ToggleGroup fx:id="grupa12" />
                     </toggleGroup>
                 </RadioButton>
-                <RadioButton fx:id="pitanje13Button3" layoutX="200.0" layoutY="1343.0" mnemonicParsing="false" text="U drugoj državi (naziv druge države):" toggleGroup="$grupa12" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="21" GridPane.valignment="BOTTOM">
+                <RadioButton fx:id="pitanje13Button3" layoutX="200.0" layoutY="1343.0" mnemonicParsing="false" text="U drugoj državi - naziv druge države:" toggleGroup="$grupa12" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="21" GridPane.valignment="BOTTOM">
                     <GridPane.margin>
                         <Insets bottom="13.0" />
                     </GridPane.margin>
@@ -821,14 +821,14 @@
                         <Insets bottom="10.0" left="120.0" />
                     </GridPane.margin>
                 </TextField>
-                <Line endX="347.7574462890625" endY="-121.6959228515625" layoutY="1417.0" startX="370.29290771484375" startY="-138.4888153076172" GridPane.columnIndex="2" GridPane.rowIndex="21">
+                <Line endX="347.7574462890625" endY="-121.6959228515625" layoutY="1417.0" startX="370.29290771484375" startY="-138.4888153076172" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="21">
                     <GridPane.margin>
-                        <Insets left="148.0" top="15.0" />
+                        <Insets top="15.0" />
                     </GridPane.margin>
                 </Line>
-                <Line endX="-72.70710754394531" endY="17.292892456054688" layoutX="418.0" layoutY="1286.0" startX="-54.414215087890625" startY="29.585784912109375" GridPane.columnIndex="2" GridPane.rowIndex="21">
+                <Line endX="-72.70710754394531" endY="17.292892456054688" layoutX="418.0" layoutY="1286.0" startX="-54.414215087890625" startY="29.585784912109375" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="21">
                     <GridPane.margin>
-                        <Insets bottom="3.0" left="148.0" top="50.0" />
+                        <Insets bottom="3.0" top="48.0" />
                     </GridPane.margin>
                 </Line>
                 <RadioButton fx:id="pitanje13Button1" mnemonicParsing="false" text="U naseljenom mjestu gdje i danas živi" toggleGroup="$grupa12" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="21">
@@ -969,7 +969,7 @@
                         <Insets left="100.0" />
                     </GridPane.margin>
                 </Label>
-                <Label layoutX="40.0" layoutY="510.0" text="17. DA LI SE LICE VRATILO U NASELJENO MJESTO IZ KOGA JE RASELJENO?" GridPane.columnSpan="4" GridPane.rowIndex="25" GridPane.valignment="TOP">
+                <Label layoutX="40.0" layoutY="510.0" text="17. DA LI SE LICE VRATILO U NASELjENO MJESTO IZ KOGA JE RASELjENO?" GridPane.columnSpan="4" GridPane.rowIndex="25" GridPane.valignment="TOP">
                     <font>
                         <Font name="System Bold" size="12.0" />
                     </font>
@@ -1020,7 +1020,7 @@
                     </GridPane.margin>
                 </RadioButton>
                 <Separator prefWidth="200.0" GridPane.columnSpan="7" GridPane.rowIndex="25" GridPane.valignment="BOTTOM" />
-                <Label layoutX="40.0" layoutY="2410.0" text="18. DA LI LICE JOŠ UVIJEK IMA FORMALNO-PRAVNI STATUS RASELJENOG LICA U BIH?" GridPane.columnSpan="4" GridPane.rowIndex="26" GridPane.valignment="TOP">
+                <Label layoutX="40.0" layoutY="2410.0" text="18. DA LI LICE JOŠ UVIJEK IMA FORMALNO-PRAVNI STATUS RASELjENOG LICA U BIH?" GridPane.columnSpan="4" GridPane.rowIndex="26" GridPane.valignment="TOP">
                     <font>
                         <Font name="System Bold" size="12.0" />
                     </font>
@@ -1038,7 +1038,7 @@
                     </GridPane.margin>
                 </RadioButton>
                 <Separator prefWidth="200.0" GridPane.columnSpan="7" GridPane.rowIndex="26" GridPane.valignment="BOTTOM" />
-                <Label text="19. DRŽAVLJANSTVO DRŽAVE?" GridPane.columnSpan="3" GridPane.rowIndex="27" GridPane.valignment="TOP">
+                <Label text="19. DRŽAVLjANSTVO DRŽAVE?" GridPane.columnSpan="3" GridPane.rowIndex="27" GridPane.valignment="TOP">
                     <font>
                         <Font name="System Bold" size="12.0" />
                     </font>
@@ -1089,7 +1089,7 @@
                         <Insets right="43.0" top="50.0" />
                     </GridPane.margin>
                 </Line>
-                <Label text="20. DRŽAVLJANSTVO ENTITETA?" GridPane.columnSpan="3" GridPane.rowIndex="28" GridPane.valignment="TOP">
+                <Label text="20. DRŽAVLjANSTVO ENTITETA?" GridPane.columnSpan="3" GridPane.rowIndex="28" GridPane.valignment="TOP">
                     <font>
                         <Font name="System Bold" size="12.0" />
                     </font>
@@ -1117,7 +1117,7 @@
                     </GridPane.margin>
                 </RadioButton>
                 <Separator prefWidth="200.0" GridPane.columnSpan="7" GridPane.rowIndex="28" GridPane.valignment="BOTTOM" />
-                <Label text="21. ZAKONSKO BRAČNO STANJE?" GridPane.columnSpan="3" GridPane.rowIndex="29" GridPane.valignment="TOP">
+                <Label text="21. ZAKONSKO BRAČNO STANjE?" GridPane.columnSpan="3" GridPane.rowIndex="29" GridPane.valignment="TOP">
                     <font>
                         <Font name="System Bold" size="12.0" />
                     </font>
@@ -1171,7 +1171,7 @@
                     </GridPane.margin>
                 </RadioButton>
                 <Separator prefWidth="200.0" GridPane.columnSpan="7" GridPane.rowIndex="30" GridPane.valignment="BOTTOM" />
-                <Label text="23. UKUPAN BROJ ŽIVOROĐENE DJECE UKLJUČUJUĆI I ONU KOJA NISU ŽIVA?" GridPane.columnSpan="4" GridPane.rowIndex="31" GridPane.valignment="TOP">
+                <Label text="23. UKUPAN BROJ ŽIVOROĐENE DJECE UKLjUČUJUĆI I ONU KOJA NISU ŽIVA?" GridPane.columnSpan="4" GridPane.rowIndex="31" GridPane.valignment="TOP">
                     <font>
                         <Font name="System Bold" size="12.0" />
                     </font>
@@ -1185,7 +1185,7 @@
                     </GridPane.margin>
                 </TextField>
                 <Separator prefWidth="200.0" GridPane.columnSpan="7" GridPane.rowIndex="31" GridPane.valignment="BOTTOM" />
-                <Label text="24. DATUMI ROĐENJA ŽIVOROĐENE DJECE?" GridPane.columnSpan="3" GridPane.rowIndex="32" GridPane.valignment="TOP">
+                <Label text="24. DATUMI ROĐENjA ŽIVOROĐENE DJECE?" GridPane.columnSpan="3" GridPane.rowIndex="32" GridPane.valignment="TOP">
                     <font>
                         <Font name="System Bold" size="12.0" />
                     </font>
@@ -1224,7 +1224,7 @@
                     </GridPane.margin>
                 </DatePicker>
                 <Separator prefWidth="200.0" GridPane.columnSpan="7" GridPane.rowIndex="32" GridPane.valignment="BOTTOM" />
-                <Label text="25. ETNIČKO/NACIONALNO IZJAŠNJAVANJE?" GridPane.columnSpan="3" GridPane.rowIndex="33" GridPane.valignment="TOP">
+                <Label text="25. ETNIČKO/NACIONALNO IZJAŠNjAVANjE?" GridPane.columnSpan="3" GridPane.rowIndex="33" GridPane.valignment="TOP">
                     <font>
                         <Font name="System Bold" size="12.0" />
                     </font>
@@ -1265,7 +1265,7 @@
                         <Insets bottom="15.0" />
                     </GridPane.margin>
                 </RadioButton>
-                <Label text="26. IZJAŠNJAVANJE O VJEROISPOVJESTI?" GridPane.columnSpan="3" GridPane.rowIndex="34" GridPane.valignment="TOP">
+                <Label text="26. IZJAŠNjAVANjE O VJEROISPOVJESTI?" GridPane.columnSpan="3" GridPane.rowIndex="34" GridPane.valignment="TOP">
                     <GridPane.margin>
                         <Insets left="30.0" top="10.0" />
                     </GridPane.margin>
@@ -1318,7 +1318,7 @@
                         <Insets bottom="30.0" left="70.0" right="60.0" />
                     </GridPane.margin>
                 </TextField>
-                <Label text="27. MATERNJI JEZIK?" GridPane.columnSpan="2" GridPane.rowIndex="35" GridPane.valignment="TOP">
+                <Label text="27. MATERNjI JEZIK?" GridPane.columnSpan="2" GridPane.rowIndex="35" GridPane.valignment="TOP">
                     <font>
                         <Font name="System Bold" size="12.0" />
                     </font>
@@ -1351,7 +1351,7 @@
                         <Insets bottom="8.0" left="70.0" right="60.0" />
                     </GridPane.margin>
                 </TextField>
-                <Label text="28. KOJE AKTIVNOSTI LICE ZNA OBAVLJATI NA RAČUNARU?" GridPane.columnSpan="4" GridPane.rowIndex="36" GridPane.valignment="TOP">
+                <Label text="28. KOJE AKTIVNOSTI LICE ZNA OBAVLjATI NA RAČUNARU?" GridPane.columnSpan="4" GridPane.rowIndex="36" GridPane.valignment="TOP">
                     <font>
                         <Font name="System Bold" size="12.0" />
                     </font>
@@ -1401,7 +1401,7 @@
                         <ToggleGroup fx:id="grupa25" />
                     </toggleGroup>
                 </RadioButton>
-                <RadioButton mnemonicParsing="false" text="Nepotpuno osnovno obrazovanje (upisati najviši razred koji je lice završilo)" toggleGroup="$grupa25" GridPane.columnIndex="2" GridPane.columnSpan="3" GridPane.rowIndex="37">
+                <RadioButton mnemonicParsing="false" text="Nepotpuno osnovno obrazovanje - upisati najviši razred koji je lice završilo" toggleGroup="$grupa25" GridPane.columnIndex="2" GridPane.columnSpan="3" GridPane.rowIndex="37">
                     <GridPane.margin>
                         <Insets bottom="125.0" left="40.0" />
                     </GridPane.margin>
@@ -1656,7 +1656,7 @@
                         <Font name="System Bold" size="12.0" />
                     </font>
                 </Label>
-                <Label text="30. STEČENO ZVANJE?" GridPane.columnSpan="2" GridPane.rowIndex="38" GridPane.valignment="TOP">
+                <Label text="30. STEČENO ZVANjE?" GridPane.columnSpan="2" GridPane.rowIndex="38" GridPane.valignment="TOP">
                     <GridPane.margin>
                         <Insets left="30.0" top="10.0" />
                     </GridPane.margin>
@@ -1692,7 +1692,7 @@
                         <Insets bottom="10.0" />
                     </GridPane.margin>
                 </RadioButton>
-                <Label text="PROGRAM PO BOLONJI:" GridPane.columnIndex="2" GridPane.rowIndex="38">
+                <Label text="PROGRAM PO BOLONjI:" GridPane.columnIndex="2" GridPane.rowIndex="38">
                     <GridPane.margin>
                         <Insets top="70.0" />
                     </GridPane.margin>
@@ -1827,7 +1827,7 @@
                 </RadioButton>
                 <Separator prefWidth="200.0" GridPane.columnSpan="7" GridPane.rowIndex="39" GridPane.valignment="BOTTOM" />
                 <Separator prefWidth="200.0" GridPane.columnSpan="7" GridPane.rowIndex="40" GridPane.valignment="BOTTOM" />
-                <Label text="33. DA LI JE LICE TOKOM PRETHODNE SEDMICE RADILO/OBAVLJALO AKTIVNOST BAREM JEDAN ČAS, DA BI STEKLO SREDSTVA ZA ŽIVOT ILI JE BILO NEPLAĆENI POMAŽUĆI ČLAN?" GridPane.columnSpan="7" GridPane.rowIndex="41" GridPane.valignment="TOP">
+                <Label text="33. DA LI JE LICE TOKOM PRETHODNE SEDMICE RADILO/OBAVLjALO AKTIVNOST BAREM JEDAN ČAS, DA BI STEKLO SREDSTVA ZA ŽIVOT ILI JE BILO NEPLAĆENI POMAŽUĆI ČLAN?" GridPane.columnSpan="7" GridPane.rowIndex="41" GridPane.valignment="TOP">
                     <font>
                         <Font name="System Bold" size="12.0" />
                     </font>
@@ -2158,7 +2158,7 @@
                         <ToggleGroup fx:id="grupa37" />
                     </toggleGroup>
                 </RadioButton>
-                <RadioButton fx:id="pitanje41Button2" mnemonicParsing="false" text="U drugoj državi (naziv druge države):" toggleGroup="$grupa37" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="49" GridPane.valignment="BOTTOM">
+                <RadioButton fx:id="pitanje41Button2" mnemonicParsing="false" text="U drugoj državi - naziv druge države:" toggleGroup="$grupa37" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="49" GridPane.valignment="BOTTOM">
                     <GridPane.margin>
                         <Insets bottom="20.0" />
                     </GridPane.margin>
@@ -2188,18 +2188,18 @@
                         <Insets bottom="15.0" left="120.0" />
                     </GridPane.margin>
                 </TextField>
-                <Line endX="346.0" endY="-116.71063995361328" startX="370.29290771484375" startY="-138.4888153076172" GridPane.columnIndex="2" GridPane.rowIndex="49">
+                <Line endX="346.0" endY="-116.71063995361328" startX="370.29290771484375" startY="-138.4888153076172" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="49">
                     <GridPane.margin>
-                        <Insets bottom="30.0" left="145.0" />
+                        <Insets bottom="30.0" />
                     </GridPane.margin>
                 </Line>
-                <Line endX="-72.70710754394531" endY="17.292892456054688" startX="-45.414215087890625" startY="30.585784912109375" GridPane.columnIndex="2" GridPane.rowIndex="49">
+                <Line endX="-72.70710754394531" endY="17.292892456054688" startX="-45.414215087890625" startY="30.585784912109375" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="49">
                     <GridPane.margin>
-                        <Insets left="145.0" top="10.0" />
+                        <Insets top="8.0" />
                     </GridPane.margin>
                 </Line>
                 <Separator prefWidth="200.0" GridPane.columnSpan="7" GridPane.rowIndex="49" GridPane.valignment="BOTTOM" />
-                <Label text="42. SREDSTVO SVAKODNEVNOG PUTOVANJA NA POSAO/U ŠKOLU?" GridPane.columnSpan="4" GridPane.rowIndex="50" GridPane.valignment="TOP">
+                <Label text="42. SREDSTVO SVAKODNEVNOG PUTOVANjA NA POSAO/U ŠKOLU?" GridPane.columnSpan="4" GridPane.rowIndex="50" GridPane.valignment="TOP">
                     <font>
                         <Font name="System Bold" size="12.0" />
                     </font>
@@ -2258,7 +2258,7 @@
                     </GridPane.margin>
                 </CheckBox>
                 <Separator prefWidth="200.0" GridPane.columnSpan="7" GridPane.rowIndex="50" GridPane.valignment="BOTTOM" />
-                <Label text="43. GLAVNI IZVOR SREDSTAVA ZA ŽIVOT U POSLJEDNJIH 12 MJESECI?" GridPane.columnSpan="4" GridPane.rowIndex="51" GridPane.valignment="TOP">
+                <Label text="43. GLAVNI IZVOR SREDSTAVA ZA ŽIVOT U POSLjEDNjIH 12 MJESECI?" GridPane.columnSpan="4" GridPane.rowIndex="51" GridPane.valignment="TOP">
                     <font>
                         <Font name="System Bold" size="12.0" />
                     </font>
@@ -2289,7 +2289,7 @@
                         <Insets bottom="80.0" />
                     </GridPane.margin>
                 </RadioButton>
-                <RadioButton mnemonicParsing="false" text="Novčana pomoć za lica koja su ostala bez posla (zbog bankrota, tehnološki višak i sl.)" toggleGroup="$grupa38" GridPane.columnIndex="2" GridPane.columnSpan="4" GridPane.rowIndex="51">
+                <RadioButton mnemonicParsing="false" text="Novčana pomoć za lica koja su ostala bez posla - zbog bankrota, tehnološki višak i sl." toggleGroup="$grupa38" GridPane.columnIndex="2" GridPane.columnSpan="4" GridPane.rowIndex="51">
                     <GridPane.margin>
                         <Insets bottom="30.0" />
                     </GridPane.margin>
@@ -2299,7 +2299,7 @@
                         <Insets top="20.0" />
                     </GridPane.margin>
                 </RadioButton>
-                <RadioButton mnemonicParsing="false" text="Druge beneficije ili primanja (stipendija, studentski ili đački krediti, krediti, alimentacija i sl.)" toggleGroup="$grupa38" GridPane.columnIndex="2" GridPane.columnSpan="4" GridPane.rowIndex="51">
+                <RadioButton mnemonicParsing="false" text="Druge beneficije ili primanja - stipendija, studentski ili đački krediti, krediti, alimentacija i sl." toggleGroup="$grupa38" GridPane.columnIndex="2" GridPane.columnSpan="4" GridPane.rowIndex="51">
                     <GridPane.margin>
                         <Insets top="70.0" />
                     </GridPane.margin>
@@ -2348,7 +2348,7 @@
                         <Font name="System Bold" size="12.0" />
                     </font>
                 </Label>
-                <Label text="44. IZDRŽAVALAC/IZDRŽAVATELJICA LICA KOJE SE POPISUJE?" GridPane.columnSpan="4" GridPane.rowIndex="52" GridPane.valignment="TOP">
+                <Label text="44. IZDRŽAVALAC/IZDRŽAVATELjICA LICA KOJE SE POPISUJE?" GridPane.columnSpan="4" GridPane.rowIndex="52" GridPane.valignment="TOP">
                     <font>
                         <Font name="System Bold" size="12.0" />
                     </font>
@@ -2386,7 +2386,7 @@
                     </GridPane.margin>
                 </RadioButton>
                 <Separator prefWidth="200.0" GridPane.columnSpan="7" GridPane.rowIndex="52" GridPane.valignment="BOTTOM" />
-                <Label text="46. DA LI LICE SA NAVEDENIM POTEŠKOĆAMA KORISTI POMOĆ DRUGOG LICA (ODGOVARAJU SAMO LICA SA POTEŠKOĆAMA)?" GridPane.columnSpan="6" GridPane.rowIndex="54" GridPane.valignment="TOP">
+                <Label text="46. DA LI LICE SA NAVEDENIM POTEŠKOĆAMA KORISTI POMOĆ DRUGOG LICA?" GridPane.columnSpan="6" GridPane.rowIndex="54" GridPane.valignment="TOP">
                     <font>
                         <Font name="System Bold" size="12.0" />
                     </font>
@@ -2403,7 +2403,7 @@
                         <Insets bottom="10.0" />
                     </GridPane.margin>
                 </RadioButton>
-                <Label text="45. DA LI LICE IMA POTEŠKOĆE PRILIKOM OBAVLJANJA SVAKODNEVNIH AKTIVNOSTI KOD KUĆE, NA POSLU ILI U ŠKOLI?" GridPane.columnSpan="6" GridPane.rowIndex="53" GridPane.valignment="TOP">
+                <Label text="45. DA LI LICE IMA POTEŠKOĆE PRILIKOM OBAVLjANjA SVAKODNEVNIH AKTIVNOSTI KOD KUĆE, NA POSLU ILI U ŠKOLI?" GridPane.columnSpan="6" GridPane.rowIndex="53" GridPane.valignment="TOP">
                     <GridPane.margin>
                         <Insets left="30.0" top="10.0" />
                     </GridPane.margin>
@@ -2432,7 +2432,7 @@
                     </GridPane.margin>
                 </Label>
                 <Label text="Hod ili penjanje uz stepenice" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="53" />
-                <Label text="Komunikacija (sporazumijevanje sa drugima)" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="53" GridPane.valignment="BOTTOM">
+                <Label text="Komunikacija - sporazumijevanje sa drugima" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="53" GridPane.valignment="BOTTOM">
                     <GridPane.margin>
                         <Insets bottom="10.0" />
                     </GridPane.margin>
@@ -2652,7 +2652,7 @@
                         <Insets bottom="15.0" left="70.0" />
                     </GridPane.margin>
                 </RadioButton>
-            <Label text="DATUM ROĐENJA:" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="5" />
+            <Label text="DATUM ROĐENjA:" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="5" />
             <DatePicker GridPane.columnIndex="2" GridPane.rowIndex="5">
                <GridPane.margin>
                   <Insets left="10.0" />

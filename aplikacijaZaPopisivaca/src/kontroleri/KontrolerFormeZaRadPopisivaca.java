@@ -13,6 +13,7 @@ import java.io.IOException;
 public class KontrolerFormeZaRadPopisivaca {
     static Stage popisStanovnikaStage;
     static Stage popisDomacinstvaStage;
+    static Stage promjenaPismaStage;
 
     @FXML
     private void popisiStanovnikaButtonAction() {
@@ -58,9 +59,22 @@ public class KontrolerFormeZaRadPopisivaca {
 
     @FXML
     private void promijeniJezikButonAction() {
+    	
     }
 
     @FXML
     private void promijeniPismoButtonAction() {
+    	try {
+            promjenaPismaStage = new Stage();
+            promjenaPismaStage.initModality(Modality.APPLICATION_MODAL);
+
+            Parent root = FXMLLoader.load(getClass().getResource("/forme" + File.separator + "FormaZaOdabirPisma.fxml"));
+            promjenaPismaStage.setScene(new Scene(root,450,230));
+            promjenaPismaStage.setResizable(false);
+            promjenaPismaStage.show();
+        }
+        catch(IOException e){
+            e.printStackTrace();
+        }
     }
 }
