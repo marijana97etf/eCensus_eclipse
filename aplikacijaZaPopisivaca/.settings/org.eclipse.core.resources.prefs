@@ -5,4 +5,5 @@ encoding//src/kontroleri/KontrolerFormeZaPopisivanjeDomacinstva.java=UTF-8
 encoding//src/kontroleri/KontrolerFormeZaPopisivanjeStanovnika.java=UTF-8
 encoding//src/kontroleri/KontrolerFormeZaPopunjavanjeSpiskaLica.java=UTF-8
 encoding//src/kontroleri/KontrolerFormeZaPrijavu.java=UTF-8
-encoding//src/kontroleri/KontrolerZaPromjenuPisma.java=UTF-8
+encoding//src/kontroleri/KontrolerZaPromjenuJezikaIPisma.java=UTF-8
+encoding//src/util/PromjenaPisma.java=UTF-8

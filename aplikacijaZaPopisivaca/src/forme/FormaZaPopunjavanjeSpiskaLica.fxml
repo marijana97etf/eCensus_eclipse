@@ -30,42 +30,42 @@
                 <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Label text="Ime" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                  <Label text="Име" GridPane.halignment="CENTER" GridPane.rowIndex="1">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Label>
                   <TextField fx:id="imeTextField" GridPane.rowIndex="2" />
-                  <Label text="JMBG" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                  <Label text="ЈМБГ" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Label>
                   <TextField fx:id="JMBGTextField" GridPane.columnIndex="2" GridPane.rowIndex="2" />
                   <TextField fx:id="prezimeTextField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                  <Label text="Prezime" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                  <Label text="Презиме" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Label>
-                  <ComboBox fx:id="odnosComboBox" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="200.0" promptText="Odaberi tip odnosa..." GridPane.columnIndex="3" GridPane.rowIndex="2" />
-                  <Label prefHeight="38.0" prefWidth="120.0" text="Odnos prema nosiocu domaćinstva" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                  <ComboBox fx:id="odnosComboBox" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="200.0" promptText="Одабери тип односа..." GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                  <Label prefHeight="38.0" prefWidth="120.0" text="Однос према носиоцу домаћинства" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Label>
-                  <Label text="Redni br. porodice" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                  <Label text="Редни бр. породице" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="1">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Label>
                   <TextField fx:id="redniBrojPorodiceTextField" GridPane.columnIndex="4" GridPane.rowIndex="2" />
-                  <Label text="Položaj člana u porodici" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                  <Label text="Положај члана у породици" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="1">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Label>
-                  <ComboBox fx:id="polozajComboBox" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="200.0" promptText="Odaberi položaj..." GridPane.columnIndex="5" GridPane.rowIndex="2" />
+                  <ComboBox fx:id="pComboBox" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="200.0" promptText="Одабери положај..." GridPane.columnIndex="5" GridPane.rowIndex="2" />
                </children>
             </GridPane>
             <GridPane>
@@ -78,8 +78,8 @@
                   <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" minHeight="-Infinity" mnemonicParsing="false" onAction="#dodajVrstu" prefHeight="30.0" prefWidth="106.0" text="Dodaj osobu..." GridPane.halignment="CENTER" GridPane.rowIndex="1" />
-                  <Button mnemonicParsing="false" prefHeight="33.0" prefWidth="182.0" text="Sačuvaj i vrati se na popisnicu" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+                  <Button alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" minHeight="-Infinity" mnemonicParsing="false" onAction="#dodajVrstu" prefHeight="30.0" prefWidth="106.0" text="Додај особу..." GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+                  <Button mnemonicParsing="false" prefHeight="33.0" prefWidth="182.0" text="Сачувај и врати се на пописницу" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
                </children>
             </GridPane>
          </children>

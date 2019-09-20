@@ -5,7 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
-public class UspjesnaPromjenaPismaKontroler {
+public class UspjesnaPromjenaJezikaIPismaKontroler {
 	
 	@FXML
 	private Button closeButton;

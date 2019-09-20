@@ -16,6 +16,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
+import main.Main;
 import model.ClanDomacinstva;
 
 public class KontrolerFormeZaPopunjavanjeSpiskaLica {
@@ -34,7 +35,7 @@ public class KontrolerFormeZaPopunjavanjeSpiskaLica {
     @FXML
     private TextField redniBrojPorodiceTextField;
     @FXML
-    private ComboBox<String> polozajComboBox;
+    private ComboBox<String> pComboBox;
     
     private int row = 3;
     
@@ -44,7 +45,7 @@ public class KontrolerFormeZaPopunjavanjeSpiskaLica {
     
     private void init() {
     	inicijalizujOdnosComboBox(odnosComboBox);
-    	inicijalizujPolozajComboBox(polozajComboBox);
+    	inicijalizujPolozajComboBox(pComboBox);
     	
     	poljaZaPopunjavanje = new HashMap<Integer, List<Node>>();
 		List<Node> list = new ArrayList<>();
@@ -53,42 +54,72 @@ public class KontrolerFormeZaPopunjavanjeSpiskaLica {
 		list.add(JMBGTextField);
 		list.add(odnosComboBox);
 		list.add(redniBrojPorodiceTextField);
-		list.add(polozajComboBox);
+		list.add(pComboBox);
 		poljaZaPopunjavanje.put(1, list);
     }
     
     private void inicijalizujOdnosComboBox(ComboBox comboBox) {
     	List<String> odnosi = new ArrayList<>();
-        odnosi.add("Nosilac domaćinstva");
-        odnosi.add("Supruga/suprug");
-        odnosi.add("Partnerka/partner u neformalnoj zajednici");
-        odnosi.add("Kćerka/sin/usvojeno dijete/pastorka/pastorak");
-        odnosi.add("Majka/otac");
-        odnosi.add("Svekrva/svekar/tašta/tast");
-        odnosi.add("Unuka/unuk");
-        odnosi.add("Snaha/zet");
-        odnosi.add("Baka/deda");
-        odnosi.add("Sestra/brat");
-        odnosi.add("Ostala rodbina");
-        odnosi.add("Nije u srodstvu");
-        odnosi.add("Nije član domaćinstva (privremeno prisutno lice)");
+    	if(!"српски".equals(Main.trenutniJezik)) {
+	        odnosi.add("Nosilac domaćinstva");
+	        odnosi.add("Supruga/suprug");
+	        odnosi.add("Partnerka/partner u neformalnoj zajednici");
+	        odnosi.add("Kćerka/sin/usvojeno dijete/pastorka/pastorak");
+	        odnosi.add("Majka/otac");
+	        odnosi.add("Svekrva/svekar/tašta/tast");
+	        odnosi.add("Unuka/unuk");
+	        odnosi.add("Snaha/zet");
+	        odnosi.add("Baka/deda");
+	        odnosi.add("Sestra/brat");
+	        odnosi.add("Ostala rodbina");
+	        odnosi.add("Nije u srodstvu");
+	        odnosi.add("Nije član domaćinstva (privremeno prisutno lice)");
+    	}
+    	else {
+    		odnosi.add("Носилац домаћинства");
+	        odnosi.add("Супруга/супруг");
+	        odnosi.add("Партнерка/партнер у неформалној заједници");
+	        odnosi.add("Кћерка/син/усвојено дијете/пасторка/пасторак");
+	        odnosi.add("Мајка/отац");
+	        odnosi.add("Свекрва/свекар/ташта/таст");
+	        odnosi.add("Унука/унук");
+	        odnosi.add("Снаха/зет");
+	        odnosi.add("Бака/деда");
+	        odnosi.add("Сестра/брат");
+	        odnosi.add("Остала родбина");
+	        odnosi.add("Није у сродству");
+	        odnosi.add("Није члан домаћинства (привремено присутно лице)");
+    	}
         ObservableList observableList = FXCollections.observableList(odnosi);
         odnosComboBox.setItems(observableList);
     }
     
     private void inicijalizujPolozajComboBox(ComboBox comboBox) {
     	List<String> polozaji = new ArrayList<>();
-        polozaji.add("Supruga/suprug");
-        polozaji.add("Partnerka/partner u neformalnoj zajednici");
-        polozaji.add("Zajedničko dijete");
-        polozaji.add("Sama majka sa djetetom/djecom");
-        polozaji.add("Sam otac sa djetetom/djecom");
-        polozaji.add("Dijete koje živi samo sa jednim roditeljem");
-        polozaji.add("Dijete samo supruge ili partnerke");
-        polozaji.add("Dijete samo supruga ili partnera");
-        polozaji.add("Ne pripada nijednoj od porodica");
+	    	if(!"српски".equals(Main.trenutniJezik)) {
+	        polozaji.add("Supruga/suprug");
+	        polozaji.add("Partnerka/partner u neformalnoj zajednici");
+	        polozaji.add("Zajedničko dijete");
+	        polozaji.add("Sama majka sa djetetom/djecom");
+	        polozaji.add("Sam otac sa djetetom/djecom");
+	        polozaji.add("Dijete koje živi samo sa jednim roditeljem");
+	        polozaji.add("Dijete samo supruge ili partnerke");
+	        polozaji.add("Dijete samo supruga ili partnera");
+	        polozaji.add("Ne pripada nijednoj od porodica");
+	    	}
+	    	else {
+	    		polozaji.add("Супруга/супруг");
+		        polozaji.add("Партнерка/партнер у неформалној заједници");
+		        polozaji.add("Заједничко дијете");
+		        polozaji.add("Сама мајка са дјететом/дјецом");
+		        polozaji.add("Сам отац са дјететом/дјецом");
+		        polozaji.add("Дијете које живи само са једним родитељем");
+		        polozaji.add("Дијете само супруге или партнерке");
+		        polozaji.add("Дијете само супруга или партнера");
+		        polozaji.add("Не припада ни једној од породица");
+	    	}
         ObservableList observableList = FXCollections.observableList(polozaji);
-        polozajComboBox.setItems(observableList);
+        pComboBox.setItems(observableList);
     }
 
     @FXML
@@ -100,13 +131,19 @@ public class KontrolerFormeZaPopunjavanjeSpiskaLica {
         odnosPremaNosiocuDomacinstvaComboBox.setMinWidth(200);
         odnosPremaNosiocuDomacinstvaComboBox.setPrefWidth(200);
         odnosPremaNosiocuDomacinstvaComboBox.setMaxWidth(200);
-        odnosPremaNosiocuDomacinstvaComboBox.setPromptText("Odaberi tip odnosa...");
+        if(!"српски".equals(Main.trenutniJezik))
+        	odnosPremaNosiocuDomacinstvaComboBox.setPromptText("Odaberi tip odnosa...");
+        else
+        	odnosPremaNosiocuDomacinstvaComboBox.setPromptText("Одабери тип односа...");
         TextField redniBrojPorodiceTextField = new TextField();
         ComboBox<String> polozajUPorodiciComboBox = new ComboBox<>();
         polozajUPorodiciComboBox.setMinWidth(200);
         polozajUPorodiciComboBox.setPrefWidth(200);
         polozajUPorodiciComboBox.setMaxWidth(200);
-        polozajUPorodiciComboBox.setPromptText("Odaberi položaj...");
+        if(!"српски".equals(Main.trenutniJezik))
+        	polozajUPorodiciComboBox.setPromptText("Odaberi položaj...");
+        else
+        	polozajUPorodiciComboBox.setPromptText("Одабери положај...");
 
         RowConstraints rc = new RowConstraints();
         rc.setMinHeight(30);
@@ -167,7 +204,10 @@ public class KontrolerFormeZaPopunjavanjeSpiskaLica {
         					n.setStyle("-fx-border-color: RED");
         			}
     			}
-    			prikaziUpozorenje("Nepotpun unos.");
+    			if(!"српски".equals(Main.trenutniJezik))
+    				prikaziUpozorenje("Nepotpun unos.");
+    			else
+    				prikaziUpozorenje("Непотпун унос.");
     			return;
     		}
     	}
@@ -196,16 +236,19 @@ public class KontrolerFormeZaPopunjavanjeSpiskaLica {
     	Set<Entry<Integer, List<Node>>> poljaZaPopunjavanjeEntries = poljaZaPopunjavanje.entrySet();
     	for(Entry<Integer, List<Node>> entry : poljaZaPopunjavanjeEntries) {
     		List<Node> polja = entry.getValue();
-    		int brojPraznihPolja = 0;
     		for(Node n : polja)
     			n.setStyle("-fx-border-color: TRANSPARENT");
     	}
     }
     
     private void prikaziUpozorenje(String poruka){
+    	String greska = "Greška";
+    	if("српски".equals(Main.trenutniJezik))
+    		greska = "Грешка";
+    	
         Alert userNotSelectedAlert = new Alert(Alert.AlertType.ERROR);
-        userNotSelectedAlert.setTitle("Greška");
-        userNotSelectedAlert.setHeaderText("Greška!");
+        userNotSelectedAlert.setTitle(greska);
+        userNotSelectedAlert.setHeaderText(greska + "!");
         userNotSelectedAlert.setContentText(poruka);
         userNotSelectedAlert.showAndWait();
     }

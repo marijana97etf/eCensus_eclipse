@@ -1,6 +1,6 @@
-/controller/
 /files/
-/model/
 /resources/
-/test/
 /view/
+/controller/
+/model/
+/test/

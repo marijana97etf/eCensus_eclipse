@@ -12,7 +12,7 @@ import java.util.Properties;
 
 public class Main extends Application {
     public static Stage primaryStage;
-    public static String trenutnoPismo;
+    public static String trenutniJezik;
     
     private static final String CONFIG_FILE_PATH = "resources" + File.separator + "config.properties";
 
@@ -20,7 +20,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
     	Properties properties = new Properties();
     	properties.load(new FileInputStream(new File(CONFIG_FILE_PATH)));
-    	trenutnoPismo = properties.getProperty("TRENUTNO_PISMO");
+    	trenutniJezik = properties.getProperty("TRENUTNI_JEZIK_I_PISMO").split(",")[0];
     	
         Main.primaryStage = primaryStage;
         Parent root = FXMLLoader.load(getClass().getResource("/forme" + File.separator + "FormaZaPrijavu.fxml"));

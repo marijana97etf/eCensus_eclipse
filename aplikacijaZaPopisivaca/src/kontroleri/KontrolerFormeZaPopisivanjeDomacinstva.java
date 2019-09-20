@@ -10,8 +10,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import main.Main;
 import model.ClanDomacinstva;
 import model.PopisnicaZaDomacinstvo;
+import util.PromjenaPisma;
 
 import java.io.File;
 import java.io.IOException;
@@ -89,7 +91,7 @@ public class KontrolerFormeZaPopisivanjeDomacinstva {
     @FXML
     private TextField ukupnoZemljisteDunumTextField;
     @FXML
-    private TextField poljoprivrednoZemljisteDunumTextField;
+    private TextField pZemljisteDunumTextField;
     @FXML
     private TextField ZemljisteSumaDunumTextField;
     @FXML
@@ -101,7 +103,7 @@ public class KontrolerFormeZaPopisivanjeDomacinstva {
     @FXML
     private TextField zemljisteSumaDunumTextField;
     @FXML
-    private TextField poljoprivrednoZemljisteKvadratniMetarTextField;
+    private TextField pZemljisteKvadratniMetarTextField;
     @FXML
     private TextField ukupnoZemljisteKvadratniMetarTextField;
     @FXML
@@ -239,14 +241,14 @@ public class KontrolerFormeZaPopisivanjeDomacinstva {
         grupa1.getToggles().forEach(toggle -> {
             RadioButton button = (RadioButton)toggle;
             button.setOnAction((event) -> {
-                if("Stan (u zgradi/kući)".equals(button.getText())){
+                if("Stan u zgradi/kući".equals(button.getText()) || "Стан у згради/кући".equals(button.getText())){
                     grupa2.getToggles().forEach(toggle1 -> {
                         Node node = (Node) toggle1 ;
                         node.setDisable(true);
                     });
                     enableDisableComponentsForQuestion3To24(false);
                 }
-                else if("Kolektivni (institucionalni) stan".equals(button.getText())){
+                else if("Kolektivni/institucionalni stan".equals(button.getText()) || "Колективни/институционални стан".equals(button.getText())){
                     grupa2.getToggles().forEach(toggle1 -> {
                         Node node = (Node) toggle1 ;
                         node.setDisable(false);
@@ -271,7 +273,7 @@ public class KontrolerFormeZaPopisivanjeDomacinstva {
         grupa3.getToggles().forEach(toggle -> {
             RadioButton button = (RadioButton) toggle;
             button.setOnAction((event) -> {
-                if("Samo za obavljanje djelatnosti".equals(button.getText())){
+                if("Samo za obavljanje djelatnosti".equals(button.getText()) || "Само за обављање дјелатности".equals(button.getText())){
                     grupa4.getToggles().forEach(toggle1 -> {
                         Node node = (Node) toggle1 ;
                         node.setDisable(false);
@@ -762,13 +764,13 @@ public class KontrolerFormeZaPopisivanjeDomacinstva {
         else
             odgovoriNaPitanja.get(28).add(odgovor28UkupnoMetar);
 
-        String odgovor28PoljoprivrednoZemljisteDunum = getKolicinuPoljoprivrednogDobra(poljoprivrednoZemljisteDunumTextField, 28);
+        String odgovor28PoljoprivrednoZemljisteDunum = getKolicinuPoljoprivrednogDobra(pZemljisteDunumTextField, 28);
         if(odgovor28PoljoprivrednoZemljisteDunum.isEmpty())
             return;
         else
             odgovoriNaPitanja.get(28).add(odgovor28PoljoprivrednoZemljisteDunum);
 
-        String odgovor28PoljoprivrednoZemljisteMetar = getKolicinuPoljoprivrednogDobra(poljoprivrednoZemljisteKvadratniMetarTextField, 28);
+        String odgovor28PoljoprivrednoZemljisteMetar = getKolicinuPoljoprivrednogDobra(pZemljisteKvadratniMetarTextField, 28);
         if(odgovor28PoljoprivrednoZemljisteMetar.isEmpty())
             return;
         else
@@ -1212,12 +1214,12 @@ public class KontrolerFormeZaPopisivanjeDomacinstva {
             button.setStyle("-fx-border-color: TRANSPARENT");
         });
         ukupnoZemljisteDunumTextField.setStyle("-fx-border-color: TRANSPARENT");
-        poljoprivrednoZemljisteDunumTextField.setStyle("-fx-border-color: TRANSPARENT");
+        pZemljisteDunumTextField.setStyle("-fx-border-color: TRANSPARENT");
         ZemljisteSumaDunumTextField.setStyle("-fx-border-color: TRANSPARENT");
         ostaloZemljisteDunumTextField.setStyle("-fx-border-color: TRANSPARENT");
         ostaloZemljisteKvadratniMetarTextField.setStyle("-fx-border-color: TRANSPARENT");
         zemljisteSumaKvadratniMetarTextField.setStyle("-fx-border-color: TRANSPARENT");
-        poljoprivrednoZemljisteKvadratniMetarTextField.setStyle("-fx-border-color: TRANSPARENT");
+        pZemljisteKvadratniMetarTextField.setStyle("-fx-border-color: TRANSPARENT");
         ukupnoZemljisteKvadratniMetarTextField.setStyle("-fx-border-color: TRANSPARENT");
 
         vinogradiDunumTextField.setStyle("-fx-border-color: TRANSPARENT");
@@ -1375,9 +1377,15 @@ public class KontrolerFormeZaPopisivanjeDomacinstva {
     }
 
     private void prikaziUpozorenje(String poruka){
+    	String greska = "Greška";
+    	if("српски".equals(Main.trenutniJezik)) {
+    		poruka = PromjenaPisma.zamijeniLatinicuCiricom(poruka);
+    		greska = PromjenaPisma.zamijeniLatinicuCiricom(poruka);
+    	}
+    	
         Alert userNotSelectedAlert = new Alert(Alert.AlertType.ERROR);
-        userNotSelectedAlert.setTitle("Greška");
-        userNotSelectedAlert.setHeaderText("Greška!");
+	    userNotSelectedAlert.setTitle(greska);
+	    userNotSelectedAlert.setHeaderText(greska + "!");
         userNotSelectedAlert.setContentText(poruka);
         userNotSelectedAlert.showAndWait();
     }

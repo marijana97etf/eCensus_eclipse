@@ -14,6 +14,7 @@ public class KontrolerFormeZaRadPopisivaca {
     static Stage popisStanovnikaStage;
     static Stage popisDomacinstvaStage;
     static Stage promjenaPismaStage;
+    static Stage promjenaJezikaStage;
 
     @FXML
     private void popisiStanovnikaButtonAction() {
@@ -58,20 +59,15 @@ public class KontrolerFormeZaRadPopisivaca {
     }
 
     @FXML
-    private void promijeniJezikButonAction() {
-    	
-    }
-
-    @FXML
-    private void promijeniPismoButtonAction() {
+    private void promijeniJezikIPismoButtonAction() {
     	try {
-            promjenaPismaStage = new Stage();
-            promjenaPismaStage.initModality(Modality.APPLICATION_MODAL);
+            promjenaJezikaStage = new Stage();
+            promjenaJezikaStage.initModality(Modality.APPLICATION_MODAL);
 
-            Parent root = FXMLLoader.load(getClass().getResource("/forme" + File.separator + "FormaZaOdabirPisma.fxml"));
-            promjenaPismaStage.setScene(new Scene(root,450,230));
-            promjenaPismaStage.setResizable(false);
-            promjenaPismaStage.show();
+            Parent root = FXMLLoader.load(getClass().getResource("/forme" + File.separator + "FormaZaOdabirJezikaIPisma.fxml"));
+            promjenaJezikaStage.setScene(new Scene(root,450,230));
+            promjenaJezikaStage.setResizable(false);
+            promjenaJezikaStage.show();
         }
         catch(IOException e){
             e.printStackTrace();

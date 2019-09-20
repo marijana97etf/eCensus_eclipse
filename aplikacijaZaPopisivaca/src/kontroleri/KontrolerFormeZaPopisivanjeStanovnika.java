@@ -5,7 +5,9 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.*;
+import main.Main;
 import model.PopisnicaZaStanovnika;
+import util.PromjenaPisma;
 
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -61,13 +63,13 @@ public class KontrolerFormeZaPopisivanjeStanovnika {
     @FXML
     private TextField liceTextField3;
     @FXML
-    private ComboBox odabirPolaComboBox;
+    private ComboBox<String> odabirPolaComboBox;
     @FXML
     private RadioButton pitanje2Button1;
     @FXML
     private RadioButton pitanje2Button2;
     @FXML
-    private ComboBox razlogOdsustvaPrisustvaComboBox;
+    private ComboBox<String> razlogOdsustvaPrisustvaComboBox;
     @FXML
     private RadioButton pitanje4Button1;
     @FXML
@@ -135,7 +137,7 @@ public class KontrolerFormeZaPopisivanjeStanovnika {
     @FXML
     private TextField pitanje12TextField;
     @FXML
-    private ComboBox pitanje12ComboBox;
+    private ComboBox<String> pitanje12ComboBox;
     @FXML
     private TextField pitanje13TextField1;
     @FXML
@@ -265,29 +267,29 @@ public class KontrolerFormeZaPopisivanjeStanovnika {
     @FXML
     private CheckBox pitanje42CheckBox10;
     @FXML
-    private ComboBox vidStepenComboBox;
+    private ComboBox<String> vidSComboBox;
     @FXML
-    private ComboBox hodStepenComboBox;
+    private ComboBox<String> hodSComboBox;
     @FXML
-    private ComboBox sluhStepenComboBox;
+    private ComboBox<String> sluhSComboBox;
     @FXML
-    private ComboBox pamcenjeStepenComboBox;
+    private ComboBox<String> pamcenjeSComboBox;
     @FXML
-    private ComboBox odijevanjeStepenComboBox;
+    private ComboBox<String> odijevanjeSComboBox;
     @FXML
-    private ComboBox komunikacijaStepenComboBox;
+    private ComboBox<String> komunikacijaSComboBox;
     @FXML
-    private ComboBox vidUzrokComboBox;
+    private ComboBox<String> vidUzrokComboBox;
     @FXML
-    private ComboBox sluhUzrokComboBox;
+    private ComboBox<String> sluhUzrokComboBox;
     @FXML
-    private ComboBox hodUzrokComboBox;
+    private ComboBox<String> hodUzrokComboBox;
     @FXML
-    private ComboBox pamcenjeUzrokComboBox;
+    private ComboBox<String> pamcenjeUzrokComboBox;
     @FXML
-    private ComboBox odijevanjeUzrokComboBox;
+    private ComboBox<String> odijevanjeUzrokComboBox;
     @FXML
-    private ComboBox komunikacijaUzrokComboBox;
+    private ComboBox<String> komunikacijaUzrokComboBox;
     @FXML
     private ToggleGroup grupa1;
     @FXML
@@ -370,17 +372,25 @@ public class KontrolerFormeZaPopisivanjeStanovnika {
     private ToggleGroup grupa40;
 
     public KontrolerFormeZaPopisivanjeStanovnika(){
-//        KontrolerFormeZaRadPopisivaca.popisStanovnikaStage.setOnShowing((event) -> inicijalizujKomponente());
+        KontrolerFormeZaRadPopisivaca.popisStanovnikaStage.setOnShowing((event) -> inicijalizujKomponente());
     }
 
     private void inicijalizujKomponente(){
         List<String> listaPolova = new ArrayList<>();
-        listaPolova.add("Å½enski");
-        listaPolova.add("Muški");
+        if(!"српски".equals(Main.trenutniJezik)){
+	        listaPolova.add("Ženski");
+	        listaPolova.add("Muški");
+        }
+        else {
+        	listaPolova.add("Женски");
+	        listaPolova.add("Мушки");
+        }
+        
         ObservableList observableList = FXCollections.observableList(listaPolova);
         odabirPolaComboBox.setItems(observableList);
         odabirPolaComboBox.setOnAction((event) -> {
-            if((odabirPolaComboBox.getSelectionModel().getSelectedItem()).equals("Muški")) {
+            if((odabirPolaComboBox.getSelectionModel().getSelectedItem()).equals("Muški") || 
+            		(odabirPolaComboBox.getSelectionModel().getSelectedItem()).equals("Мушки")) {
                 pitanje23TextField.setDisable(true);
                 pitanje24DatePicker1.setDisable(true);
                 pitanje24DatePicker2.setDisable(true);
@@ -395,25 +405,48 @@ public class KontrolerFormeZaPopisivanjeStanovnika {
         });
 
         List<String> listaRazloga = new ArrayList<>();
-        listaRazloga.add("1: Rad");
-        listaRazloga.add("2: Školovanje");
-        listaRazloga.add("3: Porodični razlozi");
-        listaRazloga.add("4: Ostali razlozi");
-        listaRazloga.add("5: Na radu u inostranstvu kod stranog ili domaćeg poslodavca ili na samostalnom radu");
-        listaRazloga.add("6: Upućeno na rad u diplomatsko - konzularna i druga predstavništva, međunarodne organizacije i sl.");
-        listaRazloga.add("7: Boravak u inostranstvu kao član domaćinstva lica odsutnog iz razloga 5");
-        listaRazloga.add("8: Boravak u inostranstvu kao član domaćinstva lica odsutnog iz razloga 6");
-        listaRazloga.add("9: Školovanje u inostranstvu");
-        listaRazloga.add("10: Ostali razlozi boravka u inostranstvu");
+        if(!"српски".equals(Main.trenutniJezik)) {
+	        listaRazloga.add("1: Rad");
+	        listaRazloga.add("2: Školovanje");
+	        listaRazloga.add("3: Porodični razlozi");
+	        listaRazloga.add("4: Ostali razlozi");
+	        listaRazloga.add("5: Na radu u inostranstvu kod stranog ili domaćeg poslodavca ili na samostalnom radu");
+	        listaRazloga.add("6: Upućeno na rad u diplomatsko - konzularna i druga predstavništva, međunarodne organizacije i sl.");
+	        listaRazloga.add("7: Boravak u inostranstvu kao član domaćinstva lica odsutnog iz razloga 5");
+	        listaRazloga.add("8: Boravak u inostranstvu kao član domaćinstva lica odsutnog iz razloga 6");
+	        listaRazloga.add("9: Školovanje u inostranstvu");
+	        listaRazloga.add("10: Ostali razlozi boravka u inostranstvu");
+        }
+        else {
+        	listaRazloga.add("1: Рад");
+	        listaRazloga.add("2: Школовање");
+	        listaRazloga.add("3: Породични разлози");
+	        listaRazloga.add("4: Остали разлози");
+	        listaRazloga.add("5: На раду у иностранству код страног или домаћег послодавца или на самосталном раду");
+	        listaRazloga.add("6: Упућено на рад у дипломатско - конзуларана и друга представништва, међународне организације и сл.");
+	        listaRazloga.add("7: Боравак у иностранству као члан домаћинства лица одсутног из разлога 5");
+	        listaRazloga.add("8: Боравак у иностранству као члан domaćinstva лица одсутног из разлога 6");
+	        listaRazloga.add("9: Школовање у иностранству");
+	        listaRazloga.add("10: Остали разлози боравка у иностранству");
+        }
         ObservableList observableList1 = FXCollections.observableList(listaRazloga);
         razlogOdsustvaPrisustvaComboBox.setItems(observableList1);
 
         List<String> listaRazlogaDoseljenja = new ArrayList<>();
-        listaRazlogaDoseljenja.add("Posao");
-        listaRazlogaDoseljenja.add("Školovanje");
-        listaRazlogaDoseljenja.add("Porodični razlozi");
-        listaRazlogaDoseljenja.add("Prinudni razlozi");
-        listaRazlogaDoseljenja.add("Ostali");
+        if(!"српски".equals(Main.trenutniJezik)) {
+	        listaRazlogaDoseljenja.add("Posao");
+	        listaRazlogaDoseljenja.add("Školovanje");
+	        listaRazlogaDoseljenja.add("Porodični razlozi");
+	        listaRazlogaDoseljenja.add("Prinudni razlozi");
+	        listaRazlogaDoseljenja.add("Ostali");
+        }
+        else {
+        	listaRazlogaDoseljenja.add("Посао");
+	        listaRazlogaDoseljenja.add("Школовање");
+	        listaRazlogaDoseljenja.add("Породични разлози");
+	        listaRazlogaDoseljenja.add("Принудни разлози");
+	        listaRazlogaDoseljenja.add("Остали");
+        }
         ObservableList observableList2 = FXCollections.observableList(listaRazlogaDoseljenja);
         pitanje12ComboBox.setItems(observableList2);
 
@@ -421,7 +454,9 @@ public class KontrolerFormeZaPopisivanjeStanovnika {
             RadioButton button = (RadioButton)toggle;
             button.setOnAction((event) -> {
                 if(button.getText().equals("Član domaćinstva koji živi u mjestu popisa godinu " +
-                        "dana ili duže ili se doselio sa namjerom da tu živi")){
+                        "dana ili duže ili se doselio sa namjerom da tu živi") || 
+                		button.getText().equals("Члан домаћинства који живи у мјесту пописа годину " +
+                                "дана или дуже или се доселио са намјером да ту живи")){
                     pitanje2Button1.setDisable(false);
                     pitanje2Button2.setDisable(false);
                 }
@@ -430,7 +465,8 @@ public class KontrolerFormeZaPopisivanjeStanovnika {
                     pitanje2Button2.setDisable(true);
                 }
                 if(button.getText().equals("Privremeno prisutno u mjestu popisa kraće ili duže od godinu dana " +
-                        "zbog rada/školovanja ili boravka")){
+                        "zbog rada/školovanja ili boravka") || button.getText().equals("Привремено присутно у мјесту"
+                        		+ " пописа краће или дуже од годину дана због рада/школовања или боравка")){
                     grupa9.getToggles().forEach(toggle1 -> {
                         Node node = (Node) toggle1 ;
                         node.setDisable(true);
@@ -598,7 +634,8 @@ public class KontrolerFormeZaPopisivanjeStanovnika {
         grupa11.getToggles().forEach(toggle -> {
             RadioButton button = (RadioButton)toggle;
             button.setOnAction((event) -> {
-                if(button.getText().equals("Da (država u kojoj je lice živjelo):")){
+                if(button.getText().equals("Da - država u kojoj je lice živjelo:") || 
+                		button.getText().equals("Да - држава у којој је лице живјело:")){
                     pitanje12TextField.setDisable(false);
                     pitanje12ComboBox.setDisable(false);
                     pitanje12DatePicker.setDisable(false);
@@ -688,7 +725,7 @@ public class KontrolerFormeZaPopisivanjeStanovnika {
         grupa22.getToggles().forEach(toggle -> {
             RadioButton button = (RadioButton)toggle;
             button.setOnAction((event) -> {
-                if(button.getText().equals("Drugo:"))
+                if(button.getText().equals("Drugo:") || button.getText().equals("Друго:"))
                     pitanje25TextField.setDisable(false);
                 else {
                     pitanje25TextField.clear();
@@ -700,7 +737,7 @@ public class KontrolerFormeZaPopisivanjeStanovnika {
         grupa23.getToggles().forEach(toggle -> {
             RadioButton button = (RadioButton)toggle;
             button.setOnAction((event) -> {
-                if(button.getText().equals("Drugo:"))
+                if(button.getText().equals("Drugo:") || button.getText().equals("Друго:"))
                     pitanje26TextField.setDisable(false);
                 else {
                     pitanje26TextField.clear();
@@ -712,7 +749,7 @@ public class KontrolerFormeZaPopisivanjeStanovnika {
         grupa24.getToggles().forEach(toggle -> {
             RadioButton button = (RadioButton)toggle;
             button.setOnAction((event) -> {
-                if(button.getText().equals("Drugo:"))
+                if(button.getText().equals("Drugo:") || button.getText().equals("Друго:"))
                     pitanje27TextField.setDisable(false);
                 else {
                     pitanje27TextField.clear();
@@ -724,8 +761,10 @@ public class KontrolerFormeZaPopisivanjeStanovnika {
         grupa25.getToggles().forEach(toggle -> {
             RadioButton button = (RadioButton)toggle;
             button.setOnAction((event) -> {
-                if(!button.getText().equals("Visoka škola/fakultet/akademija/univerzitet")){
-                    if(button.getText().equals("Nepotpuno osnovno obrazovanje (upisati najviši razred koji je lice završilo)")){
+                if(!(button.getText().equals("Visoka škola/fakultet/akademija/univerzitet") || 
+                		button.getText().equals("Висока школа/факултет/академија/универзитет"))){
+                    if(button.getText().equals("Nepotpuno osnovno obrazovanje - upisati najviši razred koji je lice završilo") ||
+                    		button.getText().equals("Непотпуно основно образовање - уписати највиши разред који је лице завршило")){
                         pitanje29TextField1.setDisable(false);
                         pitanje29TextField2.setDisable(false);
                         pitanje31Button1.setDisable(false);
@@ -733,7 +772,7 @@ public class KontrolerFormeZaPopisivanjeStanovnika {
                     }
                     else
                     {
-                        if(button.getText().equals("Bez ikakvog obrazovanja")){
+                        if(button.getText().equals("Bez ikakvog obrazovanja") || button.getText().equals("Без икаквог образовања")){
                             pitanje31Button1.setDisable(false);
                             pitanje31Button2.setDisable(false);
                         }
@@ -765,7 +804,7 @@ public class KontrolerFormeZaPopisivanjeStanovnika {
                     pitanje31Button1.setDisable(false);
                     pitanje31Button2.setDisable(false);
                 }
-                if(button.getText().equals("Srednja škola")){
+                if(button.getText().equals("Srednja škola") || button.getText().equals("Средња школа")){
                     grupa26.getToggles().forEach(toggle1 -> {
                         Node node = (Node) toggle1 ;
                         node.setDisable(false);
@@ -791,7 +830,7 @@ public class KontrolerFormeZaPopisivanjeStanovnika {
         grupa28.getToggles().forEach(toggle -> {
             RadioButton button = (RadioButton)toggle;
             button.setOnAction((event) -> {
-                if(button.getText().equals("Diplomirani (broj godina studija):"))
+                if(button.getText().equals("Diplomirani - broj godina studija:") || button.getText().equals("Дипломирани - број година студија:"))
                     pitanje30TextField.setDisable(false);
                 else {
                     pitanje30TextField.clear();
@@ -807,28 +846,28 @@ public class KontrolerFormeZaPopisivanjeStanovnika {
             button.setOnAction((event) -> {
                 grupa32.getToggles().forEach(toggle -> {
                 Node node = (Node) toggle ;
-                if(!button.getText().equals("Ne"))
+                if(!(button.getText().equals("Ne") || button.getText().equals("Не")))
                     node.setDisable(true);
                 else
                     node.setDisable(false);
                 });
                 grupa33.getToggles().forEach(toggle -> {
                     Node node = (Node) toggle ;
-                    if(!button.getText().equals("Ne"))
+                    if(!(button.getText().equals("Ne") || button.getText().equals("Не")))
                         node.setDisable(true);
                     else
                         node.setDisable(false);
                 });
                 grupa34.getToggles().forEach(toggle -> {
                     Node node = (Node) toggle ;
-                    if(!button.getText().equals("Ne"))
+                    if(!(button.getText().equals("Ne") || button.getText().equals("Не")))
                         node.setDisable(true);
                     else
                         node.setDisable(false);
                 });
                 grupa35.getToggles().forEach(toggle -> {
                     Node node = (Node) toggle ;
-                    if(!button.getText().equals("Ne"))
+                    if(!(button.getText().equals("Ne") || button.getText().equals("Не")))
                         node.setDisable(true);
                     else
                         node.setDisable(false);
@@ -840,7 +879,7 @@ public class KontrolerFormeZaPopisivanjeStanovnika {
             RadioButton button = (RadioButton)toggle1;
             button.setOnAction((event) -> grupa33.getToggles().forEach(toggle -> {
                 Node node = (Node) toggle ;
-                if(!button.getText().equals("Ne"))
+                if(!(button.getText().equals("Ne") || button.getText().equals("Не")))
                     node.setDisable(false);
                 else
                     node.setDisable(true);
@@ -910,7 +949,7 @@ public class KontrolerFormeZaPopisivanjeStanovnika {
             RadioButton button = (RadioButton)toggle;
             button.setOnAction((event) -> grupa39.getToggles().forEach(toggle1 -> {
                 Node node = (Node) toggle1;
-                if(!button.getText().equals("Izdržavano lice"))
+                if(!(button.getText().equals("Izdržavano lice") || button.getText().equals("Издржавано лице")))
                     node.setDisable(true);
                 else
                     node.setDisable(false);
@@ -918,26 +957,46 @@ public class KontrolerFormeZaPopisivanjeStanovnika {
         });
 
         List<String> stepeniPoteskoce = new ArrayList<>();
-        stepeniPoteskoce.add("Nema poteškoća");
-        stepeniPoteskoce.add("Ima, manje");
-        stepeniPoteskoce.add("Ima, veće");
-        stepeniPoteskoce.add("Potpuna nesposobnost");
+        if(!"српски".equals(Main.trenutniJezik)) {
+	        stepeniPoteskoce.add("Nema poteškoća");
+	        stepeniPoteskoce.add("Ima, manje");
+	        stepeniPoteskoce.add("Ima, veće");
+	        stepeniPoteskoce.add("Potpuna nesposobnost");
+        }
+        else {
+        	stepeniPoteskoce.add("Нема потешкоћа");
+	        stepeniPoteskoce.add("Има, мање");
+	        stepeniPoteskoce.add("Има, веће");
+	        stepeniPoteskoce.add("Потпуна неспособност");
+        }
         ObservableList observableList3 = FXCollections.observableList(stepeniPoteskoce);
-        vidStepenComboBox.setItems(observableList3);
-        sluhStepenComboBox.setItems(observableList3);
-        hodStepenComboBox.setItems(observableList3);
-        pamcenjeStepenComboBox.setItems(observableList3);
-        odijevanjeStepenComboBox.setItems(observableList3);
-        komunikacijaStepenComboBox.setItems(observableList3);
+        vidSComboBox.setItems(observableList3);
+        sluhSComboBox.setItems(observableList3);
+        hodSComboBox.setItems(observableList3);
+        pamcenjeSComboBox.setItems(observableList3);
+        odijevanjeSComboBox.setItems(observableList3);
+        komunikacijaSComboBox.setItems(observableList3);
 
         List<String> uzrociPoteskoce = new ArrayList<>();
-        uzrociPoteskoce.add("Urođena");
-        uzrociPoteskoce.add("Povreda pri porodu");
-        uzrociPoteskoce.add("Bolest");
-        uzrociPoteskoce.add("Povreda na radu");
-        uzrociPoteskoce.add("Saobraćajna nesreća");
-        uzrociPoteskoce.add("Posljedica rata");
-        uzrociPoteskoce.add("Ostalo");
+        if(!"српски".equals(Main.trenutniJezik))
+        {
+	        uzrociPoteskoce.add("Urođena");
+	        uzrociPoteskoce.add("Povreda pri porodu");
+	        uzrociPoteskoce.add("Bolest");
+	        uzrociPoteskoce.add("Povreda na radu");
+	        uzrociPoteskoce.add("Saobraćajna nesreća");
+	        uzrociPoteskoce.add("Posljedica rata");
+	        uzrociPoteskoce.add("Ostalo");
+        }
+        else {
+        	uzrociPoteskoce.add("Урођена");
+	        uzrociPoteskoce.add("Повреда при породу");
+	        uzrociPoteskoce.add("Болест");
+	        uzrociPoteskoce.add("Повреда на раду");
+	        uzrociPoteskoce.add("Саобраћајна несрећа");
+	        uzrociPoteskoce.add("Посљедица рата");
+	        uzrociPoteskoce.add("Остало");
+        }
         ObservableList observableList4 = FXCollections.observableList(uzrociPoteskoce);
         vidUzrokComboBox.setItems(observableList4);
         sluhUzrokComboBox.setItems(observableList4);
@@ -1909,42 +1968,48 @@ public class KontrolerFormeZaPopisivanjeStanovnika {
                 odgovoriNaPitanja.get(44).add(odgovor44Button.getText());
         }
 
-        if(vidStepenComboBox.getSelectionModel().getSelectedItem() == null || sluhStepenComboBox.getSelectionModel().getSelectedItem() == null || sluhUzrokComboBox.getSelectionModel().getSelectedItem() == null ||
-        hodStepenComboBox.getSelectionModel().getSelectedItem() == null || pamcenjeStepenComboBox.getSelectionModel().getSelectedItem() == null || pamcenjeUzrokComboBox.getSelectionModel().getSelectedItem() == null ||
-        odijevanjeStepenComboBox.getSelectionModel().getSelectedItem() == null || komunikacijaStepenComboBox.getSelectionModel().getSelectedItem() == null ||
-                (vidStepenComboBox.getSelectionModel().getSelectedItem().equals("Nema poteškoća") && vidUzrokComboBox.getSelectionModel().getSelectedItem() == null) ||
-                (sluhStepenComboBox.getSelectionModel().getSelectedItem().equals("Nema poteškoća") && sluhUzrokComboBox.getSelectionModel().getSelectedItem() == null) ||
-                (hodStepenComboBox.getSelectionModel().getSelectedItem().equals("Nema poteškoća") && hodUzrokComboBox.getSelectionModel().getSelectedItem() == null) ||
-                (pamcenjeStepenComboBox.getSelectionModel().getSelectedItem().equals("Nema poteškoća") && pamcenjeUzrokComboBox.getSelectionModel().getSelectedItem() == null) ||
-                (odijevanjeStepenComboBox.getSelectionModel().getSelectedItem().equals("Nema poteškoća") && odijevanjeUzrokComboBox.getSelectionModel().getSelectedItem() == null) ||
-                (komunikacijaStepenComboBox.getSelectionModel().getSelectedItem().equals("Nema poteškoća") && komunikacijaUzrokComboBox.getSelectionModel().getSelectedItem() == null)){
-            vidStepenComboBox.setStyle("-fx-border-color: RED");
+        if(vidSComboBox.getSelectionModel().getSelectedItem() == null || sluhSComboBox.getSelectionModel().getSelectedItem() == null || sluhUzrokComboBox.getSelectionModel().getSelectedItem() == null ||
+        hodSComboBox.getSelectionModel().getSelectedItem() == null || pamcenjeSComboBox.getSelectionModel().getSelectedItem() == null || pamcenjeUzrokComboBox.getSelectionModel().getSelectedItem() == null ||
+        odijevanjeSComboBox.getSelectionModel().getSelectedItem() == null || komunikacijaSComboBox.getSelectionModel().getSelectedItem() == null ||
+                ((vidSComboBox.getSelectionModel().getSelectedItem().equals("Nema poteškoća") || vidSComboBox.getSelectionModel().getSelectedItem().equals("Нема потешкоћа")) 
+                		&& vidUzrokComboBox.getSelectionModel().getSelectedItem() == null) ||
+                ((sluhSComboBox.getSelectionModel().getSelectedItem().equals("Nema poteškoća") || sluhSComboBox.getSelectionModel().getSelectedItem().equals("Нема потешкоћа"))
+                		&& sluhUzrokComboBox.getSelectionModel().getSelectedItem() == null) ||
+                ((hodSComboBox.getSelectionModel().getSelectedItem().equals("Nema poteškoća") || hodSComboBox.getSelectionModel().getSelectedItem().equals("Нема потешкоћа")) 
+                		&& hodUzrokComboBox.getSelectionModel().getSelectedItem() == null) ||
+                ((pamcenjeSComboBox.getSelectionModel().getSelectedItem().equals("Nema poteškoća") || pamcenjeSComboBox.getSelectionModel().getSelectedItem().equals("Нема потешкоћа")) 
+                		&& pamcenjeUzrokComboBox.getSelectionModel().getSelectedItem() == null) ||
+                ((odijevanjeSComboBox.getSelectionModel().getSelectedItem().equals("Nema poteškoća") || odijevanjeSComboBox.getSelectionModel().getSelectedItem().equals("Нема потешкоћа"))
+                		&& odijevanjeUzrokComboBox.getSelectionModel().getSelectedItem() == null) ||
+                ((komunikacijaSComboBox.getSelectionModel().getSelectedItem().equals("Nema poteškoća") || komunikacijaSComboBox.getSelectionModel().getSelectedItem().equals("Нема потешкоћа")) 
+                		&& komunikacijaUzrokComboBox.getSelectionModel().getSelectedItem() == null)){
+            vidSComboBox.setStyle("-fx-border-color: RED");
             vidUzrokComboBox.setStyle("-fx-border-color: RED");
-            sluhStepenComboBox.setStyle("-fx-border-color: RED");
+            sluhSComboBox.setStyle("-fx-border-color: RED");
             sluhUzrokComboBox.setStyle("-fx-border-color: RED");
-            hodStepenComboBox.setStyle("-fx-border-color: RED");
+            hodSComboBox.setStyle("-fx-border-color: RED");
             hodUzrokComboBox.setStyle("-fx-border-color: RED");
-            pamcenjeStepenComboBox.setStyle("-fx-border-color: RED");
+            pamcenjeSComboBox.setStyle("-fx-border-color: RED");
             pamcenjeUzrokComboBox.setStyle("-fx-border-color: RED");
-            odijevanjeStepenComboBox.setStyle("-fx-border-color: RED");
+            odijevanjeSComboBox.setStyle("-fx-border-color: RED");
             odijevanjeUzrokComboBox.setStyle("-fx-border-color: RED");
-            komunikacijaStepenComboBox.setStyle("-fx-border-color: RED");
+            komunikacijaSComboBox.setStyle("-fx-border-color: RED");
             komunikacijaUzrokComboBox.setStyle("-fx-border-color: RED");
             prikaziUpozorenje("Nepotpun odgovor na 45. pitanje");
             return;
         }
         else{
-            odgovoriNaPitanja.get(45).add((String)vidStepenComboBox.getSelectionModel().getSelectedItem());
+            odgovoriNaPitanja.get(45).add((String)vidSComboBox.getSelectionModel().getSelectedItem());
             odgovoriNaPitanja.get(45).add((String)vidUzrokComboBox.getSelectionModel().getSelectedItem());
-            odgovoriNaPitanja.get(45).add((String)sluhStepenComboBox.getSelectionModel().getSelectedItem());
+            odgovoriNaPitanja.get(45).add((String)sluhSComboBox.getSelectionModel().getSelectedItem());
             odgovoriNaPitanja.get(45).add((String)sluhUzrokComboBox.getSelectionModel().getSelectedItem());
-            odgovoriNaPitanja.get(45).add((String)hodStepenComboBox.getSelectionModel().getSelectedItem());
+            odgovoriNaPitanja.get(45).add((String)hodSComboBox.getSelectionModel().getSelectedItem());
             odgovoriNaPitanja.get(45).add((String)hodUzrokComboBox.getSelectionModel().getSelectedItem());
-            odgovoriNaPitanja.get(45).add((String)pamcenjeStepenComboBox.getSelectionModel().getSelectedItem());
+            odgovoriNaPitanja.get(45).add((String)pamcenjeSComboBox.getSelectionModel().getSelectedItem());
             odgovoriNaPitanja.get(45).add((String)pamcenjeUzrokComboBox.getSelectionModel().getSelectedItem());
-            odgovoriNaPitanja.get(45).add((String)odijevanjeStepenComboBox.getSelectionModel().getSelectedItem());
+            odgovoriNaPitanja.get(45).add((String)odijevanjeSComboBox.getSelectionModel().getSelectedItem());
             odgovoriNaPitanja.get(45).add((String)odijevanjeUzrokComboBox.getSelectionModel().getSelectedItem());
-            odgovoriNaPitanja.get(45).add((String)komunikacijaStepenComboBox.getSelectionModel().getSelectedItem());
+            odgovoriNaPitanja.get(45).add((String)komunikacijaSComboBox.getSelectionModel().getSelectedItem());
             odgovoriNaPitanja.get(45).add((String)komunikacijaUzrokComboBox.getSelectionModel().getSelectedItem());
         }
 
@@ -2203,17 +2268,17 @@ public class KontrolerFormeZaPopisivanjeStanovnika {
             RadioButton button = (RadioButton)toggle;
             button.setStyle("-fx-border-color: TRANSPARENT");
         });
-        vidStepenComboBox.setStyle("-fx-border-color: TRANSPARENT");
+        vidSComboBox.setStyle("-fx-border-color: TRANSPARENT");
         vidUzrokComboBox.setStyle("-fx-border-color: TRANSPARENT");
-        sluhStepenComboBox.setStyle("-fx-border-color: TRANSPARENT");
+        sluhSComboBox.setStyle("-fx-border-color: TRANSPARENT");
         sluhUzrokComboBox.setStyle("-fx-border-color: TRANSPARENT");
-        hodStepenComboBox.setStyle("-fx-border-color: TRANSPARENT");
+        hodSComboBox.setStyle("-fx-border-color: TRANSPARENT");
         hodUzrokComboBox.setStyle("-fx-border-color: TRANSPARENT");
-        pamcenjeStepenComboBox.setStyle("-fx-border-color: TRANSPARENT");
+        pamcenjeSComboBox.setStyle("-fx-border-color: TRANSPARENT");
         pamcenjeUzrokComboBox.setStyle("-fx-border-color: TRANSPARENT");
-        odijevanjeStepenComboBox.setStyle("-fx-border-color: TRANSPARENT");
+        odijevanjeSComboBox.setStyle("-fx-border-color: TRANSPARENT");
         odijevanjeUzrokComboBox.setStyle("-fx-border-color: TRANSPARENT");
-        komunikacijaStepenComboBox.setStyle("-fx-border-color: TRANSPARENT");
+        komunikacijaSComboBox.setStyle("-fx-border-color: TRANSPARENT");
         komunikacijaUzrokComboBox.setStyle("-fx-border-color: TRANSPARENT");
         grupa40.getToggles().forEach(toggle -> {
             RadioButton button = (RadioButton)toggle;
@@ -2231,9 +2296,15 @@ public class KontrolerFormeZaPopisivanjeStanovnika {
     }
 
     private void prikaziUpozorenje(String poruka){
+    	String greska = "Greška";
+    	if("српски".equals(Main.trenutniJezik)) {
+    		poruka = PromjenaPisma.zamijeniLatinicuCiricom(poruka);
+    		greska = PromjenaPisma.zamijeniLatinicuCiricom(poruka);
+    	}
+    	
         Alert userNotSelectedAlert = new Alert(Alert.AlertType.ERROR);
-        userNotSelectedAlert.setTitle("Greška");
-        userNotSelectedAlert.setHeaderText("Greška!");
+        userNotSelectedAlert.setTitle(greska);
+        userNotSelectedAlert.setHeaderText(greska + "!");
         userNotSelectedAlert.setContentText(poruka);
         userNotSelectedAlert.showAndWait();
     }

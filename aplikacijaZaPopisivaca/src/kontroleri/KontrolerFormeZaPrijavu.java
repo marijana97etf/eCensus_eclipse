@@ -15,16 +15,20 @@ import java.io.IOException;
 
 public class KontrolerFormeZaPrijavu {
     @FXML
-    private TextField poljeZaUnosKorisnickogImena;
+    private TextField UnosKorisnickogImenaField;
     @FXML
-    private PasswordField poljeZaUnosLozinke;
+    private PasswordField UnosLozinkeField;
 
     public void prijavaNaSistemButtonAction() {
-        String korisnickoIme = poljeZaUnosKorisnickogImena.getText();
-        String lozinka = poljeZaUnosLozinke.getText();
+        String korisnickoIme = UnosKorisnickogImenaField.getText();
+        String lozinka = UnosLozinkeField.getText();
 
-        if(korisnickoIme.isEmpty() || lozinka.isEmpty())
-            prikaziUpozorenje("Morate unijeti korisničko ime i lozinku.");
+        if(korisnickoIme.isEmpty() || lozinka.isEmpty()) {
+        	if(!"српски".equals(Main.trenutniJezik))
+        		prikaziUpozorenje("Morate unijeti korisničko ime i lozinku.");
+        	else
+        		prikaziUpozorenje("Морате унијети корисничко име и лозинку.");
+        }
         else{
             try {
                 String hashLozinke = HashEngine.hashValue(lozinka);
@@ -41,9 +45,13 @@ public class KontrolerFormeZaPrijavu {
     }
 
     private void prikaziUpozorenje(String poruka){
+    	String greska = "Greška";
+    	if("српски".equals(Main.trenutniJezik))
+    		greska = "Грешка";
+    	
         Alert userNotSelectedAlert = new Alert(Alert.AlertType.ERROR);
-        userNotSelectedAlert.setTitle("Greška");
-        userNotSelectedAlert.setHeaderText("Greška!");
+        userNotSelectedAlert.setTitle("greska");
+        userNotSelectedAlert.setHeaderText(greska + "!");
         userNotSelectedAlert.setContentText(poruka);
         userNotSelectedAlert.showAndWait();
     }
