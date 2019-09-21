@@ -87,8 +87,9 @@ public class KontrolerFormeZaPrikazSacuvanihPopisnica {
 	}
 	
 	@FXML
-	private void posaljiPopisnicu() {
+	private void posaljiPopisnice() {
 		//TODO:Poslati popisnice na glavni server
+		System.out.println("a");
 	}
 	
 }
