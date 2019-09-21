@@ -10,5 +10,8 @@ public class MySQLFactoryDAO extends DAOFactory {
 		return new MySQLPopisnicaZaStanovnikaDAO();
 	}
 	
+	public MySQLStatistickiPodaciDAO getMySQLStatistickiPodaciDAO() {
+		return new MySQLStatistickiPodaciDAO();
+	}
 	
 }
