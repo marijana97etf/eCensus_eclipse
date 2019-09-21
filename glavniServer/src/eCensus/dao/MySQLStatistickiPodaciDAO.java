@@ -10,7 +10,6 @@ import eCensus.baza.ConnectionPool;
 public class MySQLStatistickiPodaciDAO {
 
 	public int getBrojStanovnikaPremaPojedinacnimGodinamaStarostiIPolu(String idEntiteta, String idOpstina, String starost, String pol) {
-		System.out.println(idEntiteta + "," + idOpstina + "," + starost + "," + pol + ",");
 		Connection connection = null;
 		try {
 			connection = ConnectionPool.getInstance().checkOut();
