@@ -1,16 +1,11 @@
 package model;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class PopisnicaZaDomacinstvo {
-    private int idObrasca;
-    private int idEntiteta;
-    private int idOpstine;
-    private int idPopisnogKruga;
-    private int idStana;
-    private int idDomacinstva;
+public class PopisnicaZaDomacinstvo extends Popisnica implements Serializable{
     private int idZgrade;
     private String ulica;
     private String kucniBroj;
@@ -23,20 +18,12 @@ public class PopisnicaZaDomacinstvo {
     private int brojDomacinstavaUStanu;
     private List<ClanDomacinstva> spisakLica;
 
-    private Map<Integer, List<String>> odgovoriNaPitanja;
-
     public PopisnicaZaDomacinstvo(){
-        odgovoriNaPitanja = new HashMap<>();
     }
 
     public PopisnicaZaDomacinstvo(int idObrasca, int idEntiteta, int idOpstine, int idPopisnogKruga, int idStana, int idDomacinstva,
                                   int idZgrade, String ulica, String kucniBroj, String dodatak, String ulaz, String brojStana, String idBroj) {
-        this.idObrasca = idObrasca;
-        this.idEntiteta = idEntiteta;
-        this.idOpstine = idOpstine;
-        this.idPopisnogKruga = idPopisnogKruga;
-        this.idStana = idStana;
-        this.idDomacinstva = idDomacinstva;
+        super(idObrasca, idEntiteta, idOpstine, idPopisnogKruga, idStana, idDomacinstva);
         this.idZgrade = idZgrade;
         this.ulica = ulica;
         this.kucniBroj = kucniBroj;
@@ -45,54 +32,6 @@ public class PopisnicaZaDomacinstvo {
         this.brojStana = brojStana;
         this.idBroj = idBroj;
         odgovoriNaPitanja = new HashMap<>();
-    }
-
-    public int getIdObrasca() {
-        return idObrasca;
-    }
-
-    public void setIdObrasca(int idObrasca) {
-        this.idObrasca = idObrasca;
-    }
-
-    public int getIdEntiteta() {
-        return idEntiteta;
-    }
-
-    public void setIdEntiteta(int idEntiteta) {
-        this.idEntiteta = idEntiteta;
-    }
-
-    public int getIdOpstine() {
-        return idOpstine;
-    }
-
-    public void setIdOpstine(int idOpstine) {
-        this.idOpstine = idOpstine;
-    }
-
-    public int getIdPopisnogKruga() {
-        return idPopisnogKruga;
-    }
-
-    public void setIdPopisnogKruga(int idPopisnogKruga) {
-        this.idPopisnogKruga = idPopisnogKruga;
-    }
-
-    public int getIdStana() {
-        return idStana;
-    }
-
-    public void setIdStana(int idStana) {
-        this.idStana = idStana;
-    }
-
-    public int getIdDomacinstva() {
-        return idDomacinstva;
-    }
-
-    public void setIdDomacinstva(int idDomacinstva) {
-        this.idDomacinstva = idDomacinstva;
     }
 
     public int getIdZgrade() {
@@ -182,12 +121,4 @@ public class PopisnicaZaDomacinstvo {
 	public void setSpisakLica(List<ClanDomacinstva> spisakLica) {
 		this.spisakLica = spisakLica;
 	}
-
-	public Map<Integer, List<String>> getOdgovoriNaPitanja() {
-        return odgovoriNaPitanja;
-    }
-
-    public void setOdgovoriNaPitanja(Map<Integer, List<String>> odgovoriNaPitanja) {
-        this.odgovoriNaPitanja = odgovoriNaPitanja;
-    }
 }

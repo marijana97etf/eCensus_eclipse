@@ -15,6 +15,7 @@ public class KontrolerFormeZaRadPopisivaca {
     static Stage popisDomacinstvaStage;
     static Stage promjenaPismaStage;
     static Stage promjenaJezikaStage;
+    static Stage pregledSacuvanihPopisnicaStage;
 
     @FXML
     private void popisiStanovnikaButtonAction() {
@@ -52,6 +53,18 @@ public class KontrolerFormeZaRadPopisivaca {
 
     @FXML
     private void pregledajSacuvanePopisniceButtonAction() {
+    	try {
+    		pregledSacuvanihPopisnicaStage = new Stage();
+    		pregledSacuvanihPopisnicaStage.initModality(Modality.APPLICATION_MODAL);
+
+            Parent root = FXMLLoader.load(getClass().getResource("/forme" + File.separator + "FormaZaPrikazSacuvanihPopisnica.fxml"));
+            pregledSacuvanihPopisnicaStage.setScene(new Scene(root));
+            pregledSacuvanihPopisnicaStage.setResizable(false);
+            pregledSacuvanihPopisnicaStage.show();
+        }
+        catch(IOException e){
+            e.printStackTrace();
+        }
     }
 
     @FXML

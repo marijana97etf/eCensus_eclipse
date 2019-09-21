@@ -1514,7 +1514,7 @@
                         <Insets top="62.0" />
                     </GridPane.margin>
                 </Polygon>
-                <RadioButton mnemonicParsing="false" prefHeight="17.0" prefWidth="151.0" text="1-годишња или 2-годишња" wrapText="true" GridPane.columnIndex="3" GridPane.rowIndex="37">
+                <RadioButton mnemonicParsing="false" prefHeight="38.0" prefWidth="151.0" text="1-годишња или 2-годишња" wrapText="true" GridPane.columnIndex="3" GridPane.rowIndex="37">
                     <GridPane.margin>
                         <Insets left="20.0" top="60.0" />
                     </GridPane.margin>
@@ -1805,22 +1805,22 @@
                         <Insets left="30.0" top="140.0" />
                     </GridPane.margin>
                 </RadioButton>
-                <RadioButton mnemonicParsing="false" text="Студије И циклуса" toggleGroup="$grupa30" GridPane.columnIndex="2" GridPane.rowIndex="40" GridPane.valignment="CENTER">
+                <RadioButton mnemonicParsing="false" text="Студије првог циклуса" toggleGroup="$grupa30" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="40" GridPane.valignment="CENTER">
                     <GridPane.margin>
                         <Insets left="30.0" top="190.0" />
                     </GridPane.margin>
                 </RadioButton>
-                <RadioButton mnemonicParsing="false" text="Студије ИИ циклуса" toggleGroup="$grupa30" GridPane.columnIndex="2" GridPane.rowIndex="40">
+                <RadioButton mnemonicParsing="false" text="Студије другог циклуса" toggleGroup="$grupa30" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="40">
                     <GridPane.margin>
                         <Insets left="30.0" top="240.0" />
                     </GridPane.margin>
                 </RadioButton>
-                <RadioButton mnemonicParsing="false" text="Студије ИИИ циклуса" toggleGroup="$grupa30" GridPane.columnIndex="2" GridPane.rowIndex="40" GridPane.valignment="BOTTOM">
+                <RadioButton mnemonicParsing="false" text="Студије трећег циклуса" toggleGroup="$grupa30" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="40" GridPane.valignment="BOTTOM">
                     <GridPane.margin>
                         <Insets bottom="10.0" left="30.0" />
                     </GridPane.margin>
                 </RadioButton>
-                <RadioButton mnemonicParsing="false" text="Студије интегрисаног И и ИИ циклуса" toggleGroup="$grupa30" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="40" GridPane.valignment="BOTTOM">
+                <RadioButton mnemonicParsing="false" text="Студије интегрисаног првог и другог циклуса" toggleGroup="$grupa30" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="40" GridPane.valignment="BOTTOM">
                     <GridPane.margin>
                         <Insets bottom="35.0" left="30.0" />
                     </GridPane.margin>

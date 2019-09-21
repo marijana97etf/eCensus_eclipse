@@ -1,6 +1,8 @@
 package model;
 
-public class ClanDomacinstva {
+import java.io.Serializable;
+
+public class ClanDomacinstva implements Serializable{
     private String ime;
     private String prezime;
     private String JMBG;

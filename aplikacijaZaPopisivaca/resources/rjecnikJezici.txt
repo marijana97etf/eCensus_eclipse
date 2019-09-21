@@ -1,7 +1,8 @@
 ﻿OPŠTIN-OPĆIN-OPĆIN
 DOMAĆINSTV-DOMAĆINSTV-KUĆANSTV
 POL-SPOL-SPOL
-domaćinstva-domaćinstva-kućanstva
+domaćinstv-domaćinstv-kućanstv
+Domaćinstvo-Domaćinstvo-Kućanstvo
 duže-duže-dulje
 DUŽINA-DUŽINA-DULJINA
 Opština-Općina-Općina

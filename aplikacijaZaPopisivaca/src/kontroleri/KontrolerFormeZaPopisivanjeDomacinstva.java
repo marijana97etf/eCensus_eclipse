@@ -14,6 +14,7 @@ import main.Main;
 import model.ClanDomacinstva;
 import model.PopisnicaZaDomacinstvo;
 import util.PromjenaPisma;
+import util.SerijalizacijaPopisnica;
 
 import java.io.File;
 import java.io.IOException;
@@ -1036,6 +1037,9 @@ public class KontrolerFormeZaPopisivanjeDomacinstva {
         	popisnica.setSpisakLica(spisakLica);
         
         //TODO: Poslati popisnicu za domacinstvo na server
+        
+        //Ako nema interneta:
+        SerijalizacijaPopisnica.serijalizujPopisnicu(popisnica);
     }
 
     private String getOdgovor(ToggleGroup grupa, int brojPitanja){

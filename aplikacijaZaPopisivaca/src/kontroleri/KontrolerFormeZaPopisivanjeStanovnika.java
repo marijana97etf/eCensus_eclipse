@@ -8,6 +8,7 @@ import javafx.scene.control.*;
 import main.Main;
 import model.PopisnicaZaStanovnika;
 import util.PromjenaPisma;
+import util.SerijalizacijaPopisnica;
 
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -2025,7 +2026,11 @@ public class KontrolerFormeZaPopisivanjeStanovnika {
             odgovoriNaPitanja.get(46).add(odgovor46Button.getText());
 
         popisnica.setOdgovoriNaPitanja(odgovoriNaPitanja);
+        
         //TODO: Poslati popisnicu na glavni server.
+        
+      //Ako nema interneta:
+        SerijalizacijaPopisnica.serijalizujPopisnicu(popisnica);
     }
 
     private void setDefaultColors(){
