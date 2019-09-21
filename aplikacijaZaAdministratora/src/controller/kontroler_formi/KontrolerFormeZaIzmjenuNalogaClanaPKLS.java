@@ -30,7 +30,7 @@ public class KontrolerFormeZaIzmjenuNalogaClanaPKLS implements Initializable {
 
     public void izmjeni(ActionEvent actionEvent) {
         Alert alert = new Alert(Alert.AlertType.WARNING);
-        alert.setContentText("Da li želite da sačuvate izmjene naloga administratora PKLS-a?");
+        alert.setContentText("Da li Еѕelite da sačuvate izmjene naloga administratora PKLS-a?");
         ButtonType buttonType = alert.showAndWait().get();
         if(!buttonType.getText().equals("OK")) return;
         Parent root = null;
@@ -49,7 +49,7 @@ public class KontrolerFormeZaIzmjenuNalogaClanaPKLS implements Initializable {
 
     public void back(ActionEvent actionEvent) throws IOException {
         Alert alert = new Alert(Alert.AlertType.WARNING);
-        alert.setContentText("Da li želite da napustite izmjenu naloga clana PKLS-a?");
+        alert.setContentText("Da li Еѕelite da napustite izmjenu naloga clana PKLS-a?");
         ButtonType buttonType = alert.showAndWait().get();
         if(!buttonType.getText().equals("OK")) return;
         Pokreni_GUI_Aplikaciju.getStage().setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/FormaZaPregledClanovaPKLS.fxml"))));

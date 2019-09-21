@@ -43,4 +43,8 @@ public class KontrolerFormeZaRadClanaPKLS implements Initializable {
     public void promjeniJezik(ActionEvent actionEvent) throws IOException {
         Pokreni_GUI_Aplikaciju.getStage().setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/FormaZaPromjenuJezika.fxml"))));
     }
+    
+    public void promjeniPismo(ActionEvent actionEvent) throws IOException {
+        Pokreni_GUI_Aplikaciju.getStage().setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/FormaZaPromjenuPisma.fxml"))));
+    }
 }

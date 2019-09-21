@@ -73,22 +73,7 @@ public class KontrolerFormeZaPromjenuPisma implements Initializable {
         alert.setContentText("Da li želite da promjenite pismo?");
         ButtonType buttonType = alert.showAndWait().get();
         if(!buttonType.getText().equals("OK")) return;
-        if(korisnikSistema instanceof AdministratorAgencije)
-        {
-            Pokreni_GUI_Aplikaciju.getStage().setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/FormaZaRadAdministratora.fxml"))));
-        }
-        else if(korisnikSistema instanceof ClanPKLS)
-        {
-            Pokreni_GUI_Aplikaciju.getStage().setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/FormaZaRadClanaPKLS.fxml"))));
-        }
-        else if(korisnikSistema instanceof DEInstruktor) throw new ExecutionControl.NotImplementedException("DEInstruktor");
-        else if(korisnikSistema instanceof OGInstruktor) throw new ExecutionControl.NotImplementedException("OGInstruktor");
-        else
-        {
-            Alert alert2 = new Alert(Alert.AlertType.ERROR);
-            alert2.setContentText("Nalog nije ok!");
-            ButtonType buttonType2 = alert2.showAndWait().get();
-        }
+        back(actionEvent);
     }
 
     public void back(ActionEvent actionEvent) throws IOException, ExecutionControl.NotImplementedException {
@@ -101,7 +86,10 @@ public class KontrolerFormeZaPromjenuPisma implements Initializable {
         {
             Pokreni_GUI_Aplikaciju.getStage().setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/FormaZaRadClanaPKLS.fxml"))));
         }
-        else if(korisnikSistema instanceof DEInstruktor) throw new ExecutionControl.NotImplementedException("DEInstruktor");
+        else if(korisnikSistema instanceof DEInstruktor) 
+        {
+        	Pokreni_GUI_Aplikaciju.getStage().setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/FormaZaRadDEInstruktora.fxml"))));
+        }
         else if(korisnikSistema instanceof OGInstruktor) throw new ExecutionControl.NotImplementedException("OGInstruktor");
         else
         {

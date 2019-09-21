@@ -13,7 +13,7 @@ import jdk.jshell.spi.ExecutionControl;
 import model.korisnicki_nalozi.*;
 import model.pracenje_popisa.JEZIK;
 import test.Pokreni_GUI_Aplikaciju;
-
+import controller.KontrolerZaJezikeIPisma.*;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -33,11 +33,11 @@ public class KontrolerFormeZaPromjenuJezika implements Initializable {
         }
         else if(korisnikSistema instanceof ClanPKLS)
         {
-            label.setText("Clan PKLS :" + newLine + korisnikSistema.getPrezime() + " " + korisnikSistema.getIme());
+            label.setText("Član PKLS :" + newLine + korisnikSistema.getPrezime() + " " + korisnikSistema.getIme());
         }
         else if(korisnikSistema instanceof DEInstruktor)
         {
-            label.setText("Drzavni/entitetski instruktor :" + newLine + korisnikSistema.getPrezime() + " " + korisnikSistema.getIme());
+            label.setText("Državni/entitetski instruktor :" + newLine + korisnikSistema.getPrezime() + " " + korisnikSistema.getIme());
         }
         else if(korisnikSistema instanceof OGInstruktor) {
             label.setText("Opštinski/gradski instruktor :" + newLine + korisnikSistema.getPrezime() + " " + korisnikSistema.getIme());
@@ -77,23 +77,12 @@ public class KontrolerFormeZaPromjenuJezika implements Initializable {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setContentText("Da li želite da promjenite jezik?");
         ButtonType buttonType = alert.showAndWait().get();
-        if(!buttonType.getText().equals("OK")) return;
-        if(korisnikSistema instanceof AdministratorAgencije)
+        if(!buttonType.getText().equals("OK")) 
         {
-            Pokreni_GUI_Aplikaciju.getStage().setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/FormaZaRadAdministratora.fxml"))));
+        	return;
         }
-        else if(korisnikSistema instanceof ClanPKLS)
-        {
-            Pokreni_GUI_Aplikaciju.getStage().setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/FormaZaRadClanaPKLS.fxml"))));
-        }
-        else if(korisnikSistema instanceof DEInstruktor) throw new ExecutionControl.NotImplementedException("DEInstruktor");
-        else if(korisnikSistema instanceof OGInstruktor) throw new ExecutionControl.NotImplementedException("OGInstruktor");
-        else
-        {
-            Alert alert2 = new Alert(Alert.AlertType.ERROR);
-            alert2.setContentText("Nalog nije ok!");
-            ButtonType buttonType2 = alert2.showAndWait().get();
-        }
+        KontrolerZaPromjenuJezikaIPisma.prevedi();
+        back(actionEvent);
     }
 
     public void back(ActionEvent actionEvent) throws IOException, ExecutionControl.NotImplementedException {
@@ -106,7 +95,10 @@ public class KontrolerFormeZaPromjenuJezika implements Initializable {
         {
             Pokreni_GUI_Aplikaciju.getStage().setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/FormaZaRadClanaPKLS.fxml"))));
         }
-        else if(korisnikSistema instanceof DEInstruktor) throw new ExecutionControl.NotImplementedException("DEInstruktor");
+        else if(korisnikSistema instanceof DEInstruktor) 
+        {
+        	Pokreni_GUI_Aplikaciju.getStage().setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/FormaZaRadDEInstruktora.fxml"))));
+        }
         else if(korisnikSistema instanceof OGInstruktor) throw new ExecutionControl.NotImplementedException("OGInstruktor");
         else
         {

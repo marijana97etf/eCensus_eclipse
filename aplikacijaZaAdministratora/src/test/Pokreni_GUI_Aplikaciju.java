@@ -50,8 +50,7 @@ public class Pokreni_GUI_Aplikaciju extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         stage = primaryStage;
-        FXMLLoader fxmlLoader = new FXMLLoader();
-        Parent root = fxmlLoader.load(getClass().getResource("/view/FormaZaPrijavu.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/view/FormaZaPrijavu.fxml"));
         primaryStage.setTitle("eCensus - AdminMode");
         Pair<Integer,Integer> dimension = calculateDimensions();
         primaryStage.setScene(new Scene(root, dimension.getKey(), dimension.getValue()));
