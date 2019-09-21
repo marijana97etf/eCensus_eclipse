@@ -98,7 +98,7 @@
             </Label>
          </children>
       </AnchorPane>
-      <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="274.0" text="Promjeni pismo" GridPane.columnIndex="1" GridPane.rowIndex="6">
+      <Button onAction="#promjeniPismo" mnemonicParsing="false" prefHeight="40.0" prefWidth="274.0" text="Promjeni pismo" GridPane.columnIndex="1" GridPane.rowIndex="6">
          <font>
             <Font size="15.0" />
          </font>

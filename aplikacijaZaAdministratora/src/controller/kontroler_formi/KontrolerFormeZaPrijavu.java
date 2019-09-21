@@ -45,7 +45,7 @@ public class KontrolerFormeZaPrijavu implements Initializable {
         if(korisnikSistema==null)
         {
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            String nepostojeciNalog = "Nepostojeci nalog, ispravno upišite podatke o svom nalogu.";
+            String nepostojeciNalog = "Nepostojeci nalog, ispravno upiЕЎite podatke o svom nalogu.";
             alert.setContentText(nepostojeciNalog + System.lineSeparator() +
                     kontrolerZaJezik.latinToCyrillic(nepostojeciNalog));
             alert.showAndWait();
@@ -76,7 +76,12 @@ public class KontrolerFormeZaPrijavu implements Initializable {
             }
             else if(korisnikSistema instanceof DEInstruktor)
             {
-                throw new ExecutionControl.NotImplementedException("DEInstruktor - not implemented");
+            	Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                alert.setContentText("Uspješno ste se prijavili kao DE instruktor.");
+                ButtonType buttonType = alert.showAndWait().get();
+                if(!buttonType.getText().equals("OK")) return;
+                Parent root = FXMLLoader.load(getClass().getResource("/view/FormaZaRadDEInstruktora.fxml"));
+                currentStage.setScene(new Scene(root));
             }
             else if(korisnikSistema instanceof OGInstruktor)
             {
@@ -93,7 +98,7 @@ public class KontrolerFormeZaPrijavu implements Initializable {
         else
         {
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setContentText("Lozinka nije ispravna. Pokušajte ponovo.");
+            alert.setContentText("Lozinka nije ispravna. PokuЕЎajte ponovo.");
             alert.showAndWait();
             return;
         }
