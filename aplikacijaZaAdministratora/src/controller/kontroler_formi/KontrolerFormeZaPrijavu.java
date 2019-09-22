@@ -1,6 +1,7 @@
 package controller.kontroler_formi;
 
 import controller.KontrolerZaJezikeIPisma.KontrolerZaJezik;
+import eCensus.rest.client.AdministratorAgencijeCMISKlijent;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,102 +17,107 @@ import jdk.jshell.spi.ExecutionControl;
 import model.korisnicki_nalozi.*;
 import test.Pokreni_GUI_Aplikaciju;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javax.ws.rs.core.Response;
+
 public class KontrolerFormeZaPrijavu implements Initializable {
 
-    private Stage currentStage;
-    private static KorisnikSistema currentAccount;
+	private Stage trenutniStage;
+	private static KorisnikSistema trenutniKorisnik;
 
-    private SkladisteNaloga nalozi;
+	private SkladisteNaloga nalozi;
 
-    public static KorisnikSistema getCurrentAccount() {
-        return currentAccount;
-    }
+	public static KorisnikSistema getTrenutniKorisnik() {
+		return trenutniKorisnik;
+	}
 
-    static KontrolerZaJezik kontrolerZaJezik = new KontrolerZaJezik();
-    @FXML
-    TextField username;
-    @FXML
-    PasswordField password;
+	protected static final String CMIS_RESURS_URL = "https://localhost:8443/CMISServer/rest/CMIS";
+	public static String TRUSTSTORE = "resources" + File.separator + "clientTrustStore.p12";
+	public static String KEYSTORE = "resources" + File.separator + "clientStore.p12";
 
-    public void login(ActionEvent actionEvent) throws IOException, ExecutionControl.NotImplementedException {
+	static KontrolerZaJezik kontrolerZaJezik = new KontrolerZaJezik();
+	@FXML
+	TextField username;
+	@FXML
+	PasswordField password;
 
-        String usernameInput = username.getText();
+	public void login(ActionEvent actionEvent) throws IOException, ExecutionControl.NotImplementedException {
 
-        KorisnikSistema korisnikSistema = nalozi.stream().filter(e-> e.getKorisnickoIme().equals(usernameInput)).findFirst().get();
-        if(korisnikSistema==null)
-        {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            String nepostojeciNalog = "Nepostojeci nalog, ispravno upiЕЎite podatke o svom nalogu.";
-            alert.setContentText(nepostojeciNalog + System.lineSeparator() +
-                    kontrolerZaJezik.latinToCyrillic(nepostojeciNalog));
-            alert.showAndWait();
-            return;
-        }
-        if(KorisnikSistema.napraviHesLozinke(password.getText()).equals(korisnikSistema.getLozinkaHash()))
-        {
-            currentAccount = korisnikSistema;
-            if(korisnikSistema instanceof AdministratorAgencije)
-            {
-                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-                var uspjesnaPrijavaAdminAgencije = "Uspješno ste se prijavili kao administrator agencije.";
-                alert.setContentText(uspjesnaPrijavaAdminAgencije + System.lineSeparator() +
-                        kontrolerZaJezik.latinToCyrillic(uspjesnaPrijavaAdminAgencije));
-                ButtonType buttonType = alert.showAndWait().get();
-                if(!buttonType.getText().equals("OK")) return;
-                Parent root = FXMLLoader.load(getClass().getResource("/view/FormaZaRadAdministratora.fxml"));
-                currentStage.setScene(new Scene(root));
-            }
-            else if(korisnikSistema instanceof ClanPKLS)
-            {
-                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-                alert.setContentText("Uspješno ste se prijavili kao clan PKLS.");
-                ButtonType buttonType = alert.showAndWait().get();
-                if(!buttonType.getText().equals("OK")) return;
-                Parent root = FXMLLoader.load(getClass().getResource("/view/FormaZaRadClanaPKLS.fxml"));
-                currentStage.setScene(new Scene(root));
-            }
-            else if(korisnikSistema instanceof DEInstruktor)
-            {
-            	Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-                alert.setContentText("Uspješno ste se prijavili kao DE instruktor.");
-                ButtonType buttonType = alert.showAndWait().get();
-                if(!buttonType.getText().equals("OK")) return;
-                Parent root = FXMLLoader.load(getClass().getResource("/view/FormaZaRadDEInstruktora.fxml"));
-                currentStage.setScene(new Scene(root));
-            }
-            else if(korisnikSistema instanceof OGInstruktor)
-            {
-                throw new ExecutionControl.NotImplementedException("OGInstruktor - not implemented");
-            }
-            else
-            {
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setContentText("Tip naloga nije validan!");
-                alert.showAndWait();
-                return;
-            }
-        }
-        else
-        {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setContentText("Lozinka nije ispravna. PokuЕЎajte ponovo.");
-            alert.showAndWait();
-            return;
-        }
-    }
+		String kosinickoImeInput = username.getText();
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        nalozi = Pokreni_GUI_Aplikaciju.getKontrolerZaCuvanjeNaloga().getSkladisteNaloga();
-        
-        System.out.println("nalozi: ");
-        nalozi.stream().forEach(nalog -> System.out.println(nalog));
-        System.out.println("to su nalozi");
-        
-        currentStage = Pokreni_GUI_Aplikaciju.getStage();
-    }
+		// KorisnikSistema korisnikSistema = nalozi.stream().filter(e->
+		// e.getKorisnickoIme().equals(usernameInput)).findFirst().get();
+		KorisnikSistema korisnikSistema = null;
+
+		AdministratorAgencijeCMISKlijent klijent = new AdministratorAgencijeCMISKlijent(KEYSTORE, "sigurnost",
+				TRUSTSTORE, "sigurnost", kosinickoImeInput, KorisnikSistema.napraviHesLozinke(password.getText()));
+		Response odgovor = klijent.get(CMIS_RESURS_URL);
+
+		if (Response.Status.UNAUTHORIZED.equals(odgovor.getStatusInfo())) {
+			Alert alert = new Alert(Alert.AlertType.ERROR);
+			String nepostojeciNalog = "Korisničko ime ili lozinka nisu ispravni.";
+			alert.setContentText(
+					nepostojeciNalog + System.lineSeparator() + kontrolerZaJezik.latinToCyrillic(nepostojeciNalog));
+			alert.showAndWait();
+			return;
+		}
+		if (Response.Status.Family.SUCCESSFUL.equals(odgovor.getStatusInfo().getFamily())) {
+			odgovor = klijent.get(CMIS_RESURS_URL + "/korisnici/nalozi/" + kosinickoImeInput);
+			if (Response.Status.Family.SUCCESSFUL.equals(odgovor.getStatusInfo().getFamily())) {
+				korisnikSistema = odgovor.readEntity(AdministratorAgencije.class);
+			} else {
+				// logguju se header-i
+			}
+		} else {
+			// logguju se header-i
+		}
+
+		trenutniKorisnik = korisnikSistema;
+		if (korisnikSistema instanceof AdministratorAgencije) {
+			Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+			var uspjesnaPrijavaAdminAgencije = "Uspješno ste se prijavili kao administrator agencije.";
+			alert.setContentText(uspjesnaPrijavaAdminAgencije + System.lineSeparator()
+					+ kontrolerZaJezik.latinToCyrillic(uspjesnaPrijavaAdminAgencije));
+			ButtonType buttonType = alert.showAndWait().get();
+			if (!buttonType.getText().equals("OK"))
+				return;
+			Parent root = FXMLLoader.load(getClass().getResource("/view/FormaZaRadAdministratora.fxml"));
+			trenutniStage.setScene(new Scene(root));
+		} else if (korisnikSistema instanceof ClanPKLS) {
+			Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+			alert.setContentText("Uspješno ste se prijavili kao clan PKLS.");
+			ButtonType buttonType = alert.showAndWait().get();
+			if (!buttonType.getText().equals("OK"))
+				return;
+			Parent root = FXMLLoader.load(getClass().getResource("/view/FormaZaRadClanaPKLS.fxml"));
+			trenutniStage.setScene(new Scene(root));
+		} else if (korisnikSistema instanceof DEInstruktor) {
+			Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+			alert.setContentText("Uspješno ste se prijavili kao DE instruktor.");
+			ButtonType buttonType = alert.showAndWait().get();
+			if (!buttonType.getText().equals("OK"))
+				return;
+			Parent root = FXMLLoader.load(getClass().getResource("/view/FormaZaRadDEInstruktora.fxml"));
+			trenutniStage.setScene(new Scene(root));
+		} else if (korisnikSistema instanceof OGInstruktor) {
+			throw new ExecutionControl.NotImplementedException("OGInstruktor - not implemented");
+		} else {
+			Alert alert = new Alert(Alert.AlertType.ERROR);
+			alert.setContentText("Tip naloga nije validan!");
+			alert.showAndWait();
+			return;
+		}
+
+	}
+
+	@Override
+	public void initialize(URL url, ResourceBundle resourceBundle) {
+		
+		trenutniStage = Pokreni_GUI_Aplikaciju.getStage();
+		
+	}
 }

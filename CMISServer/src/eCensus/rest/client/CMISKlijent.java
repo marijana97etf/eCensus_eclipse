@@ -1,5 +1,6 @@
 package eCensus.rest.client;
 
+import java.io.File;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -18,8 +19,8 @@ public abstract class CMISKlijent extends SecureRestKlijent {
 	protected static final String NALOZI_RESURS_URL = "korisnici/nalozi";
 	protected  String KORISNIK_RESURS_URL;
 	
-	public static String TRUSTSTORE = "C:\\OpenSSL-Win64\\OpenSSL-workspace\\certs\\clientTrustStore.p12";
-	public static String KEYSTORE = "C:\\OpenSSL-Win64\\OpenSSL-workspace\\certs\\clientStore.p12";
+	public static String TRUSTSTORE = "resources" + File.separator + "clientTrustStore.p12";
+	public static String KEYSTORE = "resources" + File.separator + "clientStore.p12";
 
 	static {
 		// for localhost testing only
@@ -64,37 +65,18 @@ public abstract class CMISKlijent extends SecureRestKlijent {
 		super(keyStore,keyStoreLozinka,trustStore,trustStoreLozinka,korisnickoIme,lozinkaHash);
 	}
 	
-	public boolean registrujKorisnika(KorisnikSistema korisnikSistema) {
-		Response odgovor = post(CMIS_RESURS_URL + "/" + KORISNIK_RESURS_URL, korisnikSistema );
-		//mjesto za log
-		System.out.println(odgovor.readEntity(String.class));
-		if(Response.Status.Family.SUCCESSFUL.equals(odgovor.getStatusInfo().getFamily())) {
-			return true;
-		}else {
-			return false;
-		}
+	public Response registrujKorisnika(KorisnikSistema korisnikSistema) {
+		return post(CMIS_RESURS_URL + "/" + KORISNIK_RESURS_URL, korisnikSistema );
+		
 	}
 
-	public boolean obrisiKorisnika(KorisnikSistema korisnikSistema) {
-		Response odgovor = delete(CMIS_RESURS_URL + "/" + KORISNIK_RESURS_URL + "/" + korisnikSistema.getId());
-		//mjesto za log
-		System.out.println(odgovor.readEntity(String.class));
-		if(Response.Status.Family.SUCCESSFUL.equals(odgovor.getStatusInfo().getFamily())) {
-			return true;
-		}else {
-			return false;
-		}
+	public Response obrisiKorisnika(KorisnikSistema korisnikSistema) {
+		return delete(CMIS_RESURS_URL + "/" + KORISNIK_RESURS_URL + "/" + korisnikSistema.getId());
 	}
 
-	public boolean azurirajKorisnika(KorisnikSistema korisnikSistema) {
-		Response odgovor = put(CMIS_RESURS_URL + "/" + KORISNIK_RESURS_URL, korisnikSistema );
-		//mjesto za log
-		System.out.println(odgovor.readEntity(String.class));
-		if(Response.Status.Family.SUCCESSFUL.equals(odgovor.getStatusInfo().getFamily())) {
-			return true;
-		}else {
-			return false;
-		}
+	public Response azurirajKorisnika(KorisnikSistema korisnikSistema) {
+		return put(CMIS_RESURS_URL + "/" + KORISNIK_RESURS_URL, korisnikSistema );
+		
 	}
 
 }

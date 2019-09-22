@@ -34,9 +34,8 @@ public class AdministratorAgencijeCMISKlijent extends AdministratorCMISKlijent {
 
 	//provjeri
 	@SuppressWarnings("unchecked")
-	public List<AdministratorAgencije> getListuClanovaPKLS(){
-		return get(CMIS_RESURS_URL + "/" + NALOZI_RESURS_URL + "/lista?tip=" + AdministratorAgencije.class.getName() )
-				.readEntity(new GenericType<LinkedList<AdministratorAgencije>>() {});
+	public Response getListuClanovaPKLS(){
+		return get(CMIS_RESURS_URL + "/" + NALOZI_RESURS_URL + "/lista?tip=" + AdministratorAgencije.class.getName() );
 	}
 
 	@Override

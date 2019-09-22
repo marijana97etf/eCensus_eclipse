@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import eCensus.rest.client.CMISKlijent;
+import model.korisnicki_nalozi.AdministratorAgencije;
 import model.korisnicki_nalozi.ClanPKLS;
 import model.korisnicki_nalozi.DEInstruktor;
 import model.korisnicki_nalozi.KorisnikSistema;
@@ -29,6 +30,8 @@ public class NaloziDAO {
 						"sigurnost"));
 		korisnici.put(3L, new Popisivac(3L, "3213211", "Janko", "Jankovic", "janko.Jankovic", "12345", JEZIK.SRPSKI,
 				PISMO.LATINICA, CMISKlijent.TRUSTSTORE, "sigurnost", CMISKlijent.KEYSTORE, "sigurnost"));
+		korisnici.put(4L, new AdministratorAgencije(4L, "32132211", "admin", "adminovic", "admin", "admin", JEZIK.SRPSKI,
+				PISMO.CIRILICA, CMISKlijent.TRUSTSTORE, "sigurnost", CMISKlijent.KEYSTORE, "sigurnost"));
 
 	}
 

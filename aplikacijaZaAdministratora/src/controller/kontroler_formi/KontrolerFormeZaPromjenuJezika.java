@@ -25,7 +25,7 @@ public class KontrolerFormeZaPromjenuJezika implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        KorisnikSistema korisnikSistema = KontrolerFormeZaPrijavu.getCurrentAccount();
+        KorisnikSistema korisnikSistema = KontrolerFormeZaPrijavu.getTrenutniKorisnik();
         String newLine = System.lineSeparator();
         if(korisnikSistema instanceof AdministratorAgencije)
         {
@@ -61,7 +61,7 @@ public class KontrolerFormeZaPromjenuJezika implements Initializable {
 
 
     public void promjeniJezik(ActionEvent actionEvent) throws IOException, ExecutionControl.NotImplementedException {
-        KorisnikSistema korisnikSistema = KontrolerFormeZaPrijavu.getCurrentAccount();
+        KorisnikSistema korisnikSistema = KontrolerFormeZaPrijavu.getTrenutniKorisnik();
         if(srpski.isSelected())
             korisnikSistema.setJezik(JEZIK.SRPSKI);
         else if(bosanski.isSelected())
@@ -86,7 +86,7 @@ public class KontrolerFormeZaPromjenuJezika implements Initializable {
     }
 
     public void back(ActionEvent actionEvent) throws IOException, ExecutionControl.NotImplementedException {
-        KorisnikSistema korisnikSistema = KontrolerFormeZaPrijavu.getCurrentAccount();
+        KorisnikSistema korisnikSistema = KontrolerFormeZaPrijavu.getTrenutniKorisnik();
         if(korisnikSistema instanceof AdministratorAgencije)
         {
             Pokreni_GUI_Aplikaciju.getStage().setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/FormaZaRadAdministratora.fxml"))));

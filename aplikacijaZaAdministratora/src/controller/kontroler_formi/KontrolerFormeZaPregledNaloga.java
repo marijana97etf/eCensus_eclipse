@@ -21,6 +21,11 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.Map.Entry;
+
+import javax.ws.rs.core.Response;
+
+import eCensus.rest.client.ClanPKLSCMISKlijent;
 
 public abstract class KontrolerFormeZaPregledNaloga implements Initializable {
 
@@ -35,8 +40,10 @@ public abstract class KontrolerFormeZaPregledNaloga implements Initializable {
         accountForEdit = accountForEdit;
     }
 
+   public static TableView<KorisnikInputModel> staticTabela;
+    
     @FXML
-    protected TableView<KorisnikInputModel> tabela;
+    protected  TableView<KorisnikInputModel> tabela;
 
     @FXML
     protected TableColumn<Object, Object> redniBrojColumn;
@@ -65,10 +72,12 @@ public abstract class KontrolerFormeZaPregledNaloga implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+    	
+    	staticTabela = tabela;
+    	
         initializeList();
 
-        KorisnikSistema korisnikSistema = KontrolerFormeZaPrijavu.getCurrentAccount();
+        KorisnikSistema korisnikSistema = KontrolerFormeZaPrijavu.getTrenutniKorisnik();
         var wrapper = new Object()
         {
             String sadrzajLabele;
@@ -96,7 +105,23 @@ public abstract class KontrolerFormeZaPregledNaloga implements Initializable {
             item.getBrisanjeButton().setOnAction(e->
             {
                 tabela.getItems().removeAll(item);
-                Pokreni_GUI_Aplikaciju.getKontrolerZaCuvanjeNaloga().getSkladisteNaloga().remove(item.getKorisnikSistema());
+                
+                ClanPKLSCMISKlijent clanPKLSCMISKlijent = new ClanPKLSCMISKlijent(KontrolerFormeZaPrijavu.getTrenutniKorisnik());
+                Response odgovor = clanPKLSCMISKlijent.obrisiKorisnika(item.getKorisnikSistema());
+                if(!Response.Status.Family.SUCCESSFUL.equals(odgovor.getStatusInfo().getFamily())) {
+                	System.out.println("Uspjesno brisanje");
+                	//loggovati header-e
+                }else {
+                	
+                	System.out.println(odgovor.getStatusInfo().getStatusCode() + " " + odgovor.getStatusInfo().getReasonPhrase() );
+                	for(Entry<String,List<Object>> entry : odgovor.getHeaders().entrySet()) {
+                		System.out.print(entry.getKey() + " ");
+                		for(Object objekat : entry.getValue())
+                			System.out.print(objekat +" ");
+                		System.out.println();
+                	}
+                }
+                
                 popraviIdove(tabela.getItems());
                 Platform.runLater(()-> tabela.refresh());
             });
@@ -136,7 +161,6 @@ public abstract class KontrolerFormeZaPregledNaloga implements Initializable {
                 } catch (IOException ex) {
                     ex.printStackTrace();
                 }
-                Platform.runLater(()-> tabela.refresh());
             });
         }
     }
@@ -148,4 +172,12 @@ public abstract class KontrolerFormeZaPregledNaloga implements Initializable {
     }
 
     public abstract void initializeList();
+
+	public static TableView<KorisnikInputModel> getTabela() {
+		return staticTabela;
+	}
+
+	public static void setTabela(TableView<KorisnikInputModel> tabela) {
+		KontrolerFormeZaPregledNaloga.staticTabela = tabela;
+	}
 }

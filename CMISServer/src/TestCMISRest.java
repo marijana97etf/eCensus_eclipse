@@ -1,5 +1,7 @@
 
-import java.util.List;
+import java.util.LinkedList;
+
+import javax.ws.rs.core.GenericType;
 
 import eCensus.rest.client.CMISKlijent;
 import eCensus.rest.client.ClanPKLSCMISKlijent;
@@ -39,12 +41,12 @@ public class TestCMISRest {
 		
 		
 		ClanPKLSCMISKlijent clanPKLSklijent = new ClanPKLSCMISKlijent(korisnik);
-		ClanPKLS clanPKLS = clanPKLSklijent.getClanPKLS("kristijan.stepanov");
+		ClanPKLS clanPKLS = clanPKLSklijent.getClanPKLS("kristijan.stepanov").readEntity(ClanPKLS.class);
 
 		System.out.println(clanPKLS);
 		
 		System.out.println("Trazena lista:");
-		for(ClanPKLS clan : clanPKLSklijent.getListuClanovaPKLS()) {
+		for(ClanPKLS clan : clanPKLSklijent.getListuClanovaPKLS().readEntity(new GenericType<LinkedList<ClanPKLS>>() {})) {
 			System.out.println(clan);
 			System.out.println(clan.getClass().getName());
 		}
@@ -54,13 +56,13 @@ public class TestCMISRest {
 				"sigurnost"));
 		System.out.println(clanPKLSklijent.getClanPKLS("milos.milosevic"));
 		
-		ClanPKLS clan = clanPKLSklijent.getClanPKLS("milos.milosevic");
+		ClanPKLS clan = clanPKLSklijent.getClanPKLS("milos.milosevic").readEntity(ClanPKLS.class);
 		clan.setIme("Marko");
 		clan.setKorisnickoIme("marko.milosevic");
 		clanPKLSklijent.azurirajKorisnika(clan);
 		System.out.println(clanPKLSklijent.getClanPKLS("marko.milosevic"));
 		
-		for(ClanPKLS clan1 : clanPKLSklijent.getListuClanovaPKLS()) {
+		for(ClanPKLS clan1 : clanPKLSklijent.getListuClanovaPKLS().readEntity(new GenericType<LinkedList<ClanPKLS>>() {})) {
 			System.out.println(clan1);
 			System.out.println(clan1.getClass().getName());
 		}

@@ -54,12 +54,12 @@ public class KontrolerFormeZaRegistracijuDEInstruktora implements Initializable 
         if(password.getText().length()<8)
         {
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setContentText("Unesite 'jaču' lozinku!");
+            alert.setContentText("Unesite 'jaÄ�u' lozinku!");
             alert.showAndWait();
             return;
         }
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setContentText("Uspješno ste registrovali državnog/entitetskog instruktora");
+        alert.setContentText("UspjeÅ¡no ste registrovali drÅ¾avnog/entitetskog instruktora");
         DEInstruktor.DRZAVA_ENTITET drzava_entitet = DEInstruktor.StringTODrzavaEntitet((String)choiceBox2.getValue());
         KorisnikSistema deInstruktor = new DEInstruktor (
                 jmbg.getText(),
@@ -83,7 +83,7 @@ public class KontrolerFormeZaRegistracijuDEInstruktora implements Initializable 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        KorisnikSistema korisnikSistema = KontrolerFormeZaPrijavu.getCurrentAccount();
+        KorisnikSistema korisnikSistema = KontrolerFormeZaPrijavu.getTrenutniKorisnik();
         var wrapper = new Object()
         {
             String sadrzajLabele;

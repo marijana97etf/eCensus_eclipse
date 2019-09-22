@@ -1,26 +1,31 @@
 package controller.kontroler_formi;
 
+import java.io.IOException;
+import java.net.URL;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map.Entry;
+import java.util.ResourceBundle;
+
+import javax.ws.rs.core.Response;
+
+import eCensus.rest.client.ClanPKLSCMISKlijent;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
+import javafx.scene.control.TextInputControl;
 import model.korisnicki_nalozi.ClanPKLS;
 import model.korisnicki_nalozi.KorisnikSistema;
 import test.Pokreni_GUI_Aplikaciju;
-
-import java.io.IOException;
-import java.lang.annotation.Documented;
-import java.lang.annotation.Retention;
-import java.lang.annotation.Target;
-import java.net.URL;
-import java.util.Arrays;
-import java.util.List;
-import java.util.ResourceBundle;
 
 public class KontrolerFormeZaRegistracijuClanaPKLS implements Initializable {
     public void back(ActionEvent actionEvent) throws IOException {
@@ -50,12 +55,12 @@ public class KontrolerFormeZaRegistracijuClanaPKLS implements Initializable {
         if(password.getText().length()<8)
         {
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setContentText("Unesite 'jaču' lozinku!");
+            alert.setContentText("Unesite 'jaÄ�u' lozinku!");
             alert.showAndWait();
             return;
         }
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setContentText("Uspješno ste registrovali clana PKLS-a");
+        alert.setContentText("UspjeÅ¡no ste registrovali clana PKLS-a");
         KorisnikSistema clanPKLS = new ClanPKLS(
                 jmbg.getText(),
                 ime.getText(),
@@ -65,7 +70,22 @@ public class KontrolerFormeZaRegistracijuClanaPKLS implements Initializable {
                 null,
                 null);
 
-        Pokreni_GUI_Aplikaciju.getKontrolerZaCuvanjeNaloga().getSkladisteNaloga().add(clanPKLS);
+        ClanPKLSCMISKlijent clanPKLSCMISKlijent = new ClanPKLSCMISKlijent(KontrolerFormeZaPrijavu.getTrenutniKorisnik());
+        Response odgovor = clanPKLSCMISKlijent.registrujKorisnika(clanPKLS);
+        if(!Response.Status.Family.SUCCESSFUL.equals(odgovor.getStatusInfo().getFamily())) {
+        	System.out.println("Uspjesna registracija");
+        	//loggovati header-e
+        }else {
+        	
+        	System.out.println(odgovor.getStatusInfo().getStatusCode() + " " + odgovor.getStatusInfo().getReasonPhrase() );
+        	for(Entry<String,List<Object>> entry : odgovor.getHeaders().entrySet()) {
+        		System.out.print(entry.getKey() + " ");
+        		for(Object objekat : entry.getValue())
+        			System.out.print(objekat +" ");
+        		System.out.println();
+        	}
+        }
+        
         ButtonType buttonType = alert.showAndWait().get();
         if(!buttonType.getText().equals("OK")) return;
         Parent root = FXMLLoader.load(getClass().getResource("/view/FormaZaRadAdministratora.fxml"));
@@ -77,7 +97,7 @@ public class KontrolerFormeZaRegistracijuClanaPKLS implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        KorisnikSistema korisnikSistema = KontrolerFormeZaPrijavu.getCurrentAccount();
+        KorisnikSistema korisnikSistema = KontrolerFormeZaPrijavu.getTrenutniKorisnik();
         var wrapper = new Object()
         {
             String sadrzajLabele;

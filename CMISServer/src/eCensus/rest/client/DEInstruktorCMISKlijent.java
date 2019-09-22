@@ -28,9 +28,8 @@ public class DEInstruktorCMISKlijent extends AdministratorCMISKlijent {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public List<DEInstruktor> getListuDEInstruktora(){
-		return get(CMIS_RESURS_URL + "/" + NALOZI_RESURS_URL + "/lista?tip=" + DEInstruktor.class.getName() )
-				.readEntity(new GenericType<LinkedList<DEInstruktor>>() {});
+	public Response getListuDEInstruktora(){
+		return get(CMIS_RESURS_URL + "/" + NALOZI_RESURS_URL + "/lista?tip=" + DEInstruktor.class.getName() );
 	}
 
 	@Override

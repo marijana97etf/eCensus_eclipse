@@ -105,14 +105,14 @@ public class SecureRestKlijent {
 		return null;
 	}
 	
-	protected Response get(String url){
+	public Response get(String url){
 		WebTarget webTarget = klijent.target(url);
 		
 		Invocation.Builder invocationBuilder =  webTarget.request(MediaType.APPLICATION_JSON);
 		return invocationBuilder.get();
 	}
 	
-	protected <T> Response put(String url,T t) {
+	public <T> Response put(String url,T t) {
 		WebTarget webTarget = klijent.target(url);
 		
 		Invocation.Builder invocationBuilder =  webTarget.request(MediaType.APPLICATION_JSON);
@@ -120,7 +120,7 @@ public class SecureRestKlijent {
 		
 	} 
 	
-	protected <T> Response post(String url,T t) {
+	public <T> Response post(String url,T t) {
 		WebTarget webTarget = klijent.target(url);
 		
 		Invocation.Builder invocationBuilder =  webTarget.request(MediaType.APPLICATION_JSON);
@@ -128,7 +128,7 @@ public class SecureRestKlijent {
 		
 	}
 	
-	protected <T> Response delete(String url) {
+	public <T> Response delete(String url) {
 		WebTarget webTarget = klijent.target(url);
 		
 		Invocation.Builder invocationBuilder =  webTarget.request();

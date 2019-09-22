@@ -27,15 +27,20 @@ public class ClanPKLSCMISKlijent extends AdministratorCMISKlijent {
 		// TODO Auto-generated constructor stub
 	}
 
-	public ClanPKLS getClanPKLS(String korisnickoIme) {
-		return get(CMIS_RESURS_URL + "/" + NALOZI_RESURS_URL + "/" + korisnickoIme).readEntity(ClanPKLS.class);
+	public Response getClanPKLS(String korisnickoIme) {
+		return get(CMIS_RESURS_URL + "/" + NALOZI_RESURS_URL + "/" + korisnickoIme);
 	}
 
 	//provjeri
+//	@SuppressWarnings("unchecked")
+//	public List<ClanPKLS> getListuClanovaPKLS(){
+//		return get(CMIS_RESURS_URL + "/" + NALOZI_RESURS_URL + "/lista?tip=" + ClanPKLS.class.getName() )
+//				.readEntity(new GenericType<LinkedList<ClanPKLS>>() {});
+//	}
+	
 	@SuppressWarnings("unchecked")
-	public List<ClanPKLS> getListuClanovaPKLS(){
-		return get(CMIS_RESURS_URL + "/" + NALOZI_RESURS_URL + "/lista?tip=" + ClanPKLS.class.getName() )
-				.readEntity(new GenericType<LinkedList<ClanPKLS>>() {});
+	public Response getListuClanovaPKLS(){
+		return get(CMIS_RESURS_URL + "/" + NALOZI_RESURS_URL + "/lista?tip=" + ClanPKLS.class.getName() );
 	}
 
 	@Override

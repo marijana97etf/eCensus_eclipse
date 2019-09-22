@@ -29,9 +29,8 @@ public class OGInstruktorCMISKLijent extends AdministratorCMISKlijent {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public List<OGInstruktor> getListuOGInstruktora(){
-		return get(CMIS_RESURS_URL + "/" + NALOZI_RESURS_URL + "/lista?tip=" + OGInstruktor.class.getName() )
-				.readEntity(new GenericType<LinkedList<OGInstruktor>>() {});
+	public Response getListuOGInstruktora(){
+		return get(CMIS_RESURS_URL + "/" + NALOZI_RESURS_URL + "/lista?tip=" + OGInstruktor.class.getName() );
 	}
 
 	@Override

@@ -29,21 +29,25 @@ public class PopisivacCMISKlijent extends CMISKlijent {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public List<Popisivac> getListaPopisivaca(){
-		return get(CMIS_RESURS_URL + "/" + NALOZI_RESURS_URL + "/lista?tip=" + Popisivac.class.getName() )
-				.readEntity(new GenericType<LinkedList<Popisivac>>() {});
+//	public List<Popisivac> getListaPopisivaca(){
+//		return get(CMIS_RESURS_URL + "/" + NALOZI_RESURS_URL + "/lista?tip=" + Popisivac.class.getName() )
+//				.readEntity(new GenericType<LinkedList<Popisivac>>() {});
+//	}
+	
+	public Response getListaPopisivaca(){
+		return get(CMIS_RESURS_URL + "/" + NALOZI_RESURS_URL + "/lista?tip=" + Popisivac.class.getName() );
 	}
 	
-	public List<PopisniKrug> getPopisneKrugovePopisivaca(Popisivac popisivac){
+	public Response getPopisneKrugovePopisivaca(Popisivac popisivac){
 		return null;
 	}
 	
-	public boolean azurirajPopisneKrugovePopisivaca(Popisivac popisivac) {
-		return true;
+	public Response azurirajPopisneKrugovePopisivaca(Popisivac popisivac) {
+		return null;
 	}
 	
-	public boolean sacuvajOcjenuPopisivaca() {
-		return true;
+	public Response sacuvajOcjenuPopisivaca() {
+		return null;
 	}
 
 	@Override

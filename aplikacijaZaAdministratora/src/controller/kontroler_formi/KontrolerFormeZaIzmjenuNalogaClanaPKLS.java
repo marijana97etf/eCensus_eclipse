@@ -1,5 +1,15 @@
 package controller.kontroler_formi;
 
+import java.io.IOException;
+import java.net.URL;
+import java.util.List;
+import java.util.Map.Entry;
+import java.util.ResourceBundle;
+
+import javax.ws.rs.core.Response;
+
+import eCensus.rest.client.ClanPKLSCMISKlijent;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -9,12 +19,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
+import model.korisnicki_nalozi.KorisnikSistema;
 import model.table_input_models.KorisnikInputModel;
 import test.Pokreni_GUI_Aplikaciju;
-
-import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
 
 public class KontrolerFormeZaIzmjenuNalogaClanaPKLS implements Initializable {
 
@@ -40,11 +47,32 @@ public class KontrolerFormeZaIzmjenuNalogaClanaPKLS implements Initializable {
             ex.printStackTrace();
         }
         Pokreni_GUI_Aplikaciju.getStage().setScene(new Scene(root));
-        var account = KontrolerFormeZaPregledClanovaPKLS.getAccountForEdit();
-        account.setPrezime(prezimeIzmjena.getText());
-        account.setIme(imeIzmjena.getText());
-        account.setKorisnickoIme(usernameIzmjena.getText());
-        account.updateKorisnikSistema();
+        var nalogInputModel = KontrolerFormeZaPregledClanovaPKLS.getAccountForEdit();
+        nalogInputModel.setPrezime(prezimeIzmjena.getText());
+        nalogInputModel.setIme(imeIzmjena.getText());
+        nalogInputModel.setKorisnickoIme(usernameIzmjena.getText());
+        nalogInputModel.updateKorisnikSistema();
+        
+        Platform.runLater(()-> KontrolerFormeZaPregledNaloga.getTabela().refresh());
+        
+        KorisnikSistema clanPKLS =  nalogInputModel.getKorisnikSistema();
+        
+        ClanPKLSCMISKlijent clanPKLSCMISKlijent = new ClanPKLSCMISKlijent(KontrolerFormeZaPrijavu.getTrenutniKorisnik());
+        Response odgovor = clanPKLSCMISKlijent.azurirajKorisnika(clanPKLS);
+        if(!Response.Status.Family.SUCCESSFUL.equals(odgovor.getStatusInfo().getFamily())) {
+        	System.out.println("Uspjesna izmjena.");
+        	//loggovati header-e
+        }else {
+        	
+        	System.out.println(odgovor.getStatusInfo().getStatusCode() + " " + odgovor.getStatusInfo().getReasonPhrase() );
+        	for(Entry<String,List<Object>> entry : odgovor.getHeaders().entrySet()) {
+        		System.out.print(entry.getKey() + " ");
+        		for(Object objekat : entry.getValue())
+        			System.out.print(objekat +" ");
+        		System.out.println();
+        	}
+        }
+        
     }
 
     public void back(ActionEvent actionEvent) throws IOException {

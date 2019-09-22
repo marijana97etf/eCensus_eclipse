@@ -23,7 +23,7 @@ public class KontrolerFormeZaRadClanaPKLS implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        korisnikSistema = KontrolerFormeZaPrijavu.getCurrentAccount();
+        korisnikSistema = KontrolerFormeZaPrijavu.getTrenutniKorisnik();
         var wrapper = new Object()
         {
             String sadrzajLabele;

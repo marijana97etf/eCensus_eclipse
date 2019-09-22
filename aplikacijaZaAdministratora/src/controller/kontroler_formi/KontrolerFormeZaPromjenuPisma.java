@@ -25,7 +25,7 @@ public class KontrolerFormeZaPromjenuPisma implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        KorisnikSistema korisnikSistema = KontrolerFormeZaPrijavu.getCurrentAccount();
+        KorisnikSistema korisnikSistema = KontrolerFormeZaPrijavu.getTrenutniKorisnik();
         String newLine = System.lineSeparator();
         if(korisnikSistema instanceof AdministratorAgencije)
         {
@@ -58,7 +58,7 @@ public class KontrolerFormeZaPromjenuPisma implements Initializable {
 
 
     public void promjeniPismo(ActionEvent actionEvent) throws IOException, ExecutionControl.NotImplementedException {
-        KorisnikSistema korisnikSistema = KontrolerFormeZaPrijavu.getCurrentAccount();
+        KorisnikSistema korisnikSistema = KontrolerFormeZaPrijavu.getTrenutniKorisnik();
         if(cirilica.isSelected())
             korisnikSistema.setPismo(PISMO.CIRILICA);
         else if(latinica.isSelected())
@@ -77,7 +77,7 @@ public class KontrolerFormeZaPromjenuPisma implements Initializable {
     }
 
     public void back(ActionEvent actionEvent) throws IOException, ExecutionControl.NotImplementedException {
-        KorisnikSistema korisnikSistema = KontrolerFormeZaPrijavu.getCurrentAccount();
+        KorisnikSistema korisnikSistema = KontrolerFormeZaPrijavu.getTrenutniKorisnik();
         if(korisnikSistema instanceof AdministratorAgencije)
         {
             Pokreni_GUI_Aplikaciju.getStage().setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/FormaZaRadAdministratora.fxml"))));

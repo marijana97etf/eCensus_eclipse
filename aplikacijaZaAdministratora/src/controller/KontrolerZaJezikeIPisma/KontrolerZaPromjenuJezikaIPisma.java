@@ -80,9 +80,9 @@ public class KontrolerZaPromjenuJezikaIPisma {
 
 		for(Triplet<String, String, String> t : rjecnik) {
 			String pattern;
-			if(JEZIK.SRPSKI.equals(KontrolerFormeZaPrijavu.getCurrentAccount().getJezik()))
+			if(JEZIK.SRPSKI.equals(KontrolerFormeZaPrijavu.getTrenutniKorisnik().getJezik()))
 				pattern = t.getValue0();
-			else if(JEZIK.BOSANSKI.equals(KontrolerFormeZaPrijavu.getCurrentAccount().getJezik()))
+			else if(JEZIK.BOSANSKI.equals(KontrolerFormeZaPrijavu.getTrenutniKorisnik().getJezik()))
 				pattern = t.getValue1();
 			else
 				pattern = t.getValue2();
@@ -101,9 +101,9 @@ public class KontrolerZaPromjenuJezikaIPisma {
 	
 			for(String rijec : pronadjeno) {
 				String novaRijec;
-				if(JEZIK.SRPSKI.equals(KontrolerFormeZaPrijavu.getCurrentAccount().getJezik()))
+				if(JEZIK.SRPSKI.equals(KontrolerFormeZaPrijavu.getTrenutniKorisnik().getJezik()))
 					novaRijec = t.getValue0();
-				else if(JEZIK.BOSANSKI.equals(KontrolerFormeZaPrijavu.getCurrentAccount().getJezik()))
+				else if(JEZIK.BOSANSKI.equals(KontrolerFormeZaPrijavu.getTrenutniKorisnik().getJezik()))
 					novaRijec = t.getValue1();
 				else
 					novaRijec = t.getValue2();
@@ -125,7 +125,7 @@ public class KontrolerZaPromjenuJezikaIPisma {
 	
 	public static void prikaziUpozorenje(String poruka){
     	String greska = "Greška";
-    	if(JEZIK.SRPSKI.equals(KontrolerFormeZaPrijavu.getCurrentAccount().getJezik())) {
+    	if(JEZIK.SRPSKI.equals(KontrolerFormeZaPrijavu.getTrenutniKorisnik().getJezik())) {
     		poruka = PromjenaPisma.zamijeniLatinicuCiricom(poruka);
     		greska = PromjenaPisma.zamijeniLatinicuCiricom(poruka);
     	}
