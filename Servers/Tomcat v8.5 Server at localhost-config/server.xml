@@ -62,7 +62,11 @@
     -->
     <Connector connectionTimeout="20000" port="8080" protocol="HTTP/1.1" redirectPort="8443"/>
 			   
-	<Connector SSLEnabled="true" clientAuth="true" keyAlias="tomcat" keystoreFile="C:\OpenSSL-Win64\OpenSSL-workspace\certs\serverStore.p12" keystorePass="sigurnost" maxThreads="150" port="8443" scheme="https" secure="true" sslProtocol="TLS" truststoreFile="C:\OpenSSL-Win64\OpenSSL-workspace\certs\serverTrustStore.p12" truststorePass="sigurnost"/> 	   
+	<Connector SSLEnabled="true" clientAuth="true" keyAlias="tomcat" 
+	keystoreFile="../../../../Servers/Tomcat v8.5 Server at localhost-config/serverStore.p12"
+	keystorePass="sigurnost" maxThreads="150" port="8443" scheme="https" secure="true" sslProtocol="TLS" 
+	truststoreFile="../../../../Servers/Tomcat v8.5 Server at localhost-config/serverTrustStore.p12"
+	truststorePass="sigurnost"/> 	   
 		   
     <!-- A "Connector" using the shared thread pool-->
     <!--
