@@ -1,4 +1,4 @@
-package kontroleri;
+ package kontroleri;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedWriter;
@@ -32,10 +32,10 @@ import javafx.scene.control.Label;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import main.Main;
+import util.PromjenaJezika;
 import util.PromjenaPisma;
 
 public class KontrolerZaPromjenuJezikaIPisma {
-	private List<Triplet<String, String, String>> rjecnik;
 	
 	@FXML
 	private ComboBox<String> jezikIPismoComboBox;
@@ -46,7 +46,6 @@ public class KontrolerZaPromjenuJezikaIPisma {
 		KontrolerFormeZaRadPopisivaca.promjenaJezikaStage.setOnShowing((event) -> {
 			trenutniJezikIPismoLabel.setText(getProperty());
 			dodajJezikeIPisma();
-			procitajRjecnik();
 		});
 	}
 	
@@ -109,7 +108,7 @@ public class KontrolerZaPromjenuJezikaIPisma {
 				dataInputStream.close();      
 				String original = new String(bytes, StandardCharsets.UTF_8);
 										
-				String izmjena = pronadjiIZamijeni(original, odabraniJezik);
+				String izmjena = PromjenaJezika.pronadjiIZamijeni(original, odabraniJezik);
 						
 				prepisiFajl(file, izmjena);	            
 			}
@@ -117,47 +116,6 @@ public class KontrolerZaPromjenuJezikaIPisma {
 				e.printStackTrace();
 			}
 		}
-	}
-	
-	private String pronadjiIZamijeni(String linija, String odabraniJezik) {
-		String novaLinija = linija;
-
-		for(Triplet<String, String, String> t : rjecnik) {
-			String pattern;
-			if("српски".equals(Main.trenutniJezik))
-				pattern = t.getValue0();
-			else if("bošnjački".equals(Main.trenutniJezik))
-				pattern = t.getValue1();
-			else
-				pattern = t.getValue2();
-			
-			Pattern myPattern;
-			if(!"POL".equals(pattern))
-				myPattern = Pattern.compile(pattern);
-			else
-				myPattern = Pattern.compile(pattern + ":");
-			Matcher matcher = myPattern.matcher(linija);
-			List<String> pronadjeno = new ArrayList<>();
-			
-			while (matcher.find()) {
-			    pronadjeno.add(matcher.group());
-			}
-	
-			for(String rijec : pronadjeno) {
-				String novaRijec;
-				if("srpski".equals(odabraniJezik))
-					novaRijec = t.getValue0();
-				else if("bošnjački".equals(odabraniJezik) || "бошњачки".equals(odabraniJezik))
-					novaRijec = t.getValue1();
-				else
-					novaRijec = t.getValue2();
-				if("POL".equals(pattern))
-					novaLinija = novaLinija.replaceAll(rijec, novaRijec + ":");
-				else
-					novaLinija = novaLinija.replaceAll(rijec, novaRijec);
-			}
-		}
-		return novaLinija;
 	}
 	
 	private String getProperty() {
@@ -191,21 +149,6 @@ public class KontrolerZaPromjenuJezikaIPisma {
 		properties.setProperty("TRENUTNI_JEZIK_I_PISMO", jezikIPismo);
 		properties.store(out, null);
 		out.close();
-	}
-	
-	private void procitajRjecnik() {
-		List<String> lines = new ArrayList<>();
-		rjecnik = new ArrayList<>();
-        try {
-            Path path = Paths.get("resources" + File.separator + "rjecnikJezici.txt");
-            lines = Files.readAllLines(path);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        for(String line : lines){
-        	rjecnik.add(new Triplet<String, String, String>(line.split("-")[0], line.split("-")[1], line.split("-")[2]));
-        }
 	}
 	
 	private void prepisiFajl(File file, String sadrzaj) throws IOException {

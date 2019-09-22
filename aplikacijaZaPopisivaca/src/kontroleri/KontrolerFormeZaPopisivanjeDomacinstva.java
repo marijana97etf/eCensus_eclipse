@@ -13,15 +13,20 @@ import javafx.stage.Stage;
 import main.Main;
 import model.ClanDomacinstva;
 import model.PopisnicaZaDomacinstvo;
+import model.PopisnicaZaStanovnika;
 import util.PromjenaPisma;
 import util.SerijalizacijaPopisnica;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
+
+import eCensus.rest.client.PopisivacGlavniServerKlijent;
 
 public class KontrolerFormeZaPopisivanjeDomacinstva {
 	public static Stage spisakLicaStage;
@@ -233,6 +238,8 @@ public class KontrolerFormeZaPopisivanjeDomacinstva {
     private ToggleGroup grupa25;
     @FXML
     private ToggleGroup grupa26;
+    
+    private static final String CONFIG_FILE_PATH = "resources" + File.separator + "config.properties";
 
     public KontrolerFormeZaPopisivanjeDomacinstva(){
         KontrolerFormeZaRadPopisivaca.popisDomacinstvaStage.setOnShowing((event) -> inicijalizujKomponente());
@@ -1036,10 +1043,33 @@ public class KontrolerFormeZaPopisivanjeDomacinstva {
         else
         	popisnica.setSpisakLica(spisakLica);
         
-        //TODO: Poslati popisnicu za domacinstvo na server
+        try {
+        Properties properties = new Properties();
+    	properties.load(new FileInputStream(new File(CONFIG_FILE_PATH)));
+    	String keystore = properties.getProperty("DEFAULT_KEYSTORE");
+    	String keystoreLozinka = properties.getProperty("DEFAULT_KEYSTORE_PASSWORD");
+    	String truststore = properties.getProperty("DEFAULT_TRUSTSTORE");
+    	String truststoreLozinka = properties.getProperty("DEFAULT_TRUSTSTORE_PASSWORD");
         
-        //Ako nema interneta:
-        SerijalizacijaPopisnica.serijalizujPopisnicu(popisnica);
+        PopisivacGlavniServerKlijent glavniServer = new PopisivacGlavniServerKlijent(keystore, keystoreLozinka, truststore, truststoreLozinka, 
+        		KontrolerFormeZaPrijavu.korisnik.getKorisnickoIme(), KontrolerFormeZaPrijavu.korisnik.getLozinkaHash());
+        
+       
+        List<PopisnicaZaDomacinstvo> popisnice = new ArrayList<>();
+        popisnice.add(popisnica);
+        
+        if(glavniServer.obradiPopisniceZaDomacinstva(popisnice) == 404) {
+        	SerijalizacijaPopisnica.serijalizujPopisnicu(popisnica);
+        	prikaziInfo("Nema internet konekcije. Popisnica je sačuvana.");
+        }
+        else {
+        	prikaziInfo("Popisnica je uspješno poslata.");
+      		KontrolerFormeZaRadPopisivaca.popisStanovnikaStage.close();
+        }
+        }
+        catch(IOException e) {
+        	e.printStackTrace();
+        }
     }
 
     private String getOdgovor(ToggleGroup grupa, int brojPitanja){
@@ -1384,12 +1414,26 @@ public class KontrolerFormeZaPopisivanjeDomacinstva {
     	String greska = "Greška";
     	if("српски".equals(Main.trenutniJezik)) {
     		poruka = PromjenaPisma.zamijeniLatinicuCiricom(poruka);
-    		greska = PromjenaPisma.zamijeniLatinicuCiricom(poruka);
+    		greska = PromjenaPisma.zamijeniLatinicuCiricom(greska);
     	}
     	
         Alert userNotSelectedAlert = new Alert(Alert.AlertType.ERROR);
 	    userNotSelectedAlert.setTitle(greska);
 	    userNotSelectedAlert.setHeaderText(greska + "!");
+        userNotSelectedAlert.setContentText(poruka);
+        userNotSelectedAlert.showAndWait();
+    }
+    
+    private void prikaziInfo(String poruka){
+    	String info = "Informacija";
+    	if("српски".equals(Main.trenutniJezik)) {
+    		poruka = PromjenaPisma.zamijeniLatinicuCiricom(poruka);
+    		info = PromjenaPisma.zamijeniLatinicuCiricom(info);
+    	}
+    	
+        Alert userNotSelectedAlert = new Alert(Alert.AlertType.INFORMATION);
+	    userNotSelectedAlert.setTitle(info);
+	    userNotSelectedAlert.setHeaderText(info + "!");
         userNotSelectedAlert.setContentText(poruka);
         userNotSelectedAlert.showAndWait();
     }
