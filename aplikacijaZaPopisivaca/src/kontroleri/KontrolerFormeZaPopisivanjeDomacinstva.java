@@ -14,6 +14,7 @@ import main.Main;
 import model.ClanDomacinstva;
 import model.PopisnicaZaDomacinstvo;
 import model.PopisnicaZaStanovnika;
+import util.PromjenaJezika;
 import util.PromjenaPisma;
 import util.SerijalizacijaPopisnica;
 
@@ -25,6 +26,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
+import java.util.Map.Entry;
 
 import eCensus.rest.client.PopisivacGlavniServerKlijent;
 
@@ -451,12 +453,24 @@ public class KontrolerFormeZaPopisivanjeDomacinstva {
             prikaziUpozorenje("Morate unijeti ulicu domaćinstva koje se popisuje.");
             return;
         }
+        else {
+			if("српски".equals(Main.trenutniJezik))
+				ulica = PromjenaPisma.zamijeniCirilicuLatinicom(ulica);
+			else
+				ulica = PromjenaJezika.pronadjiIZamijeni(ulica, "srpski");
+        }
 
         kucniBroj = kucniBrojTextField.getText();
         if(kucniBroj.isEmpty()){
             kucniBrojTextField.setStyle("-fx-border-color: RED");
             prikaziUpozorenje("Morate unijeti kućni broj domaćinstva koje se popisuje.");
             return;
+        }
+        else {
+        	if("српски".equals(Main.trenutniJezik))
+        		kucniBroj = PromjenaPisma.zamijeniCirilicuLatinicom(kucniBroj);
+			else
+				kucniBroj = PromjenaJezika.pronadjiIZamijeni(kucniBroj, "srpski");
         }
 
         dodatak = dodatakTextField.getText();
@@ -465,12 +479,24 @@ public class KontrolerFormeZaPopisivanjeDomacinstva {
             prikaziUpozorenje("Morate unijeti dodatak domaćinstva koje se popisuje.");
             return;
         }
+        else {
+        	if("српски".equals(Main.trenutniJezik))
+        		dodatak = PromjenaPisma.zamijeniCirilicuLatinicom(dodatak);
+			else
+				dodatak = PromjenaJezika.pronadjiIZamijeni(dodatak, "srpski");
+        }
 
         ulaz = ulazTextField.getText();
         if(ulaz.isEmpty()){
             ulazTextField.setStyle("-fx-border-color: RED");
             prikaziUpozorenje("Morate unijeti ulaz domaćinstva koje se popisuje.");
             return;
+        }
+        else {
+        	if("српски".equals(Main.trenutniJezik))
+        		ulaz = PromjenaPisma.zamijeniCirilicuLatinicom(ulaz);
+			else
+				ulaz = PromjenaJezika.pronadjiIZamijeni(ulaz, "srpski");
         }
 
         brojStana = brojStanaTextField.getText();
@@ -479,12 +505,24 @@ public class KontrolerFormeZaPopisivanjeDomacinstva {
             prikaziUpozorenje("Morate unijeti broj stana domaćinstva koje se popisuje.");
             return;
         }
+        else {
+        	if("српски".equals(Main.trenutniJezik))
+        		brojStana = PromjenaPisma.zamijeniCirilicuLatinicom(brojStana);
+			else
+				brojStana = PromjenaJezika.pronadjiIZamijeni(brojStana, "srpski");
+        }
 
         idBroj = idBrojTextField.getText();
         if(idBroj.isEmpty()){
             idBrojTextField.setStyle("-fx-border-color: RED");
             prikaziUpozorenje("Morate unijeti ID-broj domaćinstva koje se popisuje.");
             return;
+        }
+        else {
+        	if("српски".equals(Main.trenutniJezik))
+        		idBroj = PromjenaPisma.zamijeniCirilicuLatinicom(idBroj);
+			else
+				idBroj = PromjenaJezika.pronadjiIZamijeni(idBroj, "srpski");
         }
 
         PopisnicaZaDomacinstvo popisnica = new PopisnicaZaDomacinstvo(idObrasca, idEntiteta, idOpstine, idPopisnogKruga,
@@ -983,6 +1021,23 @@ public class KontrolerFormeZaPopisivanjeDomacinstva {
                 }
             }
         }
+        
+        Map<Integer, List<String>> odgovoriPrevedeni = new HashMap<>();
+        
+    	for(Entry<Integer, List<String>> e : odgovoriNaPitanja.entrySet()) {
+    		List<String> util = new ArrayList<>();
+    		for(String odgovor : e.getValue()) {
+    			String prevedeno;
+    			if("српски".equals(Main.trenutniJezik))
+    				prevedeno = PromjenaPisma.zamijeniCirilicuLatinicom(odgovor);
+    			else
+    				prevedeno = PromjenaJezika.pronadjiIZamijeni(odgovor, "srpski");
+    			util.add(prevedeno);
+    		}
+    		odgovoriPrevedeni.put(e.getKey(), util);
+    	}
+ 
+        popisnica.setOdgovoriNaPitanja(odgovoriPrevedeni);
 
         String brojClanovaDomacinstvaString = brojClanovaDomacinstvaTextField.getText();
         if(brojClanovaDomacinstvaString.isEmpty()){
@@ -1040,8 +1095,40 @@ public class KontrolerFormeZaPopisivanjeDomacinstva {
 
         if(Integer.parseInt(brojDomacinstavaUStanuString) > 0 && spisakLica == null)
         	prikaziUpozorenje("Morate popuniti spisak lica.");
-        else
-        	popisnica.setSpisakLica(spisakLica);
+        else {
+        	List<ClanDomacinstva> prevedeno = new ArrayList<>();
+        	for(ClanDomacinstva c : spisakLica) {
+        		String ime = c.getIme();
+        		if("српски".equals(Main.trenutniJezik))
+    				ime = PromjenaPisma.zamijeniCirilicuLatinicom(ime);
+    			else
+    				ime = PromjenaJezika.pronadjiIZamijeni(ime, "srpski");
+        		
+        		String prezime = c.getPrezime();
+        		if("српски".equals(Main.trenutniJezik))
+        			prezime = PromjenaPisma.zamijeniCirilicuLatinicom(prezime);
+    			else
+    				prezime = PromjenaJezika.pronadjiIZamijeni(prezime, "srpski");
+        		
+        		String odnosPremaNosiocuDomacinstva = c.getOdnosPremaNosiocuDomacinstva();
+        		if("српски".equals(Main.trenutniJezik))
+        			odnosPremaNosiocuDomacinstva = PromjenaPisma.zamijeniCirilicuLatinicom(odnosPremaNosiocuDomacinstva);
+    			else
+    				odnosPremaNosiocuDomacinstva = PromjenaJezika.pronadjiIZamijeni(odnosPremaNosiocuDomacinstva, "srpski");
+        		
+        		String polozajClanaUPorodici = c.getPolozajClanaUPorodici();
+        		if("српски".equals(Main.trenutniJezik))
+        			polozajClanaUPorodici = PromjenaPisma.zamijeniCirilicuLatinicom(polozajClanaUPorodici);
+    			else
+    				polozajClanaUPorodici = PromjenaJezika.pronadjiIZamijeni(polozajClanaUPorodici, "srpski");
+        		
+        		ClanDomacinstva util = new ClanDomacinstva(ime, prezime, c.getJMBG(), 
+        				odnosPremaNosiocuDomacinstva, c.getRedniBrojPorodice(), polozajClanaUPorodici);
+        		prevedeno.add(util);
+        	}     	
+        	
+        	popisnica.setSpisakLica(prevedeno);
+        }
         
         try {
         Properties properties = new Properties();

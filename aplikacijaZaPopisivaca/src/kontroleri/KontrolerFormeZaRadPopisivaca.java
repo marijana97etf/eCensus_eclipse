@@ -1,9 +1,11 @@
 package kontroleri;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -16,6 +18,9 @@ public class KontrolerFormeZaRadPopisivaca {
     static Stage promjenaPismaStage;
     static Stage promjenaJezikaStage;
     static Stage pregledSacuvanihPopisnicaStage;
+    
+    @FXML
+    private Button odjaviSeButton;
 
     @FXML
     private void popisiStanovnikaButtonAction() {
@@ -85,5 +90,11 @@ public class KontrolerFormeZaRadPopisivaca {
         catch(IOException e){
             e.printStackTrace();
         }
+    }
+    
+    @FXML
+    private void odjaviSe() {
+    	Stage stage = (Stage)odjaviSeButton.getScene().getWindow();
+	    stage.close();
     }
 }

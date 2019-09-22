@@ -31,7 +31,6 @@ public class PopisnicaZaDomacinstvo extends Popisnica implements Serializable{
         this.ulaz = ulaz;
         this.brojStana = brojStana;
         this.idBroj = idBroj;
-        odgovoriNaPitanja = new HashMap<>();
     }
 
     public int getIdZgrade() {
