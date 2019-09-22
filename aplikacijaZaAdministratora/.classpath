@@ -16,7 +16,6 @@
 	<classpathentry kind="lib" path="javafx-sdk-12.0.1/lib/javafx.media.jar"/>
 	<classpathentry kind="lib" path="javafx-sdk-12.0.1/lib/javafx.swing.jar"/>
 	<classpathentry kind="lib" path="javafx-sdk-12.0.1/lib/javafx.web.jar"/>
-	<classpathentry kind="lib" path="C:/Users/baralicD/GitHubDesktop/eCensus_eclipse/libs/restClient.jar"/>
 	<classpathentry kind="lib" path="lib/aopalliance-repackaged-2.5.0.jar"/>
 	<classpathentry kind="lib" path="lib/hk2-api-2.5.0.jar"/>
 	<classpathentry kind="lib" path="lib/hk2-locator-2.5.0.jar"/>
@@ -50,5 +49,6 @@
 	<classpathentry kind="lib" path="lib/osgi-resource-locator-1.0.1.jar"/>
 	<classpathentry kind="lib" path="lib/validation-api-2.0.1.Final.jar"/>
 	<classpathentry kind="lib" path="lib/yasson-1.0.3.jar"/>
+	<classpathentry kind="lib" path="lib/restClient.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
