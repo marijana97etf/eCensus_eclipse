@@ -40,20 +40,12 @@ public class KontrolerFormeZaIzmjenuNalogaClanaPKLS implements Initializable {
         alert.setContentText("Da li Еѕelite da sačuvate izmjene naloga administratora PKLS-a?");
         ButtonType buttonType = alert.showAndWait().get();
         if(!buttonType.getText().equals("OK")) return;
-        Parent root = null;
-        try {
-            root = FXMLLoader.load(getClass().getResource("/view/FormaZaPregledClanovaPKLS.fxml"));
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-        Pokreni_GUI_Aplikaciju.getStage().setScene(new Scene(root));
+        
         var nalogInputModel = KontrolerFormeZaPregledClanovaPKLS.getAccountForEdit();
         nalogInputModel.setPrezime(prezimeIzmjena.getText());
         nalogInputModel.setIme(imeIzmjena.getText());
         nalogInputModel.setKorisnickoIme(usernameIzmjena.getText());
         nalogInputModel.updateKorisnikSistema();
-        
-        Platform.runLater(()-> KontrolerFormeZaPregledNaloga.getTabela().refresh());
         
         KorisnikSistema clanPKLS =  nalogInputModel.getKorisnikSistema();
         
@@ -72,6 +64,14 @@ public class KontrolerFormeZaIzmjenuNalogaClanaPKLS implements Initializable {
         		System.out.println();
         	}
         }
+        
+        Parent root = null;
+        try {
+            root = FXMLLoader.load(getClass().getResource("/view/FormaZaPregledClanovaPKLS.fxml"));
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        Pokreni_GUI_Aplikaciju.getStage().setScene(new Scene(root));
         
     }
 

@@ -2,6 +2,7 @@ package controller.kontroler_formi;
 
 import controller.KontrolerZaJezikeIPisma.KontrolerZaJezik;
 import eCensus.rest.client.AdministratorAgencijeCMISKlijent;
+import eCensus.rest.client.AdministratorCMISKlijent;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,7 +21,9 @@ import test.Pokreni_GUI_Aplikaciju;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
+import java.util.Map.Entry;
 
 import javax.ws.rs.core.Response;
 
@@ -53,9 +56,9 @@ public class KontrolerFormeZaPrijavu implements Initializable {
 		// e.getKorisnickoIme().equals(usernameInput)).findFirst().get();
 		KorisnikSistema korisnikSistema = null;
 
-		AdministratorAgencijeCMISKlijent klijent = new AdministratorAgencijeCMISKlijent(KEYSTORE, "sigurnost",
+		AdministratorCMISKlijent klijent = new AdministratorCMISKlijent(KEYSTORE, "sigurnost",
 				TRUSTSTORE, "sigurnost", kosinickoImeInput, KorisnikSistema.napraviHesLozinke(password.getText()));
-		Response odgovor = klijent.get(CMIS_RESURS_URL);
+		Response odgovor = klijent.post(CMIS_RESURS_URL + "/login",kosinickoImeInput);
 
 		if (Response.Status.UNAUTHORIZED.equals(odgovor.getStatusInfo())) {
 			Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -66,14 +69,37 @@ public class KontrolerFormeZaPrijavu implements Initializable {
 			return;
 		}
 		if (Response.Status.Family.SUCCESSFUL.equals(odgovor.getStatusInfo().getFamily())) {
+			String tipKorisnika = odgovor.readEntity(String.class);
+			System.out.println(tipKorisnika);//za brisanje
 			odgovor = klijent.get(CMIS_RESURS_URL + "/korisnici/nalozi/" + kosinickoImeInput);
 			if (Response.Status.Family.SUCCESSFUL.equals(odgovor.getStatusInfo().getFamily())) {
-				korisnikSistema = odgovor.readEntity(AdministratorAgencije.class);
+				if(tipKorisnika.equals(AdministratorAgencije.class.getName()))
+					korisnikSistema = odgovor.readEntity(AdministratorAgencije.class);
+				else if(tipKorisnika.equals(ClanPKLS.class.getName()))
+					korisnikSistema = odgovor.readEntity(ClanPKLS.class);
+				else if(tipKorisnika.equals(DEInstruktor.class.getName()))
+					korisnikSistema = odgovor.readEntity(DEInstruktor.class);
+				else if(tipKorisnika.equals(OGInstruktor.class.getName()))
+					korisnikSistema = odgovor.readEntity(OGInstruktor.class);
 			} else {
-				// logguju se header-i
+				//za logg
+            	System.out.println(odgovor.getStatusInfo().getStatusCode() + " " + odgovor.getStatusInfo().getReasonPhrase() );
+            	for(Entry<String,List<Object>> entry : odgovor.getHeaders().entrySet()) {
+            		System.out.print(entry.getKey() + " ");
+            		for(Object objekat : entry.getValue())
+            			System.out.print(objekat +" ");
+            		System.out.println();
+            	}
 			}
 		} else {
-			// logguju se header-i
+			//za logg
+        	System.out.println(odgovor.getStatusInfo().getStatusCode() + " " + odgovor.getStatusInfo().getReasonPhrase() );
+        	for(Entry<String,List<Object>> entry : odgovor.getHeaders().entrySet()) {
+        		System.out.print(entry.getKey() + " ");
+        		for(Object objekat : entry.getValue())
+        			System.out.print(objekat +" ");
+        		System.out.println();
+        	}
 		}
 
 		trenutniKorisnik = korisnikSistema;

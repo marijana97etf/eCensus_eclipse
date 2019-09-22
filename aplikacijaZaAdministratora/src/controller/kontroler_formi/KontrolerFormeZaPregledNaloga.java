@@ -73,10 +73,12 @@ public abstract class KontrolerFormeZaPregledNaloga implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
     	
-    	staticTabela = tabela;
-    	
         initializeList();
-
+        
+        Platform.runLater(()-> tabela.refresh());
+        
+        staticTabela = tabela;
+        
         KorisnikSistema korisnikSistema = KontrolerFormeZaPrijavu.getTrenutniKorisnik();
         var wrapper = new Object()
         {

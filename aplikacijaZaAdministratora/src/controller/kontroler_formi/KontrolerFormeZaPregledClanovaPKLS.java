@@ -26,7 +26,5 @@ public class KontrolerFormeZaPregledClanovaPKLS extends KontrolerFormeZaPregledN
     		System.out.println("KontrolerFormeZaPregledClanovaPKLS error");
     		
     	}
-    	
-
     }
 }
