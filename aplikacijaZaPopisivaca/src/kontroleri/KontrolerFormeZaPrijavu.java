@@ -60,23 +60,20 @@ public class KontrolerFormeZaPrijavu {
 
         		if (Response.Status.UNAUTHORIZED.equals(odgovor.getStatusInfo())) {
         			prikaziUpozorenje("Pogrešno korisničko ime i lozinka.");
-        			return;
-        		}
-        		if (Response.Status.Family.SUCCESSFUL.equals(odgovor.getStatusInfo().getFamily())) {
+        		}       		
+        		else if (Response.Status.Family.SUCCESSFUL.equals(odgovor.getStatusInfo().getFamily())) {
         			odgovor = klijent.get(cmisResursURL + "/korisnici/nalozi/" + korisnickoIme);
         			if (Response.Status.Family.SUCCESSFUL.equals(odgovor.getStatusInfo().getFamily())) {
         				korisnik = odgovor.readEntity(Popisivac.class);
+        				Parent root = FXMLLoader.load(getClass().getResource("/forme" + File.separator + "FormaZaRadPopisivaca.fxml"));
+                        Main.primaryStage.setScene(new Scene(root));
         			} else {
         				prikaziUpozorenje("Greška na serveru.");
-        				return;
         			}
         		} else {
         			prikaziUpozorenje("Greška na serveru.");
-    				return;
         		}
-                
-                Parent root = FXMLLoader.load(getClass().getResource("/forme" + File.separator + "FormaZaRadPopisivaca.fxml"));
-                Main.primaryStage.setScene(new Scene(root));
+                            
             }
             catch (IOException e){
                 e.printStackTrace();

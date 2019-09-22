@@ -1232,15 +1232,8 @@ public class KontrolerFormeZaPopisivanjeStanovnika {
             prikaziUpozorenje("Morate odgovoriti na 1. pitanje.");
             return;
         }
-        else {
-        	String odgovor = odgovor1Button.getText();
-        	if("српски".equals(Main.trenutniJezik))
-        		odgovor = PromjenaPisma.zamijeniCirilicuLatinicom(odgovor);
-        	else {
-        		odgovor = PromjenaJezika.pronadjiIZamijeni(odgovor, "srpski");
-        	}
-            odgovoriNaPitanja.get(1).add(odgovor);
-        }
+        else
+            odgovoriNaPitanja.get(1).add(odgovor1Button.getText());
 
         if(isToggleGroupEnabled(grupa2)){
             RadioButton odgovor2Button = (RadioButton)grupa2.getSelectedToggle();
@@ -1252,25 +1245,13 @@ public class KontrolerFormeZaPopisivanjeStanovnika {
                 prikaziUpozorenje("Morate odgovoriti na 2. pitanje.");
                 return;
             }
-            else {
-            	String odgovor = odgovor2Button.getText();
-            	if("српски".equals(Main.trenutniJezik))
-            		odgovor = PromjenaPisma.zamijeniCirilicuLatinicom(odgovor);
-            	else {
-            		odgovor = PromjenaJezika.pronadjiIZamijeni(odgovor, "srpski");
-            	}
-                odgovoriNaPitanja.get(2).add(odgovor);
-            }
+            else 
+                odgovoriNaPitanja.get(2).add(odgovor2Button.getText());
         }
 
         if(!razlogOdsustvaPrisustvaComboBox.isDisabled()){
             String odgovor3 = (String)razlogOdsustvaPrisustvaComboBox.getSelectionModel().getSelectedItem();
             if(odgovor3 != null) {
-            	if("српски".equals(Main.trenutniJezik))
-            		odgovor3 = PromjenaPisma.zamijeniCirilicuLatinicom(odgovor3);
-            	else {
-            		odgovor3 = PromjenaJezika.pronadjiIZamijeni(odgovor3, "srpski");
-            	}
                 odgovoriNaPitanja.get(3).add(odgovor3);
             }
             else{
@@ -1293,9 +1274,9 @@ public class KontrolerFormeZaPopisivanjeStanovnika {
                 return;
             }
             else {
-            	//prevesti
                 odgovoriNaPitanja.get(4).add(odgovor4Button.getText());
-                odgovoriNaPitanja.get(4).add(!pitanje4TextField1.isDisabled() ? pitanje4TextField1.getText()  : pitanje4TextField2.getText());
+                if(!pitanje4TextField1.isDisabled())
+                	odgovoriNaPitanja.get(4).add(pitanje4TextField2.getText());
             }
         }
 
@@ -2086,7 +2067,22 @@ public class KontrolerFormeZaPopisivanjeStanovnika {
         else
             odgovoriNaPitanja.get(46).add(odgovor46Button.getText());
 
-        popisnica.setOdgovoriNaPitanja(odgovoriNaPitanja);
+        Map<Integer, List<String>> odgovoriPrevedeni = new HashMap<>();
+        
+    	for(Entry<Integer, List<String>> e : odgovoriNaPitanja.entrySet()) {
+    		List<String> util = new ArrayList<>();
+    		for(String odgovor : e.getValue()) {
+    			String prevedeno;
+    			if("српски".equals(Main.trenutniJezik))
+    				prevedeno = PromjenaPisma.zamijeniCirilicuLatinicom(odgovor);
+    			else
+    				prevedeno = PromjenaJezika.pronadjiIZamijeni(odgovor, "srpski");
+    			util.add(prevedeno);
+    		}
+    		odgovoriPrevedeni.put(e.getKey(), util);
+    	}
+ 
+        popisnica.setOdgovoriNaPitanja(odgovoriPrevedeni);
         
         try {
 	        Properties properties = new Properties();

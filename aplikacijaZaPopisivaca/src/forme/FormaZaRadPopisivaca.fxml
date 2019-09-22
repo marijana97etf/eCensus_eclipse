@@ -41,7 +41,7 @@
          </image>
       </ImageView>
       <Separator minWidth="700.0" prefHeight="8.0" prefWidth="700.0" GridPane.columnSpan="2" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="TOP" GridPane.vgrow="NEVER" />
-      <Button mnemonicParsing="false" prefHeight="41.0" prefWidth="106.0" text="Одјави се" GridPane.columnSpan="2" GridPane.halignment="RIGHT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="7" GridPane.valignment="BOTTOM" GridPane.vgrow="ALWAYS">
+      <Button mnemonicParsing="false" fx:id="odjaviSeButton" onAction="#odjaviSe" prefHeight="41.0" prefWidth="106.0" text="Одјави се" GridPane.columnSpan="2" GridPane.halignment="RIGHT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="7" GridPane.valignment="BOTTOM" GridPane.vgrow="ALWAYS">
          <font>
             <Font size="15.0" />
          </font>
