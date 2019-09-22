@@ -32,6 +32,7 @@ import javafx.scene.control.Label;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import main.Main;
+import util.PrikazObavjestenja;
 import util.PromjenaJezika;
 import util.PromjenaPisma;
 
@@ -92,7 +93,7 @@ public class KontrolerZaPromjenuJezikaIPisma {
 			}
 		}
 		else
-			prikaziUpozorenje("Morate odabrati jezik i pismo različito od trenutnog");
+			PrikazObavjestenja.prikaziUpozorenje("Morate odabrati jezik i pismo različito od trenutnog");
 	}
 	
 	private void prevedi(String odabraniJezik) {
@@ -157,18 +158,4 @@ public class KontrolerZaPromjenuJezikaIPisma {
 		writer.write(sadrzaj);
 	    writer.close();
 	}
-	
-	private void prikaziUpozorenje(String poruka){
-    	String greska = "Greška";
-    	if("српски".equals(Main.trenutniJezik)) {
-    		poruka = PromjenaPisma.zamijeniLatinicuCiricom(poruka);
-    		greska = PromjenaPisma.zamijeniLatinicuCiricom(poruka);
-    	}
-    	
-        Alert userNotSelectedAlert = new Alert(Alert.AlertType.ERROR);
-	    userNotSelectedAlert.setTitle(greska);
-	    userNotSelectedAlert.setHeaderText(greska + "!");
-        userNotSelectedAlert.setContentText(poruka);
-        userNotSelectedAlert.showAndWait();
-    }
 }

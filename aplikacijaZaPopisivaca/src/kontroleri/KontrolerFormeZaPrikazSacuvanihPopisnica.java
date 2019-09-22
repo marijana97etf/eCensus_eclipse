@@ -1,19 +1,32 @@
 package kontroleri;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.List;
+import java.util.Properties;
 
+import eCensus.rest.client.PopisivacGlavniServerKlijent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import main.Main;
 import model.ElementTabeleDomacinstvo;
 import model.ElementTabeleStanovnistvo;
 import model.Popisnica;
 import model.PopisnicaZaDomacinstvo;
 import model.PopisnicaZaStanovnika;
+import util.PrikazObavjestenja;
+import util.PromjenaPisma;
 import util.SerijalizacijaPopisnica;
 
 public class KontrolerFormeZaPrikazSacuvanihPopisnica {
+    private static final String CONFIG_FILE_PATH = "resources" + File.separator + "config.properties";
+
+	List<PopisnicaZaDomacinstvo> popisniceDomacinstvo;
+	List<PopisnicaZaStanovnika> popisniceStanovnistvo;
 	
 	@FXML
 	private TableView<ElementTabeleDomacinstvo> tabelaDomacinstvo;
@@ -69,27 +82,38 @@ public class KontrolerFormeZaPrikazSacuvanihPopisnica {
 		domacinstvoKolonaD.setCellValueFactory(new PropertyValueFactory<>("domacinstvo"));
 		zgradaKolonaD.setCellValueFactory(new PropertyValueFactory<>("zgrada"));
 		
-		List<Popisnica> popisniceDomacinstvo = SerijalizacijaPopisnica.deserijalizujPopisnice("domacinstvo");
-		for(Popisnica p : popisniceDomacinstvo) {
-			PopisnicaZaDomacinstvo pd = (PopisnicaZaDomacinstvo)p;
-			ElementTabeleDomacinstvo e = new ElementTabeleDomacinstvo(pd.getIdObrasca(), pd.getIdEntiteta(),
-					pd.getIdOpstine(), pd.getIdPopisnogKruga(), pd.getIdZgrade(), pd.getIdStana(), pd.getIdDomacinstva());
+		List<PopisnicaZaDomacinstvo> popisniceDomacinstvo = SerijalizacijaPopisnica.deserijalizujPopisniceZaDomacinstvo();
+		for(PopisnicaZaDomacinstvo p : popisniceDomacinstvo) {
+			ElementTabeleDomacinstvo e = new ElementTabeleDomacinstvo(p.getIdObrasca(), p.getIdEntiteta(),
+					p.getIdOpstine(), p.getIdPopisnogKruga(), p.getIdZgrade(), p.getIdStana(), p.getIdDomacinstva());
 			tabelaDomacinstvo.getItems().add(e);
 		}
 		
-		List<Popisnica> popisniceStanovnistvo = SerijalizacijaPopisnica.deserijalizujPopisnice("stanovnistvo");
-		for(Popisnica p : popisniceStanovnistvo) {
-			PopisnicaZaStanovnika ps = (PopisnicaZaStanovnika)p;
-			ElementTabeleStanovnistvo e = new ElementTabeleStanovnistvo(ps.getIdObrasca(), ps.getIdEntiteta(),
-					ps.getIdOpstine(), ps.getIdPopisnogKruga(), ps.getIdLica(), ps.getIdStana(), ps.getIdDomacinstva());
+		List<PopisnicaZaStanovnika> popisniceStanovnistvo = SerijalizacijaPopisnica.deserijalizujPopisniceZaStanovnika();
+		for(PopisnicaZaStanovnika p : popisniceStanovnistvo) {
+			ElementTabeleStanovnistvo e = new ElementTabeleStanovnistvo(p.getIdObrasca(), p.getIdEntiteta(),
+					p.getIdOpstine(), p.getIdPopisnogKruga(), p.getIdLica(), p.getIdStana(), p.getIdDomacinstva());
 			tabelaStanovnistvo.getItems().add(e);
 		}
 	}
 	
 	@FXML
 	private void posaljiPopisnice() {
-		//TODO:Poslati popisnice na glavni server
-		System.out.println("a");
+		try {
+			Properties properties = new Properties();
+	    	properties.load(new FileInputStream(new File(CONFIG_FILE_PATH)));
+	    	String keystore = properties.getProperty("DEFAULT_KEYSTORE");
+	    	String keystoreLozinka = properties.getProperty("DEFAULT_KEYSTORE_PASSWORD");
+	    	String truststore = properties.getProperty("DEFAULT_TRUSTSTORE");
+	    	String truststoreLozinka = properties.getProperty("DEFAULT_TRUSTSTORE_PASSWORD");
+	    	
+			PopisivacGlavniServerKlijent glavniServer = new PopisivacGlavniServerKlijent(keystore, keystoreLozinka, truststore, truststoreLozinka, 
+	        		KontrolerFormeZaPrijavu.korisnik.getKorisnickoIme(), KontrolerFormeZaPrijavu.korisnik.getLozinkaHash());
+	        
+			//TODO:dovrsiti
+		}
+		catch(IOException e) {
+			e.printStackTrace();
+		}
 	}
-	
 }

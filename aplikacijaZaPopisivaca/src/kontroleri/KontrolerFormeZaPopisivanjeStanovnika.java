@@ -7,6 +7,7 @@ import javafx.scene.Node;
 import javafx.scene.control.*;
 import main.Main;
 import model.PopisnicaZaStanovnika;
+import util.PrikazObavjestenja;
 import util.PromjenaJezika;
 import util.PromjenaPisma;
 import util.SerijalizacijaPopisnica;
@@ -1042,26 +1043,26 @@ public class KontrolerFormeZaPopisivanjeStanovnika {
             idObrasca = Integer.parseInt(obrazacTextField.getText());
             if(idObrasca < 0 || idObrasca>9) {
                 obrazacTextField.setStyle("-fx-border-color: RED");
-                prikaziUpozorenje("U polje za obrazac morate unijeti jednocifren broj.");
+                PrikazObavjestenja.prikaziUpozorenje("U polje za obrazac morate unijeti jednocifren broj.");
                 return;
             }
         }
         catch(NumberFormatException e){
             obrazacTextField.setStyle("-fx-border-color: RED");
-            prikaziUpozorenje("U polje za obrazac morate unijeti broj.");
+            PrikazObavjestenja.prikaziUpozorenje("U polje za obrazac morate unijeti broj.");
             return;
         }
         try{
             idEntiteta = Integer.parseInt(entitetTextField.getText());
             if(idEntiteta < 0 || idEntiteta>9) {
                 entitetTextField.setStyle("-fx-border-color: RED");
-                prikaziUpozorenje("U polje za entitet morate unijeti jednocifren broj.");
+                PrikazObavjestenja.prikaziUpozorenje("U polje za entitet morate unijeti jednocifren broj.");
                 return;
             }
         }
         catch(NumberFormatException e){
             entitetTextField.setStyle("-fx-border-color: RED");
-            prikaziUpozorenje("U polje za entitet morate unijeti broj.");
+            PrikazObavjestenja.prikaziUpozorenje("U polje za entitet morate unijeti broj.");
             return;
         }
         try{
@@ -1073,7 +1074,7 @@ public class KontrolerFormeZaPopisivanjeStanovnika {
                 opstinaTextField3.setStyle("-fx-border-color: RED");
                 opstinaTextField4.setStyle("-fx-border-color: RED");
                 opstinaTextField5.setStyle("-fx-border-color: RED");
-                prikaziUpozorenje("U svako polje za opštinu morate unijeti jednocifren broj.");
+                PrikazObavjestenja.prikaziUpozorenje("U svako polje za opštinu morate unijeti jednocifren broj.");
                 return;
             }
         }
@@ -1083,7 +1084,7 @@ public class KontrolerFormeZaPopisivanjeStanovnika {
             opstinaTextField3.setStyle("-fx-border-color: RED");
             opstinaTextField4.setStyle("-fx-border-color: RED");
             opstinaTextField5.setStyle("-fx-border-color: RED");
-            prikaziUpozorenje("U polja za opštinu morate unijeti brojeve.");
+            PrikazObavjestenja.prikaziUpozorenje("U polja za opštinu morate unijeti brojeve.");
             return;
         }
         try{
@@ -1093,7 +1094,7 @@ public class KontrolerFormeZaPopisivanjeStanovnika {
                 popisniKrugTextField1.setStyle("-fx-border-color: RED");
                 popisniKrugTextField2.setStyle("-fx-border-color: RED");
                 popisniKrugTextField3.setStyle("-fx-border-color: RED");
-                prikaziUpozorenje("U svako polje za popisni krug morate unijeti jednocifren broj.");
+                PrikazObavjestenja.prikaziUpozorenje("U svako polje za popisni krug morate unijeti jednocifren broj.");
                 return;
             }
         }
@@ -1101,7 +1102,7 @@ public class KontrolerFormeZaPopisivanjeStanovnika {
             popisniKrugTextField1.setStyle("-fx-border-color: RED");
             popisniKrugTextField2.setStyle("-fx-border-color: RED");
             popisniKrugTextField3.setStyle("-fx-border-color: RED");
-            prikaziUpozorenje("U polja za popisni krug morate unijeti brojeve.");
+            PrikazObavjestenja.prikaziUpozorenje("U polja za popisni krug morate unijeti brojeve.");
             return;
         }
         try{
@@ -1110,7 +1111,7 @@ public class KontrolerFormeZaPopisivanjeStanovnika {
                 stanTextField1.setStyle("-fx-border-color: RED");
                 stanTextField2.setStyle("-fx-border-color: RED");
                 stanTextField3.setStyle("-fx-border-color: RED");
-                prikaziUpozorenje("U svako polje za stan morate unijeti jednocifren broj.");
+                PrikazObavjestenja.prikaziUpozorenje("U svako polje za stan morate unijeti jednocifren broj.");
                 return;
             }
         }
@@ -1118,7 +1119,7 @@ public class KontrolerFormeZaPopisivanjeStanovnika {
             stanTextField1.setStyle("-fx-border-color: RED");
             stanTextField2.setStyle("-fx-border-color: RED");
             stanTextField3.setStyle("-fx-border-color: RED");
-            prikaziUpozorenje("U polja za stan morate unijeti brojeve.");
+            PrikazObavjestenja.prikaziUpozorenje("U polja za stan morate unijeti brojeve.");
             return;
         }
         try{
@@ -1128,7 +1129,7 @@ public class KontrolerFormeZaPopisivanjeStanovnika {
                 domacinstvoTextField1.setStyle("-fx-border-color: RED");
                 domacinstvoTextField2.setStyle("-fx-border-color: RED");
                 domacinstvoTextField3.setStyle("-fx-border-color: RED");
-                prikaziUpozorenje("U svako polje za domaćinstvo morate unijeti jednocifren broj.");
+                PrikazObavjestenja.prikaziUpozorenje("U svako polje za domaćinstvo morate unijeti jednocifren broj.");
                 return;
             }
         }
@@ -1136,7 +1137,7 @@ public class KontrolerFormeZaPopisivanjeStanovnika {
             domacinstvoTextField1.setStyle("-fx-border-color: RED");
             domacinstvoTextField2.setStyle("-fx-border-color: RED");
             domacinstvoTextField3.setStyle("-fx-border-color: RED");
-            prikaziUpozorenje("U polja za domaćinstvo morate unijeti brojeve.");
+            PrikazObavjestenja.prikaziUpozorenje("U polja za domaćinstvo morate unijeti brojeve.");
             return;
         }
         try{
@@ -1145,7 +1146,7 @@ public class KontrolerFormeZaPopisivanjeStanovnika {
                 liceTextField1.setStyle("-fx-border-color: RED");
                 liceTextField2.setStyle("-fx-border-color: RED");
                 liceTextField3.setStyle("-fx-border-color: RED");
-                prikaziUpozorenje("U svako polje za lice morate unijeti jednocifren broj.");
+                PrikazObavjestenja.prikaziUpozorenje("U svako polje za lice morate unijeti jednocifren broj.");
                 return;
             }
         }
@@ -1153,14 +1154,14 @@ public class KontrolerFormeZaPopisivanjeStanovnika {
             liceTextField1.setStyle("-fx-border-color: RED");
             liceTextField2.setStyle("-fx-border-color: RED");
             liceTextField3.setStyle("-fx-border-color: RED");
-            prikaziUpozorenje("U polja za lice morate unijeti brojeve.");
+            PrikazObavjestenja.prikaziUpozorenje("U polja za lice morate unijeti brojeve.");
             return;
         }
 
         ime = imeTextField.getText();
         if(ime.isEmpty()) {
             imeTextField.setStyle("-fx-border-color: RED");
-            prikaziUpozorenje("Morate unijeti ime lica koje se popisuje.");
+            PrikazObavjestenja.prikaziUpozorenje("Morate unijeti ime lica koje se popisuje.");
             return;
         }
         else {
@@ -1174,7 +1175,7 @@ public class KontrolerFormeZaPopisivanjeStanovnika {
         imeOcaIliMajke = imeOcaMajkeTextField.getText();
         if(imeOcaIliMajke.isEmpty()){
             imeOcaMajkeTextField.setStyle("-fx-border-color: RED");
-            prikaziUpozorenje("Morate unijeti ime oca ili majke lica koje se popisuje.");
+            PrikazObavjestenja.prikaziUpozorenje("Morate unijeti ime oca ili majke lica koje se popisuje.");
             return;
         }
         else {
@@ -1188,7 +1189,7 @@ public class KontrolerFormeZaPopisivanjeStanovnika {
         prezime = prezimeTextField.getText();
         if(prezime.isEmpty()){
             prezimeTextField.setStyle("-fx-border-color: RED");
-            prikaziUpozorenje("Morate unijeti prezime lica koje se popisuje.");
+            PrikazObavjestenja.prikaziUpozorenje("Morate unijeti prezime lica koje se popisuje.");
             return;
         }
         else {
@@ -1202,14 +1203,14 @@ public class KontrolerFormeZaPopisivanjeStanovnika {
         JMB = JMBTextField.getText();
         if(JMB.isEmpty()){
             JMBTextField.setStyle("-fx-border-color: RED");
-            prikaziUpozorenje("Morate unijeti JMB lica koje se popisuje.");
+            PrikazObavjestenja.prikaziUpozorenje("Morate unijeti JMB lica koje se popisuje.");
             return;
         }
 
         pol = (String)odabirPolaComboBox.getSelectionModel().getSelectedItem();
         if(pol == null){
             odabirPolaComboBox.setStyle("-fx-border-color: RED");
-            prikaziUpozorenje("Morate odabrati pol lica koje se popisuje.");
+            PrikazObavjestenja.prikaziUpozorenje("Morate odabrati pol lica koje se popisuje.");
             return;
         }
         else {
@@ -1229,7 +1230,7 @@ public class KontrolerFormeZaPopisivanjeStanovnika {
                 RadioButton button = (RadioButton)toggle;
                 button.setStyle("-fx-border-color: RED");
             });
-            prikaziUpozorenje("Morate odgovoriti na 1. pitanje.");
+            PrikazObavjestenja.prikaziUpozorenje("Morate odgovoriti na 1. pitanje.");
             return;
         }
         else
@@ -1242,7 +1243,7 @@ public class KontrolerFormeZaPopisivanjeStanovnika {
                     RadioButton button = (RadioButton)toggle;
                     button.setStyle("-fx-border-color: RED");
                 });
-                prikaziUpozorenje("Morate odgovoriti na 2. pitanje.");
+                PrikazObavjestenja.prikaziUpozorenje("Morate odgovoriti na 2. pitanje.");
                 return;
             }
             else 
@@ -1256,7 +1257,7 @@ public class KontrolerFormeZaPopisivanjeStanovnika {
             }
             else{
                 razlogOdsustvaPrisustvaComboBox.setStyle("-fx-border-color: RED");
-                prikaziUpozorenje("Morate odgovoriti na 3. pitanje.");
+                PrikazObavjestenja.prikaziUpozorenje("Morate odgovoriti na 3. pitanje.");
                 return;
             }
         }
@@ -1270,7 +1271,7 @@ public class KontrolerFormeZaPopisivanjeStanovnika {
                 });
                 pitanje4TextField1.setStyle("-fx-border-color: RED");
                 pitanje4TextField2.setStyle("-fx-border-color: RED");
-                prikaziUpozorenje("Morate odgovoriti na 4. pitanje.");
+                PrikazObavjestenja.prikaziUpozorenje("Morate odgovoriti na 4. pitanje.");
                 return;
             }
             else {
@@ -1288,7 +1289,7 @@ public class KontrolerFormeZaPopisivanjeStanovnika {
                     button.setStyle("-fx-border-color: RED");
                 });
                 pitanje5TextField2.setStyle("-fx-border-color: RED");
-                prikaziUpozorenje("Morate odgovoriti na 5. pitanje.");
+                PrikazObavjestenja.prikaziUpozorenje("Morate odgovoriti na 5. pitanje.");
                 return;
             }
             else {
@@ -1310,7 +1311,7 @@ public class KontrolerFormeZaPopisivanjeStanovnika {
                 pitanje6TextField1.setStyle("-fx-border-color: RED");
                 pitanje6TextField2.setStyle("-fx-border-color: RED");
                 pitanje6TextField3.setStyle("-fx-border-color: RED");
-                prikaziUpozorenje("Morate odgovoriti na 6. pitanje.");
+                PrikazObavjestenja.prikaziUpozorenje("Morate odgovoriti na 6. pitanje.");
                 return;
             }
             else{
@@ -1331,7 +1332,7 @@ public class KontrolerFormeZaPopisivanjeStanovnika {
                     RadioButton button = (RadioButton)toggle;
                     button.setStyle("-fx-border-color: RED");
                 });
-                prikaziUpozorenje("Morate odgovoriti na 7. pitanje.");
+                PrikazObavjestenja.prikaziUpozorenje("Morate odgovoriti na 7. pitanje.");
                 return;
             }
             else
@@ -1349,7 +1350,7 @@ public class KontrolerFormeZaPopisivanjeStanovnika {
             pitanje8TextField1.setStyle("-fx-border-color: RED");
             pitanje8TextField2.setStyle("-fx-border-color: RED");
             pitanje8TextField3.setStyle("-fx-border-color: RED");
-            prikaziUpozorenje("Morate odgovoriti na 8. pitanje.");
+            PrikazObavjestenja.prikaziUpozorenje("Morate odgovoriti na 8. pitanje.");
             return;
         }
         else{
@@ -1373,7 +1374,7 @@ public class KontrolerFormeZaPopisivanjeStanovnika {
             pitanje9TextField1.setStyle("-fx-border-color: RED");
             pitanje9TextField2.setStyle("-fx-border-color: RED");
             pitanje9TextField3.setStyle("-fx-border-color: RED");
-            prikaziUpozorenje("Morate odgovoriti na 9. pitanje.");
+            PrikazObavjestenja.prikaziUpozorenje("Morate odgovoriti na 9. pitanje.");
             return;
         }
         else{
@@ -1393,7 +1394,7 @@ public class KontrolerFormeZaPopisivanjeStanovnika {
                     RadioButton button = (RadioButton) toggle;
                     button.setStyle("-fx-border-color: RED");
                 });
-                prikaziUpozorenje("Morate odgovoriti na 10. pitanje.");
+                PrikazObavjestenja.prikaziUpozorenje("Morate odgovoriti na 10. pitanje.");
                 return;
             } else
                 odgovoriNaPitanja.get(10).add(odgovor10Button.getText());
@@ -1413,7 +1414,7 @@ public class KontrolerFormeZaPopisivanjeStanovnika {
                 pitanje11TextField2.setStyle("-fx-border-color: RED");
                 pitanje11TextField3.setStyle("-fx-border-color: RED");
                 pitanje11DatePicker.setStyle("-fx-border-color: RED");
-                prikaziUpozorenje("Morate odgovoriti na 11. pitanje.");
+                PrikazObavjestenja.prikaziUpozorenje("Morate odgovoriti na 11. pitanje.");
                 return;
             }
             else{
@@ -1439,7 +1440,7 @@ public class KontrolerFormeZaPopisivanjeStanovnika {
             pitanje12TextField.setStyle("-fx-border-color: RED");
             pitanje12ComboBox.setStyle("-fx-border-color: RED");
             pitanje12DatePicker.setStyle("-fx-border-color: RED");
-            prikaziUpozorenje("Morate odgovoriti na 12. pitanje.");
+            PrikazObavjestenja.prikaziUpozorenje("Morate odgovoriti na 12. pitanje.");
             return;
         }
         else
@@ -1463,7 +1464,7 @@ public class KontrolerFormeZaPopisivanjeStanovnika {
             pitanje13TextField1.setStyle("-fx-border-color: RED");
             pitanje13TextField2.setStyle("-fx-border-color: RED");
             pitanje13TextField3.setStyle("-fx-border-color: RED");
-            prikaziUpozorenje("Morate odgovoriti na 13. pitanje.");
+            PrikazObavjestenja.prikaziUpozorenje("Morate odgovoriti na 13. pitanje.");
             return;
         }
         else{
@@ -1482,7 +1483,7 @@ public class KontrolerFormeZaPopisivanjeStanovnika {
                 RadioButton button = (RadioButton)toggle;
                 button.setStyle("-fx-border-color: RED");
             });
-            prikaziUpozorenje("Morate odgovoriti na 14. pitanje.");
+            PrikazObavjestenja.prikaziUpozorenje("Morate odgovoriti na 14. pitanje.");
             return;
         }
         else
@@ -1495,7 +1496,7 @@ public class KontrolerFormeZaPopisivanjeStanovnika {
                     RadioButton button = (RadioButton)toggle;
                     button.setStyle("-fx-border-color: RED");
                 });
-                prikaziUpozorenje("Morate odgovoriti na 15. pitanje.");
+                PrikazObavjestenja.prikaziUpozorenje("Morate odgovoriti na 15. pitanje.");
                 return;
             }
             else
@@ -1511,7 +1512,7 @@ public class KontrolerFormeZaPopisivanjeStanovnika {
             });
             pitanje16TextField1.setStyle("-fx-border-color: RED");
             pitanje16TextField2.setStyle("-fx-border-color: RED");
-            prikaziUpozorenje("Morate odgovoriti na 16. pitanje.");
+            PrikazObavjestenja.prikaziUpozorenje("Morate odgovoriti na 16. pitanje.");
             return;
         }
         else{
@@ -1529,7 +1530,7 @@ public class KontrolerFormeZaPopisivanjeStanovnika {
                     RadioButton button = (RadioButton)toggle;
                     button.setStyle("-fx-border-color: RED");
                 });
-                prikaziUpozorenje("Morate odgovoriti na 17. pitanje.");
+                PrikazObavjestenja.prikaziUpozorenje("Morate odgovoriti na 17. pitanje.");
                 return;
             }
             else
@@ -1543,7 +1544,7 @@ public class KontrolerFormeZaPopisivanjeStanovnika {
                     RadioButton button = (RadioButton)toggle;
                     button.setStyle("-fx-border-color: RED");
                 });
-                prikaziUpozorenje("Morate odgovoriti na 18. pitanje.");
+                PrikazObavjestenja.prikaziUpozorenje("Morate odgovoriti na 18. pitanje.");
                 return;
             }
             else
@@ -1557,7 +1558,7 @@ public class KontrolerFormeZaPopisivanjeStanovnika {
                 button.setStyle("-fx-border-color: RED");
             });
             pitanje19TextField.setStyle("-fx-border-color: RED");
-            prikaziUpozorenje("Morate odgovoriti na 19. pitanje.");
+            PrikazObavjestenja.prikaziUpozorenje("Morate odgovoriti na 19. pitanje.");
             return;
         }
         else {
@@ -1572,7 +1573,7 @@ public class KontrolerFormeZaPopisivanjeStanovnika {
                 RadioButton button = (RadioButton)toggle;
                 button.setStyle("-fx-border-color: RED");
             });
-            prikaziUpozorenje("Morate odgovoriti na 20. pitanje.");
+            PrikazObavjestenja.prikaziUpozorenje("Morate odgovoriti na 20. pitanje.");
             return;
         }
         else
@@ -1584,7 +1585,7 @@ public class KontrolerFormeZaPopisivanjeStanovnika {
                 RadioButton button = (RadioButton)toggle;
                 button.setStyle("-fx-border-color: RED");
             });
-            prikaziUpozorenje("Morate odgovoriti na 21. pitanje.");
+            PrikazObavjestenja.prikaziUpozorenje("Morate odgovoriti na 21. pitanje.");
             return;
         }
         else
@@ -1596,7 +1597,7 @@ public class KontrolerFormeZaPopisivanjeStanovnika {
                 RadioButton button = (RadioButton)toggle;
                 button.setStyle("-fx-border-color: RED");
             });
-            prikaziUpozorenje("Morate odgovoriti na 22. pitanje.");
+            PrikazObavjestenja.prikaziUpozorenje("Morate odgovoriti na 22. pitanje.");
             return;
         }
         else
@@ -1605,7 +1606,7 @@ public class KontrolerFormeZaPopisivanjeStanovnika {
         if(!pitanje23TextField.isDisabled()){
             if(pitanje23TextField.getText().isEmpty()){
                 pitanje23TextField.setStyle("-fx-border-color: RED");
-                prikaziUpozorenje("Morate odgovoriti na 23. pitanje.");
+                PrikazObavjestenja.prikaziUpozorenje("Morate odgovoriti na 23. pitanje.");
                 return;
             }
             else{
@@ -1615,7 +1616,7 @@ public class KontrolerFormeZaPopisivanjeStanovnika {
                 }
                 catch(NumberFormatException e){
                     pitanje23TextField.setStyle("-fx-border-color: RED");
-                    prikaziUpozorenje("Odgovor na 23. pitanje mora biti broj.");
+                    PrikazObavjestenja.prikaziUpozorenje("Odgovor na 23. pitanje mora biti broj.");
                     return;
                 }
             }
@@ -1624,21 +1625,21 @@ public class KontrolerFormeZaPopisivanjeStanovnika {
         if(!pitanje24DatePicker1.isDisabled()){
             if(Integer.parseInt(pitanje23TextField.getText()) >= 1 && pitanje24DatePicker1.getValue() == null){
                 pitanje24DatePicker1.setStyle("-fx-border-color: RED");
-                prikaziUpozorenje("Morate dogovoriti na 24. pitanje.");
+                PrikazObavjestenja.prikaziUpozorenje("Morate dogovoriti na 24. pitanje.");
                 return;
             }
             else if(Integer.parseInt(pitanje23TextField.getText()) >= 1)
                 odgovoriNaPitanja.get(24).add(pitanje24DatePicker1.getValue().format(DateTimeFormatter.ofPattern("dd-MM-yyyy")));
             if(Integer.parseInt(pitanje23TextField.getText()) >= 2 && pitanje24DatePicker2.getValue() == null){
                 pitanje24DatePicker2.setStyle("-fx-border-color: RED");
-                prikaziUpozorenje("Morate dogovoriti na 24. pitanje.");
+                PrikazObavjestenja.prikaziUpozorenje("Morate dogovoriti na 24. pitanje.");
                 return;
             }
             else if(Integer.parseInt(pitanje23TextField.getText()) >= 2)
                 odgovoriNaPitanja.get(24).add(pitanje24DatePicker2.getValue().format(DateTimeFormatter.ofPattern("dd-MM-yyyy")));
             if(Integer.parseInt(pitanje23TextField.getText()) >= 3 && pitanje24DatePicker3.getValue() == null){
                 pitanje24DatePicker3.setStyle("-fx-border-color: RED");
-                prikaziUpozorenje("Morate dogovoriti na 24. pitanje.");
+                PrikazObavjestenja.prikaziUpozorenje("Morate dogovoriti na 24. pitanje.");
                 return;
             }
             else if(Integer.parseInt(pitanje23TextField.getText()) >= 3)
@@ -1652,7 +1653,7 @@ public class KontrolerFormeZaPopisivanjeStanovnika {
                 button.setStyle("-fx-border-color: RED");
             });
             pitanje25TextField.setStyle("-fx-border-color: RED");
-            prikaziUpozorenje("Morate odgovoriti na 25. pitanje.");
+            PrikazObavjestenja.prikaziUpozorenje("Morate odgovoriti na 25. pitanje.");
             return;
         }
         else {
@@ -1668,7 +1669,7 @@ public class KontrolerFormeZaPopisivanjeStanovnika {
                 button.setStyle("-fx-border-color: RED");
             });
             pitanje26TextField.setStyle("-fx-border-color: RED");
-            prikaziUpozorenje("Morate odgovoriti na 26. pitanje.");
+            PrikazObavjestenja.prikaziUpozorenje("Morate odgovoriti na 26. pitanje.");
             return;
         }
         else {
@@ -1684,7 +1685,7 @@ public class KontrolerFormeZaPopisivanjeStanovnika {
                 button.setStyle("-fx-border-color: RED");
             });
             pitanje27TextField.setStyle("-fx-border-color: RED");
-            prikaziUpozorenje("Morate odgovoriti na 27. pitanje.");
+            PrikazObavjestenja.prikaziUpozorenje("Morate odgovoriti na 27. pitanje.");
             return;
         }
         else {
@@ -1710,7 +1711,7 @@ public class KontrolerFormeZaPopisivanjeStanovnika {
             pitanje28CheckBox3.setStyle("-fx-border-color: RED");
             pitanje28CheckBox4.setStyle("-fx-border-color: RED");
             pitanje28CheckBox5.setStyle("-fx-border-color: RED");
-            prikaziUpozorenje("Morate odgovoriti na 28. pitanje.");
+            PrikazObavjestenja.prikaziUpozorenje("Morate odgovoriti na 28. pitanje.");
             return;
         }
 
@@ -1723,7 +1724,7 @@ public class KontrolerFormeZaPopisivanjeStanovnika {
             });
             pitanje29TextField1.setStyle("-fx-border-color: RED");
             pitanje29TextField2.setStyle("-fx-border-color: RED");
-            prikaziUpozorenje("Morate odgovoriti na 29. pitanje.");
+            PrikazObavjestenja.prikaziUpozorenje("Morate odgovoriti na 29. pitanje.");
             return;
         }
         else{
@@ -1740,7 +1741,7 @@ public class KontrolerFormeZaPopisivanjeStanovnika {
                             RadioButton button = (RadioButton)toggle;
                             button.setStyle("-fx-border-color: RED");
                         });
-                        prikaziUpozorenje("Nepotpun odgovor na 29. pitanje.");
+                        PrikazObavjestenja.prikaziUpozorenje("Nepotpun odgovor na 29. pitanje.");
                         return;
                     }
                     else if(odgovor29Button2 == null){
@@ -1748,7 +1749,7 @@ public class KontrolerFormeZaPopisivanjeStanovnika {
                             RadioButton button = (RadioButton)toggle;
                             button.setStyle("-fx-border-color: RED");
                         });
-                        prikaziUpozorenje("Nepotpun odgovor na 29. pitanje.");
+                        PrikazObavjestenja.prikaziUpozorenje("Nepotpun odgovor na 29. pitanje.");
                         return;
                     }
                     else{
@@ -1767,7 +1768,7 @@ public class KontrolerFormeZaPopisivanjeStanovnika {
                     button.setStyle("-fx-border-color: RED");
                 });
                 pitanje30TextField.setStyle("-fx-border-color: RED");
-                prikaziUpozorenje("Morate odgovoriti na 30. pitanje.");
+                PrikazObavjestenja.prikaziUpozorenje("Morate odgovoriti na 30. pitanje.");
                 return;
             }
             else {
@@ -1784,7 +1785,7 @@ public class KontrolerFormeZaPopisivanjeStanovnika {
                     RadioButton button = (RadioButton)toggle;
                     button.setStyle("-fx-border-color: RED");
                 });
-                prikaziUpozorenje("Morate odgovoriti na 31. pitanje.");
+                PrikazObavjestenja.prikaziUpozorenje("Morate odgovoriti na 31. pitanje.");
                 return;
             }
             else
@@ -1797,7 +1798,7 @@ public class KontrolerFormeZaPopisivanjeStanovnika {
                 RadioButton button = (RadioButton)toggle;
                 button.setStyle("-fx-border-color: RED");
             });
-            prikaziUpozorenje("Morate odgovoriti na 32. pitanje.");
+            PrikazObavjestenja.prikaziUpozorenje("Morate odgovoriti na 32. pitanje.");
             return;
         }
         else
@@ -1809,7 +1810,7 @@ public class KontrolerFormeZaPopisivanjeStanovnika {
                 RadioButton button = (RadioButton)toggle;
                 button.setStyle("-fx-border-color: RED");
             });
-            prikaziUpozorenje("Morate odgovoriti na 33. pitanje.");
+            PrikazObavjestenja.prikaziUpozorenje("Morate odgovoriti na 33. pitanje.");
             return;
         }
         else
@@ -1822,7 +1823,7 @@ public class KontrolerFormeZaPopisivanjeStanovnika {
                     RadioButton button = (RadioButton)toggle;
                     button.setStyle("-fx-border-color: RED");
                 });
-                prikaziUpozorenje("Morate odgovoriti na 34. pitanje.");
+                PrikazObavjestenja.prikaziUpozorenje("Morate odgovoriti na 34. pitanje.");
                 return;
             }
             else
@@ -1836,7 +1837,7 @@ public class KontrolerFormeZaPopisivanjeStanovnika {
                     RadioButton button = (RadioButton)toggle;
                     button.setStyle("-fx-border-color: RED");
                 });
-                prikaziUpozorenje("Morate odgovoriti na 35. pitanje.");
+                PrikazObavjestenja.prikaziUpozorenje("Morate odgovoriti na 35. pitanje.");
                 return;
             }
             else
@@ -1850,7 +1851,7 @@ public class KontrolerFormeZaPopisivanjeStanovnika {
                     RadioButton button = (RadioButton)toggle;
                     button.setStyle("-fx-border-color: RED");
                 });
-                prikaziUpozorenje("Morate odgovoriti na 36. pitanje.");
+                PrikazObavjestenja.prikaziUpozorenje("Morate odgovoriti na 36. pitanje.");
                 return;
             }
             else
@@ -1864,7 +1865,7 @@ public class KontrolerFormeZaPopisivanjeStanovnika {
                     RadioButton button = (RadioButton)toggle;
                     button.setStyle("-fx-border-color: RED");
                 });
-                prikaziUpozorenje("Morate odgovoriti na 37. pitanje.");
+                PrikazObavjestenja.prikaziUpozorenje("Morate odgovoriti na 37. pitanje.");
                 return;
             }
             else
@@ -1878,7 +1879,7 @@ public class KontrolerFormeZaPopisivanjeStanovnika {
                     RadioButton button = (RadioButton)toggle;
                     button.setStyle("-fx-border-color: RED");
                 });
-                prikaziUpozorenje("Morate odgovoriti na 38. pitanje.");
+                PrikazObavjestenja.prikaziUpozorenje("Morate odgovoriti na 38. pitanje.");
                 return;
             }
             else
@@ -1894,7 +1895,7 @@ public class KontrolerFormeZaPopisivanjeStanovnika {
             if(!pitanje40TextField1.getText().isEmpty()){
                 if(pitanje40TextField2.getText().isEmpty()) {
                     pitanje40TextField2.setStyle("-fx-border-color: RED");
-                    prikaziUpozorenje("Nepotpun odgovor na 40. pitanje.");
+                    PrikazObavjestenja.prikaziUpozorenje("Nepotpun odgovor na 40. pitanje.");
                     return;
                 }
                 else {
@@ -1905,7 +1906,7 @@ public class KontrolerFormeZaPopisivanjeStanovnika {
             }
             else if(!pitanje40TextField2.getText().isEmpty()){
                 pitanje40TextField2.setStyle("-fx-border-color: RED");
-                prikaziUpozorenje("Nepotpun odgovor na 40. pitanje.");
+                PrikazObavjestenja.prikaziUpozorenje("Nepotpun odgovor na 40. pitanje.");
                 return;
             }
             else if(!pitanje40TextField1.getText().isEmpty() && !pitanje40TextField2.getText().isEmpty()){
@@ -1925,7 +1926,7 @@ public class KontrolerFormeZaPopisivanjeStanovnika {
             pitanje41TextField1.setStyle("-fx-border-color: RED");
             pitanje41TextField2.setStyle("-fx-border-color: RED");
             pitanje41TextField3.setStyle("-fx-border-color: RED");
-            prikaziUpozorenje("Nepotpun odgovor na 41. pitanje.");
+            PrikazObavjestenja.prikaziUpozorenje("Nepotpun odgovor na 41. pitanje.");
             return;
         }
         else if(odgovor41Button == null && (!pitanje41TextField1.getText().isEmpty() ||
@@ -1937,7 +1938,7 @@ public class KontrolerFormeZaPopisivanjeStanovnika {
             pitanje41TextField1.setStyle("-fx-border-color: RED");
             pitanje41TextField2.setStyle("-fx-border-color: RED");
             pitanje41TextField3.setStyle("-fx-border-color: RED");
-            prikaziUpozorenje("Nepotpun odgovor na 41. pitanje.");
+            PrikazObavjestenja.prikaziUpozorenje("Nepotpun odgovor na 41. pitanje.");
             return;
         }
         else if(odgovor41Button != null){
@@ -1981,7 +1982,7 @@ public class KontrolerFormeZaPopisivanjeStanovnika {
             pitanje42CheckBox8.setStyle("-fx-border-color: RED");
             pitanje42CheckBox9.setStyle("-fx-border-color: RED");
             pitanje42CheckBox10.setStyle("-fx-border-color: RED");
-            prikaziUpozorenje("Morate odgovoriti na 42. pitanje.");
+            PrikazObavjestenja.prikaziUpozorenje("Morate odgovoriti na 42. pitanje.");
             return;
         }
 
@@ -1991,7 +1992,7 @@ public class KontrolerFormeZaPopisivanjeStanovnika {
                 RadioButton button = (RadioButton)toggle;
                 button.setStyle("-fx-border-color: RED");
             });
-            prikaziUpozorenje("Morate odgovoriti na 43. pitanje.");
+            PrikazObavjestenja.prikaziUpozorenje("Morate odgovoriti na 43. pitanje.");
             return;
         }
         else
@@ -2004,7 +2005,7 @@ public class KontrolerFormeZaPopisivanjeStanovnika {
                     RadioButton button = (RadioButton)toggle;
                     button.setStyle("-fx-border-color: RED");
                 });
-                prikaziUpozorenje("Morate odgovoriti na 44. pitanje.");
+                PrikazObavjestenja.prikaziUpozorenje("Morate odgovoriti na 44. pitanje.");
                 return;
             }
             else
@@ -2038,7 +2039,7 @@ public class KontrolerFormeZaPopisivanjeStanovnika {
             odijevanjeUzrokComboBox.setStyle("-fx-border-color: RED");
             komunikacijaSComboBox.setStyle("-fx-border-color: RED");
             komunikacijaUzrokComboBox.setStyle("-fx-border-color: RED");
-            prikaziUpozorenje("Nepotpun odgovor na 45. pitanje");
+            PrikazObavjestenja.prikaziUpozorenje("Nepotpun odgovor na 45. pitanje");
             return;
         }
         else{
@@ -2062,7 +2063,7 @@ public class KontrolerFormeZaPopisivanjeStanovnika {
                 RadioButton button = (RadioButton)toggle;
                 button.setStyle("-fx-border-color: RED");
             });
-            prikaziUpozorenje("Morate odgovoriti na 46. pitanje.");
+            PrikazObavjestenja.prikaziUpozorenje("Morate odgovoriti na 46. pitanje.");
         }
         else
             odgovoriNaPitanja.get(46).add(odgovor46Button.getText());
@@ -2100,16 +2101,16 @@ public class KontrolerFormeZaPopisivanjeStanovnika {
 	        int status = glavniServer.obradiPopisniceZaStanovnike(popisnice);
 	        
 	      	if(status == 404) {
-	      		SerijalizacijaPopisnica.serijalizujPopisnicu(popisnica);
-	      		prikaziInfo("Nema internet konekcije. Popisnica je sačuvana.");
+	      		SerijalizacijaPopisnica.serijalizujPopisnicuZaStanovnika(popisnica);
+	      		PrikazObavjestenja.prikaziInfo("Nema internet konekcije. Popisnica je sačuvana.");
 	      		KontrolerFormeZaRadPopisivaca.popisStanovnikaStage.close();
 	      	}
 	      	else if(status == 500) {
-	      		prikaziInfo("Podaci na popisnici nisu validni. Popisnica je odbačena.");
+	      		PrikazObavjestenja.prikaziInfo("Podaci na popisnici nisu validni. Popisnica je odbačena.");
 	      		KontrolerFormeZaRadPopisivaca.popisStanovnikaStage.close();
 	      	}
 	      	else {
-	      		prikaziInfo("Popisnica je uspješno poslata.");
+	      		PrikazObavjestenja.prikaziInfo("Popisnica je uspješno poslata.");
 	      		KontrolerFormeZaRadPopisivaca.popisStanovnikaStage.close();
 	      	}
         }
@@ -2375,21 +2376,6 @@ public class KontrolerFormeZaPopisivanjeStanovnika {
             button.setStyle("-fx-border-color: TRANSPARENT");
         });
     }
-    
-    private void prikaziInfo(String poruka){
-    	String info = "Informacija";
-    	if("српски".equals(Main.trenutniJezik)) {
-    		poruka = PromjenaPisma.zamijeniLatinicuCiricom(poruka);
-    		info = PromjenaPisma.zamijeniLatinicuCiricom(info);
-    	}
-    	
-        Alert userNotSelectedAlert = new Alert(Alert.AlertType.INFORMATION);
-	    userNotSelectedAlert.setTitle(info);
-	    userNotSelectedAlert.setHeaderText(info + "!");
-        userNotSelectedAlert.setContentText(poruka);
-        userNotSelectedAlert.showAndWait();
-    }
-
 
     private boolean isToggleGroupEnabled(ToggleGroup grupa){
         ObservableList<Toggle> toggles = grupa.getToggles();
@@ -2398,19 +2384,5 @@ public class KontrolerFormeZaPopisivanjeStanovnika {
                 return false;
         }
         return true;
-    }
-
-    private void prikaziUpozorenje(String poruka){
-    	String greska = "Greška";
-    	if("српски".equals(Main.trenutniJezik)) {
-    		poruka = PromjenaPisma.zamijeniLatinicuCiricom(poruka);
-    		greska = PromjenaPisma.zamijeniLatinicuCiricom(poruka);
-    	}
-    	
-        Alert userNotSelectedAlert = new Alert(Alert.AlertType.ERROR);
-        userNotSelectedAlert.setTitle(greska);
-        userNotSelectedAlert.setHeaderText(greska + "!");
-        userNotSelectedAlert.setContentText(poruka);
-        userNotSelectedAlert.showAndWait();
     }
 }

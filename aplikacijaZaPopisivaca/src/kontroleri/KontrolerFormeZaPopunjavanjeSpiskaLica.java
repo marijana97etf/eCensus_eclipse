@@ -18,6 +18,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
 import main.Main;
 import model.ClanDomacinstva;
+import util.PrikazObavjestenja;
 
 public class KontrolerFormeZaPopunjavanjeSpiskaLica {
 	private Map<Integer, List<Node>> poljaZaPopunjavanje;
@@ -205,9 +206,9 @@ public class KontrolerFormeZaPopunjavanjeSpiskaLica {
         			}
     			}
     			if(!"српски".equals(Main.trenutniJezik))
-    				prikaziUpozorenje("Nepotpun unos.");
+    				PrikazObavjestenja.prikaziUpozorenje("Nepotpun unos.");
     			else
-    				prikaziUpozorenje("Непотпун унос.");
+    				PrikazObavjestenja.prikaziUpozorenje("Непотпун унос.");
     			return;
     		}
     	}
@@ -239,17 +240,5 @@ public class KontrolerFormeZaPopunjavanjeSpiskaLica {
     		for(Node n : polja)
     			n.setStyle("-fx-border-color: TRANSPARENT");
     	}
-    }
-    
-    private void prikaziUpozorenje(String poruka){
-    	String greska = "Greška";
-    	if("српски".equals(Main.trenutniJezik))
-    		greska = "Грешка";
-    	
-        Alert userNotSelectedAlert = new Alert(Alert.AlertType.ERROR);
-        userNotSelectedAlert.setTitle(greska);
-        userNotSelectedAlert.setHeaderText(greska + "!");
-        userNotSelectedAlert.setContentText(poruka);
-        userNotSelectedAlert.showAndWait();
     }
 }

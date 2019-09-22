@@ -1,7 +1,6 @@
 package kontroleri;
 
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -13,7 +12,7 @@ import javafx.stage.Stage;
 import main.Main;
 import model.ClanDomacinstva;
 import model.PopisnicaZaDomacinstvo;
-import model.PopisnicaZaStanovnika;
+import util.PrikazObavjestenja;
 import util.PromjenaJezika;
 import util.PromjenaPisma;
 import util.SerijalizacijaPopisnica;
@@ -332,26 +331,26 @@ public class KontrolerFormeZaPopisivanjeDomacinstva {
             idObrasca = Integer.parseInt(obrazacTextField.getText());
             if(idObrasca < 0 || idObrasca>9) {
                 obrazacTextField.setStyle("-fx-border-color: RED");
-                prikaziUpozorenje("U polje za obrazac morate unijeti jednocifren broj.");
+                PrikazObavjestenja.prikaziUpozorenje("U polje za obrazac morate unijeti jednocifren broj.");
                 return;
             }
         }
         catch(NumberFormatException e){
             obrazacTextField.setStyle("-fx-border-color: RED");
-            prikaziUpozorenje("U polje za obrazac morate unijeti broj.");
+            PrikazObavjestenja.prikaziUpozorenje("U polje za obrazac morate unijeti broj.");
             return;
         }
         try{
             idEntiteta = Integer.parseInt(entitetTextField.getText());
             if(idEntiteta < 0 || idEntiteta>9) {
                 entitetTextField.setStyle("-fx-border-color: RED");
-                prikaziUpozorenje("U polje za entitet morate unijeti jednocifren broj.");
+                PrikazObavjestenja.prikaziUpozorenje("U polje za entitet morate unijeti jednocifren broj.");
                 return;
             }
         }
         catch(NumberFormatException e){
             entitetTextField.setStyle("-fx-border-color: RED");
-            prikaziUpozorenje("U polje za entitet morate unijeti broj.");
+            PrikazObavjestenja.prikaziUpozorenje("U polje za entitet morate unijeti broj.");
             return;
         }
         try{
@@ -363,7 +362,7 @@ public class KontrolerFormeZaPopisivanjeDomacinstva {
                 opstinaTextField3.setStyle("-fx-border-color: RED");
                 opstinaTextField4.setStyle("-fx-border-color: RED");
                 opstinaTextField5.setStyle("-fx-border-color: RED");
-                prikaziUpozorenje("U svako polje za opštinu morate unijeti jednocifren broj.");
+                PrikazObavjestenja.prikaziUpozorenje("U svako polje za opštinu morate unijeti jednocifren broj.");
                 return;
             }
         }
@@ -373,7 +372,7 @@ public class KontrolerFormeZaPopisivanjeDomacinstva {
             opstinaTextField3.setStyle("-fx-border-color: RED");
             opstinaTextField4.setStyle("-fx-border-color: RED");
             opstinaTextField5.setStyle("-fx-border-color: RED");
-            prikaziUpozorenje("U polja za opštinu morate unijeti brojeve.");
+            PrikazObavjestenja.prikaziUpozorenje("U polja za opštinu morate unijeti brojeve.");
             return;
         }
         try{
@@ -383,7 +382,7 @@ public class KontrolerFormeZaPopisivanjeDomacinstva {
                 popisniKrugTextField1.setStyle("-fx-border-color: RED");
                 popisniKrugTextField2.setStyle("-fx-border-color: RED");
                 popisniKrugTextField3.setStyle("-fx-border-color: RED");
-                prikaziUpozorenje("U svako polje za popisni krug morate unijeti jednocifren broj.");
+                PrikazObavjestenja.prikaziUpozorenje("U svako polje za popisni krug morate unijeti jednocifren broj.");
                 return;
             }
         }
@@ -391,7 +390,7 @@ public class KontrolerFormeZaPopisivanjeDomacinstva {
             popisniKrugTextField1.setStyle("-fx-border-color: RED");
             popisniKrugTextField2.setStyle("-fx-border-color: RED");
             popisniKrugTextField3.setStyle("-fx-border-color: RED");
-            prikaziUpozorenje("U polja za popisni krug morate unijeti brojeve.");
+            PrikazObavjestenja.prikaziUpozorenje("U polja za popisni krug morate unijeti brojeve.");
             return;
         }
         try{
@@ -400,7 +399,7 @@ public class KontrolerFormeZaPopisivanjeDomacinstva {
                 stanTextField1.setStyle("-fx-border-color: RED");
                 stanTextField2.setStyle("-fx-border-color: RED");
                 stanTextField3.setStyle("-fx-border-color: RED");
-                prikaziUpozorenje("U svako polje za stan morate unijeti jednocifren broj.");
+                PrikazObavjestenja.prikaziUpozorenje("U svako polje za stan morate unijeti jednocifren broj.");
                 return;
             }
         }
@@ -408,7 +407,7 @@ public class KontrolerFormeZaPopisivanjeDomacinstva {
             stanTextField1.setStyle("-fx-border-color: RED");
             stanTextField2.setStyle("-fx-border-color: RED");
             stanTextField3.setStyle("-fx-border-color: RED");
-            prikaziUpozorenje("U polja za stan morate unijeti brojeve.");
+            PrikazObavjestenja.prikaziUpozorenje("U polja za stan morate unijeti brojeve.");
             return;
         }
         try{
@@ -418,7 +417,7 @@ public class KontrolerFormeZaPopisivanjeDomacinstva {
                 domacinstvoTextField1.setStyle("-fx-border-color: RED");
                 domacinstvoTextField2.setStyle("-fx-border-color: RED");
                 domacinstvoTextField3.setStyle("-fx-border-color: RED");
-                prikaziUpozorenje("U svako polje za domaćinstvo morate unijeti jednocifren broj.");
+                PrikazObavjestenja.prikaziUpozorenje("U svako polje za domaćinstvo morate unijeti jednocifren broj.");
                 return;
             }
         }
@@ -426,7 +425,7 @@ public class KontrolerFormeZaPopisivanjeDomacinstva {
             domacinstvoTextField1.setStyle("-fx-border-color: RED");
             domacinstvoTextField2.setStyle("-fx-border-color: RED");
             domacinstvoTextField3.setStyle("-fx-border-color: RED");
-            prikaziUpozorenje("U polja za domaćinstvo morate unijeti brojeve.");
+            PrikazObavjestenja.prikaziUpozorenje("U polja za domaćinstvo morate unijeti brojeve.");
             return;
         }
         try{
@@ -435,7 +434,7 @@ public class KontrolerFormeZaPopisivanjeDomacinstva {
                 zgradaTextField1.setStyle("-fx-border-color: RED");
                 zgradaTextField2.setStyle("-fx-border-color: RED");
                 zgradaTextField3.setStyle("-fx-border-color: RED");
-                prikaziUpozorenje("U svako polje za zgradu morate unijeti jednocifren broj.");
+                PrikazObavjestenja.prikaziUpozorenje("U svako polje za zgradu morate unijeti jednocifren broj.");
                 return;
             }
         }
@@ -443,14 +442,14 @@ public class KontrolerFormeZaPopisivanjeDomacinstva {
             zgradaTextField1.setStyle("-fx-border-color: RED");
             zgradaTextField2.setStyle("-fx-border-color: RED");
             zgradaTextField3.setStyle("-fx-border-color: RED");
-            prikaziUpozorenje("U polja za zgradu morate unijeti brojeve.");
+            PrikazObavjestenja.prikaziUpozorenje("U polja za zgradu morate unijeti brojeve.");
             return;
         }
 
         ulica = ulicaTextField.getText();
         if(ulica.isEmpty()) {
             ulicaTextField.setStyle("-fx-border-color: RED");
-            prikaziUpozorenje("Morate unijeti ulicu domaćinstva koje se popisuje.");
+            PrikazObavjestenja.prikaziUpozorenje("Morate unijeti ulicu domaćinstva koje se popisuje.");
             return;
         }
         else {
@@ -463,7 +462,7 @@ public class KontrolerFormeZaPopisivanjeDomacinstva {
         kucniBroj = kucniBrojTextField.getText();
         if(kucniBroj.isEmpty()){
             kucniBrojTextField.setStyle("-fx-border-color: RED");
-            prikaziUpozorenje("Morate unijeti kućni broj domaćinstva koje se popisuje.");
+            PrikazObavjestenja.prikaziUpozorenje("Morate unijeti kućni broj domaćinstva koje se popisuje.");
             return;
         }
         else {
@@ -476,7 +475,7 @@ public class KontrolerFormeZaPopisivanjeDomacinstva {
         dodatak = dodatakTextField.getText();
         if(dodatak.isEmpty()){
             dodatakTextField.setStyle("-fx-border-color: RED");
-            prikaziUpozorenje("Morate unijeti dodatak domaćinstva koje se popisuje.");
+            PrikazObavjestenja.prikaziUpozorenje("Morate unijeti dodatak domaćinstva koje se popisuje.");
             return;
         }
         else {
@@ -489,7 +488,7 @@ public class KontrolerFormeZaPopisivanjeDomacinstva {
         ulaz = ulazTextField.getText();
         if(ulaz.isEmpty()){
             ulazTextField.setStyle("-fx-border-color: RED");
-            prikaziUpozorenje("Morate unijeti ulaz domaćinstva koje se popisuje.");
+            PrikazObavjestenja.prikaziUpozorenje("Morate unijeti ulaz domaćinstva koje se popisuje.");
             return;
         }
         else {
@@ -502,7 +501,7 @@ public class KontrolerFormeZaPopisivanjeDomacinstva {
         brojStana = brojStanaTextField.getText();
         if(brojStana.isEmpty()){
             brojStanaTextField.setStyle("-fx-border-color: RED");
-            prikaziUpozorenje("Morate unijeti broj stana domaćinstva koje se popisuje.");
+            PrikazObavjestenja.prikaziUpozorenje("Morate unijeti broj stana domaćinstva koje se popisuje.");
             return;
         }
         else {
@@ -515,7 +514,7 @@ public class KontrolerFormeZaPopisivanjeDomacinstva {
         idBroj = idBrojTextField.getText();
         if(idBroj.isEmpty()){
             idBrojTextField.setStyle("-fx-border-color: RED");
-            prikaziUpozorenje("Morate unijeti ID-broj domaćinstva koje se popisuje.");
+            PrikazObavjestenja.prikaziUpozorenje("Morate unijeti ID-broj domaćinstva koje se popisuje.");
             return;
         }
         else {
@@ -549,7 +548,7 @@ public class KontrolerFormeZaPopisivanjeDomacinstva {
                     RadioButton button = (RadioButton)toggle;
                     button.setStyle("-fx-border-color: RED");
                 });
-                prikaziUpozorenje("Morate odgovoriti na 3. pitanje.");
+                PrikazObavjestenja.prikaziUpozorenje("Morate odgovoriti na 3. pitanje.");
                 return;
             }
             else {
@@ -561,7 +560,7 @@ public class KontrolerFormeZaPopisivanjeDomacinstva {
                             RadioButton button = (RadioButton)toggle;
                             button.setStyle("-fx-border-color: RED");
                         });
-                        prikaziUpozorenje("Nepotpun odgovor na 3. pitanje.");
+                        PrikazObavjestenja.prikaziUpozorenje("Nepotpun odgovor na 3. pitanje.");
                         return;
                     }
                     else
@@ -574,7 +573,7 @@ public class KontrolerFormeZaPopisivanjeDomacinstva {
             String odgovor4 = pitanje4TextField.getText();
             if(odgovor4.isEmpty()){
                 pitanje4TextField.setStyle("-fx-border-color: RED");
-                prikaziUpozorenje("Morate odgovoriti na 4. pitanje.");
+                PrikazObavjestenja.prikaziUpozorenje("Morate odgovoriti na 4. pitanje.");
                 return;
             }
             else
@@ -593,7 +592,7 @@ public class KontrolerFormeZaPopisivanjeDomacinstva {
             String odgovor6 = pitanje6TextField.getText();
             if(odgovor6.isEmpty()){
                 pitanje6TextField.setStyle("-fx-border-color: RED");
-                prikaziUpozorenje("Morate odgovoriti na 6. pitanje.");
+                PrikazObavjestenja.prikaziUpozorenje("Morate odgovoriti na 6. pitanje.");
                 return;
             }
             else
@@ -604,7 +603,7 @@ public class KontrolerFormeZaPopisivanjeDomacinstva {
             String odgovor7 = pitanje7TextField.getText();
             if(odgovor7.isEmpty()){
                 pitanje7TextField.setStyle("-fx-border-color: RED");
-                prikaziUpozorenje("Morate odgovoriti na 7. pitanje.");
+                PrikazObavjestenja.prikaziUpozorenje("Morate odgovoriti na 7. pitanje.");
                 return;
             }
             else
@@ -618,7 +617,7 @@ public class KontrolerFormeZaPopisivanjeDomacinstva {
                     RadioButton button = (RadioButton)toggle;
                     button.setStyle("-fx-border-color: RED");
                 });
-                prikaziUpozorenje("Morate odgovoriti na 8. pitanje.");
+                PrikazObavjestenja.prikaziUpozorenje("Morate odgovoriti na 8. pitanje.");
                 return;
             }
             else {
@@ -627,7 +626,7 @@ public class KontrolerFormeZaPopisivanjeDomacinstva {
                     String odgovor8Text = pitanje8TextField.getText();
                     if(odgovor8Text.isEmpty()){
                         pitanje8TextField.setStyle("-fx-border-color: RED");
-                        prikaziUpozorenje("Nepotpun odgovor na 8. pitanje.");
+                        PrikazObavjestenja.prikaziUpozorenje("Nepotpun odgovor na 8. pitanje.");
                         return;
                     }
                     else
@@ -788,7 +787,7 @@ public class KontrolerFormeZaPopisivanjeDomacinstva {
             pitanje26CheckBox4.setStyle("-fx-border-color: RED");
             pitanje26CheckBox5.setStyle("-fx-border-color: RED");
             pitanje26CheckBox6.setStyle("-fx-border-color: RED");
-            prikaziUpozorenje("Morate odgovoriti na 26. pitanje.");
+            PrikazObavjestenja.prikaziUpozorenje("Morate odgovoriti na 26. pitanje.");
             return;
         }
 
@@ -1004,7 +1003,7 @@ public class KontrolerFormeZaPopisivanjeDomacinstva {
                     RadioButton button = (RadioButton)toggle;
                     button.setStyle("-fx-border-color: RED");
                 });
-                prikaziUpozorenje("Morate odgovoriti na 33. pitanje.");
+                PrikazObavjestenja.prikaziUpozorenje("Morate odgovoriti na 33. pitanje.");
                 return;
             }
             else {
@@ -1013,7 +1012,7 @@ public class KontrolerFormeZaPopisivanjeDomacinstva {
                     String odgovor33Text = pitanje33TextField.getText();
                     if(odgovor33Text.isEmpty()){
                         pitanje33TextField.setStyle("-fx-border-color: RED");
-                        prikaziUpozorenje("Nepotpun odgovor na 33. pitanje.");
+                        PrikazObavjestenja.prikaziUpozorenje("Nepotpun odgovor na 33. pitanje.");
                         return;
                     }
                     else
@@ -1042,7 +1041,7 @@ public class KontrolerFormeZaPopisivanjeDomacinstva {
         String brojClanovaDomacinstvaString = brojClanovaDomacinstvaTextField.getText();
         if(brojClanovaDomacinstvaString.isEmpty()){
             brojClanovaDomacinstvaTextField.setStyle("-fx-border-color: RED");
-            prikaziUpozorenje("Morate unijeti broj Članova domaćinstva.");
+            PrikazObavjestenja.prikaziUpozorenje("Morate unijeti broj Članova domaćinstva.");
             return;
         }
         else{
@@ -1052,7 +1051,7 @@ public class KontrolerFormeZaPopisivanjeDomacinstva {
             }
             catch(NumberFormatException e){
                 brojClanovaDomacinstvaTextField.setStyle("-fx-border-color: RED");
-                prikaziUpozorenje("U polje za broj Članova domaćinstva morate unijeti cijeli broj.");
+                PrikazObavjestenja.prikaziUpozorenje("U polje za broj Članova domaćinstva morate unijeti cijeli broj.");
                 return;
             }
         }
@@ -1060,7 +1059,7 @@ public class KontrolerFormeZaPopisivanjeDomacinstva {
         String brojLicaUStanuString = brojLicaUStanuTextField.getText();
         if(brojLicaUStanuString.isEmpty()){
             brojLicaUStanuTextField.setStyle("-fx-border-color: RED");
-            prikaziUpozorenje("Morate unijeti broj lica u stanu.");
+            PrikazObavjestenja.prikaziUpozorenje("Morate unijeti broj lica u stanu.");
             return;
         }
         else{
@@ -1070,7 +1069,7 @@ public class KontrolerFormeZaPopisivanjeDomacinstva {
             }
             catch(NumberFormatException e){
                 brojLicaUStanuTextField.setStyle("-fx-border-color: RED");
-                prikaziUpozorenje("U polje za broj lica u stanu morate unijeti cijeli broj.");
+                PrikazObavjestenja.prikaziUpozorenje("U polje za broj lica u stanu morate unijeti cijeli broj.");
                 return;
             }
         }
@@ -1078,7 +1077,7 @@ public class KontrolerFormeZaPopisivanjeDomacinstva {
         String brojDomacinstavaUStanuString = brojDomacinstavaUStanuTextField.getText();
         if(brojDomacinstavaUStanuString.isEmpty()){
             brojDomacinstavaUStanuTextField.setStyle("-fx-border-color: RED");
-            prikaziUpozorenje("Morate unijeti broj domaćinstava u stanu.");
+            PrikazObavjestenja.prikaziUpozorenje("Morate unijeti broj domaćinstava u stanu.");
             return;
         }
         else{
@@ -1088,13 +1087,13 @@ public class KontrolerFormeZaPopisivanjeDomacinstva {
             }
             catch(NumberFormatException e){
                 brojDomacinstavaUStanuTextField.setStyle("-fx-border-color: RED");
-                prikaziUpozorenje("U polje za broj domaćinstava u stanu morate unijeti cijeli broj.");
+                PrikazObavjestenja.prikaziUpozorenje("U polje za broj domaćinstava u stanu morate unijeti cijeli broj.");
                 return;
             }
         }
 
         if(Integer.parseInt(brojDomacinstavaUStanuString) > 0 && spisakLica == null)
-        	prikaziUpozorenje("Morate popuniti spisak lica.");
+        	PrikazObavjestenja.prikaziUpozorenje("Morate popuniti spisak lica.");
         else {
         	List<ClanDomacinstva> prevedeno = new ArrayList<>();
         	for(ClanDomacinstva c : spisakLica) {
@@ -1146,11 +1145,11 @@ public class KontrolerFormeZaPopisivanjeDomacinstva {
         popisnice.add(popisnica);
         
         if(glavniServer.obradiPopisniceZaDomacinstva(popisnice) == 404) {
-        	SerijalizacijaPopisnica.serijalizujPopisnicu(popisnica);
-        	prikaziInfo("Nema internet konekcije. Popisnica je sačuvana.");
+        	SerijalizacijaPopisnica.serijalizujPopisnicuZaDomacinstvo(popisnica);
+        	PrikazObavjestenja.prikaziInfo("Nema internet konekcije. Popisnica je sačuvana.");
         }
         else {
-        	prikaziInfo("Popisnica je uspješno poslata.");
+        	PrikazObavjestenja.prikaziInfo("Popisnica je uspješno poslata.");
       		KontrolerFormeZaRadPopisivaca.popisStanovnikaStage.close();
         }
         }
@@ -1167,7 +1166,7 @@ public class KontrolerFormeZaPopisivanjeDomacinstva {
                 RadioButton button = (RadioButton)toggle;
                 button.setStyle("-fx-border-color: RED");
             });
-            prikaziUpozorenje("Morate odgovoriti na " + brojPitanja + ". pitanje.");
+            PrikazObavjestenja.prikaziUpozorenje("Morate odgovoriti na " + brojPitanja + ". pitanje.");
         }
         else
             answer = odgovorButton.getText();
@@ -1181,13 +1180,13 @@ public class KontrolerFormeZaPopisivanjeDomacinstva {
                 Integer.parseInt(odgovor);
             } catch (NumberFormatException e) {
                 ostaloZemljisteKvadratniMetarTextField.setStyle("-fx-border-color: RED");
-                prikaziUpozorenje("Svi odgovori na " + brojPitanja + ". pitanje moraju biti cijeli brojevi.");
+                PrikazObavjestenja.prikaziUpozorenje("Svi odgovori na " + brojPitanja + ". pitanje moraju biti cijeli brojevi.");
                 odgovor = "";
             }
         }
         else{
             ostaloZemljisteKvadratniMetarTextField.setStyle("-fx-border-color: RED");
-            prikaziUpozorenje("Nepotpun odgovor na " + brojPitanja + ". pitanje.");
+            PrikazObavjestenja.prikaziUpozorenje("Nepotpun odgovor na " + brojPitanja + ". pitanje.");
         }
         return odgovor;
     }
@@ -1495,34 +1494,6 @@ public class KontrolerFormeZaPopisivanjeDomacinstva {
                 return false;
         }
         return true;
-    }
-
-    private void prikaziUpozorenje(String poruka){
-    	String greska = "Greška";
-    	if("српски".equals(Main.trenutniJezik)) {
-    		poruka = PromjenaPisma.zamijeniLatinicuCiricom(poruka);
-    		greska = PromjenaPisma.zamijeniLatinicuCiricom(greska);
-    	}
-    	
-        Alert userNotSelectedAlert = new Alert(Alert.AlertType.ERROR);
-	    userNotSelectedAlert.setTitle(greska);
-	    userNotSelectedAlert.setHeaderText(greska + "!");
-        userNotSelectedAlert.setContentText(poruka);
-        userNotSelectedAlert.showAndWait();
-    }
-    
-    private void prikaziInfo(String poruka){
-    	String info = "Informacija";
-    	if("српски".equals(Main.trenutniJezik)) {
-    		poruka = PromjenaPisma.zamijeniLatinicuCiricom(poruka);
-    		info = PromjenaPisma.zamijeniLatinicuCiricom(info);
-    	}
-    	
-        Alert userNotSelectedAlert = new Alert(Alert.AlertType.INFORMATION);
-	    userNotSelectedAlert.setTitle(info);
-	    userNotSelectedAlert.setHeaderText(info + "!");
-        userNotSelectedAlert.setContentText(poruka);
-        userNotSelectedAlert.showAndWait();
     }
 
     @FXML
