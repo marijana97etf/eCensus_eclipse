@@ -7,14 +7,23 @@ import javafx.scene.Node;
 import javafx.scene.control.*;
 import main.Main;
 import model.PopisnicaZaStanovnika;
+import util.PromjenaJezika;
 import util.PromjenaPisma;
 import util.SerijalizacijaPopisnica;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import eCensus.rest.client.PopisivacGlavniServerKlijent;
 
 public class KontrolerFormeZaPopisivanjeStanovnika {
     @FXML
@@ -371,6 +380,8 @@ public class KontrolerFormeZaPopisivanjeStanovnika {
     private ToggleGroup grupa39;
     @FXML
     private ToggleGroup grupa40;
+    
+    private static final String CONFIG_FILE_PATH = "resources" + File.separator + "config.properties";
 
     public KontrolerFormeZaPopisivanjeStanovnika(){
         KontrolerFormeZaRadPopisivaca.popisStanovnikaStage.setOnShowing((event) -> inicijalizujKomponente());
@@ -1152,6 +1163,13 @@ public class KontrolerFormeZaPopisivanjeStanovnika {
             prikaziUpozorenje("Morate unijeti ime lica koje se popisuje.");
             return;
         }
+        else {
+        	if("српски".equals(Main.trenutniJezik))
+        		ime = PromjenaPisma.zamijeniCirilicuLatinicom(ime);
+        	else {
+        		ime = PromjenaJezika.pronadjiIZamijeni(ime, "srpski");
+        	}
+        }
 
         imeOcaIliMajke = imeOcaMajkeTextField.getText();
         if(imeOcaIliMajke.isEmpty()){
@@ -1159,12 +1177,26 @@ public class KontrolerFormeZaPopisivanjeStanovnika {
             prikaziUpozorenje("Morate unijeti ime oca ili majke lica koje se popisuje.");
             return;
         }
+        else {
+        	if("српски".equals(Main.trenutniJezik))
+        		imeOcaIliMajke = PromjenaPisma.zamijeniCirilicuLatinicom(imeOcaIliMajke);
+        	else {
+        		imeOcaIliMajke = PromjenaJezika.pronadjiIZamijeni(imeOcaIliMajke, "srpski");
+        	}
+        }
 
         prezime = prezimeTextField.getText();
         if(prezime.isEmpty()){
             prezimeTextField.setStyle("-fx-border-color: RED");
             prikaziUpozorenje("Morate unijeti prezime lica koje se popisuje.");
             return;
+        }
+        else {
+        	if("српски".equals(Main.trenutniJezik))
+        		prezime = PromjenaPisma.zamijeniCirilicuLatinicom(prezime);
+        	else {
+        		prezime = PromjenaJezika.pronadjiIZamijeni(prezime, "srpski");
+        	}
         }
 
         JMB = JMBTextField.getText();
@@ -1180,6 +1212,13 @@ public class KontrolerFormeZaPopisivanjeStanovnika {
             prikaziUpozorenje("Morate odabrati pol lica koje se popisuje.");
             return;
         }
+        else {
+        	if("српски".equals(Main.trenutniJezik))
+        		pol = PromjenaPisma.zamijeniCirilicuLatinicom(pol);
+        	else {
+        		pol = PromjenaJezika.pronadjiIZamijeni(pol, "srpski");
+        	}
+        }
 
         PopisnicaZaStanovnika popisnica = new PopisnicaZaStanovnika(idObrasca, idEntiteta, idOpstine, idPopisnogKruga, idStana,
                 idDomacinstva, idLica, ime, imeOcaIliMajke, prezime, JMB, pol);
@@ -1193,8 +1232,15 @@ public class KontrolerFormeZaPopisivanjeStanovnika {
             prikaziUpozorenje("Morate odgovoriti na 1. pitanje.");
             return;
         }
-        else
-            odgovoriNaPitanja.get(1).add(odgovor1Button.getText());
+        else {
+        	String odgovor = odgovor1Button.getText();
+        	if("српски".equals(Main.trenutniJezik))
+        		odgovor = PromjenaPisma.zamijeniCirilicuLatinicom(odgovor);
+        	else {
+        		odgovor = PromjenaJezika.pronadjiIZamijeni(odgovor, "srpski");
+        	}
+            odgovoriNaPitanja.get(1).add(odgovor);
+        }
 
         if(isToggleGroupEnabled(grupa2)){
             RadioButton odgovor2Button = (RadioButton)grupa2.getSelectedToggle();
@@ -1206,14 +1252,27 @@ public class KontrolerFormeZaPopisivanjeStanovnika {
                 prikaziUpozorenje("Morate odgovoriti na 2. pitanje.");
                 return;
             }
-            else
-                odgovoriNaPitanja.get(2).add(odgovor2Button.getText());
+            else {
+            	String odgovor = odgovor2Button.getText();
+            	if("српски".equals(Main.trenutniJezik))
+            		odgovor = PromjenaPisma.zamijeniCirilicuLatinicom(odgovor);
+            	else {
+            		odgovor = PromjenaJezika.pronadjiIZamijeni(odgovor, "srpski");
+            	}
+                odgovoriNaPitanja.get(2).add(odgovor);
+            }
         }
 
         if(!razlogOdsustvaPrisustvaComboBox.isDisabled()){
             String odgovor3 = (String)razlogOdsustvaPrisustvaComboBox.getSelectionModel().getSelectedItem();
-            if(odgovor3 != null)
+            if(odgovor3 != null) {
+            	if("српски".equals(Main.trenutniJezik))
+            		odgovor3 = PromjenaPisma.zamijeniCirilicuLatinicom(odgovor3);
+            	else {
+            		odgovor3 = PromjenaJezika.pronadjiIZamijeni(odgovor3, "srpski");
+            	}
                 odgovoriNaPitanja.get(3).add(odgovor3);
+            }
             else{
                 razlogOdsustvaPrisustvaComboBox.setStyle("-fx-border-color: RED");
                 prikaziUpozorenje("Morate odgovoriti na 3. pitanje.");
@@ -1234,6 +1293,7 @@ public class KontrolerFormeZaPopisivanjeStanovnika {
                 return;
             }
             else {
+            	//prevesti
                 odgovoriNaPitanja.get(4).add(odgovor4Button.getText());
                 odgovoriNaPitanja.get(4).add(!pitanje4TextField1.isDisabled() ? pitanje4TextField1.getText()  : pitanje4TextField2.getText());
             }
@@ -1653,15 +1713,16 @@ public class KontrolerFormeZaPopisivanjeStanovnika {
         }
 
         if(pitanje28CheckBox1.isSelected())
-            odgovoriNaPitanja.get(28).add(pitanje28CheckBox1.getText());
-        if(pitanje28CheckBox2.isSelected())
-            odgovoriNaPitanja.get(28).add(pitanje28CheckBox2.getText());
-        if(pitanje28CheckBox3.isSelected())
-            odgovoriNaPitanja.get(28).add(pitanje28CheckBox3.getText());
-        if(pitanje28CheckBox4.isSelected())
-            odgovoriNaPitanja.get(28).add(pitanje28CheckBox4.getText());
+            odgovoriNaPitanja.get(28).add("Da");
+        if(pitanje28CheckBox2.isSelected() && odgovoriNaPitanja.get(28).isEmpty())
+            odgovoriNaPitanja.get(28).add("Da");
+        if(pitanje28CheckBox3.isSelected() && odgovoriNaPitanja.get(28).isEmpty())
+            odgovoriNaPitanja.get(28).add("Da");
+        if(pitanje28CheckBox4.isSelected() && odgovoriNaPitanja.get(28).isEmpty())
+            odgovoriNaPitanja.get(28).add("Da");
         if(pitanje28CheckBox5.isSelected())
-            odgovoriNaPitanja.get(28).add(pitanje28CheckBox5.getText());
+            odgovoriNaPitanja.get(28).add("Ne");
+        
         if(odgovoriNaPitanja.get(28).isEmpty()){
             pitanje28CheckBox1.setStyle("-fx-border-color: RED");
             pitanje28CheckBox2.setStyle("-fx-border-color: RED");
@@ -2027,10 +2088,38 @@ public class KontrolerFormeZaPopisivanjeStanovnika {
 
         popisnica.setOdgovoriNaPitanja(odgovoriNaPitanja);
         
-        //TODO: Poslati popisnicu na glavni server.
-        
-      //Ako nema interneta:
-        SerijalizacijaPopisnica.serijalizujPopisnicu(popisnica);
+        try {
+	        Properties properties = new Properties();
+	    	properties.load(new FileInputStream(new File(CONFIG_FILE_PATH)));
+	    	String keystore = properties.getProperty("DEFAULT_KEYSTORE");
+	    	String keystoreLozinka = properties.getProperty("DEFAULT_KEYSTORE_PASSWORD");
+	    	String truststore = properties.getProperty("DEFAULT_TRUSTSTORE");
+	    	String truststoreLozinka = properties.getProperty("DEFAULT_TRUSTSTORE_PASSWORD");
+	        
+	        PopisivacGlavniServerKlijent glavniServer = new PopisivacGlavniServerKlijent(keystore, keystoreLozinka, truststore, truststoreLozinka, 
+	        		KontrolerFormeZaPrijavu.korisnik.getKorisnickoIme(), KontrolerFormeZaPrijavu.korisnik.getLozinkaHash());
+	        
+	        List<PopisnicaZaStanovnika> popisnice = new ArrayList<>();
+	        popisnice.add(popisnica);      
+	        int status = glavniServer.obradiPopisniceZaStanovnike(popisnice);
+	        
+	      	if(status == 404) {
+	      		SerijalizacijaPopisnica.serijalizujPopisnicu(popisnica);
+	      		prikaziInfo("Nema internet konekcije. Popisnica je sačuvana.");
+	      		KontrolerFormeZaRadPopisivaca.popisStanovnikaStage.close();
+	      	}
+	      	else if(status == 500) {
+	      		prikaziInfo("Podaci na popisnici nisu validni. Popisnica je odbačena.");
+	      		KontrolerFormeZaRadPopisivaca.popisStanovnikaStage.close();
+	      	}
+	      	else {
+	      		prikaziInfo("Popisnica je uspješno poslata.");
+	      		KontrolerFormeZaRadPopisivaca.popisStanovnikaStage.close();
+	      	}
+        }
+        catch(IOException e) {
+        	e.printStackTrace();
+        }
     }
 
     private void setDefaultColors(){
@@ -2290,6 +2379,21 @@ public class KontrolerFormeZaPopisivanjeStanovnika {
             button.setStyle("-fx-border-color: TRANSPARENT");
         });
     }
+    
+    private void prikaziInfo(String poruka){
+    	String info = "Informacija";
+    	if("српски".equals(Main.trenutniJezik)) {
+    		poruka = PromjenaPisma.zamijeniLatinicuCiricom(poruka);
+    		info = PromjenaPisma.zamijeniLatinicuCiricom(info);
+    	}
+    	
+        Alert userNotSelectedAlert = new Alert(Alert.AlertType.INFORMATION);
+	    userNotSelectedAlert.setTitle(info);
+	    userNotSelectedAlert.setHeaderText(info + "!");
+        userNotSelectedAlert.setContentText(poruka);
+        userNotSelectedAlert.showAndWait();
+    }
+
 
     private boolean isToggleGroupEnabled(ToggleGroup grupa){
         ObservableList<Toggle> toggles = grupa.getToggles();
