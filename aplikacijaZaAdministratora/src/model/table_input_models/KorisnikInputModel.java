@@ -23,7 +23,7 @@ public class KorisnikInputModel {
         ime = new SimpleStringProperty(korisnikSistema.getIme());
         korisnickoIme = new SimpleStringProperty(korisnikSistema.getKorisnickoIme());
         izmjenaButton = new SimpleObjectProperty<>(new Button("Izmjeni"));
-        brisanjeButton = new SimpleObjectProperty<>(new Button("Obri≈°i"));
+        brisanjeButton = new SimpleObjectProperty<>(new Button("Obriöi"));
         this.korisnikSistema = korisnikSistema;
     }
 

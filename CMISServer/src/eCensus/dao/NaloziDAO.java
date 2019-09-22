@@ -57,5 +57,17 @@ public class NaloziDAO {
 		else 
 			return false;
 	}
+	
+	public KorisnikSistema getKorisnikSistema(String korisnickoIme) {
+		KorisnikSistema korisnikRezultat = null;
+		
+		for (KorisnikSistema korisnikSistema : getListuKorisnika()) {
+			if (korisnickoIme.equals(korisnikSistema.getKorisnickoIme())) {
+				korisnikRezultat = korisnikSistema;
+			}
+		}
+		
+		return korisnikRezultat;
+	}
 
 }

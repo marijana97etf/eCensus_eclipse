@@ -28,24 +28,24 @@ import model.korisnicki_nalozi.PowerUser;
 @Path("/CMIS")
 public class CMISServis {
 
-	@GET
+	@POST
+	@Path("/login")
+	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response loginInfo() {
-		return Response.ok().entity("Prijava uspjesna.").build();
+	public Response loginInfo(String korisnickoIme) {
+		KorisnikSistema korisnikRezultat = new NaloziDAO().getKorisnikSistema(korisnickoIme);
+		
+		if (korisnikRezultat == null) {
+			return Response.noContent().build();
+		} else
+			return Response.ok().entity(korisnikRezultat.getClass().getName()).build();
 	}
 
 	@GET
 	@Path("korisnici/nalozi/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response getKorisnikaSistema(@PathParam(value = "id") String korisnickoIme) {
-		KorisnikSistema korisnikRezultat = null;
-
-		Collection<KorisnikSistema> korisnici = new NaloziDAO().getListuKorisnika();
-		for (KorisnikSistema korisnikSistema : korisnici) {
-			if (korisnickoIme.equals(korisnikSistema.getKorisnickoIme())) {
-				korisnikRezultat = korisnikSistema;
-			}
-		}
+		KorisnikSistema korisnikRezultat = new NaloziDAO().getKorisnikSistema(korisnickoIme);
 		
 		if (korisnikRezultat == null) {
 			return Response.noContent().build();
