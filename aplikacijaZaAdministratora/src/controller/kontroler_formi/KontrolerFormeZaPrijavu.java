@@ -135,7 +135,8 @@ public class KontrolerFormeZaPrijavu implements Initializable {
 		{
 			Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
 			String poruka = "Uspješno ste se prijavili kao član PKLS.";
-			if(korisnikSistema.getPismo().equals(PISMO.CIRILICA))
+			System.out.println(korisnikSistema);
+			if(korisnikSistema.getPismo()!=null && korisnikSistema.getPismo().equals(PISMO.CIRILICA))
 				poruka = PromjenaPisma.zamijeniLatinicuCiricom(poruka);
 			alert.setContentText(poruka);
 			ButtonType buttonType = alert.showAndWait().get();

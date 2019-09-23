@@ -106,3 +106,39 @@ Content-Type application/json
 <!DOCTYPE log SYSTEM "logger.dtd">
 <log>
 </log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2019-09-23T11:20:36.713813700Z</date>
+  <millis>1569237636713</millis>
+  <nanos>813700</nanos>
+  <sequence>0</sequence>
+  <logger>Main</logger>
+  <level>INFO</level>
+  <class>controller.kontroler_formi.KontrolerFormeZaRegistracijuClanaPKLS</class>
+  <method>registruj</method>
+  <thread>15</thread>
+  <message>Uspjesna registracija.</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2019-09-23T11:25:14.193931400Z</date>
+  <millis>1569237914193</millis>
+  <nanos>931400</nanos>
+  <sequence>0</sequence>
+  <logger>Main</logger>
+  <level>INFO</level>
+  <class>controller.kontroler_formi.KontrolerFormeZaIzmjenuNalogaClanaPKLS</class>
+  <method>izmjeni</method>
+  <thread>15</thread>
+  <message>Uspjesna izmjena.</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+</log>
