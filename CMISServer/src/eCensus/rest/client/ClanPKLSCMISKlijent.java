@@ -13,38 +13,25 @@ import model.korisnicki_nalozi.KorisnikSistema;
 public class ClanPKLSCMISKlijent extends AdministratorCMISKlijent {
 
 	{
-		KORISNIK_RESURS_URL = NALOZI_RESURS_URL + "/clanPKLS";
+		korisnikResursUrl = naloziResursUrl + "/clanPKLS";
 	}
 	
 	public ClanPKLSCMISKlijent(KorisnikSistema korisnik) {
 		super(korisnik);
-		// TODO Auto-generated constructor stub
 	}
 
 	public ClanPKLSCMISKlijent(String keyStore, String keyStoreLozinka, String trustStore, String trustStoreLozinka,
 			String korisnickoIme, String lozinkaHash) {
 		super(keyStore, keyStoreLozinka, trustStore, trustStoreLozinka, korisnickoIme, lozinkaHash);
-		// TODO Auto-generated constructor stub
 	}
 
 	public Response getClanPKLS(String korisnickoIme) {
-		return get(CMIS_RESURS_URL + "/" + NALOZI_RESURS_URL + "/" + korisnickoIme);
+		return get(cmisResursUrl + "/" + naloziResursUrl + "/" + korisnickoIme);
 	}
-
-	//provjeri
-//	@SuppressWarnings("unchecked")
-//	public List<ClanPKLS> getListuClanovaPKLS(){
-//		return get(CMIS_RESURS_URL + "/" + NALOZI_RESURS_URL + "/lista?tip=" + ClanPKLS.class.getName() )
-//				.readEntity(new GenericType<LinkedList<ClanPKLS>>() {});
-//	}
 	
 	@SuppressWarnings("unchecked")
 	public Response getListuClanovaPKLS(){
-		return get(CMIS_RESURS_URL + "/" + NALOZI_RESURS_URL + "/lista?tip=" + ClanPKLS.class.getName() );
+		return get(cmisResursUrl + "/" + naloziResursUrl + "/lista?tip=" + ClanPKLS.class.getName() );
 	}
 
-	@Override
-	protected KorisnikSistema readEntity(Response odgovor) {
-		return odgovor.readEntity(ClanPKLS.class);
-	}
 }

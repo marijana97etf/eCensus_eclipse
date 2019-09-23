@@ -14,10 +14,10 @@ import javafx.stage.Stage;
 public class KontrolerFormeZaRadPowerUsera {
 	public static Stage promjenaJezikaStage;
 	public static Stage registracijaAdministratoraAgencijeStage;
-	
+
 	@FXML
     private Button logoutButton;
-	
+
 	@FXML
 	private void registrujAdministratoraAgencije() {
 		try {
@@ -33,7 +33,7 @@ public class KontrolerFormeZaRadPowerUsera {
             e.printStackTrace();
         }
 	}
-	
+
 	@FXML
 	private void promijeniJezikIPismo() {
 		try {
@@ -49,7 +49,7 @@ public class KontrolerFormeZaRadPowerUsera {
             e.printStackTrace();
         }
 	}
-	
+
 	@FXML
 	private void logout() {
 		Stage stage = (Stage)logoutButton.getScene().getWindow();

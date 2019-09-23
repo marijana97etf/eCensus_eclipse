@@ -149,7 +149,7 @@ public class PromjenaPisma {
 	private static void procitajRjecnik(String nazivRjecnika, Map<String, String> rjecnik) {
         List<String> lines = new ArrayList<>();
         try {
-            Path path = Paths.get("src" + File.pathSeparator + "resources" + File.separator + nazivRjecnika);
+            Path path = Paths.get("resources" + File.separator + nazivRjecnika);
             lines = Files.readAllLines(path);
         } catch (IOException e) {
             e.printStackTrace();

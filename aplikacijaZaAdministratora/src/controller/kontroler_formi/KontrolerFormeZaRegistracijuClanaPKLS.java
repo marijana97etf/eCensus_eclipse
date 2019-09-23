@@ -5,6 +5,7 @@ import java.net.URL;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map.Entry;
+import java.util.logging.Level;
 import java.util.ResourceBundle;
 
 import javax.ws.rs.core.Response;
@@ -28,7 +29,8 @@ import model.korisnicki_nalozi.KorisnikSistema;
 import test.Pokreni_GUI_Aplikaciju;
 
 public class KontrolerFormeZaRegistracijuClanaPKLS implements Initializable {
-    public void back(ActionEvent actionEvent) throws IOException {
+    
+	public void back(ActionEvent actionEvent) throws IOException {
         Pokreni_GUI_Aplikaciju.getStage().setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/FormaZaRadAdministratora.fxml"))));
     }
 
@@ -68,22 +70,17 @@ public class KontrolerFormeZaRegistracijuClanaPKLS implements Initializable {
                 username.getText(),
                 password.getText(),
                 null,
+                null,
+                null,
                 null);
 
         ClanPKLSCMISKlijent clanPKLSCMISKlijent = new ClanPKLSCMISKlijent(KontrolerFormeZaPrijavu.getTrenutniKorisnik());
         Response odgovor = clanPKLSCMISKlijent.registrujKorisnika(clanPKLS);
-        if(!Response.Status.Family.SUCCESSFUL.equals(odgovor.getStatusInfo().getFamily())) {
-        	System.out.println("Uspjesna registracija");
-        	//loggovati header-e
+        if(Response.Status.Family.SUCCESSFUL.equals(odgovor.getStatusInfo().getFamily())) {
+        	Pokreni_GUI_Aplikaciju.connLogger.getLogger().log(Level.INFO, "Uspjesna registracija.");
         }else {
         	
-        	System.out.println(odgovor.getStatusInfo().getStatusCode() + " " + odgovor.getStatusInfo().getReasonPhrase() );
-        	for(Entry<String,List<Object>> entry : odgovor.getHeaders().entrySet()) {
-        		System.out.print(entry.getKey() + " ");
-        		for(Object objekat : entry.getValue())
-        			System.out.print(objekat +" ");
-        		System.out.println();
-        	}
+        	Pokreni_GUI_Aplikaciju.connLogger.logHeaders(Level.SEVERE, odgovor);
         }
         
         ButtonType buttonType = alert.showAndWait().get();

@@ -12,6 +12,7 @@ import model.pracenje_popisa.PISMO;
 
 
 public class KorisnikSistema implements Serializable {
+	
 	protected long id;
 	protected String JMBG;
 	protected String ime;

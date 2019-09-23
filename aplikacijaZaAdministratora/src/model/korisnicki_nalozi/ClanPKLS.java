@@ -5,10 +5,13 @@ import model.pracenje_popisa.PISMO;
 
 public class ClanPKLS extends Administrator {
 	
+	protected String opstina,grad;
+	
 	public ClanPKLS(long id, String jMBG, String ime, String prezime, String korisnickoIme, String lozinka, JEZIK jezik,
-			PISMO pismo, String trustStore, String trustLozinka, String keyStore, String keyLozinka) {
+			PISMO pismo, String grad, String opstina, String trustStore, String trustLozinka, String keyStore, String keyLozinka) {
 		super(id, jMBG, ime, prezime, korisnickoIme, lozinka, jezik, pismo, trustStore, trustLozinka, keyStore, keyLozinka);
-		// TODO Auto-generated constructor stub
+		 this.opstina = opstina;
+	     this.grad = grad;
 	}
 
 	public ClanPKLS() {}
@@ -19,8 +22,14 @@ public class ClanPKLS extends Administrator {
                     String korisnickoIme,
                     String lozinka,
                     JEZIK jezik,
-                    PISMO pismo)
+                    PISMO pismo,
+                    String grad,
+                    String opstina)
     {
         super(JMBG, ime, prezime, korisnickoIme, lozinka, jezik, pismo);
+        this.opstina = opstina;
+        this.grad = grad;
     }
 }
+
+

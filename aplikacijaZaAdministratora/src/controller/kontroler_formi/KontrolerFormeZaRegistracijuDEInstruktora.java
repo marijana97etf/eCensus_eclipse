@@ -60,14 +60,14 @@ public class KontrolerFormeZaRegistracijuDEInstruktora implements Initializable 
         }
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setContentText("UspjeÅ¡no ste registrovali drÅ¾avnog/entitetskog instruktora");
-        DEInstruktor.DRZAVA_ENTITET drzava_entitet = DEInstruktor.StringTODrzavaEntitet((String)choiceBox2.getValue());
+        DEInstruktor.ENTITET entitet = DEInstruktor.stringToEntitet((String)choiceBox2.getValue());
         KorisnikSistema deInstruktor = new DEInstruktor (
                 jmbg.getText(),
                 ime.getText(),
                 prezime.getText(),
                 username.getText(),
                 password.getText(),
-                drzava_entitet,
+                entitet,
                 null, null);
 
         Pokreni_GUI_Aplikaciju.getKontrolerZaCuvanjeNaloga().getSkladisteNaloga().add(deInstruktor);

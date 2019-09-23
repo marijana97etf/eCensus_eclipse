@@ -230,7 +230,6 @@ public class CMISServis {
 		@Consumes(MediaType.APPLICATION_JSON)
 		@Produces(MediaType.APPLICATION_JSON)
 		public Response getPopisneKrugovePopisivaca(@PathParam(value = "id") String korisnickoIme) {
-			//TO DO
 			
 			return Response.noContent().build();
 		}

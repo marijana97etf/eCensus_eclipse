@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.Map.Entry;
+import java.util.logging.Level;
 import java.util.ResourceBundle;
 
 import javax.ws.rs.core.Response;
@@ -51,18 +52,11 @@ public class KontrolerFormeZaIzmjenuNalogaClanaPKLS implements Initializable {
         
         ClanPKLSCMISKlijent clanPKLSCMISKlijent = new ClanPKLSCMISKlijent(KontrolerFormeZaPrijavu.getTrenutniKorisnik());
         Response odgovor = clanPKLSCMISKlijent.azurirajKorisnika(clanPKLS);
-        if(!Response.Status.Family.SUCCESSFUL.equals(odgovor.getStatusInfo().getFamily())) {
-        	System.out.println("Uspjesna izmjena.");
-        	//loggovati header-e
+        if(Response.Status.Family.SUCCESSFUL.equals(odgovor.getStatusInfo().getFamily())) {
+        	Pokreni_GUI_Aplikaciju.connLogger.getLogger().log(Level.INFO, "Uspjesna izmjena.");
         }else {
         	
-        	System.out.println(odgovor.getStatusInfo().getStatusCode() + " " + odgovor.getStatusInfo().getReasonPhrase() );
-        	for(Entry<String,List<Object>> entry : odgovor.getHeaders().entrySet()) {
-        		System.out.print(entry.getKey() + " ");
-        		for(Object objekat : entry.getValue())
-        			System.out.print(objekat +" ");
-        		System.out.println();
-        	}
+        	Pokreni_GUI_Aplikaciju.connLogger.logHeaders(Level.SEVERE, odgovor);
         }
         
         Parent root = null;
