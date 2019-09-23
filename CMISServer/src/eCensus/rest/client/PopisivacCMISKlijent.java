@@ -1,12 +1,9 @@
 package eCensus.rest.client;
 
-import java.util.List;
-
 import javax.ws.rs.core.Response;
 
 import model.korisnicki_nalozi.KorisnikSistema;
 import model.korisnicki_nalozi.Popisivac;
-import model.pracenje_popisa.izvjestaji_o_popisivacu.PopisniKrug;
 
 public class PopisivacCMISKlijent extends CMISKlijent {
 
@@ -23,25 +20,20 @@ public class PopisivacCMISKlijent extends CMISKlijent {
 		super(keyStore, keyStoreLozinka, trustStore, trustStoreLozinka, korisnickoIme, lozinkaHash);
 	}
 	
-	public Response getPopisivac(String korisnickoIme) {
-		return get(cmisResursUrl + "/" + naloziResursUrl + "/" + korisnickoIme);
-	}
-	
 	public Response getListaPopisivaca(){
-		return get(cmisResursUrl + "/" + korisnikResursUrl + "/lista?tip=" + Popisivac.class.getName() );
+		return get(cmisResursUrl + "/" + naloziResursUrl + "/lista?tip=" + Popisivac.class.getName() );
 	}
 	
 	public Response getPopisneKrugovePopisivaca(Popisivac popisivac){
-		System.out.println(cmisResursUrl + "/" + naloziResursUrl + "/" + popisivac.getKorisnickoIme() + "/popisniKrugovi");
-		return get(cmisResursUrl + "/" + korisnikResursUrl + "/" + popisivac.getKorisnickoIme() + "/popisniKrugovi");
+		return null;
 	}
 	
-	public Response dodajPopisneKrugovePopisivacu(Popisivac popisivac,List<PopisniKrug> popisniKrugovi) {
-		return post(cmisResursUrl + "/" + korisnikResursUrl + "/" + popisivac.getKorisnickoIme() + "/popisniKrugovi",popisniKrugovi);
+	public Response dodijeliPopisneKrugovePopisivaci(Popisivac popisivac) {
+		return null;
 	}
 	
-	public Response azurirajPopisneKrugovePopisivaca(Popisivac popisivac,List<PopisniKrug> popisniKrugovi) {
-		return put(cmisResursUrl + "/" + korisnikResursUrl + "/" + popisivac.getKorisnickoIme() + "/popisniKrugovi",popisniKrugovi);
+	public Response azurirajPopisneKrugovePopisivaca(Popisivac popisivac) {
+		return null;
 	}
 	
 	public Response sacuvajOcjenuPopisivaca() {

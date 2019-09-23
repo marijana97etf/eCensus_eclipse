@@ -49,7 +49,7 @@ public class KontrolerFormeZaIzmjenuNalogaDEInstruktora implements Initializable
         account.setPrezime(prezimeIzmjena.getText());
         account.setIme(imeIzmjena.getText());
         account.setKorisnickoIme(usernameIzmjena.getText());
-        ((DEInstruktor)account.getKorisnikSistema()).setEntitet(DEInstruktor.stringToEntitet((String) choiceBox.getValue()));
+        ((DEInstruktor)account.getKorisnikSistema()).setEntitet(DEInstruktor.ENTITET.getENTITET((String) choiceBox.getValue()));
         account.updateKorisnikSistema();
     }
 
@@ -69,6 +69,6 @@ public class KontrolerFormeZaIzmjenuNalogaDEInstruktora implements Initializable
         prezimeIzmjena.setText(account.getPrezime());
         usernameIzmjena.setText(account.getKorisnickoIme());
         choiceBox.getItems().addAll("Bosna i Hercegovina", "Federacija Bosne i Hercegovine", "Republika Srpska");
-        choiceBox.setValue(((DEInstruktor)account.getKorisnikSistema()).entitetToString());
+        choiceBox.setValue(((DEInstruktor)account.getKorisnikSistema()).getEntitet().toString());
     }
 }
