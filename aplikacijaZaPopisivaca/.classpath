@@ -45,7 +45,6 @@
 	<classpathentry kind="lib" path="lib/osgi-resource-locator-1.0.1.jar"/>
 	<classpathentry kind="lib" path="lib/validation-api-2.0.1.Final.jar"/>
 	<classpathentry kind="lib" path="lib/yasson-1.0.3.jar"/>
-	<classpathentry kind="lib" path="lib/cmisClient.jar"/>
 	<classpathentry kind="lib" path="lib/cmisKlijent.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
