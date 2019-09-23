@@ -16,8 +16,8 @@
     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <Label text="Језик и писмо су промијењени." GridPane.halignment="CENTER" GridPane.valignment="BOTTOM" />
-      <Label text="Морате поново покренути апликацију." GridPane.halignment="CENTER" GridPane.rowIndex="1" />
-      <Button mnemonicParsing="false" fx:id="closeButton" onAction="#zatvoriAplikaciju" prefHeight="25.0" prefWidth="65.0" text="ОК" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP" />
+      <Label text="Jezik i pismo su promijenjeni." GridPane.halignment="CENTER" GridPane.valignment="BOTTOM" />
+      <Label text="Morate ponovo pokrenuti aplikaciju." GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+      <Button mnemonicParsing="false" fx:id="closeButton" onAction="#zatvoriAplikaciju" prefHeight="25.0" prefWidth="65.0" text="OK" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP" />
    </children>
 </GridPane>

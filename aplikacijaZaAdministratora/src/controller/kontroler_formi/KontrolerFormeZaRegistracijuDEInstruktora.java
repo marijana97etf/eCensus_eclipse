@@ -11,6 +11,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import model.korisnicki_nalozi.ClanPKLS;
 import model.korisnicki_nalozi.DEInstruktor;
+import model.korisnicki_nalozi.DEInstruktor.DRZAVA;
 import model.korisnicki_nalozi.KorisnikSistema;
 import model.korisnicki_nalozi.OGInstruktor;
 import test.Aplikacija;
@@ -80,6 +81,7 @@ public class KontrolerFormeZaRegistracijuDEInstruktora implements Initializable 
                 prezime.getText(),
                 username.getText(),
                 password.getText(),
+                DRZAVA.BIH,
                 entitet,
     			null, 
     			null, 

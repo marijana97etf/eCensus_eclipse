@@ -15,6 +15,7 @@ import javax.ws.rs.ext.Provider;
 
 import com.sun.jersey.core.util.Base64;
 
+import eCensus.dao.DAOFactory;
 import eCensus.dao.NaloziDAO;
 import model.korisnicki_nalozi.KorisnikSistema;
 
@@ -59,12 +60,11 @@ public class AutentikacijaFilter implements ContainerRequestFilter
     }
     
     
-    private boolean isUserAllowed(final String korisnicnoIme, final String lozinkaHash, final Set<String> rolesSet)
+    private boolean isUserAllowed(final String korisnickoIme, final String lozinkaHash, final Set<String> rolesSet)
     {
-    	Collection<KorisnikSistema> korisnici = new NaloziDAO().getListuKorisnika();
-    	for(KorisnikSistema korisnikSistema : korisnici) {
-        	if(korisnicnoIme.equals(korisnikSistema.getKorisnickoIme()) && lozinkaHash.equals(korisnikSistema.getLozinkaHash()))
-        		return true;
+    	KorisnikSistema korisnikSistema = DAOFactory.getMySQLFactoryDAO().getMySQLNaloziDAO().getKorisnikSistema(korisnickoIme);
+    	if(korisnikSistema != null && korisnikSistema.getLozinkaHash().equals(lozinkaHash)) {
+    		return true;
     	}
         return false;
     }

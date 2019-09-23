@@ -15,7 +15,9 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.GenericEntity;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.Status;
 
+import eCensus.dao.DAOFactory;
 import eCensus.dao.NaloziDAO;
 import model.korisnicki_nalozi.AdministratorAgencije;
 import model.korisnicki_nalozi.ClanPKLS;
@@ -33,24 +35,24 @@ public class CMISServis {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response loginInfo(String korisnickoIme) {
-		KorisnikSistema korisnikRezultat = new NaloziDAO().getKorisnikSistema(korisnickoIme);
-		
-		if (korisnikRezultat == null) {
-			return Response.noContent().build();
-		} else
-			return Response.ok().entity(korisnikRezultat.getClass().getName()).build();
+		KorisnikSistema korisnikSistema = DAOFactory.getMySQLFactoryDAO().getMySQLNaloziDAO().getKorisnikSistema(korisnickoIme);
+		if(korisnikSistema != null) {
+			return Response.status(Status.OK).entity(korisnikSistema.getClass().getName()).build();//Davide cemu ovo sluzi
+		} else {
+			return Response.status(Status.NO_CONTENT).build();
+		}
 	}
 
 	@GET
 	@Path("korisnici/nalozi/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response getKorisnikaSistema(@PathParam(value = "id") String korisnickoIme) {
-		KorisnikSistema korisnikRezultat = new NaloziDAO().getKorisnikSistema(korisnickoIme);
-		
-		if (korisnikRezultat == null) {
-			return Response.noContent().build();
-		} else
-			return Response.ok().entity(korisnikRezultat).build();
+		KorisnikSistema korisnikSistema = DAOFactory.getMySQLFactoryDAO().getMySQLNaloziDAO().getKorisnikSistema(korisnickoIme);
+		if(korisnikSistema != null) {
+			return Response.status(Status.OK).entity(korisnikSistema).build();
+		} else {
+			return Response.status(Status.NO_CONTENT).build();
+		}
 	}
 
 	@GET
@@ -58,15 +60,14 @@ public class CMISServis {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response getListuKorisnika(@QueryParam("tip") String tip) {
-		
-		LinkedList<KorisnikSistema> lista = new LinkedList<>();
-		Collection<KorisnikSistema> korisnici = new NaloziDAO().getListuKorisnika();
-		for (KorisnikSistema korisnik : korisnici)
-			if (korisnik.getClass().getName().equals(tip))
-				lista.add(korisnik);
-		return Response.ok().entity(new GenericEntity<LinkedList<KorisnikSistema>>(lista) {}).build();
+		Collection<KorisnikSistema> korisniciSistema = DAOFactory.getMySQLFactoryDAO().getMySQLNaloziDAO().getListaKorisnika(tip);
+		if(korisniciSistema != null) {
+			return Response.status(Status.OK).entity(korisniciSistema).build();
+		} else {
+			return Response.status(Status.NO_CONTENT).entity(korisniciSistema).build();
+		}
 	}
-
+/*
 	protected Response registrujKorisnika(KorisnikSistema korisnikSistema) {
 		if (korisnikSistema == null) {
 			return Response.status(Response.Status.BAD_REQUEST).entity("Korisnik sistema je null").build();
@@ -90,14 +91,19 @@ public class CMISServis {
 		else
 			return Response.status(Response.Status.ACCEPTED).entity("Korisnik sa id = " + id + "  uspjesno obrisan.").build();
 	}
-
+*/
 	// metode clana PKLS
 	@POST
 	@Path("korisnici/nalozi/clanPKLS")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response registrujClanaPKLS(ClanPKLS clanPKLS) {
-		return registrujKorisnika(clanPKLS);
+		boolean result = DAOFactory.getMySQLFactoryDAO().getMySQLNaloziDAO().getMySQLClanPKLSDAO().dodajKorisnika(clanPKLS);
+		if(result) {
+			return Response.status(Status.CREATED).build();
+		} else {
+			return Response.status(Status.CONFLICT).build();
+		}
 	}
 
 	@PUT
@@ -105,7 +111,12 @@ public class CMISServis {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response azurirajClanaPKLS(ClanPKLS clanPKLS) {
-		return azurirajKorisnika(clanPKLS);
+		boolean result = DAOFactory.getMySQLFactoryDAO().getMySQLNaloziDAO().getMySQLClanPKLSDAO().azurirajKorisnika(clanPKLS);
+		if(result) {
+			return Response.status(Status.ACCEPTED).build();
+		} else {
+			return Response.status(Status.CONFLICT).build();
+		}
 	}
 
 	@DELETE
@@ -113,7 +124,12 @@ public class CMISServis {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response obrisiClanaPKLS(@PathParam(value = "id") Long id) {
-		return obrisiKorisnika(id);
+		boolean result = DAOFactory.getMySQLFactoryDAO().getMySQLNaloziDAO().getMySQLClanPKLSDAO().obrisiKorisnika(id);
+		if(result) {
+			return Response.status(Status.ACCEPTED).build();
+		} else {
+			return Response.status(Status.CONFLICT).build();
+		}
 	}
 	
 	//metode admina agencije
@@ -122,7 +138,12 @@ public class CMISServis {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response registrujAdminaAgencije(AdministratorAgencije administratorAgencije) {
-		return registrujKorisnika(administratorAgencije);
+		boolean result = DAOFactory.getMySQLFactoryDAO().getMySQLNaloziDAO().getMySQLAdministratorAgencijeDAO().dodajKorisnika(administratorAgencije);
+		if(result) {
+			return Response.status(Status.CREATED).build();
+		} else {
+			return Response.status(Status.CONFLICT).build();
+		}
 	}
 
 	@PUT
@@ -130,7 +151,12 @@ public class CMISServis {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response azurirajAdminaAgencije(AdministratorAgencije administratorAgencije) {
-		return azurirajKorisnika(administratorAgencije);
+		boolean result = DAOFactory.getMySQLFactoryDAO().getMySQLNaloziDAO().getMySQLAdministratorAgencijeDAO().azurirajKorisnika(administratorAgencije);
+		if(result) {
+			return Response.status(Status.ACCEPTED).build();
+		} else {
+			return Response.status(Status.CONFLICT).build();
+		}
 	}
 
 	@DELETE
@@ -138,7 +164,12 @@ public class CMISServis {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response obrisiAdminaAgencije(@PathParam(value = "id") Long id) {
-		return obrisiKorisnika(id);
+		boolean result = DAOFactory.getMySQLFactoryDAO().getMySQLNaloziDAO().getMySQLAdministratorAgencijeDAO().obrisiKorisnika(id);
+		if(result) {
+			return Response.status(Status.ACCEPTED).build();
+		} else {
+			return Response.status(Status.CONFLICT).build();
+		}
 	}
 	
 	//metode DEInstruktora
@@ -147,7 +178,12 @@ public class CMISServis {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response registrujDEInstruktora(DEInstruktor deInstruktor) {
-		return registrujKorisnika(deInstruktor);
+		boolean result = DAOFactory.getMySQLFactoryDAO().getMySQLNaloziDAO().getMySQLDEInstruktorDAO().dodajKorisnika(deInstruktor);
+		if(result) {
+			return Response.status(Status.CREATED).build();
+		} else {
+			return Response.status(Status.CONFLICT).build();
+		}
 	}
 
 	@PUT
@@ -155,7 +191,12 @@ public class CMISServis {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response azurirajDEInstruktora(DEInstruktor deInstruktor) {
-		return azurirajKorisnika(deInstruktor);
+		boolean result = DAOFactory.getMySQLFactoryDAO().getMySQLNaloziDAO().getMySQLDEInstruktorDAO().azurirajKorisnika(deInstruktor);
+		if(result) {
+			return Response.status(Status.ACCEPTED).build();
+		} else {
+			return Response.status(Status.CONFLICT).build();
+		}
 	}
 
 	@DELETE
@@ -163,7 +204,12 @@ public class CMISServis {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response obrisiDEInstruktora(@PathParam(value = "id") Long id) {
-		return obrisiKorisnika(id);
+		boolean result = DAOFactory.getMySQLFactoryDAO().getMySQLNaloziDAO().getMySQLDEInstruktorDAO().obrisiKorisnika(id);
+		if(result) {
+			return Response.status(Status.ACCEPTED).build();
+		} else {
+			return Response.status(Status.CONFLICT).build();
+		}
 	}
 	
 	//metode OGInstruktora
@@ -172,7 +218,12 @@ public class CMISServis {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response registrujOGInstruktora(OGInstruktor ogInstruktor) {
-		return registrujKorisnika(ogInstruktor);
+		boolean result = DAOFactory.getMySQLFactoryDAO().getMySQLNaloziDAO().getMySQLOGInstruktorDAO().dodajKorisnika(ogInstruktor);
+		if(result) {
+			return Response.status(Status.CREATED).build();
+		} else {
+			return Response.status(Status.CONFLICT).build();
+		}
 	}
 
 	@PUT
@@ -180,7 +231,12 @@ public class CMISServis {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response azurirajOGInstruktora(OGInstruktor ogInstruktor) {
-		return azurirajKorisnika(ogInstruktor);
+		boolean result = DAOFactory.getMySQLFactoryDAO().getMySQLNaloziDAO().getMySQLOGInstruktorDAO().azurirajKorisnika(ogInstruktor);
+		if(result) {
+			return Response.status(Status.CREATED).build();
+		} else {
+			return Response.status(Status.CONFLICT).build();
+		}
 	}
 
 	@DELETE
@@ -188,7 +244,12 @@ public class CMISServis {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response obrisiOGInstruktora(@PathParam(value = "id") Long id) {
-		return obrisiKorisnika(id);
+		boolean result = DAOFactory.getMySQLFactoryDAO().getMySQLNaloziDAO().getMySQLOGInstruktorDAO().obrisiKorisnika(id);
+		if(result) {
+			return Response.status(Status.CREATED).build();
+		} else {
+			return Response.status(Status.CONFLICT).build();
+		}
 	}
 		
 	//metode PowerUser-a
@@ -197,7 +258,12 @@ public class CMISServis {
 		@Consumes(MediaType.APPLICATION_JSON)
 		@Produces(MediaType.APPLICATION_JSON)
 		public Response registrujPowerUsera(PowerUser powerUser) {
-			return registrujKorisnika(powerUser);
+			boolean result = DAOFactory.getMySQLFactoryDAO().getMySQLNaloziDAO().getMySQLPowerUserDAO().dodajKorisnika(powerUser);
+			if(result) {
+				return Response.status(Status.CREATED).build();
+			} else {
+				return Response.status(Status.CONFLICT).build();
+			}
 		}
 		
 	//metode Popisivaca
@@ -206,7 +272,12 @@ public class CMISServis {
 		@Consumes(MediaType.APPLICATION_JSON)
 		@Produces(MediaType.APPLICATION_JSON)
 		public Response registrujPopisivaca(Popisivac popisivac) {
-			return registrujKorisnika(popisivac);
+			boolean result = DAOFactory.getMySQLFactoryDAO().getMySQLNaloziDAO().getMySQLPopisivacDAO().dodajKorisnika(popisivac);
+			if(result) {
+				return Response.status(Status.CREATED).build();
+			} else {
+				return Response.status(Status.CONFLICT).build();
+			}
 		}
 
 		@PUT
@@ -214,7 +285,12 @@ public class CMISServis {
 		@Consumes(MediaType.APPLICATION_JSON)
 		@Produces(MediaType.APPLICATION_JSON)
 		public Response azurirajPopisivaca(Popisivac popisivac) {
-			return azurirajKorisnika(popisivac);
+			boolean result = DAOFactory.getMySQLFactoryDAO().getMySQLNaloziDAO().getMySQLPopisivacDAO().azurirajKorisnika(popisivac);
+			if(result) {
+				return Response.status(Status.ACCEPTED).build();
+			} else {
+				return Response.status(Status.CONFLICT).build();
+			}
 		}
 
 		@DELETE
@@ -222,7 +298,12 @@ public class CMISServis {
 		@Consumes(MediaType.APPLICATION_JSON)
 		@Produces(MediaType.APPLICATION_JSON)
 		public Response obrisiPopisivaca(@PathParam(value = "id") Long id) {
-			return obrisiKorisnika(id);
+			boolean result = DAOFactory.getMySQLFactoryDAO().getMySQLNaloziDAO().getMySQLPopisivacDAO().obrisiKorisnika(id);
+			if(result) {
+				return Response.status(Status.ACCEPTED).build();
+			} else {
+				return Response.status(Status.CONFLICT).build();
+			}
 		}
 		
 		@GET
@@ -230,6 +311,7 @@ public class CMISServis {
 		@Consumes(MediaType.APPLICATION_JSON)
 		@Produces(MediaType.APPLICATION_JSON)
 		public Response getPopisneKrugovePopisivaca(@PathParam(value = "id") String korisnickoIme) {
+			//TO DO
 			
 			return Response.noContent().build();
 		}
@@ -255,7 +337,4 @@ public class CMISServis {
 			
 			return Response.noContent().build();
 		}
-		
-	
-
 }

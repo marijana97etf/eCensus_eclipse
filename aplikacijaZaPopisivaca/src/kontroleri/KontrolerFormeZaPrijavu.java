@@ -54,25 +54,25 @@ public class KontrolerFormeZaPrijavu {
             	String truststore = properties.getProperty("DEFAULT_TRUSTSTORE");
             	String cmisResursURL = properties.getProperty("CMIS_RESURS_URL");
             	
-                PopisivacCMISKlijent klijent = new PopisivacCMISKlijent(keystore, "sigurnost",
-        				truststore, "sigurnost", korisnickoIme, KorisnikSistema.napraviHesLozinke(hashLozinke));
-        		Response odgovor = klijent.post(cmisResursURL + "/login", korisnickoIme);
-
-        		if (Response.Status.UNAUTHORIZED.equals(odgovor.getStatusInfo())) {
-        			prikaziUpozorenje("Pogrešno korisničko ime i lozinka.");
-        		}       		
-        		else if (Response.Status.Family.SUCCESSFUL.equals(odgovor.getStatusInfo().getFamily())) {
-        			odgovor = klijent.get(cmisResursURL + "/korisnici/nalozi/" + korisnickoIme);
-        			if (Response.Status.Family.SUCCESSFUL.equals(odgovor.getStatusInfo().getFamily())) {
-        				korisnik = odgovor.readEntity(Popisivac.class);
+//                PopisivacCMISKlijent klijent = new PopisivacCMISKlijent(keystore, "sigurnost",
+//        				truststore, "sigurnost", korisnickoIme, KorisnikSistema.napraviHesLozinke(hashLozinke));
+//        		Response odgovor = klijent.post(cmisResursURL + "/login", korisnickoIme);
+//
+//        		if (Response.Status.UNAUTHORIZED.equals(odgovor.getStatusInfo())) {
+//        			prikaziUpozorenje("Pogrešno korisničko ime i lozinka.");
+//        		}       		
+//        		else if (Response.Status.Family.SUCCESSFUL.equals(odgovor.getStatusInfo().getFamily())) {
+//        			odgovor = klijent.get(cmisResursURL + "/korisnici/nalozi/" + korisnickoIme);
+//        			if (Response.Status.Family.SUCCESSFUL.equals(odgovor.getStatusInfo().getFamily())) {
+//        				korisnik = odgovor.readEntity(Popisivac.class);
         				Parent root = FXMLLoader.load(getClass().getResource("/forme" + File.separator + "FormaZaRadPopisivaca.fxml"));
                         Main.primaryStage.setScene(new Scene(root));
-        			} else {
-        				prikaziUpozorenje("Greška na serveru.");
-        			}
-        		} else {
-        			prikaziUpozorenje("Greška na serveru.");
-        		}
+//        			} else {
+//        				prikaziUpozorenje("Greška na serveru.");
+//        			}
+//        		} else {
+//        			prikaziUpozorenje("Greška na serveru.");
+//        		}
                             
             }
             catch (IOException e){
