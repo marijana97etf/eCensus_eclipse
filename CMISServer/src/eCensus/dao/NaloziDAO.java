@@ -1,6 +1,11 @@
 package eCensus.dao;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
@@ -14,6 +19,7 @@ import model.korisnicki_nalozi.Popisivac;
 import model.korisnicki_nalozi.DEInstruktor.ENTITET;
 import model.pracenje_popisa.JEZIK;
 import model.pracenje_popisa.PISMO;
+import model.pracenje_popisa.izvjestaji_o_popisivacu.PopisniKrug;
 
 public class NaloziDAO {
 	
@@ -35,6 +41,14 @@ public class NaloziDAO {
 						"sigurnost"));
 		korisnici.put(3L, new Popisivac(3L, "3213211", "Janko", "Jankovic", "janko.Jankovic", "12345", JEZIK.SRPSKI,
 				PISMO.LATINICA, TRUSTSTORE, "sigurnost", KEYSTORE, "sigurnost"));
+		Popisivac popisivac = (Popisivac)korisnici.get(3L);
+		try {
+			byte[] slikaBytes = Files.readAllBytes(new File("C:\\Users\\baralicD\\GitHubDesktop\\eCensus_eclipse\\CMISServer\\resources\\BanjaLukaMapa.jpg").toPath());
+			popisivac.dodajPopisniKrug(new PopisniKrug("Banja Luka", "Banja LUka",slikaBytes));
+		}catch(IOException e) {
+			e.printStackTrace();
+		}
+		
 		korisnici.put(4L, new AdministratorAgencije(4L, "32132211", "admin", "adminovic", "admin", "admin", JEZIK.SRPSKI,
 				PISMO.CIRILICA, "AgencijaBIH", TRUSTSTORE, "sigurnost", KEYSTORE, "sigurnost"));
 
@@ -61,6 +75,18 @@ public class NaloziDAO {
 			return true;
 		else 
 			return false;
+	}
+	
+	public Popisivac dodajPopisneKrugovePopisivacu(String korisnickoIme,List<PopisniKrug> popisniKrugovi) {
+		Popisivac popisivacRezultat = (Popisivac)getKorisnikSistema(korisnickoIme);
+		popisivacRezultat.dodajPopisneKrugove(popisniKrugovi);
+		return popisivacRezultat;
+	}
+	
+	public Popisivac azurirajPopisneKrugove(String korisnickoIme,List<PopisniKrug> popisniKrugovi) {
+		Popisivac popisivacRezultat = (Popisivac)getKorisnikSistema(korisnickoIme);
+		popisivacRezultat.setDodijeljeniPopisniKrugovi(popisniKrugovi);
+		return popisivacRezultat;
 	}
 	
 	public KorisnikSistema getKorisnikSistema(String korisnickoIme) {
