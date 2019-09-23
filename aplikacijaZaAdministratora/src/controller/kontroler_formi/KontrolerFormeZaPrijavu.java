@@ -19,11 +19,16 @@ import model.korisnicki_nalozi.*;
 import test.Pokreni_GUI_Aplikaciju;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
+import java.io.Reader;
 import java.net.URL;
 import java.util.List;
+import java.util.Properties;
 import java.util.ResourceBundle;
 import java.util.Map.Entry;
+import java.util.logging.Level;
 
 import javax.ws.rs.core.Response;
 
@@ -38,10 +43,6 @@ public class KontrolerFormeZaPrijavu implements Initializable {
 		return trenutniKorisnik;
 	}
 
-	protected static final String CMIS_RESURS_URL = "https://localhost:8443/CMISServer/rest/CMIS";
-	public static String TRUSTSTORE = "resources" + File.separator + "clientTrustStore.p12";
-	public static String KEYSTORE = "resources" + File.separator + "clientStore.p12";
-
 	static KontrolerZaJezik kontrolerZaJezik = new KontrolerZaJezik();
 	@FXML
 	TextField username;
@@ -52,13 +53,25 @@ public class KontrolerFormeZaPrijavu implements Initializable {
 
 		String kosinickoImeInput = username.getText();
 
-		// KorisnikSistema korisnikSistema = nalozi.stream().filter(e->
-		// e.getKorisnickoIme().equals(usernameInput)).findFirst().get();
 		KorisnikSistema korisnikSistema = null;
-
-		AdministratorCMISKlijent klijent = new AdministratorCMISKlijent(KEYSTORE, "sigurnost",
-				TRUSTSTORE, "sigurnost", kosinickoImeInput, KorisnikSistema.napraviHesLozinke(password.getText()));
-		Response odgovor = klijent.post(CMIS_RESURS_URL + "/login",kosinickoImeInput);
+		
+		String cmisResursUrl = null,keystore = null,trustStore=null;
+		
+		try(Reader configReader = new FileReader(Pokreni_GUI_Aplikaciju.CONFIG_FILE)){
+			Properties properties = new Properties();
+			properties.load(configReader);
+			cmisResursUrl = properties.getProperty("CMIS_RESURS_URL");
+			keystore = properties.getProperty("DEFAULT_KEYSTORE");
+			trustStore = properties.getProperty("DEFAULT_TRUSTSTORE");
+		} catch (FileNotFoundException e) {
+			Pokreni_GUI_Aplikaciju.connLogger.getLogger().log(Level.SEVERE,e.getMessage(),e);
+		} catch (IOException e) {
+			Pokreni_GUI_Aplikaciju.connLogger.getLogger().log(Level.SEVERE,e.getMessage(),e);
+		}
+		
+		AdministratorCMISKlijent klijent = new AdministratorCMISKlijent(keystore, "sigurnost",
+				trustStore, "sigurnost", kosinickoImeInput, KorisnikSistema.napraviHesLozinke(password.getText()));
+		Response odgovor = klijent.post(cmisResursUrl + "/login",kosinickoImeInput);
 
 		if (Response.Status.UNAUTHORIZED.equals(odgovor.getStatusInfo())) {
 			Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -70,8 +83,7 @@ public class KontrolerFormeZaPrijavu implements Initializable {
 		}
 		if (Response.Status.Family.SUCCESSFUL.equals(odgovor.getStatusInfo().getFamily())) {
 			String tipKorisnika = odgovor.readEntity(String.class);
-			System.out.println(tipKorisnika);//za brisanje
-			odgovor = klijent.get(CMIS_RESURS_URL + "/korisnici/nalozi/" + kosinickoImeInput);
+			odgovor = klijent.get(cmisResursUrl + "/korisnici/nalozi/" + kosinickoImeInput);
 			if (Response.Status.Family.SUCCESSFUL.equals(odgovor.getStatusInfo().getFamily())) {
 				if(tipKorisnika.equals(AdministratorAgencije.class.getName()))
 					korisnikSistema = odgovor.readEntity(AdministratorAgencije.class);
@@ -82,24 +94,10 @@ public class KontrolerFormeZaPrijavu implements Initializable {
 				else if(tipKorisnika.equals(OGInstruktor.class.getName()))
 					korisnikSistema = odgovor.readEntity(OGInstruktor.class);
 			} else {
-				//za logg
-            	System.out.println(odgovor.getStatusInfo().getStatusCode() + " " + odgovor.getStatusInfo().getReasonPhrase() );
-            	for(Entry<String,List<Object>> entry : odgovor.getHeaders().entrySet()) {
-            		System.out.print(entry.getKey() + " ");
-            		for(Object objekat : entry.getValue())
-            			System.out.print(objekat +" ");
-            		System.out.println();
-            	}
+				Pokreni_GUI_Aplikaciju.connLogger.logHeaders(Level.SEVERE, odgovor);
 			}
 		} else {
-			//za logg
-        	System.out.println(odgovor.getStatusInfo().getStatusCode() + " " + odgovor.getStatusInfo().getReasonPhrase() );
-        	for(Entry<String,List<Object>> entry : odgovor.getHeaders().entrySet()) {
-        		System.out.print(entry.getKey() + " ");
-        		for(Object objekat : entry.getValue())
-        			System.out.print(objekat +" ");
-        		System.out.println();
-        	}
+			Pokreni_GUI_Aplikaciju.connLogger.logHeaders(Level.SEVERE, odgovor);
 		}
 
 		trenutniKorisnik = korisnikSistema;

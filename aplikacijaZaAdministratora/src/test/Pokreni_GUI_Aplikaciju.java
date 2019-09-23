@@ -13,16 +13,40 @@ import model.korisnicki_nalozi.AdministratorAgencije;
 import model.korisnicki_nalozi.SkladisteNaloga;
 import model.pracenje_popisa.JEZIK;
 import model.pracenje_popisa.PISMO;
+import util.ConnectionLogger;
 
 import java.awt.*;
+import java.io.File;
+import java.io.IOException;
+import java.util.logging.FileHandler;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Pokreni_GUI_Aplikaciju extends Application {
 
     private static Stage stage;
 
     private static KontrolerZaCuvanjeNaloga kontrolerZaCuvanjeNaloga;
+    
+    public static final String CONFIG_FILE = "resources" + File.separator + "config.properties";
+    public static final String LOG_FILE = "resources" + File.separator + "error.log";
+    
+    
+    public static ConnectionLogger connLogger;
 
     static {
+    	Logger logger = Logger.getLogger("Main");
+    	try {
+			logger.addHandler(new FileHandler(LOG_FILE, true));
+			logger.setLevel(Level.ALL);
+		} catch (SecurityException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+    	
+    	connLogger = new ConnectionLogger(logger);
+    	
         // Deserijalizacija skladista naloga
         kontrolerZaCuvanjeNaloga = new KontrolerZaCuvanjeNaloga(new CuvanjeNalogaNaFS());
         kontrolerZaCuvanjeNaloga.ucitajNaloge();

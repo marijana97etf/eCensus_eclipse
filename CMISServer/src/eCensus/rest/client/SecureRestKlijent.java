@@ -11,6 +11,9 @@ import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.security.UnrecoverableKeyException;
 import java.security.cert.CertificateException;
+import java.util.logging.FileHandler;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.net.ssl.KeyManager;
 import javax.net.ssl.KeyManagerFactory;
@@ -28,17 +31,28 @@ import javax.ws.rs.core.Response;
 import org.glassfish.jersey.client.authentication.HttpAuthenticationFeature;
 
 public class SecureRestKlijent {
-
+	
+	protected static final String CLIENT_LOG_FILE = "resources" + File.separator + "error.log";
+	protected static final String CMIS_CONFIG_FILE = "resources" + File.separator + "cmisConfig.properties";
+	
+	protected Logger logger;
 	protected Client klijent;
 	
+	public SecureRestKlijent() {
+		logger = Logger.getLogger(this.getClass().getName());
+		try {
+			logger.addHandler(new FileHandler(CLIENT_LOG_FILE, true));
+			logger.setLevel(Level.ALL);
+		}catch(IOException e) {
+			e.printStackTrace();
+		}catch(SecurityException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	public SecureRestKlijent(String keyStore,String keyStoreLozinka,String trustStore,String trustStoreLozinka,String korisnickoIme,String lozinkaHash) {
+		this(); 
 		
-//		SslConfigurator sslConfig = SslConfigurator.newInstance()
-//		        .trustStoreFile(trustStore)
-//		        .trustStorePassword(trustStoreLozinka)
-//		        .keyStoreFile(keyStore)
-//		        .keyPassword(keyStoreLozinka);
-		 
 		KeyManager[] keyManagers = null;
 		TrustManager[] trustManagers = null;
 		
@@ -53,14 +67,11 @@ public class SecureRestKlijent {
 			trustManagers = trustManagerFactory.getTrustManagers();
 			
 		} catch (UnrecoverableKeyException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			logger.log(Level.SEVERE,e.getMessage(),e);
 		} catch (NoSuchAlgorithmException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			logger.log(Level.SEVERE,e.getMessage(),e);
 		} catch (KeyStoreException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			logger.log(Level.SEVERE,e.getMessage(),e);
 		}
 		
 		SSLContext sslContext = null;
@@ -68,22 +79,19 @@ public class SecureRestKlijent {
 			sslContext = SSLContext.getInstance("SSL");
 			sslContext.init(keyManagers, trustManagers, new SecureRandom());
 		} catch (NoSuchAlgorithmException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			logger.log(Level.SEVERE,e.getMessage(),e);
 		} catch (KeyManagementException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			logger.log(Level.SEVERE,e.getMessage(),e);
 		}
 		
 		HttpAuthenticationFeature feature = HttpAuthenticationFeature.basic(korisnickoIme, lozinkaHash);
 		
-//		SSLContext sslContext = sslConfig.createSSLContext();
 		klijent = ClientBuilder.newBuilder().sslContext(sslContext).build();
 		klijent.register(feature);
 		
 	}
 	
-	public static KeyStore loadKeyStore(String keyStorePath, String keyStorePassword) {
+	protected  KeyStore loadKeyStore(String keyStorePath, String keyStorePassword) {
 		
 		try {
 			File keyStoreFile = new File(keyStorePath);
@@ -93,13 +101,13 @@ public class SecureRestKlijent {
 			keyInput.close();
 			return keyStore;
 		} catch (KeyStoreException e) {
-			e.printStackTrace();
+			logger.log(Level.SEVERE,e.getMessage(),e);
 		} catch (NoSuchAlgorithmException e) {
-			e.printStackTrace();
+			logger.log(Level.SEVERE,e.getMessage(),e);
 		} catch (CertificateException e) {
-			e.printStackTrace();
+			logger.log(Level.SEVERE,e.getMessage(),e);
 		} catch (IOException e) {
-			e.printStackTrace();
+			logger.log(Level.SEVERE,e.getMessage(),e);
 		}
 
 		return null;
@@ -134,6 +142,14 @@ public class SecureRestKlijent {
 		Invocation.Builder invocationBuilder =  webTarget.request();
 		return  invocationBuilder.delete();
 		
+	}
+
+	public static String getClientLogFile() {
+		return CLIENT_LOG_FILE;
+	}
+
+	public static String getCmisConfigFile() {
+		return CMIS_CONFIG_FILE;
 	}
 	
 

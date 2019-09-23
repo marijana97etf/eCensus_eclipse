@@ -1,5 +1,6 @@
 package eCensus.dao;
 
+import java.io.File;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
@@ -10,11 +11,15 @@ import model.korisnicki_nalozi.ClanPKLS;
 import model.korisnicki_nalozi.DEInstruktor;
 import model.korisnicki_nalozi.KorisnikSistema;
 import model.korisnicki_nalozi.Popisivac;
-import model.korisnicki_nalozi.DEInstruktor.DRZAVA_ENTITET;
+import model.korisnicki_nalozi.DEInstruktor.ENTITET;
 import model.pracenje_popisa.JEZIK;
 import model.pracenje_popisa.PISMO;
 
 public class NaloziDAO {
+	
+	
+	public static String TRUSTSTORE = "resources" + File.separator + "clientTrustStore.p12";
+	public static String KEYSTORE = "resources" + File.separator + "clientStore.p12";
 
 	protected static HashMap<Long, KorisnikSistema> korisnici;
 
@@ -22,16 +27,16 @@ public class NaloziDAO {
 
 		korisnici = new HashMap<>();
 		korisnici.put(1L,
-				new ClanPKLS(1L, "3920923", "Kristijan", "Stepanov", "kristijan.stepanov", "LeagueOfLegends1111",
-						JEZIK.SRPSKI, PISMO.LATINICA, CMISKlijent.TRUSTSTORE, "sigurnost", CMISKlijent.KEYSTORE,
+				new ClanPKLS(1L, "3920923", "Kristijan", "Stepanov", "kristijan.stepanov", "admin",
+						JEZIK.SRPSKI, PISMO.LATINICA, "Banja Luka", "Banja Luka", TRUSTSTORE, "sigurnost", KEYSTORE,
 						"sigurnost"));
-		korisnici.put(2L,new DEInstruktor(2L, "1232132", "Nikola", "Nikolic", "nikola.nikolic", "12345", DRZAVA_ENTITET.RS,
-						JEZIK.SRPSKI, PISMO.LATINICA, CMISKlijent.TRUSTSTORE, "sigurnost", CMISKlijent.KEYSTORE,
+		korisnici.put(2L,new DEInstruktor(2L, "1232132", "Nikola", "Nikolic", "nikola.nikolic", "12345", ENTITET.RS,
+						JEZIK.SRPSKI, PISMO.LATINICA, TRUSTSTORE, "sigurnost", KEYSTORE,
 						"sigurnost"));
 		korisnici.put(3L, new Popisivac(3L, "3213211", "Janko", "Jankovic", "janko.Jankovic", "12345", JEZIK.SRPSKI,
-				PISMO.LATINICA, CMISKlijent.TRUSTSTORE, "sigurnost", CMISKlijent.KEYSTORE, "sigurnost"));
+				PISMO.LATINICA, TRUSTSTORE, "sigurnost", KEYSTORE, "sigurnost"));
 		korisnici.put(4L, new AdministratorAgencije(4L, "32132211", "admin", "adminovic", "admin", "admin", JEZIK.SRPSKI,
-				PISMO.CIRILICA, CMISKlijent.TRUSTSTORE, "sigurnost", CMISKlijent.KEYSTORE, "sigurnost"));
+				PISMO.CIRILICA, "AgencijaBIH", TRUSTSTORE, "sigurnost", KEYSTORE, "sigurnost"));
 
 	}
 

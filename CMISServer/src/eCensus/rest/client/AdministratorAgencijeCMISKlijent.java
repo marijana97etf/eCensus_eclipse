@@ -1,20 +1,14 @@
 package eCensus.rest.client;
 
-import java.util.LinkedList;
-import java.util.List;
-
-import javax.ws.rs.core.GenericType;
 import javax.ws.rs.core.Response;
 
 import model.korisnicki_nalozi.AdministratorAgencije;
-import model.korisnicki_nalozi.ClanPKLS;
-import model.korisnicki_nalozi.DEInstruktor;
 import model.korisnicki_nalozi.KorisnikSistema;
 
 public class AdministratorAgencijeCMISKlijent extends AdministratorCMISKlijent {
 
 	{
-		KORISNIK_RESURS_URL = NALOZI_RESURS_URL + "/adminAgencije";
+		korisnikResursUrl = naloziResursUrl + "/adminAgencije";
 	}
 	
 	public AdministratorAgencijeCMISKlijent(KorisnikSistema korisnik) {
@@ -32,15 +26,9 @@ public class AdministratorAgencijeCMISKlijent extends AdministratorCMISKlijent {
 		return true;
 	}
 
-	//provjeri
 	@SuppressWarnings("unchecked")
 	public Response getListuClanovaPKLS(){
-		return get(CMIS_RESURS_URL + "/" + NALOZI_RESURS_URL + "/lista?tip=" + AdministratorAgencije.class.getName() );
-	}
-
-	@Override
-	protected KorisnikSistema readEntity(Response odgovor) {
-		return odgovor.readEntity(AdministratorAgencije.class);
+		return get(cmisResursUrl + "/" + naloziResursUrl + "/lista?tip=" + AdministratorAgencije.class.getName() );
 	}
 
 }

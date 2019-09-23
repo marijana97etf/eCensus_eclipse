@@ -1,6 +1,7 @@
 package controller.kontroler_formi;
 
 import java.util.LinkedList;
+import java.util.logging.Level;
 import java.util.stream.Collectors;
 
 import javax.ws.rs.core.GenericType;
@@ -10,6 +11,7 @@ import eCensus.rest.client.ClanPKLSCMISKlijent;
 import javafx.collections.FXCollections;
 import model.korisnicki_nalozi.ClanPKLS;
 import model.table_input_models.KorisnikInputModel;
+import test.Pokreni_GUI_Aplikaciju;
 
 public class KontrolerFormeZaPregledClanovaPKLS extends KontrolerFormeZaPregledNaloga {
     @Override
@@ -22,9 +24,7 @@ public class KontrolerFormeZaPregledClanovaPKLS extends KontrolerFormeZaPregledN
                     .map(KorisnikInputModel::new)
                     .collect(Collectors.toList()));
     	}else {
-    		
-    		System.out.println("KontrolerFormeZaPregledClanovaPKLS error");
-    		
+    		Pokreni_GUI_Aplikaciju.connLogger.logHeaders(Level.SEVERE, odgovor);
     	}
     }
 }

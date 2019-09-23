@@ -17,7 +17,8 @@ public class TestIzvjestaji {
                 "milic.vukasinovic",
                 "gledaANeDa",
                 JEZIK.BOSANSKI,
-                PISMO.LATINICA);
+                PISMO.LATINICA,
+                "AgencijaBIH");
 
         Izvjestaj izvjestaj = new SI_PremaStarostiIPoluPoPetogodistimaNaselja("Banja Luka");
         izvjestaj.kreirajIzvjestaj();

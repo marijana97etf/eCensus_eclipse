@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2019-09-23T10:25:24.965067600Z</date>
+  <millis>1569234324965</millis>
+  <nanos>67600</nanos>
+  <sequence>0</sequence>
+  <logger>Main</logger>
+  <level>SEVERE</level>
+  <class>util.ConnectionLogger</class>
+  <method>logHeaders</method>
+  <thread>15</thread>
+  <message>201 Created
+Content-Length 39 
+Date Mon, 23 Sep 2019 10:25:24 GMT 
+Content-Type application/json 
+</message>
+</record>
+<record>
+  <date>2019-09-23T10:25:52.959056500Z</date>
+  <millis>1569234352959</millis>
+  <nanos>56500</nanos>
+  <sequence>1</sequence>
+  <logger>Main</logger>
+  <level>SEVERE</level>
+  <class>util.ConnectionLogger</class>
+  <method>logHeaders</method>
+  <thread>15</thread>
+  <message>201 Created
+Content-Length 43 
+Date Mon, 23 Sep 2019 10:25:52 GMT 
+Content-Type application/json 
+</message>
+</record>
+<record>
+  <date>2019-09-23T10:27:37.526560500Z</date>
+  <millis>1569234457526</millis>
+  <nanos>560500</nanos>
+  <sequence>2</sequence>
+  <logger>Main</logger>
+  <level>SEVERE</level>
+  <class>util.ConnectionLogger</class>
+  <method>logHeaders</method>
+  <thread>15</thread>
+  <message>202 Accepted
+Content-Length 37 
+Date Mon, 23 Sep 2019 10:27:37 GMT 
+Content-Type application/json 
+</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+</log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2019-09-23T10:30:23.842435300Z</date>
+  <millis>1569234623842</millis>
+  <nanos>435300</nanos>
+  <sequence>0</sequence>
+  <logger>Main</logger>
+  <level>SEVERE</level>
+  <class>util.ConnectionLogger</class>
+  <method>logHeaders</method>
+  <thread>15</thread>
+  <message>201 Created
+Content-Length 39 
+Date Mon, 23 Sep 2019 10:30:23 GMT 
+Content-Type application/json 
+</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2019-09-23T10:32:10.633890300Z</date>
+  <millis>1569234730633</millis>
+  <nanos>890300</nanos>
+  <sequence>0</sequence>
+  <logger>Main</logger>
+  <level>INFO</level>
+  <class>controller.kontroler_formi.KontrolerFormeZaRegistracijuClanaPKLS</class>
+  <method>registruj</method>
+  <thread>15</thread>
+  <message>Uspjesna registracija.</message>
+</record>
+<record>
+  <date>2019-09-23T10:33:08.604867900Z</date>
+  <millis>1569234788604</millis>
+  <nanos>867900</nanos>
+  <sequence>1</sequence>
+  <logger>Main</logger>
+  <level>INFO</level>
+  <class>controller.kontroler_formi.KontrolerFormeZaIzmjenuNalogaClanaPKLS</class>
+  <method>izmjeni</method>
+  <thread>15</thread>
+  <message>Uspjesna izmjena.</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+</log>
