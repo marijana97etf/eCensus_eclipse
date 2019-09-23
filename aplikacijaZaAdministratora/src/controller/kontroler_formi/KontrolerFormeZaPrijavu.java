@@ -1,11 +1,14 @@
 package controller.kontroler_formi;
 
-import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
+import java.io.Reader;
 import java.net.URL;
-import java.util.List;
-import java.util.Map.Entry;
+import java.rmi.ConnectException;
+import java.util.Properties;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
 import javax.ws.rs.core.Response;
 import controller.KontrolerZaJezikeIPisma.KontrolerZaJezik;
 import controller.KontrolerZaJezikeIPisma.PromjenaPisma;
@@ -27,31 +30,14 @@ import model.korisnicki_nalozi.ClanPKLS;
 import model.korisnicki_nalozi.DEInstruktor;
 import model.korisnicki_nalozi.KorisnikSistema;
 import model.korisnicki_nalozi.OGInstruktor;
-import model.korisnicki_nalozi.SkladisteNaloga;
 import model.pracenje_popisa.PISMO;
-import test.Pokreni_GUI_Aplikaciju;
-
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.Reader;
-import java.net.URL;
-import java.util.List;
-import java.util.Properties;
-import java.util.ResourceBundle;
-import java.util.Map.Entry;
-import java.util.logging.Level;
-
-import javax.ws.rs.core.Response;
+import test.Aplikacija;
 
 public class KontrolerFormeZaPrijavu implements Initializable {
 
 
 	private Stage trenutniStage;
 	private static KorisnikSistema trenutniKorisnik;
-
-	private SkladisteNaloga nalozi;
 
 	public static KorisnikSistema getTrenutniKorisnik() {
 		return trenutniKorisnik;
@@ -71,16 +57,16 @@ public class KontrolerFormeZaPrijavu implements Initializable {
 
 		String cmisResursUrl = null,keystore = null,trustStore=null;
 
-		try(Reader configReader = new FileReader(Pokreni_GUI_Aplikaciju.CONFIG_FILE)){
+		try(Reader configReader = new FileReader(Aplikacija.CONFIG_FILE)){
 			Properties properties = new Properties();
 			properties.load(configReader);
 			cmisResursUrl = properties.getProperty("CMIS_RESURS_URL");
 			keystore = properties.getProperty("DEFAULT_KEYSTORE");
 			trustStore = properties.getProperty("DEFAULT_TRUSTSTORE");
 		} catch (FileNotFoundException e) {
-			Pokreni_GUI_Aplikaciju.connLogger.getLogger().log(Level.SEVERE,e.getMessage(),e);
+			Aplikacija.connLogger.getLogger().log(Level.SEVERE,e.getMessage(),e);
 		} catch (IOException e) {
-			Pokreni_GUI_Aplikaciju.connLogger.getLogger().log(Level.SEVERE,e.getMessage(),e);
+			Aplikacija.connLogger.getLogger().log(Level.SEVERE,e.getMessage(),e);
 		}
 
 		AdministratorCMISKlijent klijent = new AdministratorCMISKlijent(keystore, "sigurnost",
@@ -108,11 +94,12 @@ public class KontrolerFormeZaPrijavu implements Initializable {
 				else if(tipKorisnika.equals(OGInstruktor.class.getName()))
 					korisnikSistema = odgovor.readEntity(OGInstruktor.class);
 			} else {
-				Pokreni_GUI_Aplikaciju.connLogger.logHeaders(Level.SEVERE, odgovor);
+				Aplikacija.connLogger.logHeaders(Level.SEVERE, odgovor);
 			}
 		} else {
-			Pokreni_GUI_Aplikaciju.connLogger.logHeaders(Level.SEVERE, odgovor);
+			Aplikacija.connLogger.logHeaders(Level.SEVERE, odgovor);
 		}
+		
 
 		trenutniKorisnik = korisnikSistema;
 
@@ -120,7 +107,7 @@ public class KontrolerFormeZaPrijavu implements Initializable {
 		{
 			Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
 			var uspjesnaPrijavaAdminAgencije="Uspješno ste se prijavili kao administrator agencije.";
-			if(korisnikSistema.getPismo().equals(PISMO.CIRILICA))
+			if(korisnikSistema.getPismo()!=null && korisnikSistema.getPismo().equals(PISMO.CIRILICA))
 				uspjesnaPrijavaAdminAgencije = PromjenaPisma.zamijeniLatinicuCiricom(uspjesnaPrijavaAdminAgencije);
 			alert.setContentText(uspjesnaPrijavaAdminAgencije + System.lineSeparator()
 					+ kontrolerZaJezik.latinToCyrillic(uspjesnaPrijavaAdminAgencije));
@@ -135,7 +122,6 @@ public class KontrolerFormeZaPrijavu implements Initializable {
 		{
 			Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
 			String poruka = "Uspješno ste se prijavili kao član PKLS.";
-			System.out.println(korisnikSistema);
 			if(korisnikSistema.getPismo()!=null && korisnikSistema.getPismo().equals(PISMO.CIRILICA))
 				poruka = PromjenaPisma.zamijeniLatinicuCiricom(poruka);
 			alert.setContentText(poruka);
@@ -150,7 +136,7 @@ public class KontrolerFormeZaPrijavu implements Initializable {
 		{
 			Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
 			String poruka = "Uspješno ste se prijavili kao državno/entitetski instruktor.";
-			if(korisnikSistema.getPismo().equals(PISMO.CIRILICA))
+			if(korisnikSistema.getPismo()!=null && korisnikSistema.getPismo().equals(PISMO.CIRILICA))
 				poruka = PromjenaPisma.zamijeniLatinicuCiricom(poruka);
 			alert.setContentText(poruka);
 			ButtonType buttonType = alert.showAndWait().get();
@@ -164,7 +150,7 @@ public class KontrolerFormeZaPrijavu implements Initializable {
 		{
 			Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
 			String poruka = "Uspješno ste se prijavili kao OG instruktor.";
-			if(korisnikSistema.getPismo().equals(PISMO.CIRILICA))
+			if(korisnikSistema.getPismo()!=null && korisnikSistema.getPismo().equals(PISMO.CIRILICA))
 				poruka = PromjenaPisma.zamijeniLatinicuCiricom(poruka);
 			alert.setContentText(poruka);
 			ButtonType buttonType = alert.showAndWait().get();
@@ -186,6 +172,6 @@ public class KontrolerFormeZaPrijavu implements Initializable {
 	@Override
 	public void initialize(URL url, ResourceBundle resourceBundle) {
 
-		trenutniStage = Pokreni_GUI_Aplikaciju.getStage();
+		trenutniStage = Aplikacija.getStage();
 	}
 }

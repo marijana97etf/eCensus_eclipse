@@ -9,6 +9,10 @@ import model.pracenje_popisa.izvjestaji_o_popisivacu.PopisniKrug;
 
 public class Popisivac extends KorisnikSistema {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	protected List<PopisniKrug> dodijeljeniPopisniKrugovi = new LinkedList<>();
 	
 	public Popisivac() {}

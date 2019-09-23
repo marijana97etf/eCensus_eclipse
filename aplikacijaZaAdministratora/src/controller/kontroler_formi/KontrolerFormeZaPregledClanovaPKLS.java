@@ -11,7 +11,7 @@ import eCensus.rest.client.ClanPKLSCMISKlijent;
 import javafx.collections.FXCollections;
 import model.korisnicki_nalozi.ClanPKLS;
 import model.table_input_models.KorisnikInputModel;
-import test.Pokreni_GUI_Aplikaciju;
+import test.Aplikacija;
 
 public class KontrolerFormeZaPregledClanovaPKLS extends KontrolerFormeZaPregledNaloga {
     @Override
@@ -24,7 +24,7 @@ public class KontrolerFormeZaPregledClanovaPKLS extends KontrolerFormeZaPregledN
                     .map(KorisnikInputModel::new)
                     .collect(Collectors.toList()));
     	}else {
-    		Pokreni_GUI_Aplikaciju.connLogger.logHeaders(Level.SEVERE, odgovor);
+    		Aplikacija.connLogger.logHeaders(Level.SEVERE, odgovor);
     	}
     }
 }

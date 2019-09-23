@@ -30,7 +30,7 @@ import model.korisnicki_nalozi.KorisnikSistema;
 import model.korisnicki_nalozi.OGInstruktor;
 import model.pracenje_popisa.JEZIK;
 import model.pracenje_popisa.PISMO;
-import test.Pokreni_GUI_Aplikaciju;
+import test.Aplikacija;
 import util.PromjenaJezika;
 import util.PromjenaPisma;
 
@@ -266,19 +266,19 @@ public class KontrolerFormeZaPromjenuJezika implements Initializable {
         KorisnikSistema korisnikSistema = KontrolerFormeZaPrijavu.getTrenutniKorisnik();
         if(korisnikSistema instanceof AdministratorAgencije)
         {
-            Pokreni_GUI_Aplikaciju.getStage().setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/FormaZaRadAdministratora.fxml"))));
+            Aplikacija.getStage().setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/FormaZaRadAdministratora.fxml"))));
         }
         else if(korisnikSistema instanceof ClanPKLS)
         {
-            Pokreni_GUI_Aplikaciju.getStage().setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/FormaZaRadClanaPKLS.fxml"))));
+            Aplikacija.getStage().setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/FormaZaRadClanaPKLS.fxml"))));
         }
         else if(korisnikSistema instanceof DEInstruktor) 
         {
-        	Pokreni_GUI_Aplikaciju.getStage().setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/FormaZaRadDEInstruktora.fxml"))));
+        	Aplikacija.getStage().setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/FormaZaRadDEInstruktora.fxml"))));
         }
         else if(korisnikSistema instanceof OGInstruktor) 
         {
-        	Pokreni_GUI_Aplikaciju.getStage().setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/FormaZaRadOGInstruktora.fxml"))));
+        	Aplikacija.getStage().setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/FormaZaRadOGInstruktora.fxml"))));
         }
         else
         {
