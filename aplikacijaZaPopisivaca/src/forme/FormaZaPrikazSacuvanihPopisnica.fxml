@@ -23,36 +23,36 @@
    <children>
       <TableView fx:id="tabelaStanovnistvo" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="3">
         <columns>
-          <TableColumn fx:id="obrazacKolonaS" prefWidth="102.0" text="Образац" />
-          <TableColumn fx:id="entitetKolonaS" prefWidth="107.0" text="Ентитет" />
-            <TableColumn fx:id="opstinaKolonaS" prefWidth="121.0" text="Општина" />
-            <TableColumn fx:id="popisniKrugKolonaS" prefWidth="122.0" text="Пописни круг" />
-            <TableColumn fx:id="stanKolonaS" prefWidth="117.0" text="Стан" />
-            <TableColumn fx:id="domacinstvoKolonaS" prefWidth="109.0" text="Домаћинство" />
-            <TableColumn fx:id="liceKolonaS" prefWidth="120.0" text="Лице" />
+          <TableColumn fx:id="obrazacKolonaS" prefWidth="102.0" text="Obrazac" />
+          <TableColumn fx:id="entitetKolonaS" prefWidth="107.0" text="Entitet" />
+            <TableColumn fx:id="opstinaKolonaS" prefWidth="121.0" text="Opština" />
+            <TableColumn fx:id="popisniKrugKolonaS" prefWidth="122.0" text="Popisni krug" />
+            <TableColumn fx:id="stanKolonaS" prefWidth="117.0" text="Stan" />
+            <TableColumn fx:id="domacinstvoKolonaS" prefWidth="109.0" text="Domaćinstvo" />
+            <TableColumn fx:id="liceKolonaS" prefWidth="120.0" text="Lice" />
         </columns>
       </TableView>
       <TableView fx:id="tabelaDomacinstvo" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
         <columns>
-          <TableColumn fx:id="obrazacKolonaD" prefWidth="102.0" text="Образац" />
-          <TableColumn fx:id="entitetKolonaD" prefWidth="107.0" text="Ентитет" />
-            <TableColumn fx:id="opstinaKolonaD" prefWidth="121.0" text="Општина" />
-            <TableColumn fx:id="popisniKrugKolonaD" prefWidth="122.0" text="Пописни круг" />
-            <TableColumn fx:id="zgradaKolonaD" prefWidth="117.0" text="Зграда" />
-            <TableColumn fx:id="stanKolonaD" minWidth="7.0" prefWidth="109.0" text="Стан" />
-            <TableColumn fx:id="domacinstvoKolonaD" prefWidth="120.0" text="Домаћинство" />
+          <TableColumn fx:id="obrazacKolonaD" prefWidth="102.0" text="Obrazac" />
+          <TableColumn fx:id="entitetKolonaD" prefWidth="107.0" text="Entitet" />
+            <TableColumn fx:id="opstinaKolonaD" prefWidth="121.0" text="Opština" />
+            <TableColumn fx:id="popisniKrugKolonaD" prefWidth="122.0" text="Popisni krug" />
+            <TableColumn fx:id="zgradaKolonaD" prefWidth="117.0" text="Zgrada" />
+            <TableColumn fx:id="stanKolonaD" minWidth="7.0" prefWidth="109.0" text="Stan" />
+            <TableColumn fx:id="domacinstvoKolonaD" prefWidth="120.0" text="Domaćinstvo" />
         </columns>
       </TableView>
-      <Label text="Пописнице за домаћинство" GridPane.halignment="CENTER">
+      <Label text="Popisnice za domaćinstvo" GridPane.halignment="CENTER">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label text="Пописнице за становништво" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+      <Label text="Popisnice za stanovništvo" GridPane.halignment="CENTER" GridPane.rowIndex="2">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Button mnemonicParsing="false" fx:id="posaljiPopisnice" prefHeight="32.0" prefWidth="146.0" text="Пошаљи пописнице" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
+      <Button mnemonicParsing="false" fx:id="posaljiPopisnice" prefHeight="32.0" prefWidth="146.0" text="Pošalji popisnice" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
    </children>
 </GridPane>

@@ -9,6 +9,10 @@ import model.pracenje_popisa.izvjestaji_o_popisivacu.PopisniKrug;
 
 public class Popisivac extends KorisnikSistema {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	protected List<PopisniKrug> dodijeljeniPopisniKrugovi = new LinkedList<>();
 	
 	public Popisivac() {}
@@ -26,12 +30,24 @@ public class Popisivac extends KorisnikSistema {
 		// TODO Auto-generated constructor stub
 	}
 	
+	public void dodajPopisneKrugove(List<PopisniKrug> popisniKrugovi) {
+		dodijeljeniPopisniKrugovi.addAll(popisniKrugovi);
+	}
+	
 	public void dodajPopisniKrug(PopisniKrug popisniKrug) {
 		dodijeljeniPopisniKrugovi.add(popisniKrug);
 	}
 	
 	public void obrisiPopisniKrug(PopisniKrug popisniKrug) {
 		dodijeljeniPopisniKrugovi.remove(popisniKrug);
+	}
+	
+	public List<PopisniKrug> getdodijeljeniPopisniKrugovi(){
+		return dodijeljeniPopisniKrugovi;
+	}
+
+	public void setDodijeljeniPopisniKrugovi(List<PopisniKrug> dodijeljeniPopisniKrugovi) {
+		this.dodijeljeniPopisniKrugovi = dodijeljeniPopisniKrugovi;
 	}
 
 }

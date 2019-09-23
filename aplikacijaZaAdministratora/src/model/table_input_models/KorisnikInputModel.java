@@ -1,29 +1,43 @@
 package model.table_input_models;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 import model.korisnicki_nalozi.KorisnikSistema;
+import model.korisnicki_nalozi.Popisivac;
 
 public class KorisnikInputModel {
     protected Integer id;
     protected SimpleStringProperty prezime;
     protected SimpleStringProperty ime;
     protected SimpleStringProperty korisnickoIme;
-    protected SimpleObjectProperty<Button> izmjenaButton;
-    protected SimpleObjectProperty<Button> brisanjeButton;
+    protected SimpleObjectProperty<Button>[] Buttoni;
     protected KorisnikSistema korisnikSistema;
 
-    public KorisnikInputModel(KorisnikSistema korisnikSistema)
+    @SuppressWarnings("unchecked")
+	public KorisnikInputModel(KorisnikSistema korisnikSistema)
     {
         id = 0;
         prezime = new SimpleStringProperty(korisnikSistema.getPrezime());
         ime = new SimpleStringProperty(korisnikSistema.getIme());
         korisnickoIme = new SimpleStringProperty(korisnikSistema.getKorisnickoIme());
-        izmjenaButton = new SimpleObjectProperty<>(new Button("Izmjeni"));
-        brisanjeButton = new SimpleObjectProperty<>(new Button("Obriöi"));
+        if(korisnikSistema instanceof Popisivac)
+        {
+        	var pregledajAktivnosti = new SimpleObjectProperty<>(new Button("Pregled aktivnosti"));
+        	Buttoni = new SimpleObjectProperty[] { pregledajAktivnosti };
+        }
+        else 
+        {
+        	var brisanjeButton = new SimpleObjectProperty<>(new Button("Obri≈°i"));
+        	var izmjenaButton = new SimpleObjectProperty<>(new Button("Izmjeni"));
+        	Buttoni = new SimpleObjectProperty[] { izmjenaButton, brisanjeButton };
+        }
         this.korisnikSistema = korisnikSistema;
     }
 
@@ -71,32 +85,18 @@ public class KorisnikInputModel {
         this.korisnickoIme.set(korisnickoIme);
     }
 
-    public Button getIzmjenaButton() {
-        return izmjenaButton.get();
+    public Button[] getButtons() {
+        List<Button> list = new ArrayList<Button>();
+        for(SimpleObjectProperty<Button> sop : Buttoni)
+        {
+        	list.add(sop.get());
+        }
+        return list.toArray(new Button[list.size()]);
     }
 
-    public SimpleObjectProperty<Button> izmjenaButtonProperty() {
-        return izmjenaButton;
-    }
 
-    public void setIzmjenaButton(Button izmjenaButton) {
-        this.izmjenaButton.set(izmjenaButton);
-    }
-
-    public Button getBrisanjeButton() {
-        return brisanjeButton.get();
-    }
-
-    public SimpleObjectProperty<Button> brisanjeButtonProperty() {
-        return brisanjeButton;
-    }
-
-    public void setBrisanjeButton(Button brisanjeButton) {
-        this.brisanjeButton.set(brisanjeButton);
-    }
-
-    public SimpleObjectProperty<HBox> obaButtonaProperty() {
-        HBox hBox = new HBox(izmjenaButton.get(), brisanjeButton.get());
+    public SimpleObjectProperty<HBox> ButtonsProperty() {
+        HBox hBox = new HBox(getButtons());
         hBox.setAlignment(Pos.CENTER);
         return new SimpleObjectProperty<>(hBox);
     }

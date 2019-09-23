@@ -11,9 +11,12 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import model.korisnicki_nalozi.ClanPKLS;
 import model.korisnicki_nalozi.DEInstruktor;
+import model.korisnicki_nalozi.DEInstruktor.DRZAVA;
 import model.korisnicki_nalozi.KorisnikSistema;
-import test.Pokreni_GUI_Aplikaciju;
+import model.korisnicki_nalozi.OGInstruktor;
+import test.Aplikacija;
 
+import java.io.File;
 import java.io.IOException;
 import java.lang.annotation.Documented;
 import java.lang.annotation.Retention;
@@ -22,10 +25,20 @@ import java.net.URL;
 import java.util.Arrays;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+
+import javax.ws.rs.core.Response;
+
+import eCensus.rest.client.ClanPKLSCMISKlijent;
+import eCensus.rest.client.DEInstruktorCMISKlijent;
 
 public class KontrolerFormeZaRegistracijuDEInstruktora implements Initializable {
+	
+	public static String TRUSTSTORE = "resources" + File.separator + "clientTrustStore.p12";
+	public static String KEYSTORE = "resources" + File.separator + "clientStore.p12";
+	
     public void back(ActionEvent actionEvent) throws IOException {
-        Pokreni_GUI_Aplikaciju.getStage().setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/FormaZaRadAdministratora.fxml"))));
+        Aplikacija.getStage().setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/FormaZaRadAdministratora.fxml"))));
     }
 
     @FXML
@@ -54,27 +67,43 @@ public class KontrolerFormeZaRegistracijuDEInstruktora implements Initializable 
         if(password.getText().length()<8)
         {
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setContentText("Unesite 'jaÄ�u' lozinku!");
+            alert.setContentText("Unesite 'jaču' lozinku!");
             alert.showAndWait();
             return;
         }
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setContentText("UspjeÅ¡no ste registrovali drÅ¾avnog/entitetskog instruktora");
+        alert.setContentText("Uspješno ste registrovali državnog/entitetskog instruktora");
         DEInstruktor.ENTITET entitet = DEInstruktor.stringToEntitet((String)choiceBox2.getValue());
         KorisnikSistema deInstruktor = new DEInstruktor (
-                jmbg.getText(),
+        		1L, 
+        		jmbg.getText(),
                 ime.getText(),
                 prezime.getText(),
                 username.getText(),
                 password.getText(),
+                DRZAVA.BIH,
                 entitet,
-                null, null);
+    			null, 
+    			null, 
+    			TRUSTSTORE, 
+    			"sigurnost", 
+    			KEYSTORE, 
+    			"sigurnost");
+        
 
-        Pokreni_GUI_Aplikaciju.getKontrolerZaCuvanjeNaloga().getSkladisteNaloga().add(deInstruktor);
+        DEInstruktorCMISKlijent DEInstruktorCMISKlijent = new DEInstruktorCMISKlijent(KontrolerFormeZaPrijavu.getTrenutniKorisnik());
+        Response odgovor = DEInstruktorCMISKlijent.registrujKorisnika(deInstruktor);
+        if(Response.Status.Family.SUCCESSFUL.equals(odgovor.getStatusInfo().getFamily())) {
+        	Aplikacija.connLogger.getLogger().log(Level.INFO, "Uspjesna registracija državno/entitetskog instruktora.");
+        }else {
+        	
+        	Aplikacija.connLogger.logHeaders(Level.SEVERE, odgovor);
+        }
+        
         ButtonType buttonType = alert.showAndWait().get();
         if(!buttonType.getText().equals("OK")) return;
         Parent root = FXMLLoader.load(getClass().getResource("/view/FormaZaRadAdministratora.fxml"));
-        Pokreni_GUI_Aplikaciju.getStage().setScene(new Scene(root));
+        Aplikacija.getStage().setScene(new Scene(root));
     }
 
     @FXML

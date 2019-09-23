@@ -8,7 +8,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import model.korisnicki_nalozi.KorisnikSistema;
-import test.Pokreni_GUI_Aplikaciju;
+import test.Aplikacija;
 
 import java.io.IOException;
 import java.net.URL;
@@ -37,14 +37,34 @@ public class KontrolerFormeZaRadClanaPKLS implements Initializable {
     }
 
     public void Logout(ActionEvent actionEvent) throws IOException {
-        Pokreni_GUI_Aplikaciju.getStage().setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/FormaZaPrijavu.fxml"))));
+        Aplikacija.getStage().setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/FormaZaPrijavu.fxml"))));
     }
 
     public void promjeniJezik(ActionEvent actionEvent) throws IOException {
-        Pokreni_GUI_Aplikaciju.getStage().setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/FormaZaPromjenuJezika.fxml"))));
+        Aplikacija.getStage().setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/FormaZaPromjenuJezika.fxml"))));
     }
     
     public void promjeniPismo(ActionEvent actionEvent) throws IOException {
-        Pokreni_GUI_Aplikaciju.getStage().setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/FormaZaPromjenuPisma.fxml"))));
+        Aplikacija.getStage().setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/FormaZaPromjenuPisma.fxml"))));
+    }
+    
+    public void registrujOGInstruktora(ActionEvent actionEvent)
+    {
+    	try {
+			Aplikacija.getStage().setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/FormaZaRegistracijuOGInstruktora.fxml"))));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    }
+    
+    public void pregledajNalogeOGInstruktora(ActionEvent actionEvent)
+    {
+    	try {
+			Aplikacija.getStage().setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/FormaZaPregledNalogaOGInstruktora.fxml"))));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
 }

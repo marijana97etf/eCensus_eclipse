@@ -9,6 +9,7 @@ import eCensus.rest.client.ClanPKLSCMISKlijent;
 import eCensus.rest.client.DEInstruktorCMISKlijent;
 import model.korisnicki_nalozi.ClanPKLS;
 import model.korisnicki_nalozi.DEInstruktor;
+import model.korisnicki_nalozi.DEInstruktor.DRZAVA;
 import model.korisnicki_nalozi.DEInstruktor.ENTITET;
 import model.korisnicki_nalozi.KorisnikSistema;
 import model.pracenje_popisa.JEZIK;
@@ -22,7 +23,7 @@ public class TestCMISRest {
 	public static void main(String[] args) {
 		
 		KorisnikSistema korisnikSistema = new DEInstruktor(2L, "1232132", "Nikola", "Nikolic", "nikola.nikolic",
-				"12345",ENTITET.RS, JEZIK.SRPSKI, PISMO.LATINICA, TRUSTSTORE, "sigurnost", KEYSTORE,
+				"12345", DRZAVA.BIH, ENTITET.RS, JEZIK.SRPSKI, PISMO.LATINICA, TRUSTSTORE, "sigurnost", KEYSTORE,
 				"sigurnost");
 		CMISKlijent klijent = new DEInstruktorCMISKlijent(korisnikSistema.getKeyStore(), korisnikSistema.getKeyLozinka(),
 				korisnikSistema.getTrustStore(), korisnikSistema.getTrustLozinka(), korisnikSistema.getKorisnickoIme(),
@@ -44,7 +45,7 @@ public class TestCMISRest {
 		ClanPKLSCMISKlijent clanPKLSklijent = new ClanPKLSCMISKlijent(korisnikSistema);
 		System.out.println(clanPKLSklijent);
 		ClanPKLS clanPKLS = clanPKLSklijent.getClanPKLS("kristijan.stepanov").readEntity(ClanPKLS.class);
-
+		
 		System.out.println(clanPKLS);
 		
 //		System.out.println("Trazena lista:");

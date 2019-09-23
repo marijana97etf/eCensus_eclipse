@@ -22,7 +22,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 import model.korisnicki_nalozi.KorisnikSistema;
 import model.table_input_models.KorisnikInputModel;
-import test.Pokreni_GUI_Aplikaciju;
+import test.Aplikacija;
 
 public class KontrolerFormeZaIzmjenuNalogaClanaPKLS implements Initializable {
 
@@ -53,10 +53,10 @@ public class KontrolerFormeZaIzmjenuNalogaClanaPKLS implements Initializable {
         ClanPKLSCMISKlijent clanPKLSCMISKlijent = new ClanPKLSCMISKlijent(KontrolerFormeZaPrijavu.getTrenutniKorisnik());
         Response odgovor = clanPKLSCMISKlijent.azurirajKorisnika(clanPKLS);
         if(Response.Status.Family.SUCCESSFUL.equals(odgovor.getStatusInfo().getFamily())) {
-        	Pokreni_GUI_Aplikaciju.connLogger.getLogger().log(Level.INFO, "Uspjesna izmjena.");
+        	Aplikacija.connLogger.getLogger().log(Level.INFO, "Uspjesna izmjena.");
         }else {
         	
-        	Pokreni_GUI_Aplikaciju.connLogger.logHeaders(Level.SEVERE, odgovor);
+        	Aplikacija.connLogger.logHeaders(Level.SEVERE, odgovor);
         }
         
         Parent root = null;
@@ -65,7 +65,7 @@ public class KontrolerFormeZaIzmjenuNalogaClanaPKLS implements Initializable {
         } catch (IOException ex) {
             ex.printStackTrace();
         }
-        Pokreni_GUI_Aplikaciju.getStage().setScene(new Scene(root));
+        Aplikacija.getStage().setScene(new Scene(root));
         
     }
 
@@ -74,7 +74,7 @@ public class KontrolerFormeZaIzmjenuNalogaClanaPKLS implements Initializable {
         alert.setContentText("Da li Еѕelite da napustite izmjenu naloga clana PKLS-a?");
         ButtonType buttonType = alert.showAndWait().get();
         if(!buttonType.getText().equals("OK")) return;
-        Pokreni_GUI_Aplikaciju.getStage().setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/FormaZaPregledClanovaPKLS.fxml"))));
+        Aplikacija.getStage().setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/FormaZaPregledClanovaPKLS.fxml"))));
     }
 
     @Override

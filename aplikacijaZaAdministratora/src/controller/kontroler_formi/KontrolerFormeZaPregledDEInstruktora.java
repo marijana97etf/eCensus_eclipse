@@ -1,18 +1,17 @@
 package controller.kontroler_formi;
 
-import javafx.application.Platform;
+import java.util.LinkedList;
+import java.util.logging.Level;
+import java.util.stream.Collectors;
+import javax.ws.rs.core.GenericType;
+import javax.ws.rs.core.Response;
+import eCensus.rest.client.DEInstruktorCMISKlijent;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import model.korisnicki_nalozi.DEInstruktor;
-import model.korisnicki_nalozi.KorisnikSistema;
-import model.table_input_models.DEInstruktorInputModel;
 import model.table_input_models.KorisnikInputModel;
-import test.Pokreni_GUI_Aplikaciju;
-
-import java.net.URL;
-import java.util.ResourceBundle;
-import java.util.stream.Collectors;
+import test.Aplikacija;
 
 public class KontrolerFormeZaPregledDEInstruktora extends KontrolerFormeZaPregledNaloga {
 
@@ -23,12 +22,14 @@ public class KontrolerFormeZaPregledDEInstruktora extends KontrolerFormeZaPregle
 
     @Override
     public void initializeList() {
-        lista = FXCollections.observableArrayList(Pokreni_GUI_Aplikaciju
-                .getKontrolerZaCuvanjeNaloga()
-                .getSkladisteNaloga()
-                .stream()
-                .filter(e -> e instanceof DEInstruktor)
-                .map(KorisnikInputModel::new)
-                .collect(Collectors.toList()));
+    	DEInstruktorCMISKlijent deInstruktorCMISKlijent = new DEInstruktorCMISKlijent(KontrolerFormeZaPrijavu.getTrenutniKorisnik());
+    	Response odgovor  = deInstruktorCMISKlijent.getListuDEInstruktora();
+    	if(Response.Status.Family.SUCCESSFUL.equals(odgovor.getStatusInfo().getFamily())) {
+    		lista = FXCollections.observableArrayList(odgovor.readEntity(new GenericType<LinkedList<DEInstruktor>>() {}).stream()
+                    .map(KorisnikInputModel::new)
+                    .collect(Collectors.toList()));
+    	}else {
+    		Aplikacija.connLogger.logHeaders(Level.SEVERE, odgovor);
+    	}
     }
 }

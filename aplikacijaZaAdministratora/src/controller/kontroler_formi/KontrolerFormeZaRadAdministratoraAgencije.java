@@ -8,7 +8,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import model.korisnicki_nalozi.KorisnikSistema;
-import test.Pokreni_GUI_Aplikaciju;
+import test.Aplikacija;
 
 import java.io.IOException;
 import java.net.URL;
@@ -19,15 +19,15 @@ public class KontrolerFormeZaRadAdministratoraAgencije implements Initializable 
     private KorisnikSistema korisnikSistema;
 
     public void Logout(ActionEvent actionEvent) throws IOException {
-        Pokreni_GUI_Aplikaciju.getStage().setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/FormaZaPrijavu.fxml"))));
+        Aplikacija.getStage().setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/FormaZaPrijavu.fxml"))));
     }
 
     public void registrujClanaPKLS(ActionEvent actionEvent) throws IOException {
-        Pokreni_GUI_Aplikaciju.getStage().setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/FormaZaRegistracijuClanaPKLS.fxml"))));
+        Aplikacija.getStage().setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/FormaZaRegistracijuClanaPKLS.fxml"))));
     }
 
     public void pregledajNalogeClanovaPKLS(ActionEvent actionEvent) throws IOException {
-        Pokreni_GUI_Aplikaciju.getStage().setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/FormaZaPregledClanovaPKLS.fxml"))));
+        Aplikacija.getStage().setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/FormaZaPregledClanovaPKLS.fxml"))));
     }
 
 
@@ -50,18 +50,18 @@ public class KontrolerFormeZaRadAdministratoraAgencije implements Initializable 
     }
 
     public void pregledajNalogeDEInstruktora(ActionEvent actionEvent) throws IOException {
-        Pokreni_GUI_Aplikaciju.getStage().setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/FormaZaPregledNalogaDEInstruktora.fxml"))));
+        Aplikacija.getStage().setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/FormaZaPregledNalogaDEInstruktora.fxml"))));
     }
 
     public void registrujDEInstruktora(ActionEvent actionEvent) throws IOException {
-        Pokreni_GUI_Aplikaciju.getStage().setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/FormaZaRegistracijuDEInstruktora.fxml"))));
+        Aplikacija.getStage().setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/FormaZaRegistracijuDEInstruktora.fxml"))));
     }
 
     public void promjeniJezik(ActionEvent actionEvent) throws IOException {
-        Pokreni_GUI_Aplikaciju.getStage().setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/FormaZaPromjenuJezika.fxml"))));
+        Aplikacija.getStage().setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/FormaZaPromjenuJezika.fxml"))));
     }
 
     public void promjeniPismo(ActionEvent actionEvent) throws IOException {
-        Pokreni_GUI_Aplikaciju.getStage().setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/FormaZaPromjenuPisma.fxml"))));
+        Aplikacija.getStage().setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/FormaZaPromjenuPisma.fxml"))));
     }
 }

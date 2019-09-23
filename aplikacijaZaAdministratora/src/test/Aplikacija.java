@@ -1,7 +1,12 @@
 package test;
 
-import controller.kontroler_za_cuvanje_naloga.CuvanjeNalogaNaFS;
-import controller.kontroler_za_cuvanje_naloga.KontrolerZaCuvanjeNaloga;
+import java.awt.Dimension;
+import java.awt.Toolkit;
+import java.io.File;
+import java.io.IOException;
+import java.util.logging.FileHandler;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
@@ -9,24 +14,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.util.Pair;
-import model.korisnicki_nalozi.AdministratorAgencije;
-import model.korisnicki_nalozi.SkladisteNaloga;
-import model.pracenje_popisa.JEZIK;
-import model.pracenje_popisa.PISMO;
 import util.ConnectionLogger;
 
-import java.awt.*;
-import java.io.File;
-import java.io.IOException;
-import java.util.logging.FileHandler;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
-public class Pokreni_GUI_Aplikaciju extends Application {
+public class Aplikacija extends Application {
 
     private static Stage stage;
-
-    private static KontrolerZaCuvanjeNaloga kontrolerZaCuvanjeNaloga;
     
     public static final String CONFIG_FILE = "resources" + File.separator + "config.properties";
     public static final String LOG_FILE = "resources" + File.separator + "error.log";
@@ -47,23 +39,6 @@ public class Pokreni_GUI_Aplikaciju extends Application {
     	
     	connLogger = new ConnectionLogger(logger);
     	
-        // Deserijalizacija skladista naloga
-        kontrolerZaCuvanjeNaloga = new KontrolerZaCuvanjeNaloga(new CuvanjeNalogaNaFS());
-        kontrolerZaCuvanjeNaloga.ucitajNaloge();
-
-//        kontrolerZaCuvanjeNaloga.setSkladisteNaloga(new SkladisteNaloga(new AdministratorAgencije(
-//                "admin",
-//                "admin",
-//                "admin",
-//                "admin",
-//                "admin",
-//                JEZIK.SRPSKI,
-//                PISMO.LATINICA
-//        )));
-    }
-
-    public static KontrolerZaCuvanjeNaloga getKontrolerZaCuvanjeNaloga() {
-        return kontrolerZaCuvanjeNaloga;
     }
 
 
@@ -82,7 +57,6 @@ public class Pokreni_GUI_Aplikaciju extends Application {
 
         primaryStage.setOnCloseRequest(we->
         {
-            kontrolerZaCuvanjeNaloga.sacuvajNaloge(kontrolerZaCuvanjeNaloga.getSkladisteNaloga());
             Platform.exit();
             System.exit(0);
         });

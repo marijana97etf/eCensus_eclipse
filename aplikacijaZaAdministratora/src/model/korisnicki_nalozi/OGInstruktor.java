@@ -31,6 +31,12 @@ public class OGInstruktor extends Administrator {
         this.opstina = opstina;
 	}
 
+	public void setGrad(String grad)
+	{
+		this.grad = grad;
+		this.opstina = grad;
+	}
+	
 	public String getGrad() {
 		return grad;
 	}
