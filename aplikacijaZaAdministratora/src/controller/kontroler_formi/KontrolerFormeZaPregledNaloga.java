@@ -19,9 +19,7 @@ import test.Aplikacija;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.List;
 import java.util.ResourceBundle;
-import java.util.Map.Entry;
 import java.util.logging.Level;
 
 import javax.ws.rs.core.Response;
@@ -87,7 +85,8 @@ public abstract class KontrolerFormeZaPregledNaloga implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
     	
-        initializeList();
+        if(!initializeList())
+            return;
         
         Platform.runLater(()-> tabela.refresh());
         
@@ -181,7 +180,7 @@ public abstract class KontrolerFormeZaPregledNaloga implements Initializable {
         lista.forEach(e -> e.setId(counterWrapper.idCounter++));
     }
 
-    public abstract void initializeList();
+    public abstract boolean initializeList();
 
 	public static TableView<KorisnikInputModel> getTabela() {
 		return staticTabela;

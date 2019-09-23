@@ -40,7 +40,7 @@ public class KontrolerFormeZaRegistracijuOGInstruktora implements Initializable 
 	public static String TRUSTSTORE = "resources" + File.separator + "clientTrustStore.p12";
 	public static String KEYSTORE = "resources" + File.separator + "clientStore.p12";
 	
-	
+	static int i=30;
     public void back(ActionEvent actionEvent) throws IOException {
         Aplikacija.getStage().setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/FormaZaRadClanaPKLS.fxml"))));
     }
@@ -79,7 +79,7 @@ public class KontrolerFormeZaRegistracijuOGInstruktora implements Initializable 
         alert.setContentText("Uspješno ste registrovali gradskog/opštinskog instruktora");
         String opstina = (String)choiceBox2.getValue();
         KorisnikSistema ogInstruktor = new OGInstruktor (
-        		1L, 
+        		i++,
         		jmbg.getText(),
                 ime.getText(),
                 prezime.getText(),

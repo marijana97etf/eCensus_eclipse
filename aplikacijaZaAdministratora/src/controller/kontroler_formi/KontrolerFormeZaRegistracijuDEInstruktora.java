@@ -11,7 +11,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import model.korisnicki_nalozi.ClanPKLS;
 import model.korisnicki_nalozi.DEInstruktor;
-import model.korisnicki_nalozi.DEInstruktor.DRZAVA;
 import model.korisnicki_nalozi.KorisnikSistema;
 import model.korisnicki_nalozi.OGInstruktor;
 import test.Aplikacija;
@@ -36,7 +35,9 @@ public class KontrolerFormeZaRegistracijuDEInstruktora implements Initializable 
 	
 	public static String TRUSTSTORE = "resources" + File.separator + "clientTrustStore.p12";
 	public static String KEYSTORE = "resources" + File.separator + "clientStore.p12";
-	
+
+	static int i=10;
+
     public void back(ActionEvent actionEvent) throws IOException {
         Aplikacija.getStage().setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/FormaZaRadAdministratora.fxml"))));
     }
@@ -75,13 +76,12 @@ public class KontrolerFormeZaRegistracijuDEInstruktora implements Initializable 
         alert.setContentText("Uspješno ste registrovali državnog/entitetskog instruktora");
         DEInstruktor.ENTITET entitet = DEInstruktor.stringToEntitet((String)choiceBox2.getValue());
         KorisnikSistema deInstruktor = new DEInstruktor (
-        		1L, 
+        		i++,
         		jmbg.getText(),
                 ime.getText(),
                 prezime.getText(),
                 username.getText(),
                 password.getText(),
-                DRZAVA.BIH,
                 entitet,
     			null, 
     			null, 

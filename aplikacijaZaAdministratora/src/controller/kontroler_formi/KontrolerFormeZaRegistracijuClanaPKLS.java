@@ -36,7 +36,8 @@ public class KontrolerFormeZaRegistracijuClanaPKLS implements Initializable {
     
 	public static String TRUSTSTORE = "resources" + File.separator + "clientTrustStore.p12";
 	public static String KEYSTORE = "resources" + File.separator + "clientStore.p12";
-	
+
+	static int i=20;
 	public void back(ActionEvent actionEvent) throws IOException {
         Aplikacija.getStage().setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/FormaZaRadAdministratora.fxml"))));
     }
@@ -74,7 +75,7 @@ public class KontrolerFormeZaRegistracijuClanaPKLS implements Initializable {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setContentText("Uspješno ste registrovali clana PKLS-a");
         KorisnikSistema clanPKLS = new ClanPKLS (
-        		1L, 
+        		i++,
         		jmbg.getText(),
                 ime.getText(),
                 prezime.getText(),

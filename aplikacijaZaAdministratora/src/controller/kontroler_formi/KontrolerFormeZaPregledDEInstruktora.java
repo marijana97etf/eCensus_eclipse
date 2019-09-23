@@ -21,15 +21,17 @@ public class KontrolerFormeZaPregledDEInstruktora extends KontrolerFormeZaPregle
 
 
     @Override
-    public void initializeList() {
+    public boolean initializeList() {
     	DEInstruktorCMISKlijent deInstruktorCMISKlijent = new DEInstruktorCMISKlijent(KontrolerFormeZaPrijavu.getTrenutniKorisnik());
     	Response odgovor  = deInstruktorCMISKlijent.getListuDEInstruktora();
     	if(Response.Status.Family.SUCCESSFUL.equals(odgovor.getStatusInfo().getFamily())) {
     		lista = FXCollections.observableArrayList(odgovor.readEntity(new GenericType<LinkedList<DEInstruktor>>() {}).stream()
                     .map(KorisnikInputModel::new)
                     .collect(Collectors.toList()));
+    		return true;
     	}else {
     		Aplikacija.connLogger.logHeaders(Level.SEVERE, odgovor);
     	}
+    	return false;
     }
 }

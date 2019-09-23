@@ -15,7 +15,7 @@ import test.Aplikacija;
 
 public class KontrolerFormeZaPregledClanovaPKLS extends KontrolerFormeZaPregledNaloga {
     @Override
-    public void initializeList() {
+    public boolean initializeList() {
     	
     	ClanPKLSCMISKlijent clanPKLSCMISKlijent = new ClanPKLSCMISKlijent(KontrolerFormeZaPrijavu.getTrenutniKorisnik());
     	Response odgovor  = clanPKLSCMISKlijent.getListuClanovaPKLS();
@@ -23,8 +23,10 @@ public class KontrolerFormeZaPregledClanovaPKLS extends KontrolerFormeZaPregledN
     		lista = FXCollections.observableArrayList(odgovor.readEntity(new GenericType<LinkedList<ClanPKLS>>() {}).stream()
                     .map(KorisnikInputModel::new)
                     .collect(Collectors.toList()));
+    		return true;
     	}else {
     		Aplikacija.connLogger.logHeaders(Level.SEVERE, odgovor);
     	}
+    	return false;
     }
 }
