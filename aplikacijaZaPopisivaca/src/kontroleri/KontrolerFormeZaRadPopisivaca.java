@@ -17,6 +17,7 @@ public class KontrolerFormeZaRadPopisivaca {
     static Stage promjenaPismaStage;
     static Stage promjenaJezikaStage;
     static Stage pregledSacuvanihPopisnicaStage;
+    static Stage pregledMapePopisnogKrugaStage;
     
     @FXML
     private Button odjaviSeButton;
@@ -73,6 +74,18 @@ public class KontrolerFormeZaRadPopisivaca {
 
     @FXML
     private void pregledajMapuPopisnogKrugaButtonAction() {
+    	try {
+    		pregledMapePopisnogKrugaStage = new Stage();
+    		pregledMapePopisnogKrugaStage.initModality(Modality.APPLICATION_MODAL);
+
+            Parent root = FXMLLoader.load(getClass().getResource("/forme" + File.separator + "FormaZaPrikazMapePopisnogKruga.fxml"));
+            pregledMapePopisnogKrugaStage.setScene(new Scene(root));
+            pregledMapePopisnogKrugaStage.setResizable(false);
+            pregledMapePopisnogKrugaStage.show();
+        }
+        catch(IOException e){
+            e.printStackTrace();
+        }
     }
 
     @FXML
