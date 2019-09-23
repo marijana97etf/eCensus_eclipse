@@ -25,7 +25,8 @@ public class MySQLClanPKLSDAO implements ClanPKLSDAO {
 			ResultSet resultSet = statementClanPKLS.executeQuery(
 													"SELECT * " +
 													"FROM osoba Osoba " + 
-													"INNER JOIN clan_pkls ClanPKLS on Osoba.IdOsobe = ClanPKLS.IdOsobe;");
+													"INNER JOIN clan_pkls ClanPKLS on Osoba.IdOsobe = ClanPKLS.IdOsobe " + 
+													"INNER JOIN pkls PKLS on PKLS.IdPKLS = ClanPKLS.IdPKLS; ");
 			
 			ArrayList<KorisnikSistema> clanoviPKLS = new ArrayList<>();
 			while(resultSet.next()) {
@@ -155,6 +156,7 @@ public class MySQLClanPKLSDAO implements ClanPKLSDAO {
 													"SELECT * " +
 													"FROM osoba Osoba " + 
 													"INNER JOIN clan_pkls ClanPKLS on Osoba.IdOsobe = ClanPKLS.IdOsobe " +
+													"INNER JOIN pkls PKLS on PKLS.IdPKLS = ClanPKLS.IdPKLS " +
 													"WHERE Osoba.KorisnickoIme = ?");
 			preparedStatementPopisivac.setString(1, korisnickoIme);
 			ResultSet resultSet = preparedStatementPopisivac.executeQuery();

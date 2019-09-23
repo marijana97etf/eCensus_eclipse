@@ -38,7 +38,7 @@ public class MySQLAdministratorAgencijeDAO implements AdministratorAgencijeDAO {
 													resultSet.getString("Lozinka"),
 													JEZIK.getJEZIK(jezik),
 													PISMO.getPISMO(pismo),
-													resultSet.getString("Naziv"));
+													resultSet.getString("NazivAgencije"));
 				administratoriAgencije.add(administratorAgencije);
 			}
 			
@@ -167,7 +167,7 @@ public class MySQLAdministratorAgencijeDAO implements AdministratorAgencijeDAO {
 															resultSet.getString("Lozinka"),
 															JEZIK.getJEZIK(jezik),
 															PISMO.getPISMO(pismo),
-															resultSet.getString("Naziv"));
+															resultSet.getString("NazivAgencije"));
 			}
 			return korisnikSistema;
 		} catch (SQLException e) {

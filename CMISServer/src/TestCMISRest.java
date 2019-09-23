@@ -45,7 +45,7 @@ public class TestCMISRest {
 		ClanPKLSCMISKlijent clanPKLSklijent = new ClanPKLSCMISKlijent(korisnikSistema);
 		System.out.println(clanPKLSklijent);
 		ClanPKLS clanPKLS = clanPKLSklijent.getClanPKLS("kristijan.stepanov").readEntity(ClanPKLS.class);
-
+		
 		System.out.println(clanPKLS);
 		
 //		System.out.println("Trazena lista:");
