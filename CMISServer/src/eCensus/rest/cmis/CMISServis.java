@@ -1,7 +1,7 @@
 package eCensus.rest.cmis;
 
 import java.util.Collection;
-import java.util.LinkedList;
+import java.util.List;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -18,7 +18,7 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
 import eCensus.dao.DAOFactory;
-import eCensus.dao.NaloziDAO;
+import eCensus.dao.DavidovStariNaloziDAO;
 import model.korisnicki_nalozi.AdministratorAgencije;
 import model.korisnicki_nalozi.ClanPKLS;
 import model.korisnicki_nalozi.DEInstruktor;
@@ -26,6 +26,7 @@ import model.korisnicki_nalozi.KorisnikSistema;
 import model.korisnicki_nalozi.OGInstruktor;
 import model.korisnicki_nalozi.Popisivac;
 import model.korisnicki_nalozi.PowerUser;
+import model.pracenje_popisa.izvjestaji_o_popisivacu.PopisniKrug;
 
 @Path("/CMIS")
 public class CMISServis {
@@ -306,26 +307,43 @@ public class CMISServis {
 			}
 		}
 		
+
 		@GET
-		@Path("korisnici/popisniKrugovi/{id}")
+		@Path("korisnici/nalozi/popisivac/{id}/popisniKrugovi")
 		@Consumes(MediaType.APPLICATION_JSON)
 		@Produces(MediaType.APPLICATION_JSON)
 		public Response getPopisneKrugovePopisivaca(@PathParam(value = "id") String korisnickoIme) {
-			//TO DO
+			Popisivac popisivacRezultat = (Popisivac)new DavidovStariNaloziDAO().getKorisnikSistema(korisnickoIme);
+			if (popisivacRezultat == null) {
+				return Response.noContent().build();
+			} else
+				return Response.ok().entity(new GenericEntity<List<PopisniKrug>>(popisivacRezultat.getdodijeljeniPopisniKrugovi()) {}).build();
+		}
+		
+		@POST
+		@Path("korisnici/nalozi/popisivac/{id}/popisniKrugovi")
+		@Consumes(MediaType.APPLICATION_JSON)
+		@Produces(MediaType.APPLICATION_JSON)
+		public Response dodijeliPopisneKrugovePopisivaca(@PathParam(value = "id") String korisnickoIme,List<PopisniKrug> popisniKrugovi) {
+			Popisivac popisivacRezultat = new DavidovStariNaloziDAO().dodajPopisneKrugovePopisivacu(korisnickoIme, popisniKrugovi);
+			if (popisivacRezultat == null) {
+				return Response.status(Response.Status.BAD_REQUEST).entity("Ne postoji popisivac s tim korisnickim imenom.").build();
+			}else
+				return Response.status(Response.Status.CREATED).entity("Popisni krugovi uspjesno dodijeljeni.").build();
 			
-			return Response.noContent().build();
 		}
 		
 		@PUT
-		@Path("korisnici/popisniKrugovi/{id}")
+		@Path("korisnici/nalozi/popisivac/{id}/popisniKrugovi")
 		@Consumes(MediaType.APPLICATION_JSON)
 		@Produces(MediaType.APPLICATION_JSON)
-		public Response azurirajPopisneKrugovePopisivaca(@PathParam(value = "id") String korisnickoIme) {
-			//TO DO
-			
-			return Response.noContent().build();
+		public Response azurirajPopisneKrugovePopisivaca(@PathParam(value = "id") String korisnickoIme,List<PopisniKrug> popisniKrugovi) {
+			Popisivac popisivacRezultat = new DavidovStariNaloziDAO().azurirajPopisneKrugove(korisnickoIme, popisniKrugovi);
+			if (popisivacRezultat == null) {
+				return Response.status(Response.Status.BAD_REQUEST).entity("Ne postoji popisivac s tim korisnickim imenom.").build();
+			}else
+				return Response.ok().entity("Popisni krugovi uspjesno azurirani.").build();
 		}
-		
 		
 		@POST
 		@Path("korisnici/ocjene/{id}")
@@ -337,4 +355,5 @@ public class CMISServis {
 			
 			return Response.noContent().build();
 		}
+
 }
