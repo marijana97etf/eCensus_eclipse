@@ -1,5 +1,6 @@
 package controller.kontroler_formi;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Arrays;
@@ -20,18 +21,24 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputControl;
 import model.korisnicki_nalozi.ClanPKLS;
+import model.korisnicki_nalozi.DEInstruktor;
 import model.korisnicki_nalozi.KorisnikSistema;
-import test.Pokreni_GUI_Aplikaciju;
+import test.Aplikacija;
+import util.OpstineCollection;
 
 public class KontrolerFormeZaRegistracijuClanaPKLS implements Initializable {
     
+	public static String TRUSTSTORE = "resources" + File.separator + "clientTrustStore.p12";
+	public static String KEYSTORE = "resources" + File.separator + "clientStore.p12";
+	
 	public void back(ActionEvent actionEvent) throws IOException {
-        Pokreni_GUI_Aplikaciju.getStage().setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/FormaZaRadAdministratora.fxml"))));
+        Aplikacija.getStage().setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/FormaZaRadAdministratora.fxml"))));
     }
 
     @FXML
@@ -44,6 +51,9 @@ public class KontrolerFormeZaRegistracijuClanaPKLS implements Initializable {
     TextField username;
     @FXML
     PasswordField password;
+    
+    @FXML
+    ChoiceBox<String> gradovi;
 
     public void registruj(ActionEvent actionEvent) throws IOException {
         List<TextInputControl> list = Arrays.asList(new TextInputControl[]{ ime, prezime, jmbg, username, password });
@@ -57,36 +67,41 @@ public class KontrolerFormeZaRegistracijuClanaPKLS implements Initializable {
         if(password.getText().length()<8)
         {
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setContentText("Unesite 'jaÄ�u' lozinku!");
+            alert.setContentText("Unesite 'jaču' lozinku!");
             alert.showAndWait();
             return;
         }
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setContentText("UspjeÅ¡no ste registrovali clana PKLS-a");
-        KorisnikSistema clanPKLS = new ClanPKLS(
-                jmbg.getText(),
+        alert.setContentText("Uspješno ste registrovali clana PKLS-a");
+        KorisnikSistema clanPKLS = new ClanPKLS (
+        		1L, 
+        		jmbg.getText(),
                 ime.getText(),
                 prezime.getText(),
                 username.getText(),
                 password.getText(),
-                null,
-                null,
-                null,
-                null);
+    			null, 
+    			null, 
+    			gradovi.getValue(), 
+    			gradovi.getValue(), 
+    			TRUSTSTORE, 
+    			"sigurnost", 
+    			KEYSTORE, 
+    			"sigurnost");
 
         ClanPKLSCMISKlijent clanPKLSCMISKlijent = new ClanPKLSCMISKlijent(KontrolerFormeZaPrijavu.getTrenutniKorisnik());
         Response odgovor = clanPKLSCMISKlijent.registrujKorisnika(clanPKLS);
         if(Response.Status.Family.SUCCESSFUL.equals(odgovor.getStatusInfo().getFamily())) {
-        	Pokreni_GUI_Aplikaciju.connLogger.getLogger().log(Level.INFO, "Uspjesna registracija.");
+        	Aplikacija.connLogger.getLogger().log(Level.INFO, "Uspjesna registracija.");
         }else {
         	
-        	Pokreni_GUI_Aplikaciju.connLogger.logHeaders(Level.SEVERE, odgovor);
+        	Aplikacija.connLogger.logHeaders(Level.SEVERE, odgovor);
         }
         
         ButtonType buttonType = alert.showAndWait().get();
         if(!buttonType.getText().equals("OK")) return;
         Parent root = FXMLLoader.load(getClass().getResource("/view/FormaZaRadAdministratora.fxml"));
-        Pokreni_GUI_Aplikaciju.getStage().setScene(new Scene(root));
+        Aplikacija.getStage().setScene(new Scene(root));
     }
 
     @FXML
@@ -105,5 +120,7 @@ public class KontrolerFormeZaRegistracijuClanaPKLS implements Initializable {
             wrapper.sadrzajLabele=labelaZaIme.getText();
             labelaZaIme.setText(wrapper.sadrzajLabele + wrapper.prezimeIIme);
         });
+        gradovi.getItems().addAll(OpstineCollection.getOpstine());
+        gradovi.setValue("Banja Luka");
     }
 }

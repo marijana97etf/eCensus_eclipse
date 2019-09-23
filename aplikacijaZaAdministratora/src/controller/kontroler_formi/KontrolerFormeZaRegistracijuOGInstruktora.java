@@ -13,7 +13,10 @@ import model.korisnicki_nalozi.ClanPKLS;
 import model.korisnicki_nalozi.DEInstruktor;
 import model.korisnicki_nalozi.KorisnikSistema;
 import model.korisnicki_nalozi.OGInstruktor;
+import model.pracenje_popisa.JEZIK;
+import model.pracenje_popisa.PISMO;
 import test.Aplikacija;
+import util.OpstineCollection;
 
 import java.io.File;
 import java.io.IOException;
@@ -30,14 +33,16 @@ import javax.ws.rs.core.Response;
 
 import eCensus.rest.client.ClanPKLSCMISKlijent;
 import eCensus.rest.client.DEInstruktorCMISKlijent;
+import eCensus.rest.client.OGInstruktorCMISKLijent;
 
-public class KontrolerFormeZaRegistracijuDEInstruktora implements Initializable {
+public class KontrolerFormeZaRegistracijuOGInstruktora implements Initializable {
 	
 	public static String TRUSTSTORE = "resources" + File.separator + "clientTrustStore.p12";
 	public static String KEYSTORE = "resources" + File.separator + "clientStore.p12";
 	
+	
     public void back(ActionEvent actionEvent) throws IOException {
-        Aplikacija.getStage().setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/FormaZaRadAdministratora.fxml"))));
+        Aplikacija.getStage().setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/FormaZaRadClanaPKLS.fxml"))));
     }
 
     @FXML
@@ -52,7 +57,7 @@ public class KontrolerFormeZaRegistracijuDEInstruktora implements Initializable 
     PasswordField password;
 
     @FXML
-    ChoiceBox choiceBox2;
+    ChoiceBox<String> choiceBox2;
 
     public void registruj(ActionEvent actionEvent) throws IOException {
         List<TextInputControl> list = Arrays.asList(new TextInputControl[]{ ime, prezime, jmbg, username, password });
@@ -71,28 +76,28 @@ public class KontrolerFormeZaRegistracijuDEInstruktora implements Initializable 
             return;
         }
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setContentText("Uspješno ste registrovali državnog/entitetskog instruktora");
-        DEInstruktor.ENTITET entitet = DEInstruktor.stringToEntitet((String)choiceBox2.getValue());
-        KorisnikSistema deInstruktor = new DEInstruktor (
+        alert.setContentText("Uspješno ste registrovali gradskog/opštinskog instruktora");
+        String opstina = (String)choiceBox2.getValue();
+        KorisnikSistema ogInstruktor = new OGInstruktor (
         		1L, 
         		jmbg.getText(),
                 ime.getText(),
                 prezime.getText(),
                 username.getText(),
                 password.getText(),
-                entitet,
     			null, 
     			null, 
+    			opstina, 
+    			opstina, 
     			TRUSTSTORE, 
     			"sigurnost", 
     			KEYSTORE, 
     			"sigurnost");
-        
 
-        DEInstruktorCMISKlijent DEInstruktorCMISKlijent = new DEInstruktorCMISKlijent(KontrolerFormeZaPrijavu.getTrenutniKorisnik());
-        Response odgovor = DEInstruktorCMISKlijent.registrujKorisnika(deInstruktor);
+        OGInstruktorCMISKLijent ogInstruktorCMISKlijent = new OGInstruktorCMISKLijent(KontrolerFormeZaPrijavu.getTrenutniKorisnik());
+        Response odgovor = ogInstruktorCMISKlijent.registrujKorisnika(ogInstruktor);
         if(Response.Status.Family.SUCCESSFUL.equals(odgovor.getStatusInfo().getFamily())) {
-        	Aplikacija.connLogger.getLogger().log(Level.INFO, "Uspjesna registracija državno/entitetskog instruktora.");
+        	Aplikacija.connLogger.getLogger().log(Level.INFO, "Uspješna registracija opštinskog/gradskog instruktora.");
         }else {
         	
         	Aplikacija.connLogger.logHeaders(Level.SEVERE, odgovor);
@@ -100,7 +105,7 @@ public class KontrolerFormeZaRegistracijuDEInstruktora implements Initializable 
         
         ButtonType buttonType = alert.showAndWait().get();
         if(!buttonType.getText().equals("OK")) return;
-        Parent root = FXMLLoader.load(getClass().getResource("/view/FormaZaRadAdministratora.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/view/FormaZaRadClanaPKLS.fxml"));
         Aplikacija.getStage().setScene(new Scene(root));
     }
 
@@ -121,7 +126,7 @@ public class KontrolerFormeZaRegistracijuDEInstruktora implements Initializable 
             wrapper.sadrzajLabele=labelaZaIme.getText();
             labelaZaIme.setText(wrapper.sadrzajLabele + wrapper.prezimeIIme);
         });
-        choiceBox2.getItems().addAll("Bosna i Hercegovina", "Federacija Bosne i Hercegovine", "Republika Srpska");
-        choiceBox2.setValue(choiceBox2.getItems().get(0));
+        choiceBox2.getItems().addAll(OpstineCollection.getOpstine());
+        choiceBox2.setValue("Banja Luka");
     }
 }

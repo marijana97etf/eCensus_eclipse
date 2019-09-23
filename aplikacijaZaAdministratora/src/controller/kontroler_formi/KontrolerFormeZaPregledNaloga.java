@@ -15,7 +15,7 @@ import model.korisnicki_nalozi.DEInstruktor;
 import model.korisnicki_nalozi.KorisnikSistema;
 import model.korisnicki_nalozi.OGInstruktor;
 import model.table_input_models.*;
-import test.Pokreni_GUI_Aplikaciju;
+import test.Aplikacija;
 
 import java.io.IOException;
 import java.net.URL;
@@ -37,8 +37,8 @@ public abstract class KontrolerFormeZaPregledNaloga implements Initializable {
         return accountForEdit;
     }
 
-    public static void setAccountForEdit(ClanPKLSInputModel accountForEdit) {
-        accountForEdit = accountForEdit;
+    public static void setAccountForEdit(KorisnikInputModel accountForEdit2) {
+        accountForEdit = accountForEdit2;
     }
 
    public static TableView<KorisnikInputModel> staticTabela;
@@ -64,8 +64,21 @@ public abstract class KontrolerFormeZaPregledNaloga implements Initializable {
     protected ObservableList<KorisnikInputModel> lista;
 
     public void back(ActionEvent actionEvent) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/view/FormaZaRadAdministratora.fxml"));
-        Pokreni_GUI_Aplikaciju.getStage().setScene(new Scene(root));
+    	 String retPath;
+    	 if(KontrolerFormeZaPrijavu.getTrenutniKorisnik() instanceof ClanPKLS)
+         {
+             retPath="/view/FormaZaRadClanaPKLS.fxml";
+         }
+    	 else if(KontrolerFormeZaPrijavu.getTrenutniKorisnik() instanceof OGInstruktor)
+    	 {
+    		 retPath="/view/FormaZaRadOGInstruktora.fxml";
+    	 }
+    	 else
+    	 {
+    		 retPath="/view/FormaZaRadAdministratora.fxml";
+    	 }
+        Parent root = FXMLLoader.load(getClass().getResource(retPath));
+        Aplikacija.getStage().setScene(new Scene(root));
     }
 
     @FXML
@@ -96,33 +109,34 @@ public abstract class KontrolerFormeZaPregledNaloga implements Initializable {
         prezimeColumn.setCellValueFactory(new PropertyValueFactory<>("prezime"));
         imeColumn.setCellValueFactory(new PropertyValueFactory<>("ime"));
         korisnickoImeColumn.setCellValueFactory(new PropertyValueFactory<>("korisnickoIme"));
-        opcijeColumn.setCellValueFactory(new PropertyValueFactory<>("obaButtona"));
+        opcijeColumn.setCellValueFactory(new PropertyValueFactory<>("Buttons"));
         Platform.runLater(()->tabela.setItems(lista));
 
+        System.out.print(lista);
         popraviIdove(lista);
         tabela.getItems().addAll(lista);
 
         for(int i=0; i<tabela.getItems().size(); i++)
         {
             var item = tabela.getItems().get(i);
-            item.getBrisanjeButton().setOnAction(e->
+            item.getButtons()[1].setOnAction(e->
             {
                 tabela.getItems().removeAll(item);
                 
                 ClanPKLSCMISKlijent clanPKLSCMISKlijent = new ClanPKLSCMISKlijent(KontrolerFormeZaPrijavu.getTrenutniKorisnik());
                 Response odgovor = clanPKLSCMISKlijent.obrisiKorisnika(item.getKorisnikSistema());
                 if(Response.Status.Family.SUCCESSFUL.equals(odgovor.getStatusInfo().getFamily())) {
-                	Pokreni_GUI_Aplikaciju.connLogger.getLogger().log(Level.INFO, "Uspjesna brisanje.");
+                	Aplikacija.connLogger.getLogger().log(Level.INFO, "Uspješno brisanje.");
                 }else {
                 	
-                	Pokreni_GUI_Aplikaciju.connLogger.logHeaders(Level.SEVERE, odgovor);
+                	Aplikacija.connLogger.logHeaders(Level.SEVERE, odgovor);
                 }
                 
                 popraviIdove(tabela.getItems());
                 Platform.runLater(()-> tabela.refresh());
             });
-
-            item.getIzmjenaButton().setOnAction(e->
+            
+            item.getButtons()[0].setOnAction(e->
             {
                 String path, quest="Da li želite da izmjenite nalog ";
                 if(item.getKorisnikSistema() instanceof DEInstruktor)
@@ -153,7 +167,7 @@ public abstract class KontrolerFormeZaPregledNaloga implements Initializable {
                 if(!buttonType.getText().equals("OK")) return;
                 accountForEdit=item;
                 try {
-                    Pokreni_GUI_Aplikaciju.getStage().setScene(new Scene(FXMLLoader.load(getClass().getResource(path))));
+                    Aplikacija.getStage().setScene(new Scene(FXMLLoader.load(getClass().getResource(path))));
                 } catch (IOException ex) {
                     ex.printStackTrace();
                 }

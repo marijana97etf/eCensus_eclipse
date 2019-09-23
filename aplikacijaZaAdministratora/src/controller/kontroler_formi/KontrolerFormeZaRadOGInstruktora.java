@@ -12,14 +12,14 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import model.korisnicki_nalozi.KorisnikSistema;
-import test.Pokreni_GUI_Aplikaciju;
+import test.Aplikacija;
 
 public class KontrolerFormeZaRadOGInstruktora implements Initializable{
 
 	private KorisnikSistema korisnikSistema;
 
     public void Logout(ActionEvent actionEvent) throws IOException {
-        Pokreni_GUI_Aplikaciju.getStage().setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/FormaZaPrijavu.fxml"))));
+        Aplikacija.getStage().setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/FormaZaPrijavu.fxml"))));
     }
 
     @FXML
@@ -47,11 +47,11 @@ public class KontrolerFormeZaRadOGInstruktora implements Initializable{
     }
 
     public void promjeniJezik(ActionEvent actionEvent) throws IOException {
-        Pokreni_GUI_Aplikaciju.getStage().setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/FormaZaPromjenuJezika.fxml"))));
+        Aplikacija.getStage().setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/FormaZaPromjenuJezika.fxml"))));
     }
 
     public void promjeniPismo(ActionEvent actionEvent) throws IOException {
-        Pokreni_GUI_Aplikaciju.getStage().setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/FormaZaPromjenuPisma.fxml"))));
+        Aplikacija.getStage().setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/FormaZaPromjenuPisma.fxml"))));
     }
 	
 }
