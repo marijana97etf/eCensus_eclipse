@@ -16,15 +16,15 @@ import main.Main;
 
 public class PromjenaJezika {
 	private static List<Triplet<String, String, String>> rjecnik;
-	
+
 	public PromjenaJezika() {
 		procitajRjecnik();
 	}
-	
+
 	public static String pronadjiIZamijeni(String linija, String odabraniJezik) {
 		if(rjecnik == null)
 			procitajRjecnik();
-		
+
 		String novaLinija = linija;
 
 		for(Triplet<String, String, String> t : rjecnik) {
@@ -35,7 +35,7 @@ public class PromjenaJezika {
 				pattern = t.getValue1();
 			else
 				pattern = t.getValue2();
-			
+
 			Pattern myPattern;
 			if(!"POL".equals(pattern))
 				myPattern = Pattern.compile(pattern);
@@ -43,11 +43,11 @@ public class PromjenaJezika {
 				myPattern = Pattern.compile(pattern + ":");
 			Matcher matcher = myPattern.matcher(linija);
 			List<String> pronadjeno = new ArrayList<>();
-			
+
 			while (matcher.find()) {
 			    pronadjeno.add(matcher.group());
 			}
-	
+
 			for(String rijec : pronadjeno) {
 				String novaRijec;
 				if("srpski".equals(odabraniJezik))
@@ -64,7 +64,7 @@ public class PromjenaJezika {
 		}
 		return novaLinija;
 	}
-	
+
 	private static void procitajRjecnik() {
 		List<String> lines = new ArrayList<>();
 		rjecnik = new ArrayList<>();

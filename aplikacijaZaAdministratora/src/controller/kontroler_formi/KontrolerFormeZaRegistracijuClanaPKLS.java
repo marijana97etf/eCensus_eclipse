@@ -29,7 +29,8 @@ import model.korisnicki_nalozi.KorisnikSistema;
 import test.Pokreni_GUI_Aplikaciju;
 
 public class KontrolerFormeZaRegistracijuClanaPKLS implements Initializable {
-    public void back(ActionEvent actionEvent) throws IOException {
+    
+	public void back(ActionEvent actionEvent) throws IOException {
         Pokreni_GUI_Aplikaciju.getStage().setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/FormaZaRadAdministratora.fxml"))));
     }
 

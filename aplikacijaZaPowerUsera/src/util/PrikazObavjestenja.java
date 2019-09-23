@@ -10,21 +10,21 @@ public class PrikazObavjestenja {
     		poruka = PromjenaPisma.zamijeniLatinicuCiricom(poruka);
     		info = PromjenaPisma.zamijeniLatinicuCiricom(info);
     	}
-    	
+
         Alert userNotSelectedAlert = new Alert(Alert.AlertType.INFORMATION);
 	    userNotSelectedAlert.setTitle(info);
 	    userNotSelectedAlert.setHeaderText(info + "!");
         userNotSelectedAlert.setContentText(poruka);
         userNotSelectedAlert.showAndWait();
     }
-	
+
 	public static void prikaziUpozorenje(String poruka){
     	String greska = "Greška";
     	if("српски".equals(Main.trenutniJezik)) {
     		poruka = PromjenaPisma.zamijeniLatinicuCiricom(poruka);
     		greska = PromjenaPisma.zamijeniLatinicuCiricom(greska);
     	}
-    	
+
         Alert userNotSelectedAlert = new Alert(Alert.AlertType.ERROR);
 	    userNotSelectedAlert.setTitle(greska);
 	    userNotSelectedAlert.setHeaderText(greska + "!");

@@ -37,51 +37,51 @@ public class PromjenaPisma {
 
 	private static Map<String, String> rjecnikLatinicaUCirilicu = new HashMap<>();
 	private static Map<String, String> rjecnikCirilicaULatinicu = new HashMap<>();
-	
+
 	static
 	{
 		procitajRjecnik("rjecnikLatinicaUCirilicu.txt", rjecnikLatinicaUCirilicu);
 		procitajRjecnik("rjecnikCirilicaULatinicu.txt", rjecnikCirilicaULatinicu);
 	}
-	
-	
+
+
 	public static void promijeniPismo(String pismo) {
 		String formeDirektorijum = "src" + File.separator + "forme";
 		File folder = new File(formeDirektorijum);
 		File[] listOfFiles = folder.listFiles();
-		
+
 		for(File file : listOfFiles) {
 			try {
 				byte[] bytes = new byte[(int)file.length()];
 				DataInputStream dataInputStream = new DataInputStream(new BufferedInputStream(new FileInputStream(formeDirektorijum + File.separator + file.getName())));
-				dataInputStream.readFully(bytes);           
-				dataInputStream.close();      
+				dataInputStream.readFully(bytes);
+				dataInputStream.close();
 				String original = new String(bytes, StandardCharsets.UTF_8);
-										
+
 				String lines[] = original.split("\\r?\\n");
-				
+
 				List<String> linesAsList = Arrays.asList(lines);
 				List<String> noveLinije = new ArrayList<>();
-				
+
 				for(String l : linesAsList) {
 					String izmjena = pronadjiIZamijeni(l, pismo);
 					noveLinije.add(izmjena);
 				}
-						
-				prepisiFajl(file, noveLinije);	            
+
+				prepisiFajl(file, noveLinije);
 			}
 			catch(IOException e) {
 				e.printStackTrace();
 			}
 		}
 	}
-	
+
 	private static String pronadjiIZamijeni(String linija, String pismo) {
 		String pattern = "ext=\"[^\"]*\"";
 		Pattern myPattern = Pattern.compile(pattern);
 		Matcher matcher = myPattern.matcher(linija);
 		List<String> pronadjeno = new ArrayList<>();
-		
+
 		while (matcher.find()) {
 		    pronadjeno.add(matcher.group());
 		}
@@ -107,10 +107,10 @@ public class PromjenaPisma {
 					novaLinija = novaLinija.replaceAll(recenica, "ext=\"" + novaRecenica + "\"");
 				}
 			}
-		}			
+		}
 		return novaLinija;
 	}
-	
+
 	public static String zamijeniLatinicuCiricom(String recenica) {
 		recenica = recenica.replaceAll("LJ", rjecnikLatinicaUCirilicu.get("LJ"));
 		recenica = recenica.replaceAll("Lj", rjecnikLatinicaUCirilicu.get("Lj"));
@@ -122,7 +122,7 @@ public class PromjenaPisma {
 		recenica = recenica.replaceAll("dž", rjecnikLatinicaUCirilicu.get("dž"));
 		recenica = recenica.replaceAll("Š", "Ш");
 		recenica = recenica.replaceAll("š", "ш");
-		
+
 		String tmp = new String(recenica.toCharArray());
         for(var entry : rjecnikLatinicaUCirilicu.entrySet())
         {
@@ -130,7 +130,7 @@ public class PromjenaPisma {
         }
         return tmp;
 	}
-	
+
 	public static String zamijeniCirilicuLatinicom(String recenica) {
 		recenica = recenica.replaceAll("Љ", "Lj");
 		recenica = recenica.replaceAll("љ", "lj");
@@ -140,7 +140,7 @@ public class PromjenaPisma {
 		recenica = recenica.replaceAll("џ", "dž");
 		recenica = recenica.replaceAll("Ш", "Š");
 		recenica = recenica.replaceAll("ш", "š");
-		
+
 		String tmp = new String(recenica.toCharArray());
         for(var entry : rjecnikCirilicaULatinicu.entrySet())
         {
@@ -148,7 +148,7 @@ public class PromjenaPisma {
         }
         return tmp;
 	}
-	
+
 	public static void prepisiFajl(File file, List<String> linije) throws IOException {
 		BufferedWriter writer =
 	             new BufferedWriter(new OutputStreamWriter(new FileOutputStream("src" + File.separator + "forme"  + File.separator + file.getName()), StandardCharsets.UTF_8));
@@ -158,7 +158,7 @@ public class PromjenaPisma {
 		}
 	    writer.close();
 	}
-	
+
 	private static void procitajRjecnik(String nazivRjecnika, Map<String, String> rjecnik) {
         List<String> lines = new ArrayList<>();
         try {

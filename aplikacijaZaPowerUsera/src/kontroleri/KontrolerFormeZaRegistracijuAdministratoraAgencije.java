@@ -13,7 +13,7 @@ import javafx.stage.Stage;
 import util.PrikazObavjestenja;
 
 public class KontrolerFormeZaRegistracijuAdministratoraAgencije {
-	
+
 	@FXML
 	private TextField imeTextField;
 	@FXML
@@ -24,7 +24,7 @@ public class KontrolerFormeZaRegistracijuAdministratoraAgencije {
 	private TextField korisnickoImeTextField;
 	@FXML
 	private TextField lozinkaTextField;
-	
+
 	@FXML
 	private void registrujButtonAction() {
 		String ime = imeTextField.getText();
@@ -32,16 +32,16 @@ public class KontrolerFormeZaRegistracijuAdministratoraAgencije {
 		String jmbg = jmbgTextField.getText();
 		String korisnickoIme = korisnickoImeTextField.getText();
 		String lozinka = lozinkaTextField.getText();
-		
+
 		if(ime.isEmpty() || prezime.isEmpty() || jmbg.isEmpty() || korisnickoIme.isEmpty() || lozinka.isEmpty())
 			PrikazObavjestenja.prikaziUpozorenje("Morate unijeti sve podatke.");
 		else {
 			//Poslati podatke na cmis server
-			
+
 			try {
 				Stage stage = new Stage();
 	            stage.initModality(Modality.APPLICATION_MODAL);
-	
+
 	            Parent root = FXMLLoader.load(getClass().getResource("/forme" + File.separator + "UspjesnaRegistracijaAdministratoraAgencije.fxml"));
 	            stage.setScene(new Scene(root));
 	            stage.setResizable(false);
@@ -51,6 +51,6 @@ public class KontrolerFormeZaRegistracijuAdministratoraAgencije {
 				e.printStackTrace();
 			}
 		}
-			
+
 	}
 }

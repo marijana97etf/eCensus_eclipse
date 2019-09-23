@@ -5,7 +5,7 @@ import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
 public class UspjesnaRegistracijaAdministratoraAgencijeKontroler {
-	
+
 	@FXML
 	private Button OKButton;
 
