@@ -90,7 +90,10 @@ public class KontrolerFormeZaPromjenuPisma implements Initializable {
         {
         	Pokreni_GUI_Aplikaciju.getStage().setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/FormaZaRadDEInstruktora.fxml"))));
         }
-        else if(korisnikSistema instanceof OGInstruktor) throw new ExecutionControl.NotImplementedException("OGInstruktor");
+        else if(korisnikSistema instanceof OGInstruktor) 
+        {
+        	Pokreni_GUI_Aplikaciju.getStage().setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/FormaZaRadOGInstruktora.fxml"))));
+        }
         else
         {
             Alert alert2 = new Alert(Alert.AlertType.ERROR);
