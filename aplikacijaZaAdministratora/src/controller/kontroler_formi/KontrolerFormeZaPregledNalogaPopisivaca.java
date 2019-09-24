@@ -20,6 +20,7 @@ public class KontrolerFormeZaPregledNalogaPopisivaca extends KontrolerFormeZaPre
     public boolean initializeList() {
     	PopisivacCMISKlijent popisivacCMISKlijent = new PopisivacCMISKlijent(KontrolerFormeZaPrijavu.getTrenutniKorisnik());
     	Response odgovor  = popisivacCMISKlijent.getListaPopisivaca();
+    	
     	if(Response.Status.Family.SUCCESSFUL.equals(odgovor.getStatusInfo().getFamily())) {
     		lista = FXCollections.observableArrayList(odgovor.readEntity(new GenericType<LinkedList<Popisivac>>() {}).stream()
                     .map(PopisivacInputModel::new)

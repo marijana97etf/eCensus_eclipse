@@ -14,16 +14,16 @@ public abstract class Administrator extends KorisnikSistema
     public Administrator(String ime,
                          String prezime,
                          String korisnickoIme,
-                         String lozinka,
+                         String lozinkaHash,
                          JEZIK jezik,
                          PISMO pismo)
     {
-        super(ime, prezime, korisnickoIme, lozinka, jezik, pismo);
+        super(ime, prezime, korisnickoIme, lozinkaHash, jezik, pismo);
     }
 
-    public Administrator(long id, String ime, String prezime, String korisnickoIme, String lozinka,
+    public Administrator(long id, String ime, String prezime, String korisnickoIme, String lozinkaHash,
 			JEZIK jezik, PISMO pismo, String trustStore, String trustLozinka, String keyStore, String keyLozinka) {
-		super(id, ime, prezime, korisnickoIme, lozinka, jezik, pismo, trustStore, trustLozinka, keyStore, keyLozinka);
+		super(id, ime, prezime, korisnickoIme, lozinkaHash, jezik, pismo, trustStore, trustLozinka, keyStore, keyLozinka);
 	}
 
 	public Izvjestaj kreirajIzvjestaj(Class<? extends Izvjestaj> izvjestaj, Object... params) throws Exception {

@@ -33,15 +33,15 @@ public class MySQLDEInstruktorDAO implements DEInstruktorDAO {
 			while(resultSet.next()) {
 				String jezik = resultSet.getString("Jezik");
 				String pismo = resultSet.getString("Pismo");
-				DEInstruktor deInstruktor = new DEInstruktor(/*resultSet.getInt("IdOsobe")*/"",
-													resultSet.getString("Ime"),
-													resultSet.getString("Prezime"),
-													resultSet.getString("KorisnickoIme"),
-													resultSet.getString("Lozinka"),
-													DRZAVA.getDRZAVA(resultSet.getString("Drzava")),
-													ENTITET.getENTITET(resultSet.getString("Entitet")),
-													JEZIK.getJEZIK(jezik),
-													PISMO.getPISMO(pismo));
+				DEInstruktor deInstruktor = new DEInstruktor(resultSet.getString("Ime"),
+															 resultSet.getString("Prezime"),
+															 resultSet.getString("KorisnickoIme"),
+															 resultSet.getString("Lozinka"),
+															 DRZAVA.getDRZAVA(resultSet.getString("Drzava")),
+															 ENTITET.getENTITET(resultSet.getString("Entitet")),
+															 JEZIK.getJEZIK(jezik),
+															 PISMO.getPISMO(pismo));
+				deInstruktor.setId(resultSet.getInt("IdOsobe"));
 				deInstruktori.add(deInstruktor);
 			}
 			
@@ -164,8 +164,7 @@ public class MySQLDEInstruktorDAO implements DEInstruktorDAO {
 			if(resultSet.next()) {
 				String jezik = resultSet.getString("Jezik");
 				String pismo = resultSet.getString("Pismo");
-				korisnikSistema = new DEInstruktor(/*resultSet.getInt("IdOsobe")*/"",
-													resultSet.getString("Ime"),
+				korisnikSistema = new DEInstruktor( resultSet.getString("Ime"),
 													resultSet.getString("Prezime"),
 													resultSet.getString("KorisnickoIme"),
 													resultSet.getString("Lozinka"),
@@ -173,6 +172,7 @@ public class MySQLDEInstruktorDAO implements DEInstruktorDAO {
 													ENTITET.getENTITET(resultSet.getString("Entitet")),
 													JEZIK.getJEZIK(jezik),
 													PISMO.getPISMO(pismo));
+				korisnikSistema.setId(resultSet.getInt("IdOsobe"));
 			}
 			return korisnikSistema;
 		} catch (SQLException e) {

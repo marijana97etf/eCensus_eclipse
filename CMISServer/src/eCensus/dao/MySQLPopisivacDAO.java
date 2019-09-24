@@ -31,14 +31,13 @@ public class MySQLPopisivacDAO implements PopisivacDAO {
 			while(resultSet.next()) {
 				String jezik = resultSet.getString("Jezik");
 				String pismo = resultSet.getString("Pismo");
-				Popisivac popisivac = new Popisivac(/*resultSet.getInt("IdOsobe")*/"",
-													resultSet.getString("Ime"),
+				Popisivac popisivac = new Popisivac(resultSet.getString("Ime"),
 													resultSet.getString("Prezime"),
 													resultSet.getString("KorisnickoIme"),
 													resultSet.getString("Lozinka"),
 													JEZIK.getJEZIK(jezik),
 													PISMO.getPISMO(pismo));
-				popisivac.setLozinkaHash(resultSet.getString("Lozinka"));
+				popisivac.setId(resultSet.getInt("IdOsobe"));
 				popisivaci.add(popisivac);
 			}
 			
@@ -156,13 +155,13 @@ public class MySQLPopisivacDAO implements PopisivacDAO {
 			if(resultSet.next()) {
 				String jezik = resultSet.getString("Jezik");
 				String pismo = resultSet.getString("Pismo");
-				korisnikSistema = new Popisivac(/*resultSet.getInt("IdOsobe")*/"",
-													resultSet.getString("Ime"),
-													resultSet.getString("Prezime"),
-													resultSet.getString("KorisnickoIme"),
-													resultSet.getString("Lozinka"),
-													JEZIK.getJEZIK(jezik),
-													PISMO.getPISMO(pismo));
+				korisnikSistema = new Popisivac(resultSet.getString("Ime"),
+												resultSet.getString("Prezime"),
+												resultSet.getString("KorisnickoIme"),
+												resultSet.getString("Lozinka"),
+												JEZIK.getJEZIK(jezik),
+												PISMO.getPISMO(pismo));
+				korisnikSistema.setId(resultSet.getInt("IdOsobe"));
 			}
 			return korisnikSistema;
 		} catch (SQLException e) {

@@ -2,7 +2,13 @@ package eCensus.dao;
 
 import java.util.Collection;
 
+import model.korisnicki_nalozi.AdministratorAgencije;
+import model.korisnicki_nalozi.ClanPKLS;
+import model.korisnicki_nalozi.DEInstruktor;
 import model.korisnicki_nalozi.KorisnikSistema;
+import model.korisnicki_nalozi.OGInstruktor;
+import model.korisnicki_nalozi.Popisivac;
+import model.korisnicki_nalozi.PowerUser;
 
 public class MySQLNaloziDAO {
 
@@ -31,17 +37,17 @@ public class MySQLNaloziDAO {
 	}
 	
 	public Collection<KorisnikSistema> getListaKorisnika(String tip) {
-		if("Popisivac".equals(tip)) {
+		if(Popisivac.class.getName().equals(tip)) {
 			return getMySQLPopisivacDAO().getListuKorisnika();
-		}  else if("AdministratorAgencije".equals(tip)) {
+		}  else if(AdministratorAgencije.class.getName().equals(tip)) {
 			return getMySQLAdministratorAgencijeDAO().getListuKorisnika();
-		} else if("ClanPKLS".equals(tip)) {
+		} else if(ClanPKLS.class.getName().equals(tip)) {
 			return getMySQLClanPKLSDAO().getListuKorisnika();
-		} else if("DEInstruktor".equals(tip)) {
+		} else if(DEInstruktor.class.getName().equals(tip)) {
 			return getMySQLDEInstruktorDAO().getListuKorisnika();
-		} else if("OGInstruktor".equals(tip)) {
+		} else if(OGInstruktor.class.getName().equals(tip)) {
 			return getMySQLOGInstruktorDAO().getListuKorisnika();
-		} else if("PowerUser".equals(tip)) {
+		} else if(PowerUser.class.getName().equals(tip)) {
 			return getMySQLPowerUserDAO().getListuKorisnika();
 		} else {
 			return null;

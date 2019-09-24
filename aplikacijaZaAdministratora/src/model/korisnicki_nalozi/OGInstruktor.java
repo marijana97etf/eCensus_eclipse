@@ -12,20 +12,20 @@ public class OGInstruktor extends Administrator {
     public OGInstruktor(String ime,
                         String prezime,
                         String korisnickoIme,
-                        String lozinka,
+                        String lozinkaHash,
                         JEZIK jezik,
                         PISMO pismo,
                         String grad,
                         String opstina)
     {
-        super(ime, prezime, korisnickoIme, lozinka, jezik, pismo);
+        super(ime, prezime, korisnickoIme, lozinkaHash, jezik, pismo);
         this.grad = grad;
         this.opstina = opstina;
     }
 
-	public OGInstruktor(long id, String ime, String prezime, String korisnickoIme, String lozinka,
+	public OGInstruktor(long id, String ime, String prezime, String korisnickoIme, String lozinkaHash,
 			JEZIK jezik, PISMO pismo, String grad, String opstina, String trustStore, String trustLozinka, String keyStore, String keyLozinka) {
-		super(id, ime, prezime, korisnickoIme, lozinka, jezik, pismo, trustStore, trustLozinka, keyStore, keyLozinka);
+		super(id, ime, prezime, korisnickoIme, lozinkaHash, jezik, pismo, trustStore, trustLozinka, keyStore, keyLozinka);
 		this.grad = grad;
         this.opstina = opstina;
 	}

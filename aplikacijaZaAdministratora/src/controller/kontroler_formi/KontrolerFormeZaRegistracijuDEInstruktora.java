@@ -11,6 +11,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import model.korisnicki_nalozi.ClanPKLS;
 import model.korisnicki_nalozi.DEInstruktor;
+import model.korisnicki_nalozi.DEInstruktor.DRZAVA;
 import model.korisnicki_nalozi.KorisnikSistema;
 import model.korisnicki_nalozi.OGInstruktor;
 import test.Aplikacija;
@@ -74,13 +75,14 @@ public class KontrolerFormeZaRegistracijuDEInstruktora implements Initializable 
         }
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setContentText("Uspješno ste registrovali državnog/entitetskog instruktora");
-        DEInstruktor.ENTITET entitet = DEInstruktor.stringToEntitet((String)choiceBox2.getValue());
+        DEInstruktor.ENTITET entitet = DEInstruktor.ENTITET.getENTITET((String)choiceBox2.getValue());
         KorisnikSistema deInstruktor = new DEInstruktor (
         		i++,
                 ime.getText(),
                 prezime.getText(),
                 username.getText(),
                 password.getText(),
+                DRZAVA.BIH,
                 entitet,
     			null, 
     			null, 

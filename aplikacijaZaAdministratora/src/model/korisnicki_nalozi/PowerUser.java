@@ -9,15 +9,15 @@ public class PowerUser extends KorisnikSistema {
 		// TODO Auto-generated constructor stub
 	}
 
-	public PowerUser(String ime, String prezime, String korisnickoIme, String lozinka, JEZIK jezik,
+	public PowerUser(String ime, String prezime, String korisnickoIme, String lozinkaHash, JEZIK jezik,
 			PISMO pismo) {
-		super(ime, prezime, korisnickoIme, lozinka, jezik, pismo);
+		super(ime, prezime, korisnickoIme, lozinkaHash, jezik, pismo);
 		// TODO Auto-generated constructor stub
 	}
 
-	public PowerUser(long id, String ime, String prezime, String korisnickoIme, String lozinka,
+	public PowerUser(long id, String ime, String prezime, String korisnickoIme, String lozinkaHash,
 			JEZIK jezik, PISMO pismo, String trustStore, String trustLozinka, String keyStore, String keyLozinka) {
-		super(id, ime, prezime, korisnickoIme, lozinka, jezik, pismo, trustStore, trustLozinka, keyStore,
+		super(id, ime, prezime, korisnickoIme, lozinkaHash, jezik, pismo, trustStore, trustLozinka, keyStore,
 				keyLozinka);
 		// TODO Auto-generated constructor stub
 	}

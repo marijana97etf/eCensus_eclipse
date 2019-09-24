@@ -61,13 +61,13 @@ public class KontrolerFormeZaRegistracijuPopisivaca implements Initializable {
         if(password.getText().length()<8)
         {
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setContentText("Unesite 'jaču' lozinku!");
+            alert.setContentText("Unesite 'jaÄ�u' lozinku!");
             alert.showAndWait();
             return;
         }
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setContentText("Uspješno ste registrovali popisivača!");
-        KorisnikSistema ogInstruktor = new Popisivac(
+        alert.setContentText("UspjeÅ¡no ste registrovali popisivaÄ�a!");
+        KorisnikSistema popisivac = new Popisivac(
         		i++,
                 ime.getText(),
                 prezime.getText(),
@@ -81,9 +81,10 @@ public class KontrolerFormeZaRegistracijuPopisivaca implements Initializable {
     			"sigurnost");
 
         PopisivacCMISKlijent popisivacCMISKlijent = new PopisivacCMISKlijent(KontrolerFormeZaPrijavu.getTrenutniKorisnik());
-        Response odgovor = popisivacCMISKlijent.registrujKorisnika(ogInstruktor);
+        Response odgovor = popisivacCMISKlijent.registrujKorisnika(popisivac);
+        
         if(Response.Status.Family.SUCCESSFUL.equals(odgovor.getStatusInfo().getFamily())) {
-        	Aplikacija.connLogger.getLogger().log(Level.INFO, "Uspješna registracija popisivaca.");
+        	Aplikacija.connLogger.getLogger().log(Level.INFO, "UspjeÅ¡na registracija popisivaca.");
         }else {
         	
         	Aplikacija.connLogger.logHeaders(Level.SEVERE, odgovor);

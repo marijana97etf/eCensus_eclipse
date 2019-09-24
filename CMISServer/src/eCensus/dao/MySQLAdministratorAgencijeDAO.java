@@ -31,7 +31,7 @@ public class MySQLAdministratorAgencijeDAO implements AdministratorAgencijeDAO {
 			while(resultSet.next()) {
 				String jezik = resultSet.getString("Jezik");
 				String pismo = resultSet.getString("Pismo");
-				AdministratorAgencije administratorAgencije = new AdministratorAgencije(/*resultSet.getInt("IdOsobe")*/"",
+				AdministratorAgencije administratorAgencije = new AdministratorAgencije(
 													resultSet.getString("Ime"),
 													resultSet.getString("Prezime"),
 													resultSet.getString("KorisnickoIme"),
@@ -39,6 +39,7 @@ public class MySQLAdministratorAgencijeDAO implements AdministratorAgencijeDAO {
 													JEZIK.getJEZIK(jezik),
 													PISMO.getPISMO(pismo),
 													resultSet.getString("NazivAgencije"));
+				administratorAgencije.setId(resultSet.getInt("IdOsobe"));
 				administratoriAgencije.add(administratorAgencije);
 			}
 			
@@ -160,14 +161,14 @@ public class MySQLAdministratorAgencijeDAO implements AdministratorAgencijeDAO {
 			if(resultSet.next()) {
 				String jezik = resultSet.getString("Jezik");
 				String pismo = resultSet.getString("Pismo");
-				korisnikSistema = new AdministratorAgencije(/*resultSet.getInt("IdOsobe")*/"",
-															resultSet.getString("Ime"),
+				korisnikSistema = new AdministratorAgencije(resultSet.getString("Ime"),
 															resultSet.getString("Prezime"),
 															resultSet.getString("KorisnickoIme"),
 															resultSet.getString("Lozinka"),
 															JEZIK.getJEZIK(jezik),
 															PISMO.getPISMO(pismo),
 															resultSet.getString("NazivAgencije"));
+				korisnikSistema.setId(resultSet.getInt("IdOsobe"));
 			}
 			return korisnikSistema;
 		} catch (SQLException e) {

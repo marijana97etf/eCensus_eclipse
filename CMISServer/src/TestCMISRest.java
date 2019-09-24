@@ -22,7 +22,7 @@ public class TestCMISRest {
 
 	public static void main(String[] args) {
 		
-		KorisnikSistema korisnikSistema = new DEInstruktor(2L, "1232132", "Nikola", "Nikolic", "nikola.nikolic",
+		KorisnikSistema korisnikSistema = new DEInstruktor(2L, "Nikola", "Nikolic", "nikola.nikolic",
 				"12345", DRZAVA.BIH, ENTITET.RS, JEZIK.SRPSKI, PISMO.LATINICA, TRUSTSTORE, "sigurnost", KEYSTORE,
 				"sigurnost");
 		CMISKlijent klijent = new DEInstruktorCMISKlijent(korisnikSistema.getKeyStore(), korisnikSistema.getKeyLozinka(),

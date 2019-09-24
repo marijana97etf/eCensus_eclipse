@@ -34,19 +34,19 @@ public class KorisnikSistema implements Serializable {
 		
 	}
 	
-	public KorisnikSistema(String ime, String prezime, String korisnickoIme, String lozinka, JEZIK jezik,
+	public KorisnikSistema(String ime, String prezime, String korisnickoIme, String lozinkaHash, JEZIK jezik,
 			PISMO pismo) {
 		this.ime = ime;
 		this.prezime = prezime;
 		this.korisnickoIme = korisnickoIme;
-		this.lozinkaHash = napraviHesLozinke(lozinka);
+		this.lozinkaHash = lozinkaHash;
 		this.jezik = jezik;
 		this.pismo = pismo;
 	}
 
-	public KorisnikSistema(long id, String ime, String prezime, String korisnickoIme, String lozinka,
+	public KorisnikSistema(long id, String ime, String prezime, String korisnickoIme, String lozinkaHash,
 			JEZIK jezik, PISMO pismo, String trustStore, String trustLozinka, String keyStore, String keyLozinka) {
-		this(ime, prezime, korisnickoIme, lozinka, jezik, pismo);
+		this(ime, prezime, korisnickoIme, lozinkaHash, jezik, pismo);
 		this.id = id;
 		this.trustStore = trustStore;
 		this.keyStore = keyStore;
@@ -146,7 +146,7 @@ public class KorisnikSistema implements Serializable {
 	}
 
 	public void setLozinkaHash(String lozinka) {
-		this.lozinkaHash = napraviHesLozinke(lozinka);
+		this.lozinkaHash = lozinkaHash;
 	}
 
 	public void setTrustLozinka(String trustLozinka) {

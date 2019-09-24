@@ -28,7 +28,7 @@ public class PopisivacCMISKlijent extends CMISKlijent {
 	}
 	
 	public Response getListaPopisivaca(){
-		return get(cmisResursUrl + "/" + korisnikResursUrl + "/lista?tip=" + Popisivac.class.getName() );
+		return get(cmisResursUrl + "/" + naloziResursUrl + "/lista?tip=" + Popisivac.class.getName() );
 	}
 	
 	public Response getPopisneKrugovePopisivaca(Popisivac popisivac){

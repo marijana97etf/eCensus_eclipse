@@ -46,7 +46,7 @@ public class KontrolerFormeZaPrijavu {
         }
         else{
             try {
-                String hashLozinke = KorisnikSistema.napraviHesLozinke(lozinka);
+                //String hashLozinke = KorisnikSistema.napraviHesLozinke(lozinka);
 
                 Properties properties = new Properties();
             	properties.load(new FileInputStream(new File(CONFIG_FILE_PATH)));
@@ -55,7 +55,7 @@ public class KontrolerFormeZaPrijavu {
             	String cmisResursURL = properties.getProperty("CMIS_RESURS_URL");
             	
                 PopisivacCMISKlijent klijent = new PopisivacCMISKlijent(keystore, "sigurnost",
-        				truststore, "sigurnost", korisnickoIme, KorisnikSistema.napraviHesLozinke(hashLozinke));
+        				truststore, "sigurnost", korisnickoIme, KorisnikSistema.napraviHesLozinke(lozinka));
         		Response odgovor = klijent.post(cmisResursURL + "/login", korisnickoIme);
 
         		if (Response.Status.UNAUTHORIZED.equals(odgovor.getStatusInfo())) {

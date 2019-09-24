@@ -31,15 +31,15 @@ public class MySQLOGInstruktorDAO implements OGInstruktorDAO {
 			while(resultSet.next()) {
 				String jezik = resultSet.getString("Jezik");
 				String pismo = resultSet.getString("Pismo");
-				OGInstruktor ogInstruktor = new OGInstruktor(/*resultSet.getInt("IdOsobe")*/"",
-													resultSet.getString("Ime"),
-													resultSet.getString("Prezime"),
-													resultSet.getString("KorisnickoIme"),
-													resultSet.getString("Lozinka"),
-													JEZIK.getJEZIK(jezik),
-													PISMO.getPISMO(pismo),
-													resultSet.getString("Grad"),
-													resultSet.getString("Opstina"));
+				OGInstruktor ogInstruktor = new OGInstruktor(resultSet.getString("Ime"),
+															 resultSet.getString("Prezime"),
+															 resultSet.getString("KorisnickoIme"),
+															 resultSet.getString("Lozinka"),
+															 JEZIK.getJEZIK(jezik),
+															 PISMO.getPISMO(pismo),
+															 resultSet.getString("Grad"),
+															 resultSet.getString("Opstina"));
+				ogInstruktor.setId(resultSet.getInt("IdOsobe"));
 				ogInstruktori.add(ogInstruktor);
 			}
 			
@@ -162,15 +162,15 @@ public class MySQLOGInstruktorDAO implements OGInstruktorDAO {
 			if(resultSet.next()) {
 				String jezik = resultSet.getString("Jezik");
 				String pismo = resultSet.getString("Pismo");
-				korisnikSistema = new OGInstruktor(/*resultSet.getInt("IdOsobe")*/"",
-													resultSet.getString("Ime"),
-													resultSet.getString("Prezime"),
-													resultSet.getString("KorisnickoIme"),
-													resultSet.getString("Lozinka"),
-													JEZIK.getJEZIK(jezik),
-													PISMO.getPISMO(pismo),
-													resultSet.getString("Grad"),
-													resultSet.getString("Opstina"));
+				korisnikSistema = new OGInstruktor(resultSet.getString("Ime"),
+												   resultSet.getString("Prezime"),
+												   resultSet.getString("KorisnickoIme"),
+												   resultSet.getString("Lozinka"),
+												   JEZIK.getJEZIK(jezik),
+												   PISMO.getPISMO(pismo),
+												   resultSet.getString("Grad"),
+												   resultSet.getString("Opstina"));
+				korisnikSistema.setId(resultSet.getInt("IdOsobe"));
 			}
 			return korisnikSistema;
 		} catch (SQLException e) {

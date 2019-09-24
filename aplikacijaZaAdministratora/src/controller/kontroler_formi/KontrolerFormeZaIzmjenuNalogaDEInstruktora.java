@@ -43,7 +43,7 @@ public class KontrolerFormeZaIzmjenuNalogaDEInstruktora implements Initializable
     public void izmjeni(ActionEvent actionEvent) {
 
         Alert alert = new Alert(Alert.AlertType.WARNING);
-        alert.setContentText("Da li želite da sačuvate izmjene naloga državnog/entitetskog instruktora?");
+        alert.setContentText("Da li Å¾elite da saÄ�uvate izmjene naloga drÅ¾avnog/entitetskog instruktora?");
         ButtonType buttonType = alert.showAndWait().get();
         if(!buttonType.getText().equals("OK")) return;
         
@@ -51,7 +51,7 @@ public class KontrolerFormeZaIzmjenuNalogaDEInstruktora implements Initializable
         account.setPrezime(prezimeIzmjena.getText());
         account.setIme(imeIzmjena.getText());
         account.setKorisnickoIme(usernameIzmjena.getText());
-        ((DEInstruktor)account.getKorisnikSistema()).setEntitet(DEInstruktor.stringToEntitet((String) choiceBox.getValue()));
+        ((DEInstruktor)account.getKorisnikSistema()).setEntitet(DEInstruktor.ENTITET.getENTITET((String) choiceBox.getValue()));
         account.updateKorisnikSistema();
         
         KorisnikSistema deInstuktor =  account.getKorisnikSistema();
@@ -59,7 +59,7 @@ public class KontrolerFormeZaIzmjenuNalogaDEInstruktora implements Initializable
         DEInstruktorCMISKlijent deInstuktorCMISKlijent = new DEInstruktorCMISKlijent(KontrolerFormeZaPrijavu.getTrenutniKorisnik());
         Response odgovor = deInstuktorCMISKlijent.azurirajKorisnika(deInstuktor);
         if(Response.Status.Family.SUCCESSFUL.equals(odgovor.getStatusInfo().getFamily())) {
-        	Aplikacija.connLogger.getLogger().log(Level.INFO, "Uspjesna izmjena naloga državno/entitetskog instruktora.");
+        	Aplikacija.connLogger.getLogger().log(Level.INFO, "Uspjesna izmjena naloga drÅ¾avno/entitetskog instruktora.");
         }else {
         	
         	Aplikacija.connLogger.logHeaders(Level.SEVERE, odgovor);
@@ -77,7 +77,7 @@ public class KontrolerFormeZaIzmjenuNalogaDEInstruktora implements Initializable
 
     public void back(ActionEvent actionEvent) throws IOException {
         Alert alert = new Alert(Alert.AlertType.WARNING);
-        alert.setContentText("Da li Å¾elite da napustite izmjenu naloga drÅ¾avnog/entitetskog instruktora?");
+        alert.setContentText("Da li Ã…Â¾elite da napustite izmjenu naloga drÃ…Â¾avnog/entitetskog instruktora?");
         ButtonType buttonType = alert.showAndWait().get();
         if(!buttonType.getText().equals("OK")) return;
         Aplikacija.getStage().setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/FormaZaPregledNalogaDEInstruktora.fxml"))));
@@ -94,6 +94,6 @@ public class KontrolerFormeZaIzmjenuNalogaDEInstruktora implements Initializable
         var korisnik = (DEInstruktor)account.getKorisnikSistema();
         ENTITET value = korisnik.getEntitet();
         if(value!=null)
-        	choiceBox.setValue(korisnik.entitetToString());
+        	choiceBox.setValue(korisnik.getEntitet().getValue());
     }
 }

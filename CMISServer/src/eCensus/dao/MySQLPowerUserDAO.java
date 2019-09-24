@@ -32,7 +32,7 @@ public class MySQLPowerUserDAO implements PowerUserDAO {
 			while(resultSet.next()) {
 				String jezik = resultSet.getString("Jezik");
 				String pismo = resultSet.getString("Pismo");
-				OGInstruktor ogInstruktor = new OGInstruktor(/*resultSet.getInt("IdOsobe")*/"",
+				OGInstruktor ogInstruktor = new OGInstruktor(
 													resultSet.getString("Ime"),
 													resultSet.getString("Prezime"),
 													resultSet.getString("KorisnickoIme"),
@@ -41,6 +41,7 @@ public class MySQLPowerUserDAO implements PowerUserDAO {
 													PISMO.getPISMO(pismo),
 													resultSet.getString("Grad"),
 													resultSet.getString("Opstina"));
+				ogInstruktor.setId(resultSet.getInt("IdOsobe"));
 				ogInstruktori.add(ogInstruktor);
 			}
 			

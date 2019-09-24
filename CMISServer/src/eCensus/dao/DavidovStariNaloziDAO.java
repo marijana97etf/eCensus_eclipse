@@ -22,7 +22,7 @@ import model.pracenje_popisa.PISMO;
 import model.pracenje_popisa.izvjestaji_o_popisivacu.PopisniKrug;
 
 public class DavidovStariNaloziDAO{
-	
+	/*
 	
 	public static String TRUSTSTORE = "resources" + File.separator + "clientTrustStore.p12";
 	public static String KEYSTORE = "resources" + File.separator + "clientStore.p12";
@@ -100,5 +100,5 @@ public class DavidovStariNaloziDAO{
 		
 		return korisnikRezultat;
 	}
-
+	 */
 }

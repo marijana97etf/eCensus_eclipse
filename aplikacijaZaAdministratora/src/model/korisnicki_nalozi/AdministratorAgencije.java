@@ -12,18 +12,18 @@ public class AdministratorAgencije extends Administrator {
     public AdministratorAgencije(String ime,
                                  String prezime,
                                  String korisnickoIme,
-                                 String lozinka,
+                                 String lozinkaHash,
                                  JEZIK jezik,
                                  PISMO pismo,
                                  String nazivAgencije)
     {
-        super(ime, prezime, korisnickoIme, lozinka, jezik, pismo);
+        super(ime, prezime, korisnickoIme, lozinkaHash, jezik, pismo);
         this.nazivAgencije = nazivAgencije;
     }
 
-	public AdministratorAgencije(long id, String ime, String prezime, String korisnickoIme, String lozinka,
+	public AdministratorAgencije(long id, String ime, String prezime, String korisnickoIme, String lozinkaHash,
 			JEZIK jezik, PISMO pismo, String nazivAgencije, String trustStore, String trustLozinka, String keyStore, String keyLozinka) {
-		super(id,ime, prezime, korisnickoIme, lozinka, jezik, pismo, trustStore, trustLozinka, keyStore, keyLozinka);
+		super(id,ime, prezime, korisnickoIme, lozinkaHash, jezik, pismo, trustStore, trustLozinka, keyStore, keyLozinka);
 		this.nazivAgencije = nazivAgencije;
 	}
 	

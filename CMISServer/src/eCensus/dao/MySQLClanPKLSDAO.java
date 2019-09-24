@@ -32,7 +32,7 @@ public class MySQLClanPKLSDAO implements ClanPKLSDAO {
 			while(resultSet.next()) {
 				String jezik = resultSet.getString("Jezik");
 				String pismo = resultSet.getString("Pismo");
-				ClanPKLS clanPKLS = new ClanPKLS(/*resultSet.getInt("IdOsobe")*/"",
+				ClanPKLS clanPKLS = new ClanPKLS(
 													resultSet.getString("Ime"),
 													resultSet.getString("Prezime"),
 													resultSet.getString("KorisnickoIme"),
@@ -41,6 +41,7 @@ public class MySQLClanPKLSDAO implements ClanPKLSDAO {
 													PISMO.getPISMO(pismo),
 													resultSet.getString("Grad"),
 													resultSet.getString("Opstina"));
+				clanPKLS.setId(resultSet.getInt("IdOsobe"));
 				clanoviPKLS.add(clanPKLS);
 			}
 			
@@ -166,7 +167,7 @@ public class MySQLClanPKLSDAO implements ClanPKLSDAO {
 			if(resultSet.next()) {
 				String jezik = resultSet.getString("Jezik");
 				String pismo = resultSet.getString("Pismo");
-				korisnikSistema = new ClanPKLS(/*resultSet.getInt("IdOsobe")*/"",
+				korisnikSistema = new ClanPKLS(
 									resultSet.getString("Ime"),
 									resultSet.getString("Prezime"),
 									resultSet.getString("KorisnickoIme"),
@@ -175,6 +176,7 @@ public class MySQLClanPKLSDAO implements ClanPKLSDAO {
 									PISMO.getPISMO(pismo),
 									resultSet.getString("Grad"),
 									resultSet.getString("Opstina"));
+				korisnikSistema.setId(resultSet.getInt("IdOsobe"));
 			}
 			return korisnikSistema;
 		} catch (SQLException e) {

@@ -63,6 +63,8 @@ public class AutentikacijaFilter implements ContainerRequestFilter
     private boolean isUserAllowed(final String korisnickoIme, final String lozinkaHash, final Set<String> rolesSet)
     {
     	KorisnikSistema korisnikSistema = DAOFactory.getMySQLFactoryDAO().getMySQLNaloziDAO().getKorisnikSistema(korisnickoIme);
+    	System.out.println(korisnikSistema);
+    	System.out.println(lozinkaHash);
     	if(korisnikSistema != null && korisnikSistema.getLozinkaHash().equals(lozinkaHash)) {
     		return true;
     	}

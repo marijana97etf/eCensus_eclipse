@@ -26,15 +26,14 @@ public class GlavniServer {
 	@Path("obradiPopisnice/stanovnici")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Response obradiPopisniceZaStanovnike(List<PopisnicaZaStanovnika> popisniceZaStanovnike) {
+	public Response obradiPopisniceZaStanovnike(PopisnicaZaStanovnika popisnicaZaStanovnika) {
 		PopisnicaZaStanovnikaDAO stanovnikDAO = DAOFactory.getMySQLFactoryDAO().getPopisnicaZaStanovnikaDAO();
-		for(PopisnicaZaStanovnika popisnicaZaStanovnika : popisniceZaStanovnike) {
-			boolean uspjesno = stanovnikDAO.skladistiPodatkeZaStanovnika(popisnicaZaStanovnika);
-			if(!uspjesno) {
-				//obradi neuspjesno skladistenu popisnicuZaStanovinka
-			}
+		boolean uspjesno = stanovnikDAO.skladistiPodatkeZaStanovnika(popisnicaZaStanovnika);
+		if(uspjesno) {
+			return Response.status(Status.OK).entity(true).build();
+		} else {
+			return Response.status(Status.INTERNAL_SERVER_ERROR).build();
 		}
-		return Response.status(Status.OK).entity(true).build();
 	}
 	
 	
@@ -42,15 +41,15 @@ public class GlavniServer {
 	@Path("obradiPopisnice/domacinstva")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Response obradiPopisnicuODomacinstvu(List<PopisnicaZaDomacinstvo> popisniceZaDomacinstva) {
+	public Response obradiPopisnicuODomacinstvu(PopisnicaZaDomacinstvo popisnicaZaDomacinstvo) {
 		PopisnicaZaDomacinstvoDAO domacinstvoDAO = DAOFactory.getMySQLFactoryDAO().getPopisnicaZaDomacinstvoDAO();
-		for(PopisnicaZaDomacinstvo popisnicaZaDomacinstvo : popisniceZaDomacinstva) {
-			boolean uspjesno = domacinstvoDAO.skladistiPodatkeZaDomacinstvo(popisnicaZaDomacinstvo);
-			if(!uspjesno) {
-				//obradi neuspjesno skladistenu popisnicuZaStanovinka
-			}
+		boolean uspjesno = domacinstvoDAO.skladistiPodatkeZaDomacinstvo(popisnicaZaDomacinstvo);
+		if(uspjesno) {
+			return Response.status(Status.OK).entity(true).build();
+		} else {
+			return Response.status(Status.INTERNAL_SERVER_ERROR).build();
 		}
-		return Response.status(Status.OK).entity(true).build();
+		
 	}
 	
 	//Kreiranje statistickih izvjestaja 

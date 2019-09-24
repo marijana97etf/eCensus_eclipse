@@ -20,6 +20,8 @@ import model.pracenje_popisa.PISMO;
 import test.Aplikacija;
 
 import javax.ws.rs.core.Response;
+
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -64,7 +66,7 @@ public class KontrolerFormeZaPrijavu implements Initializable {
 		} catch (IOException e) {
 			Aplikacija.connLogger.getLogger().log(Level.SEVERE,e.getMessage(),e);
 		}
-
+		
 		AdministratorCMISKlijent klijent = new AdministratorCMISKlijent(keystore, "sigurnost",
 				trustStore, "sigurnost", kosinickoImeInput, KorisnikSistema.napraviHesLozinke(password.getText()));
 		Response odgovor = klijent.post(cmisResursUrl + "/login",kosinickoImeInput);
@@ -98,6 +100,10 @@ public class KontrolerFormeZaPrijavu implements Initializable {
 		
 
 		trenutniKorisnik = korisnikSistema;
+		trenutniKorisnik.setKeyStore(keystore);
+		trenutniKorisnik.setKeyLozinka("sigurnost");
+		trenutniKorisnik.setTrustStore(trustStore);
+		trenutniKorisnik.setTrustLozinka("sigurnost");
 
 		if (korisnikSistema instanceof AdministratorAgencije)
 		{

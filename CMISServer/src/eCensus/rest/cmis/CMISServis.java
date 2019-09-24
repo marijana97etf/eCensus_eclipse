@@ -307,7 +307,7 @@ public class CMISServis {
 			}
 		}
 		
-
+/*
 		@GET
 		@Path("korisnici/nalozi/popisivac/{id}/popisniKrugovi")
 		@Consumes(MediaType.APPLICATION_JSON)
@@ -355,5 +355,5 @@ public class CMISServis {
 			
 			return Response.noContent().build();
 		}
-
+*/
 }
