@@ -2093,12 +2093,12 @@ public class KontrolerFormeZaPopisivanjeStanovnika {
 	    	String truststore = properties.getProperty("DEFAULT_TRUSTSTORE");
 	    	String truststoreLozinka = properties.getProperty("DEFAULT_TRUSTSTORE_PASSWORD");
 	        
-	        PopisivacGlavniServerKlijent glavniServer = new PopisivacGlavniServerKlijent(keystore, keystoreLozinka, truststore, truststoreLozinka, 
-	        		KontrolerFormeZaPrijavu.korisnik.getKorisnickoIme(), KontrolerFormeZaPrijavu.korisnik.getLozinkaHash());
-	        
-	        List<PopisnicaZaStanovnika> popisnice = new ArrayList<>();
-	        popisnice.add(popisnica);      
-	        int status = glavniServer.obradiPopisniceZaStanovnike(popisnice);
+	        //PopisivacGlavniServerKlijent glavniServer = new PopisivacGlavniServerKlijent(keystore, keystoreLozinka, truststore, truststoreLozinka, 
+	        //		KontrolerFormeZaPrijavu.korisnik.getKorisnickoIme(), KontrolerFormeZaPrijavu.korisnik.getLozinkaHash());
+	          
+	    	PopisivacGlavniServerKlijent glavniServer = new PopisivacGlavniServerKlijent(KontrolerFormeZaPrijavu.korisnik);
+	    	
+	        int status = glavniServer.obradiPopisniceZaStanovnike(popisnica);
 	        
 	      	if(status == 404) {
 	      		SerijalizacijaPopisnica.serijalizujPopisnicuZaStanovnika(popisnica);

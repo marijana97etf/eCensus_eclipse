@@ -1137,14 +1137,12 @@ public class KontrolerFormeZaPopisivanjeDomacinstva {
     	String truststore = properties.getProperty("DEFAULT_TRUSTSTORE");
     	String truststoreLozinka = properties.getProperty("DEFAULT_TRUSTSTORE_PASSWORD");
         
-        PopisivacGlavniServerKlijent glavniServer = new PopisivacGlavniServerKlijent(keystore, keystoreLozinka, truststore, truststoreLozinka, 
-        		KontrolerFormeZaPrijavu.korisnik.getKorisnickoIme(), KontrolerFormeZaPrijavu.korisnik.getLozinkaHash());
+        //PopisivacGlavniServerKlijent glavniServer = new PopisivacGlavniServerKlijent(keystore, keystoreLozinka, truststore, truststoreLozinka, 
+        //		KontrolerFormeZaPrijavu.korisnik.getKorisnickoIme(), KontrolerFormeZaPrijavu.korisnik.getLozinkaHash());
         
-       
-        List<PopisnicaZaDomacinstvo> popisnice = new ArrayList<>();
-        popisnice.add(popisnica);
+        PopisivacGlavniServerKlijent glavniServer = new PopisivacGlavniServerKlijent(KontrolerFormeZaPrijavu.korisnik);
         
-        if(glavniServer.obradiPopisniceZaDomacinstva(popisnice) == 404) {
+        if(glavniServer.obradiPopisniceZaDomacinstva(popisnica) == 404) {
         	SerijalizacijaPopisnica.serijalizujPopisnicuZaDomacinstvo(popisnica);
         	PrikazObavjestenja.prikaziInfo("Nema internet konekcije. Popisnica je sačuvana.");
         }

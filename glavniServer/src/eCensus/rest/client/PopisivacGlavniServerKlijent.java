@@ -6,22 +6,27 @@ import javax.ws.rs.core.Response;
 
 import model.PopisnicaZaDomacinstvo;
 import model.PopisnicaZaStanovnika;
+import model.korisnicki_nalozi.KorisnikSistema;
 
 public class PopisivacGlavniServerKlijent extends GlavniServerKlijent {
-
+	
+	public PopisivacGlavniServerKlijent(KorisnikSistema korisnikSistema) {
+		super(korisnikSistema);
+	}
+	
 	public PopisivacGlavniServerKlijent(String keyStore, String keyStoreLozinka, String trustStore, String trustStoreLozinka, String korisnickoIme, String lozinkaHash) {
 		super(keyStore, keyStoreLozinka, trustStore, trustStoreLozinka, korisnickoIme, lozinkaHash);
 	}
 
 	
-	public int obradiPopisniceZaStanovnike(List<PopisnicaZaStanovnika> popisniceZaStanovnike) {
-		Response response = post(GLAVNI_SERVER_RESURS_URL + "/" + "obradiPopisnice/stanovnici", popisniceZaStanovnike);
+	public int obradiPopisniceZaStanovnike(PopisnicaZaStanovnika popisnicaZaStanovnika) {
+		Response response = post(glavniServerResursURL + "/" + "obradiPopisnice/stanovnici", popisnicaZaStanovnika);
 		return response.getStatus();
 	}
 	
 	
-	public int obradiPopisniceZaDomacinstva(List<PopisnicaZaDomacinstvo> popisniceZaDomacinstva) {
-		Response response = post(GLAVNI_SERVER_RESURS_URL + "/" + "obradiPopisnice/domacinstva", popisniceZaDomacinstva);
+	public int obradiPopisniceZaDomacinstva(PopisnicaZaDomacinstvo popisnicaZaDomacinstvo) {
+		Response response = post(glavniServerResursURL + "/" + "obradiPopisnice/domacinstva", popisnicaZaDomacinstvo);
 		return response.getStatus();
 	}
 	
