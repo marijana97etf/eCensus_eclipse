@@ -14,21 +14,15 @@ public class PopisivacGlavniServerKlijent extends GlavniServerKlijent {
 	}
 
 	
-	public boolean obradiPopisniceZaStanovnike(List<PopisnicaZaStanovnika> popisniceZaStanovnike) {
+	public int obradiPopisniceZaStanovnike(List<PopisnicaZaStanovnika> popisniceZaStanovnike) {
 		Response response = post(GLAVNI_SERVER_RESURS_URL + "/" + "obradiPopisnice/stanovnici", popisniceZaStanovnike);
-		if(response.getStatusInfo() != Response.Status.OK) {
-			return false;
-		}
-		return true;
+		return response.getStatus();
 	}
 	
 	
-	public boolean obradiPopisniceZaDomacinstva(List<PopisnicaZaDomacinstvo> popisniceZaDomacinstva) {
+	public int obradiPopisniceZaDomacinstva(List<PopisnicaZaDomacinstvo> popisniceZaDomacinstva) {
 		Response response = post(GLAVNI_SERVER_RESURS_URL + "/" + "obradiPopisnice/domacinstva", popisniceZaDomacinstva);
-		if(response.getStatusInfo() != Response.Status.OK) {
-			return false;
-		}
-		return true;
+		return response.getStatus();
 	}
 	
 	
