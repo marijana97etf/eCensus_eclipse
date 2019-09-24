@@ -323,9 +323,9 @@ public class KontrolerFormeZaPopisivanjeDomacinstva {
         String ulaz;
         String brojStana;
         String idBroj;
-        Map<Integer, List<String>> odgovoriNaPitanja = new HashMap<>();
+        Map<String, List<String>> odgovoriNaPitanja = new HashMap<>();
         for(int i=1; i<=33; ++i)
-            odgovoriNaPitanja.put(i,new ArrayList<>());
+            odgovoriNaPitanja.put(String.valueOf(i),new ArrayList<>());
 
         try{
             idObrasca = Integer.parseInt(obrazacTextField.getText());
@@ -531,14 +531,14 @@ public class KontrolerFormeZaPopisivanjeDomacinstva {
         if (odgovor1.isEmpty())
             return;
         else
-            odgovoriNaPitanja.get(1).add(odgovor1);
+            odgovoriNaPitanja.get("1").add(odgovor1);
 
         if(isToggleGroupEnabled(grupa2)){
             String odgovor2 = getOdgovor(grupa2, 2);
             if (odgovor2.isEmpty())
                 return;
             else
-                odgovoriNaPitanja.get(2).add(odgovor2);
+                odgovoriNaPitanja.get("2").add(odgovor2);
         }
 
         if(isToggleGroupEnabled(grupa3)){
@@ -552,7 +552,7 @@ public class KontrolerFormeZaPopisivanjeDomacinstva {
                 return;
             }
             else {
-                odgovoriNaPitanja.get(3).add(odgovor3Button.getText());
+                odgovoriNaPitanja.get("3").add(odgovor3Button.getText());
                 if(isToggleGroupEnabled(grupa4)){
                     RadioButton odgovor3Button1 = (RadioButton)grupa4.getSelectedToggle();
                     if(odgovor3Button1 == null){
@@ -564,7 +564,7 @@ public class KontrolerFormeZaPopisivanjeDomacinstva {
                         return;
                     }
                     else
-                        odgovoriNaPitanja.get(3).add(odgovor3Button1.getText());
+                        odgovoriNaPitanja.get("3").add(odgovor3Button1.getText());
                 }
             }
         }
@@ -577,7 +577,7 @@ public class KontrolerFormeZaPopisivanjeDomacinstva {
                 return;
             }
             else
-                odgovoriNaPitanja.get(4).add(odgovor4);
+                odgovoriNaPitanja.get("4").add(odgovor4);
         }
 
         if(isToggleGroupEnabled(grupa5)){
@@ -585,7 +585,7 @@ public class KontrolerFormeZaPopisivanjeDomacinstva {
             if (odgovor5.isEmpty())
                 return;
             else
-                odgovoriNaPitanja.get(5).add(odgovor5);
+                odgovoriNaPitanja.get("5").add(odgovor5);
         }
 
         if(!pitanje6TextField.isDisabled()){
@@ -596,7 +596,7 @@ public class KontrolerFormeZaPopisivanjeDomacinstva {
                 return;
             }
             else
-                odgovoriNaPitanja.get(6).add(odgovor6);
+                odgovoriNaPitanja.get("6").add(odgovor6);
         }
 
         if(!pitanje7TextField.isDisabled()){
@@ -607,7 +607,7 @@ public class KontrolerFormeZaPopisivanjeDomacinstva {
                 return;
             }
             else
-                odgovoriNaPitanja.get(7).add(odgovor7);
+                odgovoriNaPitanja.get("7").add(odgovor7);
         }
 
         if(isToggleGroupEnabled(grupa6)){
@@ -621,7 +621,7 @@ public class KontrolerFormeZaPopisivanjeDomacinstva {
                 return;
             }
             else {
-                odgovoriNaPitanja.get(8).add(odgovor8Button.getText());
+                odgovoriNaPitanja.get("8").add(odgovor8Button.getText());
                 if(!pitanje8TextField.isDisabled()){
                     String odgovor8Text = pitanje8TextField.getText();
                     if(odgovor8Text.isEmpty()){
@@ -630,7 +630,7 @@ public class KontrolerFormeZaPopisivanjeDomacinstva {
                         return;
                     }
                     else
-                        odgovoriNaPitanja.get(8).add(odgovor8Text);
+                        odgovoriNaPitanja.get("8").add(odgovor8Text);
                 }
             }
         }
@@ -640,7 +640,7 @@ public class KontrolerFormeZaPopisivanjeDomacinstva {
             if (odgovor9.isEmpty())
                 return;
             else
-                odgovoriNaPitanja.get(9).add(odgovor9);
+                odgovoriNaPitanja.get("9").add(odgovor9);
         }
 
         if(isToggleGroupEnabled(grupa8)){
@@ -648,7 +648,7 @@ public class KontrolerFormeZaPopisivanjeDomacinstva {
             if (odgovor10.isEmpty())
                 return;
             else
-                odgovoriNaPitanja.get(10).add(odgovor10);
+                odgovoriNaPitanja.get("10").add(odgovor10);
         }
 
         if(isToggleGroupEnabled(grupa9)){
@@ -656,7 +656,7 @@ public class KontrolerFormeZaPopisivanjeDomacinstva {
             if (odgovor11.isEmpty())
                 return;
             else
-                odgovoriNaPitanja.get(11).add(odgovor11);
+                odgovoriNaPitanja.get("11").add(odgovor11);
         }
 
         if(isToggleGroupEnabled(grupa10)){
@@ -664,7 +664,7 @@ public class KontrolerFormeZaPopisivanjeDomacinstva {
             if (odgovor12.isEmpty())
                 return;
             else
-                odgovoriNaPitanja.get(12).add(odgovor12);
+                odgovoriNaPitanja.get("12").add(odgovor12);
         }
 
         if(isToggleGroupEnabled(grupa11)){
@@ -672,7 +672,7 @@ public class KontrolerFormeZaPopisivanjeDomacinstva {
             if (odgovor13.isEmpty())
                 return;
             else
-                odgovoriNaPitanja.get(13).add(odgovor13);
+                odgovoriNaPitanja.get("13").add(odgovor13);
         }
 
         if(isToggleGroupEnabled(grupa12)){
@@ -680,7 +680,7 @@ public class KontrolerFormeZaPopisivanjeDomacinstva {
             if (odgovor14.isEmpty())
                 return;
             else
-                odgovoriNaPitanja.get(14).add(odgovor14);
+                odgovoriNaPitanja.get("14").add(odgovor14);
         }
 
         if(isToggleGroupEnabled(grupa13)){
@@ -688,7 +688,7 @@ public class KontrolerFormeZaPopisivanjeDomacinstva {
             if (odgovor15.isEmpty())
                 return;
             else
-                odgovoriNaPitanja.get(15).add(odgovor15);
+                odgovoriNaPitanja.get("15").add(odgovor15);
         }
 
         if(isToggleGroupEnabled(grupa14)) {
@@ -696,7 +696,7 @@ public class KontrolerFormeZaPopisivanjeDomacinstva {
 	        if(odgovor16.isEmpty())
 	            return;
 	        else
-	            odgovoriNaPitanja.get(16).add(odgovor16);
+	            odgovoriNaPitanja.get("16").add(odgovor16);
         }
 
         if(!pitanje17TextField.isDisabled()){
@@ -705,7 +705,7 @@ public class KontrolerFormeZaPopisivanjeDomacinstva {
                 return;
             }
             else
-                odgovoriNaPitanja.get(17).add(odgovor17);
+                odgovoriNaPitanja.get("17").add(odgovor17);
         }
 
         if(isToggleGroupEnabled(grupa15)) {
@@ -713,7 +713,7 @@ public class KontrolerFormeZaPopisivanjeDomacinstva {
             if (odgovor18.isEmpty())
                 return;
             else
-                odgovoriNaPitanja.get(18).add(odgovor18);
+                odgovoriNaPitanja.get("18").add(odgovor18);
         }
 
         if(isToggleGroupEnabled(grupa16)) {
@@ -721,7 +721,7 @@ public class KontrolerFormeZaPopisivanjeDomacinstva {
             if (odgovor19.isEmpty())
                 return;
             else
-                odgovoriNaPitanja.get(19).add(odgovor19);
+                odgovoriNaPitanja.get("19").add(odgovor19);
         }
 
         if(isToggleGroupEnabled(grupa17)) {
@@ -729,7 +729,7 @@ public class KontrolerFormeZaPopisivanjeDomacinstva {
             if (odgovor20.isEmpty())
                 return;
             else
-                odgovoriNaPitanja.get(20).add(odgovor20);
+                odgovoriNaPitanja.get("20").add(odgovor20);
         }
 
         if(isToggleGroupEnabled(grupa18)) {
@@ -737,7 +737,7 @@ public class KontrolerFormeZaPopisivanjeDomacinstva {
             if (odgovor21.isEmpty())
                 return;
             else
-                odgovoriNaPitanja.get(21).add(odgovor21);
+                odgovoriNaPitanja.get("21").add(odgovor21);
         }
 
         if(isToggleGroupEnabled(grupa19)) {
@@ -745,7 +745,7 @@ public class KontrolerFormeZaPopisivanjeDomacinstva {
             if (odgovor22.isEmpty())
                 return;
             else
-                odgovoriNaPitanja.get(22).add(odgovor22);
+                odgovoriNaPitanja.get("22").add(odgovor22);
         }
 
         if(isToggleGroupEnabled(grupa20)) {
@@ -753,34 +753,34 @@ public class KontrolerFormeZaPopisivanjeDomacinstva {
             if (odgovor23.isEmpty())
                 return;
             else
-                odgovoriNaPitanja.get(23).add(odgovor23);
+                odgovoriNaPitanja.get("23").add(odgovor23);
         }
 
         String odgovor24 = getOdgovor(grupa21, 24);
         if (odgovor24.isEmpty())
             return;
         else
-            odgovoriNaPitanja.get(24).add(odgovor24);
+            odgovoriNaPitanja.get("24").add(odgovor24);
 
         String odgovor25 = getOdgovor(grupa22, 25);
         if (odgovor25.isEmpty())
             return;
         else
-            odgovoriNaPitanja.get(25).add(odgovor25);
+            odgovoriNaPitanja.get("25").add(odgovor25);
 
         if(pitanje26CheckBox1.isSelected())
-            odgovoriNaPitanja.get(26).add(pitanje26CheckBox1.getText());
+            odgovoriNaPitanja.get("26").add(pitanje26CheckBox1.getText());
         if(pitanje26CheckBox2.isSelected())
-            odgovoriNaPitanja.get(26).add(pitanje26CheckBox2.getText());
+            odgovoriNaPitanja.get("26").add(pitanje26CheckBox2.getText());
         if(pitanje26CheckBox3.isSelected())
-            odgovoriNaPitanja.get(26).add(pitanje26CheckBox3.getText());
+            odgovoriNaPitanja.get("26").add(pitanje26CheckBox3.getText());
         if(pitanje26CheckBox4.isSelected())
-            odgovoriNaPitanja.get(26).add(pitanje26CheckBox4.getText());
+            odgovoriNaPitanja.get("26").add(pitanje26CheckBox4.getText());
         if(pitanje26CheckBox5.isSelected())
-            odgovoriNaPitanja.get(26).add(pitanje26CheckBox5.getText());
+            odgovoriNaPitanja.get("26").add(pitanje26CheckBox5.getText());
         if(pitanje26CheckBox6.isSelected())
-            odgovoriNaPitanja.get(26).add(pitanje26CheckBox6.getText());
-        if(odgovoriNaPitanja.get(26).isEmpty()){
+            odgovoriNaPitanja.get("26").add(pitanje26CheckBox6.getText());
+        if(odgovoriNaPitanja.get("26").isEmpty()){
             pitanje26CheckBox1.setStyle("-fx-border-color: RED");
             pitanje26CheckBox2.setStyle("-fx-border-color: RED");
             pitanje26CheckBox3.setStyle("-fx-border-color: RED");
@@ -795,147 +795,147 @@ public class KontrolerFormeZaPopisivanjeDomacinstva {
         if (odgovor27.isEmpty())
             return;
         else
-            odgovoriNaPitanja.get(27).add(odgovor27);
+            odgovoriNaPitanja.get("27").add(odgovor27);
 
         String odgovor28UkupnoDunum = getKolicinuPoljoprivrednogDobra(ukupnoZemljisteDunumTextField, 28);
         if(odgovor28UkupnoDunum.isEmpty())
             return;
         else
-            odgovoriNaPitanja.get(28).add(odgovor28UkupnoDunum);
+            odgovoriNaPitanja.get("28").add(odgovor28UkupnoDunum);
 
         String odgovor28UkupnoMetar = getKolicinuPoljoprivrednogDobra(ukupnoZemljisteKvadratniMetarTextField, 28);
         if(odgovor28UkupnoMetar.isEmpty())
             return;
         else
-            odgovoriNaPitanja.get(28).add(odgovor28UkupnoMetar);
+            odgovoriNaPitanja.get("28").add(odgovor28UkupnoMetar);
 
         String odgovor28PoljoprivrednoZemljisteDunum = getKolicinuPoljoprivrednogDobra(pZemljisteDunumTextField, 28);
         if(odgovor28PoljoprivrednoZemljisteDunum.isEmpty())
             return;
         else
-            odgovoriNaPitanja.get(28).add(odgovor28PoljoprivrednoZemljisteDunum);
+            odgovoriNaPitanja.get("28").add(odgovor28PoljoprivrednoZemljisteDunum);
 
         String odgovor28PoljoprivrednoZemljisteMetar = getKolicinuPoljoprivrednogDobra(pZemljisteKvadratniMetarTextField, 28);
         if(odgovor28PoljoprivrednoZemljisteMetar.isEmpty())
             return;
         else
-            odgovoriNaPitanja.get(28).add(odgovor28PoljoprivrednoZemljisteMetar);
+            odgovoriNaPitanja.get("28").add(odgovor28PoljoprivrednoZemljisteMetar);
 
         String odgovor28ZemljisteSumaDunum = getKolicinuPoljoprivrednogDobra(zemljisteSumaDunumTextField, 28);
         if(odgovor28ZemljisteSumaDunum.isEmpty())
             return;
         else
-            odgovoriNaPitanja.get(28).add(odgovor28ZemljisteSumaDunum);
+            odgovoriNaPitanja.get("28").add(odgovor28ZemljisteSumaDunum);
 
         String odgovor28ZemljisteSumaMetar = getKolicinuPoljoprivrednogDobra(zemljisteSumaKvadratniMetarTextField, 28);
         if(odgovor28ZemljisteSumaMetar.isEmpty())
             return;
         else
-            odgovoriNaPitanja.get(28).add(odgovor28ZemljisteSumaMetar);
+            odgovoriNaPitanja.get("28").add(odgovor28ZemljisteSumaMetar);
 
         String odgovor28OstaloZemljisteDunum = getKolicinuPoljoprivrednogDobra(ostaloZemljisteDunumTextField, 28);
         if(odgovor28OstaloZemljisteDunum.isEmpty())
             return;
         else
-            odgovoriNaPitanja.get(28).add(odgovor28OstaloZemljisteDunum);
+            odgovoriNaPitanja.get("28").add(odgovor28OstaloZemljisteDunum);
 
 
         String odgovor28OstaloZemljisteMetar = getKolicinuPoljoprivrednogDobra(ostaloZemljisteKvadratniMetarTextField, 28);
         if(odgovor28OstaloZemljisteMetar.isEmpty())
             return;
         else
-            odgovoriNaPitanja.get(28).add(odgovor28OstaloZemljisteMetar);
+            odgovoriNaPitanja.get("28").add(odgovor28OstaloZemljisteMetar);
 
         String odgovor29 = getOdgovor(grupa24, 29);
         if (odgovor29.isEmpty())
             return;
         else
-            odgovoriNaPitanja.get(29).add(odgovor29);
+            odgovoriNaPitanja.get("29").add(odgovor29);
 
         if(!oraniceDunumTextField.isDisabled()){
             String odgovor30OraniceDunum = getKolicinuPoljoprivrednogDobra(oraniceDunumTextField, 30);
             if(odgovor30OraniceDunum.isEmpty())
                 return;
             else
-                odgovoriNaPitanja.get(30).add(odgovor30OraniceDunum);
+                odgovoriNaPitanja.get("30").add(odgovor30OraniceDunum);
 
             String odgovor30OraniceMetar = getKolicinuPoljoprivrednogDobra(oraniceMetarTextField, 30);
             if(odgovor30OraniceMetar.isEmpty())
                 return;
             else
-                odgovoriNaPitanja.get(30).add(odgovor30OraniceMetar);
+                odgovoriNaPitanja.get("30").add(odgovor30OraniceMetar);
 
             String odgovor30VocnjaciDunum = getKolicinuPoljoprivrednogDobra(vocnaciDunumTextField, 30);
             if(odgovor30VocnjaciDunum.isEmpty())
                 return;
             else
-                odgovoriNaPitanja.get(30).add(odgovor30VocnjaciDunum);
+                odgovoriNaPitanja.get("30").add(odgovor30VocnjaciDunum);
 
             String odgovor30VocnjaciMetar = getKolicinuPoljoprivrednogDobra(vocnaciMetarTextField, 30);
             if(odgovor30VocnjaciMetar.isEmpty())
                 return;
             else
-                odgovoriNaPitanja.get(30).add(odgovor30VocnjaciMetar);
+                odgovoriNaPitanja.get("30").add(odgovor30VocnjaciMetar);
 
             String odgovor30VinogradiDunum = getKolicinuPoljoprivrednogDobra(vinogradiDunumTextField, 30);
             if(odgovor30VinogradiDunum.isEmpty())
                 return;
             else
-                odgovoriNaPitanja.get(30).add(odgovor30VinogradiDunum);
+                odgovoriNaPitanja.get("30").add(odgovor30VinogradiDunum);
 
             String odgovor30VinogradiMetar = getKolicinuPoljoprivrednogDobra(vinogradiMetarTextField, 30);
             if(odgovor30VinogradiMetar.isEmpty())
                 return;
             else
-                odgovoriNaPitanja.get(30).add(odgovor30VinogradiMetar);
+                odgovoriNaPitanja.get("30").add(odgovor30VinogradiMetar);
 
             String odgovor30RasadniciDunum = getKolicinuPoljoprivrednogDobra(rasadniciDunumTextField, 30);
             if(odgovor30RasadniciDunum.isEmpty())
                 return;
             else
-                odgovoriNaPitanja.get(30).add(odgovor30RasadniciDunum);
+                odgovoriNaPitanja.get("30").add(odgovor30RasadniciDunum);
 
             String odgovor30RasadniciMetar = getKolicinuPoljoprivrednogDobra(rasadniciMetarTextField, 30);
             if(odgovor30RasadniciMetar.isEmpty())
                 return;
             else
-                odgovoriNaPitanja.get(30).add(odgovor30RasadniciMetar);
+                odgovoriNaPitanja.get("30").add(odgovor30RasadniciMetar);
 
             String odgovor30LivadeDunum = getKolicinuPoljoprivrednogDobra(livadeDunumTextField, 30);
             if(odgovor30LivadeDunum.isEmpty())
                 return;
             else
-                odgovoriNaPitanja.get(30).add(odgovor30LivadeDunum);
+                odgovoriNaPitanja.get("30").add(odgovor30LivadeDunum);
 
             String odgovor30LivadeMetar = getKolicinuPoljoprivrednogDobra(livadeMetarTextField, 30);
             if(odgovor30LivadeMetar.isEmpty())
                 return;
             else
-                odgovoriNaPitanja.get(30).add(odgovor30LivadeMetar);
+                odgovoriNaPitanja.get("30").add(odgovor30LivadeMetar);
 
             String odgovor30RibnjaciDunum = getKolicinuPoljoprivrednogDobra(ribnjaciDunumTextField, 30);
             if(odgovor30RibnjaciDunum.isEmpty())
                 return;
             else
-                odgovoriNaPitanja.get(30).add(odgovor30RibnjaciDunum);
+                odgovoriNaPitanja.get("30").add(odgovor30RibnjaciDunum);
 
             String odgovor30RibnjaciMetar = getKolicinuPoljoprivrednogDobra(ribnjaciMetarTextField, 30);
             if(odgovor30RibnjaciMetar.isEmpty())
                 return;
             else
-                odgovoriNaPitanja.get(30).add(odgovor30RibnjaciMetar);
+                odgovoriNaPitanja.get("30").add(odgovor30RibnjaciMetar);
 
             String odgovor30GljivarniciDunum = getKolicinuPoljoprivrednogDobra(gljivarniciDunumTextField, 30);
             if(odgovor30GljivarniciDunum.isEmpty())
                 return;
             else
-                odgovoriNaPitanja.get(30).add(odgovor30GljivarniciDunum);
+                odgovoriNaPitanja.get("30").add(odgovor30GljivarniciDunum);
 
             String odgovor30GljivarniciMetar = getKolicinuPoljoprivrednogDobra(gljivarniciMetarTextField, 30);
             if(odgovor30GljivarniciMetar.isEmpty())
                 return;
             else
-                odgovoriNaPitanja.get(30).add(odgovor30GljivarniciMetar);
+                odgovoriNaPitanja.get("30").add(odgovor30GljivarniciMetar);
         }
 
         if(!govedaTextField.isDisabled()){
@@ -943,49 +943,49 @@ public class KontrolerFormeZaPopisivanjeDomacinstva {
             if(odgovor31Goveda.isEmpty())
                 return;
             else
-                odgovoriNaPitanja.get(31).add(odgovor31Goveda);
+                odgovoriNaPitanja.get("31").add(odgovor31Goveda);
 
             String odgovor31Krave = getKolicinuPoljoprivrednogDobra(kraveTextField, 31);
             if(odgovor31Krave.isEmpty())
                 return;
             else
-                odgovoriNaPitanja.get(31).add(odgovor31Krave);
+                odgovoriNaPitanja.get("31").add(odgovor31Krave);
 
             String odgovor31Svinje = getKolicinuPoljoprivrednogDobra(svinjeTextField, 31);
             if(odgovor31Svinje.isEmpty())
                 return;
             else
-                odgovoriNaPitanja.get(31).add(odgovor31Svinje);
+                odgovoriNaPitanja.get("31").add(odgovor31Svinje);
 
             String odgovor31Ovce = getKolicinuPoljoprivrednogDobra(ovceTextField, 31);
             if(odgovor31Ovce.isEmpty())
                 return;
             else
-                odgovoriNaPitanja.get(31).add(odgovor31Ovce);
+                odgovoriNaPitanja.get("31").add(odgovor31Ovce);
 
             String odgovor31Koze = getKolicinuPoljoprivrednogDobra(kozeTextField, 31);
             if(odgovor31Koze.isEmpty())
                 return;
             else
-                odgovoriNaPitanja.get(31).add(odgovor31Koze);
+                odgovoriNaPitanja.get("31").add(odgovor31Koze);
 
             String odgovor31Konji = getKolicinuPoljoprivrednogDobra(konjiTextField, 31);
             if(odgovor31Konji.isEmpty())
                 return;
             else
-                odgovoriNaPitanja.get(31).add(odgovor31Konji);
+                odgovoriNaPitanja.get("31").add(odgovor31Konji);
 
             String odgovor31Perad = getKolicinuPoljoprivrednogDobra(peradTextField, 31);
             if(odgovor31Perad.isEmpty())
                 return;
             else
-                odgovoriNaPitanja.get(31).add(odgovor31Perad);
+                odgovoriNaPitanja.get("31").add(odgovor31Perad);
 
             String odgovor31Kosnice = getKolicinuPoljoprivrednogDobra(kosniceTextField, 31);
             if(odgovor31Kosnice.isEmpty())
                 return;
             else
-                odgovoriNaPitanja.get(31).add(odgovor31Kosnice);
+                odgovoriNaPitanja.get("31").add(odgovor31Kosnice);
         }
 
         if(isToggleGroupEnabled(grupa25)) {
@@ -993,7 +993,7 @@ public class KontrolerFormeZaPopisivanjeDomacinstva {
             if (odgovor32.isEmpty())
                 return;
             else
-                odgovoriNaPitanja.get(32).add(odgovor32);
+                odgovoriNaPitanja.get("32").add(odgovor32);
         }
 
         if(isToggleGroupEnabled(grupa26)){
@@ -1007,7 +1007,7 @@ public class KontrolerFormeZaPopisivanjeDomacinstva {
                 return;
             }
             else {
-                odgovoriNaPitanja.get(33).add(odgovor33Button.getText());
+                odgovoriNaPitanja.get("33").add(odgovor33Button.getText());
                 if(!pitanje33TextField.isDisabled()){
                     String odgovor33Text = pitanje33TextField.getText();
                     if(odgovor33Text.isEmpty()){
@@ -1016,14 +1016,14 @@ public class KontrolerFormeZaPopisivanjeDomacinstva {
                         return;
                     }
                     else
-                        odgovoriNaPitanja.get(33).add(odgovor33Text);
+                        odgovoriNaPitanja.get("33").add(odgovor33Text);
                 }
             }
         }
         
-        Map<Integer, List<String>> odgovoriPrevedeni = new HashMap<>();
+        Map<String, List<String>> odgovoriPrevedeni = new HashMap<>();
         
-    	for(Entry<Integer, List<String>> e : odgovoriNaPitanja.entrySet()) {
+    	for(Entry<String, List<String>> e : odgovoriNaPitanja.entrySet()) {
     		List<String> util = new ArrayList<>();
     		for(String odgovor : e.getValue()) {
     			String prevedeno;

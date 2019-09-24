@@ -78,16 +78,16 @@ public class MySQLPopisnicaZaDomacinstvoDAO implements PopisnicaZaDomacinstvoDAO
 			
 			
 			PreparedStatement preparedStatementPitanjePopisnica = connection.prepareStatement("INSERT INTO PITANJE_POPISNICA_DOMACINSTVO(IdPitanja,IdPopisnice) VALUES (?,?);");
-			for(Integer pitanje : popisnicaZaDomacinstvo.getOdgovoriNaPitanja().keySet()) {
-				preparedStatementPitanjePopisnica.setInt(1, pitanje);
+			for(String pitanje : popisnicaZaDomacinstvo.getOdgovoriNaPitanja().keySet()) {
+				preparedStatementPitanjePopisnica.setInt(1, Integer.parseInt(pitanje));
 				preparedStatementPitanjePopisnica.setInt(2, idPopisnice);
 				preparedStatementPitanjePopisnica.executeUpdate();
 			}
 			preparedStatementPitanjePopisnica.close();
 			
 			PreparedStatement preparedStatementOdgovorPopisnica = connection.prepareStatement("INSERT INTO POPISNICA_DOMACINSTVO_ODGOVOR(IdPitanja,IdPopisnice,Odgovor) VALUES (?,?,?);");
-			for(Integer pitanje : popisnicaZaDomacinstvo.getOdgovoriNaPitanja().keySet()) {
-				preparedStatementOdgovorPopisnica.setInt(1, pitanje);
+			for(String pitanje : popisnicaZaDomacinstvo.getOdgovoriNaPitanja().keySet()) {
+				preparedStatementOdgovorPopisnica.setInt(1, Integer.parseInt(pitanje));
 				preparedStatementOdgovorPopisnica.setInt(2, idPopisnice);
 				String odgovor = "";
 				for(int i = 0; i < popisnicaZaDomacinstvo.getOdgovoriNaPitanja().get(pitanje).size(); i++) {

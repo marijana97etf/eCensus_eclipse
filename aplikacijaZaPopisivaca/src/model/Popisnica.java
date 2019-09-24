@@ -13,10 +13,10 @@ public class Popisnica implements Serializable{
 	protected int idStana;
 	protected int idDomacinstva;
 	
-	protected Map<Integer, List<String>> odgovoriNaPitanja;
+	protected Map<String, List<String>> odgovoriNaPitanja;
 	
 	public Popisnica() {
-		odgovoriNaPitanja = new HashMap<Integer, List<String>>();
+		odgovoriNaPitanja = new HashMap<String, List<String>>();
 	}
 	
 	public Popisnica(int idObrasca, int idEntiteta, int idOpstine, int idPopisnogKruga, int idStana,
@@ -78,11 +78,11 @@ public class Popisnica implements Serializable{
         this.idDomacinstva = idDomacinstva;
     }
     
-	public Map<Integer, List<String>> getOdgovoriNaPitanja() {
+	public Map<String, List<String>> getOdgovoriNaPitanja() {
         return odgovoriNaPitanja;
     }
 
-    public void setOdgovoriNaPitanja(Map<Integer, List<String>> odgovoriNaPitanja) {
+    public void setOdgovoriNaPitanja(Map<String, List<String>> odgovoriNaPitanja) {
         this.odgovoriNaPitanja = odgovoriNaPitanja;
     }
 }
