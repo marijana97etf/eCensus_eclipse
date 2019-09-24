@@ -1,7 +1,6 @@
 package model.table_input_models;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import javafx.beans.property.SimpleObjectProperty;
@@ -10,14 +9,13 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 import model.korisnicki_nalozi.KorisnikSistema;
-import model.korisnicki_nalozi.Popisivac;
 
 public class KorisnikInputModel {
     protected Integer id;
     protected SimpleStringProperty prezime;
     protected SimpleStringProperty ime;
     protected SimpleStringProperty korisnickoIme;
-    protected SimpleObjectProperty<Button>[] Buttoni;
+    protected SimpleObjectProperty[] Buttoni;
     protected KorisnikSistema korisnikSistema;
 
     @SuppressWarnings("unchecked")
@@ -27,19 +25,10 @@ public class KorisnikInputModel {
         prezime = new SimpleStringProperty(korisnikSistema.getPrezime());
         ime = new SimpleStringProperty(korisnikSistema.getIme());
         korisnickoIme = new SimpleStringProperty(korisnikSistema.getKorisnickoIme());
-        if(korisnikSistema instanceof Popisivac)
-        {
-        	var pregledajAktivnosti = new SimpleObjectProperty<>(new Button("Pregled aktivnosti"));
-        	Buttoni = new SimpleObjectProperty[] { pregledajAktivnosti };
-        }
-        else 
-        {
-        	var brisanjeButton = new SimpleObjectProperty<>(new Button("Obriši"));
-        	var izmjenaButton = new SimpleObjectProperty<>(new Button("Izmjeni"));
-        	Buttoni = new SimpleObjectProperty[] { izmjenaButton, brisanjeButton };
-        }
         this.korisnikSistema = korisnikSistema;
     }
+
+    private KorisnikInputModel() {}
 
     public Integer getId() {
         return id;
@@ -113,6 +102,5 @@ public class KorisnikInputModel {
     {
         korisnikSistema.setIme(ime.get());
         korisnikSistema.setPrezime(prezime.get());
-        korisnikSistema.setKorisnickoIme(korisnickoIme.get());
     }
 }

@@ -8,6 +8,7 @@ import eCensus.rest.client.OGInstruktorCMISKLijent;
 import javafx.collections.FXCollections;
 import model.korisnicki_nalozi.OGInstruktor;
 import model.table_input_models.KorisnikInputModel;
+import model.table_input_models.OGInstruktorInputModel;
 import test.Aplikacija;
 
 public class KontrolerFormeZaPregledNalogaOGInstruktora extends KontrolerFormeZaPregledNaloga {
@@ -17,7 +18,7 @@ public class KontrolerFormeZaPregledNalogaOGInstruktora extends KontrolerFormeZa
     	Response odgovor  = ogInstruktorCMISKlijent.getListuOGInstruktora();
     	if(Response.Status.Family.SUCCESSFUL.equals(odgovor.getStatusInfo().getFamily())) {
     		lista = FXCollections.observableArrayList(odgovor.readEntity(new GenericType<LinkedList<OGInstruktor>>() {}).stream()
-                    .map(KorisnikInputModel::new)
+                    .map(OGInstruktorInputModel::new)
                     .collect(Collectors.toList()));
     		return true;
     	}else {

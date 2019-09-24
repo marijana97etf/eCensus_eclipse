@@ -51,12 +51,12 @@
             <Insets bottom="20.0" right="20.0" />
          </GridPane.margin>
       </Button>
-      <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="375.0" text="Registruj popisivača" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+      <Button mnemonicParsing="false" onAction="#registrujPopisivaca" prefHeight="40.0" prefWidth="375.0" text="Registruj popisivača" GridPane.halignment="CENTER" GridPane.rowIndex="2">
          <font>
             <Font size="15.0" />
          </font>
       </Button>
-      <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="375.0" text="Pregledaj naloge popisivača" GridPane.halignment="CENTER" GridPane.rowIndex="3">
+      <Button mnemonicParsing="false" onAction="#pregledajNalogePopisivaca" prefHeight="40.0" prefWidth="375.0" text="Pregledaj naloge popisivača" GridPane.halignment="CENTER" GridPane.rowIndex="3">
          <font>
             <Font size="15.0" />
          </font>

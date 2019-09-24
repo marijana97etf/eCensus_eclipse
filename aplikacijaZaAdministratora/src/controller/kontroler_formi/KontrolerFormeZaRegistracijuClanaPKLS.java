@@ -76,7 +76,6 @@ public class KontrolerFormeZaRegistracijuClanaPKLS implements Initializable {
         alert.setContentText("Uspješno ste registrovali clana PKLS-a");
         KorisnikSistema clanPKLS = new ClanPKLS (
         		i++,
-        		jmbg.getText(),
                 ime.getText(),
                 prezime.getText(),
                 username.getText(),

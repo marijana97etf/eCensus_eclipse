@@ -23,17 +23,17 @@ public class DEInstruktor extends Administrator {
 	public DEInstruktor() {
 	}
 
-	public DEInstruktor(long id, String jMBG, String ime, String prezime, String korisnickoIme, String lozinka,
+	public DEInstruktor(long id, String ime, String prezime, String korisnickoIme, String lozinka,
 			ENTITET entitet, JEZIK jezik, PISMO pismo, String trustStore, String trustLozinka,
 			String keyStore, String keyLozinka) {
-		super(id, jMBG, ime, prezime, korisnickoIme, lozinka, jezik, pismo, trustStore, trustLozinka, keyStore,
+		super(id, ime, prezime, korisnickoIme, lozinka, jezik, pismo, trustStore, trustLozinka, keyStore,
 				keyLozinka);
 		this.entitet = entitet;
 	}
 
-	public DEInstruktor(String JMBG, String ime, String prezime, String korisnickoIme, String lozinka,
+	public DEInstruktor(String ime, String prezime, String korisnickoIme, String lozinka,
 			ENTITET entitet, JEZIK jezik, PISMO pismo) {
-		super(JMBG, ime, prezime, korisnickoIme, lozinka, jezik, pismo);
+		super(ime, prezime, korisnickoIme, lozinka, jezik, pismo);
 		this.entitet = entitet;
 	}
 

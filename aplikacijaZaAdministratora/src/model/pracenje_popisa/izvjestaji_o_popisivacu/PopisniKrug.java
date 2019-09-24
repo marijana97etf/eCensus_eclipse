@@ -5,6 +5,7 @@ public class PopisniKrug {
     protected String opstina,grad;
     protected byte[] slikaBytes;
 
+    public PopisniKrug() {}
 	public PopisniKrug(String opstina, String grad) {
 		super();
 		this.opstina = opstina;

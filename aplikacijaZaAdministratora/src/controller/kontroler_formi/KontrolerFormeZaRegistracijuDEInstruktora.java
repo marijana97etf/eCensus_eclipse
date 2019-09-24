@@ -77,7 +77,6 @@ public class KontrolerFormeZaRegistracijuDEInstruktora implements Initializable 
         DEInstruktor.ENTITET entitet = DEInstruktor.stringToEntitet((String)choiceBox2.getValue());
         KorisnikSistema deInstruktor = new DEInstruktor (
         		i++,
-        		jmbg.getText(),
                 ime.getText(),
                 prezime.getText(),
                 username.getText(),

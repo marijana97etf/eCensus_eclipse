@@ -11,21 +11,19 @@ public abstract class Administrator extends KorisnikSistema
 {
 	public Administrator() {}
 	
-    public Administrator(String JMBG,
-                         String ime,
+    public Administrator(String ime,
                          String prezime,
                          String korisnickoIme,
                          String lozinka,
                          JEZIK jezik,
                          PISMO pismo)
     {
-        super(JMBG, ime, prezime, korisnickoIme, lozinka, jezik, pismo);
+        super(ime, prezime, korisnickoIme, lozinka, jezik, pismo);
     }
 
-    public Administrator(long id, String jMBG, String ime, String prezime, String korisnickoIme, String lozinka,
+    public Administrator(long id, String ime, String prezime, String korisnickoIme, String lozinka,
 			JEZIK jezik, PISMO pismo, String trustStore, String trustLozinka, String keyStore, String keyLozinka) {
-		super(id, jMBG, ime, prezime, korisnickoIme, lozinka, jezik, pismo, trustStore, trustLozinka, keyStore, keyLozinka);
-		// TODO Auto-generated constructor stub
+		super(id, ime, prezime, korisnickoIme, lozinka, jezik, pismo, trustStore, trustLozinka, keyStore, keyLozinka);
 	}
 
 	public Izvjestaj kreirajIzvjestaj(Class<? extends Izvjestaj> izvjestaj, Object... params) throws Exception {

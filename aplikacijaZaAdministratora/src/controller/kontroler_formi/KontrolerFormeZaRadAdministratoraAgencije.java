@@ -64,4 +64,8 @@ public class KontrolerFormeZaRadAdministratoraAgencije implements Initializable 
     public void promjeniPismo(ActionEvent actionEvent) throws IOException {
         Aplikacija.getStage().setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/FormaZaPromjenuPisma.fxml"))));
     }
+
+    public void pregledajNalogePopisivaca(ActionEvent actionEvent) throws IOException {
+        Aplikacija.getStage().setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/FormaZaPregledNalogaPopisivaca.fxml"))));
+    }
 }

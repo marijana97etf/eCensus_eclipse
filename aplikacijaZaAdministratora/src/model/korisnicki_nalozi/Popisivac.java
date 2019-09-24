@@ -8,24 +8,19 @@ import model.pracenje_popisa.PISMO;
 import model.pracenje_popisa.izvjestaji_o_popisivacu.PopisniKrug;
 
 public class Popisivac extends KorisnikSistema {
-	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+
 	protected List<PopisniKrug> dodijeljeniPopisniKrugovi = new LinkedList<>();
 	
 	public Popisivac() {}
 	
-	public Popisivac(String JMBG, String ime, String prezime, String korisnickoIme, String lozinka, JEZIK jezik,
+	public Popisivac(String ime, String prezime, String korisnickoIme, String lozinka, JEZIK jezik,
 			PISMO pismo) {
-		super(JMBG, ime, prezime, korisnickoIme, lozinka, jezik, pismo);
-		// TODO Auto-generated constructor stub
+		super(ime, prezime, korisnickoIme, lozinka, jezik, pismo);
 	}
 
-	public Popisivac(long id, String jMBG, String ime, String prezime, String korisnickoIme, String lozinka,
+	public Popisivac(long id, String ime, String prezime, String korisnickoIme, String lozinka,
 			JEZIK jezik, PISMO pismo, String trustStore, String trustLozinka, String keyStore, String keyLozinka) {
-		super(id, jMBG, ime, prezime, korisnickoIme, lozinka, jezik, pismo, trustStore, trustLozinka, keyStore,
+		super(id, ime, prezime, korisnickoIme, lozinka, jezik, pismo, trustStore, trustLozinka, keyStore,
 				keyLozinka);
 		// TODO Auto-generated constructor stub
 	}

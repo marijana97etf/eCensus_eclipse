@@ -67,4 +67,24 @@ public class KontrolerFormeZaRadClanaPKLS implements Initializable {
 			e.printStackTrace();
 		}
     }
+
+    public void registrujPopisivaca(ActionEvent actionEvent)
+    {
+        try {
+            Aplikacija.getStage().setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/FormaZaRegistracijuPopisivaca.fxml"))));
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
+
+    public void pregledajNalogePopisivaca(ActionEvent actionEvent)
+    {
+        try {
+            Aplikacija.getStage().setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/FormaZaPregledNalogaPopisivaca.fxml"))));
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
 }

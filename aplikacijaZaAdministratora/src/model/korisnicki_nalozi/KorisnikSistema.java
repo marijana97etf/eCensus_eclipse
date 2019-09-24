@@ -14,7 +14,6 @@ import model.pracenje_popisa.PISMO;
 public class KorisnikSistema implements Serializable {
 	
 	protected long id;
-	protected String JMBG;
 	protected String ime;
 	protected String prezime;
 	protected String korisnickoIme;
@@ -35,9 +34,8 @@ public class KorisnikSistema implements Serializable {
 		
 	}
 	
-	public KorisnikSistema(String JMBG, String ime, String prezime, String korisnickoIme, String lozinka, JEZIK jezik,
+	public KorisnikSistema(String ime, String prezime, String korisnickoIme, String lozinka, JEZIK jezik,
 			PISMO pismo) {
-		this.JMBG = JMBG;
 		this.ime = ime;
 		this.prezime = prezime;
 		this.korisnickoIme = korisnickoIme;
@@ -46,9 +44,9 @@ public class KorisnikSistema implements Serializable {
 		this.pismo = pismo;
 	}
 
-	public KorisnikSistema(long id, String jMBG, String ime, String prezime, String korisnickoIme, String lozinka,
+	public KorisnikSistema(long id, String ime, String prezime, String korisnickoIme, String lozinka,
 			JEZIK jezik, PISMO pismo, String trustStore, String trustLozinka, String keyStore, String keyLozinka) {
-		this(jMBG, ime, prezime, korisnickoIme, lozinka, jezik, pismo);
+		this(ime, prezime, korisnickoIme, lozinka, jezik, pismo);
 		this.id = id;
 		this.trustStore = trustStore;
 		this.keyStore = keyStore;
@@ -60,7 +58,6 @@ public class KorisnikSistema implements Serializable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((JMBG == null) ? 0 : JMBG.hashCode());
 		result = prime * result + (int) (id ^ (id >>> 32));
 		result = prime * result + ((ime == null) ? 0 : ime.hashCode());
 		result = prime * result + ((korisnickoIme == null) ? 0 : korisnickoIme.hashCode());
@@ -78,13 +75,6 @@ public class KorisnikSistema implements Serializable {
 		if (!(obj instanceof KorisnikSistema))
 			return false;
 		KorisnikSistema other = (KorisnikSistema) obj;
-		if (JMBG == null) {
-			if (other.JMBG != null)
-				return false;
-		} else if (!JMBG.equals(other.JMBG))
-			return false;
-		if (id != other.id)
-			return false;
 		if (ime == null) {
 			if (other.ime != null)
 				return false;
@@ -110,7 +100,7 @@ public class KorisnikSistema implements Serializable {
 
 	@Override
 	public String toString() {
-		return "KorisnikSistema [id=" + id + ", JMBG=" + JMBG + ", ime=" + ime + ", prezime=" + prezime
+		return "KorisnikSistema [id=" + id + ", ime=" + ime + ", prezime=" + prezime
 				+ ", korisnickoIme=" + korisnickoIme + ", lozinkaHash=" + lozinkaHash + "]";
 	}
 
@@ -125,14 +115,6 @@ public class KorisnikSistema implements Serializable {
 //		finally {
 //			return lozinka;
 //		}
-	}
-
-	public String getJMBG() {
-		return JMBG;
-	}
-
-	public void setJMBG(String JMBG) {
-		this.JMBG = JMBG;
 	}
 
 	public String getIme() {
@@ -163,8 +145,8 @@ public class KorisnikSistema implements Serializable {
 		return lozinkaHash;
 	}
 
-	public void setLozinkaHash(String lozinkaHash) {
-		this.lozinkaHash = lozinkaHash;
+	public void setLozinkaHash(String lozinka) {
+		this.lozinkaHash = napraviHesLozinke(lozinka);
 	}
 
 	public void setTrustLozinka(String trustLozinka) {

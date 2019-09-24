@@ -9,8 +9,7 @@ public class OGInstruktor extends Administrator {
 	
 	public OGInstruktor() {}
 	
-    public OGInstruktor(String JMBG,
-                        String ime,
+    public OGInstruktor(String ime,
                         String prezime,
                         String korisnickoIme,
                         String lozinka,
@@ -19,14 +18,14 @@ public class OGInstruktor extends Administrator {
                         String grad,
                         String opstina)
     {
-        super(JMBG, ime, prezime, korisnickoIme, lozinka, jezik, pismo);
+        super(ime, prezime, korisnickoIme, lozinka, jezik, pismo);
         this.grad = grad;
         this.opstina = opstina;
     }
 
-	public OGInstruktor(long id, String jMBG, String ime, String prezime, String korisnickoIme, String lozinka,
+	public OGInstruktor(long id, String ime, String prezime, String korisnickoIme, String lozinka,
 			JEZIK jezik, PISMO pismo, String grad, String opstina, String trustStore, String trustLozinka, String keyStore, String keyLozinka) {
-		super(id, jMBG, ime, prezime, korisnickoIme, lozinka, jezik, pismo, trustStore, trustLozinka, keyStore, keyLozinka);
+		super(id, ime, prezime, korisnickoIme, lozinka, jezik, pismo, trustStore, trustLozinka, keyStore, keyLozinka);
 		this.grad = grad;
         this.opstina = opstina;
 	}

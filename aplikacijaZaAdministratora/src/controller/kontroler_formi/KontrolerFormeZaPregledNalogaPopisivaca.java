@@ -3,6 +3,7 @@ package controller.kontroler_formi;
 import javafx.collections.FXCollections;
 import model.korisnicki_nalozi.Popisivac;
 import model.table_input_models.KorisnikInputModel;
+import model.table_input_models.PopisivacInputModel;
 import test.Aplikacija;
 
 import java.util.LinkedList;
@@ -21,7 +22,7 @@ public class KontrolerFormeZaPregledNalogaPopisivaca extends KontrolerFormeZaPre
     	Response odgovor  = popisivacCMISKlijent.getListaPopisivaca();
     	if(Response.Status.Family.SUCCESSFUL.equals(odgovor.getStatusInfo().getFamily())) {
     		lista = FXCollections.observableArrayList(odgovor.readEntity(new GenericType<LinkedList<Popisivac>>() {}).stream()
-                    .map(KorisnikInputModel::new)
+                    .map(PopisivacInputModel::new)
                     .collect(Collectors.toList()));
     		return true;
     	}else {

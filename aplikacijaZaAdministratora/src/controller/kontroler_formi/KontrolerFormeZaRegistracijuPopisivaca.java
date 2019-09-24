@@ -1,46 +1,38 @@
 package controller.kontroler_formi;
 
+import eCensus.rest.client.OGInstruktorCMISKLijent;
+import eCensus.rest.client.PopisivacCMISKlijent;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import model.korisnicki_nalozi.ClanPKLS;
-import model.korisnicki_nalozi.DEInstruktor;
 import model.korisnicki_nalozi.KorisnikSistema;
 import model.korisnicki_nalozi.OGInstruktor;
+import model.korisnicki_nalozi.Popisivac;
 import model.pracenje_popisa.JEZIK;
 import model.pracenje_popisa.PISMO;
 import test.Aplikacija;
 import util.OpstineCollection;
 
+import javax.ws.rs.core.Response;
 import java.io.File;
 import java.io.IOException;
-import java.lang.annotation.Documented;
-import java.lang.annotation.Retention;
-import java.lang.annotation.Target;
 import java.net.URL;
 import java.util.Arrays;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 
-import javax.ws.rs.core.Response;
-
-import eCensus.rest.client.ClanPKLSCMISKlijent;
-import eCensus.rest.client.DEInstruktorCMISKlijent;
-import eCensus.rest.client.OGInstruktorCMISKLijent;
-
-public class KontrolerFormeZaRegistracijuOGInstruktora implements Initializable {
+public class KontrolerFormeZaRegistracijuPopisivaca implements Initializable {
 	
 	public static String TRUSTSTORE = "resources" + File.separator + "clientTrustStore.p12";
 	public static String KEYSTORE = "resources" + File.separator + "clientStore.p12";
 	
-	static int i=30;
+	static int i=40;
     public void back(ActionEvent actionEvent) throws IOException {
         Aplikacija.getStage().setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/FormaZaRadClanaPKLS.fxml"))));
     }
@@ -56,8 +48,6 @@ public class KontrolerFormeZaRegistracijuOGInstruktora implements Initializable 
     @FXML
     PasswordField password;
 
-    @FXML
-    ChoiceBox<String> choiceBox2;
 
     public void registruj(ActionEvent actionEvent) throws IOException {
         List<TextInputControl> list = Arrays.asList(new TextInputControl[]{ ime, prezime, jmbg, username, password });
@@ -76,27 +66,24 @@ public class KontrolerFormeZaRegistracijuOGInstruktora implements Initializable 
             return;
         }
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setContentText("Uspješno ste registrovali gradskog/opštinskog instruktora");
-        String opstina = (String)choiceBox2.getValue();
-        KorisnikSistema ogInstruktor = new OGInstruktor (
+        alert.setContentText("Uspješno ste registrovali popisivača!");
+        KorisnikSistema ogInstruktor = new Popisivac(
         		i++,
                 ime.getText(),
                 prezime.getText(),
                 username.getText(),
                 password.getText(),
     			null, 
-    			null, 
-    			opstina, 
-    			opstina, 
+    			null,
     			TRUSTSTORE, 
     			"sigurnost", 
     			KEYSTORE, 
     			"sigurnost");
 
-        OGInstruktorCMISKLijent ogInstruktorCMISKlijent = new OGInstruktorCMISKLijent(KontrolerFormeZaPrijavu.getTrenutniKorisnik());
-        Response odgovor = ogInstruktorCMISKlijent.registrujKorisnika(ogInstruktor);
+        PopisivacCMISKlijent popisivacCMISKlijent = new PopisivacCMISKlijent(KontrolerFormeZaPrijavu.getTrenutniKorisnik());
+        Response odgovor = popisivacCMISKlijent.registrujKorisnika(ogInstruktor);
         if(Response.Status.Family.SUCCESSFUL.equals(odgovor.getStatusInfo().getFamily())) {
-        	Aplikacija.connLogger.getLogger().log(Level.INFO, "Uspješna registracija opštinskog/gradskog instruktora.");
+        	Aplikacija.connLogger.getLogger().log(Level.INFO, "Uspješna registracija popisivaca.");
         }else {
         	
         	Aplikacija.connLogger.logHeaders(Level.SEVERE, odgovor);
@@ -125,7 +112,5 @@ public class KontrolerFormeZaRegistracijuOGInstruktora implements Initializable 
             wrapper.sadrzajLabele=labelaZaIme.getText();
             labelaZaIme.setText(wrapper.sadrzajLabele + wrapper.prezimeIIme);
         });
-        choiceBox2.getItems().addAll(OpstineCollection.getOpstine());
-        choiceBox2.setValue("Banja Luka");
     }
 }

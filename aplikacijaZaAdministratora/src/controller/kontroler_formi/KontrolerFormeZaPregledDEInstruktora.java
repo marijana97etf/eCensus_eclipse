@@ -10,6 +10,7 @@ import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import model.korisnicki_nalozi.DEInstruktor;
+import model.table_input_models.DEInstruktorInputModel;
 import model.table_input_models.KorisnikInputModel;
 import test.Aplikacija;
 
@@ -26,7 +27,7 @@ public class KontrolerFormeZaPregledDEInstruktora extends KontrolerFormeZaPregle
     	Response odgovor  = deInstruktorCMISKlijent.getListuDEInstruktora();
     	if(Response.Status.Family.SUCCESSFUL.equals(odgovor.getStatusInfo().getFamily())) {
     		lista = FXCollections.observableArrayList(odgovor.readEntity(new GenericType<LinkedList<DEInstruktor>>() {}).stream()
-                    .map(KorisnikInputModel::new)
+                    .map(DEInstruktorInputModel::new)
                     .collect(Collectors.toList()));
     		return true;
     	}else {
