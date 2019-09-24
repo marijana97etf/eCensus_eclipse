@@ -60,15 +60,22 @@ public class MySQLClanPKLSDAO implements ClanPKLSDAO {
 		Connection connection = null;
 		try {
 			connection = ConnectionPool.getInstance().checkOut();
-			PreparedStatement preparedStatementClanPKLS = connection.prepareStatement( 
-					"DELETE FROM administrator_agencije WHERE IdOsobe = ?; " + 
-					"DELETE FROM administrator WHERE IdOsobe = ?; " + 
-					"DELETE FROM clan_pkls WHERE IdOsobe = ?; " );
+			
+			PreparedStatement preparedStatementClanPKLS = connection.prepareStatement("DELETE FROM clan_pkls WHERE IdOsobe = ?;");
 			preparedStatementClanPKLS.setLong(1, id);
-			preparedStatementClanPKLS.setLong(2, id);
-			preparedStatementClanPKLS.setLong(3, id);
 			preparedStatementClanPKLS.executeUpdate();
 			preparedStatementClanPKLS.close();
+			
+			PreparedStatement preparedStatementAdministrator = connection.prepareStatement("DELETE FROM administrator WHERE IdOsobe = ?;");
+			preparedStatementAdministrator.setLong(1, id);
+			preparedStatementAdministrator.executeUpdate();
+			preparedStatementAdministrator.close();
+			
+			PreparedStatement preparedStatementOsoba = connection.prepareStatement("DELETE FROM osoba WHERE IdOsobe = ?;");
+			preparedStatementOsoba.setLong(1, id);
+			preparedStatementOsoba.executeUpdate();
+			preparedStatementOsoba.close();
+			
 			return true;
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -84,22 +91,36 @@ public class MySQLClanPKLSDAO implements ClanPKLSDAO {
 		Connection connection = null;
 		try {
 			connection = ConnectionPool.getInstance().checkOut();
-			PreparedStatement preparedStatementClanPKLS = connection.prepareStatement(
-					"INSERT INTO osoba(Ime,Prezime,KorisnickoIme,Lozinka,Jezik,Pismo) values (?,?,?,?,?,?); " + 
-					"INSERT INTO administrator(IdOsobe) values (LAST_INSERT_ID()); " + 
-					"SET @lastID = LAST_INSERT_ID(); " + 
-					"INSERT INTO pkls(Grad,Opstina) values (?,?); " + 
-					"INSERT INTO clan_pkls(IdOsobe,IdPKLS) values (@lastID,LAST_INSERT_ID()); ");
-			preparedStatementClanPKLS.setString(1, clanPKLS.getIme());
-			preparedStatementClanPKLS.setString(2, clanPKLS.getPrezime());
-			preparedStatementClanPKLS.setString(3, clanPKLS.getKorisnickoIme());
-			preparedStatementClanPKLS.setString(4, clanPKLS.getLozinkaHash());
-			preparedStatementClanPKLS.setString(5, clanPKLS.getJezik().toString());
-			preparedStatementClanPKLS.setString(6, clanPKLS.getPismo().toString());
-			preparedStatementClanPKLS.setString(7, clanPKLS.getIme());//Grad
-			preparedStatementClanPKLS.setString(8, clanPKLS.getIme());//Opstina
+			
+			PreparedStatement preparedStatementOsoba = connection.prepareStatement(
+					"INSERT INTO osoba(Ime,Prezime,KorisnickoIme,Lozinka,Jezik,Pismo) values (?,?,?,?,?,?);");
+			preparedStatementOsoba.setString(1, clanPKLS.getIme());
+			preparedStatementOsoba.setString(2, clanPKLS.getPrezime());
+			preparedStatementOsoba.setString(3, clanPKLS.getKorisnickoIme());
+			preparedStatementOsoba.setString(4, clanPKLS.getLozinkaHash());
+			preparedStatementOsoba.setString(5, clanPKLS.getJezik().toString());
+			preparedStatementOsoba.setString(6, clanPKLS.getPismo().toString());
+			preparedStatementOsoba.executeUpdate();
+			preparedStatementOsoba.close();
+			
+			PreparedStatement preparedStatementAdministrator = connection.prepareStatement("INSERT INTO administrator(IdOsobe) values (LAST_INSERT_ID());");
+			preparedStatementAdministrator.executeUpdate();
+			preparedStatementAdministrator.close();
+			
+			PreparedStatement preparedStatementLokalnaVarijabla = connection.prepareStatement("SET @lastID = LAST_INSERT_ID()");
+			preparedStatementAdministrator.executeUpdate();
+			preparedStatementAdministrator.close();
+			
+			PreparedStatement preparedStatementPKLS = connection.prepareStatement("INSERT INTO pkls(Grad,Opstina) values (?,?);");
+			preparedStatementPKLS.setString(1, "Grad");//Grad
+			preparedStatementPKLS.setString(1, "Opstina");//Opstina
+			preparedStatementPKLS.executeUpdate();
+			preparedStatementPKLS.close();
+			
+			PreparedStatement preparedStatementClanPKLS = connection.prepareStatement("INSERT INTO clan_pkls(IdOsobe,IdPKLS) values (@lastID,LAST_INSERT_ID());");
 			preparedStatementClanPKLS.executeUpdate();
 			preparedStatementClanPKLS.close();
+			
 			return true;
 		} catch (SQLException e) {
 			e.printStackTrace();

@@ -56,13 +56,17 @@ public class MySQLPopisivacDAO implements PopisivacDAO {
 		Connection connection = null;
 		try {
 			connection = ConnectionPool.getInstance().checkOut();
-			PreparedStatement preparedStatementPopisivac = connection.prepareStatement( 
-					"DELETE FROM popisivac WHERE IdOsobe = ? ;" + 
-					"DELETE FROM osoba WHERE IdOsobe = ?; " );
+			
+			PreparedStatement preparedStatementPopisivac = connection.prepareStatement("DELETE FROM popisivac WHERE IdOsobe = ?;");
 			preparedStatementPopisivac.setLong(1, id);
-			preparedStatementPopisivac.setLong(2, id);
 			preparedStatementPopisivac.executeUpdate();
 			preparedStatementPopisivac.close();
+			
+			PreparedStatement preparedStatementOsoba = connection.prepareStatement("DELETE FROM osoba WHERE IdOsobe = ?;");
+			preparedStatementOsoba.setLong(1, id);
+			preparedStatementOsoba.executeUpdate();
+			preparedStatementOsoba.close();
+			
 			return true;
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -78,17 +82,21 @@ public class MySQLPopisivacDAO implements PopisivacDAO {
 		Connection connection = null;
 		try {
 			connection = ConnectionPool.getInstance().checkOut();
-			PreparedStatement preparedStatementPopisivac = connection.prepareStatement(
-					"INSERT INTO osoba(Ime,Prezime,KorisnickoIme,Lozinka,Jezik,Pismo) values (?,?,?,?,?,?); " + 
-					"INSERT INTO popisivac(IdOsobe) values (LAST_INSERT_ID()); ");
-			preparedStatementPopisivac.setString(1, popisivac.getIme());
-			preparedStatementPopisivac.setString(2, popisivac.getPrezime());
-			preparedStatementPopisivac.setString(3, popisivac.getKorisnickoIme());
-			preparedStatementPopisivac.setString(4, popisivac.getLozinkaHash());
-			preparedStatementPopisivac.setString(5, popisivac.getJezik().toString());
-			preparedStatementPopisivac.setString(6, popisivac.getPismo().toString());
+			PreparedStatement preparedStatementOsoba = connection.prepareStatement(
+					"INSERT INTO osoba(Ime,Prezime,KorisnickoIme,Lozinka,Jezik,Pismo) values (?,?,?,?,?,?);");
+			preparedStatementOsoba.setString(1, popisivac.getIme());
+			preparedStatementOsoba.setString(2, popisivac.getPrezime());
+			preparedStatementOsoba.setString(3, popisivac.getKorisnickoIme());
+			preparedStatementOsoba.setString(4, popisivac.getLozinkaHash());
+			preparedStatementOsoba.setString(5, popisivac.getJezik().toString());
+			preparedStatementOsoba.setString(6, popisivac.getPismo().toString());
+			preparedStatementOsoba.executeUpdate();
+			preparedStatementOsoba.close();
+			
+			PreparedStatement preparedStatementPopisivac = connection.prepareStatement("INSERT INTO popisivac(IdOsobe) values (LAST_INSERT_ID());");
 			preparedStatementPopisivac.executeUpdate();
 			preparedStatementPopisivac.close();
+			
 			return true;
 		} catch (SQLException e) {
 			e.printStackTrace();

@@ -145,7 +145,7 @@ public class KorisnikSistema implements Serializable {
 		return lozinkaHash;
 	}
 
-	public void setLozinkaHash(String lozinka) {
+	public void setLozinkaHash(String lozinkaHash) {
 		this.lozinkaHash = lozinkaHash;
 	}
 

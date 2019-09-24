@@ -1,17 +1,23 @@
 
 import java.io.File;
+import java.util.Arrays;
 import java.util.LinkedList;
+import java.util.List;
 
 import javax.ws.rs.core.GenericType;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.Status;
 
 import eCensus.rest.client.CMISKlijent;
 import eCensus.rest.client.ClanPKLSCMISKlijent;
 import eCensus.rest.client.DEInstruktorCMISKlijent;
+import eCensus.rest.client.PopisivacCMISKlijent;
 import model.korisnicki_nalozi.ClanPKLS;
 import model.korisnicki_nalozi.DEInstruktor;
 import model.korisnicki_nalozi.DEInstruktor.DRZAVA;
 import model.korisnicki_nalozi.DEInstruktor.ENTITET;
 import model.korisnicki_nalozi.KorisnikSistema;
+import model.korisnicki_nalozi.Popisivac;
 import model.pracenje_popisa.JEZIK;
 import model.pracenje_popisa.PISMO;
 
@@ -45,6 +51,24 @@ public class TestCMISRest {
 		ClanPKLSCMISKlijent clanPKLSklijent = new ClanPKLSCMISKlijent(korisnikSistema);
 		System.out.println(clanPKLSklijent);
 		ClanPKLS clanPKLS = clanPKLSklijent.getClanPKLS("kristijan.stepanov").readEntity(ClanPKLS.class);
+		
+		PopisivacCMISKlijent popisivacCMISKlijent = new PopisivacCMISKlijent(korisnikSistema);
+		Response odgovor = popisivacCMISKlijent.registrujKorisnika(new Popisivac("Ime","Prezime","KorisnickoIme1",KorisnikSistema.napraviHesLozinke("123456789"),JEZIK.SRPSKI,PISMO.LATINICA));
+		
+		if(odgovor.getStatus() == Status.CREATED.getStatusCode()) {
+			System.out.println("OK");
+		} else {
+			System.out.println(odgovor.getStatus());
+			System.out.println("NOK");
+		}
+		
+		Response response = popisivacCMISKlijent.getListaPopisivaca();
+		if(response.getStatus() == Status.OK.getStatusCode()) {
+			List<KorisnikSistema> korisnici = Arrays.asList(response.readEntity(KorisnikSistema[].class));
+			for(KorisnikSistema korisnik : korisnici) {
+				System.out.println(korisnik);
+			}
+		}
 		
 		System.out.println(clanPKLS);
 		

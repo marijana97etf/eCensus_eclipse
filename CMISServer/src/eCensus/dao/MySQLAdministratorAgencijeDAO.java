@@ -58,15 +58,22 @@ public class MySQLAdministratorAgencijeDAO implements AdministratorAgencijeDAO {
 		Connection connection = null;
 		try {
 			connection = ConnectionPool.getInstance().checkOut();
-			PreparedStatement preparedStatementAdministratorAgencije = connection.prepareStatement( 
-					"DELETE FROM administrator_agencije WHERE IdOsobe = ?; " + 
-					"DELETE FROM administrator WHERE IdOsobe = ?; " + 
-					"DELETE FROM osoba WHERE IdOsobe = ?; " );
+			
+			PreparedStatement preparedStatementAdministratorAgencije = connection.prepareStatement("DELETE FROM administrator_agencije WHERE IdOsobe = ?;");
 			preparedStatementAdministratorAgencije.setLong(1, id);
-			preparedStatementAdministratorAgencije.setLong(2, id);
-			preparedStatementAdministratorAgencije.setLong(3, id);
 			preparedStatementAdministratorAgencije.executeUpdate();
 			preparedStatementAdministratorAgencije.close();
+			
+			PreparedStatement preparedStatementAdministrator = connection.prepareStatement("DELETE FROM administrator WHERE IdOsobe = ?;");
+			preparedStatementAdministrator.setLong(1, id);
+			preparedStatementAdministrator.executeUpdate();
+			preparedStatementAdministrator.close();
+			
+			PreparedStatement preparedStatementOsoba = connection.prepareStatement("DELETE FROM osoba WHERE IdOsobe = ?;");
+			preparedStatementOsoba.setLong(1, id);
+			preparedStatementOsoba.executeUpdate();
+			preparedStatementOsoba.close();
+			
 			return true;
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -81,20 +88,27 @@ public class MySQLAdministratorAgencijeDAO implements AdministratorAgencijeDAO {
 		AdministratorAgencije administratorAgencije = (AdministratorAgencije) korisnik;
 		Connection connection = null;
 		try {
-			connection = ConnectionPool.getInstance().checkOut();
-			PreparedStatement preparedStatementAdministratorAgencije = connection.prepareStatement(
-					"INSERT INTO osoba(Ime,Prezime,KorisnickoIme,Lozinka,Jezik,Pismo) values (?,?,?,?,?,?); " + 
-					"INSERT INTO administrator(IdOsobe) values (LAST_INSERT_ID()); " + 
-					"INSERT INTO administrator_agencije(IdOsobe,Naziv) values (LAST_INSERT_ID(),?); ");
-			preparedStatementAdministratorAgencije.setString(1, administratorAgencije.getIme());
-			preparedStatementAdministratorAgencije.setString(2, administratorAgencije.getPrezime());
-			preparedStatementAdministratorAgencije.setString(3, administratorAgencije.getKorisnickoIme());
-			preparedStatementAdministratorAgencije.setString(4, administratorAgencije.getLozinkaHash());
-			preparedStatementAdministratorAgencije.setString(5, administratorAgencije.getJezik().toString());
-			preparedStatementAdministratorAgencije.setString(6, administratorAgencije.getPismo().toString());
-			preparedStatementAdministratorAgencije.setString(7, administratorAgencije.getIme());//Naziv agencije
+			connection = ConnectionPool.getInstance().checkOut();	
+			PreparedStatement preparedStatementOsoba = connection.prepareStatement(
+					"INSERT INTO osoba(Ime,Prezime,KorisnickoIme,Lozinka,Jezik,Pismo) values (?,?,?,?,?,?);");
+			preparedStatementOsoba.setString(1, administratorAgencije.getIme());
+			preparedStatementOsoba.setString(2, administratorAgencije.getPrezime());
+			preparedStatementOsoba.setString(3, administratorAgencije.getKorisnickoIme());
+			preparedStatementOsoba.setString(4, administratorAgencije.getLozinkaHash());
+			preparedStatementOsoba.setString(5, administratorAgencije.getJezik().toString());
+			preparedStatementOsoba.setString(6, administratorAgencije.getPismo().toString());
+			preparedStatementOsoba.executeUpdate();
+			preparedStatementOsoba.close();
+			
+			PreparedStatement preparedStatementAdministrator = connection.prepareStatement("INSERT INTO administrator(IdOsobe) values (LAST_INSERT_ID());");
+			preparedStatementAdministrator.executeUpdate();
+			preparedStatementAdministrator.close();
+			
+			PreparedStatement preparedStatementAdministratorAgencije = connection.prepareStatement("INSERT INTO administrator_agencije(IdOsobe,Naziv) values (LAST_INSERT_ID(),?);");
+			preparedStatementAdministratorAgencije.setString(1, administratorAgencije.getNazivAgencije());
 			preparedStatementAdministratorAgencije.executeUpdate();
 			preparedStatementAdministratorAgencije.close();
+			
 			return true;
 		} catch (SQLException e) {
 			e.printStackTrace();

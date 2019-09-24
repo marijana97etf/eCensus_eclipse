@@ -60,15 +60,22 @@ public class MySQLDEInstruktorDAO implements DEInstruktorDAO {
 		Connection connection = null;
 		try {
 			connection = ConnectionPool.getInstance().checkOut();
-			PreparedStatement preparedStatementDEInstruktor = connection.prepareStatement( 
-					"DELETE FROM administrator_agencije WHERE IdOsobe = ?;" + 
-					"DELETE FROM administrator WHERE IdOsobe = ?; " + 
-					"DELETE FROM de_instruktor WHERE IdOsobe = ?; " );
+			
+			PreparedStatement preparedStatementDEInstruktor = connection.prepareStatement("DELETE FROM de_instruktor WHERE IdOsobe = ?;");
 			preparedStatementDEInstruktor.setLong(1, id);
-			preparedStatementDEInstruktor.setLong(2, id);
-			preparedStatementDEInstruktor.setLong(3, id);
 			preparedStatementDEInstruktor.executeUpdate();
 			preparedStatementDEInstruktor.close();
+			
+			PreparedStatement preparedStatementAdministrator = connection.prepareStatement("DELETE FROM administrator WHERE IdOsobe = ?;");
+			preparedStatementAdministrator.setLong(1, id);
+			preparedStatementAdministrator.executeUpdate();
+			preparedStatementAdministrator.close();
+			
+			PreparedStatement preparedStatementOsoba = connection.prepareStatement("DELETE FROM osoba WHERE IdOsobe = ?;");
+			preparedStatementOsoba.setLong(1, id);
+			preparedStatementOsoba.executeUpdate();
+			preparedStatementOsoba.close();
+			
 			return true;
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -84,20 +91,28 @@ public class MySQLDEInstruktorDAO implements DEInstruktorDAO {
 		Connection connection = null;
 		try {
 			connection = ConnectionPool.getInstance().checkOut();
-			PreparedStatement preparedStatementDEInstruktor = connection.prepareStatement(
-					"INSERT INTO osoba(Ime,Prezime,KorisnickoIme,Lozinka,Jezik,Pismo) values (?,?,?,?,?,?); " + 
-					"INSERT INTO administrator(IdOsobe) values (LAST_INSERT_ID()); " + 
-					"INSERT INTO de_instruktor(IdOsobe,Drzava,Entitet) values (LAST_INSERT_ID(),?,?); ");
-			preparedStatementDEInstruktor.setString(1, deInstruktor.getIme());
-			preparedStatementDEInstruktor.setString(2, deInstruktor.getPrezime());
-			preparedStatementDEInstruktor.setString(3, deInstruktor.getKorisnickoIme());
-			preparedStatementDEInstruktor.setString(4, deInstruktor.getLozinkaHash());
-			preparedStatementDEInstruktor.setString(5, deInstruktor.getJezik().toString());
-			preparedStatementDEInstruktor.setString(6, deInstruktor.getPismo().toString());
-			preparedStatementDEInstruktor.setString(7, deInstruktor.getDrzava().toString());//Drzava
-			preparedStatementDEInstruktor.setString(8, deInstruktor.getEntitet().toString());//Entitet
+			
+			PreparedStatement preparedStatementOsoba = connection.prepareStatement(
+					"INSERT INTO osoba(Ime,Prezime,KorisnickoIme,Lozinka,Jezik,Pismo) values (?,?,?,?,?,?);");
+			preparedStatementOsoba.setString(1, deInstruktor.getIme());
+			preparedStatementOsoba.setString(2, deInstruktor.getPrezime());
+			preparedStatementOsoba.setString(3, deInstruktor.getKorisnickoIme());
+			preparedStatementOsoba.setString(4, deInstruktor.getLozinkaHash());
+			preparedStatementOsoba.setString(5, deInstruktor.getJezik().toString());
+			preparedStatementOsoba.setString(6, deInstruktor.getPismo().toString());
+			preparedStatementOsoba.executeUpdate();
+			preparedStatementOsoba.close();
+			
+			PreparedStatement preparedStatementAdministrator = connection.prepareStatement("INSERT INTO administrator(IdOsobe) values (LAST_INSERT_ID());");
+			preparedStatementAdministrator.executeUpdate();
+			preparedStatementAdministrator.close();
+			
+			PreparedStatement preparedStatementDEInstruktor = connection.prepareStatement("INSERT INTO de_instruktor(IdOsobe,Drzava,Entitet) values (LAST_INSERT_ID(),?,?);");
+			preparedStatementDEInstruktor.setString(1, deInstruktor.getDrzava().getValue());//Drzava
+			preparedStatementDEInstruktor.setString(2, deInstruktor.getEntitet().getValue());//Entitet
 			preparedStatementDEInstruktor.executeUpdate();
 			preparedStatementDEInstruktor.close();
+			
 			return true;
 		} catch (SQLException e) {
 			e.printStackTrace();

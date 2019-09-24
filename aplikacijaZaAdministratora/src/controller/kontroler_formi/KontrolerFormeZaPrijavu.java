@@ -98,7 +98,6 @@ public class KontrolerFormeZaPrijavu implements Initializable {
 			Aplikacija.connLogger.logHeaders(Level.SEVERE, odgovor);
 		}
 		
-
 		trenutniKorisnik = korisnikSistema;
 		trenutniKorisnik.setKeyStore(keystore);
 		trenutniKorisnik.setKeyLozinka("sigurnost");
