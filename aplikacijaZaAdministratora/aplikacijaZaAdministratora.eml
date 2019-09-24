@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component inheritJdk="true">
+	<exclude-output/>
+	<contentEntry url="file://$MODULE_DIR$"/>
+	<lib name="javatuples-1.2.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/lib/javatuples-1.2.jar!/"/>
+	</lib>
+	<lib name="javafx-swt.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/javafx-sdk-12.0.1/lib/javafx-swt.jar!/"/>
+	</lib>
+	<lib name="javafx.base.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/javafx-sdk-12.0.1/lib/javafx.base.jar!/"/>
+	</lib>
+	<lib name="javafx.controls.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/javafx-sdk-12.0.1/lib/javafx.controls.jar!/"/>
+	</lib>
+	<lib name="javafx.fxml.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/javafx-sdk-12.0.1/lib/javafx.fxml.jar!/"/>
+	</lib>
+	<lib name="javafx.graphics.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/javafx-sdk-12.0.1/lib/javafx.graphics.jar!/"/>
+	</lib>
+	<lib name="javafx.media.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/javafx-sdk-12.0.1/lib/javafx.media.jar!/"/>
+	</lib>
+	<lib name="javafx.swing.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/javafx-sdk-12.0.1/lib/javafx.swing.jar!/"/>
+	</lib>
+	<lib name="javafx.web.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/javafx-sdk-12.0.1/lib/javafx.web.jar!/"/>
+	</lib>
+	<lib name="aopalliance-repackaged-2.5.0.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/lib/aopalliance-repackaged-2.5.0.jar!/"/>
+	</lib>
+	<lib name="hk2-api-2.5.0.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/lib/hk2-api-2.5.0.jar!/"/>
+	</lib>
+	<lib name="hk2-locator-2.5.0.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/lib/hk2-locator-2.5.0.jar!/"/>
+	</lib>
+	<lib name="hk2-utils-2.5.0.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/lib/hk2-utils-2.5.0.jar!/"/>
+	</lib>
+	<lib name="jakarta.activation-api-1.2.1.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/lib/jakarta.activation-api-1.2.1.jar!/"/>
+	</lib>
+	<lib name="jakarta.annotation-api-1.3.4.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/lib/jakarta.annotation-api-1.3.4.jar!/"/>
+	</lib>
+	<lib name="jakarta.inject-2.5.0.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/lib/jakarta.inject-2.5.0.jar!/"/>
+	</lib>
+	<lib name="jakarta.json-1.1.5.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/lib/jakarta.json-1.1.5.jar!/"/>
+	</lib>
+	<lib name="jakarta.json-api-1.1.5.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/lib/jakarta.json-api-1.1.5.jar!/"/>
+	</lib>
+	<lib name="jakarta.json.bind-api-1.0.1.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/lib/jakarta.json.bind-api-1.0.1.jar!/"/>
+	</lib>
+	<lib name="jakarta.persistence-api-2.2.2.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/lib/jakarta.persistence-api-2.2.2.jar!/"/>
+	</lib>
+	<lib name="jakarta.servlet-api-4.0.2.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/lib/jakarta.servlet-api-4.0.2.jar!/"/>
+	</lib>
+	<lib name="jakarta.ws.rs-api-2.1.5-sources.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/lib/jakarta.ws.rs-api-2.1.5-sources.jar!/"/>
+	</lib>
+	<lib name="jakarta.ws.rs-api-2.1.5.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/lib/jakarta.ws.rs-api-2.1.5.jar!/"/>
+	</lib>
+	<lib name="jakarta.xml.bind-api-2.3.2.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/lib/jakarta.xml.bind-api-2.3.2.jar!/"/>
+	</lib>
+	<lib name="javassist-3.22.0-GA.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/lib/javassist-3.22.0-GA.jar!/"/>
+	</lib>
+	<lib name="jersey-client-1.19.1.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/lib/jersey-client-1.19.1.jar!/"/>
+	</lib>
+	<lib name="jersey-client.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/lib/jersey-client.jar!/"/>
+	</lib>
+	<lib name="jersey-common.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/lib/jersey-common.jar!/"/>
+	</lib>
+	<lib name="jersey-container-servlet-core.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/lib/jersey-container-servlet-core.jar!/"/>
+	</lib>
+	<lib name="jersey-container-servlet.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/lib/jersey-container-servlet.jar!/"/>
+	</lib>
+	<lib name="jersey-core-1.19.1.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/lib/jersey-core-1.19.1.jar!/"/>
+	</lib>
+	<lib name="jersey-hk2.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/lib/jersey-hk2.jar!/"/>
+	</lib>
+	<lib name="jersey-media-jaxb.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/lib/jersey-media-jaxb.jar!/"/>
+	</lib>
+	<lib name="jersey-media-json-binding.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/lib/jersey-media-json-binding.jar!/"/>
+	</lib>
+	<lib name="jersey-media-moxy-2.27.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/lib/jersey-media-moxy-2.27.jar!/"/>
+	</lib>
+	<lib name="jersey-media-sse.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/lib/jersey-media-sse.jar!/"/>
+	</lib>
+	<lib name="jersey-server.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/lib/jersey-server.jar!/"/>
+	</lib>
+	<lib name="jsr311-api-1.1.1.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/lib/jsr311-api-1.1.1.jar!/"/>
+	</lib>
+	<lib name="org.osgi.core-4.2.0.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/lib/org.osgi.core-4.2.0.jar!/"/>
+	</lib>
+	<lib name="osgi-resource-locator-1.0.1.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/lib/osgi-resource-locator-1.0.1.jar!/"/>
+	</lib>
+	<lib name="validation-api-2.0.1.Final.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/lib/validation-api-2.0.1.Final.jar!/"/>
+	</lib>
+	<lib name="yasson-1.0.3.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/lib/yasson-1.0.3.jar!/"/>
+	</lib>
+	<lib name="restClient.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/lib/restClient.jar!/"/>
+	</lib>
+	<levels>
+		<level name="JavaFX12" value="project"/>
+	</levels>
+</component>

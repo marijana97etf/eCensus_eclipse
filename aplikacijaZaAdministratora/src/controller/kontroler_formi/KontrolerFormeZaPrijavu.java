@@ -1,15 +1,5 @@
 package controller.kontroler_formi;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.Reader;
-import java.net.URL;
-import java.rmi.ConnectException;
-import java.util.Properties;
-import java.util.ResourceBundle;
-import java.util.logging.Level;
-import javax.ws.rs.core.Response;
 import controller.KontrolerZaJezikeIPisma.KontrolerZaJezik;
 import controller.KontrolerZaJezikeIPisma.PromjenaPisma;
 import eCensus.rest.client.AdministratorCMISKlijent;
@@ -25,13 +15,19 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import jdk.jshell.spi.ExecutionControl;
-import model.korisnicki_nalozi.AdministratorAgencije;
-import model.korisnicki_nalozi.ClanPKLS;
-import model.korisnicki_nalozi.DEInstruktor;
-import model.korisnicki_nalozi.KorisnikSistema;
-import model.korisnicki_nalozi.OGInstruktor;
+import model.korisnicki_nalozi.*;
 import model.pracenje_popisa.PISMO;
 import test.Aplikacija;
+
+import javax.ws.rs.core.Response;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.Reader;
+import java.net.URL;
+import java.util.Properties;
+import java.util.ResourceBundle;
+import java.util.logging.Level;
 
 public class KontrolerFormeZaPrijavu implements Initializable {
 

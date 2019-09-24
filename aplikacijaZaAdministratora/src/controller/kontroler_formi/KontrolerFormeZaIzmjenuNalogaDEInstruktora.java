@@ -51,7 +51,7 @@ public class KontrolerFormeZaIzmjenuNalogaDEInstruktora implements Initializable
         account.setPrezime(prezimeIzmjena.getText());
         account.setIme(imeIzmjena.getText());
         account.setKorisnickoIme(usernameIzmjena.getText());
-        ((DEInstruktor)account.getKorisnikSistema()).setEntitet(DEInstruktor.ENTITET.getENTITET((String) choiceBox.getValue()));
+        ((DEInstruktor)account.getKorisnikSistema()).setEntitet(DEInstruktor.stringToEntitet((String) choiceBox.getValue()));
         account.updateKorisnikSistema();
         
         KorisnikSistema deInstuktor =  account.getKorisnikSistema();

@@ -1,14 +1,11 @@
 package model.pracenje_popisa.izvjestaji_o_popisivacu;
 
-import java.io.Serializable;
-
-public class PopisniKrug implements Serializable{
+public class PopisniKrug {
 
     protected String opstina,grad;
     protected byte[] slikaBytes;
-    
-    public PopisniKrug() {}
 
+    public PopisniKrug() {}
 	public PopisniKrug(String opstina, String grad) {
 		super();
 		this.opstina = opstina;
@@ -36,14 +33,6 @@ public class PopisniKrug implements Serializable{
 
 	public String getGrad() {
 		return grad;
-	}
-
-	public void setOpstina(String opstina) {
-		this.opstina = opstina;
-	}
-
-	public void setGrad(String grad) {
-		this.grad = grad;
 	}
 
 	@Override

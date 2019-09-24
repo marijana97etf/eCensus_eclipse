@@ -110,7 +110,12 @@ public class KontrolerFormeZaPrikazSacuvanihPopisnica {
 			PopisivacGlavniServerKlijent glavniServer = new PopisivacGlavniServerKlijent(keystore, keystoreLozinka, truststore, truststoreLozinka, 
 	        		KontrolerFormeZaPrijavu.korisnik.getKorisnickoIme(), KontrolerFormeZaPrijavu.korisnik.getLozinkaHash());
 	        
-			//TODO:dovrsiti
+			List<PopisnicaZaDomacinstvo> popisniceDomacinstvo = SerijalizacijaPopisnica.deserijalizujPopisniceZaDomacinstvo();
+			//poslati popisnice
+			
+			List<PopisnicaZaStanovnika> popisniceStanovnistvo = SerijalizacijaPopisnica.deserijalizujPopisniceZaStanovnika();
+			//poslati popisnice
+			
 		}
 		catch(IOException e) {
 			e.printStackTrace();

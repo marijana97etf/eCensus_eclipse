@@ -9,8 +9,7 @@ public class AdministratorAgencije extends Administrator {
 	
 	public AdministratorAgencije() {}
 	
-    public AdministratorAgencije(String JMBG,
-                                 String ime,
+    public AdministratorAgencije(String ime,
                                  String prezime,
                                  String korisnickoIme,
                                  String lozinka,
@@ -18,13 +17,13 @@ public class AdministratorAgencije extends Administrator {
                                  PISMO pismo,
                                  String nazivAgencije)
     {
-        super(JMBG, ime, prezime, korisnickoIme, lozinka, jezik, pismo);
+        super(ime, prezime, korisnickoIme, lozinka, jezik, pismo);
         this.nazivAgencije = nazivAgencije;
     }
 
-	public AdministratorAgencije(long id, String jMBG, String ime, String prezime, String korisnickoIme, String lozinka,
+	public AdministratorAgencije(long id, String ime, String prezime, String korisnickoIme, String lozinka,
 			JEZIK jezik, PISMO pismo, String nazivAgencije, String trustStore, String trustLozinka, String keyStore, String keyLozinka) {
-		super(id, jMBG, ime, prezime, korisnickoIme, lozinka, jezik, pismo, trustStore, trustLozinka, keyStore, keyLozinka);
+		super(id,ime, prezime, korisnickoIme, lozinka, jezik, pismo, trustStore, trustLozinka, keyStore, keyLozinka);
 		this.nazivAgencije = nazivAgencije;
 	}
 	
