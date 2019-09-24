@@ -81,11 +81,11 @@ public class KontrolerFormeZaRegistracijuDEInstruktora implements Initializable 
                 ime.getText(),
                 prezime.getText(),
                 username.getText(),
-                password.getText(),
+                KorisnikSistema.napraviHesLozinke(password.getText()),
                 DRZAVA.BIH,
                 entitet,
-    			null, 
-    			null, 
+    			null, //isto
+    			null, //isto
     			TRUSTSTORE, 
     			"sigurnost", 
     			KEYSTORE, 

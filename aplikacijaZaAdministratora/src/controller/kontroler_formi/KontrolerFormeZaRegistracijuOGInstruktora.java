@@ -83,9 +83,9 @@ public class KontrolerFormeZaRegistracijuOGInstruktora implements Initializable 
                 ime.getText(),
                 prezime.getText(),
                 username.getText(),
-                password.getText(),
-    			null, 
-    			null, 
+                KorisnikSistema.napraviHesLozinke(password.getText()),
+    			null, //isto
+    			null, //isto
     			opstina, 
     			opstina, 
     			TRUSTSTORE, 

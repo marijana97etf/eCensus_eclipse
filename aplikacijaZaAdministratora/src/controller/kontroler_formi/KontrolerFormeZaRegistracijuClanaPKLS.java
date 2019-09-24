@@ -79,9 +79,9 @@ public class KontrolerFormeZaRegistracijuClanaPKLS implements Initializable {
                 ime.getText(),
                 prezime.getText(),
                 username.getText(),
-                password.getText(),
-    			null, 
-    			null, 
+                KorisnikSistema.napraviHesLozinke(password.getText()),
+    			null,//JEZIK dodati, inace greska na serveru
+    			null,//PISMO dodati inace greska na serveru
     			gradovi.getValue(), 
     			gradovi.getValue(), 
     			TRUSTSTORE, 

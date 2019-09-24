@@ -38,7 +38,7 @@ public class KontrolerFormeZaIzmjenuNalogaPopisivaca implements Initializable {
 
     public void izmjeni(ActionEvent actionEvent) {
         Alert alert = new Alert(Alert.AlertType.WARNING);
-        alert.setContentText("Da li želite da sačuvate izmjene naloga popisivača?");
+        alert.setContentText("Da li Å¾elite da saÄ�uvate izmjene naloga popisivaÄ�a?");
         ButtonType buttonType = alert.showAndWait().get();
         if(!buttonType.getText().equals("OK")) return;
         
@@ -48,7 +48,7 @@ public class KontrolerFormeZaIzmjenuNalogaPopisivaca implements Initializable {
 
         if(!KorisnikSistema.napraviHesLozinke(oldPassword.getText()).equals(popisivac.getLozinkaHash())) {
             Alert pwdAgain = new Alert(Alert.AlertType.WARNING);
-            pwdAgain.setContentText("Vaša unesena stara lozinka nije ispravna.");
+            pwdAgain.setContentText("VaÅ¡a unesena stara lozinka nije ispravna.");
             pwdAgain.showAndWait();
             return;
         }
@@ -56,7 +56,7 @@ public class KontrolerFormeZaIzmjenuNalogaPopisivaca implements Initializable {
         if(!newPassword.getText().matches(pattern))
         {
             Alert pwdAgain2 = new Alert(Alert.AlertType.WARNING);
-            pwdAgain2.setContentText("Unesite 'jaču' lozinku.");
+            pwdAgain2.setContentText("Unesite 'jaÄ�u' lozinku.");
             pwdAgain2.showAndWait();
             return;
         }
@@ -65,7 +65,7 @@ public class KontrolerFormeZaIzmjenuNalogaPopisivaca implements Initializable {
         nalogInputModel.setIme(ime.getText());
         //Pattern pattern = Pattern.compile("^[a-zA-Z0-9._-]{3,}$");
         //Matcher matcher = pattern.matcher(username.getText());
-        popisivac.setLozinkaHash(newPassword.getText());
+        popisivac.setLozinkaHash(KorisnikSistema.napraviHesLozinke(newPassword.getText())); //Ovako za svaku izmjenu
         nalogInputModel.updateKorisnikSistema();
 
         PopisivacCMISKlijent popisivacCMISKlijent = new PopisivacCMISKlijent(KontrolerFormeZaPrijavu.getTrenutniKorisnik());
@@ -88,7 +88,7 @@ public class KontrolerFormeZaIzmjenuNalogaPopisivaca implements Initializable {
 
     public void back(ActionEvent actionEvent) throws IOException {
         Alert alert = new Alert(Alert.AlertType.WARNING);
-        alert.setContentText("Da li želite da napustite izmjenu naloga popisivača?");
+        alert.setContentText("Da li Å¾elite da napustite izmjenu naloga popisivaÄ�a?");
         ButtonType buttonType = alert.showAndWait().get();
         if(!buttonType.getText().equals("OK")) return;
         Aplikacija.getStage().setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/FormaZaPregledNalogaPopisivaca.fxml"))));
