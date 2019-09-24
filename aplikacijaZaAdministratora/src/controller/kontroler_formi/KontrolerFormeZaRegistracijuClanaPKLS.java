@@ -33,9 +33,6 @@ import test.Aplikacija;
 import util.OpstineCollection;
 
 public class KontrolerFormeZaRegistracijuClanaPKLS implements Initializable {
-    
-	public static String TRUSTSTORE = "resources" + File.separator + "clientTrustStore.p12";
-	public static String KEYSTORE = "resources" + File.separator + "clientStore.p12";
 
 	static int i=20;
 	public void back(ActionEvent actionEvent) throws IOException {
@@ -84,10 +81,10 @@ public class KontrolerFormeZaRegistracijuClanaPKLS implements Initializable {
     			null,//PISMO dodati inace greska na serveru
     			gradovi.getValue(), 
     			gradovi.getValue(), 
-    			TRUSTSTORE, 
-    			"sigurnost", 
-    			KEYSTORE, 
-    			"sigurnost");
+    			null, 
+    			null, 
+    			null, 
+    			null);
 
         ClanPKLSCMISKlijent clanPKLSCMISKlijent = new ClanPKLSCMISKlijent(KontrolerFormeZaPrijavu.getTrenutniKorisnik());
         Response odgovor = clanPKLSCMISKlijent.registrujKorisnika(clanPKLS);

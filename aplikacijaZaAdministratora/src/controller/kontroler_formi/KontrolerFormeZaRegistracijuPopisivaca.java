@@ -29,9 +29,6 @@ import java.util.logging.Level;
 
 public class KontrolerFormeZaRegistracijuPopisivaca implements Initializable {
 	
-	public static String TRUSTSTORE = "resources" + File.separator + "clientTrustStore.p12";
-	public static String KEYSTORE = "resources" + File.separator + "clientStore.p12";
-	
 	static int i=40;
     public void back(ActionEvent actionEvent) throws IOException {
         Aplikacija.getStage().setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/FormaZaRadClanaPKLS.fxml"))));
@@ -75,10 +72,10 @@ public class KontrolerFormeZaRegistracijuPopisivaca implements Initializable {
                 KorisnikSistema.napraviHesLozinke(password.getText()),
     			null, //isto
     			null, //isto
-    			TRUSTSTORE, 
-    			"sigurnost", 
-    			KEYSTORE, 
-    			"sigurnost");
+    			null, 
+    			null, 
+    			null, 
+    			null);
 
         PopisivacCMISKlijent popisivacCMISKlijent = new PopisivacCMISKlijent(KontrolerFormeZaPrijavu.getTrenutniKorisnik());
         Response odgovor = popisivacCMISKlijent.registrujKorisnika(popisivac);

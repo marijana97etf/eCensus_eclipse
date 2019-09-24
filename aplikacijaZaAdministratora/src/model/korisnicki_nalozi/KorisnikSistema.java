@@ -106,15 +106,11 @@ public class KorisnikSistema implements Serializable {
 
 	public static String napraviHesLozinke(String lozinka) {
 		try {
-//			return new String(MessageDigest.getInstance("MD5").digest(lozinka.getBytes(StandardCharsets.UTF_8)));
 			return new String(Base64.getEncoder().encode(MessageDigest.getInstance("MD5").digest(lozinka.getBytes(StandardCharsets.UTF_8))));
 		} catch (NoSuchAlgorithmException e) {
 			e.printStackTrace();
 			return null;
 		} 
-//		finally {
-//			return lozinka;
-//		}
 	}
 
 	public String getIme() {

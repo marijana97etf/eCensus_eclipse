@@ -24,6 +24,7 @@ import model.korisnicki_nalozi.DEInstruktor;
 import model.korisnicki_nalozi.KorisnikSistema;
 import model.korisnicki_nalozi.OGInstruktor;
 import model.korisnicki_nalozi.Popisivac;
+import util.SecureLozinkaFactory;
 
 public class KontrolerFormeZaPrijavu {
     private static final String CONFIG_FILE_PATH = "resources" + File.separator + "config.properties";
@@ -54,8 +55,12 @@ public class KontrolerFormeZaPrijavu {
             	String truststore = properties.getProperty("DEFAULT_TRUSTSTORE");
             	String cmisResursURL = properties.getProperty("CMIS_RESURS_URL");
             	
-                PopisivacCMISKlijent klijent = new PopisivacCMISKlijent(keystore, "sigurnost",
-        				truststore, "sigurnost", korisnickoIme, KorisnikSistema.napraviHesLozinke(lozinka));
+    			SecureLozinkaFactory factory = new SecureLozinkaFactory();
+    			String keystoreLozinka = factory.dekriptujLozinku(properties.getProperty("KEYSTORE_PASSWORD_CIPHER"));
+    			String trustStoreLozinka = factory.dekriptujLozinku(properties.getProperty("TRUSTSTORE_PASSWORD_CIPHER"));
+            	
+                PopisivacCMISKlijent klijent = new PopisivacCMISKlijent(keystore, keystoreLozinka,
+        				truststore, trustStoreLozinka, korisnickoIme, KorisnikSistema.napraviHesLozinke(lozinka));
         		Response odgovor = klijent.post(cmisResursURL + "/login", korisnickoIme);
 
         		if (Response.Status.UNAUTHORIZED.equals(odgovor.getStatusInfo())) {
@@ -65,6 +70,10 @@ public class KontrolerFormeZaPrijavu {
         			odgovor = klijent.get(cmisResursURL + "/korisnici/nalozi/" + korisnickoIme);
         			if (Response.Status.Family.SUCCESSFUL.equals(odgovor.getStatusInfo().getFamily())) {
         				korisnik = odgovor.readEntity(Popisivac.class);
+        				korisnik.setKeyStore(keystore);
+        				korisnik.setKeyLozinka(keystoreLozinka);
+        				korisnik.setTrustStore(truststore);
+        				korisnik.setTrustLozinka(trustStoreLozinka);
         				Parent root = FXMLLoader.load(getClass().getResource("/forme" + File.separator + "FormaZaRadPopisivaca.fxml"));
                         Main.primaryStage.setScene(new Scene(root));
         			} else {

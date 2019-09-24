@@ -44,7 +44,7 @@
 	<classpathentry kind="lib" path="lib/yasson-1.0.3.jar"/>
 	<classpathentry kind="lib" path="lib/javatuples-1.2.jar"/>
 	<classpathentry kind="lib" path="lib/org.eclipse.core.resources.jar"/>
-	<classpathentry kind="lib" path="lib/restClient.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/JavaFX12"/>
+	<classpathentry kind="lib" path="lib/restClient.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

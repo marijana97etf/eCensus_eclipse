@@ -33,9 +33,6 @@ import eCensus.rest.client.ClanPKLSCMISKlijent;
 import eCensus.rest.client.DEInstruktorCMISKlijent;
 
 public class KontrolerFormeZaRegistracijuDEInstruktora implements Initializable {
-	
-	public static String TRUSTSTORE = "resources" + File.separator + "clientTrustStore.p12";
-	public static String KEYSTORE = "resources" + File.separator + "clientStore.p12";
 
 	static int i=10;
 
@@ -86,10 +83,10 @@ public class KontrolerFormeZaRegistracijuDEInstruktora implements Initializable 
                 entitet,
     			null, //isto
     			null, //isto
-    			TRUSTSTORE, 
-    			"sigurnost", 
-    			KEYSTORE, 
-    			"sigurnost");
+    			null, 
+    			null, 
+    			null, 
+    			null);
         
 
         DEInstruktorCMISKlijent DEInstruktorCMISKlijent = new DEInstruktorCMISKlijent(KontrolerFormeZaPrijavu.getTrenutniKorisnik());

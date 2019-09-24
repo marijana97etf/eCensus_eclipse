@@ -37,9 +37,6 @@ import eCensus.rest.client.OGInstruktorCMISKLijent;
 
 public class KontrolerFormeZaRegistracijuOGInstruktora implements Initializable {
 	
-	public static String TRUSTSTORE = "resources" + File.separator + "clientTrustStore.p12";
-	public static String KEYSTORE = "resources" + File.separator + "clientStore.p12";
-	
 	static int i=30;
     public void back(ActionEvent actionEvent) throws IOException {
         Aplikacija.getStage().setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/FormaZaRadClanaPKLS.fxml"))));
@@ -88,10 +85,10 @@ public class KontrolerFormeZaRegistracijuOGInstruktora implements Initializable 
     			null, //isto
     			opstina, 
     			opstina, 
-    			TRUSTSTORE, 
-    			"sigurnost", 
-    			KEYSTORE, 
-    			"sigurnost");
+    			null, 
+    			null, 
+    			null, 
+    			null);
 
         OGInstruktorCMISKLijent ogInstruktorCMISKlijent = new OGInstruktorCMISKLijent(KontrolerFormeZaPrijavu.getTrenutniKorisnik());
         Response odgovor = ogInstruktorCMISKlijent.registrujKorisnika(ogInstruktor);

@@ -18,7 +18,11 @@ import jdk.jshell.spi.ExecutionControl;
 import model.korisnicki_nalozi.*;
 import model.pracenje_popisa.PISMO;
 import test.Aplikacija;
+import util.SecureLozinkaFactory;
 
+import javax.crypto.BadPaddingException;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
 import javax.ws.rs.core.Response;
 
 import java.io.File;
@@ -27,6 +31,9 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
 import java.net.URL;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
 import java.util.Properties;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -54,6 +61,7 @@ public class KontrolerFormeZaPrijavu implements Initializable {
 		KorisnikSistema korisnikSistema = null;
 
 		String cmisResursUrl = null,keystore = null,trustStore=null;
+		String keystoreLozinka=null,trustStoreLozinka=null;
 
 		try(Reader configReader = new FileReader(Aplikacija.CONFIG_FILE)){
 			Properties properties = new Properties();
@@ -61,14 +69,23 @@ public class KontrolerFormeZaPrijavu implements Initializable {
 			cmisResursUrl = properties.getProperty("CMIS_RESURS_URL");
 			keystore = properties.getProperty("DEFAULT_KEYSTORE");
 			trustStore = properties.getProperty("DEFAULT_TRUSTSTORE");
+			
+			SecureLozinkaFactory factory = new SecureLozinkaFactory();
+			keystoreLozinka = factory.dekriptujLozinku(properties.getProperty("KEYSTORE_PASSWORD_CIPHER"));
+			trustStoreLozinka = factory.dekriptujLozinku(properties.getProperty("TRUSTSTORE_PASSWORD_CIPHER"));
+			
 		} catch (FileNotFoundException e) {
 			Aplikacija.connLogger.getLogger().log(Level.SEVERE,e.getMessage(),e);
 		} catch (IOException e) {
 			Aplikacija.connLogger.getLogger().log(Level.SEVERE,e.getMessage(),e);
+		} catch (NoSuchAlgorithmException e) {
+			Aplikacija.connLogger.getLogger().log(Level.SEVERE,e.getMessage(),e);
+		} catch (InvalidKeyException | InvalidKeySpecException | NoSuchPaddingException | IllegalBlockSizeException | BadPaddingException e) {
+			Aplikacija.connLogger.getLogger().log(Level.SEVERE,e.getMessage(),e);
 		}
 		
-		AdministratorCMISKlijent klijent = new AdministratorCMISKlijent(keystore, "sigurnost",
-				trustStore, "sigurnost", kosinickoImeInput, KorisnikSistema.napraviHesLozinke(password.getText()));
+		AdministratorCMISKlijent klijent = new AdministratorCMISKlijent(keystore, keystoreLozinka,
+				trustStore, trustStoreLozinka, kosinickoImeInput, KorisnikSistema.napraviHesLozinke(password.getText()));
 		Response odgovor = klijent.post(cmisResursUrl + "/login",kosinickoImeInput);
 
 		if (Response.Status.UNAUTHORIZED.equals(odgovor.getStatusInfo())) {
@@ -100,9 +117,9 @@ public class KontrolerFormeZaPrijavu implements Initializable {
 		
 		trenutniKorisnik = korisnikSistema;
 		trenutniKorisnik.setKeyStore(keystore);
-		trenutniKorisnik.setKeyLozinka("sigurnost");
+		trenutniKorisnik.setKeyLozinka(keystoreLozinka);
 		trenutniKorisnik.setTrustStore(trustStore);
-		trenutniKorisnik.setTrustLozinka("sigurnost");
+		trenutniKorisnik.setTrustLozinka(trustStoreLozinka);
 
 		if (korisnikSistema instanceof AdministratorAgencije)
 		{
