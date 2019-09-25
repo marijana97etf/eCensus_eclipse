@@ -490,3 +490,44 @@ Content-Type text/html;charset=utf-8
   <message>Uspjesna izmjena.</message>
 </record>
 </log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+</log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2019-09-25T10:03:18.538173800Z</date>
+  <millis>1569405798538</millis>
+  <nanos>173800</nanos>
+  <sequence>0</sequence>
+  <logger>Main</logger>
+  <level>SEVERE</level>
+  <class>util.ConnectionLogger</class>
+  <method>logHeaders</method>
+  <thread>15</thread>
+  <message>409 Conflict
+Content-Length 1048 
+Date Wed, 25 Sep 2019 10:03:18 GMT 
+Content-Language en 
+Content-Type text/html;charset=utf-8 
+</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2019-09-25T10:06:21.424419100Z</date>
+  <millis>1569405981424</millis>
+  <nanos>419100</nanos>
+  <sequence>0</sequence>
+  <logger>Main</logger>
+  <level>INFO</level>
+  <class>controller.kontroler_formi.KontrolerFormeZaIzmjenuNalogaPopisivaca</class>
+  <method>izmjeni</method>
+  <thread>15</thread>
+  <message>Uspjesna izmjena.</message>
+</record>
+</log>

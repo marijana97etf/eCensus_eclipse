@@ -40,7 +40,7 @@ public class KontrolerFormeZaIzmjenuNalogaPopisivaca implements Initializable {
         var nalogInputModel = KontrolerFormeZaPregledNalogaClanovaPKLS.getAccountForEdit();
         KorisnikSistema popisivac =  nalogInputModel.getKorisnikSistema();
 
-        String pattern = "(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}";
+        String pattern = "(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=\\S+$).{8,}";
         if(!ime.getText().matches("^[a-zA-Z- ]{2,}$"))
         {
             Alert alert2 = new Alert(Alert.AlertType.ERROR);
