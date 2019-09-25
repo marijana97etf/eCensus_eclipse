@@ -35,7 +35,7 @@
       <RowConstraints maxHeight="265.0" minHeight="10.0" prefHeight="85.33331298828125" vgrow="ALWAYS" />
   </rowConstraints>
    <children>
-      <Label alignment="CENTER" prefHeight="48.0" prefWidth="599.0" text="Popis stanovništva, domaćinstava i stanova u Bosni i Hercegovini" GridPane.columnSpan="4">
+      <Label alignment="CENTER" prefHeight="48.0" prefWidth="599.0" text="Попис становништва, домаћинстава и станова у Босни и Херцеговини" GridPane.columnSpan="4">
          <font>
             <Font size="18.0" />
          </font>
@@ -49,7 +49,7 @@
          </image>
       </ImageView>
       <Separator minWidth="700.0" prefHeight="8.0" prefWidth="700.0" GridPane.columnSpan="2" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="TOP" GridPane.vgrow="NEVER" />
-      <Label prefHeight="35.0" prefWidth="550.0" text="Dodjeljivanje popisnog kruga popisivaču:" GridPane.columnSpan="4" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="TOP">
+      <Label prefHeight="35.0" prefWidth="550.0" text="Додјељивање пописног круга пописивачу:" GridPane.columnSpan="4" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="TOP">
          <font>
             <Font size="20.0" />
          </font>
@@ -57,7 +57,7 @@
             <Insets left="25.0" top="10.0" />
          </GridPane.margin>
       </Label>
-      <Button mnemonicParsing="false" onAction="#pronadjiPutanju" prefHeight="25.0" prefWidth="112.0" text="Pretraži" GridPane.columnIndex="3" GridPane.rowIndex="8">
+      <Button mnemonicParsing="false" onAction="#pronadjiPutanju" prefHeight="25.0" prefWidth="112.0" text="Претражи" GridPane.columnIndex="3" GridPane.rowIndex="8">
          <GridPane.margin>
             <Insets left="10.0" />
          </GridPane.margin>
@@ -66,35 +66,35 @@
          </opaqueInsets>
       </Button>
       <Label prefHeight="35.0" prefWidth="199.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-      <Label prefHeight="29.0" prefWidth="145.0" text="Odaberite popisivača:" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3">
+      <Label prefHeight="29.0" prefWidth="145.0" text="Одаберите пописивача:" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
       <ChoiceBox fx:id="PopisivacChoiceBox" prefHeight="25.0" prefWidth="233.0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
       <TextField fx:id="pathText" prefHeight="25.0" prefWidth="143.0" GridPane.columnIndex="2" GridPane.rowIndex="8" />
-      <Label prefHeight="33.0" prefWidth="189.0" text="Putanja slike popisnog kruga:" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="8">
+      <Label prefHeight="33.0" prefWidth="189.0" text="Путања слике пописног круга:" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="8">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label prefHeight="20.0" prefWidth="61.0" text="Opština:" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="6">
+      <Label prefHeight="20.0" prefWidth="61.0" text="Општина:" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="6">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label prefHeight="20.0" prefWidth="43.0" text="Grad:" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5">
+      <Label prefHeight="20.0" prefWidth="43.0" text="Град:" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
       <ChoiceBox fx:id="GradChoiceBox" prefHeight="25.0" prefWidth="223.0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
       <ChoiceBox fx:id="OpstinaChoiceBox" prefHeight="25.0" prefWidth="226.0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="6" />
-      <Button mnemonicParsing="false" onAction="#dodajPopisniKrug" prefHeight="25.0" prefWidth="196.0" text="Dodaj popisni krug" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowIndex="10">
+      <Button mnemonicParsing="false" onAction="#dodajPopisniKrug" prefHeight="25.0" prefWidth="196.0" text="Додај пописни круг" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowIndex="10">
          <opaqueInsets>
             <Insets left="50.0" />
          </opaqueInsets>
       </Button>
-      <Button mnemonicParsing="false" onAction="#povratak" prefHeight="25.0" prefWidth="81.0" text="Povratak" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+      <Button mnemonicParsing="false" onAction="#povratak" prefHeight="25.0" prefWidth="81.0" text="Повратак" GridPane.columnIndex="1" GridPane.rowIndex="10" />
    </children>
 </GridPane>

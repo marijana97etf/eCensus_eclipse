@@ -23,7 +23,7 @@ public class KontrolerFormeZaIzmjenuNalogaPopisivaca implements Initializable {
     @FXML
     TextField prezime;
     @FXML
-    TextField username;
+    Label username;
     @FXML
     TextField newPassword;
     @FXML
@@ -57,6 +57,7 @@ public class KontrolerFormeZaIzmjenuNalogaPopisivaca implements Initializable {
         }
         if(passwordCheckBox.isSelected())
         {
+        	//Popraviti pattern, uvijek izbaci da treba unijeti jacu lozinku
             if (!newPassword.getText().matches(pattern)) {
                 Alert pwdAgain2 = new Alert(Alert.AlertType.WARNING);
                 pwdAgain2.setContentText("Unesite 'jaču' lozinku.");
@@ -108,6 +109,9 @@ public class KontrolerFormeZaIzmjenuNalogaPopisivaca implements Initializable {
         ime.setText(account.getIme());
         prezime.setText(account.getPrezime());
         username.setText(account.getKorisnickoIme());
+        
+        newPasswordLabel.setVisible(false);
+        newPassword.setVisible(false);
     }
 
     public void promjenaSifre(ActionEvent actionEvent) {

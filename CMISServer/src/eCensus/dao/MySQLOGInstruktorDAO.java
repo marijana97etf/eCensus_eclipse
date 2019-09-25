@@ -11,8 +11,6 @@ import java.util.Collection;
 import eCensus.baza.ConnectionPool;
 import model.korisnicki_nalozi.KorisnikSistema;
 import model.korisnicki_nalozi.OGInstruktor;
-import model.pracenje_popisa.JEZIK;
-import model.pracenje_popisa.PISMO;
 
 public class MySQLOGInstruktorDAO implements OGInstruktorDAO {
 
@@ -29,14 +27,10 @@ public class MySQLOGInstruktorDAO implements OGInstruktorDAO {
 			
 			ArrayList<KorisnikSistema> ogInstruktori = new ArrayList<>();
 			while(resultSet.next()) {
-				String jezik = resultSet.getString("Jezik");
-				String pismo = resultSet.getString("Pismo");
 				OGInstruktor ogInstruktor = new OGInstruktor(resultSet.getString("Ime"),
 															 resultSet.getString("Prezime"),
 															 resultSet.getString("KorisnickoIme"),
 															 resultSet.getString("Lozinka"),
-															 JEZIK.getJEZIK(jezik),
-															 PISMO.getPISMO(pismo),
 															 resultSet.getString("Grad"),
 															 resultSet.getString("Opstina"));
 				ogInstruktor.setId(resultSet.getInt("IdOsobe"));
@@ -91,13 +85,11 @@ public class MySQLOGInstruktorDAO implements OGInstruktorDAO {
 			connection = ConnectionPool.getInstance().checkOut();
 			
 			PreparedStatement preparedStatementOsoba = connection.prepareStatement(
-					"INSERT INTO osoba(Ime,Prezime,KorisnickoIme,Lozinka,Jezik,Pismo) values (?,?,?,?,?,?);");
+					"INSERT INTO osoba(Ime,Prezime,KorisnickoIme,Lozinka) values (?,?,?,?);");
 			preparedStatementOsoba.setString(1, ogInstruktor.getIme());
 			preparedStatementOsoba.setString(2, ogInstruktor.getPrezime());
 			preparedStatementOsoba.setString(3, ogInstruktor.getKorisnickoIme());
 			preparedStatementOsoba.setString(4, ogInstruktor.getLozinkaHash());
-			preparedStatementOsoba.setString(5, ogInstruktor.getJezik().toString());
-			preparedStatementOsoba.setString(6, ogInstruktor.getPismo().toString());
 			preparedStatementOsoba.executeUpdate();
 			preparedStatementOsoba.close();
 			
@@ -131,17 +123,13 @@ public class MySQLOGInstruktorDAO implements OGInstruktorDAO {
 					"SET Ime = ?, " + 
 					"	 Prezime = ?, " + 
 					"    KorisnickoIme = ?, " + 
-					"    LozinkaHash = ?, " +
-					"	 Jezik = ?, " + 
-					"	 Pismo = ? " + 
+					"    Lozinka = ? " +
 					"WHERE IdOsobe = ?;");
 			preparedStatementOGInstruktor.setString(1, korisnik.getIme());
 			preparedStatementOGInstruktor.setString(2, korisnik.getPrezime());
 			preparedStatementOGInstruktor.setString(3, korisnik.getKorisnickoIme());
 			preparedStatementOGInstruktor.setString(4, korisnik.getLozinkaHash());
-			preparedStatementOGInstruktor.setString(5, korisnik.getJezik().toString());
-			preparedStatementOGInstruktor.setString(6, korisnik.getPismo().toString());
-			preparedStatementOGInstruktor.setLong(7, korisnik.getId());
+			preparedStatementOGInstruktor.setLong(5, korisnik.getId());
 			preparedStatementOGInstruktor.executeUpdate();
 			preparedStatementOGInstruktor.close();
 			return true;
@@ -175,14 +163,10 @@ public class MySQLOGInstruktorDAO implements OGInstruktorDAO {
 			KorisnikSistema korisnikSistema = null;
 			
 			if(resultSet.next()) {
-				String jezik = resultSet.getString("Jezik");
-				String pismo = resultSet.getString("Pismo");
 				korisnikSistema = new OGInstruktor(resultSet.getString("Ime"),
 												   resultSet.getString("Prezime"),
 												   resultSet.getString("KorisnickoIme"),
 												   resultSet.getString("Lozinka"),
-												   JEZIK.getJEZIK(jezik),
-												   PISMO.getPISMO(pismo),
 												   resultSet.getString("Grad"),
 												   resultSet.getString("Opstina"));
 				korisnikSistema.setId(resultSet.getInt("IdOsobe"));

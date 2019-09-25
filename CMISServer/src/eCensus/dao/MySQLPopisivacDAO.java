@@ -11,8 +11,6 @@ import java.util.Collection;
 import eCensus.baza.ConnectionPool;
 import model.korisnicki_nalozi.KorisnikSistema;
 import model.korisnicki_nalozi.Popisivac;
-import model.pracenje_popisa.JEZIK;
-import model.pracenje_popisa.PISMO;
 
 public class MySQLPopisivacDAO implements PopisivacDAO {
 
@@ -29,14 +27,10 @@ public class MySQLPopisivacDAO implements PopisivacDAO {
 			
 			ArrayList<KorisnikSistema> popisivaci = new ArrayList<>();
 			while(resultSet.next()) {
-				String jezik = resultSet.getString("Jezik");
-				String pismo = resultSet.getString("Pismo");
 				Popisivac popisivac = new Popisivac(resultSet.getString("Ime"),
 													resultSet.getString("Prezime"),
 													resultSet.getString("KorisnickoIme"),
-													resultSet.getString("Lozinka"),
-													JEZIK.getJEZIK(jezik),
-													PISMO.getPISMO(pismo));
+													resultSet.getString("Lozinka"));
 				popisivac.setId(resultSet.getInt("IdOsobe"));
 				popisivaci.add(popisivac);
 			}
@@ -83,13 +77,11 @@ public class MySQLPopisivacDAO implements PopisivacDAO {
 		try {
 			connection = ConnectionPool.getInstance().checkOut();
 			PreparedStatement preparedStatementOsoba = connection.prepareStatement(
-					"INSERT INTO osoba(Ime,Prezime,KorisnickoIme,Lozinka,Jezik,Pismo) values (?,?,?,?,?,?);");
+					"INSERT INTO osoba(Ime,Prezime,KorisnickoIme,Lozinka) values (?,?,?,?);");
 			preparedStatementOsoba.setString(1, popisivac.getIme());
 			preparedStatementOsoba.setString(2, popisivac.getPrezime());
 			preparedStatementOsoba.setString(3, popisivac.getKorisnickoIme());
 			preparedStatementOsoba.setString(4, popisivac.getLozinkaHash());
-			preparedStatementOsoba.setString(5, popisivac.getJezik().toString());
-			preparedStatementOsoba.setString(6, popisivac.getPismo().toString());
 			preparedStatementOsoba.executeUpdate();
 			preparedStatementOsoba.close();
 			
@@ -117,17 +109,13 @@ public class MySQLPopisivacDAO implements PopisivacDAO {
 					"SET Ime = ?, " + 
 					"	 Prezime = ?, " + 
 					"    KorisnickoIme = ?, " + 
-					"    LozinkaHash = ?, " +
-					"	 Jezik = ?, " + 
-					"	 Pismo = ? " + 
+					"    Lozinka = ? " +
 					"WHERE IdOsobe = ?;");
 			preparedStatementPopisivac.setString(1, korisnik.getIme());
 			preparedStatementPopisivac.setString(2, korisnik.getPrezime());
 			preparedStatementPopisivac.setString(3, korisnik.getKorisnickoIme());
 			preparedStatementPopisivac.setString(4, korisnik.getLozinkaHash());
-			preparedStatementPopisivac.setString(5, korisnik.getJezik().toString());
-			preparedStatementPopisivac.setString(6, korisnik.getPismo().toString());
-			preparedStatementPopisivac.setLong(7, korisnik.getId());
+			preparedStatementPopisivac.setLong(5, korisnik.getId());
 			preparedStatementPopisivac.executeUpdate();
 			preparedStatementPopisivac.close();
 			return true;
@@ -161,14 +149,10 @@ public class MySQLPopisivacDAO implements PopisivacDAO {
 			KorisnikSistema korisnikSistema = null;
 			
 			if(resultSet.next()) {
-				String jezik = resultSet.getString("Jezik");
-				String pismo = resultSet.getString("Pismo");
 				korisnikSistema = new Popisivac(resultSet.getString("Ime"),
 												resultSet.getString("Prezime"),
 												resultSet.getString("KorisnickoIme"),
-												resultSet.getString("Lozinka"),
-												JEZIK.getJEZIK(jezik),
-												PISMO.getPISMO(pismo));
+												resultSet.getString("Lozinka"));
 				korisnikSistema.setId(resultSet.getInt("IdOsobe"));
 			}
 			return korisnikSistema;

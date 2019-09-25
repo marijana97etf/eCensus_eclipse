@@ -18,8 +18,6 @@ import model.korisnicki_nalozi.DEInstruktor.DRZAVA;
 import model.korisnicki_nalozi.DEInstruktor.ENTITET;
 import model.korisnicki_nalozi.KorisnikSistema;
 import model.korisnicki_nalozi.Popisivac;
-import model.pracenje_popisa.JEZIK;
-import model.pracenje_popisa.PISMO;
 
 public class TestCMISRest {
 
@@ -29,7 +27,7 @@ public class TestCMISRest {
 	public static void main(String[] args) {
 		
 		KorisnikSistema korisnikSistema = new DEInstruktor(2L, "Nikola", "Nikolic", "nikola.nikolic",
-				"12345", DRZAVA.BIH, ENTITET.RS, JEZIK.SRPSKI, PISMO.LATINICA, TRUSTSTORE, "sigurnost", KEYSTORE,
+				"12345", DRZAVA.BIH, ENTITET.RS, TRUSTSTORE, "sigurnost", KEYSTORE,
 				"sigurnost");
 		CMISKlijent klijent = new DEInstruktorCMISKlijent(korisnikSistema.getKeyStore(), korisnikSistema.getKeyLozinka(),
 				korisnikSistema.getTrustStore(), korisnikSistema.getTrustLozinka(), korisnikSistema.getKorisnickoIme(),
@@ -53,7 +51,7 @@ public class TestCMISRest {
 		ClanPKLS clanPKLS = clanPKLSklijent.getClanPKLS("kristijan.stepanov").readEntity(ClanPKLS.class);
 		
 		PopisivacCMISKlijent popisivacCMISKlijent = new PopisivacCMISKlijent(korisnikSistema);
-		Response odgovor = popisivacCMISKlijent.registrujKorisnika(new Popisivac("Ime","Prezime","KorisnickoIme1",KorisnikSistema.napraviHesLozinke("123456789"),JEZIK.SRPSKI,PISMO.LATINICA));
+		Response odgovor = popisivacCMISKlijent.registrujKorisnika(new Popisivac("Ime","Prezime","KorisnickoIme1",KorisnikSistema.napraviHesLozinke("123456789")));
 		
 		if(odgovor.getStatus() == Status.CREATED.getStatusCode()) {
 			System.out.println("OK");

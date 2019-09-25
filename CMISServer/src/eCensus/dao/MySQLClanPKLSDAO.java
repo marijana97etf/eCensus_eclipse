@@ -11,8 +11,6 @@ import java.util.Collection;
 import eCensus.baza.ConnectionPool;
 import model.korisnicki_nalozi.ClanPKLS;
 import model.korisnicki_nalozi.KorisnikSistema;
-import model.pracenje_popisa.JEZIK;
-import model.pracenje_popisa.PISMO;
 
 public class MySQLClanPKLSDAO implements ClanPKLSDAO {
 
@@ -30,15 +28,11 @@ public class MySQLClanPKLSDAO implements ClanPKLSDAO {
 			
 			ArrayList<KorisnikSistema> clanoviPKLS = new ArrayList<>();
 			while(resultSet.next()) {
-				String jezik = resultSet.getString("Jezik");
-				String pismo = resultSet.getString("Pismo");
 				ClanPKLS clanPKLS = new ClanPKLS(
 													resultSet.getString("Ime"),
 													resultSet.getString("Prezime"),
 													resultSet.getString("KorisnickoIme"),
 													resultSet.getString("Lozinka"),
-													JEZIK.getJEZIK(jezik),
-													PISMO.getPISMO(pismo),
 													resultSet.getString("Grad"),
 													resultSet.getString("Opstina"));
 				clanPKLS.setId(resultSet.getInt("IdOsobe"));
@@ -93,13 +87,11 @@ public class MySQLClanPKLSDAO implements ClanPKLSDAO {
 			connection = ConnectionPool.getInstance().checkOut();
 			
 			PreparedStatement preparedStatementOsoba = connection.prepareStatement(
-					"INSERT INTO osoba(Ime,Prezime,KorisnickoIme,Lozinka,Jezik,Pismo) values (?,?,?,?,?,?);");
+					"INSERT INTO osoba(Ime,Prezime,KorisnickoIme,Lozinka) values (?,?,?,?);");
 			preparedStatementOsoba.setString(1, clanPKLS.getIme());
 			preparedStatementOsoba.setString(2, clanPKLS.getPrezime());
 			preparedStatementOsoba.setString(3, clanPKLS.getKorisnickoIme());
 			preparedStatementOsoba.setString(4, clanPKLS.getLozinkaHash());
-			preparedStatementOsoba.setString(5, clanPKLS.getJezik().toString());
-			preparedStatementOsoba.setString(6, clanPKLS.getPismo().toString());
 			preparedStatementOsoba.executeUpdate();
 			preparedStatementOsoba.close();
 			
@@ -108,8 +100,8 @@ public class MySQLClanPKLSDAO implements ClanPKLSDAO {
 			preparedStatementAdministrator.close();
 			
 			PreparedStatement preparedStatementLokalnaVarijabla = connection.prepareStatement("SET @lastID = LAST_INSERT_ID()");
-			preparedStatementAdministrator.executeUpdate();
-			preparedStatementAdministrator.close();
+			preparedStatementLokalnaVarijabla.executeUpdate();
+			preparedStatementLokalnaVarijabla.close();
 			
 			PreparedStatement preparedStatementPKLS = connection.prepareStatement("INSERT INTO pkls(Grad,Opstina) values (?,?);");
 			preparedStatementPKLS.setString(1, "Grad");//Grad
@@ -141,17 +133,13 @@ public class MySQLClanPKLSDAO implements ClanPKLSDAO {
 					"SET Ime = ?, " + 
 					"	 Prezime = ?, " + 
 					"    KorisnickoIme = ?, " + 
-					"    LozinkaHash = ?, " +
-					"	 Jezik = ?, " + 
-					"	 Pismo = ? " + 
+					"    Lozinka = ? " +
 					"WHERE IdOsobe = ?;");
 			preparedStatementClanPKLS.setString(1, korisnik.getIme());
 			preparedStatementClanPKLS.setString(2, korisnik.getPrezime());
 			preparedStatementClanPKLS.setString(3, korisnik.getKorisnickoIme());
 			preparedStatementClanPKLS.setString(4, korisnik.getLozinkaHash());
-			preparedStatementClanPKLS.setString(5, korisnik.getJezik().toString());
-			preparedStatementClanPKLS.setString(6, korisnik.getPismo().toString());
-			preparedStatementClanPKLS.setLong(7, korisnik.getId());
+			preparedStatementClanPKLS.setLong(5, korisnik.getId());
 			preparedStatementClanPKLS.executeUpdate();
 			preparedStatementClanPKLS.close();
 			return true;
@@ -186,15 +174,11 @@ public class MySQLClanPKLSDAO implements ClanPKLSDAO {
 			KorisnikSistema korisnikSistema = null;
 			
 			if(resultSet.next()) {
-				String jezik = resultSet.getString("Jezik");
-				String pismo = resultSet.getString("Pismo");
 				korisnikSistema = new ClanPKLS(
 									resultSet.getString("Ime"),
 									resultSet.getString("Prezime"),
 									resultSet.getString("KorisnickoIme"),
 									resultSet.getString("Lozinka"),
-									JEZIK.getJEZIK(jezik),
-									PISMO.getPISMO(pismo),
 									resultSet.getString("Grad"),
 									resultSet.getString("Opstina"));
 				korisnikSistema.setId(resultSet.getInt("IdOsobe"));

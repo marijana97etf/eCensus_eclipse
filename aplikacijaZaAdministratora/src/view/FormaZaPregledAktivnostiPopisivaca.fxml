@@ -34,7 +34,7 @@
       <RowConstraints maxHeight="265.0" minHeight="10.0" prefHeight="77.66668701171875" vgrow="ALWAYS" />
    </rowConstraints>
    <children>
-      <Label alignment="CENTER" prefHeight="48.0" prefWidth="575.0" text="Popis stanovništva, domaćinstava i stanova u Bosni i Hercegovini" GridPane.columnSpan="2147483647">
+      <Label alignment="CENTER" prefHeight="48.0" prefWidth="575.0" text="Попис становништва, домаћинстава и станова у Босни и Херцеговини" GridPane.columnSpan="2147483647">
          <font>
             <Font size="18.0" />
          </font>
@@ -61,22 +61,22 @@
             <Label fx:id="labelaZaIme" alignment="CENTER" layoutX="118.0" layoutY="93.0" prefHeight="48.0" prefWidth="130.0" textAlignment="CENTER" wrapText="true" />
          </children>
       </AnchorPane>
-      <Label prefHeight="30.0" prefWidth="471.0" text="     Pregled cjelokupnih aktivnosti popisivača" GridPane.columnSpan="2147483647" GridPane.rowIndex="1">
+      <Label prefHeight="30.0" prefWidth="471.0" text="     Преглед цјелокупних активности пописивача" GridPane.columnSpan="2147483647" GridPane.rowIndex="1">
          <font>
             <Font size="21.0" />
          </font>
       </Label>
-      <Button fx:id="povratak" mnemonicParsing="false" onAction="#povratak" prefHeight="39.0" prefWidth="101.0" text="Povratak" GridPane.columnIndex="1" GridPane.rowIndex="8">
+      <Button fx:id="povratak" mnemonicParsing="false" onAction="#povratak" prefHeight="39.0" prefWidth="101.0" text="Повратак" GridPane.columnIndex="1" GridPane.rowIndex="8">
          <font>
             <Font size="15.0" />
          </font>
       </Button>
       <TableView fx:id="tabela" editable="true" prefHeight="328.0" prefWidth="371.0" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="2" GridPane.rowSpan="6">
         <columns>
-          <TableColumn fx:id="redniBrojColumn" prefWidth="48.66665267944336" text="RB" />
-          <TableColumn fx:id="datumColumn" editable="false" prefWidth="132.00000762939453" resizable="false" text="Datum" />
-            <TableColumn fx:id="brojKrugovaColumn" prefWidth="165.9999542236328" text="Broj popisnih krugova" />
-           <TableColumn fx:id="popisniKrugoviColumn" prefWidth="163.33340454101562" text="Dnevna aktivnost" />
+          <TableColumn fx:id="redniBrojColumn" prefWidth="48.66665267944336" text="РБ" />
+          <TableColumn fx:id="datumColumn" editable="false" prefWidth="132.00000762939453" resizable="false" text="Датум" />
+            <TableColumn fx:id="brojKrugovaColumn" prefWidth="165.9999542236328" text="Број пописних кругова" />
+           <TableColumn fx:id="popisniKrugoviColumn" prefWidth="163.33340454101562" text="Дневна активност" />
         </columns>
       </TableView>
    </children>

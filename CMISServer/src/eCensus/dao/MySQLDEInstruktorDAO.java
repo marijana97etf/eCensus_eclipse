@@ -13,8 +13,6 @@ import model.korisnicki_nalozi.DEInstruktor;
 import model.korisnicki_nalozi.DEInstruktor.DRZAVA;
 import model.korisnicki_nalozi.DEInstruktor.ENTITET;
 import model.korisnicki_nalozi.KorisnikSistema;
-import model.pracenje_popisa.PISMO;
-import model.pracenje_popisa.JEZIK;
 
 public class MySQLDEInstruktorDAO implements DEInstruktorDAO {
 
@@ -31,16 +29,12 @@ public class MySQLDEInstruktorDAO implements DEInstruktorDAO {
 			
 			ArrayList<KorisnikSistema> deInstruktori = new ArrayList<>();
 			while(resultSet.next()) {
-				String jezik = resultSet.getString("Jezik");
-				String pismo = resultSet.getString("Pismo");
 				DEInstruktor deInstruktor = new DEInstruktor(resultSet.getString("Ime"),
 															 resultSet.getString("Prezime"),
 															 resultSet.getString("KorisnickoIme"),
 															 resultSet.getString("Lozinka"),
 															 DRZAVA.getDRZAVA(resultSet.getString("Drzava")),
-															 ENTITET.getENTITET(resultSet.getString("Entitet")),
-															 JEZIK.getJEZIK(jezik),
-															 PISMO.getPISMO(pismo));
+															 ENTITET.getENTITET(resultSet.getString("Entitet")));
 				deInstruktor.setId(resultSet.getInt("IdOsobe"));
 				deInstruktori.add(deInstruktor);
 			}
@@ -93,13 +87,11 @@ public class MySQLDEInstruktorDAO implements DEInstruktorDAO {
 			connection = ConnectionPool.getInstance().checkOut();
 			
 			PreparedStatement preparedStatementOsoba = connection.prepareStatement(
-					"INSERT INTO osoba(Ime,Prezime,KorisnickoIme,Lozinka,Jezik,Pismo) values (?,?,?,?,?,?);");
+					"INSERT INTO osoba(Ime,Prezime,KorisnickoIme,Lozinka) values (?,?,?,?);");
 			preparedStatementOsoba.setString(1, deInstruktor.getIme());
 			preparedStatementOsoba.setString(2, deInstruktor.getPrezime());
 			preparedStatementOsoba.setString(3, deInstruktor.getKorisnickoIme());
 			preparedStatementOsoba.setString(4, deInstruktor.getLozinkaHash());
-			preparedStatementOsoba.setString(5, deInstruktor.getJezik().toString());
-			preparedStatementOsoba.setString(6, deInstruktor.getPismo().toString());
 			preparedStatementOsoba.executeUpdate();
 			preparedStatementOsoba.close();
 			
@@ -133,17 +125,13 @@ public class MySQLDEInstruktorDAO implements DEInstruktorDAO {
 					"SET Ime = ?, " + 
 					"	 Prezime = ?, " + 
 					"    KorisnickoIme = ?, " + 
-					"    LozinkaHash = ?, " +
-					"	 Jezik = ?, " + 
-					"	 Pismo = ? " + 
+					"    Lozinka = ? " +
 					"WHERE IdOsobe = ?;");
 			preparedStatementDEInstruktor.setString(1, korisnik.getIme());
 			preparedStatementDEInstruktor.setString(2, korisnik.getPrezime());
 			preparedStatementDEInstruktor.setString(3, korisnik.getKorisnickoIme());
 			preparedStatementDEInstruktor.setString(4, korisnik.getLozinkaHash());
-			preparedStatementDEInstruktor.setString(5, korisnik.getJezik().toString());
-			preparedStatementDEInstruktor.setString(6, korisnik.getPismo().toString());
-			preparedStatementDEInstruktor.setLong(7, korisnik.getId());
+			preparedStatementDEInstruktor.setLong(5, korisnik.getId());
 			preparedStatementDEInstruktor.executeUpdate();
 			preparedStatementDEInstruktor.close();
 			return true;
@@ -177,16 +165,13 @@ public class MySQLDEInstruktorDAO implements DEInstruktorDAO {
 			KorisnikSistema korisnikSistema = null;
 			
 			if(resultSet.next()) {
-				String jezik = resultSet.getString("Jezik");
-				String pismo = resultSet.getString("Pismo");
+
 				korisnikSistema = new DEInstruktor( resultSet.getString("Ime"),
 													resultSet.getString("Prezime"),
 													resultSet.getString("KorisnickoIme"),
 													resultSet.getString("Lozinka"),
 													DRZAVA.getDRZAVA(resultSet.getString("Drzava")),
-													ENTITET.getENTITET(resultSet.getString("Entitet")),
-													JEZIK.getJEZIK(jezik),
-													PISMO.getPISMO(pismo));
+													ENTITET.getENTITET(resultSet.getString("Entitet")));
 				korisnikSistema.setId(resultSet.getInt("IdOsobe"));
 			}
 			return korisnikSistema;

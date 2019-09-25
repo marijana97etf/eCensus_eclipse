@@ -29,7 +29,7 @@
       <RowConstraints maxHeight="265.0" minHeight="10.0" prefHeight="105.66668701171875" vgrow="ALWAYS" />
    </rowConstraints>
    <children>
-      <Label alignment="CENTER" prefHeight="48.0" prefWidth="586.0" text="Popis stanovništva, domaćinstava i stanova u Bosni i Hercegovini" GridPane.columnSpan="2">
+      <Label alignment="CENTER" prefHeight="48.0" prefWidth="586.0" text="Попис становништва, домаћинстава и станова у Босни и Херцеговини" GridPane.columnSpan="2">
          <font>
             <Font size="18.0" />
          </font>
@@ -43,7 +43,7 @@
          </image>
       </ImageView>
       <Separator minWidth="700.0" prefHeight="8.0" prefWidth="700.0" GridPane.columnSpan="2" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="TOP" GridPane.vgrow="NEVER" />
-      <Button mnemonicParsing="false" onAction="#odjaviSe" prefHeight="41.0" prefWidth="106.0" text="Odjavi se" GridPane.columnSpan="2" GridPane.halignment="RIGHT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="8" GridPane.valignment="BOTTOM" GridPane.vgrow="ALWAYS">
+      <Button mnemonicParsing="false" onAction="#odjaviSe" prefHeight="41.0" prefWidth="106.0" text="Одјави се" GridPane.columnSpan="2" GridPane.halignment="RIGHT" GridPane.hgrow="ALWAYS" GridPane.rowIndex="8" GridPane.valignment="BOTTOM" GridPane.vgrow="ALWAYS">
          <font>
             <Font size="15.0" />
          </font>
@@ -51,32 +51,32 @@
             <Insets bottom="20.0" right="20.0" />
          </GridPane.margin>
       </Button>
-      <Button mnemonicParsing="false" onAction="#registrujClanaPKLS" prefHeight="40.0" prefWidth="350.0" text="Registruj člana PKLS" GridPane.halignment="CENTER" GridPane.rowIndex="3">
+      <Button mnemonicParsing="false" onAction="#registrujClanaPKLS" prefHeight="40.0" prefWidth="350.0" text="Региструј члана ПКЛС" GridPane.halignment="CENTER" GridPane.rowIndex="3">
          <font>
             <Font size="15.0" />
          </font>
       </Button>
-      <Button mnemonicParsing="false" onAction="#registrujDEInstruktora" prefHeight="40.0" prefWidth="350.0" text="Registruj državnog/entitetskog intruktora" GridPane.halignment="CENTER" GridPane.rowIndex="6">
+      <Button mnemonicParsing="false" onAction="#registrujDEInstruktora" prefHeight="40.0" prefWidth="350.0" text="Региструј државног/ентитетског интруктора" GridPane.halignment="CENTER" GridPane.rowIndex="6">
          <font>
             <Font size="15.0" />
          </font>
       </Button>
-      <Button fx:id="pregledPKLSButton" mnemonicParsing="false" onAction="#pregledajNalogeClanovaPKLS" prefHeight="40.0" prefWidth="350.0" text="Pregledaj naloge članova PKLS" GridPane.halignment="CENTER" GridPane.rowIndex="4">
+      <Button fx:id="pregledPKLSButton" mnemonicParsing="false" onAction="#pregledajNalogeClanovaPKLS" prefHeight="40.0" prefWidth="350.0" text="Прегледај налоге чланова ПКЛС" GridPane.halignment="CENTER" GridPane.rowIndex="4">
          <font>
             <Font size="15.0" />
          </font>
       </Button>
-      <Button mnemonicParsing="false" onAction="#pregledajNalogeDEInstruktora" prefHeight="40.0" prefWidth="350.0" text="Pregledaj naloge državnih/entitetskih instruktora" GridPane.halignment="CENTER" GridPane.rowIndex="7">
+      <Button mnemonicParsing="false" onAction="#pregledajNalogeDEInstruktora" prefHeight="40.0" prefWidth="350.0" text="Прегледај налоге државних/ентитетских инструктора" GridPane.halignment="CENTER" GridPane.rowIndex="7">
          <font>
             <Font size="15.0" />
          </font>
       </Button>
-      <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="274.0" text="Pregledaj statističke podatke" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="7">
+      <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="274.0" text="Прегледај статистичке податке" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="7">
          <font>
             <Font size="15.0" />
          </font>
       </Button>
-      <Button mnemonicParsing="false" onAction="#pregledajNalogePopisivaca" prefHeight="40.0" prefWidth="274.0" text="Pregledaj aktivnosti popisivača" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="6">
+      <Button mnemonicParsing="false" onAction="#pregledajNalogePopisivaca" prefHeight="40.0" prefWidth="274.0" text="Прегледај активности пописивача" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="6">
          <font>
             <Font size="15.0" />
          </font>
@@ -91,14 +91,14 @@
                   <Image url="@../../resources/Administrator.png" />
                </image>
             </ImageView>
-            <Label fx:id="labelaSaImenom" alignment="CENTER" layoutY="111.0" prefHeight="28.0" prefWidth="280.0" text="Administrator agencije : " textAlignment="CENTER" wrapText="true">
+            <Label fx:id="labelaSaImenom" alignment="CENTER" layoutY="111.0" prefHeight="28.0" prefWidth="280.0" text="Администратор агенције : " textAlignment="CENTER" wrapText="true">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
          </children>
       </AnchorPane>
-      <Button mnemonicParsing="false" onAction="#promjeniJezik" prefHeight="40.0" prefWidth="351.0" text="Promjeni jezik i pismo" GridPane.halignment="CENTER" GridPane.rowIndex="5">
+      <Button mnemonicParsing="false" onAction="#promjeniJezik" prefHeight="40.0" prefWidth="351.0" text="Промјени језик и писмо" GridPane.halignment="CENTER" GridPane.rowIndex="5">
          <font>
             <Font size="15.0" />
          </font>

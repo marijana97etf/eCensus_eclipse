@@ -17,8 +17,6 @@ import model.korisnicki_nalozi.DEInstruktor;
 import model.korisnicki_nalozi.KorisnikSistema;
 import model.korisnicki_nalozi.Popisivac;
 import model.korisnicki_nalozi.DEInstruktor.ENTITET;
-import model.pracenje_popisa.JEZIK;
-import model.pracenje_popisa.PISMO;
 import model.pracenje_popisa.izvjestaji_o_popisivacu.PopisniKrug;
 
 public class DavidovStariNaloziDAO{

@@ -36,7 +36,7 @@
       <RowConstraints maxHeight="265.0" minHeight="10.0" prefHeight="86.66665649414062" vgrow="ALWAYS" />
    </rowConstraints>
    <children>
-      <Label alignment="CENTER" prefHeight="48.0" prefWidth="575.0" text="Popis stanovništva, domaćinstava i stanova u Bosni i Hercegovini" GridPane.columnSpan="2147483647">
+      <Label alignment="CENTER" prefHeight="48.0" prefWidth="575.0" text="Попис становништва, домаћинстава и станова у Босни и Херцеговини" GridPane.columnSpan="2147483647">
          <font>
             <Font size="18.0" />
          </font>
@@ -60,46 +60,46 @@
                   <Image url="@../../resources/Administrator.png" />
                </image>
             </ImageView>
-            <Label alignment="CENTER" layoutX="3.0" layoutY="100.0" prefHeight="64.0" prefWidth="155.0" text="Administrator agencije :" textAlignment="CENTER" wrapText="true">
+            <Label alignment="CENTER" layoutX="3.0" layoutY="100.0" prefHeight="64.0" prefWidth="155.0" text="Администратор агенције :" textAlignment="CENTER" wrapText="true">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
          </children>
       </AnchorPane>
-      <Label prefHeight="31.0" prefWidth="527.0" text="     Izmjena naloga člana PKLS" GridPane.columnSpan="2147483647" GridPane.rowIndex="1">
+      <Label prefHeight="31.0" prefWidth="527.0" text="     Измјена налога члана ПКЛС" GridPane.columnSpan="2147483647" GridPane.rowIndex="1">
          <font>
             <Font size="21.0" />
          </font>
       </Label>
-      <Button fx:id="back" mnemonicParsing="false" onAction="#povratak" prefHeight="37.0" prefWidth="101.0" text="Povratak" GridPane.columnIndex="1" GridPane.rowIndex="8">
+      <Button fx:id="back" mnemonicParsing="false" onAction="#povratak" prefHeight="37.0" prefWidth="101.0" text="Повратак" GridPane.columnIndex="1" GridPane.rowIndex="8">
          <font>
             <Font size="15.0" />
          </font>
       </Button>
-      <Label text="Grad:" GridPane.columnIndex="1" GridPane.rowIndex="6">
+      <Label text="Град:" GridPane.columnIndex="1" GridPane.rowIndex="6">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
       <ChoiceBox fx:id="gradoviComboBox" prefHeight="25.0" prefWidth="227.0" GridPane.columnIndex="2" GridPane.rowIndex="6" />
-      <Button mnemonicParsing="false" onAction="#izmjeni" prefHeight="37.0" prefWidth="101.0" text="Izmjeni" GridPane.columnIndex="4" GridPane.rowIndex="8">
+      <Button mnemonicParsing="false" onAction="#izmjeni" prefHeight="37.0" prefWidth="101.0" text="Измјени" GridPane.columnIndex="4" GridPane.rowIndex="8">
          <font>
             <Font size="15.0" />
          </font>
       </Button>
-      <Label prefHeight="17.0" prefWidth="185.0" text="Ime:" GridPane.columnIndex="1" GridPane.rowIndex="2">
+      <Label prefHeight="17.0" prefWidth="185.0" text="Име:" GridPane.columnIndex="1" GridPane.rowIndex="2">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
       <TextField fx:id="ime" alignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-      <Label text="Prezime:" GridPane.columnIndex="1" GridPane.rowIndex="3">
+      <Label text="Презиме:" GridPane.columnIndex="1" GridPane.rowIndex="3">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Label text="Korisničko ime:" GridPane.columnIndex="1" GridPane.rowIndex="4">
+      <Label text="Корисничко име:" GridPane.columnIndex="1" GridPane.rowIndex="4">
          <font>
             <Font size="15.0" />
          </font>
@@ -110,19 +110,19 @@
             <Font size="15.0" />
          </font>
       </Label>
-      <Label fx:id="newPasswordLabel" text="Nova lozinka:" GridPane.columnIndex="1" GridPane.rowIndex="5">
+      <Label fx:id="newPasswordLabel" text="Нова лозинка:" GridPane.columnIndex="1" GridPane.rowIndex="5">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
       <PasswordField fx:id="newPassword" alignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="5" />
       <ChoiceBox fx:id="opstineComboBox" prefHeight="25.0" prefWidth="223.0" GridPane.columnIndex="2" GridPane.rowIndex="7" />
-      <Label text="Općina:" GridPane.columnIndex="1" GridPane.rowIndex="7">
+      <Label text="Општина:" GridPane.columnIndex="1" GridPane.rowIndex="7">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <CheckBox fx:id="newPasswordCheckBox" mnemonicParsing="false" onAction="#promjenaSifre" text="Promjena lozinke" GridPane.columnIndex="2" GridPane.rowIndex="5">
+      <CheckBox fx:id="newPasswordCheckBox" mnemonicParsing="false" onAction="#promjenaSifre" text="Промјена лозинке" GridPane.columnIndex="2" GridPane.rowIndex="5">
          <GridPane.margin>
             <Insets left="20.0" />
          </GridPane.margin>

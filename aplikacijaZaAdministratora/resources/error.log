@@ -385,3 +385,108 @@
 <!DOCTYPE log SYSTEM "logger.dtd">
 <log>
 </log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2019-09-25T08:23:52.885338100Z</date>
+  <millis>1569399832885</millis>
+  <nanos>338100</nanos>
+  <sequence>0</sequence>
+  <logger>Main</logger>
+  <level>INFO</level>
+  <class>controller.kontroler_formi.KontrolerFormeZaRegistracijuPopisivaca</class>
+  <method>registruj</method>
+  <thread>16</thread>
+  <message>Uspješna registracija popisiva?a.</message>
+</record>
+<record>
+  <date>2019-09-25T08:24:47.289567Z</date>
+  <millis>1569399887289</millis>
+  <nanos>567000</nanos>
+  <sequence>1</sequence>
+  <logger>Main</logger>
+  <level>INFO</level>
+  <class>controller.kontroler_formi.KontrolerFormeZaRegistracijuOGInstruktora</class>
+  <method>registruj</method>
+  <thread>16</thread>
+  <message>Uspješna registracija opštinskog/gradskog instruktora.</message>
+</record>
+<record>
+  <date>2019-09-25T08:25:49.097285600Z</date>
+  <millis>1569399949097</millis>
+  <nanos>285600</nanos>
+  <sequence>2</sequence>
+  <logger>Main</logger>
+  <level>SEVERE</level>
+  <class>util.ConnectionLogger</class>
+  <method>logHeaders</method>
+  <thread>16</thread>
+  <message>409 Conflict
+Content-Length 1048 
+Date Wed, 25 Sep 2019 08:25:49 GMT 
+Content-Language en 
+Content-Type text/html;charset=utf-8 
+</message>
+</record>
+<record>
+  <date>2019-09-25T08:28:00.823155800Z</date>
+  <millis>1569400080823</millis>
+  <nanos>155800</nanos>
+  <sequence>3</sequence>
+  <logger>Main</logger>
+  <level>INFO</level>
+  <class>controller.kontroler_formi.KontrolerFormeZaIzmjenuNalogaOGInstruktora</class>
+  <method>izmjeni</method>
+  <thread>16</thread>
+  <message>UspjeÅ¡na izmjena.</message>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+</log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+</log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+</log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+</log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+</log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2019-09-25T08:56:12.922373200Z</date>
+  <millis>1569401772922</millis>
+  <nanos>373200</nanos>
+  <sequence>0</sequence>
+  <logger>Main</logger>
+  <level>INFO</level>
+  <class>controller.kontroler_formi.KontrolerFormeZaRegistracijuPopisivaca</class>
+  <method>registruj</method>
+  <thread>16</thread>
+  <message>Uspješna registracija popisiva?a.</message>
+</record>
+<record>
+  <date>2019-09-25T08:56:28.117619200Z</date>
+  <millis>1569401788117</millis>
+  <nanos>619200</nanos>
+  <sequence>1</sequence>
+  <logger>Main</logger>
+  <level>INFO</level>
+  <class>controller.kontroler_formi.KontrolerFormeZaIzmjenuNalogaPopisivaca</class>
+  <method>izmjeni</method>
+  <thread>16</thread>
+  <message>Uspjesna izmjena.</message>
+</record>
+</log>
