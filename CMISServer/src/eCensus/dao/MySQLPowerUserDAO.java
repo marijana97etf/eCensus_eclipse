@@ -10,9 +10,8 @@ import java.util.Collection;
 
 import eCensus.baza.ConnectionPool;
 import model.korisnicki_nalozi.KorisnikSistema;
-import model.korisnicki_nalozi.OGInstruktor;
+import model.korisnicki_nalozi.PowerUser;
 
-//Nije jos implementirano
 public class MySQLPowerUserDAO implements PowerUserDAO {
 
 	@Override
@@ -20,26 +19,26 @@ public class MySQLPowerUserDAO implements PowerUserDAO {
 		Connection connection = null;
 		try {
 			connection = ConnectionPool.getInstance().checkOut();
-			Statement statementOGInstruktor = connection.createStatement();
-			ResultSet resultSet = statementOGInstruktor.executeQuery(
+			Statement statementPowerUser = connection.createStatement();
+			ResultSet resultSet = statementPowerUser.executeQuery(
 													"SELECT * " +
 													"FROM osoba Osoba " + 
-													"INNER JOIN og_instruktor OGInstruktor on Osoba.IdOsobe = OGInstruktor.IdOsobe;");
+													"INNER JOIN power_user PowerUser on Osoba.IdOsobe = PowerUser.IdOsobe;");
 			
-			ArrayList<KorisnikSistema> ogInstruktori = new ArrayList<>();
+			ArrayList<KorisnikSistema> powerUsers = new ArrayList<>();
 			while(resultSet.next()) {
-				OGInstruktor ogInstruktor = new OGInstruktor(
+				PowerUser powerUser = new PowerUser(
 													resultSet.getString("Ime"),
 													resultSet.getString("Prezime"),
 													resultSet.getString("KorisnickoIme"),
-													resultSet.getString("Lozinka"),
-													resultSet.getString("Grad"),
-													resultSet.getString("Opstina"));
-				ogInstruktor.setId(resultSet.getInt("IdOsobe"));
-				ogInstruktori.add(ogInstruktor);
+													resultSet.getString("Lozinka"));
+				powerUser.setId(resultSet.getInt("IdOsobe"));
+				powerUsers.add(powerUser);
 			}
 			
-			return ogInstruktori;
+			statementPowerUser.close();
+			
+			return powerUsers;
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -55,15 +54,10 @@ public class MySQLPowerUserDAO implements PowerUserDAO {
 		try {
 			connection = ConnectionPool.getInstance().checkOut();
 			
-			PreparedStatement preparedStatementOGInstruktor = connection.prepareStatement("DELETE FROM og_instruktor WHERE IdOsobe = ?;");
-			preparedStatementOGInstruktor.setLong(1, id);
-			preparedStatementOGInstruktor.executeUpdate();
-			preparedStatementOGInstruktor.close();
-			
-			PreparedStatement preparedStatementAdministrator = connection.prepareStatement("DELETE FROM administrator WHERE IdOsobe = ?;");
-			preparedStatementAdministrator.setLong(1, id);
-			preparedStatementAdministrator.executeUpdate();
-			preparedStatementAdministrator.close();
+			PreparedStatement preparedStatementPowerUser = connection.prepareStatement("DELETE FROM power_user WHERE IdOsobe = ?;");
+			preparedStatementPowerUser.setLong(1, id);
+			preparedStatementPowerUser.executeUpdate();
+			preparedStatementPowerUser.close();
 			
 			PreparedStatement preparedStatementOsoba = connection.prepareStatement("DELETE FROM osoba WHERE IdOsobe = ?;");
 			preparedStatementOsoba.setLong(1, id);
@@ -81,29 +75,23 @@ public class MySQLPowerUserDAO implements PowerUserDAO {
 
 	@Override
 	public boolean dodajKorisnika(KorisnikSistema korisnik) {
-		OGInstruktor ogInstruktor = (OGInstruktor) korisnik;
+		PowerUser powerUser = (PowerUser) korisnik;
 		Connection connection = null;
 		try {
 			connection = ConnectionPool.getInstance().checkOut();
 			
 			PreparedStatement preparedStatementOsoba = connection.prepareStatement(
 					"INSERT INTO osoba(Ime,Prezime,KorisnickoIme,Lozinka) values (?,?,?,?);");
-			preparedStatementOsoba.setString(1, ogInstruktor.getIme());
-			preparedStatementOsoba.setString(2, ogInstruktor.getPrezime());
-			preparedStatementOsoba.setString(3, ogInstruktor.getKorisnickoIme());
-			preparedStatementOsoba.setString(4, ogInstruktor.getLozinkaHash());
+			preparedStatementOsoba.setString(1, powerUser.getIme());
+			preparedStatementOsoba.setString(2, powerUser.getPrezime());
+			preparedStatementOsoba.setString(3, powerUser.getKorisnickoIme());
+			preparedStatementOsoba.setString(4, powerUser.getLozinkaHash());
 			preparedStatementOsoba.executeUpdate();
 			preparedStatementOsoba.close();
 			
-			PreparedStatement preparedStatementAdministrator = connection.prepareStatement("INSERT INTO administrator(IdOsobe) values (LAST_INSERT_ID());");
-			preparedStatementAdministrator.executeUpdate();
-			preparedStatementAdministrator.close();
-			
-			PreparedStatement preparedStatementOGInstruktor = connection.prepareStatement("INSERT INTO og_instruktor(IdOsobe,Grad,Opstina) values (LAST_INSERT_ID(),?,?);");
-			preparedStatementOGInstruktor.setString(1, ogInstruktor.getGrad());//Grad
-			preparedStatementOGInstruktor.setString(2, ogInstruktor.getOpstina());//Opstina
-			preparedStatementOGInstruktor.executeUpdate();
-			preparedStatementOGInstruktor.close();
+			PreparedStatement preparedStatementPowerUser = connection.prepareStatement("INSERT INTO power_user(IdOsobe) values (LAST_INSERT_ID());");
+			preparedStatementPowerUser.executeUpdate();
+			preparedStatementPowerUser.close();
 			
 			return true;
 		} catch (SQLException e) {
@@ -120,20 +108,20 @@ public class MySQLPowerUserDAO implements PowerUserDAO {
 		Connection connection = null;
 		try {
 			connection = ConnectionPool.getInstance().checkOut();
-			PreparedStatement preparedStatementOGInstruktor = connection.prepareStatement( 
+			PreparedStatement preparedStatementPowerUser = connection.prepareStatement( 
 					"UPDATE osoba " + 
 					"SET Ime = ?, " + 
 					"	 Prezime = ?, " + 
 					"    KorisnickoIme = ?, " + 
 					"    Lozinka = ? " +
 					"WHERE IdOsobe = ?;");
-			preparedStatementOGInstruktor.setString(1, korisnik.getIme());
-			preparedStatementOGInstruktor.setString(2, korisnik.getPrezime());
-			preparedStatementOGInstruktor.setString(3, korisnik.getKorisnickoIme());
-			preparedStatementOGInstruktor.setString(4, korisnik.getLozinkaHash());
-			preparedStatementOGInstruktor.setLong(5, korisnik.getId());
-			preparedStatementOGInstruktor.executeUpdate();
-			preparedStatementOGInstruktor.close();
+			preparedStatementPowerUser.setString(1, korisnik.getIme());
+			preparedStatementPowerUser.setString(2, korisnik.getPrezime());
+			preparedStatementPowerUser.setString(3, korisnik.getKorisnickoIme());
+			preparedStatementPowerUser.setString(4, korisnik.getLozinkaHash());
+			preparedStatementPowerUser.setLong(5, korisnik.getId());
+			preparedStatementPowerUser.executeUpdate();
+			preparedStatementPowerUser.close();
 			return true;
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -151,7 +139,32 @@ public class MySQLPowerUserDAO implements PowerUserDAO {
 
 	@Override
 	public KorisnikSistema getKorisnikSistema(String korisnickoIme) {
-		// TODO Auto-generated method stub
+		Connection connection = null;
+		try {
+			connection = ConnectionPool.getInstance().checkOut();
+			PreparedStatement preparedStatementPopisivac = connection.prepareStatement(
+													"SELECT * " +
+													"FROM osoba Osoba " + 
+													"INNER JOIN power_user PowerUser on Osoba.IdOsobe = PowerUser.IdOsobe " +
+													"WHERE Osoba.KorisnickoIme = ? ");
+			preparedStatementPopisivac.setString(1, korisnickoIme);
+			ResultSet resultSet = preparedStatementPopisivac.executeQuery();
+			
+			KorisnikSistema korisnikSistema = null;
+			
+			if(resultSet.next()) {
+				korisnikSistema = new PowerUser(resultSet.getString("Ime"),
+												resultSet.getString("Prezime"),
+												resultSet.getString("KorisnickoIme"),
+												resultSet.getString("Lozinka"));
+				korisnikSistema.setId(resultSet.getInt("IdOsobe"));
+			}
+			return korisnikSistema;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			ConnectionPool.getInstance().checkIn(connection);
+		}
 		return null;
 	}
 	

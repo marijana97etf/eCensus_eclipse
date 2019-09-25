@@ -24,6 +24,9 @@ INSERT INTO administrator(IdOsobe) values (LAST_INSERT_ID());
 SET @lastID = LAST_INSERT_ID();
 INSERT INTO pkls(Grad,Opstina) values ("Banja Luka", "Banja Luka");
 INSERT INTO clan_pkls(IdOsobe,IdPKLS) values (@lastID,LAST_INSERT_ID());
+
+INSERT INTO osoba(Ime,Prezime,KorisnickoIme,Lozinka) VALUES ("Admin","Admin","admin","Ke60OQCz4X0zvA8RHr1u0A==");
+INSERT INTO power_user(IdOsobe) VALUES (LAST_INSERT_ID());
 /*
 UPDATE osoba
 SET Ime = ?,

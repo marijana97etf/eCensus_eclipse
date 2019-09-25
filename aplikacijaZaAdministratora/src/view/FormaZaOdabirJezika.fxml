@@ -33,7 +33,7 @@
     <RowConstraints maxHeight="265.0" minHeight="10.0" prefHeight="59.666707356770814" vgrow="ALWAYS" />
   </rowConstraints>
    <children>
-      <Label alignment="CENTER" prefHeight="48.0" prefWidth="599.0" text="Попис становништва, домаћинстава и станова у Босни и Херцеговини" GridPane.columnSpan="6" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+      <Label alignment="CENTER" prefHeight="48.0" prefWidth="599.0" text="Popis stanovništva, domaćinstava i stanova u Bosni i Hercegovini" GridPane.columnSpan="6" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
          <font>
             <Font size="18.0" />
          </font>
@@ -47,7 +47,7 @@
          </image>
       </ImageView>
       <Separator minWidth="700.0" prefHeight="8.0" prefWidth="700.0" GridPane.columnSpan="2" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="TOP" GridPane.vgrow="NEVER" />
-      <Label alignment="CENTER" prefHeight="48.0" prefWidth="666.0" text="Одабери језик:" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.columnSpan="5" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="TOP" GridPane.vgrow="ALWAYS">
+      <Label alignment="CENTER" prefHeight="48.0" prefWidth="666.0" text="Odaberi jezik:" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.columnSpan="5" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="TOP" GridPane.vgrow="ALWAYS">
          <font>
             <Font size="20.0" />
          </font>
@@ -63,7 +63,7 @@
             <Image url="@../../resources/rs_flag.png" />
          </image>
       </ImageView>
-      <Button mnemonicParsing="false" onAction="#promjeniJezik" prefHeight="43.0" prefWidth="134.0" text="Промијени језик" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="TOP">
+      <Button mnemonicParsing="false" onAction="#promjeniJezik" prefHeight="43.0" prefWidth="134.0" text="Promijeni jezik" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="TOP">
          <font>
             <Font size="15.0" />
          </font>
@@ -99,7 +99,7 @@
          </toggleGroup></RadioButton>
       <RadioButton fx:id="bosanskiRadio" mnemonicParsing="false" toggleGroup="$jezik" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
       <RadioButton fx:id="hrvatskiRadio" mnemonicParsing="false" toggleGroup="$jezik" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
-      <Button mnemonicParsing="false" onAction="#povratak" prefHeight="41.0" prefWidth="127.0" text="Повратак" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="6" GridPane.valignment="TOP">
+      <Button mnemonicParsing="false" onAction="#povratak" prefHeight="41.0" prefWidth="127.0" text="Povratak" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="6" GridPane.valignment="TOP">
          <font>
             <Font size="15.0" />
          </font>

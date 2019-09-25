@@ -8,5 +8,7 @@ select osoba.*, Tip from (
   select "DEInstruktor" AS Tip, IdOsobe from de_instruktor DEInstruktor
   union
   select "ClanPKLS" AS Tip, IdOsobe from clan_pkls ClanPKLS
+  union
+  select "PowerUser" AS Tip, IdOsobe from power_user PowerUser
 ) unija
 INNER JOIN osoba on osoba.IdOsobe = unija.IdOsobe;

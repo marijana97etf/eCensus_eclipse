@@ -36,7 +36,7 @@
       <RowConstraints maxHeight="265.0" minHeight="10.0" prefHeight="110.33331298828125" vgrow="ALWAYS" />
    </rowConstraints>
    <children>
-      <Label alignment="CENTER" prefHeight="48.0" prefWidth="575.0" text="Попис становништва, домаћинстава и станова у Босни и Херцеговини" GridPane.columnSpan="2147483647">
+      <Label alignment="CENTER" prefHeight="48.0" prefWidth="575.0" text="Popis stanovništva, domaćinstava i stanova u Bosni i Hercegovini" GridPane.columnSpan="2147483647">
          <font>
             <Font size="18.0" />
          </font>
@@ -67,33 +67,33 @@
             </Label>
          </children>
       </AnchorPane>
-      <Label prefHeight="31.0" prefWidth="527.0" text="     Промјена писма" GridPane.columnSpan="2147483647" GridPane.rowIndex="1">
+      <Label prefHeight="31.0" prefWidth="527.0" text="     Promjena pisma" GridPane.columnSpan="2147483647" GridPane.rowIndex="1">
          <font>
             <Font size="21.0" />
          </font>
       </Label>
-      <Button fx:id="back" mnemonicParsing="false" onAction="#back" prefHeight="37.0" prefWidth="101.0" text="Повратак" GridPane.columnIndex="1" GridPane.rowIndex="9">
+      <Button fx:id="back" mnemonicParsing="false" onAction="#back" prefHeight="37.0" prefWidth="101.0" text="Povratak" GridPane.columnIndex="1" GridPane.rowIndex="9">
          <font>
             <Font size="15.0" />
          </font>
       </Button>
-      <Button mnemonicParsing="false" onAction="#promjeniPismo" prefHeight="37.0" prefWidth="126.0" text="Промјени писмо" GridPane.columnIndex="4" GridPane.rowIndex="9">
+      <Button mnemonicParsing="false" onAction="#promjeniPismo" prefHeight="37.0" prefWidth="126.0" text="Promjeni pismo" GridPane.columnIndex="4" GridPane.rowIndex="9">
          <font>
             <Font size="15.0" />
          </font>
       </Button>
-      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="505.0" text="Изаберите један од сљедећих писама:" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="4">
+      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="505.0" text="Izaberite jedan od sljedećih pisama:" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="4">
          <font>
             <Font size="17.0" />
          </font>
       </Label>
       <Group GridPane.columnIndex="2" GridPane.rowIndex="7">
          <children>
-            <RadioButton fx:id="latinica" mnemonicParsing="false" text="Латиница">
+            <RadioButton fx:id="latinica" mnemonicParsing="false" text="Latinica">
                <toggleGroup>
                   <ToggleGroup fx:id="GrupaPisama" />
                </toggleGroup></RadioButton>
-            <RadioButton fx:id="cirilica" layoutY="44.0" mnemonicParsing="false" text="Ћирилица" toggleGroup="$GrupaPisama" />
+            <RadioButton fx:id="cirilica" layoutY="44.0" mnemonicParsing="false" text="Ćirilica" toggleGroup="$GrupaPisama" />
          </children>
          <GridPane.margin>
             <Insets bottom="30.0" />
