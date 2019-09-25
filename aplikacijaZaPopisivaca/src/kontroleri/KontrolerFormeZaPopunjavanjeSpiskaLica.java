@@ -231,6 +231,8 @@ public class KontrolerFormeZaPopunjavanjeSpiskaLica {
     	}
     	
     	KontrolerFormeZaPopisivanjeDomacinstva.spisakLica = spisakLica;
+    	
+    	KontrolerFormeZaPopisivanjeDomacinstva.spisakLicaStage.close();
     }
     
     private void setDefaultColors() {

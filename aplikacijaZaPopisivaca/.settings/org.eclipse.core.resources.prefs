@@ -3,6 +3,7 @@ encoding//resources/rjecnikCirilicaULatinicu.txt=UTF-8
 encoding//resources/rjecnikLatinicaUCirilicu.txt=UTF-8
 encoding//src/forme/FormaZaPopisivanjeDomacinstva.fxml=UTF-8
 encoding//src/forme/FormaZaPopisivanjeStanovnika.fxml=UTF-8
+encoding//src/forme/FormaZaPopunjavanjeSpiskaLica.fxml=UTF-8
 encoding//src/kontroleri/KontrolerFormeZaPopisivanjeDomacinstva.java=UTF-8
 encoding//src/kontroleri/KontrolerFormeZaPopisivanjeStanovnika.java=UTF-8
 encoding//src/kontroleri/KontrolerFormeZaPopunjavanjeSpiskaLica.java=UTF-8

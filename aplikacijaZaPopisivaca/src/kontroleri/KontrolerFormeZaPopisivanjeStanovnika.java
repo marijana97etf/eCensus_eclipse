@@ -1017,6 +1017,36 @@ public class KontrolerFormeZaPopisivanjeStanovnika {
         pamcenjeUzrokComboBox.setItems(observableList4);
         odijevanjeUzrokComboBox.setItems(observableList4);
         komunikacijaUzrokComboBox.setItems(observableList4);
+        vidSComboBox.setOnAction((event) -> {
+        	if("Nema poteškoća".equals(vidSComboBox.getSelectionModel().getSelectedItem()) ||
+        			"Нема потешкоћа".equals(vidSComboBox.getSelectionModel().getSelectedItem()))
+        		vidUzrokComboBox.setDisable(true);
+        });
+        sluhSComboBox.setOnAction((event) -> {
+        	if("Nema poteškoća".equals(sluhSComboBox.getSelectionModel().getSelectedItem()) ||
+        			"Нема потешкоћа".equals(sluhSComboBox.getSelectionModel().getSelectedItem()))
+        		sluhUzrokComboBox.setDisable(true);
+        });
+        hodSComboBox.setOnAction((event) -> {
+        	if("Nema poteškoća".equals(hodSComboBox.getSelectionModel().getSelectedItem()) ||
+        			"Нема потешкоћа".equals(hodSComboBox.getSelectionModel().getSelectedItem()))
+                hodUzrokComboBox.setDisable(true);
+        });
+        pamcenjeSComboBox.setOnAction((event) -> {
+        	if("Nema poteškoća".equals(pamcenjeSComboBox.getSelectionModel().getSelectedItem()) ||
+        			"Нема потешкоћа".equals(pamcenjeSComboBox.getSelectionModel().getSelectedItem()))
+        		pamcenjeUzrokComboBox.setDisable(true);
+        });
+        odijevanjeSComboBox.setOnAction((event) -> {
+        	if("Nema poteškoća".equals(odijevanjeSComboBox.getSelectionModel().getSelectedItem()) ||
+        			"Нема потешкоћа".equals(odijevanjeSComboBox.getSelectionModel().getSelectedItem()))
+        		odijevanjeUzrokComboBox.setDisable(true);
+        });
+        komunikacijaSComboBox.setOnAction((event) -> {
+        	if("Nema poteškoća".equals(komunikacijaSComboBox.getSelectionModel().getSelectedItem()) ||
+        			"Нема потешкоћа".equals(komunikacijaSComboBox.getSelectionModel().getSelectedItem()))
+        		komunikacijaUzrokComboBox.setDisable(true);
+        });
     }
 
     @FXML
@@ -2012,21 +2042,9 @@ public class KontrolerFormeZaPopisivanjeStanovnika {
                 odgovoriNaPitanja.get("44").add(odgovor44Button.getText());
         }
 
-        if(vidSComboBox.getSelectionModel().getSelectedItem() == null || sluhSComboBox.getSelectionModel().getSelectedItem() == null || sluhUzrokComboBox.getSelectionModel().getSelectedItem() == null ||
-        hodSComboBox.getSelectionModel().getSelectedItem() == null || pamcenjeSComboBox.getSelectionModel().getSelectedItem() == null || pamcenjeUzrokComboBox.getSelectionModel().getSelectedItem() == null ||
-        odijevanjeSComboBox.getSelectionModel().getSelectedItem() == null || komunikacijaSComboBox.getSelectionModel().getSelectedItem() == null ||
-                ((vidSComboBox.getSelectionModel().getSelectedItem().equals("Nema poteškoća") || vidSComboBox.getSelectionModel().getSelectedItem().equals("Нема потешкоћа")) 
-                		&& vidUzrokComboBox.getSelectionModel().getSelectedItem() == null) ||
-                ((sluhSComboBox.getSelectionModel().getSelectedItem().equals("Nema poteškoća") || sluhSComboBox.getSelectionModel().getSelectedItem().equals("Нема потешкоћа"))
-                		&& sluhUzrokComboBox.getSelectionModel().getSelectedItem() == null) ||
-                ((hodSComboBox.getSelectionModel().getSelectedItem().equals("Nema poteškoća") || hodSComboBox.getSelectionModel().getSelectedItem().equals("Нема потешкоћа")) 
-                		&& hodUzrokComboBox.getSelectionModel().getSelectedItem() == null) ||
-                ((pamcenjeSComboBox.getSelectionModel().getSelectedItem().equals("Nema poteškoća") || pamcenjeSComboBox.getSelectionModel().getSelectedItem().equals("Нема потешкоћа")) 
-                		&& pamcenjeUzrokComboBox.getSelectionModel().getSelectedItem() == null) ||
-                ((odijevanjeSComboBox.getSelectionModel().getSelectedItem().equals("Nema poteškoća") || odijevanjeSComboBox.getSelectionModel().getSelectedItem().equals("Нема потешкоћа"))
-                		&& odijevanjeUzrokComboBox.getSelectionModel().getSelectedItem() == null) ||
-                ((komunikacijaSComboBox.getSelectionModel().getSelectedItem().equals("Nema poteškoća") || komunikacijaSComboBox.getSelectionModel().getSelectedItem().equals("Нема потешкоћа")) 
-                		&& komunikacijaUzrokComboBox.getSelectionModel().getSelectedItem() == null)){
+        if(vidSComboBox.getSelectionModel().getSelectedItem() == null || sluhSComboBox.getSelectionModel().getSelectedItem() == null ||
+        hodSComboBox.getSelectionModel().getSelectedItem() == null || pamcenjeSComboBox.getSelectionModel().getSelectedItem() == null || 
+        odijevanjeSComboBox.getSelectionModel().getSelectedItem() == null || komunikacijaSComboBox.getSelectionModel().getSelectedItem() == null){
             vidSComboBox.setStyle("-fx-border-color: RED");
             vidUzrokComboBox.setStyle("-fx-border-color: RED");
             sluhSComboBox.setStyle("-fx-border-color: RED");
@@ -2044,17 +2062,41 @@ public class KontrolerFormeZaPopisivanjeStanovnika {
         }
         else{
             odgovoriNaPitanja.get("45").add((String)vidSComboBox.getSelectionModel().getSelectedItem());
-            odgovoriNaPitanja.get("45").add((String)vidUzrokComboBox.getSelectionModel().getSelectedItem());
+            if(vidUzrokComboBox.getSelectionModel().getSelectedItem() != null)
+            	odgovoriNaPitanja.get("45").add((String)vidUzrokComboBox.getSelectionModel().getSelectedItem());
+            else
+            	odgovoriNaPitanja.get("45").add("");
+            
             odgovoriNaPitanja.get("45").add((String)sluhSComboBox.getSelectionModel().getSelectedItem());
-            odgovoriNaPitanja.get("45").add((String)sluhUzrokComboBox.getSelectionModel().getSelectedItem());
+            if(sluhUzrokComboBox.getSelectionModel().getSelectedItem() != null)
+            	odgovoriNaPitanja.get("45").add((String)sluhUzrokComboBox.getSelectionModel().getSelectedItem());
+            else
+            	odgovoriNaPitanja.get("45").add("");
+            
             odgovoriNaPitanja.get("45").add((String)hodSComboBox.getSelectionModel().getSelectedItem());
-            odgovoriNaPitanja.get("45").add((String)hodUzrokComboBox.getSelectionModel().getSelectedItem());
+            if(hodUzrokComboBox.getSelectionModel().getSelectedItem() != null)
+            	odgovoriNaPitanja.get("45").add((String)hodUzrokComboBox.getSelectionModel().getSelectedItem());
+            else
+            	odgovoriNaPitanja.get("45").add("");
+            
             odgovoriNaPitanja.get("45").add((String)pamcenjeSComboBox.getSelectionModel().getSelectedItem());
-            odgovoriNaPitanja.get("45").add((String)pamcenjeUzrokComboBox.getSelectionModel().getSelectedItem());
+            if(pamcenjeUzrokComboBox.getSelectionModel().getSelectedItem() != null)
+            	odgovoriNaPitanja.get("45").add((String)pamcenjeUzrokComboBox.getSelectionModel().getSelectedItem());
+            else
+            	odgovoriNaPitanja.get("45").add("");
+            
             odgovoriNaPitanja.get("45").add((String)odijevanjeSComboBox.getSelectionModel().getSelectedItem());
-            odgovoriNaPitanja.get("45").add((String)odijevanjeUzrokComboBox.getSelectionModel().getSelectedItem());
+            if(odijevanjeUzrokComboBox.getSelectionModel().getSelectedItem() != null)
+            	odgovoriNaPitanja.get("45").add((String)odijevanjeUzrokComboBox.getSelectionModel().getSelectedItem());
+            else
+            	odgovoriNaPitanja.get("45").add("");
+            
             odgovoriNaPitanja.get("45").add((String)komunikacijaSComboBox.getSelectionModel().getSelectedItem());
-            odgovoriNaPitanja.get("45").add((String)komunikacijaUzrokComboBox.getSelectionModel().getSelectedItem());
+            if(komunikacijaUzrokComboBox.getSelectionModel().getSelectedItem() != null)
+            	odgovoriNaPitanja.get("45").add((String)komunikacijaUzrokComboBox.getSelectionModel().getSelectedItem());
+            else
+            	odgovoriNaPitanja.get("45").add("");
+            
         }
 
         RadioButton odgovor46Button = (RadioButton)grupa40.getSelectedToggle();

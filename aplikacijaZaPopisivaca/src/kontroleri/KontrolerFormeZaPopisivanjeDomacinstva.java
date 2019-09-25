@@ -31,7 +31,7 @@ import eCensus.rest.client.PopisivacGlavniServerKlijent;
 
 public class KontrolerFormeZaPopisivanjeDomacinstva {
 	public static Stage spisakLicaStage;
-	public static List<ClanDomacinstva> spisakLica;
+	public static List<ClanDomacinstva> spisakLica = new ArrayList<>();
 	
     @FXML
     private TextField obrazacTextField;
@@ -99,8 +99,6 @@ public class KontrolerFormeZaPopisivanjeDomacinstva {
     private TextField ukupnoZemljisteDunumTextField;
     @FXML
     private TextField pZemljisteDunumTextField;
-    @FXML
-    private TextField ZemljisteSumaDunumTextField;
     @FXML
     private TextField ostaloZemljisteDunumTextField;
     @FXML
@@ -1092,9 +1090,10 @@ public class KontrolerFormeZaPopisivanjeDomacinstva {
             }
         }
 
-        if(Integer.parseInt(brojDomacinstavaUStanuString) > 0 && spisakLica == null)
+        if(Integer.parseInt(brojDomacinstavaUStanuString) > 0 && spisakLica.size() == 0) {
         	PrikazObavjestenja.prikaziUpozorenje("Morate popuniti spisak lica.");
-        else {
+        	return;
+        } else {
         	List<ClanDomacinstva> prevedeno = new ArrayList<>();
         	for(ClanDomacinstva c : spisakLica) {
         		String ime = c.getIme();
@@ -1148,7 +1147,7 @@ public class KontrolerFormeZaPopisivanjeDomacinstva {
         }
         else {
         	PrikazObavjestenja.prikaziInfo("Popisnica je uspješno poslata.");
-      		KontrolerFormeZaRadPopisivaca.popisStanovnikaStage.close();
+      		KontrolerFormeZaRadPopisivaca.popisDomacinstvaStage.close();
         }
         }
         catch(IOException e) {
@@ -1333,7 +1332,7 @@ public class KontrolerFormeZaPopisivanjeDomacinstva {
         });
         ukupnoZemljisteDunumTextField.setStyle("-fx-border-color: TRANSPARENT");
         pZemljisteDunumTextField.setStyle("-fx-border-color: TRANSPARENT");
-        ZemljisteSumaDunumTextField.setStyle("-fx-border-color: TRANSPARENT");
+        zemljisteSumaDunumTextField.setStyle("-fx-border-color: TRANSPARENT");
         ostaloZemljisteDunumTextField.setStyle("-fx-border-color: TRANSPARENT");
         ostaloZemljisteKvadratniMetarTextField.setStyle("-fx-border-color: TRANSPARENT");
         zemljisteSumaKvadratniMetarTextField.setStyle("-fx-border-color: TRANSPARENT");
