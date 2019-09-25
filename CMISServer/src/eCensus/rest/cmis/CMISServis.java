@@ -267,6 +267,19 @@ public class CMISServis {
 			}
 		}
 		
+		@PUT
+		@Path("korisnici/nalozi/powerUser")
+		@Consumes(MediaType.APPLICATION_JSON)
+		@Produces(MediaType.APPLICATION_JSON)
+		public Response azurirajPowerUsera(PowerUser powerUser) {
+			boolean result = DAOFactory.getMySQLFactoryDAO().getMySQLNaloziDAO().getMySQLPowerUserDAO().azurirajKorisnika(powerUser);
+			if(result) {
+				return Response.status(Status.ACCEPTED).build();
+			} else {
+				return Response.status(Status.CONFLICT).build();
+			}
+		}
+		
 	//metode Popisivaca
 		@POST
 		@Path("korisnici/nalozi/popisivac")

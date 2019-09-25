@@ -109,5 +109,11 @@
       <TextField fx:id="jmbgTextField" GridPane.columnIndex="2" GridPane.rowIndex="5" />
       <TextField fx:id="korisnickoImeTextField" GridPane.columnIndex="2" GridPane.rowIndex="6" />
       <PasswordField fx:id="lozinkaTextField" GridPane.columnIndex="2" GridPane.rowIndex="7" />
+      <Label text="Naziv agencije:" GridPane.columnIndex="1" GridPane.rowIndex="8">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="nazivAgencijeTextField" GridPane.columnIndex="2" GridPane.rowIndex="8" />
    </children>
 </GridPane>
