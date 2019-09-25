@@ -3,6 +3,7 @@ package controller.kontroler_formi;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
 
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -17,10 +18,6 @@ import test.Aplikacija;
 public class KontrolerFormeZaRadOGInstruktora implements Initializable{
 
 	private KorisnikSistema korisnikSistema;
-
-    public void Logout(ActionEvent actionEvent) throws IOException {
-        Aplikacija.getStage().setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/FormaZaPrijavu.fxml"))));
-    }
 
     @FXML
     Label labelaSaImenom;
@@ -40,18 +37,39 @@ public class KontrolerFormeZaRadOGInstruktora implements Initializable{
         });
     }
 
-    public void pregledajStatistickePodatke(ActionEvent actionEvent) throws IOException {
-    }
-    
-    public void pregledajAktivnostiPopisivaca(ActionEvent actionEvent) throws IOException {
+    public void pregledajStatistickePodatke(ActionEvent actionEvent) {
+        // TODO: Statistički podaci
     }
 
-    public void promjeniJezik(ActionEvent actionEvent) throws IOException {
-        Aplikacija.getStage().setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/FormaZaPromjenuJezika.fxml"))));
+    public void pregledajNalogePopisivaca(ActionEvent actionEvent)
+    {
+        try {
+            Aplikacija.getStage().setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/FormaZaPregledNalogaPopisivaca.fxml"))));
+        } catch (IOException e) {
+            Aplikacija.connLogger.getLogger().log(Level.WARNING, "Neuspješno čitanje forme.");
+        }
+    }
+    public void pregledajAktivnostiPopisivaca(ActionEvent actionEvent) {
+        try {
+            Aplikacija.getStage().setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/FormaZaPregledAktivnostiPopisivaca.fxml"))));
+        } catch (IOException e) {
+            Aplikacija.connLogger.getLogger().log(Level.WARNING, "Neuspješno čitanje forme.");
+        }
     }
 
-    public void promjeniPismo(ActionEvent actionEvent) throws IOException {
-        Aplikacija.getStage().setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/FormaZaPromjenuPisma.fxml"))));
+    public void promjeniJezik(ActionEvent actionEvent) {
+        try {
+            Aplikacija.getStage().setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/FormaZaOdabirJezika.fxml"))));
+        } catch (IOException e) {
+            Aplikacija.connLogger.getLogger().log(Level.WARNING, "Neuspješno čitanje forme.");
+        }
     }
-	
+
+    public void odjaviSe(ActionEvent actionEvent) {
+        try {
+            Aplikacija.getStage().setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/FormaZaPrijavu.fxml"))));
+        } catch (IOException e) {
+            Aplikacija.connLogger.getLogger().log(Level.WARNING, "Neuspješno čitanje forme.");
+        }
+    }
 }

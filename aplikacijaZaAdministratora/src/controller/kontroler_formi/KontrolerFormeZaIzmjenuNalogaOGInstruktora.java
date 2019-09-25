@@ -1,10 +1,5 @@
 package controller.kontroler_formi;
 
-import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
-import java.util.logging.Level;
-import javax.ws.rs.core.Response;
 import eCensus.rest.client.OGInstruktorCMISKLijent;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -12,86 +7,146 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import model.korisnicki_nalozi.KorisnikSistema;
 import model.korisnicki_nalozi.OGInstruktor;
 import model.table_input_models.KorisnikInputModel;
 import test.Aplikacija;
+import util.GradoviCollection;
 import util.OpstineCollection;
 
+import javax.ws.rs.core.Response;
+import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
+import java.util.logging.Level;
+
 public class KontrolerFormeZaIzmjenuNalogaOGInstruktora implements Initializable {
-
     @FXML
-    TextField imeIzmjena;
-
+    ChoiceBox<String> gradoviComboBox;
     @FXML
-    TextField prezimeIzmjena;
-
+    ChoiceBox<String> opstineComboBox;
     @FXML
-    TextField usernameIzmjena;
+    TextField ime;
+    @FXML
+    TextField prezime;
+    @FXML
+    Label username;
+    @FXML
+    TextField newPassword;
+    @FXML
+    Label newPasswordLabel;
+    @FXML
+    CheckBox newPasswordCheckBox;
 
-	@FXML
-    ChoiceBox<String> gradovi;
-    
+
     public void izmjeni(ActionEvent actionEvent) {
         Alert alert = new Alert(Alert.AlertType.WARNING);
-        alert.setContentText("Da li želite da sačuvate izmjene naloga opštinskog/gradskog instruktora?");
+        alert.setContentText("Da li želite da sačuvate izmjene naloga opštinkog/gradskog instruktora?");
         ButtonType buttonType = alert.showAndWait().get();
         if(!buttonType.getText().equals("OK")) return;
-        
-        var account = KontrolerFormeZaPregledClanovaPKLS.getAccountForEdit();
-        KorisnikSistema ogInstruktor =  account.getKorisnikSistema();
-        
-        ((OGInstruktor)ogInstruktor).setGrad(gradovi.getValue());
-        account.setPrezime(prezimeIzmjena.getText());
-        account.setIme(imeIzmjena.getText());
-        account.setKorisnickoIme(usernameIzmjena.getText());
-        account.updateKorisnikSistema();
-        
-        OGInstruktorCMISKLijent clanPKLSCMISKlijent = new OGInstruktorCMISKLijent(KontrolerFormeZaPrijavu.getTrenutniKorisnik());
-        Response odgovor = clanPKLSCMISKlijent.azurirajKorisnika(ogInstruktor);
-        if(Response.Status.Family.SUCCESSFUL.equals(odgovor.getStatusInfo().getFamily())) {
-        	Aplikacija.connLogger.getLogger().log(Level.INFO, "Uspjesna izmjena.");
-        }else {
-        	
-        	Aplikacija.connLogger.logHeaders(Level.SEVERE, odgovor);
+
+        var nalogInputModel = KontrolerFormeZaPregledNalogaClanovaPKLS.getAccountForEdit();
+        OGInstruktor ogInstruktor = (OGInstruktor) nalogInputModel.getKorisnikSistema();
+
+        if(!ime.getText().matches("^[a-zA-Z- ]{2,}$"))
+        {
+            Alert alert2 = new Alert(Alert.AlertType.ERROR);
+            alert2.setContentText("Uneseno ime nije ispravno!");
+            alert2.showAndWait();
+            return;
         }
-        
+        if(!prezime.getText().matches("^[a-zA-Z- ]{2,}$"))
+        {
+            Alert alert2 = new Alert(Alert.AlertType.ERROR);
+            alert2.setContentText("Uneseno prezime nije ispravno!");
+            alert2.showAndWait();
+            return;
+        }
+        if(newPasswordCheckBox.isSelected())
+        {
+            if(!newPassword.getText().matches("(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=\\S+$).{8,}"))
+            {
+                Alert pwdAgain2 = new Alert(Alert.AlertType.WARNING);
+                pwdAgain2.setContentText("Lozinka sadrži brojeve, mala i velika slova");
+                pwdAgain2.showAndWait();
+                return;
+            }
+            ogInstruktor.setLozinkaHash(KorisnikSistema.napraviHesLozinke(newPassword.getText())); //Ovako za svaku izmjenu
+        }
+        nalogInputModel.setPrezime(prezime.getText());
+        nalogInputModel.setIme(ime.getText());
+        ogInstruktor.setGrad(gradoviComboBox.getValue());
+        ogInstruktor.setOpstina(opstineComboBox.getValue());
+        nalogInputModel.updateKorisnikSistema();
+
+        OGInstruktorCMISKLijent ogInstruktorCMISKlijent = new OGInstruktorCMISKLijent(KontrolerFormeZaPrijavu.getTrenutniKorisnik());
+        Response odgovor = ogInstruktorCMISKlijent.azurirajKorisnika(ogInstruktor);
+        if(Response.Status.Family.SUCCESSFUL.equals(odgovor.getStatusInfo().getFamily())) {
+            Aplikacija.connLogger.getLogger().log(Level.INFO, "Uspješna izmjena.");
+        }else {
+            Aplikacija.connLogger.logHeaders(Level.SEVERE, odgovor);
+        }
+
+        Alert poruka = new Alert(Alert.AlertType.CONFIRMATION);
+        poruka.setContentText("Uspješno ste izmjenili nalog opštinkog/gradskog instruktora!");
+        ButtonType tip = poruka.showAndWait().get();
+        if(!tip.getText().equals("OK")) return;
+
         Parent root = null;
         try {
             root = FXMLLoader.load(getClass().getResource("/view/FormaZaPregledNalogaOGInstruktora.fxml"));
         } catch (IOException ex) {
-            ex.printStackTrace();
+            Aplikacija.connLogger.getLogger().log(Level.INFO, "Neuspješno učitavanje forme.");
+        }
+        Aplikacija.getStage().setScene(new Scene(root));
+
+    }
+
+    public void povratak(ActionEvent actionEvent) throws IOException {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setContentText("Da li želite da napustite izmjenu naloga opštinkih/gradskih instruktora?");
+        ButtonType buttonType = alert.showAndWait().get();
+        if(!buttonType.getText().equals("OK")) return;
+        Parent root = null;
+        try {
+            root = FXMLLoader.load(getClass().getResource("/view/FormaZaPregledNalogaOGInstruktora.fxml"));
+        } catch (IOException ex) {
+            Aplikacija.connLogger.getLogger().log(Level.INFO, "Neuspješno učitavanje forme.");
         }
         Aplikacija.getStage().setScene(new Scene(root));
     }
 
-    public void back(ActionEvent actionEvent) throws IOException {
-        Alert alert = new Alert(Alert.AlertType.WARNING);
-        alert.setContentText("Da li želite da napustite izmjenu naloga opštinskog/gradskog instruktora?");
-        ButtonType buttonType = alert.showAndWait().get();
-        if(!buttonType.getText().equals("OK")) return;
-        Aplikacija.getStage().setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/FormaZaPregledNalogaOGInstruktora.fxml"))));
-    }
-
-	@Override
+    @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        KorisnikInputModel account = KontrolerFormeZaPregledClanovaPKLS.getAccountForEdit();
-        imeIzmjena.setText(account.getIme());
-        prezimeIzmjena.setText(account.getPrezime());
-        usernameIzmjena.setText(account.getKorisnickoIme());
-        
-        
-    	gradovi.getItems().addAll(OpstineCollection.getOpstine());
-        gradovi.setValue(((OGInstruktor)account.getKorisnikSistema()).getOpstina());
+        newPasswordLabel.setVisible(false);
+        newPassword.setVisible(false);
+
+        KorisnikInputModel account = KontrolerFormeZaPregledNalogaClanovaPKLS.getAccountForEdit();
+        ime.setText(account.getIme());
+        prezime.setText(account.getPrezime());
+        username.setText(account.getKorisnickoIme());
+
         var korisnik = (OGInstruktor)account.getKorisnikSistema();
-        String value = korisnik.getGrad();
-        if(value!=null)
-        	gradovi.setValue(value);
-        System.out.println(value);
+
+    	gradoviComboBox.getItems().addAll(GradoviCollection.getGradovi());
+        String grad = korisnik.getGrad();
+        if(grad!=null)
+            gradoviComboBox.setValue(grad);
+
+        opstineComboBox.getItems().addAll(OpstineCollection.getOpstine());
+        String opstina = korisnik.getOpstina();
+        if(opstina!=null)
+            gradoviComboBox.setValue(opstina);
+    }
+
+    public void promjenaSifre(ActionEvent actionEvent) {
+        if(newPasswordCheckBox.isSelected())
+        {
+            newPasswordLabel.setVisible(true);
+            newPassword.setVisible(true);
+            newPasswordCheckBox.setVisible(false);
+        }
     }
 }

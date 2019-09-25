@@ -13,6 +13,7 @@ import test.Aplikacija;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
 
 public class KontrolerFormeZaRadClanaPKLS implements Initializable {
 
@@ -36,26 +37,22 @@ public class KontrolerFormeZaRadClanaPKLS implements Initializable {
         });
     }
 
-    public void Logout(ActionEvent actionEvent) throws IOException {
-        Aplikacija.getStage().setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/FormaZaPrijavu.fxml"))));
+    public void promjeniJezik(ActionEvent actionEvent)
+    {
+        try {
+            Aplikacija.getStage().setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/FormaZaOdabirJezika.fxml"))));
+        } catch (IOException e) {
+            Aplikacija.connLogger.getLogger().log(Level.WARNING, "Neuspješno čitanje forme.");
+        }
     }
 
-    public void promjeniJezik(ActionEvent actionEvent) throws IOException {
-        Aplikacija.getStage().setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/FormaZaPromjenuJezika.fxml"))));
-    }
-    
-    public void promjeniPismo(ActionEvent actionEvent) throws IOException {
-        Aplikacija.getStage().setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/FormaZaPromjenuPisma.fxml"))));
-    }
-    
     public void registrujOGInstruktora(ActionEvent actionEvent)
     {
     	try {
 			Aplikacija.getStage().setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/FormaZaRegistracijuOGInstruktora.fxml"))));
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+            Aplikacija.connLogger.getLogger().log(Level.WARNING, "Neuspješno čitanje forme.");
+        }
     }
     
     public void pregledajNalogeOGInstruktora(ActionEvent actionEvent)
@@ -63,9 +60,8 @@ public class KontrolerFormeZaRadClanaPKLS implements Initializable {
     	try {
 			Aplikacija.getStage().setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/FormaZaPregledNalogaOGInstruktora.fxml"))));
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+            Aplikacija.connLogger.getLogger().log(Level.WARNING, "Neuspješno čitanje forme.");
+        }
     }
 
     public void registrujPopisivaca(ActionEvent actionEvent)
@@ -73,8 +69,7 @@ public class KontrolerFormeZaRadClanaPKLS implements Initializable {
         try {
             Aplikacija.getStage().setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/FormaZaRegistracijuPopisivaca.fxml"))));
         } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+            Aplikacija.connLogger.getLogger().log(Level.WARNING, "Neuspješno čitanje forme.");
         }
     }
 
@@ -83,8 +78,16 @@ public class KontrolerFormeZaRadClanaPKLS implements Initializable {
         try {
             Aplikacija.getStage().setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/FormaZaPregledNalogaPopisivaca.fxml"))));
         } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+            Aplikacija.connLogger.getLogger().log(Level.WARNING, "Neuspješno čitanje forme.");
+        }
+    }
+
+    public void odjaviSe(ActionEvent actionEvent)
+    {
+        try {
+            Aplikacija.getStage().setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/FormaZaPrijavu.fxml"))));
+        } catch (IOException e) {
+            Aplikacija.connLogger.getLogger().log(Level.WARNING, "Neuspješno čitanje forme.");
         }
     }
 }

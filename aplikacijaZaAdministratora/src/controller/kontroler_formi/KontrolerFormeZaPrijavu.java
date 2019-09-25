@@ -1,7 +1,5 @@
 package controller.kontroler_formi;
 
-import controller.KontrolerZaJezikeIPisma.KontrolerZaJezik;
-import controller.KontrolerZaJezikeIPisma.PromjenaPisma;
 import eCensus.rest.client.AdministratorCMISKlijent;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -16,7 +14,6 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import jdk.jshell.spi.ExecutionControl;
 import model.korisnicki_nalozi.*;
-import model.pracenje_popisa.PISMO;
 import test.Aplikacija;
 import util.SecureLozinkaFactory;
 
@@ -25,7 +22,6 @@ import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
 import javax.ws.rs.core.Response;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -48,7 +44,6 @@ public class KontrolerFormeZaPrijavu implements Initializable {
 		return trenutniKorisnik;
 	}
 
-	static KontrolerZaJezik kontrolerZaJezik = new KontrolerZaJezik();
 	@FXML
 	TextField username;
 	@FXML
@@ -91,8 +86,7 @@ public class KontrolerFormeZaPrijavu implements Initializable {
 		if (Response.Status.UNAUTHORIZED.equals(odgovor.getStatusInfo())) {
 			Alert alert = new Alert(Alert.AlertType.ERROR);
 			String nepostojeciNalog = "Korisničko ime ili lozinka nisu ispravni.";
-			alert.setContentText(
-					nepostojeciNalog + System.lineSeparator() + kontrolerZaJezik.latinToCyrillic(nepostojeciNalog));
+			alert.setContentText(nepostojeciNalog);
 			alert.showAndWait();
 			return;
 		}
@@ -125,14 +119,11 @@ public class KontrolerFormeZaPrijavu implements Initializable {
 		{
 			Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
 			var uspjesnaPrijavaAdminAgencije="Uspješno ste se prijavili kao administrator agencije.";
-			if(korisnikSistema.getPismo()!=null && korisnikSistema.getPismo().equals(PISMO.CIRILICA))
-				uspjesnaPrijavaAdminAgencije = PromjenaPisma.zamijeniLatinicuCiricom(uspjesnaPrijavaAdminAgencije);
-			alert.setContentText(uspjesnaPrijavaAdminAgencije + System.lineSeparator()
-					+ kontrolerZaJezik.latinToCyrillic(uspjesnaPrijavaAdminAgencije));
+			alert.setContentText(uspjesnaPrijavaAdminAgencije);
 			ButtonType buttonType = alert.showAndWait().get();
 			if (!buttonType.getText().equals("OK"))
 				return;
-			Parent root = FXMLLoader.load(getClass().getResource("/view/FormaZaRadAdministratora.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("/view/FormaZaRadAdministratoraAgencije.fxml"));
 			trenutniStage.setScene(new Scene(root));
 		}
 
@@ -140,8 +131,6 @@ public class KontrolerFormeZaPrijavu implements Initializable {
 		{
 			Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
 			String poruka = "Uspješno ste se prijavili kao član PKLS.";
-			if(korisnikSistema.getPismo()!=null && korisnikSistema.getPismo().equals(PISMO.CIRILICA))
-				poruka = PromjenaPisma.zamijeniLatinicuCiricom(poruka);
 			alert.setContentText(poruka);
 			ButtonType buttonType = alert.showAndWait().get();
 			if (!buttonType.getText().equals("OK"))
@@ -154,8 +143,6 @@ public class KontrolerFormeZaPrijavu implements Initializable {
 		{
 			Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
 			String poruka = "Uspješno ste se prijavili kao državno/entitetski instruktor.";
-			if(korisnikSistema.getPismo()!=null && korisnikSistema.getPismo().equals(PISMO.CIRILICA))
-				poruka = PromjenaPisma.zamijeniLatinicuCiricom(poruka);
 			alert.setContentText(poruka);
 			ButtonType buttonType = alert.showAndWait().get();
 			if (!buttonType.getText().equals("OK"))
@@ -168,8 +155,6 @@ public class KontrolerFormeZaPrijavu implements Initializable {
 		{
 			Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
 			String poruka = "Uspješno ste se prijavili kao OG instruktor.";
-			if(korisnikSistema.getPismo()!=null && korisnikSistema.getPismo().equals(PISMO.CIRILICA))
-				poruka = PromjenaPisma.zamijeniLatinicuCiricom(poruka);
 			alert.setContentText(poruka);
 			ButtonType buttonType = alert.showAndWait().get();
 			if (!buttonType.getText().equals("OK"))

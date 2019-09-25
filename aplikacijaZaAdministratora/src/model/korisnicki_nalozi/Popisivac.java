@@ -3,8 +3,6 @@ package model.korisnicki_nalozi;
 import java.util.LinkedList;
 import java.util.List;
 
-import model.pracenje_popisa.JEZIK;
-import model.pracenje_popisa.PISMO;
 import model.pracenje_popisa.izvjestaji_o_popisivacu.PopisniKrug;
 
 public class Popisivac extends KorisnikSistema {
@@ -13,16 +11,14 @@ public class Popisivac extends KorisnikSistema {
 	
 	public Popisivac() {}
 	
-	public Popisivac(String ime, String prezime, String korisnickoIme, String lozinkaHash, JEZIK jezik,
-			PISMO pismo) {
-		super(ime, prezime, korisnickoIme, lozinkaHash, jezik, pismo);
+	public Popisivac(String ime, String prezime, String korisnickoIme, String lozinkaHash) {
+		super(ime, prezime, korisnickoIme, lozinkaHash);
 	}
 
 	public Popisivac(long id, String ime, String prezime, String korisnickoIme, String lozinkaHash,
-			JEZIK jezik, PISMO pismo, String trustStore, String trustLozinka, String keyStore, String keyLozinka) {
-		super(id, ime, prezime, korisnickoIme, lozinkaHash, jezik, pismo, trustStore, trustLozinka, keyStore,
+					 String trustStore, String trustLozinka, String keyStore, String keyLozinka) {
+		super(id, ime, prezime, korisnickoIme, lozinkaHash, trustStore, trustLozinka, keyStore,
 				keyLozinka);
-		// TODO Auto-generated constructor stub
 	}
 	
 	public void dodajPopisniKrug(PopisniKrug popisniKrug) {

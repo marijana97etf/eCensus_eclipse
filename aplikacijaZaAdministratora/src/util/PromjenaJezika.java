@@ -9,35 +9,35 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
 import org.javatuples.Triplet;
-import model.pracenje_popisa.JEZIK;
-import model.pracenje_popisa.PISMO;
+import test.Aplikacija;
 
 public class PromjenaJezika {
 	private static List<Triplet<String, String, String>> rjecnik;
 	
-	static {
+	static  {
 		procitajRjecnik();
 	}
 	
-	public static String pronadjiIZamijeni(String linija, JEZIK jezik, PISMO pismo) {
+	public static String pronadjiIZamijeni(String linija, String odabraniJezik) {
 		String novaLinija = linija;
+		String trenutniJezik = Aplikacija.getProperty();
 
 		for(Triplet<String, String, String> t : rjecnik) {
 			String pattern;
-			if(JEZIK.SRPSKI.equals(jezik))
-			{
-				if(PISMO.CIRILICA.equals(pismo))
-					pattern = PromjenaPisma.zamijeniLatinicuCiricom(t.getValue0());
-				else
-					pattern = t.getValue0();
-			}
-			else if(JEZIK.BOSANSKI.equals(jezik))
+			if("srpski".equals(trenutniJezik))
+				pattern = t.getValue0();
+			else if("bosnjacki".equals(trenutniJezik))
 				pattern = t.getValue1();
 			else
 				pattern = t.getValue2();
 			
-			Pattern myPattern = Pattern.compile(pattern);
+			Pattern myPattern;
+			if(!"POL".equals(pattern))
+				myPattern = Pattern.compile(pattern);
+			else
+				myPattern = Pattern.compile(pattern + ":");
 			Matcher matcher = myPattern.matcher(linija);
 			List<String> pronadjeno = new ArrayList<>();
 			
@@ -47,13 +47,16 @@ public class PromjenaJezika {
 	
 			for(String rijec : pronadjeno) {
 				String novaRijec;
-				if(JEZIK.SRPSKI.equals(jezik))
+				if("srpski".equals(odabraniJezik))
 					novaRijec = t.getValue0();
-				else if(JEZIK.BOSANSKI.equals(jezik))
+				else if("bosnjacki".equals(odabraniJezik))
 					novaRijec = t.getValue1();
 				else
 					novaRijec = t.getValue2();
-				novaLinija = novaLinija.replaceAll(rijec, novaRijec);
+				if("POL".equals(pattern))
+					novaLinija = novaLinija.replaceAll(rijec, novaRijec + ":");
+				else
+					novaLinija = novaLinija.replaceAll(rijec, novaRijec);
 			}
 		}
 		return novaLinija;

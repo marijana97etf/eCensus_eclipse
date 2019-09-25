@@ -3,7 +3,10 @@ package test;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.Properties;
 import java.util.logging.FileHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -15,6 +18,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.util.Pair;
 import util.ConnectionLogger;
+import util.PromjenaPisma;
 
 public class Aplikacija extends Application {
 
@@ -22,7 +26,6 @@ public class Aplikacija extends Application {
     
     public static final String CONFIG_FILE = "resources" + File.separator + "config.properties";
     public static final String LOG_FILE = "resources" + File.separator + "error.log";
-    
     
     public static ConnectionLogger connLogger;
 
@@ -36,11 +39,10 @@ public class Aplikacija extends Application {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-    	
     	connLogger = new ConnectionLogger(logger);
-    	
-    }
 
+    	getProperty();
+    }
 
     public static Stage getStage() {
         return stage;
@@ -100,5 +102,32 @@ public class Aplikacija extends Application {
 
     public static void main(String[] args) {
         launch(args);
+    }
+
+    public static String getProperty() {
+        String jezik = "";
+        try {
+            Properties properties = new Properties();
+            FileInputStream in = new FileInputStream(new File(CONFIG_FILE));
+            properties.load(in);
+            jezik = properties.getProperty("TRENUTNI_JEZIK_I_PISMO");
+            in.close();
+        }
+        catch(IOException e) {
+            e.printStackTrace();
+        }
+        return jezik;
+    }
+
+    public static void setProperty(String property) throws IOException{
+
+        Properties properties = new Properties();
+        FileInputStream in = new FileInputStream(new File(CONFIG_FILE));
+        properties.load(in);
+        in.close();
+
+        FileOutputStream out = new FileOutputStream(CONFIG_FILE);
+        properties.setProperty("TRENUTNI_JEZIK_I_PISMO", property);
+        properties.store(out, null);
     }
 }

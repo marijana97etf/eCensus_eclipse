@@ -1,25 +1,13 @@
 package util;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedWriter;
-import java.io.DataInputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStreamWriter;
+import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import model.pracenje_popisa.PISMO;
 
 public class PromjenaPisma {
 
@@ -33,7 +21,7 @@ public class PromjenaPisma {
 	}
 	
 	
-	public static void promijeniPismo(PISMO pismo) {
+	public static void promijeniPismo(String pismo) {
 		String formeDirektorijum = "src" + File.separator + "view";
 		File folder = new File(formeDirektorijum);
 		File[] listOfFiles = folder.listFiles();
@@ -64,7 +52,7 @@ public class PromjenaPisma {
 		}
 	}
 	
-	private static String pronadjiIZamijeni(String linija, PISMO pismo) {
+	private static String pronadjiIZamijeni(String linija, String pismo) {
 		String pattern = "ext=\"[^\"]*\"";
 		Pattern myPattern = Pattern.compile(pattern);
 		Matcher matcher = myPattern.matcher(linija);
@@ -80,7 +68,7 @@ public class PromjenaPisma {
 				if(recenica.endsWith("?\"")) {
 					String util = recenica.replace("?\"", "");
 					String novaRecenica;
-					if(PISMO.CIRILICA.equals(pismo))
+					if("cirilica".equals(pismo))
 						novaRecenica = zamijeniLatinicuCiricom(util.split("=")[1].replace("\"", ""));
 					else
 						novaRecenica = zamijeniCirilicuLatinicom(util.split("=")[1].replace("\"", ""));
@@ -88,7 +76,7 @@ public class PromjenaPisma {
 				}
 				else {
 					String novaRecenica;
-					if("ćirilica".equals(pismo))
+					if("cirilica".equals(pismo))
 						novaRecenica = zamijeniLatinicuCiricom(recenica.split("=")[1].replace("\"", ""));
 					else
 						novaRecenica = zamijeniCirilicuLatinicom(recenica.split("=")[1].replace("\"", ""));

@@ -5,24 +5,16 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import model.korisnicki_nalozi.ClanPKLS;
-import model.korisnicki_nalozi.DEInstruktor;
 import model.korisnicki_nalozi.KorisnikSistema;
 import model.korisnicki_nalozi.OGInstruktor;
-import model.pracenje_popisa.JEZIK;
-import model.pracenje_popisa.PISMO;
 import test.Aplikacija;
+import util.GradoviCollection;
 import util.OpstineCollection;
 
-import java.io.File;
 import java.io.IOException;
-import java.lang.annotation.Documented;
-import java.lang.annotation.Retention;
-import java.lang.annotation.Target;
 import java.net.URL;
 import java.util.Arrays;
 import java.util.List;
@@ -31,33 +23,24 @@ import java.util.logging.Level;
 
 import javax.ws.rs.core.Response;
 
-import eCensus.rest.client.ClanPKLSCMISKlijent;
-import eCensus.rest.client.DEInstruktorCMISKlijent;
 import eCensus.rest.client.OGInstruktorCMISKLijent;
 
 public class KontrolerFormeZaRegistracijuOGInstruktora implements Initializable {
-	
-	static int i=30;
-    public void back(ActionEvent actionEvent) throws IOException {
-        Aplikacija.getStage().setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/FormaZaRadClanaPKLS.fxml"))));
-    }
-
     @FXML
     TextField ime;
     @FXML
     TextField prezime;
     @FXML
-    TextField jmbg;
-    @FXML
     TextField username;
     @FXML
     PasswordField password;
-
     @FXML
-    ChoiceBox<String> choiceBox2;
+    ChoiceBox<String> gradoviChoiceBox;
+    @FXML
+    ChoiceBox<String> opstineChoiceBox;
 
-    public void registruj(ActionEvent actionEvent) throws IOException {
-        List<TextInputControl> list = Arrays.asList(new TextInputControl[]{ ime, prezime, jmbg, username, password });
+    public void registruj(ActionEvent actionEvent) {
+        List<TextInputControl> list = Arrays.asList(new TextInputControl[]{ ime, prezime, username, password });
         if(list.stream().anyMatch(e-> e.getText().equals("")))
         {
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -65,43 +48,62 @@ public class KontrolerFormeZaRegistracijuOGInstruktora implements Initializable 
             alert.showAndWait();
             return;
         }
-        if(password.getText().length()<8)
+        if(!ime.getText().matches("^[a-zA-Z- ]{2,}$"))
         {
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setContentText("Unesite 'jaču' lozinku!");
+            alert.setContentText("Uneseno ime nije ispravno!");
             alert.showAndWait();
             return;
         }
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setContentText("Uspješno ste registrovali gradskog/opštinskog instruktora");
-        String opstina = (String)choiceBox2.getValue();
+        if(!prezime.getText().matches("^[a-zA-Z- ]{2,}$"))
+        {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("Uneseno prezime nije ispravno!");
+            alert.showAndWait();
+            return;
+        }
+        if(!username.getText().matches("^[a-zA-Z0-9._-]{3,}$"))
+        {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("Uneseno korisničko ime nije ispravno!");
+            alert.showAndWait();
+            return;
+        }
+        if(!password.getText().matches("(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=\\S+$).{8,}"))
+        {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("Lozinka (8+ karaktera) mora sadržavati brojeve, mala i velika slova!");
+            alert.showAndWait();
+            return;
+        }
+
         KorisnikSistema ogInstruktor = new OGInstruktor (
-        		i++,
                 ime.getText(),
                 prezime.getText(),
                 username.getText(),
                 KorisnikSistema.napraviHesLozinke(password.getText()),
-    			null, //isto
-    			null, //isto
-    			opstina, 
-    			opstina, 
-    			null, 
-    			null, 
-    			null, 
-    			null);
+                gradoviChoiceBox.getValue(),
+                opstineChoiceBox.getValue());
 
         OGInstruktorCMISKLijent ogInstruktorCMISKlijent = new OGInstruktorCMISKLijent(KontrolerFormeZaPrijavu.getTrenutniKorisnik());
         Response odgovor = ogInstruktorCMISKlijent.registrujKorisnika(ogInstruktor);
         if(Response.Status.Family.SUCCESSFUL.equals(odgovor.getStatusInfo().getFamily())) {
         	Aplikacija.connLogger.getLogger().log(Level.INFO, "Uspješna registracija opštinskog/gradskog instruktora.");
         }else {
-        	
         	Aplikacija.connLogger.logHeaders(Level.SEVERE, odgovor);
         }
-        
+
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setContentText("Uspješno ste registrovali gradskog/opštinskog instruktora");
         ButtonType buttonType = alert.showAndWait().get();
         if(!buttonType.getText().equals("OK")) return;
-        Parent root = FXMLLoader.load(getClass().getResource("/view/FormaZaRadClanaPKLS.fxml"));
+
+        Parent root = null;
+        try {
+            root = FXMLLoader.load(getClass().getResource("/view/FormaZaRadClanaPKLS.fxml"));
+        } catch (IOException e) {
+            Aplikacija.connLogger.getLogger().log(Level.WARNING, "Neuspješno čitanje forme.");
+        }
         Aplikacija.getStage().setScene(new Scene(root));
     }
 
@@ -122,7 +124,17 @@ public class KontrolerFormeZaRegistracijuOGInstruktora implements Initializable 
             wrapper.sadrzajLabele=labelaZaIme.getText();
             labelaZaIme.setText(wrapper.sadrzajLabele + wrapper.prezimeIIme);
         });
-        choiceBox2.getItems().addAll(OpstineCollection.getOpstine());
-        choiceBox2.setValue("Banja Luka");
+        gradoviChoiceBox.getItems().addAll(GradoviCollection.getGradovi());
+        gradoviChoiceBox.setValue("Banja Luka");
+        opstineChoiceBox.getItems().addAll(OpstineCollection.getOpstine());
+        opstineChoiceBox.setValue("Banja Luka");
+    }
+
+    public void back(ActionEvent actionEvent) {
+        try {
+            Aplikacija.getStage().setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/FormaZaRadClanaPKLS.fxml"))));
+        } catch (IOException e) {
+            Aplikacija.connLogger.getLogger().log(Level.WARNING, "Neuspješno čitanje forme.");
+        }
     }
 }

@@ -1,8 +1,5 @@
 package model.korisnicki_nalozi;
 
-import model.pracenje_popisa.JEZIK;
-import model.pracenje_popisa.PISMO;
-
 public class DEInstruktor extends Administrator {
 
 	protected ENTITET entitet;
@@ -28,17 +25,17 @@ public class DEInstruktor extends Administrator {
 	}
 
 	public DEInstruktor(long id, String ime, String prezime, String korisnickoIme, String lozinkaHash,
-			DRZAVA drzava, ENTITET entitet, JEZIK jezik, PISMO pismo, String trustStore, String trustLozinka,
+			DRZAVA drzava, ENTITET entitet, String trustStore, String trustLozinka,
 			String keyStore, String keyLozinka) {
-		super(id, ime, prezime, korisnickoIme, lozinkaHash, jezik, pismo, trustStore, trustLozinka, keyStore,
+		super(id, ime, prezime, korisnickoIme, lozinkaHash, trustStore, trustLozinka, keyStore,
 				keyLozinka);
 		this.entitet = entitet;
 		this.drzava = drzava;
 	}
 
 	public DEInstruktor(String ime, String prezime, String korisnickoIme, String lozinkaHash,
-			DRZAVA drzava, ENTITET entitet, JEZIK jezik, PISMO pismo) {
-		super(ime, prezime, korisnickoIme, lozinkaHash, jezik, pismo);
+			DRZAVA drzava, ENTITET entitet) {
+		super(ime, prezime, korisnickoIme, lozinkaHash);
 		this.entitet = entitet;
 		this.drzava = drzava;
 	}
@@ -71,7 +68,7 @@ public class DEInstruktor extends Administrator {
 	}
 	
 	public enum ENTITET {
-		FBIH("Bosna i Hercegovina"),
+		FBIH("Federacija Bosne i Hercegovine"),
 		RS("Republika Srpska"),
 		BRCKO_DISTRIKT("Brcko Distrikt");
 		

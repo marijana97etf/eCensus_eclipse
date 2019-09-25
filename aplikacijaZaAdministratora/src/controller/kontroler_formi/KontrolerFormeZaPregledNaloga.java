@@ -65,7 +65,7 @@ public abstract class KontrolerFormeZaPregledNaloga implements Initializable {
         } else if (KontrolerFormeZaPrijavu.getTrenutniKorisnik() instanceof OGInstruktor) {
             retPath = "/view/FormaZaRadOGInstruktora.fxml";
         } else {
-            retPath = "/view/FormaZaRadAdministratora.fxml";
+            retPath = "/view/FormaZaRadAdministratoraAgencije.fxml";
         }
         Parent root = FXMLLoader.load(getClass().getResource(retPath));
         Aplikacija.getStage().setScene(new Scene(root));
@@ -168,7 +168,7 @@ public abstract class KontrolerFormeZaPregledNaloga implements Initializable {
                 {
                     String path;
                     item.getButtons()[0].setText("Aktivnost");
-                    path = "/view/FormaZaPregledAktivnostiPopisivaca.fxml\"";
+                    path = "/view/FormaZaPregledAktivnostiPopisivaca.fxml";
 
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setContentText("Da li želite da pogledate aktivnosti popisivača?");

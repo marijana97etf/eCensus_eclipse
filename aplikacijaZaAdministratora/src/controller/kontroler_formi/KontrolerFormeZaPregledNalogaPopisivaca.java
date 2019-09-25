@@ -29,8 +29,6 @@ public class KontrolerFormeZaPregledNalogaPopisivaca extends KontrolerFormeZaPre
     	}else {
     		Aplikacija.connLogger.logHeaders(Level.SEVERE, odgovor);
     	}
-
-
 		return false;
     }
 }

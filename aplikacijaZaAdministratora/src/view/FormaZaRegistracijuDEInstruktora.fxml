@@ -90,11 +90,6 @@
             <Font size="15.0" />
          </font>
       </Label>
-      <Label text="JMBG:" GridPane.columnIndex="1" GridPane.rowIndex="4">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </Label>
       <Label text="Korisničko ime:" GridPane.columnIndex="1" GridPane.rowIndex="5">
          <font>
             <Font size="15.0" />
@@ -106,7 +101,6 @@
          </font>
       </Label>
       <TextField fx:id="prezime" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-      <TextField fx:id="jmbg" GridPane.columnIndex="2" GridPane.rowIndex="4" />
       <TextField fx:id="username" GridPane.columnIndex="2" GridPane.rowIndex="5" />
       <PasswordField fx:id="password" GridPane.columnIndex="2" GridPane.rowIndex="6" />
       <Button fx:id="back" mnemonicParsing="false" onAction="#back" prefHeight="39.0" prefWidth="101.0" text="Povratak" GridPane.columnIndex="1" GridPane.rowIndex="8">
@@ -119,6 +113,6 @@
             <Font size="15.0" />
          </font>
       </Label>
-      <ChoiceBox fx:id="choiceBox2" prefHeight="25.0" prefWidth="217.0" GridPane.columnIndex="2" GridPane.rowIndex="7" />
+      <ChoiceBox fx:id="entitet" prefHeight="25.0" prefWidth="217.0" GridPane.columnIndex="2" GridPane.rowIndex="7" />
    </children>
 </GridPane>

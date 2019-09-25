@@ -1,8 +1,5 @@
 package model.korisnicki_nalozi;
 
-import model.pracenje_popisa.JEZIK;
-import model.pracenje_popisa.PISMO;
-
 public class OGInstruktor extends Administrator {
 	
 	protected String grad,opstina;
@@ -13,19 +10,17 @@ public class OGInstruktor extends Administrator {
                         String prezime,
                         String korisnickoIme,
                         String lozinkaHash,
-                        JEZIK jezik,
-                        PISMO pismo,
                         String grad,
                         String opstina)
     {
-        super(ime, prezime, korisnickoIme, lozinkaHash, jezik, pismo);
+        super(ime, prezime, korisnickoIme, lozinkaHash);
         this.grad = grad;
         this.opstina = opstina;
     }
 
 	public OGInstruktor(long id, String ime, String prezime, String korisnickoIme, String lozinkaHash,
-			JEZIK jezik, PISMO pismo, String grad, String opstina, String trustStore, String trustLozinka, String keyStore, String keyLozinka) {
-		super(id, ime, prezime, korisnickoIme, lozinkaHash, jezik, pismo, trustStore, trustLozinka, keyStore, keyLozinka);
+						String grad, String opstina, String trustStore, String trustLozinka, String keyStore, String keyLozinka) {
+		super(id, ime, prezime, korisnickoIme, lozinkaHash, trustStore, trustLozinka, keyStore, keyLozinka);
 		this.grad = grad;
         this.opstina = opstina;
 	}
@@ -33,7 +28,6 @@ public class OGInstruktor extends Administrator {
 	public void setGrad(String grad)
 	{
 		this.grad = grad;
-		this.opstina = grad;
 	}
 	
 	public String getGrad() {
@@ -43,4 +37,8 @@ public class OGInstruktor extends Administrator {
 	public String getOpstina() {
 		return opstina;
 	}
+
+    public void setOpstina(String value) {
+		opstina=value;
+    }
 }

@@ -7,9 +7,6 @@ import java.security.NoSuchAlgorithmException;
 
 import java.util.Base64;
 
-import model.pracenje_popisa.JEZIK;
-import model.pracenje_popisa.PISMO;
-
 
 public class KorisnikSistema implements Serializable {
 	
@@ -18,9 +15,6 @@ public class KorisnikSistema implements Serializable {
 	protected String prezime;
 	protected String korisnickoIme;
 	protected String lozinkaHash;
-
-	protected JEZIK jezik;
-	protected PISMO pismo;
 
 	protected String trustStore, keyStore;
 	protected String trustLozinka, keyLozinka;
@@ -34,19 +28,16 @@ public class KorisnikSistema implements Serializable {
 		
 	}
 	
-	public KorisnikSistema(String ime, String prezime, String korisnickoIme, String lozinkaHash, JEZIK jezik,
-			PISMO pismo) {
+	public KorisnikSistema(String ime, String prezime, String korisnickoIme, String lozinkaHash) {
 		this.ime = ime;
 		this.prezime = prezime;
 		this.korisnickoIme = korisnickoIme;
 		this.lozinkaHash = lozinkaHash;
-		this.jezik = jezik;
-		this.pismo = pismo;
 	}
 
 	public KorisnikSistema(long id, String ime, String prezime, String korisnickoIme, String lozinkaHash,
-			JEZIK jezik, PISMO pismo, String trustStore, String trustLozinka, String keyStore, String keyLozinka) {
-		this(ime, prezime, korisnickoIme, lozinkaHash, jezik, pismo);
+			String trustStore, String trustLozinka, String keyStore, String keyLozinka) {
+		this(ime, prezime, korisnickoIme, lozinkaHash);
 		this.id = id;
 		this.trustStore = trustStore;
 		this.keyStore = keyStore;
@@ -151,22 +142,6 @@ public class KorisnikSistema implements Serializable {
 
 	public void setKeyLozinka(String keyLozinka) {
 		this.keyLozinka = keyLozinka;
-	}
-
-	public JEZIK getJezik() {
-		return jezik;
-	}
-
-	public void setJezik(JEZIK jezik) {
-		this.jezik = jezik;
-	}
-
-	public PISMO getPismo() {
-		return pismo;
-	}
-
-	public void setPismo(PISMO pismo) {
-		this.pismo = pismo;
 	}
 
 	public long getId() {

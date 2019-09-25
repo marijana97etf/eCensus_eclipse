@@ -1,6 +1,5 @@
 package controller.kontroler_formi;
 
-import eCensus.rest.client.ClanPKLSCMISKlijent;
 import eCensus.rest.client.PopisivacCMISKlijent;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -8,20 +7,15 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import model.korisnicki_nalozi.KorisnikSistema;
 import model.table_input_models.KorisnikInputModel;
 import test.Aplikacija;
-
 import javax.ws.rs.core.Response;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class KontrolerFormeZaIzmjenuNalogaPopisivaca implements Initializable {
     @FXML
@@ -31,40 +25,48 @@ public class KontrolerFormeZaIzmjenuNalogaPopisivaca implements Initializable {
     @FXML
     TextField username;
     @FXML
-    TextField oldPassword;
-    @FXML
     TextField newPassword;
-
+    @FXML
+    Label newPasswordLabel;
+    @FXML
+    CheckBox passwordCheckBox;
 
     public void izmjeni(ActionEvent actionEvent) {
         Alert alert = new Alert(Alert.AlertType.WARNING);
-        alert.setContentText("Da li Å¾elite da saÄ�uvate izmjene naloga popisivaÄ�a?");
+        alert.setContentText("Da li želite da sačuvate izmjene naloga popisivača?");
         ButtonType buttonType = alert.showAndWait().get();
         if(!buttonType.getText().equals("OK")) return;
         
-        var nalogInputModel = KontrolerFormeZaPregledClanovaPKLS.getAccountForEdit();
+        var nalogInputModel = KontrolerFormeZaPregledNalogaClanovaPKLS.getAccountForEdit();
         KorisnikSistema popisivac =  nalogInputModel.getKorisnikSistema();
 
-
-        if(!KorisnikSistema.napraviHesLozinke(oldPassword.getText()).equals(popisivac.getLozinkaHash())) {
-            Alert pwdAgain = new Alert(Alert.AlertType.WARNING);
-            pwdAgain.setContentText("VaÅ¡a unesena stara lozinka nije ispravna.");
-            pwdAgain.showAndWait();
-            return;
-        }
         String pattern = "(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}";
-        if(!newPassword.getText().matches(pattern))
+        if(!ime.getText().matches("^[a-zA-Z- ]{2,}$"))
         {
-            Alert pwdAgain2 = new Alert(Alert.AlertType.WARNING);
-            pwdAgain2.setContentText("Unesite 'jaÄ�u' lozinku.");
-            pwdAgain2.showAndWait();
+            Alert alert2 = new Alert(Alert.AlertType.ERROR);
+            alert2.setContentText("Uneseno ime nije ispravno!");
+            alert2.showAndWait();
             return;
         }
-
+        if(!prezime.getText().matches("^[a-zA-Z- ]{2,}$"))
+        {
+            Alert alert2 = new Alert(Alert.AlertType.ERROR);
+            alert2.setContentText("Uneseno prezime nije ispravno!");
+            alert2.showAndWait();
+            return;
+        }
+        if(passwordCheckBox.isSelected())
+        {
+            if (!newPassword.getText().matches(pattern)) {
+                Alert pwdAgain2 = new Alert(Alert.AlertType.WARNING);
+                pwdAgain2.setContentText("Unesite 'jaču' lozinku.");
+                pwdAgain2.showAndWait();
+                return;
+            }
+            popisivac.setLozinkaHash(KorisnikSistema.napraviHesLozinke(newPassword.getText())); //Ovako za svaku izmjenu
+        }
         nalogInputModel.setPrezime(prezime.getText());
         nalogInputModel.setIme(ime.getText());
-        //Pattern pattern = Pattern.compile("^[a-zA-Z0-9._-]{3,}$");
-        //Matcher matcher = pattern.matcher(username.getText());
         popisivac.setLozinkaHash(KorisnikSistema.napraviHesLozinke(newPassword.getText())); //Ovako za svaku izmjenu
         nalogInputModel.updateKorisnikSistema();
 
@@ -75,12 +77,17 @@ public class KontrolerFormeZaIzmjenuNalogaPopisivaca implements Initializable {
         }else {
         	Aplikacija.connLogger.logHeaders(Level.SEVERE, odgovor);
         }
-        
+
+        Alert poruka = new Alert(Alert.AlertType.CONFIRMATION);
+        poruka.setContentText("Uspješno ste izmjenili nalog popisivača!");
+        ButtonType tip = poruka.showAndWait().get();
+        if(!tip.getText().equals("OK")) return;
+
         Parent root = null;
         try {
             root = FXMLLoader.load(getClass().getResource("/view/FormaZaPregledNalogaPopisivaca.fxml"));
         } catch (IOException ex) {
-            ex.printStackTrace();
+            Aplikacija.connLogger.getLogger().log(Level.INFO, "Neuspješno učitavanje forme.");
         }
         Aplikacija.getStage().setScene(new Scene(root));
         
@@ -88,7 +95,7 @@ public class KontrolerFormeZaIzmjenuNalogaPopisivaca implements Initializable {
 
     public void back(ActionEvent actionEvent) throws IOException {
         Alert alert = new Alert(Alert.AlertType.WARNING);
-        alert.setContentText("Da li Å¾elite da napustite izmjenu naloga popisivaÄ�a?");
+        alert.setContentText("Da li želite da napustite izmjenu naloga popisivača?");
         ButtonType buttonType = alert.showAndWait().get();
         if(!buttonType.getText().equals("OK")) return;
         Aplikacija.getStage().setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/FormaZaPregledNalogaPopisivaca.fxml"))));
@@ -97,9 +104,18 @@ public class KontrolerFormeZaIzmjenuNalogaPopisivaca implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        KorisnikInputModel account = KontrolerFormeZaPregledClanovaPKLS.getAccountForEdit();
+        KorisnikInputModel account = KontrolerFormeZaPregledNalogaClanovaPKLS.getAccountForEdit();
         ime.setText(account.getIme());
         prezime.setText(account.getPrezime());
         username.setText(account.getKorisnickoIme());
+    }
+
+    public void promjenaSifre(ActionEvent actionEvent) {
+        if(passwordCheckBox.isSelected())
+        {
+            newPasswordLabel.setVisible(true);
+            newPassword.setVisible(true);
+            passwordCheckBox.setVisible(false);
+        }
     }
 }
