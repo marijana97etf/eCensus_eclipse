@@ -23,12 +23,14 @@ public class PromjenaJezika {
 	
 	public static String pronadjiIZamijeni(String linija, String odabraniJezik) {
 		String novaLinija = linija;
-
+		if(rjecnik == null)
+			procitajRjecnik();
+	
 		for(Triplet<String, String, String> t : rjecnik) {
 			String pattern;
-			if("српски".equals(Main.trenutniJezik))
+			if("Ñ�Ñ€Ð¿Ñ�ÐºÐ¸".equals(Main.trenutniJezik))
 				pattern = t.getValue0();
-			else if("bošnjački".equals(Main.trenutniJezik))
+			else if("boÅ¡njaÄ�ki".equals(Main.trenutniJezik))
 				pattern = t.getValue1();
 			else
 				pattern = t.getValue2();
@@ -49,7 +51,7 @@ public class PromjenaJezika {
 				String novaRijec;
 				if("srpski".equals(odabraniJezik))
 					novaRijec = t.getValue0();
-				else if("bošnjački".equals(odabraniJezik) || "бошњачки".equals(odabraniJezik))
+				else if("boÅ¡njaÄ�ki".equals(odabraniJezik) || "Ð±Ð¾ÑˆÑšÐ°Ñ‡ÐºÐ¸".equals(odabraniJezik))
 					novaRijec = t.getValue1();
 				else
 					novaRijec = t.getValue2();

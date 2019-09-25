@@ -482,7 +482,7 @@
                         <Insets left="30.0" top="10.0" />
                     </GridPane.margin>
                 </Label>
-                <RadioButton fx:id="pitanje7Button1" mnemonicParsing="false" text="Rjeđe od jednom nedjeljno" GridPane.columnIndex="3" GridPane.rowIndex="14">
+                <RadioButton fx:id="pitanje7Button1" mnemonicParsing="false" text="RjeÄ‘e od jednom nedjeljno" GridPane.columnIndex="3" GridPane.rowIndex="14">
                     <GridPane.margin>
                         <Insets top="5.0" />
                     </GridPane.margin>
@@ -496,7 +496,7 @@
                     </GridPane.margin>
                 </RadioButton>
                 <Separator prefWidth="200.0" GridPane.columnSpan="7" GridPane.rowIndex="14" GridPane.valignment="BOTTOM" />
-                <Label layoutX="40.0" layoutY="850.0" text="8. MJESTO ROĐENjA?" GridPane.columnSpan="2" GridPane.rowIndex="15" GridPane.valignment="TOP">
+                <Label layoutX="40.0" layoutY="850.0" text="8. MJESTO ROčENjA?" GridPane.columnSpan="2" GridPane.rowIndex="15" GridPane.valignment="TOP">
                     <font>
                         <Font name="System Bold" size="12.0" />
                     </font>
@@ -553,7 +553,7 @@
                     </GridPane.margin>
                 </Line>
                 <Separator prefWidth="200.0" GridPane.columnSpan="7" GridPane.rowIndex="15" GridPane.valignment="BOTTOM" />
-                <Label layoutX="40.0" layoutY="1090.0" text="9. MJESTO STALNOG STANOVANjA MAJKE U VRIJEME KADA JE LICE ROĐENO?" GridPane.columnSpan="4" GridPane.rowIndex="16" GridPane.valignment="TOP">
+                <Label layoutX="40.0" layoutY="1090.0" text="9. MJESTO STALNOG STANOVANjA MAJKE U VRIJEME KADA JE LICE ROčENO?" GridPane.columnSpan="4" GridPane.rowIndex="16" GridPane.valignment="TOP">
                     <font>
                         <Font name="System Bold" size="12.0" />
                     </font>
@@ -1171,7 +1171,7 @@
                     </GridPane.margin>
                 </RadioButton>
                 <Separator prefWidth="200.0" GridPane.columnSpan="7" GridPane.rowIndex="30" GridPane.valignment="BOTTOM" />
-                <Label text="23. UKUPAN BROJ ŽIVOROĐENE DJECE UKLjUČUJUĆI I ONU KOJA NISU ŽIVA?" GridPane.columnSpan="4" GridPane.rowIndex="31" GridPane.valignment="TOP">
+                <Label text="23. UKUPAN BROJ ŽIVOROčENE DJECE UKLjUČUJUĆI I ONU KOJA NISU ŽIVA?" GridPane.columnSpan="4" GridPane.rowIndex="31" GridPane.valignment="TOP">
                     <font>
                         <Font name="System Bold" size="12.0" />
                     </font>
@@ -1185,7 +1185,7 @@
                     </GridPane.margin>
                 </TextField>
                 <Separator prefWidth="200.0" GridPane.columnSpan="7" GridPane.rowIndex="31" GridPane.valignment="BOTTOM" />
-                <Label text="24. DATUMI ROĐENjA ŽIVOROĐENE DJECE?" GridPane.columnSpan="3" GridPane.rowIndex="32" GridPane.valignment="TOP">
+                <Label text="24. DATUMI ROčENjA ŽIVOROčENE DJECE?" GridPane.columnSpan="3" GridPane.rowIndex="32" GridPane.valignment="TOP">
                     <font>
                         <Font name="System Bold" size="12.0" />
                     </font>
@@ -1213,7 +1213,7 @@
                         <Insets top="20.0" />
                     </GridPane.margin>
                 </DatePicker>
-                <Label text="Najmlađeg:" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="32" GridPane.valignment="BOTTOM">
+                <Label text="NajmlaÄ‘eg:" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="32" GridPane.valignment="BOTTOM">
                     <GridPane.margin>
                         <Insets bottom="20.0" right="10.0" />
                     </GridPane.margin>
@@ -1744,7 +1744,7 @@
                         <Insets bottom="10.0" left="30.0" />
                     </GridPane.margin>
                 </RadioButton>
-                <Label text="32. ŠKOLA KOJU LICE POHAĐA?" GridPane.columnSpan="3" GridPane.rowIndex="40" GridPane.valignment="TOP">
+                <Label text="32. ŠKOLA KOJU LICE POHAčA?" GridPane.columnSpan="3" GridPane.rowIndex="40" GridPane.valignment="TOP">
                     <font>
                         <Font name="System Bold" size="12.0" />
                     </font>
@@ -1935,7 +1935,7 @@
                     </GridPane.margin>
                 </Label>
                 <Separator prefWidth="200.0" GridPane.columnSpan="7" GridPane.rowIndex="42" GridPane.valignment="BOTTOM" />
-                <Label text="35. AKO BI LICU POSAO BIO PONUĐEN SADA, DA LI BI MOGLO POČETI DA RADI?" GridPane.columnSpan="4" GridPane.rowIndex="43" GridPane.valignment="TOP">
+                <Label text="35. AKO BI LICU POSAO BIO PONUčEN SADA, DA LI BI MOGLO POČETI DA RADI?" GridPane.columnSpan="4" GridPane.rowIndex="43" GridPane.valignment="TOP">
                     <font>
                         <Font name="System Bold" size="12.0" />
                     </font>
@@ -2299,12 +2299,12 @@
                         <Insets top="20.0" />
                     </GridPane.margin>
                 </RadioButton>
-                <RadioButton mnemonicParsing="false" text="Druge beneficije ili primanja - stipendija, studentski ili đački krediti, krediti, alimentacija i sl." toggleGroup="$grupa38" GridPane.columnIndex="2" GridPane.columnSpan="4" GridPane.rowIndex="51">
+                <RadioButton mnemonicParsing="false" text="Druge beneficije ili primanja - stipendija, studentski ili Ä‘ački krediti, krediti, alimentacija i sl." toggleGroup="$grupa38" GridPane.columnIndex="2" GridPane.columnSpan="4" GridPane.rowIndex="51">
                     <GridPane.margin>
                         <Insets top="70.0" />
                     </GridPane.margin>
                 </RadioButton>
-                <RadioButton mnemonicParsing="false" text="Pozajmice ili trošenje ušteđevine" toggleGroup="$grupa38" GridPane.columnIndex="2" GridPane.columnSpan="4" GridPane.rowIndex="51">
+                <RadioButton mnemonicParsing="false" text="Pozajmice ili trošenje ušteÄ‘evine" toggleGroup="$grupa38" GridPane.columnIndex="2" GridPane.columnSpan="4" GridPane.rowIndex="51">
                     <GridPane.margin>
                         <Insets top="120.0" />
                     </GridPane.margin>
