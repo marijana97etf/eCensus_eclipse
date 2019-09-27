@@ -1,9 +1,15 @@
 eclipse.preferences.version=1
 encoding//resources/rjecnikCirilicaULatinicu.txt=UTF-8
 encoding//resources/rjecnikLatinicaUCirilicu.txt=UTF-8
+encoding//src/forme/FormaZaOdabirJezikaIPisma.fxml=UTF-8
 encoding//src/forme/FormaZaPopisivanjeDomacinstva.fxml=UTF-8
 encoding//src/forme/FormaZaPopisivanjeStanovnika.fxml=UTF-8
 encoding//src/forme/FormaZaPopunjavanjeSpiskaLica.fxml=UTF-8
+encoding//src/forme/FormaZaPrijavu.fxml=UTF-8
+encoding//src/forme/FormaZaPrikazMapePopisnogKruga.fxml=UTF-8
+encoding//src/forme/FormaZaPrikazSacuvanihPopisnica.fxml=UTF-8
+encoding//src/forme/FormaZaRadPopisivaca.fxml=UTF-8
+encoding//src/forme/UspjesnaPromjenaJezikaIPisma.fxml=UTF-8
 encoding//src/kontroleri/KontrolerFormeZaPopisivanjeDomacinstva.java=UTF-8
 encoding//src/kontroleri/KontrolerFormeZaPopisivanjeStanovnika.java=UTF-8
 encoding//src/kontroleri/KontrolerFormeZaPopunjavanjeSpiskaLica.java=UTF-8

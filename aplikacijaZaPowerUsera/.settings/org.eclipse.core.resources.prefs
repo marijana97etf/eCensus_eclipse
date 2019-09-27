@@ -1,4 +1,11 @@
 eclipse.preferences.version=1
+encoding//src/forme/FormaZaOdabirJezikaIPisma.fxml=UTF-8
+encoding//src/forme/FormaZaPrijavu.fxml=UTF-8
+encoding//src/forme/FormaZaPromjenuLozinke.fxml=UTF-8
+encoding//src/forme/FormaZaRadPowerUsera.fxml=UTF-8
+encoding//src/forme/FormaZaRegistracijuAdministratoraAgencije.fxml=UTF-8
+encoding//src/forme/UspjesnaPromjenaJezikaIPisma.fxml=UTF-8
+encoding//src/forme/UspjesnaRegistracijaAdministratoraAgencije.fxml=UTF-8
 encoding//src/kontroleri/KontrolerFormeZaPrijavu.java=UTF-8
 encoding//src/kontroleri/KontrolerZaPromjenuJezikaIPisma.java=UTF-8
 encoding//src/util/PrikazObavjestenja.java=UTF-8
