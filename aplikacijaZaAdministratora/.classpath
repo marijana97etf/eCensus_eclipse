@@ -50,5 +50,6 @@
 	<classpathentry kind="lib" path="lib/validation-api-2.0.1.Final.jar"/>
 	<classpathentry kind="lib" path="lib/yasson-1.0.3.jar"/>
 	<classpathentry kind="lib" path="lib/restClient.jar"/>
+	<classpathentry kind="lib" path="lib/glavniServer.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

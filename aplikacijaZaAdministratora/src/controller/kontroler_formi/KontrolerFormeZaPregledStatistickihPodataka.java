@@ -47,19 +47,19 @@ public class KontrolerFormeZaPregledStatistickihPodataka implements Initializabl
     public Label naslov;
     public GridPane grid;
 
-    private final List<String> entiteti = Arrays.asList("Federacija Bosne i Hercegovine", "Republika Srpska", "Distrikt Brčko");
-    private final List<String> bracnaStanja = Arrays.asList("Nikad oženjen/udata", "Oženjen/udata", "Razveden/razvedena", "Udovac/udovica");
+    private final List<String> entiteti = Arrays.asList("Federacija Bosne i Hercegovine", "Republika Srpska", "Distrikt BrÄ�ko");
+    private final List<String> bracnaStanja = Arrays.asList("Nikad oÅ¾enjen/udata", "OÅ¾enjen/udata", "Razveden/razvedena", "Udovac/udovica");
     private final List<String> polovi = Arrays.asList("Muski", "Zenski");
-    private final List<String> nacionalnePripadnosti = Arrays.asList("Bošnjak/Bošnjakinja", "Hrvat/Hrvatica", "Srbin/Srpkinja", "Drugo", "Ne izjasnjava se");
-    private final List<String> vjeroispovijesti = Arrays.asList("Islamska", "Katolička", "Pravoslavna", "Agnostik", "Ateist", "Drugo", "Ne izjašnjava se");
+    private final List<String> nacionalnePripadnosti = Arrays.asList("BoÅ¡njak/BoÅ¡njakinja", "Hrvat/Hrvatica", "Srbin/Srpkinja", "Drugo", "Ne izjasnjava se");
+    private final List<String> vjeroispovijesti = Arrays.asList("Islamska", "KatoliÄ�ka", "Pravoslavna", "Agnostik", "Ateist", "Drugo", "Ne izjaÅ¡njava se");
     private final List<String> godine = new ArrayList<>();
     private final List<String> opstine = new ArrayList<>(OpstineCollection.getOpstine());
     private final List<String> brojeviZivorodjeneDjece = new ArrayList<>();
     private final List<String> maternjiJezici = Arrays.asList("Bosanski", "Hrvatski", "Srpski", "Drugo");
     private final List<String> pismenosti = Arrays.asList("Pismen", "Polupismen", "Nepismen");
     private final List<String> zavrseneSkole = Arrays.asList("Bez ikakvog obrazovanja","Nepotpuno osnovno obrazovanje",
-            "Osnovna škola", "Srednja škola", "Specijalizacija poslije srednje škole", "Viša škola i 1. stepen fakulteta",
-            "Visoka škola/fakultet/akademija/univerzitet");
+            "Osnovna Å¡kola", "Srednja Å¡kola", "Specijalizacija poslije srednje Å¡kole", "ViÅ¡a Å¡kola i 1. stepen fakulteta",
+            "Visoka Å¡kola/fakultet/akademija/univerzitet");
     private final List<String> brojClanova = new ArrayList<>();
     private final List<String> poljoprivredneAktivnosti = Arrays.asList("Da", "Ne");
     private final List<String> prodajaPoljoprivrednihAktivnosti = Arrays.asList("Da", "Ne");
@@ -85,20 +85,20 @@ public class KontrolerFormeZaPregledStatistickihPodataka implements Initializabl
         GridPane.setMargin(naslov, new Insets(200,0,0,80));
 
         statistikaChoiceBox.getItems().addAll(FXCollections.observableList(Arrays.asList(
-                "Broj stanovnika prema pojedinačnim godinama starosti i polu",
-                "Broj stanovnika prema bračnom statusu i polu",
-                "Broj ženskog stanovništva prema broju živorođene djece",
+                "Broj stanovnika prema pojedinaÄ�nim godinama starosti i polu",
+                "Broj stanovnika prema braÄ�nom statusu i polu",
+                "Broj Å¾enskog stanovniÅ¡tva prema broju Å¾ivoroÄ‘ene djece",
                 "Broj stanovnika prema nacionalnoj pripadnosti",
                 "Broj stanovnik prema vjeroispovjesti",
                 "Broj stanovnika prema maternjem jeziku",
                 "Broj stanovnika prema pismenosti",
-                "Broj stanovnika prema zavrsenoj školi",
+                "Broj stanovnika prema zavrsenoj Å¡koli",
                 "Broj stanovnika prema kompjuterskoj pismenosti",
-                "Broj domaćinstava prema broju članova",
-                "Broj domaćinstava prema poljoprivrednoj aktivnosti",
+                "Broj domaÄ‡instava prema broju Ä�lanova",
+                "Broj domaÄ‡instava prema poljoprivrednoj aktivnosti",
                 "Broj zgrada prema broju stanova",
                 "Broj stanova prema broju soba",
-                "Površina stanova prema broju soba")));
+                "PovrÅ¡ina stanova prema broju soba")));
         statistikaChoiceBox.setOnAction(e->
         {
             showElements(true);
@@ -113,7 +113,7 @@ public class KontrolerFormeZaPregledStatistickihPodataka implements Initializabl
                     // (String idEntiteta, String idOpstine, String starost, String pol)
 
                     setujParametre(4,
-                            new String[] {"Entitet:", "Opština:", "Starost:", "Pol:"},
+                            new String[] {"Entitet:", "OpÅ¡tina:", "Starost:", "Pol:"},
                             new List[] { entiteti, opstine, godine, polovi });
                 }
                 break;
@@ -123,7 +123,7 @@ public class KontrolerFormeZaPregledStatistickihPodataka implements Initializabl
                     // (String idEntiteta, String idOpstine, String status, String pol)
 
                     setujParametre(4,
-                            new String[] {"Entitet:", "Opština:", "Bračni status:","Pol:"},
+                            new String[] {"Entitet:", "OpÅ¡tina:", "BraÄ�ni status:","Pol:"},
                             new List[] { entiteti, opstine, bracnaStanja , polovi });
                 }
                 break;
@@ -133,7 +133,7 @@ public class KontrolerFormeZaPregledStatistickihPodataka implements Initializabl
                     // (String idEntiteta,String idOpstine, String brojZivorodjeneDjece)
 
                     setujParametre(3,
-                            new String[] {"Entitet:", "Opština:", "Broj živorođene djece:"},
+                            new String[] {"Entitet:", "OpÅ¡tina:", "Broj Å¾ivoroÄ‘ene djece:"},
                             new List[] { entiteti, opstine, brojeviZivorodjeneDjece });
                 }
                 break;
@@ -143,7 +143,7 @@ public class KontrolerFormeZaPregledStatistickihPodataka implements Initializabl
                     // (String idEntiteta, String idOpstine, String nacionalnaPripadnost, String pol)
 
                     setujParametre(4,
-                            new String[] {"Entitet:", "Opština:", "Nacionalna pripadnost:", "Pol:"},
+                            new String[] {"Entitet:", "OpÅ¡tina:", "Nacionalna pripadnost:", "Pol:"},
                             new List[] { entiteti, opstine, nacionalnePripadnosti, polovi });
                 }
                 break;
@@ -153,7 +153,7 @@ public class KontrolerFormeZaPregledStatistickihPodataka implements Initializabl
                     // (String idEntiteta, String idOpstine, String vjeroispovjest, String pol)
 
                     setujParametre(4,
-                            new String[] {"Entitet:", "Opština:", "Vjeroispovijest:", "Pol:"},
+                            new String[] {"Entitet:", "OpÅ¡tina:", "Vjeroispovijest:", "Pol:"},
                             new List[] { entiteti, opstine, vjeroispovijesti, polovi });
                 }
                 break;
@@ -163,7 +163,7 @@ public class KontrolerFormeZaPregledStatistickihPodataka implements Initializabl
                     // (String idEntiteta, String idOpstine, String maternjiJezik, String pol)
 
                     setujParametre(4,
-                            new String[] { "Entitet:", "Opština:", "Maternji jezik:", "Pol:"},
+                            new String[] { "Entitet:", "OpÅ¡tina:", "Maternji jezik:", "Pol:"},
                             new List[] { entiteti, opstine, maternjiJezici, polovi });
                 }
                 break;
@@ -173,7 +173,7 @@ public class KontrolerFormeZaPregledStatistickihPodataka implements Initializabl
                     // (String idEntiteta, String idOpstine, String pismenost, String pol)
 
                     setujParametre(4,
-                            new String[] { "Entitet:", "Opština:", "Pismenost:", "Pol:"},
+                            new String[] { "Entitet:", "OpÅ¡tina:", "Pismenost:", "Pol:"},
                             new List[] { entiteti, opstine, pismenosti, polovi });
 
                 }
@@ -184,7 +184,7 @@ public class KontrolerFormeZaPregledStatistickihPodataka implements Initializabl
                     // (String idEntiteta, String idOpstine, String zavrsenaSkola, String pol)
 
                     setujParametre(4,
-                            new String[] { "Entitet:", "Opština:", "Završena škola:", "Pol:"},
+                            new String[] { "Entitet:", "OpÅ¡tina:", "ZavrÅ¡ena Å¡kola:", "Pol:"},
                             new List[] { entiteti, opstine, zavrseneSkole, polovi });
                 }
                 break;
@@ -194,7 +194,7 @@ public class KontrolerFormeZaPregledStatistickihPodataka implements Initializabl
                     // (String idEntiteta, String idOpstine, String kompjuterskaPismenost, String pol)
 
                     setujParametre(4,
-                            new String[] { "Entitet:", "Opština:", "Kompjuterska pismenost:", "Pol:"},
+                            new String[] { "Entitet:", "OpÅ¡tina:", "Kompjuterska pismenost:", "Pol:"},
                             new List[] { entiteti, opstine, pismenosti, polovi });
                 }
                 break;
@@ -204,7 +204,7 @@ public class KontrolerFormeZaPregledStatistickihPodataka implements Initializabl
                     // (String idEntiteta, String idOpstine, String brojClanova)
 
                     setujParametre(3,
-                            new String[] { "Entitet:", "Opština:", "Broj clanova:"},
+                            new String[] { "Entitet:", "OpÅ¡tina:", "Broj clanova:"},
                             new List[] { entiteti, opstine, brojClanova, polovi });
                 }
                 break;
@@ -214,7 +214,7 @@ public class KontrolerFormeZaPregledStatistickihPodataka implements Initializabl
                     // (String idEntiteta, String idOpstine, String poljoprivreda, String prodaja)
 
                     setujParametre(4,
-                            new String[] { "Entitet:", "Opština:", "Poljoprivredna aktivnost:", "Prodaja:"},
+                            new String[] { "Entitet:", "OpÅ¡tina:", "Poljoprivredna aktivnost:", "Prodaja:"},
                             new List[] { entiteti, opstine, poljoprivredneAktivnosti, prodajaPoljoprivrednihAktivnosti });
                 }
                 break;
@@ -224,7 +224,7 @@ public class KontrolerFormeZaPregledStatistickihPodataka implements Initializabl
                     // (String idEntiteta, String idOpstine, String brojStanova)
 
                     setujParametre(3,
-                            new String[] { "Entitet:", "Opština:", "Broj stanova u zgradi:" },
+                            new String[] { "Entitet:", "OpÅ¡tina:", "Broj stanova u zgradi:" },
                             new List[] { entiteti, opstine, brojeviStanovaUZgradi });
                 }
                 break;
@@ -235,7 +235,7 @@ public class KontrolerFormeZaPregledStatistickihPodataka implements Initializabl
                     // (String idEntiteta, String idOpstine, String brojSoba)
 
                     setujParametre(3,
-                            new String[] { "Entitet:", "Opština:", "Broj soba u stanu:" },
+                            new String[] { "Entitet:", "OpÅ¡tina:", "Broj soba u stanu:" },
                             new List[] { entiteti, opstine, brojeviSobaUStanu });
                 }
                 break;
@@ -525,7 +525,7 @@ public class KontrolerFormeZaPregledStatistickihPodataka implements Initializabl
         try {
             root = FXMLLoader.load(getClass().getResource(retPath));
         } catch (IOException e) {
-            Aplikacija.connLogger.getLogger().log(Level.WARNING, "Neuspješno učitavanje forme.");
+            Aplikacija.connLogger.getLogger().log(Level.WARNING, "NeuspjeÅ¡no uÄ�itavanje forme.");
         }
         Aplikacija.getStage().setScene(new Scene(root));
     }
