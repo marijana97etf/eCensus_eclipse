@@ -6,6 +6,7 @@ import javax.ws.rs.core.Response;
 
 import model.korisnicki_nalozi.KorisnikSistema;
 import model.korisnicki_nalozi.Popisivac;
+import model.pracenje_popisa.izvjestaji_o_popisivacu.DnevnaAktivnost;
 import model.pracenje_popisa.izvjestaji_o_popisivacu.PopisniKrug;
 
 public class PopisivacCMISKlijent extends CMISKlijent {
@@ -29,6 +30,10 @@ public class PopisivacCMISKlijent extends CMISKlijent {
 	
 	public Response getListaPopisivaca(){
 		return get(cmisResursUrl + "/" + naloziResursUrl + "/lista?tip=" + Popisivac.class.getName() );
+	}
+	
+	public Response azurirajAktivostPopisivaca(int idPopisivaca, DnevnaAktivnost dnevnaAktivnost) {
+		return put(cmisResursUrl + "/" + korisnikResursUrl + "/" + idPopisivaca + "/aktivnost", dnevnaAktivnost);
 	}
 	
 	public Response getPopisneKrugovePopisivaca(Popisivac popisivac){

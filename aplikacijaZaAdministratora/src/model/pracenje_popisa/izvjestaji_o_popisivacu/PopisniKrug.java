@@ -1,21 +1,27 @@
 package model.pracenje_popisa.izvjestaji_o_popisivacu;
 
+import java.util.List;
+
 public class PopisniKrug {
 
+	protected int id;
     protected String opstina,grad;
     protected byte[] slikaBytes;
+    protected List<String> ulice;
 
     public PopisniKrug() {}
-	public PopisniKrug(String opstina, String grad) {
+	public PopisniKrug(String opstina, String grad, List<String> ulice) {
 		super();
 		this.opstina = opstina;
 		this.grad = grad;
+		this.ulice = ulice;
 	}
 
-	public PopisniKrug(String opstina, String grad, byte[] slikaBytes) {
+	public PopisniKrug(String opstina, String grad, List<String> ulice, byte[] slikaBytes) {
 		super();
 		this.opstina = opstina;
 		this.grad = grad;
+		this.ulice = ulice;
 		this.slikaBytes = slikaBytes;
 	}
 
@@ -27,6 +33,14 @@ public class PopisniKrug {
 		this.slikaBytes = slikaBytes;
 	}
 
+	public List<String> getUlice() {
+		return ulice;
+	}
+	
+	public void setUlice(List<String> ulice) {
+		this.ulice = ulice;
+	}
+	
 	public String getOpstina() {
 		return opstina;
 	}

@@ -7,10 +7,16 @@ import java.util.Set;
 public class DnevnaAktivnost extends Aktivnost {
 
     protected LocalDate dan;
-    protected Set<PopisniKrug> obidjeniPopisniKrugovi;
+    protected int brojPopisanihStanovnika;
+    protected int brojPopisanihDomacinstava;
 
-    public DnevnaAktivnost(LocalDate dan) {
-        obidjeniPopisniKrugovi = new HashSet<>();
+    public DnevnaAktivnost() {
+    	
+    }
+    
+    public DnevnaAktivnost(LocalDate dan, int brojPopisanihStanovnika, int brojPopisanihDomacinstava) {
+        this.brojPopisanihStanovnika = brojPopisanihStanovnika;
+    	this.brojPopisanihDomacinstava = brojPopisanihDomacinstava;
         this.dan = dan;
     }
 
@@ -22,12 +28,20 @@ public class DnevnaAktivnost extends Aktivnost {
         this.dan = dan;
     }
 
-    public Set<PopisniKrug> getObidjeniPopisniKrugovi() {
-        return obidjeniPopisniKrugovi;
+    public int getBrojPopisanihStanovnika() {
+        return brojPopisanihStanovnika;
     }
 
-    public void setObidjeniPopisniKrugovi(Set<PopisniKrug> obidjeniPopisniKrugovi) {
-        this.obidjeniPopisniKrugovi = obidjeniPopisniKrugovi;
+    public void setBrojPopisanihStanovnika(int brojPopisanihStanovnika) {
+        this.brojPopisanihStanovnika = brojPopisanihStanovnika;
+    }
+    
+    public int getBrojPopisanihDomacinstava() {
+        return brojPopisanihDomacinstava;
+    }
+
+    public void setBrojPopisanihDomacinstava(int brojPopisanihDomacinstava) {
+        this.brojPopisanihDomacinstava = brojPopisanihDomacinstava;
     }
 
 }

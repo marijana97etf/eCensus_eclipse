@@ -1,5 +1,7 @@
 
 import java.io.File;
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
@@ -18,6 +20,7 @@ import model.korisnicki_nalozi.DEInstruktor.DRZAVA;
 import model.korisnicki_nalozi.DEInstruktor.ENTITET;
 import model.korisnicki_nalozi.KorisnikSistema;
 import model.korisnicki_nalozi.Popisivac;
+import model.pracenje_popisa.izvjestaji_o_popisivacu.DnevnaAktivnost;
 
 public class TestCMISRest {
 
@@ -27,7 +30,7 @@ public class TestCMISRest {
 	public static void main(String[] args) {
 		
 		KorisnikSistema korisnikSistema = new DEInstruktor(2L, "Nikola", "Nikolic", "nikola.nikolic",
-				"12345", DRZAVA.BIH, ENTITET.RS, TRUSTSTORE, "sigurnost", KEYSTORE,
+				"Ke60OQCz4X0zvA8RHr1u0A==", DRZAVA.BIH, ENTITET.RS, TRUSTSTORE, "sigurnost", KEYSTORE,
 				"sigurnost");
 		CMISKlijent klijent = new DEInstruktorCMISKlijent(korisnikSistema.getKeyStore(), korisnikSistema.getKeyLozinka(),
 				korisnikSistema.getTrustStore(), korisnikSistema.getTrustLozinka(), korisnikSistema.getKorisnickoIme(),
@@ -50,22 +53,29 @@ public class TestCMISRest {
 		System.out.println(clanPKLSklijent);
 		ClanPKLS clanPKLS = clanPKLSklijent.getClanPKLS("kristijan.stepanov").readEntity(ClanPKLS.class);
 		
-		PopisivacCMISKlijent popisivacCMISKlijent = new PopisivacCMISKlijent(korisnikSistema);
-		Response odgovor = popisivacCMISKlijent.registrujKorisnika(new Popisivac("Ime","Prezime","KorisnickoIme1",KorisnikSistema.napraviHesLozinke("123456789")));
 		
+		PopisivacCMISKlijent popisivacCMISKlijent = new PopisivacCMISKlijent(korisnikSistema);
+		
+		Response odgovor = popisivacCMISKlijent.registrujKorisnika(new Popisivac("Ime","Prezime","KorisnickoIme1",KorisnikSistema.napraviHesLozinke("123456789")));
 		if(odgovor.getStatus() == Status.CREATED.getStatusCode()) {
 			System.out.println("OK");
 		} else {
 			System.out.println(odgovor.getStatus());
 			System.out.println("NOK");
 		}
-		
+
 		Response response = popisivacCMISKlijent.getListaPopisivaca();
 		if(response.getStatus() == Status.OK.getStatusCode()) {
 			List<KorisnikSistema> korisnici = Arrays.asList(response.readEntity(KorisnikSistema[].class));
 			for(KorisnikSistema korisnik : korisnici) {
 				System.out.println(korisnik);
 			}
+		}
+		
+		Response responseAktivnost = popisivacCMISKlijent.azurirajAktivostPopisivaca(5, new DnevnaAktivnost(LocalDate.now(),10,10));
+		if(responseAktivnost.getStatus() == Status.OK.getStatusCode()) {
+			String ok = responseAktivnost.readEntity(String.class);
+			System.out.println(ok);
 		}
 		
 		System.out.println(clanPKLS);

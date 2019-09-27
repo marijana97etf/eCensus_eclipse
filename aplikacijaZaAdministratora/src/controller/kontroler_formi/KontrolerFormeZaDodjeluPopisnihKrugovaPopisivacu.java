@@ -68,7 +68,7 @@ public class KontrolerFormeZaDodjeluPopisnihKrugovaPopisivacu implements Initial
 
     public void pronadjiPutanju(ActionEvent actionEvent) {
         FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Pronađi sliku!");
+        fileChooser.setTitle("PronaÄ‘i sliku!");
         File file = fileChooser.showOpenDialog(Aplikacija.getStage());
         Platform.runLater(()-> pathText.setText(file.getPath()));
     }
@@ -82,13 +82,13 @@ public class KontrolerFormeZaDodjeluPopisnihKrugovaPopisivacu implements Initial
         try {
             slikaUBajtovima = Files.readAllBytes(Paths.get(putanjaDoSlike));
         } catch (IOException e) {
-            Aplikacija.connLogger.getLogger().log(Level.WARNING, "Nepostojeća slika");
+            Aplikacija.connLogger.getLogger().log(Level.WARNING, "NepostojeÄ‡a slika");
         }
         if(slikaUBajtovima==null)
         {
             return;
         }
-        PopisniKrug popisniKrug = new PopisniKrug(opstina, grad, slikaUBajtovima);
+        PopisniKrug popisniKrug = new PopisniKrug(opstina, grad, null, slikaUBajtovima);
 
         Popisivac popisivac = lista.stream().filter(e -> e.getKorisnickoIme().equals(username)).findFirst().get();
         popisivac.dodajPopisniKrug(popisniKrug);
@@ -98,7 +98,7 @@ public class KontrolerFormeZaDodjeluPopisnihKrugovaPopisivacu implements Initial
         try {
             Aplikacija.getStage().setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/FormaZaRadClanaPKLS.fxml"))));
         } catch (IOException e) {
-            Aplikacija.connLogger.getLogger().log(Level.WARNING, "Neuspješno čitanje forme.");
+            Aplikacija.connLogger.getLogger().log(Level.WARNING, "NeuspjeÅ¡no Ä�itanje forme.");
         }
     }
 }

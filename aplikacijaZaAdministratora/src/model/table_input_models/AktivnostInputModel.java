@@ -48,10 +48,11 @@ public class AktivnostInputModel {
     }
 
     public SimpleIntegerProperty brojKrugovaProperty() {
-        if(aktivnost.getObidjeniPopisniKrugovi()!=null)
+        /*if(aktivnost.getObidjeniPopisniKrugovi()!=null)
             return  new SimpleIntegerProperty(aktivnost.getObidjeniPopisniKrugovi().size());
         else
-            return new SimpleIntegerProperty(0);
+            return new SimpleIntegerProperty(0);*/
+    	return new SimpleIntegerProperty(0);
     }
 
     public void setDatum(String datum) {

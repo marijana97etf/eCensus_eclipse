@@ -56,7 +56,7 @@ public class KontrolerFormeZaPregledAktivnostiPopisivaca implements Initializabl
                 }
                 catch (IOException ex)
                 {
-                    Aplikacija.connLogger.getLogger().log(Level.WARNING, "Neuspješno čitanje forme.");
+                    Aplikacija.connLogger.getLogger().log(Level.WARNING, "NeuspjeÅ¡no Ä�itanje forme.");
                 }
             });
         }
@@ -68,12 +68,12 @@ public class KontrolerFormeZaPregledAktivnostiPopisivaca implements Initializabl
     }
 
     private void getListaFromServer() {
-        // TODO: Čekaju se funkcije sa servera
-        var aktivnost1 = new DnevnaAktivnost(LocalDate.now());
-        var popisniKrug = new PopisniKrug("Banja Luka", "Laktaši");
-        var popisniKrug2 = new PopisniKrug("Prijedor", "Omarska");
-        aktivnost1.setObidjeniPopisniKrugovi(new HashSet<PopisniKrug>(Arrays.asList(popisniKrug,popisniKrug2)));
-        lista = FXCollections.observableList(Arrays.asList(new AktivnostInputModel(aktivnost1)));
+        // TODO: ÄŒekaju se funkcije sa servera
+        var aktivnost1 = new DnevnaAktivnost(LocalDate.now(),0,0);
+        var popisniKrug = new PopisniKrug("Banja Luka", "LaktaÅ¡i", null);
+        var popisniKrug2 = new PopisniKrug("Prijedor", "Omarska", null);
+        //aktivnost1.setObidjeniPopisniKrugovi(new HashSet<PopisniKrug>(Arrays.asList(popisniKrug,popisniKrug2)));
+        //lista = FXCollections.observableList(Arrays.asList(new AktivnostInputModel(aktivnost1)));
     }
 
     public void povratak(ActionEvent actionEvent) {
@@ -89,7 +89,7 @@ public class KontrolerFormeZaPregledAktivnostiPopisivaca implements Initializabl
         try {
             root = FXMLLoader.load(getClass().getResource(retPath));
         } catch (IOException e) {
-            Aplikacija.connLogger.getLogger().log(Level.WARNING, "Neuspješno čitanje forme.");
+            Aplikacija.connLogger.getLogger().log(Level.WARNING, "NeuspjeÅ¡no Ä�itanje forme.");
         }
         Aplikacija.getStage().setScene(new Scene(root));
     }

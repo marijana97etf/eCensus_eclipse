@@ -1,7 +1,10 @@
 eclipse.preferences.version=1
+encoding//src/controller/kontroler_formi/KontrolerFormeZaDodjeluPopisnihKrugovaPopisivacu.java=UTF-8
 encoding//src/controller/kontroler_formi/KontrolerFormeZaIzmjenuNalogaClanaPKLS.java=UTF-8
 encoding//src/controller/kontroler_formi/KontrolerFormeZaIzmjenuNalogaDEInstruktora.java=UTF-8
 encoding//src/controller/kontroler_formi/KontrolerFormeZaIzmjenuNalogaPopisivaca.java=UTF-8
+encoding//src/controller/kontroler_formi/KontrolerFormeZaPregledAktivnostiPopisivaca.java=UTF-8
+encoding//src/controller/kontroler_formi/KontrolerFormeZaPregledObidjenihPopisnihKrugova.java=UTF-8
 encoding//src/controller/kontroler_formi/KontrolerFormeZaPregledStatistickihPodataka.java=UTF-8
 encoding//src/controller/kontroler_formi/KontrolerFormeZaPrijavu.java=UTF-8
 encoding//src/controller/kontroler_formi/KontrolerFormeZaRegistracijuClanaPKLS.java=UTF-8

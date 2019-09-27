@@ -26,6 +26,7 @@ import model.korisnicki_nalozi.KorisnikSistema;
 import model.korisnicki_nalozi.OGInstruktor;
 import model.korisnicki_nalozi.Popisivac;
 import model.korisnicki_nalozi.PowerUser;
+import model.pracenje_popisa.izvjestaji_o_popisivacu.DnevnaAktivnost;
 import model.pracenje_popisa.izvjestaji_o_popisivacu.PopisniKrug;
 
 @Path("/CMIS")
@@ -319,6 +320,20 @@ public class CMISServis {
 				return Response.status(Status.CONFLICT).build();
 			}
 		}
+		
+		@PUT
+		@Path("korisnici/nalozi/popisivac/{id}/aktivnost")
+		@Consumes(MediaType.APPLICATION_JSON)
+		@Produces(MediaType.APPLICATION_JSON)
+		public Response azurirajAktivnostPopisivaca(@PathParam("id") int id, DnevnaAktivnost dnevnaAktivnost) {
+			boolean result = DAOFactory.getMySQLFactoryDAO().getMySQLAktivnostDAO().azurirajAktivnost(id, dnevnaAktivnost);
+			if(result) {
+				return Response.status(Status.OK).entity(true).build();
+			} else {
+				return Response.status(Status.NO_CONTENT).entity(false).build();
+			}
+		}
+		
 		
 /*
 		@GET

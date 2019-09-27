@@ -1,7 +1,8 @@
-INSERT INTO aktivnost(Datum,IdOsobe,BrojPopisnica) VALUES (NOW(),3,10)
+INSERT INTO aktivnost(Datum,IdOsobe,BrojPopisnicaStanovnika,BrojPopisnicaDomacinstva) VALUES (NOW(),5,10,10)
 ON DUPLICATE KEY UPDATE
-BrojPopisnica = BrojPopisnica + VALUES(BrojPopisnica);
+BrojPopisnicaStanovnika = BrojPopisnicaStanovnika + VALUES(BrojPopisnicaStanovnika),
+BrojPopisnicaDomacinstva = BrojPopisnicaDomacinstva + VALUES(BrojPopisnicaDomacinstva);
 
 SELECT *
 FROM Aktivnost
-WHERE IdOsobe = 3;
+WHERE IdOsobe = 5;

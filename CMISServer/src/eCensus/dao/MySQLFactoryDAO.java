@@ -6,4 +6,8 @@ public class MySQLFactoryDAO {
 		return new MySQLNaloziDAO();
 	}
 	
+	public MySQLAktivnostDAO getMySQLAktivnostDAO() {
+		return new MySQLAktivnostDAO();
+	}
+	
 }

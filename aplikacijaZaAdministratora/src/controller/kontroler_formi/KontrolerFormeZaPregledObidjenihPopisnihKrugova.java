@@ -38,6 +38,7 @@ public class KontrolerFormeZaPregledObidjenihPopisnihKrugova implements Initiali
         gradColumn.setCellValueFactory(new PropertyValueFactory<>("grad"));
         opstinaColumn.setCellValueFactory(new PropertyValueFactory<>("opstina"));
         List<PopisniKrugInputModel> list = new ArrayList<>();
+        /*
         Set<PopisniKrug> popisniKrugovi = KontrolerFormeZaPregledAktivnostiPopisivaca.dnevnaAktivnostForShow.getObidjeniPopisniKrugovi();
         PopisniKrug[] nizPopisnihKrugova = popisniKrugovi.toArray(new PopisniKrug[popisniKrugovi.size()]);
         for (int i=0; i<popisniKrugovi.size(); i++) {
@@ -47,6 +48,7 @@ public class KontrolerFormeZaPregledObidjenihPopisnihKrugova implements Initiali
         }
         lista = FXCollections.observableList(list);
         tabela.getItems().addAll(lista);
+        */
         String date = datum.getText();
         datum.setText(date + KontrolerFormeZaPregledAktivnostiPopisivaca.datumForShow);
     }
@@ -58,7 +60,7 @@ public class KontrolerFormeZaPregledObidjenihPopisnihKrugova implements Initiali
         }
         catch (IOException ex)
         {
-            Aplikacija.connLogger.getLogger().log(Level.WARNING, "Neuspješno čitanje forme.");
+            Aplikacija.connLogger.getLogger().log(Level.WARNING, "NeuspjeÅ¡no Ä�itanje forme.");
         }
     }
 }
