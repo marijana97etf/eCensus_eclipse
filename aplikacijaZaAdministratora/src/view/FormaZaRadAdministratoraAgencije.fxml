@@ -71,7 +71,7 @@
             <Font size="15.0" />
          </font>
       </Button>
-      <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="274.0" text="Pregledaj statističke podatke" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="7">
+      <Button mnemonicParsing="false" onAction="#pregledStatistickihPodataka" prefHeight="40.0" prefWidth="274.0" text="Pregledaj statističke podatke" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="7">
          <font>
             <Font size="15.0" />
          </font>

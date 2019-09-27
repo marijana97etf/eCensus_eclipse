@@ -38,7 +38,11 @@ public class KontrolerFormeZaRadDEInstruktora implements Initializable{
     }
 
     public void pregledajStatistickePodatke(ActionEvent actionEvent) {
-        // TODO: Statistički podaci
+        try {
+            Aplikacija.getStage().setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/FormaZaPregledStatistickihPodataka.fxml"))));
+        } catch (IOException e) {
+            Aplikacija.connLogger.getLogger().log(Level.WARNING, "Neuspješno čitanje forme.");
+        }
     }
     
     public void pregledajAktivnostiPopisivaca(ActionEvent actionEvent) {

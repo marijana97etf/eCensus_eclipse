@@ -21,12 +21,13 @@
       <RowConstraints maxHeight="129.0" minHeight="10.0" prefHeight="49.0" vgrow="ALWAYS" />
       <RowConstraints maxHeight="405.0" minHeight="10.0" prefHeight="39.0" vgrow="ALWAYS" />
       <RowConstraints maxHeight="405.0" minHeight="10.0" prefHeight="56.0" vgrow="ALWAYS" />
-      <RowConstraints maxHeight="405.0" minHeight="10.0" prefHeight="56.0" vgrow="ALWAYS" />
-      <RowConstraints maxHeight="405.0" minHeight="10.0" prefHeight="56.0" vgrow="ALWAYS" />
-      <RowConstraints maxHeight="405.0" minHeight="10.0" prefHeight="56.0" vgrow="ALWAYS" />
-      <RowConstraints maxHeight="405.0" minHeight="10.0" prefHeight="56.0" vgrow="ALWAYS" />
-      <RowConstraints maxHeight="405.0" minHeight="10.0" prefHeight="54.33331298828125" vgrow="ALWAYS" />
-      <RowConstraints maxHeight="265.0" minHeight="10.0" prefHeight="77.66668701171875" vgrow="ALWAYS" />
+      <RowConstraints maxHeight="405.0" minHeight="10.0" prefHeight="55.0" vgrow="ALWAYS" />
+      <RowConstraints maxHeight="405.0" minHeight="10.0" prefHeight="53.66666666666666" vgrow="ALWAYS" />
+      <RowConstraints maxHeight="405.0" minHeight="10.0" prefHeight="57.333343505859375" vgrow="ALWAYS" />
+      <RowConstraints maxHeight="405.0" minHeight="10.0" prefHeight="54.00001017252606" vgrow="ALWAYS" />
+      <RowConstraints maxHeight="405.0" minHeight="10.0" prefHeight="48.33330281575519" vgrow="ALWAYS" />
+      <RowConstraints maxHeight="265.0" minHeight="10.0" prefHeight="49.999959309895814" vgrow="ALWAYS" />
+      <RowConstraints maxHeight="265.0" minHeight="10.0" prefHeight="38.666707356770814" vgrow="ALWAYS" />
    </rowConstraints>
    <children>
       <Label alignment="CENTER" prefHeight="48.0" prefWidth="586.0" text="Popis stanovništva, domaćinstava i stanova u Bosni i Hercegovini" GridPane.columnSpan="2">
@@ -94,6 +95,11 @@
          </children>
       </AnchorPane>
       <Button mnemonicParsing="false" onAction="#promjeniJezik" prefHeight="40.0" prefWidth="378.0" text="Promjeni jezik i pismo" GridPane.halignment="CENTER" GridPane.rowIndex="7" GridPane.valignment="CENTER">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
+      <Button mnemonicParsing="false" onAction="#pregledajStatistickePodatke" prefHeight="40.0" prefWidth="378.0" text="Pregledaj statističke podatke" GridPane.halignment="CENTER" GridPane.rowIndex="8">
          <font>
             <Font size="15.0" />
          </font>

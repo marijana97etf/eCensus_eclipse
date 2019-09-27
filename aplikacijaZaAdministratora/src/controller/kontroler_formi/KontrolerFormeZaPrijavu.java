@@ -174,7 +174,6 @@ public class KontrolerFormeZaPrijavu implements Initializable {
 
 	@Override
 	public void initialize(URL url, ResourceBundle resourceBundle) {
-
 		trenutniStage = Aplikacija.getStage();
 	}
 }

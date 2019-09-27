@@ -93,4 +93,12 @@ public class KontrolerFormeZaRadAdministratoraAgencije implements Initializable 
             Aplikacija.connLogger.getLogger().log(Level.WARNING, "Neuspješno čitanje forme.");
         }
     }
+
+    public void pregledStatistickihPodataka(ActionEvent actionEvent) {
+        try {
+            Aplikacija.getStage().setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/FormaZaPregledStatistickihPodataka.fxml"))));
+        } catch (IOException e) {
+            Aplikacija.connLogger.getLogger().log(Level.WARNING, "Neuspješno čitanje forme.");
+        }
+    }
 }

@@ -185,7 +185,7 @@ public abstract class KontrolerFormeZaPregledNaloga implements Initializable {
         }
     }
 
-        public static void popraviIdove (ObservableList < KorisnikInputModel > lista)
+        public static void popraviIdove (ObservableList<KorisnikInputModel> lista)
         {
             var counterWrapper = new Object() {
                 int idCounter = 1;

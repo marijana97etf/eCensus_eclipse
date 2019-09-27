@@ -133,5 +133,6 @@
 	</lib>
 	<levels>
 		<level name="JavaFX12" value="project"/>
+		<level name="glavniServer" value="project"/>
 	</levels>
 </component>

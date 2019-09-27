@@ -24,8 +24,6 @@ import java.util.stream.Collectors;
 
 public class KontrolerFormeZaPregledObidjenihPopisnihKrugova implements Initializable
 {
-
-
     public TableView tabela;
     public TableColumn redniBrojColumn;
     public TableColumn gradColumn;
