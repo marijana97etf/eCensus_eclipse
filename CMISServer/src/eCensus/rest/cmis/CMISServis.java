@@ -335,53 +335,98 @@ public class CMISServis {
 		}
 		
 		
-/*
+
 		@GET
-		@Path("korisnici/nalozi/popisivac/{id}/popisniKrugovi")
+		@Path("korisnici/nalozi/popisivac/{idPopisivaca}/popisniKrugovi")
 		@Consumes(MediaType.APPLICATION_JSON)
 		@Produces(MediaType.APPLICATION_JSON)
-		public Response getPopisneKrugovePopisivaca(@PathParam(value = "id") String korisnickoIme) {
-			Popisivac popisivacRezultat = (Popisivac)new DavidovStariNaloziDAO().getKorisnikSistema(korisnickoIme);
-			if (popisivacRezultat == null) {
-				return Response.noContent().build();
+		public Response getPopisneKrugovePopisivaca(@PathParam("idPopisivaca") int idPopisivaca) {
+			List<PopisniKrug> popisniKrugoviPopisivaca = DAOFactory.getMySQLFactoryDAO().getMySQLNaloziDAO().getMySQLPopisivacDAO().getListaPopisnihKrugovaPopisivaca(idPopisivaca);
+			if (popisniKrugoviPopisivaca != null) {
+				return Response.status(Status.OK).entity(popisniKrugoviPopisivaca).build();
+			} else {
+				return Response.status(Status.NO_CONTENT).build();
+			}
+		}
+		
+		@POST
+		@Path("korisnici/nalozi/popisivac/{idPopisivaca}/popisniKrugovi")
+		@Consumes(MediaType.APPLICATION_JSON)
+		@Produces(MediaType.APPLICATION_JSON)
+		public Response dodijeliPopisniKrugPopisivacu(@PathParam("idPopisivaca") int idPopisivaca, int idPopisnogKruga) {
+			boolean result = DAOFactory.getMySQLFactoryDAO().getMySQLNaloziDAO().getMySQLPopisivacDAO().dodajPopisniKrug(idPopisivaca, idPopisnogKruga);
+			if (result) {
+				return Response.status(Status.OK).entity(true).build();
+			} else {
+				return Response.status(Status.NO_CONTENT).build();
+			}
+			
+		}
+		
+		@DELETE
+		@Path("korisnici/nalozi/popisivac/{idPopisivaca}/popisniKrugovi/{idPopisnogKruga}")
+		@Consumes(MediaType.APPLICATION_JSON)
+		@Produces(MediaType.APPLICATION_JSON)
+		public Response obrisiPopisniKrugPopisivaca(@PathParam("idPopisivaca") int idPopisivaca, @PathParam("idPopisnogKruga") int idPopisnogKruga) {
+			boolean result = DAOFactory.getMySQLFactoryDAO().getMySQLNaloziDAO().getMySQLPopisivacDAO().obrisiPopisniKrug(idPopisivaca, idPopisnogKruga);
+			if (result) {
+				return Response.status(Status.OK).entity(true).build();
+			} else {
+				return Response.status(Status.NO_CONTENT).build();
+			}
+		}
+
+		@POST
+		@Path("korisnici/ocjene/oGInstruktor/{idOGInstruktora}/popisivac/{idPopisivaca}")
+		@Consumes(MediaType.APPLICATION_JSON)
+		@Produces(MediaType.APPLICATION_JSON)
+		public Response sacuvajOcjenuPopisivaca(@PathParam("idOGInstruktora") int idOGInstruktora, @PathParam("idPopisivaca") int idPopisivaca, int ocjena) {
+			boolean result = DAOFactory.getMySQLFactoryDAO().getMySQLNaloziDAO().getMySQLPopisivacDAO().azurirajOcjenu(idPopisivaca, idOGInstruktora, ocjena);
+			if(result) {
+				return Response.status(Status.OK).entity(true).build();
+			} else {
+				return Response.status(Status.NO_CONTENT).build();
+			}
+		}
+		
+		//Popisni Krugovi
+		
+		@GET
+		@Path("korisnici/popisniKrugovi/{grad}/{opstina}")
+		@Consumes(MediaType.APPLICATION_JSON)
+		@Produces(MediaType.APPLICATION_JSON)
+		public Response getListaPopisnihKrugova(@PathParam("grad") String grad, @PathParam("opstina") String opstina) {
+			List<PopisniKrug> popisniKrugovi = DAOFactory.getMySQLFactoryDAO().getMySQLPopisniKrugDAO().getListaPopisnihKrugova(grad, opstina);
+			if (popisniKrugovi != null) {
+				return Response.status(Status.OK).entity(popisniKrugovi).build();
 			} else
-				return Response.ok().entity(new GenericEntity<List<PopisniKrug>>(popisivacRezultat.getdodijeljeniPopisniKrugovi()) {}).build();
+				return Response.status(Status.NO_CONTENT).build();
 		}
 		
 		@POST
-		@Path("korisnici/nalozi/popisivac/{id}/popisniKrugovi")
+		@Path("korisnici/popisniKrugovi")
 		@Consumes(MediaType.APPLICATION_JSON)
 		@Produces(MediaType.APPLICATION_JSON)
-		public Response dodijeliPopisneKrugovePopisivaca(@PathParam(value = "id") String korisnickoIme,List<PopisniKrug> popisniKrugovi) {
-			Popisivac popisivacRezultat = new DavidovStariNaloziDAO().dodajPopisneKrugovePopisivacu(korisnickoIme, popisniKrugovi);
-			if (popisivacRezultat == null) {
-				return Response.status(Response.Status.BAD_REQUEST).entity("Ne postoji popisivac s tim korisnickim imenom.").build();
+		public Response dodajPopisniKrug(PopisniKrug popisniKrug) {
+			boolean result = DAOFactory.getMySQLFactoryDAO().getMySQLPopisniKrugDAO().dodajPopisniKrug(popisniKrug);
+			if (result) {
+				return Response.status(Status.OK).entity(true).build();
 			}else
-				return Response.status(Response.Status.CREATED).entity("Popisni krugovi uspjesno dodijeljeni.").build();
+				return Response.status(Status.NO_CONTENT).build();
 			
 		}
 		
-		@PUT
-		@Path("korisnici/nalozi/popisivac/{id}/popisniKrugovi")
+		@DELETE
+		@Path("korisnici/popisniKrugovi/{idPopisnogKruga}")
 		@Consumes(MediaType.APPLICATION_JSON)
 		@Produces(MediaType.APPLICATION_JSON)
-		public Response azurirajPopisneKrugovePopisivaca(@PathParam(value = "id") String korisnickoIme,List<PopisniKrug> popisniKrugovi) {
-			Popisivac popisivacRezultat = new DavidovStariNaloziDAO().azurirajPopisneKrugove(korisnickoIme, popisniKrugovi);
-			if (popisivacRezultat == null) {
-				return Response.status(Response.Status.BAD_REQUEST).entity("Ne postoji popisivac s tim korisnickim imenom.").build();
+		public Response dodajPopisniKrug(@PathParam("idPopisnogKruga") int idPopisnogKruga) {
+			boolean result = DAOFactory.getMySQLFactoryDAO().getMySQLPopisniKrugDAO().obrisiPopisniKrug(idPopisnogKruga);
+			if (result) {
+				return Response.status(Status.OK).entity(true).build();
 			}else
-				return Response.ok().entity("Popisni krugovi uspjesno azurirani.").build();
+				return Response.status(Status.NO_CONTENT).build();
+			
 		}
 		
-		@POST
-		@Path("korisnici/ocjene/{id}")
-		@Consumes(MediaType.APPLICATION_JSON)
-		@Produces(MediaType.APPLICATION_JSON)
-		public Response sacuvajOcjenuPopisivaca(@PathParam(value = "id") String korisnickoIme) {
-			//TO DO
-			
-			
-			return Response.noContent().build();
-		}
-*/
 }

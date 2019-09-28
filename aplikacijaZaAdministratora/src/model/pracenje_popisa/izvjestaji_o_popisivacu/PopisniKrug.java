@@ -44,9 +44,25 @@ public class PopisniKrug {
 	public String getOpstina() {
 		return opstina;
 	}
+	
+	public void setOpstina(String opstina) {
+		this.opstina = opstina;
+	}
 
 	public String getGrad() {
 		return grad;
+	}
+	
+	public void setGrad(String grad) {
+		this.grad = grad;
+	}
+	
+	public int getId() {
+		return id;
+	}
+	
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	@Override

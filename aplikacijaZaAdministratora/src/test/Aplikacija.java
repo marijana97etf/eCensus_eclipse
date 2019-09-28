@@ -68,7 +68,7 @@ public class Aplikacija extends Application {
     public static Pair<Integer,Integer> calculateDimensions()
     {
         int dpi = Toolkit.getDefaultToolkit().getScreenResolution();
-        System.out.println(dpi);
+        //System.out.println(dpi);
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         double width = screenSize.getWidth();
         double height = screenSize.getHeight();

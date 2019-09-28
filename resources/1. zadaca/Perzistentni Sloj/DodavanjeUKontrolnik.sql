@@ -1,7 +1,7 @@
-INSERT INTO kontrolnik(IdOsobe,BrojPopisanihStanova,
+INSERT INTO kontrolnik(IdPopisnogKruga,BrojPopisanihStanova,
 						BrojPopisanihDomacinstava,BrojDomacinstavaKojiSeBavePoljoprivredom,
                         BrojPrisutnihClanovaDomacinstva,BrojOdsutnihClanovaDomacinstva,
-                        BrojNeodazvanihLica,BrojNeodazvanihDomacinstava) VALUES (3,1,1,1,1,1,1,1)
+                        BrojNeodazvanihLica,BrojNeodazvanihDomacinstava) VALUES (1,1,1,1,1,1,1,1)
 ON DUPLICATE KEY UPDATE
 BrojPopisanihStanova = BrojPopisanihStanova + VALUES(BrojPopisanihStanova),
 BrojPopisanihDomacinstava = BrojPopisanihDomacinstava + VALUES(BrojPopisanihDomacinstava),

@@ -10,4 +10,8 @@ public class MySQLFactoryDAO {
 		return new MySQLAktivnostDAO();
 	}
 	
+	public MySQLPopisniKrugDAO getMySQLPopisniKrugDAO() {
+		return new MySQLPopisniKrugDAO();
+	}
+	
 }

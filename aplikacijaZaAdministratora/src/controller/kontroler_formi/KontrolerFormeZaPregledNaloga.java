@@ -102,7 +102,7 @@ public abstract class KontrolerFormeZaPregledNaloga implements Initializable {
         opcijeColumn.setCellValueFactory(new PropertyValueFactory<>("Buttons"));
         Platform.runLater(() -> tabela.setItems(lista));
 
-        System.out.print(lista);
+        //System.out.print(lista);
         popraviIdove(lista);
         tabela.getItems().addAll(lista);
 
@@ -116,7 +116,7 @@ public abstract class KontrolerFormeZaPregledNaloga implements Initializable {
                     ClanPKLSCMISKlijent clanPKLSCMISKlijent = new ClanPKLSCMISKlijent(KontrolerFormeZaPrijavu.getTrenutniKorisnik());
                     Response odgovor = clanPKLSCMISKlijent.obrisiKorisnika(item.getKorisnikSistema());
                     if (Response.Status.Family.SUCCESSFUL.equals(odgovor.getStatusInfo().getFamily())) {
-                        Aplikacija.connLogger.getLogger().log(Level.INFO, "Uspješno brisanje.");
+                        Aplikacija.connLogger.getLogger().log(Level.INFO, "UspjeÅ¡no brisanje.");
                     } else {
 
                         Aplikacija.connLogger.logHeaders(Level.SEVERE, odgovor);
@@ -128,19 +128,19 @@ public abstract class KontrolerFormeZaPregledNaloga implements Initializable {
 
                 item.getButtons()[0].setOnAction(e ->
                 {
-                    String path, quest = "Da li želite da izmjenite nalog ";
+                    String path, quest = "Da li Å¾elite da izmjenite nalog ";
                     if (item.getKorisnikSistema() instanceof DEInstruktor) {
                         path = "/view/FormaZaIzmjenuNalogaDEInstruktora.fxml";
-                        quest += "državnog/entitetskog instruktora?";
+                        quest += "drÅ¾avnog/entitetskog instruktora?";
                     } else if (item.getKorisnikSistema() instanceof ClanPKLS) {
                         path = "/view/FormaZaIzmjenuNalogaClanaPKLS.fxml";
                         quest += "administratora PKLS-a?";
                     } else if (item.getKorisnikSistema() instanceof OGInstruktor) {
                         path = "/view/FormaZaIzmjenuNalogaOGInstruktora.fxml";
-                        quest += "opštinkog/gradskog instruktora?";
+                        quest += "opÅ¡tinkog/gradskog instruktora?";
                     } else if (item.getKorisnikSistema() instanceof Popisivac) {
                         path = "/view/FormaZaIzmjenuNalogaPopisivaca.fxml";
-                        quest += "popisivača?";
+                        quest += "popisivaÄ�a?";
                     } else {
                         Alert alert = new Alert(Alert.AlertType.ERROR);
                         alert.setContentText("Nalog nije u redu!");
@@ -171,7 +171,7 @@ public abstract class KontrolerFormeZaPregledNaloga implements Initializable {
                     path = "/view/FormaZaPregledAktivnostiPopisivaca.fxml";
 
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                    alert.setContentText("Da li želite da pogledate aktivnosti popisivača?");
+                    alert.setContentText("Da li Å¾elite da pogledate aktivnosti popisivaÄ�a?");
                     ButtonType buttonType = alert.showAndWait().get();
                     if (!buttonType.getText().equals("OK")) return;
                     accountForEdit = item;

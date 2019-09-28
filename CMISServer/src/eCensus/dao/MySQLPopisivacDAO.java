@@ -7,10 +7,12 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import eCensus.baza.ConnectionPool;
 import model.korisnicki_nalozi.KorisnikSistema;
 import model.korisnicki_nalozi.Popisivac;
+import model.pracenje_popisa.izvjestaji_o_popisivacu.PopisniKrug;
 
 public class MySQLPopisivacDAO implements PopisivacDAO {
 
@@ -149,11 +151,21 @@ public class MySQLPopisivacDAO implements PopisivacDAO {
 			KorisnikSistema korisnikSistema = null;
 			
 			if(resultSet.next()) {
-				korisnikSistema = new Popisivac(resultSet.getString("Ime"),
+				Popisivac popisivac = new Popisivac(resultSet.getString("Ime"),
 												resultSet.getString("Prezime"),
 												resultSet.getString("KorisnickoIme"),
 												resultSet.getString("Lozinka"));
-				korisnikSistema.setId(resultSet.getInt("IdOsobe"));
+				popisivac.setId(resultSet.getInt("IdOsobe"));
+				
+				List<PopisniKrug> popisniKrugovi = getListaPopisnihKrugovaPopisivaca((int) popisivac.getId());
+				if(popisniKrugovi.size() > 0) {
+					for(PopisniKrug popisniKrug : popisniKrugovi) {
+						popisivac.dodajPopisniKrug(popisniKrug);
+					}
+				}
+				
+				korisnikSistema = popisivac;
+				
 			}
 			return korisnikSistema;
 		} catch (SQLException e) {
@@ -163,17 +175,101 @@ public class MySQLPopisivacDAO implements PopisivacDAO {
 		}
 		return null;
 	}
-	
+
 	@Override
-	public boolean dodajPopisniKrug() {
-		// TODO Auto-generated method stub
+	public boolean azurirajOcjenu(int idPopisivaca, int idOGInstruktora, int ocjena) {
+		Connection connection = null;
+		try {
+			connection = ConnectionPool.getInstance().checkOut();
+			PreparedStatement preparedStatementOcjena = connection.prepareStatement(
+													"INSERT INTO ocjena(IdOsobe_POPISIVAC,IdOsobe_OG_INSTRUKTOR,Ocjena) VALUES (?,?,?) " + 
+													"ON DUPLICATE KEY UPDATE " + 
+													"Ocjena = VALUES(Ocjena); ");
+			preparedStatementOcjena.setInt(1, idPopisivaca);
+			preparedStatementOcjena.setInt(2, idOGInstruktora);
+			preparedStatementOcjena.setInt(3, ocjena);
+			preparedStatementOcjena.executeQuery();
+			preparedStatementOcjena.close();
+			
+			return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			ConnectionPool.getInstance().checkIn(connection);
+		}
 		return false;
 	}
 
 	@Override
-	public boolean azurirajPopisniKrug() {
-		// TODO Auto-generated method stub
+	public boolean dodajPopisniKrug(int idPopisivaca, int idPopisnogKruga) {
+		Connection connection = null;
+		try {
+			connection = ConnectionPool.getInstance().checkOut();
+			PreparedStatement preparedStatementPopisniKrug = connection.prepareStatement("INSERT INTO popisivac_popisni_krug(IdOsobe,IdPopisnogKruga) VALUES (?,?);");
+			preparedStatementPopisniKrug.setInt(1, idPopisivaca);
+			preparedStatementPopisniKrug.setInt(2, idPopisnogKruga);
+			preparedStatementPopisniKrug.executeQuery();
+			preparedStatementPopisniKrug.close();
+			
+			return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			ConnectionPool.getInstance().checkIn(connection);
+		}
 		return false;
+	}
+
+	@Override
+	public boolean obrisiPopisniKrug(int idPopisivaca, int idPopisnogKruga) {
+		Connection connection = null;
+		try {
+			connection = ConnectionPool.getInstance().checkOut();
+			PreparedStatement preparedStatementPopisniKrug = connection.prepareStatement("DELETE " + 
+																						 "FROM popisivac_popisni_krug " + 
+																						 "WHERE IdOsobe = ? AND IdPopisnogKruga = ?;");
+			preparedStatementPopisniKrug.setInt(1, idPopisivaca);
+			preparedStatementPopisniKrug.setInt(2, idPopisnogKruga);
+			preparedStatementPopisniKrug.executeQuery();
+			preparedStatementPopisniKrug.close();
+			
+			return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			ConnectionPool.getInstance().checkIn(connection);
+		}
+		return false;
+	}
+
+	@Override
+	public List<PopisniKrug> getListaPopisnihKrugovaPopisivaca(int idPopisivaca) {
+		Connection connection = null;
+		try {
+			connection = ConnectionPool.getInstance().checkOut();
+			PreparedStatement preparedStatementPopisniKrug = connection.prepareStatement(
+					"SELECT * " + 
+					"FROM popisivac Popisivac " + 
+					"INNER JOIN popisivac_popisni_krug PopisivacPopisniKrug on popisivac.IdOsobe = PopisivacPopisniKrug.IdOsobe " +
+					"WHERE Popisivac.IdOsobe = ?");
+			preparedStatementPopisniKrug.setInt(1, idPopisivaca);
+			ResultSet resultSetPopisniKrugoviPopisivaca = preparedStatementPopisniKrug.executeQuery();
+			
+			ArrayList<PopisniKrug> popisniKrugovi = new ArrayList<>();
+			MySQLPopisniKrugDAO popisniKrugDAO = DAOFactory.getMySQLFactoryDAO().getMySQLPopisniKrugDAO();
+			while(resultSetPopisniKrugoviPopisivaca.next()) {
+				PopisniKrug popisniKrug = popisniKrugDAO.getPopisniKrug(resultSetPopisniKrugoviPopisivaca.getInt("IdPopisnogKruga"));
+				popisniKrugovi.add(popisniKrug);
+			}
+			preparedStatementPopisniKrug.close();
+			
+			return popisniKrugovi;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			ConnectionPool.getInstance().checkIn(connection);
+		}
+		return null;
 	}
 
 }
