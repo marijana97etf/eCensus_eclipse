@@ -37,12 +37,12 @@ public class PopisivacCMISKlijent extends CMISKlijent {
 		return get(cmisResursUrl + "/" + korisnikResursUrl + "/" + idPopisivaca + "/popisniKrugovi");
 	}
 	
-	public Response dodajPopisneKrugovePopisivacu(int idPopisivaca, int idPopisnogKruga) {
-		return post(cmisResursUrl + "/" + korisnikResursUrl + "/" + idPopisivaca + "/popisniKrugovi", idPopisnogKruga);
+	public Response dodajPopisneKrugovePopisivacu(int idPopisivaca, int idPopisnogKruga, int idOpstine) {
+		return post(cmisResursUrl + "/" + korisnikResursUrl + "/" + "popisniKrugovi" + "/" + idPopisnogKruga + "/" + idOpstine, idPopisivaca);
 	}
 	
-	public Response obrisiPopisniKrugPopisivaca(int idPopisivaca, int idPopisnogKruga) {
-		return delete(cmisResursUrl + "/" + korisnikResursUrl + "/" + idPopisivaca + "/" + "popisniKrugovi" + "/" + idPopisnogKruga);
+	public Response obrisiPopisniKrugPopisivaca(int idPopisivaca, int idPopisnogKruga, int idOpstine) {
+		return delete(cmisResursUrl + "/" + korisnikResursUrl + "/" + idPopisivaca + "/" + "popisniKrugovi" + "/" + idPopisnogKruga + "/" + idOpstine);
 	}
 	
 	public Response sacuvajOcjenuPopisivaca() {

@@ -201,13 +201,14 @@ public class MySQLPopisivacDAO implements PopisivacDAO {
 	}
 
 	@Override
-	public boolean dodajPopisniKrug(int idPopisivaca, int idPopisnogKruga) {
+	public boolean dodajPopisniKrug(int idPopisivaca, int idPopisnogKruga, int idOpstine) {
 		Connection connection = null;
 		try {
 			connection = ConnectionPool.getInstance().checkOut();
-			PreparedStatement preparedStatementPopisniKrug = connection.prepareStatement("INSERT INTO popisivac_popisni_krug(IdOsobe,IdPopisnogKruga) VALUES (?,?);");
+			PreparedStatement preparedStatementPopisniKrug = connection.prepareStatement("INSERT INTO popisivac_popisni_krug(IdOsobe,IdPopisnogKruga,IdOpstine) VALUES (?,?,?);");
 			preparedStatementPopisniKrug.setInt(1, idPopisivaca);
 			preparedStatementPopisniKrug.setInt(2, idPopisnogKruga);
+			preparedStatementPopisniKrug.setInt(3, idOpstine);
 			preparedStatementPopisniKrug.executeQuery();
 			preparedStatementPopisniKrug.close();
 			
@@ -221,15 +222,16 @@ public class MySQLPopisivacDAO implements PopisivacDAO {
 	}
 
 	@Override
-	public boolean obrisiPopisniKrug(int idPopisivaca, int idPopisnogKruga) {
+	public boolean obrisiPopisniKrug(int idPopisivaca, int idPopisnogKruga, int idOpstine) {
 		Connection connection = null;
 		try {
 			connection = ConnectionPool.getInstance().checkOut();
 			PreparedStatement preparedStatementPopisniKrug = connection.prepareStatement("DELETE " + 
 																						 "FROM popisivac_popisni_krug " + 
-																						 "WHERE IdOsobe = ? AND IdPopisnogKruga = ?;");
+																						 "WHERE IdOsobe = ? AND IdPopisnogKruga = ? AND IdOpstine = ?;");
 			preparedStatementPopisniKrug.setInt(1, idPopisivaca);
 			preparedStatementPopisniKrug.setInt(2, idPopisnogKruga);
+			preparedStatementPopisniKrug.setInt(3, idOpstine);
 			preparedStatementPopisniKrug.executeQuery();
 			preparedStatementPopisniKrug.close();
 			
@@ -258,7 +260,7 @@ public class MySQLPopisivacDAO implements PopisivacDAO {
 			ArrayList<PopisniKrug> popisniKrugovi = new ArrayList<>();
 			MySQLPopisniKrugDAO popisniKrugDAO = DAOFactory.getMySQLFactoryDAO().getMySQLPopisniKrugDAO();
 			while(resultSetPopisniKrugoviPopisivaca.next()) {
-				PopisniKrug popisniKrug = popisniKrugDAO.getPopisniKrug(resultSetPopisniKrugoviPopisivaca.getInt("IdPopisnogKruga"));
+				PopisniKrug popisniKrug = popisniKrugDAO.getPopisniKrug(resultSetPopisniKrugoviPopisivaca.getInt("IdPopisnogKruga"), resultSetPopisniKrugoviPopisivaca.getInt("IdOpstine"));
 				popisniKrugovi.add(popisniKrug);
 			}
 			preparedStatementPopisniKrug.close();

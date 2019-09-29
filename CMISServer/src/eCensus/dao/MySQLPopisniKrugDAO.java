@@ -1,5 +1,6 @@
 package eCensus.dao;
 
+import java.io.ByteArrayInputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -20,9 +21,10 @@ public class MySQLPopisniKrugDAO implements PopisniKrugDAO {
 		Connection connection = null;
 		try {
 			connection = ConnectionPool.getInstance().checkOut();
-			PreparedStatement preparedStatementPopisniKrug = connection.prepareStatement("INSERT INTO popisni_krug(Opstina,Grad) VALUES (?,?);");
-			preparedStatementPopisniKrug.setString(1, popisniKrug.getOpstina());
+			PreparedStatement preparedStatementPopisniKrug = connection.prepareStatement("INSERT INTO popisni_krug(IdOpstine,Grad,SlikaPopisnogKruga) VALUES (?,?,?);");
+			preparedStatementPopisniKrug.setString(1, popisniKrug.getIdOpsine());
 			preparedStatementPopisniKrug.setString(2, popisniKrug.getGrad());
+			preparedStatementPopisniKrug.setBlob(3, new ByteArrayInputStream(popisniKrug.getSlikaBytes()), popisniKrug.getSlikaBytes().length);
 			preparedStatementPopisniKrug.executeQuery();
 			preparedStatementPopisniKrug.close();
 			
@@ -30,9 +32,10 @@ public class MySQLPopisniKrugDAO implements PopisniKrugDAO {
 			preparedStatementLokalnaVarijabla.executeUpdate();
 			preparedStatementLokalnaVarijabla.close();
 			
-			PreparedStatement preparedStatementUlica = connection.prepareStatement("INSERT INTO ulica(IdPopisnogKruga,Naziv) VALUES (@lastID,?);");
+			PreparedStatement preparedStatementUlica = connection.prepareStatement("INSERT INTO ulica(IdPopisnogKruga,IdOpstine,Naziv) VALUES (@lastID,?,?);");
 			for(String ulica : popisniKrug.getUlice()) {
-				preparedStatementUlica.setString(1, ulica);
+				preparedStatementUlica.setString(1, popisniKrug.getIdOpstine());
+				preparedStatementUlica.setString(2, ulica);
 				preparedStatementUlica.executeQuery();
 			}
 			preparedStatementUlica.close();
@@ -47,15 +50,18 @@ public class MySQLPopisniKrugDAO implements PopisniKrugDAO {
 	}
 
 	@Override
-	public boolean obrisiPopisniKrug(int idPopisnogKruga) {
+	public boolean obrisiPopisniKrug(int idPopisnogKruga, int idOpstine) {
 		Connection connection = null;
 		try {
 			connection = ConnectionPool.getInstance().checkOut();
 			PreparedStatement preparedStatementUlice = connection.prepareStatement(
 					"DELETE " + 
 					"FROM ulica " + 
-					"WHERE IdPopisnogKruga = ? AND (SELECT COUNT(*) FROM popisivac_popisni_krug WHERE IdPopisnogKruga = 2) = 0;");
+					"WHERE IdPopisnogKruga = ? AND IdOpstine = ? AND (SELECT COUNT(*) FROM popisivac_popisni_krug WHERE IdPopisnogKruga = ? AND IdOpstine = ?) = 0;");
 			preparedStatementUlice.setInt(1, idPopisnogKruga);
+			preparedStatementUlice.setInt(2, idOpstine);
+			preparedStatementUlice.setInt(3, idPopisnogKruga);
+			preparedStatementUlice.setInt(4, idOpstine);
 			int numberRowsUlice = preparedStatementUlice.executeUpdate();
 			preparedStatementUlice.close();
 			
@@ -66,8 +72,9 @@ public class MySQLPopisniKrugDAO implements PopisniKrugDAO {
 			PreparedStatement preparedStatementPopisniKrug = connection.prepareStatement(
 					"DELETE " + 
 					"FROM popisni_krug " + 
-					"WHERE IdPopisnogKruga = ? AND (SELECT COUNT(*) FROM popisivac_popisni_krug WHERE IdPopisnogKruga = 2) = 0;");
+					"WHERE IdPopisnogKruga = ? AND IdOpstine = ? AND (SELECT COUNT(*) FROM popisivac_popisni_krug WHERE IdPopisnogKruga = ? AND IdOpstine = ?) = 0;");
 			preparedStatementPopisniKrug.setInt(1, idPopisnogKruga);
+			preparedStatementPopisniKrug.setInt(2, idOpstine);
 			int numberRowsPopisniKrug = preparedStatementPopisniKrug.executeUpdate();
 			preparedStatementPopisniKrug.close();
 			
@@ -85,23 +92,23 @@ public class MySQLPopisniKrugDAO implements PopisniKrugDAO {
 	}
 	
 	@Override
-	public List<PopisniKrug> getListaPopisnihKrugova(String grad, String opstina) {
+	public List<PopisniKrug> getListaPopisnihKrugova(String grad, int idOpstine) {
 		Connection connection = null;
 		try {
 			connection = ConnectionPool.getInstance().checkOut();
 			PreparedStatement statementPopisniKrugovi = connection.prepareStatement(
 																					"SELECT * " + 
 																					"FROM popisni_krug PopisniKrug " + 
-																					"WHERE PopisniKrug.Grad = ? AND PopisniKrug.Opstina = ?;");
+																					"WHERE PopisniKrug.Grad = ? AND PopisniKrug.IdOpstine = ?;");
 			statementPopisniKrugovi.setString(1, grad);
-			statementPopisniKrugovi.setString(2, opstina);
+			statementPopisniKrugovi.setInt(2, idOpstine);
 			ResultSet resultSetPopisniKrugovi = statementPopisniKrugovi.executeQuery();
 			
 			ArrayList<PopisniKrug> popisniKrugovi = new ArrayList<>();
 			while(resultSetPopisniKrugovi.next()) {
 				PopisniKrug popisniKrug = new PopisniKrug();
 				popisniKrug.setGrad(resultSetPopisniKrugovi.getString("Grad"));
-				popisniKrug.setOpstina(resultSetPopisniKrugovi.getString("Opstina"));
+				popisniKrug.setIdOpstine(resultSetPopisniKrugovi.getInt("IdOpstine"));
 				popisniKrug.setId(resultSetPopisniKrugovi.getInt("IdPopisnogKruga"));
 				popisniKrugovi.add(popisniKrug);
 			}
@@ -110,9 +117,10 @@ public class MySQLPopisniKrugDAO implements PopisniKrugDAO {
 				PreparedStatement preparedStatementUlice = connection.prepareStatement(
 																				"SELECT * " + 
 																				"FROM ulica " + 
-																				"WHERE IdPopisnogKruga = ?;");
+																				"WHERE IdPopisnogKruga = ? AND IdOpstine = ?;");
 				for(PopisniKrug popisniKrug : popisniKrugovi) {
 					preparedStatementUlice.setInt(1, popisniKrug.getId());
+					preparedStatementUlice.setInt(2, popisniKrug.getIdOpstine());
 					ResultSet resultSetUlice = preparedStatementUlice.executeQuery();
 					ArrayList<String> ulice = new ArrayList<>();
 					while(resultSetUlice.next()) {
@@ -133,22 +141,23 @@ public class MySQLPopisniKrugDAO implements PopisniKrugDAO {
 	}
 
 	@Override
-	public PopisniKrug getPopisniKrug(int idPopisnogKruga) {
+	public PopisniKrug getPopisniKrug(int idPopisnogKruga, int idOpstine) {
 		Connection connection = null;
 		try {
 			connection = ConnectionPool.getInstance().checkOut();
 			PreparedStatement statementPopisniKrugovi = connection.prepareStatement(
 																					"SELECT * " + 
 																					"FROM popisni_krug PopisniKrug " + 
-																					"WHERE IdPopisnogKruga = ?;");
+																					"WHERE IdPopisnogKruga = ? AND IdOpstine = ?;");
 			statementPopisniKrugovi.setInt(1, idPopisnogKruga);
+			statementPopisniKrugovi.setInt(2, idOpstine);
 			ResultSet resultSetPopisniKrugovi = statementPopisniKrugovi.executeQuery();
 			
 			PopisniKrug popisniKrug = null;
 			while(resultSetPopisniKrugovi.next()) {
 				popisniKrug = new PopisniKrug();
 				popisniKrug.setGrad(resultSetPopisniKrugovi.getString("Grad"));
-				popisniKrug.setOpstina(resultSetPopisniKrugovi.getString("Opstina"));
+				popisniKrug.setIdOpstine(resultSetPopisniKrugovi.getInt("IdOpstine"));
 				popisniKrug.setId(resultSetPopisniKrugovi.getInt("IdPopisnogKruga"));
 			}
 			
@@ -156,8 +165,9 @@ public class MySQLPopisniKrugDAO implements PopisniKrugDAO {
 				PreparedStatement preparedStatementUlice = connection.prepareStatement(
 																				"SELECT * " + 
 																				"FROM ulica " + 
-																				"WHERE IdPopisnogKruga = ?;");
+																				"WHERE IdPopisnogKruga = ? AND IdOpstine = ?;");
 				preparedStatementUlice.setInt(1, popisniKrug.getId());
+				preparedStatementUlice.setInt(2, popisniKrug..getIdOpstine());
 				ResultSet resultSetUlice = preparedStatementUlice.executeQuery();
 				ArrayList<String> ulice = new ArrayList<>();
 				while(resultSetUlice.next()) {

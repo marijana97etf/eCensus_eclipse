@@ -8,10 +8,10 @@ public interface PopisniKrugDAO {
 
 	public boolean dodajPopisniKrug(PopisniKrug popisniKrug);
 	
-	public boolean obrisiPopisniKrug(int idPopisniKrug);
+	public boolean obrisiPopisniKrug(int idPopisniKrug, int idOpstine);
 	
-	public List<PopisniKrug> getListaPopisnihKrugova(String grad, String opstina);
+	public List<PopisniKrug> getListaPopisnihKrugova(String grad, int IdOpstine);
 	
-	public PopisniKrug getPopisniKrug(int idPopisnogKruga);
+	public PopisniKrug getPopisniKrug(int idPopisnogKruga, int idOpstine);
 	
 }

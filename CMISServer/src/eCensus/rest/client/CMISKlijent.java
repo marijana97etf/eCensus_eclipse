@@ -69,4 +69,8 @@ public abstract class CMISKlijent extends SecureRestKlijent {
 		
 	}
 
+	public Response getMapaOpstina() {
+		return get(cmisResursUrl + "/" + "opstine");
+	}
+	
 }

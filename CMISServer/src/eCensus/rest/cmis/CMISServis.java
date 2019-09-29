@@ -2,6 +2,7 @@ package eCensus.rest.cmis;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -350,11 +351,11 @@ public class CMISServis {
 		}
 		
 		@POST
-		@Path("korisnici/nalozi/popisivac/{idPopisivaca}/popisniKrugovi")
+		@Path("korisnici/nalozi/popisivac/popisniKrugovi/{idPopisnogKruga}/{idOpstine}")
 		@Consumes(MediaType.APPLICATION_JSON)
 		@Produces(MediaType.APPLICATION_JSON)
-		public Response dodijeliPopisniKrugPopisivacu(@PathParam("idPopisivaca") int idPopisivaca, int idPopisnogKruga) {
-			boolean result = DAOFactory.getMySQLFactoryDAO().getMySQLNaloziDAO().getMySQLPopisivacDAO().dodajPopisniKrug(idPopisivaca, idPopisnogKruga);
+		public Response dodijeliPopisniKrugPopisivacu(int idPopisivaca, @PathParam("idPopisnogKruga") int idPopisnogKruga, @PathParam("idOpstine") int idOpstine) {
+			boolean result = DAOFactory.getMySQLFactoryDAO().getMySQLNaloziDAO().getMySQLPopisivacDAO().dodajPopisniKrug(idPopisivaca, idPopisnogKruga, idOpstine);
 			if (result) {
 				return Response.status(Status.OK).entity(true).build();
 			} else {
@@ -364,11 +365,11 @@ public class CMISServis {
 		}
 		
 		@DELETE
-		@Path("korisnici/nalozi/popisivac/{idPopisivaca}/popisniKrugovi/{idPopisnogKruga}")
+		@Path("korisnici/nalozi/popisivac/{idPopisivaca}/popisniKrugovi/{idPopisnogKruga}/{idOpstine}")
 		@Consumes(MediaType.APPLICATION_JSON)
 		@Produces(MediaType.APPLICATION_JSON)
-		public Response obrisiPopisniKrugPopisivaca(@PathParam("idPopisivaca") int idPopisivaca, @PathParam("idPopisnogKruga") int idPopisnogKruga) {
-			boolean result = DAOFactory.getMySQLFactoryDAO().getMySQLNaloziDAO().getMySQLPopisivacDAO().obrisiPopisniKrug(idPopisivaca, idPopisnogKruga);
+		public Response obrisiPopisniKrugPopisivaca(@PathParam("idPopisivaca") int idPopisivaca, @PathParam("idPopisnogKruga") int idPopisnogKruga, @PathParam("idOpstine") int idOpstine) {
+			boolean result = DAOFactory.getMySQLFactoryDAO().getMySQLNaloziDAO().getMySQLPopisivacDAO().obrisiPopisniKrug(idPopisivaca, idPopisnogKruga, idOpstine);
 			if (result) {
 				return Response.status(Status.OK).entity(true).build();
 			} else {
@@ -392,11 +393,11 @@ public class CMISServis {
 		//Popisni Krugovi
 		
 		@GET
-		@Path("korisnici/popisniKrugovi/{grad}/{opstina}")
+		@Path("korisnici/popisniKrugovi/{grad}/{idOpstine}")
 		@Consumes(MediaType.APPLICATION_JSON)
 		@Produces(MediaType.APPLICATION_JSON)
-		public Response getListaPopisnihKrugova(@PathParam("grad") String grad, @PathParam("opstina") String opstina) {
-			List<PopisniKrug> popisniKrugovi = DAOFactory.getMySQLFactoryDAO().getMySQLPopisniKrugDAO().getListaPopisnihKrugova(grad, opstina);
+		public Response getListaPopisnihKrugova(@PathParam("grad") String grad, @PathParam("idOpstine") int idOpstine) {
+			List<PopisniKrug> popisniKrugovi = DAOFactory.getMySQLFactoryDAO().getMySQLPopisniKrugDAO().getListaPopisnihKrugova(grad, idOpstine);
 			if (popisniKrugovi != null) {
 				return Response.status(Status.OK).entity(popisniKrugovi).build();
 			} else
@@ -417,16 +418,28 @@ public class CMISServis {
 		}
 		
 		@DELETE
-		@Path("korisnici/popisniKrugovi/{idPopisnogKruga}")
+		@Path("korisnici/popisniKrugovi/{idPopisnogKruga}/{idOpstine}")
 		@Consumes(MediaType.APPLICATION_JSON)
 		@Produces(MediaType.APPLICATION_JSON)
-		public Response dodajPopisniKrug(@PathParam("idPopisnogKruga") int idPopisnogKruga) {
-			boolean result = DAOFactory.getMySQLFactoryDAO().getMySQLPopisniKrugDAO().obrisiPopisniKrug(idPopisnogKruga);
+		public Response dodajPopisniKrug(@PathParam("idPopisnogKruga") int idPopisnogKruga,@PathParam("idOpstine") int idOpstine) {
+			boolean result = DAOFactory.getMySQLFactoryDAO().getMySQLPopisniKrugDAO().obrisiPopisniKrug(idPopisnogKruga, idOpstine);
 			if (result) {
 				return Response.status(Status.OK).entity(true).build();
 			}else
 				return Response.status(Status.NO_CONTENT).build();
 			
+		}
+		
+		@GET
+		@Path("opstine")
+		@Consumes(MediaType.APPLICATION_JSON)
+		@Produces(MediaType.APPLICATION_JSON)
+		public Response getListaOpstina() {
+			Map<String,String> opstine = DAOFactory.getMySQLFactoryDAO().getMySQLOpstinaDAO().getMapaOpstina();
+			if (opstine != null) {
+				return Response.status(Status.OK).entity(opstine).build();
+			} else
+				return Response.status(Status.NO_CONTENT).build();
 		}
 		
 }

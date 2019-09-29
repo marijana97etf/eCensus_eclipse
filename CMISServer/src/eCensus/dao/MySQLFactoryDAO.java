@@ -14,4 +14,8 @@ public class MySQLFactoryDAO {
 		return new MySQLPopisniKrugDAO();
 	}
 	
+	public MySQLOpstinaDAO getMySQLOpstinaDAO() {
+		return new MySQLOpstinaDAO();
+	}
+	
 }
