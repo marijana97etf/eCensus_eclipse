@@ -3,6 +3,7 @@ package controller.kontroler_formi;
 import eCensus.rest.client.AdministratorGlavniServerKlijent;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -14,10 +15,13 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.shape.Rectangle;
 import model.korisnicki_nalozi.AdministratorAgencije;
 import model.korisnicki_nalozi.ClanPKLS;
+import model.korisnicki_nalozi.DEInstruktor;
 import model.korisnicki_nalozi.OGInstruktor;
 import org.javatuples.Pair;
 import test.Aplikacija;
 import util.OpstineCollection;
+import util.PromjenaJezika;
+import util.PromjenaPisma;
 
 import java.io.IOException;
 import java.lang.reflect.Array;
@@ -47,27 +51,27 @@ public class KontrolerFormeZaPregledStatistickihPodataka implements Initializabl
     public Label naslov;
     public GridPane grid;
 
-    private final List<String> entiteti = Arrays.asList("Federacija Bosne i Hercegovine", "Republika Srpska", "Distrikt BrÄ�ko");
-    private final List<String> bracnaStanja = Arrays.asList("Nikad oÅ¾enjen/udata", "OÅ¾enjen/udata", "Razveden/razvedena", "Udovac/udovica");
-    private final List<String> polovi = Arrays.asList("Muski", "Zenski");
-    private final List<String> nacionalnePripadnosti = Arrays.asList("BoÅ¡njak/BoÅ¡njakinja", "Hrvat/Hrvatica", "Srbin/Srpkinja", "Drugo", "Ne izjasnjava se");
-    private final List<String> vjeroispovijesti = Arrays.asList("Islamska", "KatoliÄ�ka", "Pravoslavna", "Agnostik", "Ateist", "Drugo", "Ne izjaÅ¡njava se");
+    private final List<String> entiteti = Aplikacija.prevediRecenice(Arrays.asList("Federacija Bosne i Hercegovine", "Republika Srpska", "Distrikt Brčko"));
+    private final List<String> bracnaStanja = Aplikacija.prevediRecenice(Arrays.asList("Nikad oženjen/udata", "Oženjen/udata", "Razveden/razvedena", "Udovac/udovica"));
+    private final List<String> polovi = Aplikacija.prevediRecenice(Arrays.asList("Muski", "Zenski"));
+    private final List<String> nacionalnePripadnosti = Aplikacija.prevediRecenice(Arrays.asList("Bošnjak/Bošnjakinja", "Hrvat/Hrvatica", "Srbin/Srpkinja", "Drugo", "Ne izjašnjava se"));
+    private final List<String> vjeroispovijesti = Aplikacija.prevediRecenice(Arrays.asList("Islamska", "Katolička", "Pravoslavna", "Agnostik", "Ateist", "Drugo", "Ne izjašnjava se"));
     private final List<String> godine = new ArrayList<>();
-    private final List<String> opstine = new ArrayList<>(OpstineCollection.getOpstine());
+    private final List<String> opstine = Aplikacija.prevediRecenice(Aplikacija.prevediRecenice(new ArrayList<>(OpstineCollection.getOpstine())));
     private final List<String> brojeviZivorodjeneDjece = new ArrayList<>();
-    private final List<String> maternjiJezici = Arrays.asList("Bosanski", "Hrvatski", "Srpski", "Drugo");
-    private final List<String> pismenosti = Arrays.asList("Pismen", "Polupismen", "Nepismen");
-    private final List<String> zavrseneSkole = Arrays.asList("Bez ikakvog obrazovanja","Nepotpuno osnovno obrazovanje",
-            "Osnovna Å¡kola", "Srednja Å¡kola", "Specijalizacija poslije srednje Å¡kole", "ViÅ¡a Å¡kola i 1. stepen fakulteta",
-            "Visoka Å¡kola/fakultet/akademija/univerzitet");
+    private final List<String> maternjiJezici = Aplikacija.prevediRecenice(Arrays.asList("Bosanski", "Hrvatski", "Srpski", "Drugo"));
+    private final List<String> pismenosti = Aplikacija.prevediRecenice(Arrays.asList("Pismen", "Polupismen", "Nepismen"));
+    private final List<String> zavrseneSkole = Aplikacija.prevediRecenice(Arrays.asList("Bez ikakvog obrazovanja","Nepotpuno osnovno obrazovanje",
+            "Osnovna škola", "Srednja škola", "Specijalizacija poslije srednje škole", "Viša škola i 1. stepen fakulteta",
+            "Visoka škola/fakultet/akademija/univerzitet"));
     private final List<String> brojClanova = new ArrayList<>();
-    private final List<String> poljoprivredneAktivnosti = Arrays.asList("Da", "Ne");
-    private final List<String> prodajaPoljoprivrednihAktivnosti = Arrays.asList("Da", "Ne");
+    private final List<String> poljoprivredneAktivnosti = Aplikacija.prevediRecenice(Arrays.asList("Da", "Ne"));
+    private final List<String> prodajaPoljoprivrednihAktivnosti = Aplikacija.prevediRecenice(Arrays.asList("Da", "Ne"));
     private final List<String> brojeviStanovaUZgradi = new ArrayList<>();
     private final List<String> brojeviSobaUStanu = new ArrayList<>();
 
     private final Function<Pair<ChoiceBox,List<String>>, String> f = (Pair<ChoiceBox,List<String>> pair) ->
-            ((ChoiceBox)pair.getValue(0)).getValue().equals("Svi") ? "%" :
+            ((ChoiceBox)pair.getValue(0)).getValue().equals("Svi") || ((ChoiceBox)pair.getValue(0)).getValue().equals("Сви") ? "%" :
                     String.valueOf(((List<String>)pair.getValue(1)).indexOf(((ChoiceBox)pair.getValue(0)).getValue()));
 
     @Override
@@ -84,27 +88,32 @@ public class KontrolerFormeZaPregledStatistickihPodataka implements Initializabl
         GridPane.setMargin(statistikaChoiceBox, new Insets(200,0,0,0));
         GridPane.setMargin(naslov, new Insets(200,0,0,80));
 
-        statistikaChoiceBox.getItems().addAll(FXCollections.observableList(Arrays.asList(
-                "Broj stanovnika prema pojedinaÄ�nim godinama starosti i polu",
-                "Broj stanovnika prema braÄ�nom statusu i polu",
-                "Broj Å¾enskog stanovniÅ¡tva prema broju Å¾ivoroÄ‘ene djece",
+        List<String> list = Arrays.asList(
+                "Broj stanovnika prema pojedinačnim godinama starosti i polu",
+                "Broj stanovnika prema bračnom statusu i polu",
+                "Broj ženskog stanovništva prema broju živorođene djece",
                 "Broj stanovnika prema nacionalnoj pripadnosti",
                 "Broj stanovnik prema vjeroispovjesti",
                 "Broj stanovnika prema maternjem jeziku",
                 "Broj stanovnika prema pismenosti",
-                "Broj stanovnika prema zavrsenoj Å¡koli",
+                "Broj stanovnika prema zavrsenoj školi",
                 "Broj stanovnika prema kompjuterskoj pismenosti",
-                "Broj domaÄ‡instava prema broju Ä�lanova",
-                "Broj domaÄ‡instava prema poljoprivrednoj aktivnosti",
+                "Broj domaćinstava prema broju članova",
+                "Broj domaćinstava prema poljoprivrednoj aktivnosti",
                 "Broj zgrada prema broju stanova",
                 "Broj stanova prema broju soba",
-                "PovrÅ¡ina stanova prema broju soba")));
+                "Površina stanova prema broju soba");
+
+        ObservableList<String> observableList = FXCollections.observableList(Aplikacija.prevediRecenice(list));
+        statistikaChoiceBox.setItems(observableList);
+
         statistikaChoiceBox.setOnAction(e->
         {
             showElements(true);
             GridPane.setMargin(statistikaChoiceBox, new Insets(0,0,0,0));
             GridPane.setMargin(naslov, new Insets(0,0,0,0));
             int selected = statistikaChoiceBox.getSelectionModel().getSelectedIndex();
+            String[] array = new String[5];
             switch (selected)
             {
                 case 0:
@@ -113,7 +122,7 @@ public class KontrolerFormeZaPregledStatistickihPodataka implements Initializabl
                     // (String idEntiteta, String idOpstine, String starost, String pol)
 
                     setujParametre(4,
-                            new String[] {"Entitet:", "OpÅ¡tina:", "Starost:", "Pol:"},
+                            Aplikacija.prevediRecenice(Arrays.asList("Entitet:", "Opština:", "Starost:", "Pol:")).<String>toArray(array),
                             new List[] { entiteti, opstine, godine, polovi });
                 }
                 break;
@@ -123,7 +132,7 @@ public class KontrolerFormeZaPregledStatistickihPodataka implements Initializabl
                     // (String idEntiteta, String idOpstine, String status, String pol)
 
                     setujParametre(4,
-                            new String[] {"Entitet:", "OpÅ¡tina:", "BraÄ�ni status:","Pol:"},
+                            Aplikacija.prevediRecenice(Arrays.asList("Entitet:", "Opština:", "Bračni status:","Pol:")).<String>toArray(array),
                             new List[] { entiteti, opstine, bracnaStanja , polovi });
                 }
                 break;
@@ -133,7 +142,7 @@ public class KontrolerFormeZaPregledStatistickihPodataka implements Initializabl
                     // (String idEntiteta,String idOpstine, String brojZivorodjeneDjece)
 
                     setujParametre(3,
-                            new String[] {"Entitet:", "OpÅ¡tina:", "Broj Å¾ivoroÄ‘ene djece:"},
+                            Aplikacija.prevediRecenice(Arrays.asList("Entitet:", "Opština:", "Broj živorođene djece:")).<String>toArray(array),
                             new List[] { entiteti, opstine, brojeviZivorodjeneDjece });
                 }
                 break;
@@ -143,7 +152,7 @@ public class KontrolerFormeZaPregledStatistickihPodataka implements Initializabl
                     // (String idEntiteta, String idOpstine, String nacionalnaPripadnost, String pol)
 
                     setujParametre(4,
-                            new String[] {"Entitet:", "OpÅ¡tina:", "Nacionalna pripadnost:", "Pol:"},
+                            Aplikacija.prevediRecenice(Arrays.asList("Entitet:", "Opština:", "Nacionalna pripadnost:", "Pol:")).<String>toArray(array),
                             new List[] { entiteti, opstine, nacionalnePripadnosti, polovi });
                 }
                 break;
@@ -153,7 +162,7 @@ public class KontrolerFormeZaPregledStatistickihPodataka implements Initializabl
                     // (String idEntiteta, String idOpstine, String vjeroispovjest, String pol)
 
                     setujParametre(4,
-                            new String[] {"Entitet:", "OpÅ¡tina:", "Vjeroispovijest:", "Pol:"},
+                            Aplikacija.prevediRecenice(Arrays.asList("Entitet:", "Opština:", "Vjeroispovijest:", "Pol:")).toArray(array),
                             new List[] { entiteti, opstine, vjeroispovijesti, polovi });
                 }
                 break;
@@ -163,7 +172,7 @@ public class KontrolerFormeZaPregledStatistickihPodataka implements Initializabl
                     // (String idEntiteta, String idOpstine, String maternjiJezik, String pol)
 
                     setujParametre(4,
-                            new String[] { "Entitet:", "OpÅ¡tina:", "Maternji jezik:", "Pol:"},
+                        Aplikacija.prevediRecenice(Arrays.asList("Entitet:", "Opština:", "Maternji jezik:", "Pol:")).<String>toArray(array),
                             new List[] { entiteti, opstine, maternjiJezici, polovi });
                 }
                 break;
@@ -173,7 +182,7 @@ public class KontrolerFormeZaPregledStatistickihPodataka implements Initializabl
                     // (String idEntiteta, String idOpstine, String pismenost, String pol)
 
                     setujParametre(4,
-                            new String[] { "Entitet:", "OpÅ¡tina:", "Pismenost:", "Pol:"},
+                        Aplikacija.prevediRecenice(Arrays.asList("Entitet:", "Opština:", "Pismenost:", "Pol:")).<String>toArray(array),
                             new List[] { entiteti, opstine, pismenosti, polovi });
 
                 }
@@ -184,7 +193,7 @@ public class KontrolerFormeZaPregledStatistickihPodataka implements Initializabl
                     // (String idEntiteta, String idOpstine, String zavrsenaSkola, String pol)
 
                     setujParametre(4,
-                            new String[] { "Entitet:", "OpÅ¡tina:", "ZavrÅ¡ena Å¡kola:", "Pol:"},
+                        Aplikacija.prevediRecenice(Arrays.asList("Entitet:", "Opština:", "Završena škola:", "Pol:")).<String>toArray(array),
                             new List[] { entiteti, opstine, zavrseneSkole, polovi });
                 }
                 break;
@@ -194,7 +203,7 @@ public class KontrolerFormeZaPregledStatistickihPodataka implements Initializabl
                     // (String idEntiteta, String idOpstine, String kompjuterskaPismenost, String pol)
 
                     setujParametre(4,
-                            new String[] { "Entitet:", "OpÅ¡tina:", "Kompjuterska pismenost:", "Pol:"},
+                        Aplikacija.prevediRecenice(Arrays.asList("Entitet:", "Opština:", "Kompjuterska pismenost:", "Pol:")).<String>toArray(array),
                             new List[] { entiteti, opstine, pismenosti, polovi });
                 }
                 break;
@@ -204,7 +213,7 @@ public class KontrolerFormeZaPregledStatistickihPodataka implements Initializabl
                     // (String idEntiteta, String idOpstine, String brojClanova)
 
                     setujParametre(3,
-                            new String[] { "Entitet:", "OpÅ¡tina:", "Broj clanova:"},
+                        Aplikacija.prevediRecenice(Arrays.asList("Entitet:", "Opština:", "Broj clanova:")).<String>toArray(array),
                             new List[] { entiteti, opstine, brojClanova, polovi });
                 }
                 break;
@@ -214,7 +223,7 @@ public class KontrolerFormeZaPregledStatistickihPodataka implements Initializabl
                     // (String idEntiteta, String idOpstine, String poljoprivreda, String prodaja)
 
                     setujParametre(4,
-                            new String[] { "Entitet:", "OpÅ¡tina:", "Poljoprivredna aktivnost:", "Prodaja:"},
+                        Aplikacija.prevediRecenice(Arrays.asList("Entitet:", "Opština:", "Poljoprivredna aktivnost:", "Prodaja:")).<String>toArray(array),
                             new List[] { entiteti, opstine, poljoprivredneAktivnosti, prodajaPoljoprivrednihAktivnosti });
                 }
                 break;
@@ -224,7 +233,7 @@ public class KontrolerFormeZaPregledStatistickihPodataka implements Initializabl
                     // (String idEntiteta, String idOpstine, String brojStanova)
 
                     setujParametre(3,
-                            new String[] { "Entitet:", "OpÅ¡tina:", "Broj stanova u zgradi:" },
+                        Aplikacija.prevediRecenice(Arrays.asList("Entitet:", "Opština:", "Broj stanova u zgradi:")).<String>toArray(array),
                             new List[] { entiteti, opstine, brojeviStanovaUZgradi });
                 }
                 break;
@@ -235,12 +244,11 @@ public class KontrolerFormeZaPregledStatistickihPodataka implements Initializabl
                     // (String idEntiteta, String idOpstine, String brojSoba)
 
                     setujParametre(3,
-                            new String[] { "Entitet:", "OpÅ¡tina:", "Broj soba u stanu:" },
+                            Aplikacija.prevediRecenice(Arrays.asList("Entitet:", "Opština:", "Broj soba u stanu:")).<String>toArray(array),
                             new List[] { entiteti, opstine, brojeviSobaUStanu });
                 }
                 break;
                 default:
-                    System.out.println("default");
                     break;
             }
         });
@@ -250,25 +258,26 @@ public class KontrolerFormeZaPregledStatistickihPodataka implements Initializabl
     {
         if(brojParametara>=3 && brojParametara<=5 && naslovi.length != brojParametara && liste.length != brojParametara)
             return;
+        String svi = Aplikacija.prevediRecenicu("Svi");
         label1.setText(naslovi[0]);
         label2.setText(naslovi[1]);
         label3.setText(naslovi[2]);
 
         ChoiceBox1.getItems().clear();
         ChoiceBox1.getItems().addAll(liste[0]);
-        ChoiceBox1.getItems().add("Svi");
+        ChoiceBox1.getItems().add(svi);
 
         ChoiceBox2.getItems().clear();
         ChoiceBox2.getItems().addAll(liste[1]);
-        ChoiceBox2.getItems().add("Svi");
+        ChoiceBox2.getItems().add(svi);
 
         ChoiceBox3.getItems().clear();
         ChoiceBox3.getItems().addAll(liste[2]);
-        ChoiceBox3.getItems().add("Svi");
+        ChoiceBox3.getItems().add(svi);
 
-        ChoiceBox1.setValue("Svi");
-        ChoiceBox2.setValue("Svi");
-        ChoiceBox3.setValue("Svi");
+        ChoiceBox1.setValue(svi);
+        ChoiceBox2.setValue(svi);
+        ChoiceBox3.setValue(svi);
 
         if(brojParametara==3)
         {
@@ -283,9 +292,9 @@ public class KontrolerFormeZaPregledStatistickihPodataka implements Initializabl
 
             ChoiceBox4.getItems().clear();
             ChoiceBox4.getItems().addAll(liste[3]);
-            ChoiceBox4.getItems().add("Svi");
+            ChoiceBox4.getItems().add(svi);
 
-            ChoiceBox4.setValue("Svi");
+            ChoiceBox4.setValue(svi);
 
             if(brojParametara==5)
             {
@@ -293,9 +302,9 @@ public class KontrolerFormeZaPregledStatistickihPodataka implements Initializabl
 
                 ChoiceBox5.getItems().clear();
                 ChoiceBox5.getItems().addAll(liste[4]);
-                ChoiceBox5.getItems().add("Svi");
+                ChoiceBox5.getItems().add(svi);
 
-                ChoiceBox4.setValue("Svi");
+                ChoiceBox4.setValue(svi);
             }
             else
             {
@@ -323,10 +332,16 @@ public class KontrolerFormeZaPregledStatistickihPodataka implements Initializabl
 //                (String idEntiteta, String idOpstine, String starost, String pol)
 
                 rezultat = admin.getBrojStanovnikaPremaPojedinacnimGodinamaStarostiIPolu(
-                        f.apply(new Pair<>(ChoiceBox1, entiteti)),
-                        f.apply(new Pair<>(ChoiceBox2, new ArrayList<>(OpstineCollection.getOpstine()))),
-                        ChoiceBox3.getValue().replace("Svi", "%"),
-                        ChoiceBox4.getValue().replace("Svi", "%"));
+                        PromjenaPisma.zamijeniCirilicuLatinicom(f.apply(new Pair<>(ChoiceBox1, entiteti))),
+                        PromjenaPisma.zamijeniCirilicuLatinicom(f.apply(new Pair<>(ChoiceBox2, Aplikacija.prevediRecenice(new ArrayList<>(OpstineCollection.getOpstine()))))),
+                        PromjenaPisma.zamijeniCirilicuLatinicom(ChoiceBox3.getValue()).replace("Svi", "%"),
+                        PromjenaPisma.zamijeniCirilicuLatinicom(ChoiceBox4.getValue()).replace("Svi", "%"));
+
+//                rezultatLabel.setText(
+//                        PromjenaPisma.zamijeniCirilicuLatinicom(f.apply(new Pair<>(ChoiceBox1, entiteti))) + ", " +
+//                        PromjenaPisma.zamijeniCirilicuLatinicom(f.apply(new Pair<>(ChoiceBox2, Aplikacija.prevediRecenice(new ArrayList<>(OpstineCollection.getOpstine())))))  + ", " +
+//                        PromjenaPisma.zamijeniCirilicuLatinicom(ChoiceBox3.getValue()).replace("Svi", "%")  + ", " +
+//                        PromjenaPisma.zamijeniCirilicuLatinicom(ChoiceBox4.getValue()).replace("Svi", "%"));
             }
             break;
             case 1:
@@ -335,10 +350,10 @@ public class KontrolerFormeZaPregledStatistickihPodataka implements Initializabl
                 // (String idEntiteta, String idOpstine, String status, String pol)
 
                 rezultat = admin.getBrojStanovnikaPremaPremaBracnomStatusuIPolu(
-                        f.apply(new Pair<>(ChoiceBox1, entiteti)),
-                        f.apply(new Pair<>(ChoiceBox2, new ArrayList<>(OpstineCollection.getOpstine()))),
-                        ChoiceBox3.getValue().replace("Svi", "%"),
-                        ChoiceBox4.getValue().replace("Svi", "%"));
+                        PromjenaPisma.zamijeniCirilicuLatinicom(f.apply(new Pair<>(ChoiceBox1, entiteti))),
+                        PromjenaPisma.zamijeniCirilicuLatinicom(f.apply(new Pair<>(ChoiceBox2, Aplikacija.prevediRecenice(new ArrayList<>(OpstineCollection.getOpstine()))))),
+                        PromjenaPisma.zamijeniCirilicuLatinicom(ChoiceBox3.getValue()).replace("Svi", "%"),
+                        PromjenaPisma.zamijeniCirilicuLatinicom(ChoiceBox4.getValue()).replace("Svi", "%"));
             }
             break;
             case 2:
@@ -347,9 +362,9 @@ public class KontrolerFormeZaPregledStatistickihPodataka implements Initializabl
                 // (String idEntiteta,String idOpstine, String brojZivorodjeneDjece)
 
                 rezultat = admin.getBrojZenskogStanovnistvaPremaBrojuZivorodjeneDjece(
-                        f.apply(new Pair<>(ChoiceBox1, entiteti)),
-                        f.apply(new Pair<>(ChoiceBox2, new ArrayList<>(OpstineCollection.getOpstine()))),
-                        ChoiceBox3.getValue().replace("Svi", "%"));
+                        PromjenaPisma.zamijeniCirilicuLatinicom(f.apply(new Pair<>(ChoiceBox1, entiteti))),
+                        PromjenaPisma.zamijeniCirilicuLatinicom(f.apply(new Pair<>(ChoiceBox2, Aplikacija.prevediRecenice(new ArrayList<>(OpstineCollection.getOpstine()))))),
+                        PromjenaPisma.zamijeniCirilicuLatinicom(ChoiceBox3.getValue()).replace("Svi", "%"));
 
             }
             break;
@@ -359,10 +374,10 @@ public class KontrolerFormeZaPregledStatistickihPodataka implements Initializabl
                 // (String idEntiteta, String idOpstine, String nacionalnaPripadnost, String pol)
 
                 rezultat = admin.getBrojStanovnikaPremaNacionalnojPripadnosti(
-                        f.apply(new Pair<>(ChoiceBox1, entiteti)),
-                        f.apply(new Pair<>(ChoiceBox2, new ArrayList<>(OpstineCollection.getOpstine()))),
-                        ChoiceBox3.getValue().replace("Svi", "%"),
-                        ChoiceBox4.getValue().replace("Svi", "%"));
+                        PromjenaPisma.zamijeniCirilicuLatinicom(f.apply(new Pair<>(ChoiceBox1, entiteti))),
+                        PromjenaPisma.zamijeniCirilicuLatinicom(f.apply(new Pair<>(ChoiceBox2, Aplikacija.prevediRecenice(new ArrayList<>(OpstineCollection.getOpstine()))))),
+                        PromjenaPisma.zamijeniCirilicuLatinicom(ChoiceBox3.getValue()).replace("Svi", "%"),
+                        PromjenaPisma.zamijeniCirilicuLatinicom(ChoiceBox4.getValue()).replace("Svi", "%"));
             }
             break;
             case 4:
@@ -371,10 +386,10 @@ public class KontrolerFormeZaPregledStatistickihPodataka implements Initializabl
                 // (String idEntiteta, String idOpstine, String vjeroispovjest, String pol)
 
                 rezultat = admin.getBrojStanovnikPremaVjeroispovjesti(
-                        f.apply(new Pair<>(ChoiceBox1, entiteti)),
-                        f.apply(new Pair<>(ChoiceBox2, new ArrayList<>(OpstineCollection.getOpstine()))),
-                        ChoiceBox3.getValue().replace("Svi", "%"),
-                        ChoiceBox4.getValue().replace("Svi", "%"));
+                        PromjenaPisma.zamijeniCirilicuLatinicom(f.apply(new Pair<>(ChoiceBox1, entiteti))),
+                        PromjenaPisma.zamijeniCirilicuLatinicom(f.apply(new Pair<>(ChoiceBox2, Aplikacija.prevediRecenice(new ArrayList<>(OpstineCollection.getOpstine()))))),
+                        PromjenaPisma.zamijeniCirilicuLatinicom(ChoiceBox3.getValue()).replace("Svi", "%"),
+                        PromjenaPisma.zamijeniCirilicuLatinicom(ChoiceBox4.getValue()).replace("Svi", "%"));
             }
             break;
             case 5:
@@ -383,10 +398,10 @@ public class KontrolerFormeZaPregledStatistickihPodataka implements Initializabl
                 // (String idEntiteta, String idOpstine, String maternjiJezik, String pol)
 
                 rezultat = admin.getBrojStanovnikaPremaMaternjemJeziku(
-                        f.apply(new Pair<>(ChoiceBox1, entiteti)),
-                        f.apply(new Pair<>(ChoiceBox2, new ArrayList<>(OpstineCollection.getOpstine()))),
-                        ChoiceBox3.getValue().replace("Svi", "%"),
-                        ChoiceBox4.getValue().replace("Svi", "%"));
+                        PromjenaPisma.zamijeniCirilicuLatinicom(f.apply(new Pair<>(ChoiceBox1, entiteti))),
+                        PromjenaPisma.zamijeniCirilicuLatinicom(f.apply(new Pair<>(ChoiceBox2, Aplikacija.prevediRecenice(new ArrayList<>(OpstineCollection.getOpstine()))))),
+                        PromjenaPisma.zamijeniCirilicuLatinicom(ChoiceBox3.getValue()).replace("Svi", "%"),
+                        PromjenaPisma.zamijeniCirilicuLatinicom(ChoiceBox4.getValue()).replace("Svi", "%"));
             }
             break;
             case 6:
@@ -395,10 +410,10 @@ public class KontrolerFormeZaPregledStatistickihPodataka implements Initializabl
                 // (String idEntiteta, String idOpstine, String pismenost, String pol)
 
                 rezultat = admin.getBrojStanovnikaPremaPismenosti(
-                        f.apply(new Pair<>(ChoiceBox1, entiteti)),
-                        f.apply(new Pair<>(ChoiceBox2, new ArrayList<>(OpstineCollection.getOpstine()))),
-                        ChoiceBox3.getValue().replace("Svi", "%"),
-                        ChoiceBox4.getValue().replace("Svi", "%"));
+                        PromjenaPisma.zamijeniCirilicuLatinicom(f.apply(new Pair<>(ChoiceBox1, entiteti))),
+                        PromjenaPisma.zamijeniCirilicuLatinicom(f.apply(new Pair<>(ChoiceBox2, Aplikacija.prevediRecenice(new ArrayList<>(OpstineCollection.getOpstine()))))),
+                        PromjenaPisma.zamijeniCirilicuLatinicom(ChoiceBox3.getValue()).replace("Svi", "%"),
+                        PromjenaPisma.zamijeniCirilicuLatinicom(ChoiceBox4.getValue()).replace("Svi", "%"));
             }
             break;
             case 7:
@@ -407,10 +422,10 @@ public class KontrolerFormeZaPregledStatistickihPodataka implements Initializabl
                 // (String idEntiteta, String idOpstine, String zavrsenaSkola, String pol)
 
                 rezultat = admin.getBrojStanovnikaPremaZavrsenojSkoli(
-                        f.apply(new Pair<>(ChoiceBox1, entiteti)),
-                        f.apply(new Pair<>(ChoiceBox2, new ArrayList<>(OpstineCollection.getOpstine()))),
-                        ChoiceBox3.getValue().replace("Svi", "%"),
-                        ChoiceBox4.getValue().replace("Svi", "%"));
+                        PromjenaPisma.zamijeniCirilicuLatinicom(f.apply(new Pair<>(ChoiceBox1, entiteti))),
+                        PromjenaPisma.zamijeniCirilicuLatinicom(f.apply(new Pair<>(ChoiceBox2, Aplikacija.prevediRecenice(new ArrayList<>(OpstineCollection.getOpstine()))))),
+                        PromjenaPisma.zamijeniCirilicuLatinicom(ChoiceBox3.getValue()).replace("Svi", "%"),
+                        PromjenaPisma.zamijeniCirilicuLatinicom(ChoiceBox4.getValue()).replace("Svi", "%"));
             }
             break;
             case 8:
@@ -419,10 +434,10 @@ public class KontrolerFormeZaPregledStatistickihPodataka implements Initializabl
                 // (String idEntiteta, String idOpstine, String kompjuterskaPismenost, String pol)
 
                 rezultat = admin.getBrojStanovnikaPremaKompjuterskojPismenosti(
-                        f.apply(new Pair<>(ChoiceBox1, entiteti)),
-                        f.apply(new Pair<>(ChoiceBox2, new ArrayList<>(OpstineCollection.getOpstine()))),
-                        ChoiceBox3.getValue().replace("Svi", "%"),
-                        ChoiceBox4.getValue().replace("Svi", "%"));
+                        PromjenaPisma.zamijeniCirilicuLatinicom(f.apply(new Pair<>(ChoiceBox1, entiteti))),
+                        PromjenaPisma.zamijeniCirilicuLatinicom(f.apply(new Pair<>(ChoiceBox2, Aplikacija.prevediRecenice(new ArrayList<>(OpstineCollection.getOpstine()))))),
+                        PromjenaPisma.zamijeniCirilicuLatinicom(ChoiceBox3.getValue()).replace("Svi", "%"),
+                        PromjenaPisma.zamijeniCirilicuLatinicom(ChoiceBox4.getValue()).replace("Svi", "%"));
             }
             break;
             case 9:
@@ -431,9 +446,9 @@ public class KontrolerFormeZaPregledStatistickihPodataka implements Initializabl
                 // (String idEntiteta, String idOpstine, String brojClanova)
 
                 rezultat = admin.getBrojDomacinstavaPremaBrojuClanova(
-                        f.apply(new Pair<>(ChoiceBox1, entiteti)),
-                        f.apply(new Pair<>(ChoiceBox2, new ArrayList<>(OpstineCollection.getOpstine()))),
-                        ChoiceBox3.getValue().replace("Svi", "%"));
+                        PromjenaPisma.zamijeniCirilicuLatinicom(f.apply(new Pair<>(ChoiceBox1, entiteti))),
+                        PromjenaPisma.zamijeniCirilicuLatinicom(f.apply(new Pair<>(ChoiceBox2, Aplikacija.prevediRecenice(new ArrayList<>(OpstineCollection.getOpstine()))))),
+                        PromjenaPisma.zamijeniCirilicuLatinicom(ChoiceBox3.getValue()).replace("Svi", "%"));
             }
             break;
             case 10:
@@ -442,10 +457,10 @@ public class KontrolerFormeZaPregledStatistickihPodataka implements Initializabl
                 // (String idEntiteta, String idOpstine, String poljoprivreda, String prodaja)
 
                 rezultat = admin.getBrojDomacinstavaPremaPoljoprivrednojAktivnosti(
-                            f.apply(new Pair<>(ChoiceBox1, entiteti)),
-                            f.apply(new Pair<>(ChoiceBox2, new ArrayList<>(OpstineCollection.getOpstine()))),
-                            ChoiceBox3.getValue().replace("Svi", "%"),
-                            ChoiceBox4.getValue().replace("Svi", "%"));
+                        PromjenaPisma.zamijeniCirilicuLatinicom(f.apply(new Pair<>(ChoiceBox1, entiteti))),
+                        PromjenaPisma.zamijeniCirilicuLatinicom(f.apply(new Pair<>(ChoiceBox2, Aplikacija.prevediRecenice(new ArrayList<>(OpstineCollection.getOpstine()))))),
+                        PromjenaPisma.zamijeniCirilicuLatinicom(ChoiceBox3.getValue()).replace("Svi", "%"),
+                        PromjenaPisma.zamijeniCirilicuLatinicom(ChoiceBox4.getValue()).replace("Svi", "%"));
             }
             break;
             case 11:
@@ -454,9 +469,9 @@ public class KontrolerFormeZaPregledStatistickihPodataka implements Initializabl
                 // (String idEntiteta, String idOpstine, String brojStanova)
 
                 rezultat = admin.getBrojZgradaPremaBrojuStanova(
-                        f.apply(new Pair<>(ChoiceBox1, entiteti)),
-                        f.apply(new Pair<>(ChoiceBox2, new ArrayList<>(OpstineCollection.getOpstine()))),
-                        ChoiceBox3.getValue().replace("Svi", "%"));
+                        PromjenaPisma.zamijeniCirilicuLatinicom(f.apply(new Pair<>(ChoiceBox1, entiteti))),
+                        PromjenaPisma.zamijeniCirilicuLatinicom(f.apply(new Pair<>(ChoiceBox2, Aplikacija.prevediRecenice(new ArrayList<>(OpstineCollection.getOpstine()))))),
+                        PromjenaPisma.zamijeniCirilicuLatinicom(ChoiceBox3.getValue()).replace("Svi", "%"));
 
             }
             break;
@@ -466,9 +481,9 @@ public class KontrolerFormeZaPregledStatistickihPodataka implements Initializabl
                 // (String idEntiteta, String idOpstine, String brojSoba)
 
                 rezultat = admin.getBrojStanovaPremaBrojuSoba(
-                        f.apply(new Pair<>(ChoiceBox1, entiteti)),
-                        f.apply(new Pair<>(ChoiceBox2, new ArrayList<>(OpstineCollection.getOpstine()))),
-                        ChoiceBox3.getValue().replace("Svi", "%"));
+                        PromjenaPisma.zamijeniCirilicuLatinicom(f.apply(new Pair<>(ChoiceBox1, entiteti))),
+                        PromjenaPisma.zamijeniCirilicuLatinicom(f.apply(new Pair<>(ChoiceBox2, Aplikacija.prevediRecenice(new ArrayList<>(OpstineCollection.getOpstine()))))),
+                        PromjenaPisma.zamijeniCirilicuLatinicom(ChoiceBox3.getValue()).replace("Svi", "%"));
             }
             break;
             case 13:
@@ -477,9 +492,9 @@ public class KontrolerFormeZaPregledStatistickihPodataka implements Initializabl
                 // (String idEntiteta, String idOpstine, String brojSoba)
 
                 rezultat = admin.getPovrsinaStanovaPremaBrojuSoba(
-                        f.apply(new Pair<>(ChoiceBox1, entiteti)),
-                        f.apply(new Pair<>(ChoiceBox2, new ArrayList<>(OpstineCollection.getOpstine()))),
-                        ChoiceBox3.getValue().replace("Svi", "%"));
+                        PromjenaPisma.zamijeniCirilicuLatinicom(f.apply(new Pair<>(ChoiceBox1, entiteti))),
+                        PromjenaPisma.zamijeniCirilicuLatinicom(f.apply(new Pair<>(ChoiceBox2, Aplikacija.prevediRecenice(new ArrayList<>(OpstineCollection.getOpstine()))))),
+                        PromjenaPisma.zamijeniCirilicuLatinicom(ChoiceBox3.getValue()).replace("Svi", "%"));
             }
             break;
             default:
@@ -487,7 +502,7 @@ public class KontrolerFormeZaPregledStatistickihPodataka implements Initializabl
                     System.out.println("default");
             }
         }
-        rezultatLabel.setText(String.valueOf(rezultat));
+        //rezultatLabel.setText(String.valueOf(rezultat));
 
     }
 
@@ -517,6 +532,8 @@ public class KontrolerFormeZaPregledStatistickihPodataka implements Initializabl
             retPath = "/view/FormaZaRadClanaPKLS.fxml";
         } else if (KontrolerFormeZaPrijavu.getTrenutniKorisnik() instanceof OGInstruktor) {
             retPath = "/view/FormaZaRadOGInstruktora.fxml";
+        } else if (KontrolerFormeZaPrijavu.getTrenutniKorisnik() instanceof DEInstruktor) {
+                retPath = "/view/FormaZaRadDEInstruktora.fxml";
         } else {
             retPath = "/view/FormaZaRadAdministratoraAgencije.fxml";
         }
@@ -525,7 +542,7 @@ public class KontrolerFormeZaPregledStatistickihPodataka implements Initializabl
         try {
             root = FXMLLoader.load(getClass().getResource(retPath));
         } catch (IOException e) {
-            Aplikacija.connLogger.getLogger().log(Level.WARNING, "NeuspjeÅ¡no uÄ�itavanje forme.");
+            Aplikacija.connLogger.getLogger().log(Level.WARNING, "Neuspješno učitavanje forme.");
         }
         Aplikacija.getStage().setScene(new Scene(root));
     }

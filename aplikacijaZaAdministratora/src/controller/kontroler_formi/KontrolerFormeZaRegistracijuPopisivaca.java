@@ -36,35 +36,35 @@ public class KontrolerFormeZaRegistracijuPopisivaca implements Initializable {
         if(list.stream().anyMatch(e-> e.getText().equals("")))
         {
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setContentText("Unesite sve podatke u polja!");
+            alert.setContentText(Aplikacija.prevediRecenicu("Unesite sve podatke u polja!"));
             alert.showAndWait();
             return;
         }
         if(!ime.getText().matches("^[a-zA-Z- ]{2,}$"))
         {
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setContentText("Uneseno ime nije ispravno!");
+            alert.setContentText(Aplikacija.prevediRecenicu("Uneseno ime nije ispravno!"));
             alert.showAndWait();
             return;
         }
         if(!prezime.getText().matches("^[a-zA-Z- ]{2,}$"))
         {
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setContentText("Uneseno prezime nije ispravno!");
+            alert.setContentText(Aplikacija.prevediRecenicu("Uneseno prezime nije ispravno!"));
             alert.showAndWait();
             return;
         }
         if(!username.getText().matches("^[a-zA-Z0-9._-]{3,}$"))
         {
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setContentText("Uneseno korisničko ime nije ispravno!");
+            alert.setContentText(Aplikacija.prevediRecenicu("Uneseno korisničko ime nije ispravno!"));
             alert.showAndWait();
             return;
         }
         if(!password.getText().matches("(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=\\S+$).{8,}"))
         {
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setContentText("Lozinka (8+ karaktera) mora sadržavati brojeve, mala i velika slova!");
+            alert.setContentText(Aplikacija.prevediRecenicu("Lozinka (8+ karaktera) mora sadržavati brojeve, mala i velika slova!"));
             alert.showAndWait();
             return;
         }
@@ -86,7 +86,7 @@ public class KontrolerFormeZaRegistracijuPopisivaca implements Initializable {
         }
 
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setContentText("Uspješno ste registrovali popisivača!");
+        alert.setContentText(Aplikacija.prevediRecenicu("Uspješno ste registrovali popisivača!"));
         ButtonType buttonType = alert.showAndWait().get();
         if(!buttonType.getText().equals("OK")) return;
 

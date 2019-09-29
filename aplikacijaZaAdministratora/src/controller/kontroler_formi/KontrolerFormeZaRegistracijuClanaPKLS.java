@@ -14,9 +14,12 @@ import model.korisnicki_nalozi.KorisnikSistema;
 import test.Aplikacija;
 import util.GradoviCollection;
 import util.OpstineCollection;
+import util.PromjenaPisma;
+
 import javax.ws.rs.core.Response;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -41,35 +44,35 @@ public class KontrolerFormeZaRegistracijuClanaPKLS implements Initializable {
         if(list.stream().anyMatch(e-> e.getText().equals("")))
         {
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setContentText("Unesite sve podatke u polja!");
+            alert.setContentText(Aplikacija.prevediRecenicu("Unesite sve podatke u polja!"));
             alert.showAndWait();
             return;
         }
         if(!ime.getText().matches("^[a-zA-Z- ]{2,}$"))
         {
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setContentText("Uneseno ime nije ispravno!");
+            alert.setContentText(Aplikacija.prevediRecenicu("Uneseno ime nije ispravno!"));
             alert.showAndWait();
             return;
         }
         if(!prezime.getText().matches("^[a-zA-Z- ]{2,}$"))
         {
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setContentText("Uneseno prezime nije ispravno!");
+            alert.setContentText(Aplikacija.prevediRecenicu("Uneseno prezime nije ispravno!"));
             alert.showAndWait();
             return;
         }
         if(!username.getText().matches("^[a-zA-Z0-9._-]{3,}$"))
         {
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setContentText("Uneseno korisničko ime nije ispravno!");
+            alert.setContentText(Aplikacija.prevediRecenicu("Uneseno korisničko ime nije ispravno!"));
             alert.showAndWait();
             return;
         }
         if(!password.getText().matches("(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=\\S+$).{8,}"))
         {
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setContentText("Lozinka (8+ karaktera) mora sadržavati brojeve, mala i velika slova!");
+            alert.setContentText(Aplikacija.prevediRecenicu("Lozinka (8+ karaktera) mora sadržavati brojeve, mala i velika slova!"));
             alert.showAndWait();
             return;
         }
@@ -79,8 +82,8 @@ public class KontrolerFormeZaRegistracijuClanaPKLS implements Initializable {
                 prezime.getText(),
                 username.getText(),
                 KorisnikSistema.napraviHesLozinke(password.getText()),
-    			gradoviChoiceBox.getValue(),
-    			opstineChoiceBox.getValue());
+                PromjenaPisma.zamijeniCirilicuLatinicom(gradoviChoiceBox.getValue()),
+    			PromjenaPisma.zamijeniCirilicuLatinicom(opstineChoiceBox.getValue()));
 
         ClanPKLSCMISKlijent clanPKLSCMISKlijent = new ClanPKLSCMISKlijent(KontrolerFormeZaPrijavu.getTrenutniKorisnik());
         Response odgovor = clanPKLSCMISKlijent.registrujKorisnika(clanPKLS);
@@ -92,7 +95,7 @@ public class KontrolerFormeZaRegistracijuClanaPKLS implements Initializable {
         }
 
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setContentText("Uspješno ste registrovali clana PKLS-a");
+        alert.setContentText(Aplikacija.prevediRecenicu("Uspješno ste registrovali clana PKLS-a"));
         ButtonType buttonType = alert.showAndWait().get();
         if(!buttonType.getText().equals("OK")) return;
 
@@ -119,12 +122,12 @@ public class KontrolerFormeZaRegistracijuClanaPKLS implements Initializable {
         Platform.runLater(()->
         {
             wrapper.sadrzajLabele=labelaZaIme.getText();
-            labelaZaIme.setText(wrapper.sadrzajLabele + wrapper.prezimeIIme);
+            labelaZaIme.setText(wrapper.sadrzajLabele + Aplikacija.prevediRecenicu(wrapper.prezimeIIme));
         });
-        gradoviChoiceBox.getItems().addAll(GradoviCollection.getGradovi());
-        gradoviChoiceBox.setValue("Banja Luka");
-        opstineChoiceBox.getItems().addAll(OpstineCollection.getOpstine());
-        opstineChoiceBox.setValue("Banja Luka");
+        gradoviChoiceBox.getItems().addAll(Aplikacija.prevediRecenice(new ArrayList<>(GradoviCollection.getGradovi())));
+        gradoviChoiceBox.setValue(Aplikacija.prevediRecenicu("Banja Luka"));
+        opstineChoiceBox.getItems().addAll(Aplikacija.prevediRecenice(new ArrayList<>(OpstineCollection.getOpstine())));
+        opstineChoiceBox.setValue(Aplikacija.prevediRecenicu("Banja Luka"));
     }
 
     public void back(ActionEvent actionEvent) {

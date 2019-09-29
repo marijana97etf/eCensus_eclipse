@@ -6,10 +6,14 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.List;
 import java.util.Properties;
 import java.util.logging.FileHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
@@ -18,7 +22,9 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.util.Pair;
 import model.korisnicki_nalozi.KorisnikSistema;
+import org.jvnet.hk2.internal.Collector;
 import util.ConnectionLogger;
+import util.PromjenaJezika;
 import util.PromjenaPisma;
 
 public class Aplikacija extends Application {
@@ -52,7 +58,7 @@ public class Aplikacija extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         stage = primaryStage;
-        Parent root = FXMLLoader.load(getClass().getResource("/view/FormaZaPrijavu.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/view/FormaZaPregledAktivnostiPopisivaca.fxml"));
         primaryStage.setTitle("eCensus - AdminMode");
         Pair<Integer,Integer> dimension = calculateDimensions();
         primaryStage.setScene(new Scene(root, dimension.getKey(), dimension.getValue()));
@@ -130,5 +136,23 @@ public class Aplikacija extends Application {
         FileOutputStream out = new FileOutputStream(CONFIG_FILE);
         properties.setProperty("TRENUTNI_JEZIK_I_PISMO", property);
         properties.store(out, null);
+    }
+
+    public static String prevediRecenicu(String recenica)
+    {
+        String jezik = getProperty();
+        String tmp = PromjenaJezika.pronadjiIZamijeni(recenica, jezik);
+        if("srpski".equals(jezik))
+            tmp=PromjenaPisma.zamijeniLatinicuCiricom(recenica);
+        return tmp;
+    }
+
+    public static List<String> prevediRecenice(List<String> recenice)
+    {
+        String jezik = getProperty();
+        List<String> newList = recenice.stream().map(e->PromjenaJezika.pronadjiIZamijeni(e, jezik)).collect(Collectors.toList());
+        if("srpski".equals(jezik))
+            newList = recenice.stream().map(PromjenaPisma::zamijeniLatinicuCiricom).collect(Collectors.toList());
+        return newList;
     }
 }

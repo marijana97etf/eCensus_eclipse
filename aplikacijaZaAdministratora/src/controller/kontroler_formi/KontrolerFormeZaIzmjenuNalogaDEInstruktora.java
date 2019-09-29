@@ -13,11 +13,14 @@ import model.korisnicki_nalozi.DEInstruktor.ENTITET;
 import model.korisnicki_nalozi.KorisnikSistema;
 import model.table_input_models.KorisnikInputModel;
 import test.Aplikacija;
+import util.PromjenaPisma;
 
 import javax.ws.rs.core.Response;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Arrays;
 import java.util.ResourceBundle;
+import java.util.function.Predicate;
 import java.util.logging.Level;
 
 public class KontrolerFormeZaIzmjenuNalogaDEInstruktora implements Initializable {
@@ -38,7 +41,7 @@ public class KontrolerFormeZaIzmjenuNalogaDEInstruktora implements Initializable
     public void izmjeni(ActionEvent actionEvent) {
 
         Alert alert = new Alert(Alert.AlertType.WARNING);
-        alert.setContentText("Da li želite da sačuvate izmjene naloga državnog/entitetskog instruktora?");
+        alert.setContentText(Aplikacija.prevediRecenicu("Da li želite da sačuvate izmjene naloga državnog/entitetskog instruktora?"));
         ButtonType buttonType = alert.showAndWait().get();
         if(!buttonType.getText().equals("OK")) return;
         
@@ -48,14 +51,14 @@ public class KontrolerFormeZaIzmjenuNalogaDEInstruktora implements Initializable
         if(!ime.getText().matches("^[a-zA-Z- ]{2,}$"))
         {
             Alert alert2 = new Alert(Alert.AlertType.ERROR);
-            alert2.setContentText("Uneseno ime nije ispravno!");
+            alert2.setContentText(Aplikacija.prevediRecenicu("Uneseno ime nije ispravno!"));
             alert2.showAndWait();
             return;
         }
         if(!prezime.getText().matches("^[a-zA-Z- ]{2,}$"))
         {
             Alert alert2 = new Alert(Alert.AlertType.ERROR);
-            alert2.setContentText("Uneseno prezime nije ispravno!");
+            alert2.setContentText(Aplikacija.prevediRecenicu("Uneseno prezime nije ispravno!"));
             alert2.showAndWait();
             return;
         }
@@ -64,7 +67,7 @@ public class KontrolerFormeZaIzmjenuNalogaDEInstruktora implements Initializable
             if(!newPassword.getText().matches("(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=\\S+$).{8,}"))
             {
                 Alert pwdAgain2 = new Alert(Alert.AlertType.WARNING);
-                pwdAgain2.setContentText("Lozinka sadrži brojeve, mala i velika slova!");
+                pwdAgain2.setContentText(Aplikacija.prevediRecenicu("Lozinka sadrži brojeve, mala i velika slova!"));
                 pwdAgain2.showAndWait();
                 return;
             }
@@ -72,7 +75,7 @@ public class KontrolerFormeZaIzmjenuNalogaDEInstruktora implements Initializable
         }
         account.setPrezime(prezime.getText());
         account.setIme(ime.getText());
-        deInstruktor.setEntitet(DEInstruktor.ENTITET.getENTITET(entitetChoiceBox.getValue()));
+        deInstruktor.setEntitet(DEInstruktor.ENTITET.getENTITET(PromjenaPisma.zamijeniCirilicuLatinicom(entitetChoiceBox.getValue())));
         account.updateKorisnikSistema();
 
         DEInstruktorCMISKlijent deInstuktorCMISKlijent = new DEInstruktorCMISKlijent(KontrolerFormeZaPrijavu.getTrenutniKorisnik());
@@ -85,7 +88,7 @@ public class KontrolerFormeZaIzmjenuNalogaDEInstruktora implements Initializable
         }
 
         Alert poruka = new Alert(Alert.AlertType.CONFIRMATION);
-        poruka.setContentText("Uspješno ste izmjenili nalog državnog/entitetskog instruktora!");
+        poruka.setContentText(Aplikacija.prevediRecenicu("Uspješno ste izmjenili nalog državnog/entitetskog instruktora!"));
         ButtonType tip = poruka.showAndWait().get();
         if(!tip.getText().equals("OK")) return;
 
@@ -101,7 +104,7 @@ public class KontrolerFormeZaIzmjenuNalogaDEInstruktora implements Initializable
 
     public void povratak(ActionEvent actionEvent) {
         Alert alert = new Alert(Alert.AlertType.WARNING);
-        alert.setContentText("Da li želite da napustite izmjenu naloga državnog/entitetskog instruktora?");
+        alert.setContentText(Aplikacija.prevediRecenicu("Da li želite da napustite izmjenu naloga državnog/entitetskog instruktora?"));
         ButtonType buttonType = alert.showAndWait().get();
         if(!buttonType.getText().equals("OK")) return;
         try {
@@ -125,11 +128,11 @@ public class KontrolerFormeZaIzmjenuNalogaDEInstruktora implements Initializable
         prezime.setText(account.getPrezime());
         username.setText(account.getKorisnickoIme());
 
-        entitetChoiceBox.getItems().addAll("Bosna i Hercegovina", "Federacija Bosne i Hercegovine", "Republika Srpska");
+        entitetChoiceBox.getItems().addAll(Aplikacija.prevediRecenice(Arrays.asList("Bosna i Hercegovina", "Federacija Bosne i Hercegovine", "Republika Srpska")));
         DEInstruktor korisnik = (DEInstruktor)account.getKorisnikSistema();
         ENTITET value = korisnik.getEntitet();
         if(value!=null)
-        	entitetChoiceBox.setValue(korisnik.getEntitet().getValue());
+        	entitetChoiceBox.setValue(Aplikacija.prevediRecenicu(korisnik.getEntitet().getValue()));
     }
 
     public void promjeniLozinku(ActionEvent actionEvent) {

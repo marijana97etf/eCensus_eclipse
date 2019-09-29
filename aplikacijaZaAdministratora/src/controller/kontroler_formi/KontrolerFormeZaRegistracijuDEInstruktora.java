@@ -23,6 +23,7 @@ import java.util.logging.Level;
 import javax.ws.rs.core.Response;
 
 import eCensus.rest.client.DEInstruktorCMISKlijent;
+import util.PromjenaPisma;
 
 public class KontrolerFormeZaRegistracijuDEInstruktora implements Initializable {
     @FXML
@@ -42,28 +43,28 @@ public class KontrolerFormeZaRegistracijuDEInstruktora implements Initializable 
         if(list.stream().anyMatch(e-> e.getText().equals("")))
         {
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setContentText("Unesite sve podatke u polja!");
+            alert.setContentText(Aplikacija.prevediRecenicu("Unesite sve podatke u polja!"));
             alert.showAndWait();
             return;
         }
         if(!ime.getText().matches("^[a-zA-Z- ]{2,}$"))
         {
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setContentText("Uneseno ime nije ispravno!");
+            alert.setContentText(Aplikacija.prevediRecenicu("Uneseno ime nije ispravno!"));
             alert.showAndWait();
             return;
         }
         if(!prezime.getText().matches("^[a-zA-Z- ]{2,}$"))
         {
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setContentText("Uneseno prezime nije ispravno!");
+            alert.setContentText(Aplikacija.prevediRecenicu("Uneseno prezime nije ispravno!"));
             alert.showAndWait();
             return;
         }
         if(!username.getText().matches("^[a-zA-Z0-9._-]{3,}$"))
         {
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setContentText("Uneseno korisničko ime nije ispravno!");
+            alert.setContentText(Aplikacija.prevediRecenicu("Uneseno korisničko ime nije ispravno!"));
             alert.showAndWait();
             return;
         }
@@ -75,7 +76,7 @@ public class KontrolerFormeZaRegistracijuDEInstruktora implements Initializable 
             return;
         }
 
-        DEInstruktor.ENTITET entitet = DEInstruktor.ENTITET.getENTITET(this.entitet.getValue());
+        DEInstruktor.ENTITET entitet = DEInstruktor.ENTITET.getENTITET(PromjenaPisma.zamijeniCirilicuLatinicom(this.entitet.getValue()));
         KorisnikSistema deInstruktor = new DEInstruktor (
                 ime.getText(),
                 prezime.getText(),
@@ -94,7 +95,7 @@ public class KontrolerFormeZaRegistracijuDEInstruktora implements Initializable 
         }
 
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setContentText("Uspješno ste registrovali državnog/entitetskog instruktora");
+        alert.setContentText(Aplikacija.prevediRecenicu("Uspješno ste registrovali državnog/entitetskog instruktora"));
         ButtonType buttonType = alert.showAndWait().get();
         if(!buttonType.getText().equals("OK")) return;
 
@@ -121,10 +122,10 @@ public class KontrolerFormeZaRegistracijuDEInstruktora implements Initializable 
         Platform.runLater(()->
         {
             wrapper.sadrzajLabele=labelaZaIme.getText();
-            labelaZaIme.setText(wrapper.sadrzajLabele + wrapper.prezimeIIme);
+            labelaZaIme.setText(wrapper.sadrzajLabele + Aplikacija.prevediRecenicu(wrapper.prezimeIIme));
         });
-        entitet.getItems().addAll("Federacija Bosne i Hercegovine", "Republika Srpska", "Brčko Distrikt");
-        entitet.setValue(entitet.getItems().get(0));
+        entitet.getItems().addAll(Aplikacija.prevediRecenice(Arrays.asList("Federacija Bosne i Hercegovine", "Republika Srpska", "Brčko Distrikt")));
+        entitet.setValue(Aplikacija.prevediRecenicu(entitet.getItems().get(0)));
     }
 
     public void back(ActionEvent actionEvent) {

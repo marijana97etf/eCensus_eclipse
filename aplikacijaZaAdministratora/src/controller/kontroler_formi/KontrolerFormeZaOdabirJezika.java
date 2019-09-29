@@ -89,7 +89,7 @@ public class KontrolerFormeZaOdabirJezika implements Initializable {
         else
         {
             Alert poruka = new Alert(Alert.AlertType.ERROR);
-            poruka.setContentText("Morate odabrati jezik i pismo različito od trenutnog");
+            poruka.setContentText(Aplikacija.prevediRecenicu("Morate odabrati jezik i pismo različito od trenutnog"));
             ButtonType tip = poruka.showAndWait().get();
             if(!tip.getText().equals("OK")) return;
         }
@@ -141,7 +141,7 @@ public class KontrolerFormeZaOdabirJezika implements Initializable {
         else
         {
             Alert poruka = new Alert(Alert.AlertType.ERROR);
-            poruka.setContentText("Odaberite jedan od ponuđenih jezika!");
+            poruka.setContentText(Aplikacija.prevediRecenicu("Odaberite jedan od ponuđenih jezika!"));
             ButtonType tip = poruka.showAndWait().get();
             if(!tip.getText().equals("OK")) return;
         }

@@ -68,7 +68,7 @@ public class KontrolerFormeZaPregledAktivnostiPopisivaca implements Initializabl
     }
 
     private void getListaFromServer() {
-        // TODO: ÄŒekaju se funkcije sa servera
+        // TODO: Čekaju se funkcije sa servera
         var aktivnost1 = new DnevnaAktivnost(LocalDate.now(),0,0);
         var popisniKrug = new PopisniKrug("Banja Luka", "LaktaÅ¡i", null);
         var popisniKrug2 = new PopisniKrug("Prijedor", "Omarska", null);

@@ -60,7 +60,7 @@ public class KontrolerFormeZaPregledObidjenihPopisnihKrugova implements Initiali
         }
         catch (IOException ex)
         {
-            Aplikacija.connLogger.getLogger().log(Level.WARNING, "NeuspjeÅ¡no Ä�itanje forme.");
+            Aplikacija.connLogger.getLogger().log(Level.WARNING, "Neuspješno čitanje forme.");
         }
     }
 }

@@ -16,6 +16,8 @@ import model.pracenje_popisa.izvjestaji_o_popisivacu.PopisniKrug;
 import test.Aplikacija;
 import util.GradoviCollection;
 import util.OpstineCollection;
+import util.PromjenaPisma;
+
 import javax.ws.rs.core.GenericType;
 import javax.ws.rs.core.Response;
 import java.io.File;
@@ -23,6 +25,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -46,11 +49,11 @@ public class KontrolerFormeZaDodjeluPopisnihKrugovaPopisivacu implements Initial
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        GradChoiceBox.getItems().addAll(GradoviCollection.getGradovi());
-        OpstinaChoiceBox.getItems().addAll(OpstineCollection.getOpstine());
+        GradChoiceBox.getItems().addAll(Aplikacija.prevediRecenice(new ArrayList<>(GradoviCollection.getGradovi())));
+        OpstinaChoiceBox.getItems().addAll(Aplikacija.prevediRecenice(new ArrayList<>(OpstineCollection.getOpstine())));
 
-        GradChoiceBox.setValue("Banja Luka");
-        OpstinaChoiceBox.setValue("Banja Luka");
+        GradChoiceBox.setValue(Aplikacija.prevediRecenicu("Banja Luka"));
+        OpstinaChoiceBox.setValue(Aplikacija.prevediRecenicu("Banja Luka"));
 
         PopisivacCMISKlijent popisivacCMISKlijent = new PopisivacCMISKlijent(KontrolerFormeZaPrijavu.getTrenutniKorisnik());
         Response odgovor  = popisivacCMISKlijent.getListaPopisivaca();
@@ -68,21 +71,21 @@ public class KontrolerFormeZaDodjeluPopisnihKrugovaPopisivacu implements Initial
 
     public void pronadjiPutanju(ActionEvent actionEvent) {
         FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("PronaÄ‘i sliku!");
+        fileChooser.setTitle(Aplikacija.prevediRecenicu("Pronađi sliku!"));
         File file = fileChooser.showOpenDialog(Aplikacija.getStage());
         Platform.runLater(()-> pathText.setText(file.getPath()));
     }
 
     public void dodajPopisniKrug(ActionEvent actionEvent) {
         String username = PopisivacChoiceBox.getValue();
-        String grad = GradChoiceBox.getValue();
-        String opstina = OpstinaChoiceBox.getValue();
+        String grad = PromjenaPisma.zamijeniCirilicuLatinicom(GradChoiceBox.getValue());
+        String opstina = PromjenaPisma.zamijeniCirilicuLatinicom(OpstinaChoiceBox.getValue());
         String putanjaDoSlike = pathText.getText();
         byte[] slikaUBajtovima=null;
         try {
             slikaUBajtovima = Files.readAllBytes(Paths.get(putanjaDoSlike));
         } catch (IOException e) {
-            Aplikacija.connLogger.getLogger().log(Level.WARNING, "NepostojeÄ‡a slika");
+            Aplikacija.connLogger.getLogger().log(Level.WARNING, "Nepostojeća slika");
         }
         if(slikaUBajtovima==null)
         {

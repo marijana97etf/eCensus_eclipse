@@ -5,6 +5,7 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.scene.control.Button;
 import model.pracenje_popisa.izvjestaji_o_popisivacu.DnevnaAktivnost;
+import test.Aplikacija;
 
 public class AktivnostInputModel {
     protected Integer id;
@@ -18,7 +19,7 @@ public class AktivnostInputModel {
         id=1;
         datum = new SimpleStringProperty(aktivnost.getDan().toString());
         Button b = new Button();
-        b.setText("Pregledaj popisne krugove");
+        b.setText(Aplikacija.prevediRecenicu("Pregledaj popisne krugove"));
         popisniKrugovi = new SimpleObjectProperty<>(b);
         this.aktivnost = aktivnost;
     }

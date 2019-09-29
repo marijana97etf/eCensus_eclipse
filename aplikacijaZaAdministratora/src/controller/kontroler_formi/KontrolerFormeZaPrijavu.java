@@ -26,6 +26,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
+import java.net.ConnectException;
 import java.net.URL;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
@@ -78,14 +79,27 @@ public class KontrolerFormeZaPrijavu implements Initializable {
 		} catch (InvalidKeyException | InvalidKeySpecException | NoSuchPaddingException | IllegalBlockSizeException | BadPaddingException e) {
 			Aplikacija.connLogger.getLogger().log(Level.SEVERE,e.getMessage(),e);
 		}
-		
-		AdministratorCMISKlijent klijent = new AdministratorCMISKlijent(keystore, keystoreLozinka,
-				trustStore, trustStoreLozinka, kosinickoImeInput, KorisnikSistema.napraviHesLozinke(password.getText()));
-		Response odgovor = klijent.post(cmisResursUrl + "/login",kosinickoImeInput);
+
+		AdministratorCMISKlijent klijent = null;
+		Response odgovor = null;
+		try {
+			klijent = new AdministratorCMISKlijent(keystore, keystoreLozinka,
+					trustStore, trustStoreLozinka, kosinickoImeInput, KorisnikSistema.napraviHesLozinke(password.getText()));
+			odgovor = klijent.post(cmisResursUrl + "/login", kosinickoImeInput);
+		}
+		catch (Throwable ce)
+		{
+			Alert alert = new Alert(Alert.AlertType.ERROR);
+			String nepostojeciNalog = Aplikacija.prevediRecenicu("Konekcija sa serverom nije u redu.");
+			alert.setContentText(nepostojeciNalog);
+			alert.showAndWait();
+			ce.getMessage();
+			return;
+		}
 
 		if (Response.Status.UNAUTHORIZED.equals(odgovor.getStatusInfo())) {
 			Alert alert = new Alert(Alert.AlertType.ERROR);
-			String nepostojeciNalog = "Korisničko ime ili lozinka nisu ispravni.";
+			String nepostojeciNalog = Aplikacija.prevediRecenicu("Korisničko ime ili lozinka nisu ispravni.");
 			alert.setContentText(nepostojeciNalog);
 			alert.showAndWait();
 			return;
@@ -102,6 +116,20 @@ public class KontrolerFormeZaPrijavu implements Initializable {
 					korisnikSistema = odgovor.readEntity(DEInstruktor.class);
 				else if(tipKorisnika.equals(OGInstruktor.class.getName()))
 					korisnikSistema = odgovor.readEntity(OGInstruktor.class);
+				else if(tipKorisnika.equals(Popisivac.class.getName())) {
+					Alert alert = new Alert(Alert.AlertType.ERROR);
+					alert.setContentText(Aplikacija.prevediRecenicu("Popisivač nema mogućnost prijave u ovoj aplikaciji."));
+					alert.showAndWait();
+					Aplikacija.connLogger.getLogger().log(Level.WARNING, "Pokušaj prijavljivanja popisivača u aplikaciji za admina.");
+					return;
+				}
+				else if(tipKorisnika.equals(PowerUser.class.getName())) {
+					Alert alert = new Alert(Alert.AlertType.ERROR);
+					alert.setContentText(Aplikacija.prevediRecenicu("Korisik nema mogućnost prijave u ovoj aplikaciji."));
+					alert.showAndWait();
+					Aplikacija.connLogger.getLogger().log(Level.WARNING, "Pokušaj prijavljivanja power korisnika u aplikaciji za admina.");
+					return;
+				}
 			} else {
 				Aplikacija.connLogger.logHeaders(Level.SEVERE, odgovor);
 			}
@@ -118,7 +146,7 @@ public class KontrolerFormeZaPrijavu implements Initializable {
 		if (korisnikSistema instanceof AdministratorAgencije)
 		{
 			Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-			var uspjesnaPrijavaAdminAgencije="Uspješno ste se prijavili kao administrator agencije.";
+			var uspjesnaPrijavaAdminAgencije=Aplikacija.prevediRecenicu("Uspješno ste se prijavili kao administrator agencije.");
 			alert.setContentText(uspjesnaPrijavaAdminAgencije);
 			ButtonType buttonType = alert.showAndWait().get();
 			if (!buttonType.getText().equals("OK"))
@@ -130,7 +158,7 @@ public class KontrolerFormeZaPrijavu implements Initializable {
 		else if (korisnikSistema instanceof ClanPKLS)
 		{
 			Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-			String poruka = "Uspješno ste se prijavili kao član PKLS.";
+			String poruka = Aplikacija.prevediRecenicu("Uspješno ste se prijavili kao član PKLS.");
 			alert.setContentText(poruka);
 			ButtonType buttonType = alert.showAndWait().get();
 			if (!buttonType.getText().equals("OK"))
@@ -142,7 +170,7 @@ public class KontrolerFormeZaPrijavu implements Initializable {
 		else if (korisnikSistema instanceof DEInstruktor)
 		{
 			Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-			String poruka = "Uspješno ste se prijavili kao državno/entitetski instruktor.";
+			String poruka = Aplikacija.prevediRecenicu("Uspješno ste se prijavili kao državno/entitetski instruktor.");
 			alert.setContentText(poruka);
 			ButtonType buttonType = alert.showAndWait().get();
 			if (!buttonType.getText().equals("OK"))
@@ -154,7 +182,7 @@ public class KontrolerFormeZaPrijavu implements Initializable {
 		else if (korisnikSistema instanceof OGInstruktor)
 		{
 			Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-			String poruka = "Uspješno ste se prijavili kao OG instruktor.";
+			String poruka = Aplikacija.prevediRecenicu("Uspješno ste se prijavili kao OG instruktor.");
 			alert.setContentText(poruka);
 			ButtonType buttonType = alert.showAndWait().get();
 			if (!buttonType.getText().equals("OK"))
@@ -165,7 +193,7 @@ public class KontrolerFormeZaPrijavu implements Initializable {
 
 		else {
 			Alert alert = new Alert(Alert.AlertType.ERROR);
-			alert.setContentText("Tip naloga nije validan!");
+			alert.setContentText(Aplikacija.prevediRecenicu("Tip naloga nije validan!"));
 			alert.showAndWait();
 			return;
 		}
