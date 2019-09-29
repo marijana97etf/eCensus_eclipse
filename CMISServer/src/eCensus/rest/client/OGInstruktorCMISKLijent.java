@@ -29,16 +29,16 @@ public class OGInstruktorCMISKLijent extends AdministratorCMISKlijent {
 		return post(cmisResursUrl + "/" + "korisnici" + "/" + "ocjene" + "/" + "oGInstruktor" + "/" + idOGInstruktora + "/" + "popisivac" + "/" + idPopisivaca, ocjena);
 	}
 	
-	public Response getListaPopisnihKrugova(String grad, String opstina) {
-		return get(cmisResursUrl + "/" + "korisnici" + "/" + "popisniKrugovi" + "/" + grad + "/" + opstina);
+	public Response getListaPopisnihKrugova(String grad, int idOpstine) {
+		return get(cmisResursUrl + "/" + "korisnici" + "/" + "popisniKrugovi" + "/" + grad + "/" + idOpstine);
 	}
 	
 	public Response dodajPopisniKrug(PopisniKrug popisniKrug) {
 		return post(cmisResursUrl + "/" + "korisnici" + "/" + "popisniKrugovi", popisniKrug);
 	}
 	
-	public Response obrisiPopisniKrug(int idPopisnogKruga) {
-		return delete(cmisResursUrl + "/" + "korisnici" + "/" + "popisniKrugovi" + "/" + idPopisnogKruga);
+	public Response obrisiPopisniKrug(int idPopisnogKruga, int idOpstine) {
+		return delete(cmisResursUrl + "/" + "korisnici" + "/" + "popisniKrugovi" + "/" + idPopisnogKruga + "/" + idOpstine);
 	}
 	
 }

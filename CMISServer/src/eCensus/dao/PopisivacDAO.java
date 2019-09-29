@@ -6,9 +6,9 @@ import model.pracenje_popisa.izvjestaji_o_popisivacu.PopisniKrug;
 
 public interface PopisivacDAO extends NaloziDAO {
 	
-	public boolean dodajPopisniKrug(int idPopisivaca, int idPopisnogKruga);
+	public boolean dodajPopisniKrug(int idPopisivaca, int idPopisnogKruga, int idOpstine);
 	
-	public boolean obrisiPopisniKrug(int idPopisivaca, int idPopisnogKruga);
+	public boolean obrisiPopisniKrug(int idPopisivaca, int idPopisnogKruga, int idOpstine);
 	
 	public List<PopisniKrug> getListaPopisnihKrugovaPopisivaca(int idPopisivaca);
 	
