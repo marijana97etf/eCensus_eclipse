@@ -5,21 +5,22 @@ import java.util.List;
 public class PopisniKrug {
 
 	protected int id;
-    protected String opstina,grad;
+	protected int idOpstine;
+    protected String grad;
     protected byte[] slikaBytes;
     protected List<String> ulice;
 
     public PopisniKrug() {}
-	public PopisniKrug(String opstina, String grad, List<String> ulice) {
+	public PopisniKrug(int idOpstine, String grad, List<String> ulice) {
 		super();
-		this.opstina = opstina;
+		this.idOpstine = idOpstine;
 		this.grad = grad;
 		this.ulice = ulice;
 	}
 
-	public PopisniKrug(String opstina, String grad, List<String> ulice, byte[] slikaBytes) {
+	public PopisniKrug(int idOpstine, String grad, List<String> ulice, byte[] slikaBytes) {
 		super();
-		this.opstina = opstina;
+		this.idOpstine = idOpstine;
 		this.grad = grad;
 		this.ulice = ulice;
 		this.slikaBytes = slikaBytes;
@@ -41,12 +42,12 @@ public class PopisniKrug {
 		this.ulice = ulice;
 	}
 	
-	public String getOpstina() {
-		return opstina;
+	public int getIdOpstine() {
+		return idOpstine;
 	}
 	
-	public void setOpstina(String opstina) {
-		this.opstina = opstina;
+	public void setIdOpstine(int idOpstine) {
+		this.idOpstine = idOpstine;
 	}
 
 	public String getGrad() {
@@ -70,7 +71,7 @@ public class PopisniKrug {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((grad == null) ? 0 : grad.hashCode());
-		result = prime * result + ((opstina == null) ? 0 : opstina.hashCode());
+		result = prime * result + ((ulice == null) ? 0 : ulice.hashCode());
 		return result;
 	}
 
@@ -88,11 +89,9 @@ public class PopisniKrug {
 				return false;
 		} else if (!grad.equals(other.grad))
 			return false;
-		if (opstina == null) {
-			if (other.opstina != null)
-				return false;
-		} else if (!opstina.equals(other.opstina))
+		if (idOpstine != other.idOpstine) {
 			return false;
+		}
 		return true;
 	}
 

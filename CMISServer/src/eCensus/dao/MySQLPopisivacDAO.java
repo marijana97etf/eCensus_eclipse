@@ -209,7 +209,7 @@ public class MySQLPopisivacDAO implements PopisivacDAO {
 			preparedStatementPopisniKrug.setInt(1, idPopisivaca);
 			preparedStatementPopisniKrug.setInt(2, idPopisnogKruga);
 			preparedStatementPopisniKrug.setInt(3, idOpstine);
-			preparedStatementPopisniKrug.executeQuery();
+			preparedStatementPopisniKrug.executeUpdate();
 			preparedStatementPopisniKrug.close();
 			
 			return true;
@@ -232,7 +232,7 @@ public class MySQLPopisivacDAO implements PopisivacDAO {
 			preparedStatementPopisniKrug.setInt(1, idPopisivaca);
 			preparedStatementPopisniKrug.setInt(2, idPopisnogKruga);
 			preparedStatementPopisniKrug.setInt(3, idOpstine);
-			preparedStatementPopisniKrug.executeQuery();
+			preparedStatementPopisniKrug.executeUpdate();
 			preparedStatementPopisniKrug.close();
 			
 			return true;

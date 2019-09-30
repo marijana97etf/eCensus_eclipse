@@ -9,6 +9,7 @@ import javax.ws.rs.core.Response;
 
 import model.korisnicki_nalozi.ClanPKLS;
 import model.korisnicki_nalozi.KorisnikSistema;
+import model.pracenje_popisa.izvjestaji_o_popisivacu.PopisniKrug;
 
 public class ClanPKLSCMISKlijent extends AdministratorCMISKlijent {
 
@@ -32,6 +33,18 @@ public class ClanPKLSCMISKlijent extends AdministratorCMISKlijent {
 	@SuppressWarnings("unchecked")
 	public Response getListuClanovaPKLS(){
 		return get(cmisResursUrl + "/" + naloziResursUrl + "/lista?tip=" + ClanPKLS.class.getName() );
+	}
+	
+	public Response getListaPopisnihKrugova(String grad, int idOpstine) {
+		return get(cmisResursUrl + "/" + "popisniKrugovi" + "/" + grad + "/" + idOpstine);
+	}
+	
+	public Response dodajPopisniKrug(PopisniKrug popisniKrug) {
+		return post(cmisResursUrl + "/" + "popisniKrugovi", popisniKrug);
+	}
+	
+	public Response obrisiPopisniKrug(int idPopisnogKruga, int idOpstine) {
+		return delete(cmisResursUrl + "/" + "popisniKrugovi" + "/" + idPopisnogKruga + "/" + idOpstine);
 	}
 
 }

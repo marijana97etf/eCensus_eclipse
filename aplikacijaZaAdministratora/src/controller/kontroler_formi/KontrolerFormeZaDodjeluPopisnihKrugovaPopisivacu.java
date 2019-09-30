@@ -79,7 +79,8 @@ public class KontrolerFormeZaDodjeluPopisnihKrugovaPopisivacu implements Initial
     public void dodajPopisniKrug(ActionEvent actionEvent) {
         String username = PopisivacChoiceBox.getValue();
         String grad = PromjenaPisma.zamijeniCirilicuLatinicom(GradChoiceBox.getValue());
-        String opstina = PromjenaPisma.zamijeniCirilicuLatinicom(OpstinaChoiceBox.getValue());
+        //String opstina = PromjenaPisma.zamijeniCirilicuLatinicom(OpstinaChoiceBox.getValue());
+        int idOpstine = 0; // Promjeniti
         String putanjaDoSlike = pathText.getText();
         byte[] slikaUBajtovima=null;
         try {
@@ -91,7 +92,7 @@ public class KontrolerFormeZaDodjeluPopisnihKrugovaPopisivacu implements Initial
         {
             return;
         }
-        PopisniKrug popisniKrug = new PopisniKrug(opstina, grad, null, slikaUBajtovima);
+        PopisniKrug popisniKrug = new PopisniKrug(idOpstine, grad, null, slikaUBajtovima);
 
         Popisivac popisivac = lista.stream().filter(e -> e.getKorisnickoIme().equals(username)).findFirst().get();
         popisivac.dodajPopisniKrug(popisniKrug);

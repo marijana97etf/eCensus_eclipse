@@ -18,4 +18,8 @@ public class MySQLFactoryDAO {
 		return new MySQLOpstinaDAO();
 	}
 	
+	public MySQLKontrolnikDAO getMySQLKontorlnikDAO() {
+		return new MySQLKontrolnikDAO();
+	}
+	
 }

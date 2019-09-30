@@ -6,13 +6,13 @@ import model.pracenje_popisa.izvjestaji_o_popisivacu.PopisniKrug;
 
 public class PopisniKrugInputModel {
     protected SimpleIntegerProperty id;
-    protected SimpleStringProperty opstina;
+    protected SimpleIntegerProperty idOpstine;
     protected SimpleStringProperty grad;
     protected PopisniKrug popisniKrug;
 
     public PopisniKrugInputModel(PopisniKrug popisniKrug) {
         id = new SimpleIntegerProperty(0);
-        opstina = new SimpleStringProperty(popisniKrug.getOpstina());
+        idOpstine = new SimpleIntegerProperty(popisniKrug.getIdOpstine());
         grad = new SimpleStringProperty(popisniKrug.getGrad());
         this.popisniKrug = popisniKrug;
     }
@@ -29,16 +29,16 @@ public class PopisniKrugInputModel {
         this.id.set(id);
     }
 
-    public String getOpstina() {
-        return opstina.get();
+    public Integer getIdOpstine() {
+        return idOpstine.get();
     }
 
-    public SimpleStringProperty opstinaProperty() {
-        return opstina;
+    public SimpleIntegerProperty opstinaProperty() {
+        return idOpstine;
     }
 
-    public void setOpstina(String opstina) {
-        this.opstina.set(opstina);
+    public void setIdOpstine(int idOpstine) {
+        this.idOpstine.set(idOpstine);
     }
 
     public String getGrad() {

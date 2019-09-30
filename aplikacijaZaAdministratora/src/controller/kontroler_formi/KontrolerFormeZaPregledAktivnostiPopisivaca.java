@@ -70,8 +70,8 @@ public class KontrolerFormeZaPregledAktivnostiPopisivaca implements Initializabl
     private void getListaFromServer() {
         // TODO: Čekaju se funkcije sa servera
         var aktivnost1 = new DnevnaAktivnost(LocalDate.now(),0,0);
-        var popisniKrug = new PopisniKrug("Banja Luka", "LaktaÅ¡i", null);
-        var popisniKrug2 = new PopisniKrug("Prijedor", "Omarska", null);
+        //var popisniKrug = new PopisniKrug("Banja Luka", "LaktaÅ¡i", null);
+        //var popisniKrug2 = new PopisniKrug("Prijedor", "Omarska", null);
         //aktivnost1.setObidjeniPopisniKrugovi(new HashSet<PopisniKrug>(Arrays.asList(popisniKrug,popisniKrug2)));
         //lista = FXCollections.observableList(Arrays.asList(new AktivnostInputModel(aktivnost1)));
     }

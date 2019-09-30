@@ -1,17 +1,15 @@
 package eCensus.dao;
 
 import java.io.ByteArrayInputStream;
+import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
 import eCensus.baza.ConnectionPool;
-import model.korisnicki_nalozi.KorisnikSistema;
-import model.korisnicki_nalozi.Popisivac;
 import model.pracenje_popisa.izvjestaji_o_popisivacu.PopisniKrug;
 
 public class MySQLPopisniKrugDAO implements PopisniKrugDAO {
@@ -22,10 +20,14 @@ public class MySQLPopisniKrugDAO implements PopisniKrugDAO {
 		try {
 			connection = ConnectionPool.getInstance().checkOut();
 			PreparedStatement preparedStatementPopisniKrug = connection.prepareStatement("INSERT INTO popisni_krug(IdOpstine,Grad,SlikaPopisnogKruga) VALUES (?,?,?);");
-			preparedStatementPopisniKrug.setString(1, popisniKrug.getIdOpsine());
+			preparedStatementPopisniKrug.setInt(1, popisniKrug.getIdOpstine());
 			preparedStatementPopisniKrug.setString(2, popisniKrug.getGrad());
-			preparedStatementPopisniKrug.setBlob(3, new ByteArrayInputStream(popisniKrug.getSlikaBytes()), popisniKrug.getSlikaBytes().length);
-			preparedStatementPopisniKrug.executeQuery();
+			if(popisniKrug.getSlikaBytes() != null) {
+				preparedStatementPopisniKrug.setBlob(3, new ByteArrayInputStream(popisniKrug.getSlikaBytes()), popisniKrug.getSlikaBytes().length);
+			} else {
+				preparedStatementPopisniKrug.setBlob(3, connection.createBlob());
+			}
+			preparedStatementPopisniKrug.executeUpdate();
 			preparedStatementPopisniKrug.close();
 			
 			PreparedStatement preparedStatementLokalnaVarijabla = connection.prepareStatement("SET @lastID = LAST_INSERT_ID()");
@@ -34,9 +36,9 @@ public class MySQLPopisniKrugDAO implements PopisniKrugDAO {
 			
 			PreparedStatement preparedStatementUlica = connection.prepareStatement("INSERT INTO ulica(IdPopisnogKruga,IdOpstine,Naziv) VALUES (@lastID,?,?);");
 			for(String ulica : popisniKrug.getUlice()) {
-				preparedStatementUlica.setString(1, popisniKrug.getIdOpstine());
+				preparedStatementUlica.setInt(1, popisniKrug.getIdOpstine());
 				preparedStatementUlica.setString(2, ulica);
-				preparedStatementUlica.executeQuery();
+				preparedStatementUlica.executeUpdate();
 			}
 			preparedStatementUlica.close();
 			
@@ -75,6 +77,8 @@ public class MySQLPopisniKrugDAO implements PopisniKrugDAO {
 					"WHERE IdPopisnogKruga = ? AND IdOpstine = ? AND (SELECT COUNT(*) FROM popisivac_popisni_krug WHERE IdPopisnogKruga = ? AND IdOpstine = ?) = 0;");
 			preparedStatementPopisniKrug.setInt(1, idPopisnogKruga);
 			preparedStatementPopisniKrug.setInt(2, idOpstine);
+			preparedStatementPopisniKrug.setInt(3, idPopisnogKruga);
+			preparedStatementPopisniKrug.setInt(4, idOpstine);
 			int numberRowsPopisniKrug = preparedStatementPopisniKrug.executeUpdate();
 			preparedStatementPopisniKrug.close();
 			
@@ -110,6 +114,8 @@ public class MySQLPopisniKrugDAO implements PopisniKrugDAO {
 				popisniKrug.setGrad(resultSetPopisniKrugovi.getString("Grad"));
 				popisniKrug.setIdOpstine(resultSetPopisniKrugovi.getInt("IdOpstine"));
 				popisniKrug.setId(resultSetPopisniKrugovi.getInt("IdPopisnogKruga"));
+				Blob slikaPopisnogKruga = resultSetPopisniKrugovi.getBlob("SlikaPopisnogKruga");
+				popisniKrug.setSlikaBytes(slikaPopisnogKruga.getBytes(1l, (int) slikaPopisnogKruga.length()));
 				popisniKrugovi.add(popisniKrug);
 			}
 			
@@ -159,6 +165,8 @@ public class MySQLPopisniKrugDAO implements PopisniKrugDAO {
 				popisniKrug.setGrad(resultSetPopisniKrugovi.getString("Grad"));
 				popisniKrug.setIdOpstine(resultSetPopisniKrugovi.getInt("IdOpstine"));
 				popisniKrug.setId(resultSetPopisniKrugovi.getInt("IdPopisnogKruga"));
+				Blob slikaPopisnogKruga = resultSetPopisniKrugovi.getBlob("SlikaPopisnogKruga");
+				popisniKrug.setSlikaBytes(slikaPopisnogKruga.getBytes(1l, (int) slikaPopisnogKruga.length()));
 			}
 			
 			if(popisniKrug != null) {
@@ -167,7 +175,7 @@ public class MySQLPopisniKrugDAO implements PopisniKrugDAO {
 																				"FROM ulica " + 
 																				"WHERE IdPopisnogKruga = ? AND IdOpstine = ?;");
 				preparedStatementUlice.setInt(1, popisniKrug.getId());
-				preparedStatementUlice.setInt(2, popisniKrug..getIdOpstine());
+				preparedStatementUlice.setInt(2, popisniKrug.getIdOpstine());
 				ResultSet resultSetUlice = preparedStatementUlice.executeQuery();
 				ArrayList<String> ulice = new ArrayList<>();
 				while(resultSetUlice.next()) {

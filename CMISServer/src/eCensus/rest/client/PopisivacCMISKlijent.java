@@ -5,6 +5,7 @@ import javax.ws.rs.core.Response;
 import model.korisnicki_nalozi.KorisnikSistema;
 import model.korisnicki_nalozi.Popisivac;
 import model.pracenje_popisa.izvjestaji_o_popisivacu.DnevnaAktivnost;
+import model.pracenje_popisa.izvjestaji_o_popisivacu.Kontrolnik;
 
 public class PopisivacCMISKlijent extends CMISKlijent {
 
@@ -45,7 +46,7 @@ public class PopisivacCMISKlijent extends CMISKlijent {
 		return delete(cmisResursUrl + "/" + korisnikResursUrl + "/" + idPopisivaca + "/" + "popisniKrugovi" + "/" + idPopisnogKruga + "/" + idOpstine);
 	}
 	
-	public Response sacuvajOcjenuPopisivaca() {
-		return null;
+	public Response azurirajKontrolnik(Kontrolnik kontrolnik) {
+		return put(cmisResursUrl + "/" + "kontrolnik", kontrolnik);
 	}
 }

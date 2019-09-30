@@ -28,6 +28,7 @@ import model.korisnicki_nalozi.OGInstruktor;
 import model.korisnicki_nalozi.Popisivac;
 import model.korisnicki_nalozi.PowerUser;
 import model.pracenje_popisa.izvjestaji_o_popisivacu.DnevnaAktivnost;
+import model.pracenje_popisa.izvjestaji_o_popisivacu.Kontrolnik;
 import model.pracenje_popisa.izvjestaji_o_popisivacu.PopisniKrug;
 
 @Path("/CMIS")
@@ -393,7 +394,7 @@ public class CMISServis {
 		//Popisni Krugovi
 		
 		@GET
-		@Path("korisnici/popisniKrugovi/{grad}/{idOpstine}")
+		@Path("popisniKrugovi/{grad}/{idOpstine}")
 		@Consumes(MediaType.APPLICATION_JSON)
 		@Produces(MediaType.APPLICATION_JSON)
 		public Response getListaPopisnihKrugova(@PathParam("grad") String grad, @PathParam("idOpstine") int idOpstine) {
@@ -405,7 +406,7 @@ public class CMISServis {
 		}
 		
 		@POST
-		@Path("korisnici/popisniKrugovi")
+		@Path("popisniKrugovi")
 		@Consumes(MediaType.APPLICATION_JSON)
 		@Produces(MediaType.APPLICATION_JSON)
 		public Response dodajPopisniKrug(PopisniKrug popisniKrug) {
@@ -418,7 +419,7 @@ public class CMISServis {
 		}
 		
 		@DELETE
-		@Path("korisnici/popisniKrugovi/{idPopisnogKruga}/{idOpstine}")
+		@Path("popisniKrugovi/{idPopisnogKruga}/{idOpstine}")
 		@Consumes(MediaType.APPLICATION_JSON)
 		@Produces(MediaType.APPLICATION_JSON)
 		public Response dodajPopisniKrug(@PathParam("idPopisnogKruga") int idPopisnogKruga,@PathParam("idOpstine") int idOpstine) {
@@ -430,6 +431,8 @@ public class CMISServis {
 			
 		}
 		
+		//Opstine
+		
 		@GET
 		@Path("opstine")
 		@Consumes(MediaType.APPLICATION_JSON)
@@ -440,6 +443,21 @@ public class CMISServis {
 				return Response.status(Status.OK).entity(opstine).build();
 			} else
 				return Response.status(Status.NO_CONTENT).build();
+		}
+		
+		//Kontrolnik
+		
+		@PUT
+		@Path("kontrolnik")
+		@Consumes(MediaType.APPLICATION_JSON)
+		@Produces(MediaType.APPLICATION_JSON)
+		public Response azurirajAktivnostPopisivaca(Kontrolnik kontrolnik) {
+			boolean result = DAOFactory.getMySQLFactoryDAO().getMySQLKontorlnikDAO().azurirajKontrolnik(kontrolnik);
+			if(result) {
+				return Response.status(Status.OK).entity(true).build();
+			} else {
+				return Response.status(Status.NO_CONTENT).entity(false).build();
+			}
 		}
 		
 }
