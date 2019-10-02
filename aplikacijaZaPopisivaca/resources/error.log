@@ -1364,3 +1364,127 @@
 <!DOCTYPE log SYSTEM "logger.dtd">
 <log>
 </log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2019-10-02T06:51:24.013697200Z</date>
+  <millis>1569999084013</millis>
+  <nanos>697200</nanos>
+  <sequence>0</sequence>
+  <logger>eCensus.rest.client.PopisivacCMISKlijent</logger>
+  <level>SEVERE</level>
+  <class>eCensus.rest.client.SecureRestKlijent</class>
+  <method>loadKeyStore</method>
+  <thread>1</thread>
+  <message>a (The system cannot find the file specified)</message>
+  <exception>
+    <message>java.io.FileNotFoundException: a (The system cannot find the file specified)</message>
+    <frame>
+      <class>java.io.FileInputStream</class>
+      <method>open0</method>
+    </frame>
+    <frame>
+      <class>java.io.FileInputStream</class>
+      <method>open</method>
+      <line>213</line>
+    </frame>
+    <frame>
+      <class>java.io.FileInputStream</class>
+      <method>&lt;init&gt;</method>
+      <line>155</line>
+    </frame>
+    <frame>
+      <class>eCensus.rest.client.SecureRestKlijent</class>
+      <method>loadKeyStore</method>
+      <line>99</line>
+    </frame>
+    <frame>
+      <class>eCensus.rest.client.SecureRestKlijent</class>
+      <method>&lt;init&gt;</method>
+      <line>62</line>
+    </frame>
+    <frame>
+      <class>eCensus.rest.client.CMISKlijent</class>
+      <method>&lt;init&gt;</method>
+      <line>55</line>
+    </frame>
+    <frame>
+      <class>eCensus.rest.client.PopisivacCMISKlijent</class>
+      <method>&lt;init&gt;</method>
+      <line>22</line>
+    </frame>
+    <frame>
+      <class>main.Test</class>
+      <method>main</method>
+      <line>19</line>
+    </frame>
+  </exception>
+</record>
+<record>
+  <date>2019-10-02T06:51:24.227878600Z</date>
+  <millis>1569999084227</millis>
+  <nanos>878600</nanos>
+  <sequence>1</sequence>
+  <logger>eCensus.rest.client.PopisivacCMISKlijent</logger>
+  <level>SEVERE</level>
+  <class>eCensus.rest.client.SecureRestKlijent</class>
+  <method>loadKeyStore</method>
+  <thread>1</thread>
+  <message>c (The system cannot find the file specified)</message>
+  <exception>
+    <message>java.io.FileNotFoundException: c (The system cannot find the file specified)</message>
+    <frame>
+      <class>java.io.FileInputStream</class>
+      <method>open0</method>
+    </frame>
+    <frame>
+      <class>java.io.FileInputStream</class>
+      <method>open</method>
+      <line>213</line>
+    </frame>
+    <frame>
+      <class>java.io.FileInputStream</class>
+      <method>&lt;init&gt;</method>
+      <line>155</line>
+    </frame>
+    <frame>
+      <class>eCensus.rest.client.SecureRestKlijent</class>
+      <method>loadKeyStore</method>
+      <line>99</line>
+    </frame>
+    <frame>
+      <class>eCensus.rest.client.SecureRestKlijent</class>
+      <method>&lt;init&gt;</method>
+      <line>66</line>
+    </frame>
+    <frame>
+      <class>eCensus.rest.client.CMISKlijent</class>
+      <method>&lt;init&gt;</method>
+      <line>55</line>
+    </frame>
+    <frame>
+      <class>eCensus.rest.client.PopisivacCMISKlijent</class>
+      <method>&lt;init&gt;</method>
+      <line>22</line>
+    </frame>
+    <frame>
+      <class>main.Test</class>
+      <method>main</method>
+      <line>19</line>
+    </frame>
+  </exception>
+</record>
+</log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+</log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+</log>
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+</log>

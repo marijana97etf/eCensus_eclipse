@@ -12,6 +12,7 @@ import javafx.stage.Stage;
 import main.Main;
 import model.ClanDomacinstva;
 import model.PopisnicaZaDomacinstvo;
+import model.pracenje_popisa.izvjestaji_o_popisivacu.Kontrolnik;
 import util.PrikazObavjestenja;
 import util.PromjenaJezika;
 import util.PromjenaPisma;
@@ -20,6 +21,7 @@ import util.SerijalizacijaPopisnica;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.net.ConnectException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -27,6 +29,7 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.Map.Entry;
 
+import eCensus.rest.client.PopisivacCMISKlijent;
 import eCensus.rest.client.PopisivacGlavniServerKlijent;
 
 public class KontrolerFormeZaPopisivanjeDomacinstva {
@@ -1129,26 +1132,34 @@ public class KontrolerFormeZaPopisivanjeDomacinstva {
         }
         
         try {
-        Properties properties = new Properties();
-    	properties.load(new FileInputStream(new File(CONFIG_FILE_PATH)));
-    	String keystore = properties.getProperty("DEFAULT_KEYSTORE");
-    	String keystoreLozinka = properties.getProperty("DEFAULT_KEYSTORE_PASSWORD");
-    	String truststore = properties.getProperty("DEFAULT_TRUSTSTORE");
-    	String truststoreLozinka = properties.getProperty("DEFAULT_TRUSTSTORE_PASSWORD");
-        
-        //PopisivacGlavniServerKlijent glavniServer = new PopisivacGlavniServerKlijent(keystore, keystoreLozinka, truststore, truststoreLozinka, 
-        //		KontrolerFormeZaPrijavu.korisnik.getKorisnickoIme(), KontrolerFormeZaPrijavu.korisnik.getLozinkaHash());
-        
-        PopisivacGlavniServerKlijent glavniServer = new PopisivacGlavniServerKlijent(KontrolerFormeZaPrijavu.korisnik);
-        
-        if(glavniServer.obradiPopisniceZaDomacinstva(popisnica) == 404) {
-        	SerijalizacijaPopisnica.serijalizujPopisnicuZaDomacinstvo(popisnica);
-        	PrikazObavjestenja.prikaziInfo("Nema internet konekcije. Popisnica je sačuvana.");
-        }
-        else {
+	        Properties properties = new Properties();
+	    	properties.load(new FileInputStream(new File(CONFIG_FILE_PATH)));
+	    	String keystore = properties.getProperty("DEFAULT_KEYSTORE");
+	    	String keystoreLozinka = properties.getProperty("DEFAULT_KEYSTORE_PASSWORD");
+	    	String truststore = properties.getProperty("DEFAULT_TRUSTSTORE");
+	    	String truststoreLozinka = properties.getProperty("DEFAULT_TRUSTSTORE_PASSWORD");
+	        
+	        PopisivacGlavniServerKlijent glavniServer = new PopisivacGlavniServerKlijent(KontrolerFormeZaPrijavu.korisnik);
+	        
+	        glavniServer.obradiPopisniceZaDomacinstva(popisnica);
+	        
+	        PopisivacCMISKlijent cmisServer = new PopisivacCMISKlijent(KontrolerFormeZaPrijavu.korisnik);
+	        int poljoprivreda;
+	        if("Da".equals(odgovor29) || "Да".equals(odgovor29))
+	        	poljoprivreda = 1;
+	        else
+	        	poljoprivreda = 0;
+	     //   Kontrolnik kontrolnik = new Kontrolnik(idPopisnogKruga, idOpstine, 1, 1, poljoprivreda, Integer.parseInt(brojClanovaDomacinstvaString));
+	     //   cmisServer.azurirajKontrolnik(kontrolnik);
+
         	PrikazObavjestenja.prikaziInfo("Popisnica je uspješno poslata.");
       		KontrolerFormeZaRadPopisivaca.popisDomacinstvaStage.close();
         }
+        catch(ConnectException e) {
+        	List<PopisnicaZaDomacinstvo> sacuvanePopisnice = SerijalizacijaPopisnica.deserijalizujPopisniceZaDomacinstvo();
+        	sacuvanePopisnice.add(popisnica);
+        	SerijalizacijaPopisnica.serijalizujPopisniceZaDomacinstvo(sacuvanePopisnice);
+        	PrikazObavjestenja.prikaziInfo("Nema internet konekcije. Popisnica je sačuvana.");
         }
         catch(IOException e) {
         	e.printStackTrace();

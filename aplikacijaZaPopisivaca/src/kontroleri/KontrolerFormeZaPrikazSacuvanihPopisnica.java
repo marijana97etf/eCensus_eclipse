@@ -3,6 +3,7 @@ package kontroleri;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.net.ConnectException;
 import java.util.List;
 import java.util.Properties;
 
@@ -111,11 +112,25 @@ public class KontrolerFormeZaPrikazSacuvanihPopisnica {
 	        		KontrolerFormeZaPrijavu.korisnik.getKorisnickoIme(), KontrolerFormeZaPrijavu.korisnik.getLozinkaHash());
 	        
 			List<PopisnicaZaDomacinstvo> popisniceDomacinstvo = SerijalizacijaPopisnica.deserijalizujPopisniceZaDomacinstvo();
-			//poslati popisnice
+
+			for(PopisnicaZaDomacinstvo popisnica : popisniceDomacinstvo) {
+				glavniServer.obradiPopisniceZaDomacinstva(popisnica);
+				popisniceDomacinstvo.remove(popisnica);
+				
+			//   Kontrolnik kontrolnik = new Kontrolnik(popisnica.getIdPopisnogKruga(), popisnica.getIdOpstine(), 1, 1, popisnica.getBrojClanovaDomacinstva());
+			     //   cmisServer.azurirajKontrolnik(kontrolnik);
+			}
+			
+			SerijalizacijaPopisnica.serijalizujPopisniceZaDomacinstvo(popisniceDomacinstvo);
 			
 			List<PopisnicaZaStanovnika> popisniceStanovnistvo = SerijalizacijaPopisnica.deserijalizujPopisniceZaStanovnika();
-			//poslati popisnice
-			
+     	          
+			for(PopisnicaZaStanovnika popisnica : popisniceStanovnistvo) {
+		        glavniServer.obradiPopisniceZaStanovnike(popisnica);
+		      	popisniceStanovnistvo.remove(popisnica);
+			}
+
+			SerijalizacijaPopisnica.serijalizujPopisniceZaStanovnika(popisniceStanovnistvo);
 		}
 		catch(IOException e) {
 			e.printStackTrace();

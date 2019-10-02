@@ -15,6 +15,7 @@ import util.SerijalizacijaPopisnica;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.net.ConnectException;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -2134,20 +2135,12 @@ public class KontrolerFormeZaPopisivanjeStanovnika {
 	    	String keystoreLozinka = properties.getProperty("DEFAULT_KEYSTORE_PASSWORD");
 	    	String truststore = properties.getProperty("DEFAULT_TRUSTSTORE");
 	    	String truststoreLozinka = properties.getProperty("DEFAULT_TRUSTSTORE_PASSWORD");
-	        
-	        //PopisivacGlavniServerKlijent glavniServer = new PopisivacGlavniServerKlijent(keystore, keystoreLozinka, truststore, truststoreLozinka, 
-	        //		KontrolerFormeZaPrijavu.korisnik.getKorisnickoIme(), KontrolerFormeZaPrijavu.korisnik.getLozinkaHash());
-	          
+	        	          
 	    	PopisivacGlavniServerKlijent glavniServer = new PopisivacGlavniServerKlijent(KontrolerFormeZaPrijavu.korisnik);
 	    	
 	        int status = glavniServer.obradiPopisniceZaStanovnike(popisnica);
 	        
-	      	if(status == 404) {
-	      		SerijalizacijaPopisnica.serijalizujPopisnicuZaStanovnika(popisnica);
-	      		PrikazObavjestenja.prikaziInfo("Nema internet konekcije. Popisnica je sačuvana.");
-	      		KontrolerFormeZaRadPopisivaca.popisStanovnikaStage.close();
-	      	}
-	      	else if(status == 500) {
+	      	if(status == 500) {
 	      		PrikazObavjestenja.prikaziInfo("Podaci na popisnici nisu validni. Popisnica je odbačena.");
 	      		KontrolerFormeZaRadPopisivaca.popisStanovnikaStage.close();
 	      	}
@@ -2155,6 +2148,13 @@ public class KontrolerFormeZaPopisivanjeStanovnika {
 	      		PrikazObavjestenja.prikaziInfo("Popisnica je uspješno poslata.");
 	      		KontrolerFormeZaRadPopisivaca.popisStanovnikaStage.close();
 	      	}
+        }
+        catch(ConnectException e) {
+        	List<PopisnicaZaStanovnika> sacuvanePopisnice = SerijalizacijaPopisnica.deserijalizujPopisniceZaStanovnika();
+        	sacuvanePopisnice.add(popisnica);
+        	SerijalizacijaPopisnica.serijalizujPopisniceZaStanovnika(sacuvanePopisnice);
+      		PrikazObavjestenja.prikaziInfo("Nema internet konekcije. Popisnica je sačuvana.");
+      		KontrolerFormeZaRadPopisivaca.popisStanovnikaStage.close();
         }
         catch(IOException e) {
         	e.printStackTrace();

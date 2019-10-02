@@ -15,11 +15,9 @@ import model.PopisnicaZaStanovnika;
 
 public class SerijalizacijaPopisnica {
 	
-	public static void serijalizujPopisnicuZaStanovnika(PopisnicaZaStanovnika popisnica) {
+	public static void serijalizujPopisniceZaStanovnika(List<PopisnicaZaStanovnika> popisnice) {
 		File file = new File("." + File.separator + "sacuvanePopisnice" + File.separator + "stanovnistvo" + ".ser");
 		try {
-			List<PopisnicaZaStanovnika> popisnice = deserijalizujPopisniceZaStanovnika();
-			popisnice.add(popisnica);
 			ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream(file));
 			outputStream.writeObject(popisnice);
 			outputStream.close();
@@ -29,11 +27,9 @@ public class SerijalizacijaPopisnica {
 		}
 	}
 	
-	public static void serijalizujPopisnicuZaDomacinstvo(PopisnicaZaDomacinstvo popisnica) {
+	public static void serijalizujPopisniceZaDomacinstvo(List<PopisnicaZaDomacinstvo> popisnice) {
 		File file = new File("." + File.separator + "sacuvanePopisnice" + File.separator + "domacinstvo" + ".ser");
 		try {
-			List<PopisnicaZaDomacinstvo> popisnice = deserijalizujPopisniceZaDomacinstvo();
-			popisnice.add(popisnica);
 			ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream(file));
 			outputStream.writeObject(popisnice);
 			outputStream.close();
