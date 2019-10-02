@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TableColumn?>
@@ -17,21 +18,23 @@
 <GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: e6e6ff;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.kontroler_formi.KontrolerFormeZaPregledAktivnostiPopisivaca">
    <columnConstraints>
       <ColumnConstraints hgrow="ALWAYS" maxWidth="295.0" minWidth="10.0" percentWidth="14.0" prefWidth="239.0" />
-      <ColumnConstraints hgrow="ALWAYS" maxWidth="295.0" minWidth="10.0" percentWidth="67.0" prefWidth="239.0" />
-      <ColumnConstraints hgrow="ALWAYS" maxWidth="295.0" minWidth="10.0" percentWidth="88.0" prefWidth="239.0" />
-      <ColumnConstraints hgrow="ALWAYS" maxWidth="295.0" minWidth="10.0" percentWidth="44.0" prefWidth="239.0" />
+      <ColumnConstraints hgrow="ALWAYS" maxWidth="295.0" minWidth="10.0" percentWidth="55.0" prefWidth="239.0" />
+      <ColumnConstraints hgrow="ALWAYS" maxWidth="295.0" minWidth="10.0" percentWidth="91.0" prefWidth="239.0" />
+      <ColumnConstraints hgrow="ALWAYS" maxWidth="295.0" minWidth="10.0" percentWidth="53.0" prefWidth="239.0" />
       <ColumnConstraints hgrow="ALWAYS" maxWidth="386.0" minWidth="10.0" percentWidth="61.0" prefWidth="361.0" />
    </columnConstraints>
    <rowConstraints>
       <RowConstraints maxHeight="129.0" minHeight="10.0" prefHeight="49.0" vgrow="ALWAYS" />
-      <RowConstraints maxHeight="405.0" minHeight="10.0" prefHeight="48.333333333333336" vgrow="ALWAYS" />
-      <RowConstraints maxHeight="405.0" minHeight="10.0" prefHeight="45.000000000000014" vgrow="ALWAYS" />
+      <RowConstraints maxHeight="405.0" minHeight="10.0" prefHeight="53.666666666666664" vgrow="ALWAYS" />
+      <RowConstraints maxHeight="405.0" minHeight="10.0" prefHeight="34.33333333333334" vgrow="ALWAYS" />
       <RowConstraints maxHeight="405.0" minHeight="10.0" prefHeight="56.0" vgrow="ALWAYS" />
       <RowConstraints maxHeight="405.0" minHeight="10.0" prefHeight="56.0" vgrow="ALWAYS" />
-      <RowConstraints maxHeight="405.0" minHeight="10.0" prefHeight="56.0" vgrow="ALWAYS" />
-      <RowConstraints maxHeight="405.0" minHeight="10.0" prefHeight="56.0" vgrow="ALWAYS" />
-      <RowConstraints maxHeight="405.0" minHeight="10.0" prefHeight="54.33331298828125" vgrow="ALWAYS" />
-      <RowConstraints maxHeight="265.0" minHeight="10.0" prefHeight="77.66668701171875" vgrow="ALWAYS" />
+      <RowConstraints maxHeight="405.0" minHeight="10.0" prefHeight="119.99998982747397" vgrow="ALWAYS" />
+      <RowConstraints maxHeight="405.0" minHeight="9.333343505859375" prefHeight="9.333343505859375" vgrow="ALWAYS" />
+      <RowConstraints maxHeight="405.0" minHeight="10.0" prefHeight="29.33331298828125" vgrow="ALWAYS" />
+      <RowConstraints maxHeight="405.0" minHeight="3.333343505859375" prefHeight="3.333343505859375" vgrow="ALWAYS" />
+      <RowConstraints maxHeight="405.0" minHeight="10.0" prefHeight="30.3333740234375" vgrow="ALWAYS" />
+      <RowConstraints maxHeight="265.0" minHeight="10.0" prefHeight="78.33329264322919" vgrow="ALWAYS" />
    </rowConstraints>
    <children>
       <Label alignment="CENTER" prefHeight="48.0" prefWidth="575.0" text="Popis stanovništva, domaćinstava i stanova u Bosni i Hercegovini" GridPane.columnSpan="2147483647">
@@ -66,18 +69,22 @@
             <Font size="21.0" />
          </font>
       </Label>
-      <Button fx:id="povratak" mnemonicParsing="false" onAction="#povratak" prefHeight="39.0" prefWidth="101.0" text="Povratak" GridPane.columnIndex="1" GridPane.rowIndex="8">
+      <Button fx:id="povratak" mnemonicParsing="false" onAction="#povratak" prefHeight="39.0" prefWidth="101.0" text="Povratak" GridPane.columnIndex="1" GridPane.rowIndex="10">
          <font>
             <Font size="15.0" />
          </font>
       </Button>
-      <TableView fx:id="tabela" editable="true" prefHeight="328.0" prefWidth="371.0" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="2" GridPane.rowSpan="6">
+      <TableView fx:id="tabela" editable="true" prefHeight="242.0" prefWidth="508.0" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="2" GridPane.rowSpan="4">
         <columns>
-          <TableColumn fx:id="redniBrojColumn" prefWidth="48.66665267944336" text="RB" />
-          <TableColumn fx:id="datumColumn" editable="false" prefWidth="132.00000762939453" resizable="false" text="Datum" />
-            <TableColumn fx:id="brojKrugovaColumn" prefWidth="165.9999542236328" text="Broj popisnih krugova" />
-           <TableColumn fx:id="popisniKrugoviColumn" prefWidth="163.33340454101562" text="Dnevna aktivnost" />
+          <TableColumn fx:id="redniBrojColumn" prefWidth="37.33333969116211" text="RB" />
+          <TableColumn fx:id="datumColumn" editable="false" prefWidth="112.00000762939453" resizable="false" text="Datum" />
+            <TableColumn fx:id="brojPopisanihStanovnika" prefWidth="178.66664123535156" text="Broj popisnih stanovnika" />
+           <TableColumn fx:id="brojPopisanihDomacinstava" prefWidth="184.00003051757812" text="Broj popisanih domaćinstava" />
         </columns>
       </TableView>
+      <Label text="Odaberite popisivača:" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="7" />
+      <ChoiceBox fx:id="popisivaciChoiceBox" prefHeight="25.0" prefWidth="258.0" GridPane.columnIndex="2" GridPane.rowIndex="9" />
+      <Button fx:id="buttonOcjeni" mnemonicParsing="false" onAction="#ocijeniPopisivaca" text="Ocijeni popisivača" GridPane.columnIndex="4" GridPane.rowIndex="9" />
+      <Label fx:id="trenutnaOcjenaLabel" GridPane.columnIndex="4" GridPane.rowIndex="7" />
    </children>
 </GridPane>

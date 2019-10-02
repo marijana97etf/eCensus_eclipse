@@ -5,7 +5,6 @@
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -16,23 +15,24 @@
 <GridPane fx:id="grid" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: e6e6ff;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.kontroler_formi.KontrolerFormeZaDodjeluPopisnihKrugovaPopisivacu">
   <columnConstraints>
     <ColumnConstraints hgrow="ALWAYS" maxWidth="295.0" minWidth="10.0" percentWidth="32.0" prefWidth="239.0" />
-      <ColumnConstraints hgrow="ALWAYS" maxWidth="386.0" minWidth="10.0" percentWidth="81.0" prefWidth="361.0" />
-      <ColumnConstraints hgrow="ALWAYS" maxWidth="386.0" minWidth="10.0" percentWidth="70.0" prefWidth="361.0" />
-    <ColumnConstraints hgrow="ALWAYS" maxWidth="386.0" minWidth="10.0" percentWidth="37.0" prefWidth="361.0" />
+      <ColumnConstraints hgrow="ALWAYS" maxWidth="386.0" minWidth="10.0" percentWidth="58.0" prefWidth="361.0" />
+      <ColumnConstraints hgrow="ALWAYS" maxWidth="386.0" minWidth="10.0" percentWidth="69.0" prefWidth="361.0" />
+    <ColumnConstraints hgrow="ALWAYS" maxWidth="386.0" minWidth="10.0" percentWidth="61.0" prefWidth="361.0" />
       <ColumnConstraints hgrow="ALWAYS" maxWidth="386.0" minWidth="10.0" percentWidth="54.0" prefWidth="361.0" />
   </columnConstraints>
   <rowConstraints>
     <RowConstraints maxHeight="129.0" minHeight="0.0" prefHeight="49.333343505859375" vgrow="ALWAYS" />
     <RowConstraints maxHeight="405.0" minHeight="0.0" prefHeight="55.333338419596345" vgrow="ALWAYS" />
       <RowConstraints maxHeight="405.0" minHeight="0.0" prefHeight="48.33333333333334" vgrow="ALWAYS" />
-      <RowConstraints maxHeight="405.0" minHeight="10.0" prefHeight="40.33333333333334" vgrow="ALWAYS" />
-      <RowConstraints maxHeight="405.0" minHeight="10.0" prefHeight="24.666676839192718" vgrow="ALWAYS" />
-      <RowConstraints maxHeight="405.0" minHeight="10.0" prefHeight="35.66666666666666" vgrow="ALWAYS" />
-      <RowConstraints maxHeight="265.0" minHeight="10.0" prefHeight="41.66664632161459" vgrow="ALWAYS" />
-      <RowConstraints maxHeight="265.0" minHeight="10.0" prefHeight="30.333353678385436" vgrow="ALWAYS" />
-    <RowConstraints maxHeight="265.0" minHeight="10.0" prefHeight="52.333323160807254" vgrow="ALWAYS" />
-      <RowConstraints maxHeight="265.0" minHeight="10.0" prefHeight="51.333353678385436" vgrow="ALWAYS" />
-      <RowConstraints maxHeight="265.0" minHeight="10.0" prefHeight="85.33331298828125" vgrow="ALWAYS" />
+      <RowConstraints maxHeight="405.0" minHeight="10.0" prefHeight="20.666666666666657" vgrow="ALWAYS" />
+      <RowConstraints maxHeight="405.0" minHeight="10.0" prefHeight="37.666656494140625" vgrow="ALWAYS" />
+      <RowConstraints maxHeight="405.0" minHeight="10.0" prefHeight="36.00001017252603" vgrow="ALWAYS" />
+      <RowConstraints maxHeight="405.0" minHeight="10.0" prefHeight="21.333323160807282" vgrow="ALWAYS" />
+      <RowConstraints maxHeight="265.0" minHeight="10.0" prefHeight="34.66667683919269" vgrow="ALWAYS" />
+    <RowConstraints maxHeight="265.0" minHeight="10.0" prefHeight="41.333353678385436" vgrow="ALWAYS" />
+      <RowConstraints maxHeight="265.0" minHeight="10.0" prefHeight="50.0" vgrow="ALWAYS" />
+      <RowConstraints maxHeight="265.0" minHeight="10.0" prefHeight="27.999959309895814" vgrow="ALWAYS" />
+      <RowConstraints maxHeight="265.0" minHeight="10.0" prefHeight="72.66670735677081" vgrow="ALWAYS" />
   </rowConstraints>
    <children>
       <Label alignment="CENTER" prefHeight="48.0" prefWidth="599.0" text="Popis stanovništva, domaćinstava i stanova u Bosni i Hercegovini" GridPane.columnSpan="4">
@@ -57,44 +57,42 @@
             <Insets left="25.0" top="10.0" />
          </GridPane.margin>
       </Label>
-      <Button mnemonicParsing="false" onAction="#pronadjiPutanju" prefHeight="25.0" prefWidth="112.0" text="Pretraži" GridPane.columnIndex="3" GridPane.rowIndex="8">
-         <GridPane.margin>
-            <Insets left="10.0" />
-         </GridPane.margin>
-         <opaqueInsets>
-            <Insets left="10.0" />
-         </opaqueInsets>
-      </Button>
       <Label prefHeight="35.0" prefWidth="199.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-      <Label prefHeight="29.0" prefWidth="145.0" text="Odaberite popisivača:" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3">
+      <Label prefHeight="29.0" prefWidth="145.0" text="Odaberite popisivača:" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <ChoiceBox fx:id="PopisivacChoiceBox" prefHeight="25.0" prefWidth="233.0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
-      <TextField fx:id="pathText" prefHeight="25.0" prefWidth="143.0" GridPane.columnIndex="2" GridPane.rowIndex="8" />
-      <Label prefHeight="33.0" prefWidth="189.0" text="Putanja slike popisnog kruga:" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="8">
+      <ChoiceBox fx:id="popisivaciChoiceBox" prefHeight="25.0" prefWidth="233.0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+      <Label prefHeight="20.0" prefWidth="61.0" text="Općina:" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label prefHeight="20.0" prefWidth="61.0" text="Općina:" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="6">
+      <Label prefHeight="20.0" prefWidth="43.0" text="Grad:" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label prefHeight="20.0" prefWidth="43.0" text="Grad:" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
-      <ChoiceBox fx:id="GradChoiceBox" prefHeight="25.0" prefWidth="223.0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
-      <ChoiceBox fx:id="OpstinaChoiceBox" prefHeight="25.0" prefWidth="226.0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="6" />
-      <Button mnemonicParsing="false" onAction="#dodajPopisniKrug" prefHeight="25.0" prefWidth="196.0" text="Dodaj popisni krug" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowIndex="10">
+      <ChoiceBox fx:id="GradChoiceBox" prefHeight="25.0" prefWidth="223.0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
+      <ChoiceBox fx:id="OpstinaChoiceBox" prefHeight="25.0" prefWidth="226.0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="5" />
+      <Button mnemonicParsing="false" onAction="#dodjeliPopisniKrug" prefHeight="25.0" prefWidth="196.0" text="Dodjeli popisni krug" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowIndex="11">
          <opaqueInsets>
             <Insets left="50.0" />
          </opaqueInsets>
       </Button>
-      <Button mnemonicParsing="false" onAction="#povratak" prefHeight="25.0" prefWidth="81.0" text="Povratak" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+      <Button mnemonicParsing="false" onAction="#povratak" prefHeight="25.0" prefWidth="81.0" text="Povratak" GridPane.columnIndex="1" GridPane.rowIndex="11" />
+      <ImageView fx:id="slikaPopisnogKruga" fitHeight="109.0" fitWidth="146.0" onMouseClicked="#uvecajSliku" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="9" GridPane.valignment="CENTER" />
+      <Label text="Odaberite sliku popisnog kruga:" GridPane.columnIndex="2" GridPane.rowIndex="7" />
+      <ImageView fitHeight="30.0" fitWidth="30.0" onMouseClicked="#prethodniPopisniKrug" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="9">
+         <image>
+            <Image url="@../../resources/back.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="30.0" fitWidth="30.0" onMouseClicked="#sljedeciPopisniKrug" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.halignment="LEFT" GridPane.rowIndex="9">
+         <image>
+            <Image url="@../../resources/next.png" />
+         </image>
+      </ImageView>
    </children>
 </GridPane>

@@ -2,43 +2,100 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="39ef7d2c-a72f-4f61-8f0c-408abc73d0d2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/config.properties" beforeDir="false" afterPath="$PROJECT_DIR$/resources/config.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/controller/kontroler_formi/KontrolerFormeZaDodjeluPopisnihKrugovaPopisivacu$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/controller/kontroler_formi/KontrolerFormeZaDodjeluPopisnihKrugovaPopisivacu.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/controller/kontroler_formi/KontrolerFormeZaDodjeluPopisnihKrugovaPopisivacu.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/controller/kontroler_formi/KontrolerFormeZaIzmjenuNalogaClanaPKLS.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/controller/kontroler_formi/KontrolerFormeZaIzmjenuNalogaClanaPKLS.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/controller/kontroler_formi/KontrolerFormeZaIzmjenuNalogaDEInstruktora.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/controller/kontroler_formi/KontrolerFormeZaIzmjenuNalogaDEInstruktora.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/controller/kontroler_formi/KontrolerFormeZaIzmjenuNalogaOGInstruktora.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/controller/kontroler_formi/KontrolerFormeZaIzmjenuNalogaOGInstruktora.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/controller/kontroler_formi/KontrolerFormeZaIzmjenuNalogaPopisivaca.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/controller/kontroler_formi/KontrolerFormeZaIzmjenuNalogaPopisivaca.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/controller/kontroler_formi/KontrolerFormeZaOdabirJezika.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/controller/kontroler_formi/KontrolerFormeZaOdabirJezika.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/controller/kontroler_formi/KontrolerFormeZaPregledAktivnostiPopisivaca$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/controller/kontroler_formi/KontrolerFormeZaPregledAktivnostiPopisivaca.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/controller/kontroler_formi/KontrolerFormeZaPregledAktivnostiPopisivaca.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/controller/kontroler_formi/KontrolerFormeZaPregledDEInstruktora$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/controller/kontroler_formi/KontrolerFormeZaPregledDEInstruktora$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/controller/kontroler_formi/KontrolerFormeZaPregledDEInstruktora.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/controller/kontroler_formi/KontrolerFormeZaPregledDEInstruktora.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/controller/kontroler_formi/KontrolerFormeZaPregledNaloga$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/controller/kontroler_formi/KontrolerFormeZaPregledNaloga$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/controller/kontroler_formi/KontrolerFormeZaPregledNaloga$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/controller/kontroler_formi/KontrolerFormeZaPregledNaloga$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/controller/kontroler_formi/KontrolerFormeZaPregledNaloga.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/controller/kontroler_formi/KontrolerFormeZaPregledNaloga.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/controller/kontroler_formi/KontrolerFormeZaPregledNalogaClanovaPKLS$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/controller/kontroler_formi/KontrolerFormeZaPregledNalogaClanovaPKLS$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/controller/kontroler_formi/KontrolerFormeZaPregledNalogaClanovaPKLS.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/controller/kontroler_formi/KontrolerFormeZaPregledNalogaClanovaPKLS.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/controller/kontroler_formi/KontrolerFormeZaPregledNalogaOGInstruktora$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/controller/kontroler_formi/KontrolerFormeZaPregledNalogaOGInstruktora$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/controller/kontroler_formi/KontrolerFormeZaPregledNalogaOGInstruktora.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/controller/kontroler_formi/KontrolerFormeZaPregledNalogaOGInstruktora.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/controller/kontroler_formi/KontrolerFormeZaPregledNalogaPopisivaca$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/controller/kontroler_formi/KontrolerFormeZaPregledNalogaPopisivaca$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/controller/kontroler_formi/KontrolerFormeZaPregledNalogaPopisivaca.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/controller/kontroler_formi/KontrolerFormeZaPregledNalogaPopisivaca.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/controller/kontroler_formi/KontrolerFormeZaPregledObidjenihPopisnihKrugova.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/controller/kontroler_formi/KontrolerFormeZaPregledStatistickihPodataka.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/controller/kontroler_formi/KontrolerFormeZaPregledStatistickihPodataka.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/controller/kontroler_formi/KontrolerFormeZaPrijavu.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/controller/kontroler_formi/KontrolerFormeZaPrijavu.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/controller/kontroler_formi/KontrolerFormeZaRadAdministratoraAgencije$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/controller/kontroler_formi/KontrolerFormeZaRadAdministratoraAgencije$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/controller/kontroler_formi/KontrolerFormeZaRadAdministratoraAgencije.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/controller/kontroler_formi/KontrolerFormeZaRadAdministratoraAgencije.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/controller/kontroler_formi/KontrolerFormeZaRadClanaPKLS$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/controller/kontroler_formi/KontrolerFormeZaRadClanaPKLS$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/controller/kontroler_formi/KontrolerFormeZaRadClanaPKLS.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/controller/kontroler_formi/KontrolerFormeZaRadClanaPKLS.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/controller/kontroler_formi/KontrolerFormeZaRadDEInstruktora$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/controller/kontroler_formi/KontrolerFormeZaRadDEInstruktora$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/controller/kontroler_formi/KontrolerFormeZaRadDEInstruktora.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/controller/kontroler_formi/KontrolerFormeZaRadDEInstruktora.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/controller/kontroler_formi/KontrolerFormeZaRadOGInstruktora$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/controller/kontroler_formi/KontrolerFormeZaRadOGInstruktora$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/controller/kontroler_formi/KontrolerFormeZaRadOGInstruktora.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/controller/kontroler_formi/KontrolerFormeZaRadOGInstruktora.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/controller/kontroler_formi/KontrolerFormeZaRegistracijuClanaPKLS$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/controller/kontroler_formi/KontrolerFormeZaRegistracijuClanaPKLS$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/controller/kontroler_formi/KontrolerFormeZaRegistracijuClanaPKLS.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/controller/kontroler_formi/KontrolerFormeZaRegistracijuClanaPKLS.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/controller/kontroler_formi/KontrolerFormeZaRegistracijuDEInstruktora$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/controller/kontroler_formi/KontrolerFormeZaRegistracijuDEInstruktora$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/controller/kontroler_formi/KontrolerFormeZaRegistracijuDEInstruktora.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/controller/kontroler_formi/KontrolerFormeZaRegistracijuDEInstruktora.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/controller/kontroler_formi/KontrolerFormeZaRegistracijuOGInstruktora$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/controller/kontroler_formi/KontrolerFormeZaRegistracijuOGInstruktora$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/controller/kontroler_formi/KontrolerFormeZaRegistracijuOGInstruktora.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/controller/kontroler_formi/KontrolerFormeZaRegistracijuOGInstruktora.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/controller/kontroler_formi/KontrolerFormeZaRegistracijuPopisivaca$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/controller/kontroler_formi/KontrolerFormeZaRegistracijuPopisivaca$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/controller/kontroler_formi/KontrolerFormeZaRegistracijuPopisivaca.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/controller/kontroler_formi/KontrolerFormeZaRegistracijuPopisivaca.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/controller/kontroler_formi/KontrolerFormeZaUspjesnuPromjenuJezikaIPisma.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/controller/kontroler_formi/KontrolerFormeZaUspjesnuPromjenuJezikaIPisma.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/model/korisnicki_nalozi/Administrator.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/model/korisnicki_nalozi/Administrator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/model/korisnicki_nalozi/AdministratorAgencije.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/model/korisnicki_nalozi/AdministratorAgencije.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/model/korisnicki_nalozi/ClanPKLS.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/model/korisnicki_nalozi/ClanPKLS.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/model/korisnicki_nalozi/DEInstruktor$DRZAVA.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/model/korisnicki_nalozi/DEInstruktor$DRZAVA.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/model/korisnicki_nalozi/DEInstruktor$ENTITET.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/model/korisnicki_nalozi/DEInstruktor$ENTITET.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/model/korisnicki_nalozi/DEInstruktor.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/model/korisnicki_nalozi/DEInstruktor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/model/korisnicki_nalozi/KorisnikSistema.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/model/korisnicki_nalozi/KorisnikSistema.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/model/korisnicki_nalozi/OGInstruktor.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/model/korisnicki_nalozi/OGInstruktor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/model/korisnicki_nalozi/Popisivac.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/model/korisnicki_nalozi/Popisivac.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/model/korisnicki_nalozi/PowerUser.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/model/korisnicki_nalozi/PowerUser.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/model/pracenje_popisa/Izvjestaj.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/model/pracenje_popisa/Izvjestaj.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/model/pracenje_popisa/izvjestaji_o_popisivacu/Aktivnost.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/model/pracenje_popisa/izvjestaji_o_popisivacu/Aktivnost.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/model/pracenje_popisa/izvjestaji_o_popisivacu/CjelokupnaAktivnost.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/model/pracenje_popisa/izvjestaji_o_popisivacu/CjelokupnaAktivnost.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/model/pracenje_popisa/izvjestaji_o_popisivacu/DnevnaAktivnost.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/model/pracenje_popisa/izvjestaji_o_popisivacu/DnevnaAktivnost.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/model/pracenje_popisa/izvjestaji_o_popisivacu/IzvjestajOPopisivacu.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/model/pracenje_popisa/izvjestaji_o_popisivacu/IzvjestajOPopisivacu.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/model/pracenje_popisa/izvjestaji_o_popisivacu/Kontrolnik.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/model/pracenje_popisa/izvjestaji_o_popisivacu/Kontrolnik.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/model/pracenje_popisa/izvjestaji_o_popisivacu/PopisniKrug.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/model/pracenje_popisa/izvjestaji_o_popisivacu/PopisniKrug.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/model/pracenje_popisa/izvjestaji_o_popisivacu/Popisnica.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/model/pracenje_popisa/izvjestaji_o_popisivacu/Popisnica.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/model/pracenje_popisa/izvjestaji_o_popisivacu/PopisnicaODomacinstvu.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/model/pracenje_popisa/izvjestaji_o_popisivacu/PopisnicaODomacinstvu.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/model/pracenje_popisa/izvjestaji_o_popisivacu/PopisnicaOStanovniku.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/model/pracenje_popisa/izvjestaji_o_popisivacu/PopisnicaOStanovniku.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/model/table_input_models/AdministratorAgencijeInputModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/model/table_input_models/AdministratorAgencijeInputModel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/model/table_input_models/AktivnostInputModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/model/table_input_models/AktivnostInputModel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/model/table_input_models/ClanPKLSInputModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/model/table_input_models/ClanPKLSInputModel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/model/table_input_models/DEInstruktorInputModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/model/table_input_models/DEInstruktorInputModel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/model/table_input_models/KorisnikInputModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/model/table_input_models/KorisnikInputModel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/model/table_input_models/OGInstruktorInputModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/model/table_input_models/OGInstruktorInputModel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/model/table_input_models/PopisivacInputModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/model/table_input_models/PopisivacInputModel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/model/table_input_models/PopisniKrugInputModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/model/table_input_models/PopisniKrugInputModel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/test/Aplikacija.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/test/Aplikacija.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/util/ConnectionLogger.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/util/ConnectionLogger.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/util/GradoviCollection.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/util/GradoviCollection.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/util/OpstineCollection.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/util/OpstineCollection.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/util/PromjenaJezika.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/util/PromjenaJezika.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/util/PromjenaPisma.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/util/PromjenaPisma.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/util/SecureLozinkaFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/util/SecureLozinkaFactory.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/view/FormaZaDodjeluPopisnihKrugovaPopisivacu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/bin/view/FormaZaDodjeluPopisnihKrugovaPopisivacu.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/view/FormaZaPregledAktivnostiPopisivaca.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/bin/view/FormaZaPregledAktivnostiPopisivaca.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/view/FormaZaPregledObidjenihPopisnihKrugova.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/view/FormaZaPromjenuJezika.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/view/FormaZaPromjenuPisma.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/view/FormaZaRadClanaPKLS.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/bin/view/FormaZaRadClanaPKLS.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/error.log" beforeDir="false" afterPath="$PROJECT_DIR$/resources/error.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/error.log.1" beforeDir="false" afterPath="$PROJECT_DIR$/resources/error.log.1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/error.log.1.lck" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/error.log.2" beforeDir="false" afterPath="$PROJECT_DIR$/resources/error.log.2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/error.log.2.lck" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/kontroler_formi/KontrolerFormeZaDodjeluPopisnihKrugovaPopisivacu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/kontroler_formi/KontrolerFormeZaDodjeluPopisnihKrugovaPopisivacu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/kontroler_formi/KontrolerFormeZaIzmjenuNalogaClanaPKLS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/kontroler_formi/KontrolerFormeZaIzmjenuNalogaClanaPKLS.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/kontroler_formi/KontrolerFormeZaIzmjenuNalogaDEInstruktora.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/kontroler_formi/KontrolerFormeZaIzmjenuNalogaDEInstruktora.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/kontroler_formi/KontrolerFormeZaIzmjenuNalogaOGInstruktora.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/kontroler_formi/KontrolerFormeZaIzmjenuNalogaOGInstruktora.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/kontroler_formi/KontrolerFormeZaIzmjenuNalogaPopisivaca.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/kontroler_formi/KontrolerFormeZaIzmjenuNalogaPopisivaca.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/kontroler_formi/KontrolerFormeZaOdabirJezika.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/kontroler_formi/KontrolerFormeZaOdabirJezika.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/kontroler_formi/KontrolerFormeZaPregledAktivnostiPopisivaca.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/kontroler_formi/KontrolerFormeZaPregledAktivnostiPopisivaca.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/kontroler_formi/KontrolerFormeZaPregledNaloga.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/kontroler_formi/KontrolerFormeZaPregledNaloga.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/kontroler_formi/KontrolerFormeZaPregledObidjenihPopisnihKrugova.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/kontroler_formi/KontrolerFormeZaPregledObidjenihPopisnihKrugova.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/kontroler_formi/KontrolerFormeZaPregledStatistickihPodataka.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/kontroler_formi/KontrolerFormeZaPregledStatistickihPodataka.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/kontroler_formi/KontrolerFormeZaPrijavu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/kontroler_formi/KontrolerFormeZaPrijavu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/kontroler_formi/KontrolerFormeZaRegistracijuClanaPKLS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/kontroler_formi/KontrolerFormeZaRegistracijuClanaPKLS.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/kontroler_formi/KontrolerFormeZaRegistracijuDEInstruktora.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/kontroler_formi/KontrolerFormeZaRegistracijuDEInstruktora.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/kontroler_formi/KontrolerFormeZaRegistracijuOGInstruktora.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/kontroler_formi/KontrolerFormeZaRegistracijuOGInstruktora.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/kontroler_formi/KontrolerFormeZaRegistracijuPopisivaca.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/kontroler_formi/KontrolerFormeZaRegistracijuPopisivaca.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/table_input_models/AdministratorAgencijeInputModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/table_input_models/AdministratorAgencijeInputModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/kontroler_formi/KontrolerFormeZaPregledObidjenihPopisnihKrugova.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/kontroler_formi/KontrolerFormeZaRadClanaPKLS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/kontroler_formi/KontrolerFormeZaRadClanaPKLS.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/pracenje_popisa/izvjestaji_o_popisivacu/PopisniKrug.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/pracenje_popisa/izvjestaji_o_popisivacu/PopisniKrug.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/table_input_models/AktivnostInputModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/table_input_models/AktivnostInputModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/table_input_models/ClanPKLSInputModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/table_input_models/ClanPKLSInputModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/table_input_models/DEInstruktorInputModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/table_input_models/DEInstruktorInputModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/table_input_models/OGInstruktorInputModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/table_input_models/OGInstruktorInputModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/table_input_models/PopisivacInputModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/table_input_models/PopisivacInputModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/Aplikacija.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/Aplikacija.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/FormaZaDodjeluPopisnihKrugovaPopisivacu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/FormaZaDodjeluPopisnihKrugovaPopisivacu.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/FormaZaPregledAktivnostiPopisivaca.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/FormaZaPregledAktivnostiPopisivaca.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/FormaZaPregledStatistickihPodataka.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/FormaZaPregledStatistickihPodataka.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/FormaZaRadAdministratoraAgencije.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/FormaZaRadAdministratoraAgencije.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/FormaZaPregledObidjenihPopisnihKrugova.fxml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/FormaZaRadClanaPKLS.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/FormaZaRadClanaPKLS.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/FormaZaRadDEInstruktora.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/FormaZaRadDEInstruktora.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/FormaZaRadOGInstruktora.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/FormaZaRadOGInstruktora.fxml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -125,15 +182,6 @@
       <updated>1569264953495</updated>
     </task>
     <servers />
-  </component>
-  <component name="TodoView">
-    <todo-panel id="selected-file">
-      <is-autoscroll-to-source value="true" />
-    </todo-panel>
-    <todo-panel id="all">
-      <are-packages-shown value="true" />
-      <is-autoscroll-to-source value="true" />
-    </todo-panel>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">

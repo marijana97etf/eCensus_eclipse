@@ -99,4 +99,20 @@ public class KontrolerFormeZaRadClanaPKLS implements Initializable {
             Aplikacija.connLogger.getLogger().log(Level.WARNING, "Neuspješno čitanje forme.");
         }
     }
+
+    public void dodajPopisneKrugove(ActionEvent actionEvent) {
+        try {
+            Aplikacija.getStage().setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/FormaZaDodavanjePopisnihKrugova.fxml"))));
+        } catch (IOException e) {
+            Aplikacija.connLogger.getLogger().log(Level.WARNING, "Neuspješno čitanje forme.");
+        }
+    }
+
+    public void dodjeliPopisneKrugovePopisivacu(ActionEvent actionEvent) {
+        try {
+            Aplikacija.getStage().setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/FormaZaDodjeluPopisnihKrugovaPopisivacu.fxml"))));
+        } catch (IOException e) {
+            Aplikacija.connLogger.getLogger().log(Level.WARNING, "Neuspješno čitanje forme.");
+        }
+    }
 }

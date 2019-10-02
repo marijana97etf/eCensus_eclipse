@@ -2,3 +2,337 @@
 <!DOCTYPE log SYSTEM "logger.dtd">
 <log>
 </log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2019-10-02T12:21:59.909205700Z</date>
+  <millis>1570018919909</millis>
+  <nanos>205700</nanos>
+  <sequence>0</sequence>
+  <logger>Main</logger>
+  <level>WARNING</level>
+  <class>controller.kontroler_formi.KontrolerFormeZaPregledAktivnostiPopisivaca</class>
+  <method>povratak</method>
+  <thread>16</thread>
+  <message>NeuspjeÅ¡no Ä�itanje forme.</message>
+</record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2019-10-02T14:37:32.375586500Z</date>
+  <millis>1570027052375</millis>
+  <nanos>586500</nanos>
+  <sequence>0</sequence>
+  <logger>Main</logger>
+  <level>WARNING</level>
+  <class>controller.kontroler_formi.KontrolerFormeZaDodavanjePopisnihKrugova</class>
+  <method>skoci</method>
+  <thread>16</thread>
+  <message>NeuspjeÅ¡no Ä�itanje forme.</message>
+</record>
+<record>
+  <date>2019-10-02T14:38:24.786615600Z</date>
+  <millis>1570027104786</millis>
+  <nanos>615600</nanos>
+  <sequence>1</sequence>
+  <logger>Main</logger>
+  <level>WARNING</level>
+  <class>controller.kontroler_formi.KontrolerFormeZaDodavanjePopisnihKrugova</class>
+  <method>skoci</method>
+  <thread>16</thread>
+  <message>NeuspjeÅ¡no Ä�itanje forme.</message>
+</record>
+<record>
+  <date>2019-10-02T14:38:25.110012600Z</date>
+  <millis>1570027105110</millis>
+  <nanos>12600</nanos>
+  <sequence>2</sequence>
+  <logger>Main</logger>
+  <level>WARNING</level>
+  <class>controller.kontroler_formi.KontrolerFormeZaDodavanjePopisnihKrugova</class>
+  <method>skoci</method>
+  <thread>16</thread>
+  <message>NeuspjeÅ¡no Ä�itanje forme.</message>
+</record>
+<record>
+  <date>2019-10-02T14:38:25.296328600Z</date>
+  <millis>1570027105296</millis>
+  <nanos>328600</nanos>
+  <sequence>3</sequence>
+  <logger>Main</logger>
+  <level>WARNING</level>
+  <class>controller.kontroler_formi.KontrolerFormeZaDodavanjePopisnihKrugova</class>
+  <method>skoci</method>
+  <thread>16</thread>
+  <message>NeuspjeÅ¡no Ä�itanje forme.</message>
+</record>
+<record>
+  <date>2019-10-02T14:38:42.284342500Z</date>
+  <millis>1570027122284</millis>
+  <nanos>342500</nanos>
+  <sequence>4</sequence>
+  <logger>Main</logger>
+  <level>WARNING</level>
+  <class>controller.kontroler_formi.KontrolerFormeZaDodavanjePopisnihKrugova</class>
+  <method>povratak</method>
+  <thread>16</thread>
+  <message>NeuspjeÅ¡no Ä�itanje forme.</message>
+</record>
+<record>
+  <date>2019-10-02T14:38:50.471292500Z</date>
+  <millis>1570027130471</millis>
+  <nanos>292500</nanos>
+  <sequence>5</sequence>
+  <logger>Main</logger>
+  <level>WARNING</level>
+  <class>controller.kontroler_formi.KontrolerFormeZaDodavanjePopisnihKrugova</class>
+  <method>skoci</method>
+  <thread>16</thread>
+  <message>NeuspjeÅ¡no Ä�itanje forme.</message>
+</record>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2019-10-02T14:39:39.383363800Z</date>
+  <millis>1570027179383</millis>
+  <nanos>363800</nanos>
+  <sequence>0</sequence>
+  <logger>Main</logger>
+  <level>WARNING</level>
+  <class>controller.kontroler_formi.KontrolerFormeZaDodavanjePopisnihKrugova</class>
+  <method>skoci</method>
+  <thread>16</thread>
+  <message>NeuspjeÅ¡no Ä�itanje forme.</message>
+</record>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2019-10-02T15:18:18.154704900Z</date>
+  <millis>1570029498154</millis>
+  <nanos>704900</nanos>
+  <sequence>0</sequence>
+  <logger>Main</logger>
+  <level>WARNING</level>
+  <class>controller.kontroler_formi.KontrolerFormeZaDodavanjePopisnihKrugova</class>
+  <method>skoci</method>
+  <thread>16</thread>
+  <message>NeuspjeÅ¡no Ä�itanje forme.</message>
+</record>
+<record>
+  <date>2019-10-02T15:18:23.543293Z</date>
+  <millis>1570029503543</millis>
+  <nanos>293000</nanos>
+  <sequence>1</sequence>
+  <logger>Main</logger>
+  <level>WARNING</level>
+  <class>controller.kontroler_formi.KontrolerFormeZaDodavanjePopisnihKrugova</class>
+  <method>skoci</method>
+  <thread>16</thread>
+  <message>NeuspjeÅ¡no Ä�itanje forme.</message>
+</record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2019-10-02T17:03:11.153307700Z</date>
+  <millis>1570035791153</millis>
+  <nanos>307700</nanos>
+  <sequence>0</sequence>
+  <logger>Main</logger>
+  <level>WARNING</level>
+  <class>controller.kontroler_formi.KontrolerFormeZaDodavanjePopisnihKrugova</class>
+  <method>dodajPopisniKrug</method>
+  <thread>16</thread>
+  <message>Nepostojeća slika</message>
+</record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2019-10-02T17:22:23.392001600Z</date>
+  <millis>1570036943392</millis>
+  <nanos>1600</nanos>
+  <sequence>0</sequence>
+  <logger>Main</logger>
+  <level>WARNING</level>
+  <class>controller.kontroler_formi.KontrolerFormeZaDodavanjePopisnihKrugova</class>
+  <method>dodajPopisniKrug</method>
+  <thread>16</thread>
+  <message>Nepostojeća slika</message>
+</record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2019-10-02T17:38:41.944002100Z</date>
+  <millis>1570037921944</millis>
+  <nanos>2100</nanos>
+  <sequence>0</sequence>
+  <logger>Main</logger>
+  <level>WARNING</level>
+  <class>controller.kontroler_formi.KontrolerFormeZaDodavanjePopisnihKrugova</class>
+  <method>dodajPopisniKrug</method>
+  <thread>16</thread>
+  <message>Nepostojeća slika</message>
+</record>
+<record>
+  <date>2019-10-02T17:39:52.624885800Z</date>
+  <millis>1570037992624</millis>
+  <nanos>885800</nanos>
+  <sequence>1</sequence>
+  <logger>Main</logger>
+  <level>WARNING</level>
+  <class>controller.kontroler_formi.KontrolerFormeZaDodjeluPopisnihKrugovaPopisivacu</class>
+  <method>povratak</method>
+  <thread>16</thread>
+  <message>NeuspjeÅ¡no Ä�itanje forme.</message>
+</record>
+<record>
+  <date>2019-10-02T17:39:53.754417700Z</date>
+  <millis>1570037993754</millis>
+  <nanos>417700</nanos>
+  <sequence>2</sequence>
+  <logger>Main</logger>
+  <level>WARNING</level>
+  <class>controller.kontroler_formi.KontrolerFormeZaDodjeluPopisnihKrugovaPopisivacu</class>
+  <method>povratak</method>
+  <thread>16</thread>
+  <message>NeuspjeÅ¡no Ä�itanje forme.</message>
+</record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+</log>

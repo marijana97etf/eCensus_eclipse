@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<AnchorPane prefHeight="173.0" prefWidth="249.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.kontroler_formi.KontrolerFormeZaOcjenuPopisivaca">
+   <children>
+      <GridPane layoutY="6.0" prefHeight="167.0" prefWidth="249.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="88.66668701171875" minWidth="10.0" prefWidth="19.999959309895836" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="132.00002034505206" minWidth="10.0" prefWidth="99.33333333333333" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="135.99997965494794" minWidth="10.0" prefWidth="114.99999999999999" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="78.3333740234375" minWidth="10.0" prefWidth="21.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="35.666656494140625" minHeight="10.0" prefHeight="35.666656494140625" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="40.0" minHeight="10.0" prefHeight="35.333343505859375" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="40.0" minHeight="10.0" prefHeight="32.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="29.333343505859375" minHeight="10.0" prefHeight="22.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="40.666656494140625" minHeight="10.0" prefHeight="40.666656494140625" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label prefHeight="17.0" prefWidth="107.0" text="Ocijeni popisivača:" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.halignment="CENTER" />
+            <Label prefHeight="17.0" prefWidth="91.0" text="Korisničko ime:" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label text="Ocjena:" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <ChoiceBox fx:id="ocjena" prefWidth="150.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <Label fx:id="username" prefHeight="17.0" prefWidth="118.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <Button minHeight="-Infinity" mnemonicParsing="false" onAction="#ocijeni" prefHeight="23.0" prefWidth="213.0" text="Ocijeni" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="4">
+               <padding>
+                  <Insets bottom="1.0" />
+               </padding>
+            </Button>
+         </children>
+      </GridPane>
+   </children>
+</AnchorPane>

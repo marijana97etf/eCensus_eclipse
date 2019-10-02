@@ -10,26 +10,14 @@ import test.Aplikacija;
 public class AktivnostInputModel {
     protected Integer id;
     protected SimpleStringProperty datum;
-    protected SimpleObjectProperty<Button> popisniKrugovi;
-    protected SimpleIntegerProperty broj;
-    protected DnevnaAktivnost aktivnost;
-
+    protected SimpleIntegerProperty brojPopisanihStanovnika;
+    protected SimpleIntegerProperty brojPopisanihDomacinstava;
 
     public AktivnostInputModel(DnevnaAktivnost aktivnost) {
         id=1;
         datum = new SimpleStringProperty(aktivnost.getDan().toString());
-        Button b = new Button();
-        b.setText(Aplikacija.prevediRecenicu("Pregledaj popisne krugove"));
-        popisniKrugovi = new SimpleObjectProperty<>(b);
-        this.aktivnost = aktivnost;
-    }
-
-    public DnevnaAktivnost getAktivnost() {
-        return aktivnost;
-    }
-
-    public void setAktivnost(DnevnaAktivnost aktivnost) {
-        this.aktivnost = aktivnost;
+        brojPopisanihStanovnika = new SimpleIntegerProperty(aktivnost.getBrojPopisanihStanovnika());
+        brojPopisanihDomacinstava = new SimpleIntegerProperty(aktivnost.getBrojPopisanihDomacinstava());
     }
 
     public Integer getId() {
@@ -48,39 +36,31 @@ public class AktivnostInputModel {
         return datum;
     }
 
-    public SimpleIntegerProperty brojKrugovaProperty() {
-        /*if(aktivnost.getObidjeniPopisniKrugovi()!=null)
-            return  new SimpleIntegerProperty(aktivnost.getObidjeniPopisniKrugovi().size());
-        else
-            return new SimpleIntegerProperty(0);*/
-    	return new SimpleIntegerProperty(0);
-    }
-
     public void setDatum(String datum) {
         this.datum.set(datum);
     }
 
-    public Button getPopisniKrugovi() {
-        return popisniKrugovi.get();
+    public int getBrojPopisanihStanovnika() {
+        return brojPopisanihStanovnika.get();
     }
 
-    public SimpleObjectProperty<Button> popisniKrugoviProperty() {
-        return popisniKrugovi;
+    public SimpleIntegerProperty brojPopisanihStanovnikaProperty() {
+        return brojPopisanihStanovnika;
     }
 
-    public void setObidjeniPopisniKrugovi(Button obidjeniPopisniKrugovi) {
-        this.popisniKrugovi.set(obidjeniPopisniKrugovi);
+    public void setBrojPopisanihStanovnika(int brojPopisanihStanovnika) {
+        this.brojPopisanihStanovnika.set(brojPopisanihStanovnika);
     }
 
-    public int getBroj() {
-        return broj.get();
+    public int getBrojPopisanihDomacinstava() {
+        return brojPopisanihDomacinstava.get();
     }
 
-    public SimpleIntegerProperty brojProperty() {
-        return broj;
+    public SimpleIntegerProperty brojPopisanihDomacinstavaProperty() {
+        return brojPopisanihDomacinstava;
     }
 
-    public void setBroj(int broj) {
-        this.broj.set(broj);
+    public void setBrojPopisanihDomacinstava(int brojPopisanihDomacinstava) {
+        this.brojPopisanihDomacinstava.set(brojPopisanihDomacinstava);
     }
 }

@@ -2,19 +2,20 @@ package controller.kontroler_formi;
 
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import model.korisnicki_nalozi.DEInstruktor;
+import model.korisnicki_nalozi.KorisnikSistema;
 import model.korisnicki_nalozi.OGInstruktor;
+import model.korisnicki_nalozi.Popisivac;
 import model.pracenje_popisa.izvjestaji_o_popisivacu.DnevnaAktivnost;
-import model.pracenje_popisa.izvjestaji_o_popisivacu.PopisniKrug;
 import model.table_input_models.AktivnostInputModel;
 import test.Aplikacija;
 
@@ -23,57 +24,73 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.util.*;
 import java.util.logging.Level;
+import java.util.stream.Collectors;
 
 public class KontrolerFormeZaPregledAktivnostiPopisivaca implements Initializable {
 
-    public TableColumn redniBrojColumn;
-    public TableColumn datumColumn;
-    public TableColumn brojKrugovaColumn;
-    public TableColumn popisniKrugoviColumn;
-    public TableView tabela;
+    public TableView<AktivnostInputModel> tabela;
+    public TableColumn<?,?> redniBrojColumn;
+    public TableColumn<?,?> datumColumn;
+    public TableColumn<?,?> brojPopisanihStanovnika;
+    public TableColumn<?,?> brojPopisanihDomacinstava;
+    public ChoiceBox<String> popisivaciChoiceBox;
+    public Label trenutnaOcjenaLabel;
+    public Button buttonOcjeni;
 
-    public static DnevnaAktivnost dnevnaAktivnostForShow;
-    public static LocalDate datumForShow;
-
-    protected ObservableList<AktivnostInputModel> lista;
+    public List<Popisivac> listaPopisivaca;
+    public static Popisivac popisivacStatic;
+    public static Stage stageStatic;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
-        getListaFromServer();
-        for(int i=0; i<lista.size(); i++)
-        {
-            lista.get(i).setId(i+1);
-            var wrapper = new Object() {int j;};
-            wrapper.j=i;
-            lista.get(i).getPopisniKrugovi().setOnAction(e->
-            {
-                dnevnaAktivnostForShow = lista.get(wrapper.j).getAktivnost();
-                datumForShow = dnevnaAktivnostForShow.getDan();
-                try
-                {
-                    Aplikacija.getStage().setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/FormaZaPregledObidjenihPopisnihKrugova.fxml"))));
-                }
-                catch (IOException ex)
-                {
-                    Aplikacija.connLogger.getLogger().log(Level.WARNING, "NeuspjeÅ¡no Ä�itanje forme.");
-                }
-            });
-        }
+        listaPopisivaca = getListaPopisivacaFromServer();
+        Platform.runLater(() -> popisivaciChoiceBox.setItems(FXCollections.observableList(listaPopisivaca.stream().map(KorisnikSistema::getKorisnickoIme).collect(Collectors.toList()))));
+        tabela.setDisable(true);
+        buttonOcjeni.setVisible(false);
         redniBrojColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
         datumColumn.setCellValueFactory(new PropertyValueFactory<>("datum"));
-        brojKrugovaColumn.setCellValueFactory(new PropertyValueFactory<>("brojKrugova"));
-        popisniKrugoviColumn.setCellValueFactory(new PropertyValueFactory<>("popisniKrugovi"));
-        Platform.runLater(() -> tabela.setItems(lista));
+        brojPopisanihStanovnika.setCellValueFactory(new PropertyValueFactory<>("brojPopisanihStanovnika"));
+        brojPopisanihDomacinstava.setCellValueFactory(new PropertyValueFactory<>("brojPopisanihDomacinstava"));
+        popisivaciChoiceBox.setOnAction(e->
+        {
+            tabela.setDisable(false);
+            buttonOcjeni.setVisible(true);
+            Platform.runLater(() -> tabela.setItems(FXCollections.observableList(getListaAktivnostiFromServer(popisivaciChoiceBox.getValue()))));
+            // TODO: dodaj trenutnu ocjenu
+            Popisivac popisivac = listaPopisivaca.stream().filter(elem-> elem.getKorisnickoIme().equals(popisivaciChoiceBox.getValue())).findFirst().get();
+            popisivacStatic = popisivac;
+            //trenutnaOcjenaLabel.setText("Trenutna ocjena: "+ ....);
+        });
+
     }
 
-    private void getListaFromServer() {
-        // TODO: Čekaju se funkcije sa servera
+    private List<Popisivac> getListaPopisivacaFromServer() {
+        // TODO: Učitati listu popisivača sa servera
+        List<Popisivac> listaPopisivaca = Arrays.asList(
+                new Popisivac("Marijana", "Zeljkovic", "marijana.zeljkovic", "maki"),
+                new Popisivac("Kristijan", "Stepanov", "kristijan.stepanov", "kiki")
+        );
+        return listaPopisivaca;
+    }
+
+    private List<AktivnostInputModel> getListaAktivnostiFromServer(String popisivac) {
+        // TODO: Učitati listu aktivnosti za datog popisivača
         var aktivnost1 = new DnevnaAktivnost(LocalDate.now(),0,0);
-        //var popisniKrug = new PopisniKrug("Banja Luka", "LaktaÅ¡i", null);
-        //var popisniKrug2 = new PopisniKrug("Prijedor", "Omarska", null);
-        //aktivnost1.setObidjeniPopisniKrugovi(new HashSet<PopisniKrug>(Arrays.asList(popisniKrug,popisniKrug2)));
-        //lista = FXCollections.observableList(Arrays.asList(new AktivnostInputModel(aktivnost1)));
+        var aktivnost2 = new DnevnaAktivnost(LocalDate.now(), 2, 3);
+        List<AktivnostInputModel> lista1 = FXCollections.observableList(Collections.singletonList(new AktivnostInputModel(aktivnost1)));
+        List<AktivnostInputModel> lista2 = FXCollections.observableList(Collections.singletonList(new AktivnostInputModel(aktivnost2)));
+        for(int i=0; i<lista1.size(); i++)
+        {
+            lista1.get(i).setId(i+1);
+        }
+        for(int i=0; i<lista2.size(); i++)
+        {
+            lista2.get(i).setId(i+1);
+        }
+        if(popisivac.contains("kris"))
+            return lista1;
+        else
+            return lista2;
     }
 
     public void povratak(ActionEvent actionEvent) {
@@ -92,5 +109,25 @@ public class KontrolerFormeZaPregledAktivnostiPopisivaca implements Initializabl
             Aplikacija.connLogger.getLogger().log(Level.WARNING, "NeuspjeÅ¡no Ä�itanje forme.");
         }
         Aplikacija.getStage().setScene(new Scene(root));
+    }
+
+
+    public void ocijeniPopisivaca(ActionEvent actionEvent)
+    {
+        Stage stage = new Stage();
+        stageStatic = stage;
+        stage.initModality(Modality.APPLICATION_MODAL);
+
+        Parent root = null;
+        try {
+            root = FXMLLoader.load(getClass().getResource("/view/FormaZaOcjenuPopisivaca.fxml"));
+        } catch (IOException e) {
+            Aplikacija.connLogger.getLogger().log(Level.WARNING, "Neuspješno čitanje forme.");
+            return;
+        }
+        stage.setScene(new Scene(root));
+        stage.setResizable(false);
+        stage.showAndWait();
+        initialize(null, null);
     }
 }

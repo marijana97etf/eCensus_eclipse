@@ -92,6 +92,16 @@ public class PopisniKrug {
 		if (idOpstine != other.idOpstine) {
 			return false;
 		}
+		if(ulice.size()==other.ulice.size())
+		{
+			for(int i=0; i<ulice.size(); i++)
+			{
+				if (!ulice.get(i).equals(other.ulice.get(i)))
+					return false;
+			}
+		}
+		else
+			return false;
 		return true;
 	}
 
