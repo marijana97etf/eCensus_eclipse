@@ -30,6 +30,10 @@ public class PopisivacCMISKlijent extends CMISKlijent {
 		return get(cmisResursUrl + "/" + naloziResursUrl + "/lista?tip=" + Popisivac.class.getName() );
 	}
 	
+	public Response getListaAktivnostiPopisivaca(int idPopisivaca) {
+		return get(cmisResursUrl + "/" + korisnikResursUrl + "/" + idPopisivaca + "/aktivnost");
+	}
+	
 	public Response azurirajAktivostPopisivaca(int idPopisivaca, DnevnaAktivnost dnevnaAktivnost) {
 		return put(cmisResursUrl + "/" + korisnikResursUrl + "/" + idPopisivaca + "/aktivnost", dnevnaAktivnost);
 	}

@@ -323,6 +323,20 @@ public class CMISServis {
 			}
 		}
 		
+		
+		@GET
+		@Path("korisnici/nalozi/popisivac/{id}/aktivnost")
+		@Consumes(MediaType.APPLICATION_JSON)
+		@Produces(MediaType.APPLICATION_JSON)
+		public Response getListaAktivnostiPopisivaca(@PathParam("id") int id) {
+			List<DnevnaAktivnost> listaDnevnihAktivnosti = DAOFactory.getMySQLFactoryDAO().getMySQLAktivnostDAO().getListaDnevnihAktivnosti(id);
+			if(listaDnevnihAktivnosti != null) {
+				return Response.status(Status.OK).entity(listaDnevnihAktivnosti).build();
+			} else {
+				return Response.status(Status.NO_CONTENT).build();
+			}
+		}
+		
 		@PUT
 		@Path("korisnici/nalozi/popisivac/{id}/aktivnost")
 		@Consumes(MediaType.APPLICATION_JSON)
@@ -335,7 +349,6 @@ public class CMISServis {
 				return Response.status(Status.NO_CONTENT).entity(false).build();
 			}
 		}
-		
 		
 
 		@GET
@@ -390,6 +403,7 @@ public class CMISServis {
 				return Response.status(Status.NO_CONTENT).build();
 			}
 		}
+		
 		
 		//Popisni Krugovi
 		

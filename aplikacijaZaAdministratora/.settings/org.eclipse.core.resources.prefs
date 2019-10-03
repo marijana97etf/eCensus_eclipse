@@ -5,7 +5,6 @@ encoding//src/controller/kontroler_formi/KontrolerFormeZaIzmjenuNalogaDEInstrukt
 encoding//src/controller/kontroler_formi/KontrolerFormeZaIzmjenuNalogaPopisivaca.java=UTF-8
 encoding//src/controller/kontroler_formi/KontrolerFormeZaPregledAktivnostiPopisivaca.java=UTF-8
 encoding//src/controller/kontroler_formi/KontrolerFormeZaPregledNaloga.java=UTF-8
-encoding//src/controller/kontroler_formi/KontrolerFormeZaPregledObidjenihPopisnihKrugova.java=UTF-8
 encoding//src/controller/kontroler_formi/KontrolerFormeZaPregledStatistickihPodataka.java=UTF-8
 encoding//src/controller/kontroler_formi/KontrolerFormeZaPrijavu.java=UTF-8
 encoding//src/controller/kontroler_formi/KontrolerFormeZaRegistracijuClanaPKLS.java=UTF-8
@@ -23,7 +22,6 @@ encoding//src/view/FormaZaPregledNalogaClanovaPKLS.fxml=UTF-8
 encoding//src/view/FormaZaPregledNalogaDEInstruktora.fxml=UTF-8
 encoding//src/view/FormaZaPregledNalogaOGInstruktora.fxml=UTF-8
 encoding//src/view/FormaZaPregledNalogaPopisivaca.fxml=UTF-8
-encoding//src/view/FormaZaPregledObidjenihPopisnihKrugova.fxml=UTF-8
 encoding//src/view/FormaZaPregledStatistickihPodataka.fxml=UTF-8
 encoding//src/view/FormaZaPrijavu.fxml=UTF-8
 encoding//src/view/FormaZaRadAdministratoraAgencije.fxml=UTF-8
