@@ -29,9 +29,11 @@ import java.util.*;
 import java.util.logging.Level;
 import java.util.stream.Collectors;
 
+import eCensus.rest.client.ClanPKLSCMISKlijent;
+
 public class KontrolerFormeZaDodavanjePopisnihKrugova implements Initializable {
 
-    public static List<PopisniKrug> listaKrugova = new ArrayList<>();
+    //public static List<PopisniKrug> listaKrugova = new ArrayList<>();
     public static Stage newStage;
     public Button dodajUliceButton;
 
@@ -49,7 +51,7 @@ public class KontrolerFormeZaDodavanjePopisnihKrugova implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         GradChoiceBox.getItems().addAll(Aplikacija.prevediRecenice(new ArrayList<>(GradoviCollection.getGradovi())));
-        OpstinaChoiceBox.getItems().addAll(Aplikacija.prevediRecenice(new ArrayList<>(OpstineCollection.getOpstine())));
+        OpstinaChoiceBox.getItems().addAll(Aplikacija.prevediRecenice(new ArrayList<>(OpstineCollection.getListaOpstina())));
 
         GradChoiceBox.setValue(Aplikacija.prevediRecenicu("Banja Luka"));
         OpstinaChoiceBox.setValue(Aplikacija.prevediRecenicu("Banja Luka"));
@@ -86,7 +88,7 @@ public class KontrolerFormeZaDodavanjePopisnihKrugova implements Initializable {
     public void dodajPopisniKrug(ActionEvent actionEvent) {
         String grad = PromjenaPisma.zamijeniCirilicuLatinicom(GradChoiceBox.getValue());
         String opstina = PromjenaPisma.zamijeniCirilicuLatinicom(OpstinaChoiceBox.getValue());
-        int idOpstine = new ArrayList<>(OpstineCollection.getOpstine()).indexOf(opstina);
+        int idOpstine = Integer.parseInt(OpstineCollection.getOpstine().get(opstina));
         String putanjaDoSlike = pathText.getText();
         byte[] slikaUBajtovima=null;
         try {
@@ -113,14 +115,18 @@ public class KontrolerFormeZaDodavanjePopisnihKrugova implements Initializable {
         }
         PopisniKrug popisniKrug = new PopisniKrug(idOpstine, grad, listaUlica, slikaUBajtovima);
 
-        if(listaKrugova.contains(popisniKrug)) {
+        ClanPKLSCMISKlijent clanPKLSCMISKlijent = new ClanPKLSCMISKlijent(KontrolerFormeZaPrijavu.getTrenutniKorisnik());
+        List<PopisniKrug> listaPopisnihKrugova = Arrays.asList(clanPKLSCMISKlijent.getListaPopisnihKrugova(grad, idOpstine).readEntity(PopisniKrug[].class));
+        
+        if(listaPopisnihKrugova.contains(popisniKrug)) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             var uspjesnaPrijavaAdminAgencije=Aplikacija.prevediRecenicu("Već postoji ovakav popisni krug!");
             alert.setContentText(uspjesnaPrijavaAdminAgencije);
             alert.showAndWait();
             return;
         }
-        listaKrugova.add(popisniKrug);
+        
+        clanPKLSCMISKlijent.dodajPopisniKrug(popisniKrug);
 
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         var uspjesnaPrijavaAdminAgencije=Aplikacija.prevediRecenicu("Uspješno ste se dodali popisni krug!");

@@ -131,7 +131,7 @@ public class TestCMISRest {
 			System.out.println(popisniKrug.getSlikaBytes().length);
 		}
 		
-		//popisivacCMISKlijent.azurirajKontrolnik(new Kontrolnik(idPopisnogKruga,idOpstine,10,10,10,10,10,10,10));
+		popisivacCMISKlijent.azurirajKontrolnik(new Kontrolnik(idPopisnogKruga,idOpstine,10,10,10));
 		
 		popisivacCMISKlijent.obrisiPopisniKrugPopisivaca(idPopisivaca, idPopisnogKruga, idOpstine);
 		

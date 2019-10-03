@@ -7,6 +7,7 @@ import javafx.scene.Node;
 import javafx.scene.control.*;
 import main.Main;
 import model.PopisnicaZaStanovnika;
+import model.pracenje_popisa.izvjestaji_o_popisivacu.DnevnaAktivnost;
 import util.PrikazObavjestenja;
 import util.PromjenaJezika;
 import util.PromjenaPisma;
@@ -16,6 +17,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.ConnectException;
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -25,6 +27,9 @@ import java.util.Properties;
 import java.util.Map.Entry;
 import java.util.Set;
 
+import javax.ws.rs.ProcessingException;
+
+import eCensus.rest.client.PopisivacCMISKlijent;
 import eCensus.rest.client.PopisivacGlavniServerKlijent;
 
 public class KontrolerFormeZaPopisivanjeStanovnika {
@@ -1822,6 +1827,8 @@ public class KontrolerFormeZaPopisivanjeStanovnika {
             else
                 odgovoriNaPitanja.get("31").add(odgovor31Button.getText());
         }
+        else
+        	odgovoriNaPitanja.get("31").add("Da");
 
         RadioButton odgovor32Button = (RadioButton)grupa30.getSelectedToggle();
         if(odgovor32Button == null){
@@ -2125,7 +2132,13 @@ public class KontrolerFormeZaPopisivanjeStanovnika {
     		}
     		odgovoriPrevedeni.put(e.getKey(), util);
     	}
- 
+    	
+    	for(List<String> lista : odgovoriPrevedeni.values()) {
+    		for(int i=0;i<lista.size();i++) {
+    			lista.set(i, lista.get(i).replace("/", "-"));
+    		}
+    	}
+    	
         popisnica.setOdgovoriNaPitanja(odgovoriPrevedeni);
         
         try {
@@ -2145,11 +2158,14 @@ public class KontrolerFormeZaPopisivanjeStanovnika {
 	      		KontrolerFormeZaRadPopisivaca.popisStanovnikaStage.close();
 	      	}
 	      	else {
+	      		PopisivacCMISKlijent cmis = new PopisivacCMISKlijent(KontrolerFormeZaPrijavu.korisnik);
+	      		cmis.azurirajAktivostPopisivaca((int)KontrolerFormeZaPrijavu.korisnik.getId(), new DnevnaAktivnost(LocalDate.now(), 1, 0));
+	      		
 	      		PrikazObavjestenja.prikaziInfo("Popisnica je uspješno poslata.");
 	      		KontrolerFormeZaRadPopisivaca.popisStanovnikaStage.close();
 	      	}
         }
-        catch(ConnectException e) {
+        catch(ConnectException | ProcessingException e) {
         	List<PopisnicaZaStanovnika> sacuvanePopisnice = SerijalizacijaPopisnica.deserijalizujPopisniceZaStanovnika();
         	sacuvanePopisnice.add(popisnica);
         	SerijalizacijaPopisnica.serijalizujPopisniceZaStanovnika(sacuvanePopisnice);

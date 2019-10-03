@@ -126,7 +126,7 @@ public class KontrolerFormeZaRegistracijuClanaPKLS implements Initializable {
         });
         gradoviChoiceBox.getItems().addAll(Aplikacija.prevediRecenice(new ArrayList<>(GradoviCollection.getGradovi())));
         gradoviChoiceBox.setValue(Aplikacija.prevediRecenicu("Banja Luka"));
-        opstineChoiceBox.getItems().addAll(Aplikacija.prevediRecenice(new ArrayList<>(OpstineCollection.getOpstine())));
+        opstineChoiceBox.getItems().addAll(Aplikacija.prevediRecenice(new ArrayList<>(OpstineCollection.getListaOpstina())));
         opstineChoiceBox.setValue(Aplikacija.prevediRecenicu("Banja Luka"));
     }
 

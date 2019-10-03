@@ -30,7 +30,7 @@ public class MySQLPopisniKrugDAO implements PopisniKrugDAO {
 			preparedStatementPopisniKrug.executeUpdate();
 			preparedStatementPopisniKrug.close();
 			
-			PreparedStatement preparedStatementLokalnaVarijabla = connection.prepareStatement("SET @lastID = LAST_INSERT_ID()");
+			PreparedStatement preparedStatementLokalnaVarijabla = connection.prepareStatement("SET @lastID = LAST_INSERT_ID();");
 			preparedStatementLokalnaVarijabla.executeUpdate();
 			preparedStatementLokalnaVarijabla.close();
 			

@@ -53,6 +53,11 @@ public class MySQLOGInstruktorDAO implements OGInstruktorDAO {
 		try {
 			connection = ConnectionPool.getInstance().checkOut();
 			
+			PreparedStatement preparedStatementOcjena = connection.prepareStatement("DELETE FROM ocjena WHERE IdOsobe_OG_INSTRUKTOR = ?;");
+			preparedStatementOcjena.setLong(1, id);
+			preparedStatementOcjena.executeUpdate();
+			preparedStatementOcjena.close();
+			
 			PreparedStatement preparedStatementOGInstruktor = connection.prepareStatement("DELETE FROM og_instruktor WHERE IdOsobe = ?;");
 			preparedStatementOGInstruktor.setLong(1, id);
 			preparedStatementOGInstruktor.executeUpdate();

@@ -10,4 +10,4 @@ FROM popisni_krug PopisniKrug
 
 SELECT *
 FROM ulica
-WHERE IdPopisnogKruga = 2;
+WHERE IdPopisnogKruga = 6;

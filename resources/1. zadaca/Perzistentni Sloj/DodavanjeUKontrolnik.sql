@@ -1,16 +1,10 @@
 INSERT INTO kontrolnik(IdPopisnogKruga,IdOpstine,BrojPopisanihStanova,
-						BrojPopisanihDomacinstava,BrojDomacinstavaKojiSeBavePoljoprivredom,
-                        BrojPrisutnihClanovaDomacinstva,BrojOdsutnihClanovaDomacinstva,
-                        BrojNeodazvanihLica,BrojNeodazvanihDomacinstava) VALUES (1,84,1,1,1,1,1,1,1)
+						BrojPopisanihDomacinstava,BrojClanovaDomacinstava) VALUES (2,84,1,1,1)
 ON DUPLICATE KEY UPDATE
 BrojPopisanihStanova = BrojPopisanihStanova + VALUES(BrojPopisanihStanova),
 BrojPopisanihDomacinstava = BrojPopisanihDomacinstava + VALUES(BrojPopisanihDomacinstava),
-BrojDomacinstavaKojiSeBavePoljoprivredom = BrojDomacinstavaKojiSeBavePoljoprivredom + VALUES(BrojDomacinstavaKojiSeBavePoljoprivredom),
-BrojPrisutnihClanovaDomacinstva = BrojPrisutnihClanovaDomacinstva + VALUES(BrojPrisutnihClanovaDomacinstva),
-BrojOdsutnihClanovaDomacinstva = BrojOdsutnihClanovaDomacinstva + VALUES(BrojOdsutnihClanovaDomacinstva),
-BrojNeodazvanihLica = BrojNeodazvanihLica + VALUES(BrojNeodazvanihLica),
-BrojNeodazvanihDomacinstava = BrojNeodazvanihDomacinstava + VALUES(BrojNeodazvanihDomacinstava);
+BrojClanovaDomacinstava = BrojClanovaDomacinstava + VALUES(BrojClanovaDomacinstava);
 
 SELECT *
 FROM kontrolnik
-WHERE IdPopisnogKruga = 1 AND IdOpstine = 84;
+WHERE IdPopisnogKruga = 2 AND IdOpstine = 84;

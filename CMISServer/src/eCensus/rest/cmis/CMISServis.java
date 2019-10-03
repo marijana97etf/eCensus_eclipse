@@ -404,6 +404,18 @@ public class CMISServis {
 			}
 		}
 		
+		@GET
+		@Path("korisnici/nalozi/popisivac/{idPopisivaca}/ocjena")
+		@Consumes(MediaType.APPLICATION_JSON)
+		@Produces(MediaType.APPLICATION_JSON)
+		public Response getOcjenaPopisivaca(@PathParam("idPopisivaca") int idPopisivaca) {
+			int result = DAOFactory.getMySQLFactoryDAO().getMySQLNaloziDAO().getMySQLPopisivacDAO().getOcjena(idPopisivaca);
+			if(result != 0) {
+				return Response.status(Status.OK).entity(result).build();
+			} else {
+				return Response.status(Status.NO_CONTENT).build();
+			}
+		}
 		
 		//Popisni Krugovi
 		

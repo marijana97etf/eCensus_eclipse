@@ -1,26 +1,28 @@
 package kontroleri;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.net.ConnectException;
+import java.time.LocalDate;
+import java.util.Iterator;
 import java.util.List;
-import java.util.Properties;
+import java.util.ListIterator;
 
+import javax.ws.rs.ProcessingException;
+
+import eCensus.rest.client.PopisivacCMISKlijent;
 import eCensus.rest.client.PopisivacGlavniServerKlijent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import main.Main;
+import javafx.stage.Stage;
 import model.ElementTabeleDomacinstvo;
 import model.ElementTabeleStanovnistvo;
 import model.Popisnica;
 import model.PopisnicaZaDomacinstvo;
 import model.PopisnicaZaStanovnika;
+import model.pracenje_popisa.izvjestaji_o_popisivacu.DnevnaAktivnost;
+import model.pracenje_popisa.izvjestaji_o_popisivacu.Kontrolnik;
 import util.PrikazObavjestenja;
-import util.PromjenaPisma;
 import util.SerijalizacijaPopisnica;
 
 public class KontrolerFormeZaPrikazSacuvanihPopisnica {
@@ -101,39 +103,48 @@ public class KontrolerFormeZaPrikazSacuvanihPopisnica {
 	@FXML
 	private void posaljiPopisnice() {
 		try {
-			Properties properties = new Properties();
-	    	properties.load(new FileInputStream(new File(CONFIG_FILE_PATH)));
-	    	String keystore = properties.getProperty("DEFAULT_KEYSTORE");
-	    	String keystoreLozinka = properties.getProperty("DEFAULT_KEYSTORE_PASSWORD");
-	    	String truststore = properties.getProperty("DEFAULT_TRUSTSTORE");
-	    	String truststoreLozinka = properties.getProperty("DEFAULT_TRUSTSTORE_PASSWORD");
-	    	
-			PopisivacGlavniServerKlijent glavniServer = new PopisivacGlavniServerKlijent(keystore, keystoreLozinka, truststore, truststoreLozinka, 
-	        		KontrolerFormeZaPrijavu.korisnik.getKorisnickoIme(), KontrolerFormeZaPrijavu.korisnik.getLozinkaHash());
-	        
+			PopisivacGlavniServerKlijent glavniServer = new PopisivacGlavniServerKlijent(KontrolerFormeZaPrijavu.korisnik);
+	        PopisivacCMISKlijent cmisServer = new PopisivacCMISKlijent(KontrolerFormeZaPrijavu.korisnik);
+			
 			List<PopisnicaZaDomacinstvo> popisniceDomacinstvo = SerijalizacijaPopisnica.deserijalizujPopisniceZaDomacinstvo();
-
-			for(PopisnicaZaDomacinstvo popisnica : popisniceDomacinstvo) {
+			
+			for(ListIterator<PopisnicaZaDomacinstvo> iterator = popisniceDomacinstvo.listIterator(); iterator.hasNext();) {
+				PopisnicaZaDomacinstvo popisnica = iterator.next();
 				glavniServer.obradiPopisniceZaDomacinstva(popisnica);
-				popisniceDomacinstvo.remove(popisnica);
 				
-			//   Kontrolnik kontrolnik = new Kontrolnik(popisnica.getIdPopisnogKruga(), popisnica.getIdOpstine(), 1, 1, popisnica.getBrojClanovaDomacinstva());
-			     //   cmisServer.azurirajKontrolnik(kontrolnik);
+				Kontrolnik kontrolnik = new Kontrolnik(popisnica.getIdPopisnogKruga(), popisnica.getIdOpstine(), 1, 1, popisnica.getBrojClanovaDomacinstva());
+			    cmisServer.azurirajKontrolnik(kontrolnik);
+			    
+			    PopisivacCMISKlijent cmis = new PopisivacCMISKlijent(KontrolerFormeZaPrijavu.korisnik);
+	      		cmis.azurirajAktivostPopisivaca((int)KontrolerFormeZaPrijavu.korisnik.getId(), new DnevnaAktivnost(LocalDate.now(), 0, 1));
+			    
+				iterator.remove();
 			}
 			
 			SerijalizacijaPopisnica.serijalizujPopisniceZaDomacinstvo(popisniceDomacinstvo);
 			
 			List<PopisnicaZaStanovnika> popisniceStanovnistvo = SerijalizacijaPopisnica.deserijalizujPopisniceZaStanovnika();
      	          
-			for(PopisnicaZaStanovnika popisnica : popisniceStanovnistvo) {
-		        glavniServer.obradiPopisniceZaStanovnike(popisnica);
-		      	popisniceStanovnistvo.remove(popisnica);
+			for(ListIterator<PopisnicaZaStanovnika> iterator = popisniceStanovnistvo.listIterator();
+						iterator.hasNext();) {
+				PopisnicaZaStanovnika popisnica = iterator.next();
+				glavniServer.obradiPopisniceZaStanovnike(popisnica);
+				
+				PopisivacCMISKlijent cmis = new PopisivacCMISKlijent(KontrolerFormeZaPrijavu.korisnik);
+	      		cmis.azurirajAktivostPopisivaca((int)KontrolerFormeZaPrijavu.korisnik.getId(), new DnevnaAktivnost(LocalDate.now(), 1, 0));
+			    
+				iterator.remove();
 			}
 
 			SerijalizacijaPopisnica.serijalizujPopisniceZaStanovnika(popisniceStanovnistvo);
+			
+			PrikazObavjestenja.prikaziInfo("Popisnice su poslate.");
+			
+			Stage stage = (Stage) tabelaDomacinstvo.getScene().getWindow();
+		    stage.close();
 		}
-		catch(IOException e) {
-			e.printStackTrace();
+		catch(ProcessingException e) {
+			PrikazObavjestenja.prikaziUpozorenje("Nema pristupa internetu. Pokusajte poslati popisnice kasnije.");
 		}
 	}
 }

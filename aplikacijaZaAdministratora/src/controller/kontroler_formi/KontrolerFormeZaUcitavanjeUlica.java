@@ -41,26 +41,18 @@ public class KontrolerFormeZaUcitavanjeUlica implements Initializable {
         GridPane.setMargin(imeTextField2, new Insets(10, 50.0, 0, 20.0));
         gridPane.getRowConstraints().add(rc);
         gridPane.add(imeTextField2,0,row);
-        poljaZaPopunjavanje.put(row-1, imeTextField);
+        poljaZaPopunjavanje.put(poljaZaPopunjavanje.keySet().size(), imeTextField2);
         ++row;
     }
 
 	@Override
 	public void initialize(URL url, ResourceBundle resourceBundle) {
 		poljaZaPopunjavanje = new HashMap<>();
-		poljaZaPopunjavanje.put(1, imeTextField);
+		poljaZaPopunjavanje.put(0, imeTextField);
 	}
 
 	public void sacuvajListuUlica(ActionEvent actionEvent) {
-        if(poljaZaPopunjavanje.values().stream().anyMatch(e-> e.getText().equals("")))
-        {
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            var uspjesnaPrijavaAdminAgencije= Aplikacija.prevediRecenicu("Unesite sva polja!");
-            alert.setContentText(uspjesnaPrijavaAdminAgencije);
-            alert.showAndWait();
-            return;
-        }
-		listaUlica = poljaZaPopunjavanje.values().stream().map(TextInputControl::getText).collect(Collectors.toList());
+		listaUlica = poljaZaPopunjavanje.values().stream().filter(e -> !e.getText().isBlank()).map(TextField::getText).collect(Collectors.toList());
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setContentText(Aplikacija.prevediRecenicu("Da li želite da izađete?"));
         ButtonType buttonType = alert.showAndWait().get();

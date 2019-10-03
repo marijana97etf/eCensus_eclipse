@@ -14,4 +14,5 @@ public interface PopisivacDAO extends NaloziDAO {
 	
 	public boolean azurirajOcjenu(int idPopisivaca, int idOGInstruktora, int ocjena);
 	
+	public int getOcjena(int idPopisivaca);
 }

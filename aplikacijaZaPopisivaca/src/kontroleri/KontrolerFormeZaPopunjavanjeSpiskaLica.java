@@ -92,7 +92,7 @@ public class KontrolerFormeZaPopunjavanjeSpiskaLica {
 	        odnosi.add("Није члан домаћинства (привремено присутно лице)");
     	}
         ObservableList observableList = FXCollections.observableList(odnosi);
-        odnosComboBox.setItems(observableList);
+        comboBox.setItems(observableList);
     }
     
     private void inicijalizujPolozajComboBox(ComboBox comboBox) {
@@ -120,7 +120,7 @@ public class KontrolerFormeZaPopunjavanjeSpiskaLica {
 		        polozaji.add("Не припада ни једној од породица");
 	    	}
         ObservableList observableList = FXCollections.observableList(polozaji);
-        pComboBox.setItems(observableList);
+        comboBox.setItems(observableList);
     }
 
     @FXML
@@ -129,6 +129,7 @@ public class KontrolerFormeZaPopunjavanjeSpiskaLica {
         TextField prezimeTextField = new TextField();
         TextField JMBGTextField = new TextField();
         ComboBox<String> odnosPremaNosiocuDomacinstvaComboBox = new ComboBox<>();
+        inicijalizujOdnosComboBox(odnosPremaNosiocuDomacinstvaComboBox);
         odnosPremaNosiocuDomacinstvaComboBox.setMinWidth(200);
         odnosPremaNosiocuDomacinstvaComboBox.setPrefWidth(200);
         odnosPremaNosiocuDomacinstvaComboBox.setMaxWidth(200);
@@ -138,6 +139,7 @@ public class KontrolerFormeZaPopunjavanjeSpiskaLica {
         	odnosPremaNosiocuDomacinstvaComboBox.setPromptText("Одабери тип односа...");
         TextField redniBrojPorodiceTextField = new TextField();
         ComboBox<String> polozajUPorodiciComboBox = new ComboBox<>();
+        inicijalizujPolozajComboBox(polozajUPorodiciComboBox);
         polozajUPorodiciComboBox.setMinWidth(200);
         polozajUPorodiciComboBox.setPrefWidth(200);
         polozajUPorodiciComboBox.setMaxWidth(200);
@@ -221,13 +223,17 @@ public class KontrolerFormeZaPopunjavanjeSpiskaLica {
     		String prezime = ((TextField)polja.get(1)).getText();
     		String JMBG = ((TextField)polja.get(2)).getText();
     		String odnosPremaNosiocuDomacinstva = (String)((ComboBox)polja.get(3)).getSelectionModel().getSelectedItem();
-    		int redniBrojPorodice = Integer.parseInt(((TextField)polja.get(4)).getText());
+    		int redniBrojPorodice = 0;
+    		if(!((TextField)polja.get(4)).getText().isEmpty())
+    			redniBrojPorodice = Integer.parseInt(((TextField)polja.get(4)).getText());
     		String polozajClanaUPorodici = (String)((ComboBox)polja.get(5)).getSelectionModel().getSelectedItem();
     		
-    		ClanDomacinstva clanDomacinstva = new ClanDomacinstva(ime, prezime, JMBG, odnosPremaNosiocuDomacinstva,
-    				redniBrojPorodice, polozajClanaUPorodici);
-    		
-    		spisakLica.add(clanDomacinstva);
+    		if(!ime.isBlank()) {
+	    		ClanDomacinstva clanDomacinstva = new ClanDomacinstva(ime, prezime, JMBG, odnosPremaNosiocuDomacinstva.replace("/","-"),
+	    				redniBrojPorodice, polozajClanaUPorodici.replace("/","-"));
+	    		
+	    		spisakLica.add(clanDomacinstva);
+    		}
     	}
     	
     	KontrolerFormeZaPopisivanjeDomacinstva.spisakLica = spisakLica;

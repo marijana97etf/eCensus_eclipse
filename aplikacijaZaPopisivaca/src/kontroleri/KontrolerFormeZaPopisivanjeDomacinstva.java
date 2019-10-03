@@ -12,6 +12,7 @@ import javafx.stage.Stage;
 import main.Main;
 import model.ClanDomacinstva;
 import model.PopisnicaZaDomacinstvo;
+import model.pracenje_popisa.izvjestaji_o_popisivacu.DnevnaAktivnost;
 import model.pracenje_popisa.izvjestaji_o_popisivacu.Kontrolnik;
 import util.PrikazObavjestenja;
 import util.PromjenaJezika;
@@ -22,11 +23,15 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.ConnectException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
+
+import javax.ws.rs.ProcessingException;
+
 import java.util.Map.Entry;
 
 import eCensus.rest.client.PopisivacCMISKlijent;
@@ -1036,6 +1041,12 @@ public class KontrolerFormeZaPopisivanjeDomacinstva {
     		}
     		odgovoriPrevedeni.put(e.getKey(), util);
     	}
+    	
+    	for(List<String> lista : odgovoriPrevedeni.values()) {
+    		for(int i=0;i<lista.size();i++) {
+    			lista.set(i, lista.get(i).replace("/", "-"));
+    		}
+    	}
  
         popisnica.setOdgovoriNaPitanja(odgovoriPrevedeni);
 
@@ -1149,13 +1160,17 @@ public class KontrolerFormeZaPopisivanjeDomacinstva {
 	        	poljoprivreda = 1;
 	        else
 	        	poljoprivreda = 0;
-	     //   Kontrolnik kontrolnik = new Kontrolnik(idPopisnogKruga, idOpstine, 1, 1, poljoprivreda, Integer.parseInt(brojClanovaDomacinstvaString));
-	     //   cmisServer.azurirajKontrolnik(kontrolnik);
+	        
+	        Kontrolnik kontrolnik = new Kontrolnik(idPopisnogKruga, idOpstine, 1, 1, Integer.parseInt(brojClanovaDomacinstvaString));
+	        cmisServer.azurirajKontrolnik(kontrolnik);
 
+	        PopisivacCMISKlijent cmis = new PopisivacCMISKlijent(KontrolerFormeZaPrijavu.korisnik);
+      		cmis.azurirajAktivostPopisivaca((int)KontrolerFormeZaPrijavu.korisnik.getId(), new DnevnaAktivnost(LocalDate.now(), 0, 1));
+      		
         	PrikazObavjestenja.prikaziInfo("Popisnica je uspješno poslata.");
       		KontrolerFormeZaRadPopisivaca.popisDomacinstvaStage.close();
         }
-        catch(ConnectException e) {
+        catch(ProcessingException e) {
         	List<PopisnicaZaDomacinstvo> sacuvanePopisnice = SerijalizacijaPopisnica.deserijalizujPopisniceZaDomacinstvo();
         	sacuvanePopisnice.add(popisnica);
         	SerijalizacijaPopisnica.serijalizujPopisniceZaDomacinstvo(sacuvanePopisnice);

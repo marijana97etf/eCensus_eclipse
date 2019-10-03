@@ -18,7 +18,7 @@ public class MySQLStatistickiPodaciDAO {
 					"SELECT COUNT(*) AS Broj" + 
 					" FROM STANOVNIK stanovnik" + 
 					" INNER JOIN popisnica_stanovnika popisnicaStanovnika on popisnicaStanovnika.JMB = stanovnik.JMB" + 
-					" WHERE popisnicaStanovnika.IdEntiteta like ? AND popisnicaStanovnika.IdOpstine like ? AND Pol like ? AND YEAR(CURDATE()) - CONVERT(CONCAT(if(SUBSTRING(stanovnik.JMB,4,1) >= \"8\",\"1\",\"2\"),SUBSTRING(stanovnik.JMB,5,3)), UNSIGNED INTEGER) like ?;");
+					" WHERE popisnicaStanovnika.IdEntiteta like ? AND popisnicaStanovnika.IdOpstine like ? AND Pol like ? AND YEAR(CURDATE()) - CONVERT(CONCAT(if(SUBSTRING(stanovnik.JMB,5,1) >= \"8\",\"1\",\"2\"),SUBSTRING(stanovnik.JMB,5,3)), UNSIGNED INTEGER) like ?;");
 			preparedStatement.setString(1, idEntiteta);
 			preparedStatement.setString(2, idOpstina);
 			preparedStatement.setString(3, pol);
@@ -100,10 +100,10 @@ public class MySQLStatistickiPodaciDAO {
 			
 			PreparedStatement preparedStatement = connection.prepareStatement(
 					"SELECT COUNT(*) AS Broj" + 
-					"FROM STANOVNIK stanovnik" + 
-					"INNER JOIN popisnica_stanovnika popisnicaStanovnika on popisnicaStanovnika.JMB = stanovnik.JMB" + 
-					"INNER JOIN popisnica_stanovnika_odgovor odgovorStanovnika on odgovorStanovnika.IdPopisnice = popisnicaStanovnika.IdPopisnice AND odgovorStanovnika.IdPitanja = 25" + 
-					"WHERE popisnicaStanovnika.IdEntiteta like ? AND popisnicaStanovnika.IdOpstine like ? AND Pol like ? AND odgovorStanovnika.Odgovor like CONCAT(\"%\",?,\"%\");");
+					" FROM STANOVNIK stanovnik" + 
+					" INNER JOIN popisnica_stanovnika popisnicaStanovnika on popisnicaStanovnika.JMB = stanovnik.JMB" + 
+					" INNER JOIN popisnica_stanovnika_odgovor odgovorStanovnika on odgovorStanovnika.IdPopisnice = popisnicaStanovnika.IdPopisnice AND odgovorStanovnika.IdPitanja = 25" + 
+					" WHERE popisnicaStanovnika.IdEntiteta like ? AND popisnicaStanovnika.IdOpstine like ? AND Pol like ? AND odgovorStanovnika.Odgovor like CONCAT(\"%\",?,\"%\");");
 			preparedStatement.setString(1, idEntiteta);
 			preparedStatement.setString(2, idOpstine);
 			preparedStatement.setString(3, pol);
@@ -307,12 +307,12 @@ public class MySQLStatistickiPodaciDAO {
 		Connection connection = null;
 		try {
 			connection = ConnectionPool.getInstance().checkOut();
-			
+
 			PreparedStatement preparedStatement = connection.prepareStatement(
 					"SELECT COUNT(*) AS Broj" + 
 					" FROM STAN_DOMACINSTVO stanDomacinstvo" + 
 					" INNER JOIN popisnica_domacinstva popisnicaDomacinstva on stanDomacinstvo.IdStanaDomacinstva = popisnicaDomacinstva.IdStanaDomacinstva" + 
-					" INNER JOIN popisnica_domacinstvo_odgovor odgovorDomacinstva on odgovorDomacinstva.IdPopisnice = popisnicaDomacinstva.IdPopisnice AND odgovorDomacinstva.IdPitanja = 30" + 
+					" INNER JOIN popisnica_domacinstvo_odgovor odgovorDomacinstva on odgovorDomacinstva.IdPopisnice = popisnicaDomacinstva.IdPopisnice AND odgovorDomacinstva.IdPitanja = 29" + 
 					" INNER JOIN popisnica_domacinstvo_odgovor odgovorDomacinstva1 on odgovorDomacinstva1.IdPopisnice = popisnicaDomacinstva.IdPopisnice AND odgovorDomacinstva1.IdPitanja = 32" + 
 					" WHERE popisnicaDomacinstva.IdEntiteta like ? AND popisnicaDomacinstva.IdOpstine like ? AND odgovorDomacinstva.Odgovor like CONCAT(\"%\",?,\"%\") AND odgovorDomacinstva1.Odgovor like CONCAT(\"%\",?,\"%\");");
 			preparedStatement.setString(1, idEntiteta);

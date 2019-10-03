@@ -137,7 +137,7 @@ public class KontrolerFormeZaIzmjenuNalogaOGInstruktora implements Initializable
         if(grad!=null)
             gradoviComboBox.setValue(Aplikacija.prevediRecenicu(grad));
 
-        opstineComboBox.getItems().addAll(Aplikacija.prevediRecenice(new ArrayList<>(OpstineCollection.getOpstine())));
+        opstineComboBox.getItems().addAll(Aplikacija.prevediRecenice(new ArrayList<>(OpstineCollection.getListaOpstina())));
         String opstina = korisnik.getOpstina();
         if(opstina!=null)
             gradoviComboBox.setValue(Aplikacija.prevediRecenicu(opstina));

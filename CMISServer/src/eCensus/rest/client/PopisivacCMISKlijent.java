@@ -53,4 +53,8 @@ public class PopisivacCMISKlijent extends CMISKlijent {
 	public Response azurirajKontrolnik(Kontrolnik kontrolnik) {
 		return put(cmisResursUrl + "/" + "kontrolnik", kontrolnik);
 	}
+	
+	public Response getOcjena(int idPopisivaca) {
+		return get(cmisResursUrl + "/" + korisnikResursUrl + "/" + idPopisivaca + "/" + "ocjena");
+	}
 }

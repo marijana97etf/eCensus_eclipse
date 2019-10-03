@@ -6,7 +6,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -25,10 +27,17 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.stream.Collectors;
+
+import javax.ws.rs.core.GenericType;
+import javax.ws.rs.core.Response;
+
+import eCensus.rest.client.ClanPKLSCMISKlijent;
+import eCensus.rest.client.PopisivacCMISKlijent;
 
 public class KontrolerFormeZaDodjeluPopisnihKrugovaPopisivacu implements Initializable {
 
@@ -51,50 +60,87 @@ public class KontrolerFormeZaDodjeluPopisnihKrugovaPopisivacu implements Initial
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        popisniKrugovi = KontrolerFormeZaDodavanjePopisnihKrugova.listaKrugova;
-        slikaPopisnogKruga.setImage(new Image(new ByteArrayInputStream(popisniKrugovi.get(index).getSlikaBytes())));
-
         GradChoiceBox.getItems().addAll(Aplikacija.prevediRecenice(new ArrayList<>(GradoviCollection.getGradovi())));
-        OpstinaChoiceBox.getItems().addAll(Aplikacija.prevediRecenice(new ArrayList<>(OpstineCollection.getOpstine())));
+        OpstinaChoiceBox.getItems().addAll(Aplikacija.prevediRecenice(new ArrayList<>(OpstineCollection.getListaOpstina())));
 
         GradChoiceBox.setValue(Aplikacija.prevediRecenicu("Banja Luka"));
         OpstinaChoiceBox.setValue(Aplikacija.prevediRecenicu("Banja Luka"));
 
-        popisniKrugovi = ucitajListuPopisnihKrugovaSaServera();
+        var wrapper = new Object() {
+        	String grad = GradChoiceBox.getValue();
+        	int idOpstine = Integer.parseInt(OpstineCollection.getOpstine().get(OpstinaChoiceBox.getValue()));
+        };
+        
+        popisniKrugovi = ucitajListuPopisnihKrugovaSaServera(wrapper.grad, wrapper.idOpstine);
         popisivaci = ucitajListuPopisivacaSaServera();
 
         popisivaciChoiceBox.getItems().addAll(popisivaci.stream()
                                                   .map(KorisnikSistema::getKorisnickoIme)
                                                   .collect(Collectors.toList()));
+        
+        GradChoiceBox.setOnAction(e -> {
+        	wrapper.grad = GradChoiceBox.getValue();
+        	popisniKrugovi = ucitajListuPopisnihKrugovaSaServera(wrapper.grad, wrapper.idOpstine);
+        	if(popisniKrugovi.size()!=0) {
+        		slikaPopisnogKruga.setVisible(true);
+             	slikaPopisnogKruga.setImage(new Image(new ByteArrayInputStream(popisniKrugovi.get(index).getSlikaBytes())));
+        	}
+             	else
+        		slikaPopisnogKruga.setVisible(false);
+        });
+        
+        OpstinaChoiceBox.setOnAction(e -> {
+        	wrapper.idOpstine = Integer.parseInt(OpstineCollection.getOpstine().get(OpstinaChoiceBox.getValue()));
+        	popisniKrugovi = ucitajListuPopisnihKrugovaSaServera(wrapper.grad, wrapper.idOpstine);
+        	if(popisniKrugovi.size()!=0) {
+        		slikaPopisnogKruga.setVisible(true);
+             	slikaPopisnogKruga.setImage(new Image(new ByteArrayInputStream(popisniKrugovi.get(index).getSlikaBytes())));
+        	} else
+        		slikaPopisnogKruga.setVisible(false);
+        });
+        if(popisniKrugovi.size()!=0)
+        	slikaPopisnogKruga.setImage(new Image(new ByteArrayInputStream(popisniKrugovi.get(index).getSlikaBytes())));
     }
 
     private List<Popisivac> ucitajListuPopisivacaSaServera() {
-        //        PopisivacCMISKlijent popisivacCMISKlijent = new PopisivacCMISKlijent(KontrolerFormeZaPrijavu.getTrenutniKorisnik());
-//        Response odgovor  = popisivacCMISKlijent.getListaPopisivaca();
-//
-//        if(Response.Status.Family.SUCCESSFUL.equals(odgovor.getStatusInfo().getFamily())) {
-//            lista = odgovor.readEntity(new GenericType<LinkedList<Popisivac>>() {});
-//        }else {
-//            Aplikacija.connLogger.logHeaders(Level.SEVERE, odgovor);
-//        }
-        List<Popisivac> listaPopisivaca = Arrays.asList(
-                new Popisivac("Marijana", "Zeljkovic", "marijana.zeljkovic", "maki"),
-                new Popisivac("Kristijan", "Stepanov", "kristijan.stepanov", "kiki")
-        );
-        return listaPopisivaca;
+        PopisivacCMISKlijent popisivacCMISKlijent = new PopisivacCMISKlijent(KontrolerFormeZaPrijavu.getTrenutniKorisnik());
+        Response odgovor  = popisivacCMISKlijent.getListaPopisivaca();
+        List<Popisivac> popisivaci = null;
+        if(Response.Status.Family.SUCCESSFUL.equals(odgovor.getStatusInfo().getFamily())) {
+        	popisivaci = odgovor.readEntity(new GenericType<LinkedList<Popisivac>>() {});
+        	return popisivaci;
+        } else {
+            Aplikacija.connLogger.logHeaders(Level.SEVERE, odgovor);
+        }
+        return new ArrayList<>();
     }
 
-    private List<PopisniKrug> ucitajListuPopisnihKrugovaSaServera() {
-        List<PopisniKrug> listaPopisnihKrugova = KontrolerFormeZaDodavanjePopisnihKrugova.listaKrugova;
-        // TODO: Učitati sa servera listu popisnih krugova
-        return listaPopisnihKrugova;
+    private List<PopisniKrug> ucitajListuPopisnihKrugovaSaServera(String grad, int idOpstine) {
+    	ClanPKLSCMISKlijent clanPKLSCMISKlijent = new ClanPKLSCMISKlijent(KontrolerFormeZaPrijavu.getTrenutniKorisnik());
+        return Arrays.asList(clanPKLSCMISKlijent.getListaPopisnihKrugova(grad, idOpstine).readEntity(PopisniKrug[].class));
     }
 
     public void dodjeliPopisniKrug(ActionEvent actionEvent) {
-        // TODO: Pošalji na server popisni krug.
         Popisivac popisivac = popisivaci.stream().filter(e->
                 e.getKorisnickoIme().equals(PromjenaPisma.zamijeniCirilicuLatinicom(popisivaciChoiceBox.getValue()))).findFirst().get();
         PopisniKrug popisniKrug = popisniKrugovi.get(index);
+        
+        PopisivacCMISKlijent popisivacCMISKlijent = new PopisivacCMISKlijent(KontrolerFormeZaPrijavu.getTrenutniKorisnik());
+        List<PopisniKrug> listaPopisnihKrugova = Arrays.asList(popisivacCMISKlijent.getListaPopisnihKrugova((int) popisivac.getId()).readEntity(PopisniKrug[].class));
+        
+        if(listaPopisnihKrugova.contains(popisniKrug)) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            var uspjesnaPrijavaAdminAgencije=Aplikacija.prevediRecenicu("Već postoji ovakav popisni krug!");
+            alert.setContentText(uspjesnaPrijavaAdminAgencije);
+            alert.showAndWait();
+            return;
+        }
+        
+        popisivacCMISKlijent.dodajPopisneKrugovePopisivacu((int) popisivac.getId(), popisniKrug.getId(), popisniKrug.getIdOpstine());
+        
+        Alert poruka = new Alert(Alert.AlertType.INFORMATION);
+        poruka.setContentText(Aplikacija.prevediRecenicu("Uspješno ste dodjelili popisni krug."));
+        var tip = poruka.showAndWait();
     }
 
     public void povratak(ActionEvent actionEvent) {
@@ -106,11 +152,15 @@ public class KontrolerFormeZaDodjeluPopisnihKrugovaPopisivacu implements Initial
     }
 
     public void prethodniPopisniKrug(MouseEvent mouseEvent) {
-            slikaPopisnogKruga.setImage(new Image(new ByteArrayInputStream(popisniKrugovi.get(index=((popisniKrugovi.size()+index-1)%popisniKrugovi.size())).getSlikaBytes())));
+        if(popisniKrugovi.size() != 0) {
+        	slikaPopisnogKruga.setImage(new Image(new ByteArrayInputStream(popisniKrugovi.get(index=((popisniKrugovi.size()+index-1)%popisniKrugovi.size())).getSlikaBytes())));
+        }
     }
 
     public void sljedeciPopisniKrug(MouseEvent mouseEvent) {
-        slikaPopisnogKruga.setImage(new Image(new ByteArrayInputStream(popisniKrugovi.get(index=((index+1)%popisniKrugovi.size())).getSlikaBytes())));
+    	if(popisniKrugovi.size() != 0) {
+    		slikaPopisnogKruga.setImage(new Image(new ByteArrayInputStream(popisniKrugovi.get(index=((index+1)%popisniKrugovi.size())).getSlikaBytes())));
+    	}
     }
 
     public void uvecajSliku(MouseEvent mouseEvent) {

@@ -336,3 +336,352 @@
 <!DOCTYPE log SYSTEM "logger.dtd">
 <log>
 </log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2019-10-03T14:11:52.191941400Z</date>
+  <millis>1570111912191</millis>
+  <nanos>941400</nanos>
+  <sequence>0</sequence>
+  <logger>Main</logger>
+  <level>INFO</level>
+  <class>controller.kontroler_formi.KontrolerFormeZaRegistracijuPopisivaca</class>
+  <method>registruj</method>
+  <thread>15</thread>
+  <message>Uspješna registracija popisivača.</message>
+</record>
+<record>
+  <date>2019-10-03T14:12:37.033393600Z</date>
+  <millis>1570111957033</millis>
+  <nanos>393600</nanos>
+  <sequence>1</sequence>
+  <logger>Main</logger>
+  <level>INFO</level>
+  <class>controller.kontroler_formi.KontrolerFormeZaIzmjenuNalogaPopisivaca</class>
+  <method>izmjeni</method>
+  <thread>15</thread>
+  <message>Uspjesna izmjena.</message>
+</record>
+<record>
+  <date>2019-10-03T14:12:53.878920200Z</date>
+  <millis>1570111973878</millis>
+  <nanos>920200</nanos>
+  <sequence>2</sequence>
+  <logger>Main</logger>
+  <level>INFO</level>
+  <class>controller.kontroler_formi.KontrolerFormeZaIzmjenuNalogaPopisivaca</class>
+  <method>izmjeni</method>
+  <thread>15</thread>
+  <message>Uspjesna izmjena.</message>
+</record>
+<record>
+  <date>2019-10-03T14:13:08.669718100Z</date>
+  <millis>1570111988669</millis>
+  <nanos>718100</nanos>
+  <sequence>3</sequence>
+  <logger>Main</logger>
+  <level>SEVERE</level>
+  <class>util.ConnectionLogger</class>
+  <method>logHeaders</method>
+  <thread>15</thread>
+  <message>409 Conflict
+Content-Length 1048 
+Date Thu, 03 Oct 2019 14:13:08 GMT 
+Content-Language en 
+Content-Type text/html;charset=utf-8 
+</message>
+</record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2019-10-03T14:22:33.789689Z</date>
+  <millis>1570112553789</millis>
+  <nanos>689000</nanos>
+  <sequence>0</sequence>
+  <logger>Main</logger>
+  <level>INFO</level>
+  <class>controller.kontroler_formi.KontrolerFormeZaPregledNaloga</class>
+  <method>lambda$3</method>
+  <thread>15</thread>
+  <message>Uspješno brisanje.</message>
+</record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2019-10-03T14:59:05.671298300Z</date>
+  <millis>1570114745671</millis>
+  <nanos>298300</nanos>
+  <sequence>0</sequence>
+  <logger>Main</logger>
+  <level>INFO</level>
+  <class>controller.kontroler_formi.KontrolerFormeZaIzmjenuNalogaPopisivaca</class>
+  <method>izmjeni</method>
+  <thread>15</thread>
+  <message>Uspjesna izmjena.</message>
+</record>
+<record>
+  <date>2019-10-03T14:59:23.458588300Z</date>
+  <millis>1570114763458</millis>
+  <nanos>588300</nanos>
+  <sequence>1</sequence>
+  <logger>Main</logger>
+  <level>INFO</level>
+  <class>controller.kontroler_formi.KontrolerFormeZaRegistracijuPopisivaca</class>
+  <method>registruj</method>
+  <thread>15</thread>
+  <message>Uspješna registracija popisivača.</message>
+</record>
+<record>
+  <date>2019-10-03T14:59:31.763496800Z</date>
+  <millis>1570114771763</millis>
+  <nanos>496800</nanos>
+  <sequence>2</sequence>
+  <logger>Main</logger>
+  <level>INFO</level>
+  <class>controller.kontroler_formi.KontrolerFormeZaIzmjenuNalogaPopisivaca</class>
+  <method>izmjeni</method>
+  <thread>15</thread>
+  <message>Uspjesna izmjena.</message>
+</record>
+<record>
+  <date>2019-10-03T15:00:02.158559100Z</date>
+  <millis>1570114802158</millis>
+  <nanos>559100</nanos>
+  <sequence>3</sequence>
+  <logger>Main</logger>
+  <level>INFO</level>
+  <class>controller.kontroler_formi.KontrolerFormeZaIzmjenuNalogaPopisivaca</class>
+  <method>izmjeni</method>
+  <thread>15</thread>
+  <message>Uspjesna izmjena.</message>
+</record>
+<record>
+  <date>2019-10-03T15:00:04.833906100Z</date>
+  <millis>1570114804833</millis>
+  <nanos>906100</nanos>
+  <sequence>4</sequence>
+  <logger>Main</logger>
+  <level>INFO</level>
+  <class>controller.kontroler_formi.KontrolerFormeZaPregledNaloga</class>
+  <method>lambda$3</method>
+  <thread>15</thread>
+  <message>Uspješno brisanje.</message>
+</record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2019-10-03T16:20:51.121516100Z</date>
+  <millis>1570119651121</millis>
+  <nanos>516100</nanos>
+  <sequence>2</sequence>
+  <logger>Main</logger>
+  <level>WARNING</level>
+  <class>controller.kontroler_formi.KontrolerFormeZaPrijavu</class>
+  <method>login</method>
+  <thread>15</thread>
+  <message>Pokušaj prijavljivanja popisivača u aplikaciji za admina.</message>
+</record>
+<record>
+  <date>2019-10-03T16:21:20.462932800Z</date>
+  <millis>1570119680462</millis>
+  <nanos>932800</nanos>
+  <sequence>4</sequence>
+  <logger>Main</logger>
+  <level>WARNING</level>
+  <class>controller.kontroler_formi.KontrolerFormeZaPrijavu</class>
+  <method>login</method>
+  <thread>15</thread>
+  <message>Pokušaj prijavljivanja popisivača u aplikaciji za admina.</message>
+</record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2019-10-03T16:55:28.035072800Z</date>
+  <millis>1570121728035</millis>
+  <nanos>72800</nanos>
+  <sequence>0</sequence>
+  <logger>Main</logger>
+  <level>WARNING</level>
+  <class>controller.kontroler_formi.KontrolerFormeZaDodavanjePopisnihKrugova</class>
+  <method>skoci</method>
+  <thread>15</thread>
+  <message>Neuspješno čitanje forme.</message>
+</record>
+<record>
+  <date>2019-10-03T16:56:20.684369100Z</date>
+  <millis>1570121780684</millis>
+  <nanos>369100</nanos>
+  <sequence>1</sequence>
+  <logger>Main</logger>
+  <level>WARNING</level>
+  <class>controller.kontroler_formi.KontrolerFormeZaRadClanaPKLS</class>
+  <method>dodjeliPopisneKrugovePopisivacu</method>
+  <thread>15</thread>
+  <message>Neuspješno čitanje forme.</message>
+</record>
+<record>
+  <date>2019-10-03T16:56:24.601182400Z</date>
+  <millis>1570121784601</millis>
+  <nanos>182400</nanos>
+  <sequence>2</sequence>
+  <logger>Main</logger>
+  <level>WARNING</level>
+  <class>controller.kontroler_formi.KontrolerFormeZaRadClanaPKLS</class>
+  <method>dodjeliPopisneKrugovePopisivacu</method>
+  <thread>15</thread>
+  <message>Neuspješno čitanje forme.</message>
+</record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2019-10-03T17:06:43.149813400Z</date>
+  <millis>1570122403149</millis>
+  <nanos>813400</nanos>
+  <sequence>0</sequence>
+  <logger>Main</logger>
+  <level>WARNING</level>
+  <class>controller.kontroler_formi.KontrolerFormeZaRadClanaPKLS</class>
+  <method>dodjeliPopisneKrugovePopisivacu</method>
+  <thread>15</thread>
+  <message>Neuspješno čitanje forme.</message>
+</record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2019-10-03T17:08:52.280931800Z</date>
+  <millis>1570122532280</millis>
+  <nanos>931800</nanos>
+  <sequence>0</sequence>
+  <logger>Main</logger>
+  <level>WARNING</level>
+  <class>controller.kontroler_formi.KontrolerFormeZaRadClanaPKLS</class>
+  <method>dodjeliPopisneKrugovePopisivacu</method>
+  <thread>15</thread>
+  <message>Neuspješno čitanje forme.</message>
+</record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+</log>

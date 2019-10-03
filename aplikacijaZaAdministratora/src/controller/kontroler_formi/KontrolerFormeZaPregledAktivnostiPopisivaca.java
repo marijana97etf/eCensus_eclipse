@@ -11,6 +11,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import model.korisnicki_nalozi.ClanPKLS;
 import model.korisnicki_nalozi.DEInstruktor;
 import model.korisnicki_nalozi.KorisnikSistema;
 import model.korisnicki_nalozi.OGInstruktor;
@@ -25,6 +26,8 @@ import java.time.LocalDate;
 import java.util.*;
 import java.util.logging.Level;
 import java.util.stream.Collectors;
+
+import eCensus.rest.client.PopisivacCMISKlijent;
 
 public class KontrolerFormeZaPregledAktivnostiPopisivaca implements Initializable {
 
@@ -54,43 +57,34 @@ public class KontrolerFormeZaPregledAktivnostiPopisivaca implements Initializabl
         popisivaciChoiceBox.setOnAction(e->
         {
             tabela.setDisable(false);
-            buttonOcjeni.setVisible(true);
+            if(KontrolerFormeZaPrijavu.getTrenutniKorisnik() instanceof OGInstruktor)
+            	buttonOcjeni.setVisible(true);
             Platform.runLater(() -> tabela.setItems(FXCollections.observableList(getListaAktivnostiFromServer(popisivaciChoiceBox.getValue()))));
-            // TODO: dodaj trenutnu ocjenu
+            
             Popisivac popisivac = listaPopisivaca.stream().filter(elem-> elem.getKorisnickoIme().equals(popisivaciChoiceBox.getValue())).findFirst().get();
             popisivacStatic = popisivac;
-            //trenutnaOcjenaLabel.setText("Trenutna ocjena: "+ ....);
+            PopisivacCMISKlijent popisivacCMISKlijent = new PopisivacCMISKlijent(KontrolerFormeZaPrijavu.getTrenutniKorisnik());
+            int ocjena = popisivacCMISKlijent.getOcjena((int) popisivacStatic.getId()).readEntity(Integer.class);
+            trenutnaOcjenaLabel.setText("Trenutna ocjena: " + ocjena);
         });
 
     }
 
     private List<Popisivac> getListaPopisivacaFromServer() {
-        // TODO: Učitati listu popisivača sa servera
-        List<Popisivac> listaPopisivaca = Arrays.asList(
-                new Popisivac("Marijana", "Zeljkovic", "marijana.zeljkovic", "maki"),
-                new Popisivac("Kristijan", "Stepanov", "kristijan.stepanov", "kiki")
-        );
+        PopisivacCMISKlijent popisivacCMISKlijent = new PopisivacCMISKlijent(KontrolerFormeZaPrijavu.getTrenutniKorisnik());
+        List<Popisivac> listaPopisivaca = Arrays.asList(popisivacCMISKlijent.getListaPopisivaca().readEntity(Popisivac[].class));
         return listaPopisivaca;
     }
 
     private List<AktivnostInputModel> getListaAktivnostiFromServer(String popisivac) {
-        // TODO: Učitati listu aktivnosti za datog popisivača
-        var aktivnost1 = new DnevnaAktivnost(LocalDate.now(),0,0);
-        var aktivnost2 = new DnevnaAktivnost(LocalDate.now(), 2, 3);
-        List<AktivnostInputModel> lista1 = FXCollections.observableList(Collections.singletonList(new AktivnostInputModel(aktivnost1)));
-        List<AktivnostInputModel> lista2 = FXCollections.observableList(Collections.singletonList(new AktivnostInputModel(aktivnost2)));
-        for(int i=0; i<lista1.size(); i++)
-        {
-            lista1.get(i).setId(i+1);
-        }
-        for(int i=0; i<lista2.size(); i++)
-        {
-            lista2.get(i).setId(i+1);
-        }
-        if(popisivac.contains("kris"))
-            return lista1;
-        else
-            return lista2;
+    	
+    	PopisivacCMISKlijent popisivacCMISKlijent = new PopisivacCMISKlijent(KontrolerFormeZaPrijavu.getTrenutniKorisnik());
+    	
+        int idPopisivaca = (int) listaPopisivaca.stream().filter(e -> e.getKorisnickoIme().equals(popisivac)).findFirst().get().getId();
+        
+        List<DnevnaAktivnost> listaAktivnosti = Arrays.asList(popisivacCMISKlijent.getListaAktivnostiPopisivaca(idPopisivaca).readEntity(DnevnaAktivnost[].class));
+
+        return listaAktivnosti.stream().map(AktivnostInputModel::new).collect(Collectors.toList());
     }
 
     public void povratak(ActionEvent actionEvent) {
@@ -99,6 +93,8 @@ public class KontrolerFormeZaPregledAktivnostiPopisivaca implements Initializabl
             retPath = "/view/FormaZaRadOGInstruktora.fxml";
         } else if (KontrolerFormeZaPrijavu.getTrenutniKorisnik() instanceof DEInstruktor) {
             retPath = "/view/FormaZaRadDEInstruktora.fxml";
+        } else if (KontrolerFormeZaPrijavu.getTrenutniKorisnik() instanceof ClanPKLS){
+            retPath = "/view/FormaZaRadClanaPKLS.fxml";
         } else {
             retPath = "/view/FormaZaRadAdministratoraAgencije.fxml";
         }
@@ -128,6 +124,10 @@ public class KontrolerFormeZaPregledAktivnostiPopisivaca implements Initializabl
         stage.setScene(new Scene(root));
         stage.setResizable(false);
         stage.showAndWait();
-        initialize(null, null);
+
+        PopisivacCMISKlijent popisivacCMISKlijent = new PopisivacCMISKlijent(KontrolerFormeZaPrijavu.getTrenutniKorisnik());
+        int ocjena = popisivacCMISKlijent.getOcjena((int) popisivacStatic.getId()).readEntity(Integer.class);
+        trenutnaOcjenaLabel.setText("Trenutna ocjena: " + ocjena);
+        
     }
 }

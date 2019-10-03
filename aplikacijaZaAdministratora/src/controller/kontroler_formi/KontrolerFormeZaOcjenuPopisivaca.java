@@ -13,6 +13,9 @@ import test.Aplikacija;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import eCensus.rest.client.OGInstruktorCMISKLijent;
+import eCensus.rest.client.PopisivacCMISKlijent;
+
 public class KontrolerFormeZaOcjenuPopisivaca implements Initializable {
     @FXML
     protected ChoiceBox<String> ocjena;
@@ -21,9 +24,12 @@ public class KontrolerFormeZaOcjenuPopisivaca implements Initializable {
 
     public void ocijeni(ActionEvent actionEvent)
     {
-        // TODO: Poslati ocjenu na server
         Popisivac popisivac = KontrolerFormeZaPregledAktivnostiPopisivaca.popisivacStatic;
         int ocjenaNum = ocjena.getItems().indexOf(ocjena.getValue()) + 1;
+        
+        OGInstruktorCMISKLijent ogInstruktorCMISKlijent = new OGInstruktorCMISKLijent(KontrolerFormeZaPrijavu.getTrenutniKorisnik());
+        ogInstruktorCMISKlijent.azurirajOcjenuPopisivaca((int) KontrolerFormeZaPrijavu.getTrenutniKorisnik().getId(), (int) popisivac.getId(), ocjenaNum);
+        
         Alert poruka = new Alert(Alert.AlertType.INFORMATION);
         poruka.setContentText(Aplikacija.prevediRecenicu("Uspješno ste ocjenili popisivača."));
         ButtonType tip = poruka.showAndWait().get();
@@ -33,6 +39,8 @@ public class KontrolerFormeZaOcjenuPopisivaca implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+    	Popisivac popisivac = KontrolerFormeZaPregledAktivnostiPopisivaca.popisivacStatic;
+    	username.setText(popisivac.getKorisnickoIme());
         ocjena.getItems().clear();
         ocjena.getItems().addAll(
                 Aplikacija.prevediRecenicu("Nedovoljan"),

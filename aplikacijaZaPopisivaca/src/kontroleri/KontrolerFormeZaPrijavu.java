@@ -4,11 +4,14 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.net.ConnectException;
 import java.util.List;
 import java.util.Map.Entry;
 import java.util.Properties;
 
+import javax.ws.rs.ProcessingException;
 import javax.ws.rs.core.Response;
 
 import eCensus.rest.client.PopisivacCMISKlijent;
@@ -81,15 +84,8 @@ public class KontrolerFormeZaPrijavu {
         				korisnik.setTrustStore(truststore);
         				korisnik.setTrustLozinka(trustStoreLozinka);
 
-        				Properties p = new Properties();
-        				FileInputStream in = new FileInputStream(new File("." + File.separator + "resources" + File.separator + "kredencijali.properties"));
-        				p.load(in);
-        				in.close();
-        				
-        				FileOutputStream out = new FileOutputStream("." + File.separator + "resources" + File.separator + "kredencijali.properties");
-        				p.setProperty("USERNAME", korisnickoIme);
-        				p.setProperty("PASSWORD", lozinka);
-        				p.store(out, null);
+        				ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(new File("resources" + File.separator + "korisnik.ser")));
+        				out.writeObject(korisnik);
         				out.close();
         				
         				Parent root = FXMLLoader.load(getClass().getResource("/forme" + File.separator + "FormaZaRadPopisivaca.fxml"));
@@ -102,16 +98,13 @@ public class KontrolerFormeZaPrijavu {
         		}
                             
             }
-            catch(ConnectException e) {
+            catch(ConnectException | ProcessingException e) {
             	try {
-            		Properties properties = new Properties();
-            		properties.load(new FileInputStream(new File("resources" + File.separator + "kredencijali.properties")));
-            		String username = properties.getProperty("USERNAME");
-            		String password = properties.getProperty("PASSWORD");
-            		
-            		if(username.isEmpty() || password.isEmpty())
+            		ObjectInputStream in = new ObjectInputStream(new FileInputStream(new File("resources" + File.separator + "korisnik.ser")));
+            		korisnik = (KorisnikSistema)in.readObject();
+            		if(korisnik.getKorisnickoIme().isEmpty() || korisnik.getLozinkaHash().isEmpty())
             			PrikazObavjestenja.prikaziUpozorenje("Nije moguca prva prijava bez pristupa internetu.");
-            		else if(korisnickoIme.equals(username) && (KorisnikSistema.napraviHesLozinke(lozinka)).equals(password)){          			
+            		else if(korisnickoIme.equals(korisnik.getKorisnickoIme()) && (KorisnikSistema.napraviHesLozinke(lozinka)).equals(korisnik.getLozinkaHash())){          			
             			Parent root = FXMLLoader.load(getClass().getResource("/forme" + File.separator + "FormaZaRadPopisivaca.fxml"));
                         Main.primaryStage.setScene(new Scene(root));
             		}

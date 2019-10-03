@@ -24,7 +24,7 @@ public class MySQLOpstinaDAO implements OpstinaDAO {
 			Map<String,String> opstine = new HashMap<String,String>();
 			
 			while(resultSet.next()) {
-				opstine.put(resultSet.getString("IdOpstine"), resultSet.getString("Naziv"));
+				opstine.put(resultSet.getString("Naziv"), resultSet.getString("IdOpstine"));
 			}
 			
 			return opstine;

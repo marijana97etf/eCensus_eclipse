@@ -104,8 +104,8 @@ public class MySQLClanPKLSDAO implements ClanPKLSDAO {
 			preparedStatementLokalnaVarijabla.close();
 			
 			PreparedStatement preparedStatementPKLS = connection.prepareStatement("INSERT INTO pkls(Grad,Opstina) values (?,?);");
-			preparedStatementPKLS.setString(1, "Grad");//Grad
-			preparedStatementPKLS.setString(1, "Opstina");//Opstina
+			preparedStatementPKLS.setString(1, clanPKLS.getGrad());//Grad
+			preparedStatementPKLS.setString(2, clanPKLS.getOpstina());//Opstina
 			preparedStatementPKLS.executeUpdate();
 			preparedStatementPKLS.close();
 			

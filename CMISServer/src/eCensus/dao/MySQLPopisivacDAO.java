@@ -53,6 +53,21 @@ public class MySQLPopisivacDAO implements PopisivacDAO {
 		try {
 			connection = ConnectionPool.getInstance().checkOut();
 			
+			PreparedStatement preparedStatementPopisniKrugPopisivaca = connection.prepareStatement("DELETE FROM popisivac_popisni_krug WHERE IdOsobe = ?;");
+			preparedStatementPopisniKrugPopisivaca.setLong(1, id);
+			preparedStatementPopisniKrugPopisivaca.executeUpdate();
+			preparedStatementPopisniKrugPopisivaca.close();
+			
+			PreparedStatement preparedStatementOcjena = connection.prepareStatement("DELETE FROM ocjena WHERE IdOsobe_POPISIVAC = ?;");
+			preparedStatementOcjena.setLong(1, id);
+			preparedStatementOcjena.executeUpdate();
+			preparedStatementOcjena.close();
+			
+			PreparedStatement preparedStatementAktivnost = connection.prepareStatement("DELETE FROM aktivnost WHERE IdOsobe = ?;");
+			preparedStatementAktivnost.setLong(1, id);
+			preparedStatementAktivnost.executeUpdate();
+			preparedStatementAktivnost.close();
+			
 			PreparedStatement preparedStatementPopisivac = connection.prepareStatement("DELETE FROM popisivac WHERE IdOsobe = ?;");
 			preparedStatementPopisivac.setLong(1, id);
 			preparedStatementPopisivac.executeUpdate();
@@ -177,6 +192,32 @@ public class MySQLPopisivacDAO implements PopisivacDAO {
 	}
 
 	@Override
+	public int getOcjena(int idPopisivaca) {
+		Connection connection = null;
+		try {
+			connection = ConnectionPool.getInstance().checkOut();
+			PreparedStatement preparedStatementOcjena = connection.prepareStatement(
+													"SELECT Ocjena " + 
+													"FROM ocjena " + 
+													"WHERE idOsobe_POPISIVAC = ?;");
+			preparedStatementOcjena.setInt(1, idPopisivaca);
+			ResultSet resultSet = preparedStatementOcjena.executeQuery();
+			resultSet.next();
+			
+			int ocjena = resultSet.getInt("Ocjena");
+			
+			preparedStatementOcjena.close();
+			
+			return ocjena;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			ConnectionPool.getInstance().checkIn(connection);
+		}
+		return 0;
+	}
+	
+	@Override
 	public boolean azurirajOcjenu(int idPopisivaca, int idOGInstruktora, int ocjena) {
 		Connection connection = null;
 		try {
@@ -188,7 +229,7 @@ public class MySQLPopisivacDAO implements PopisivacDAO {
 			preparedStatementOcjena.setInt(1, idPopisivaca);
 			preparedStatementOcjena.setInt(2, idOGInstruktora);
 			preparedStatementOcjena.setInt(3, ocjena);
-			preparedStatementOcjena.executeQuery();
+			preparedStatementOcjena.executeUpdate();
 			preparedStatementOcjena.close();
 			
 			return true;

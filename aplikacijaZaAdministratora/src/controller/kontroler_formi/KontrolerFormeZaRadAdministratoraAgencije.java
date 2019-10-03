@@ -88,7 +88,7 @@ public class KontrolerFormeZaRadAdministratoraAgencije implements Initializable 
 
     public void pregledajNalogePopisivaca(ActionEvent actionEvent) {
         try {
-            Aplikacija.getStage().setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/FormaZaPregledNalogaPopisivaca.fxml"))));
+            Aplikacija.getStage().setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/FormaZaPregledAktivnostiPopisivaca.fxml"))));
         } catch (IOException e) {
             Aplikacija.connLogger.getLogger().log(Level.WARNING, "Neuspješno čitanje forme.");
         }

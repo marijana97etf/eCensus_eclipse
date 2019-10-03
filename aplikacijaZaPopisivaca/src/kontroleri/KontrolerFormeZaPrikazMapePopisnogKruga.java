@@ -1,10 +1,12 @@
 package kontroleri;
 
 import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -16,6 +18,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ListView;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.pracenje_popisa.izvjestaji_o_popisivacu.PopisniKrug;
@@ -37,11 +42,15 @@ public class KontrolerFormeZaPrikazMapePopisnogKruga {
 	private void pogledajMapuButtonAction() {
 		for(PopisniKrug popisniKrug : popisniKrugovi) {
 			try {
-				Stage stage = util.get(popisniKrug);
-				Parent root = FXMLLoader.load(getClass().getResource("/forme" + File.separator + "MapaPopisnogKruga.fxml"));
-				stage.setScene(new Scene(root));
+				Stage stage = new Stage();
+				ImageView imageView = new ImageView();
+				imageView.setFitHeight(500);
+				imageView.setFitWidth(800);
+				imageView.setImage(new Image(new ByteArrayInputStream(popisniKrug.getSlikaBytes())));
+				AnchorPane pane = new AnchorPane(imageView);
+				stage.setScene(new Scene(pane));
 				stage.setResizable(false);
-				stage.initModality(Modality.APPLICATION_MODAL);
+				stage.setTitle("Mapa popisnog kruga");
 				stage.show();
 			}
 			catch(Exception e) {
@@ -55,13 +64,14 @@ public class KontrolerFormeZaPrikazMapePopisnogKruga {
 			PrikazObavjestenja.prikaziUpozorenje("Nema internet konekcije. Pokusajte se prijaviti ponovo.");
 		else {
 			PopisivacCMISKlijent klijent = new PopisivacCMISKlijent(KontrolerFormeZaPrijavu.korisnik);
-			popisniKrugovi = (List<PopisniKrug>)klijent.getListaPopisnihKrugova((int)KontrolerFormeZaPrijavu.korisnik.getId()).getEntity();
+			popisniKrugovi = Arrays.asList(klijent.getListaPopisnihKrugova((int)KontrolerFormeZaPrijavu.korisnik.getId()).readEntity(PopisniKrug[].class));
 			util = new HashMap<PopisniKrug, Stage>();
 			for(PopisniKrug popisniKrug : popisniKrugovi) {
 				util.put(popisniKrug, new Stage());
 				List<String> ulice = popisniKrug.getUlice();
-				for(String ulica : ulice)
+				for(String ulica : ulice) {
 					listaUlica.getItems().add(ulica);
+				}
 			}
 		}
 	}

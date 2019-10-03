@@ -58,7 +58,7 @@ public class Aplikacija extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         stage = primaryStage;
-        Parent root = FXMLLoader.load(getClass().getResource("/view/FormaZaDodavanjePopisnihKrugova.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/view/FormaZaPrijavu.fxml"));
         primaryStage.setTitle("eCensus - AdminMode");
         Pair<Integer,Integer> dimension = calculateDimensions();
         primaryStage.setScene(new Scene(root, dimension.getKey(), dimension.getValue()));
