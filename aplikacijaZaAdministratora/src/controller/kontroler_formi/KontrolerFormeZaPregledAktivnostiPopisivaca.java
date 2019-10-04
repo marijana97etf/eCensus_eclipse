@@ -27,6 +27,8 @@ import java.util.*;
 import java.util.logging.Level;
 import java.util.stream.Collectors;
 
+import javax.ws.rs.core.Response;
+
 import eCensus.rest.client.PopisivacCMISKlijent;
 
 public class KontrolerFormeZaPregledAktivnostiPopisivaca implements Initializable {
@@ -63,9 +65,13 @@ public class KontrolerFormeZaPregledAktivnostiPopisivaca implements Initializabl
             
             Popisivac popisivac = listaPopisivaca.stream().filter(elem-> elem.getKorisnickoIme().equals(popisivaciChoiceBox.getValue())).findFirst().get();
             popisivacStatic = popisivac;
+            
             PopisivacCMISKlijent popisivacCMISKlijent = new PopisivacCMISKlijent(KontrolerFormeZaPrijavu.getTrenutniKorisnik());
-            int ocjena = popisivacCMISKlijent.getOcjena((int) popisivacStatic.getId()).readEntity(Integer.class);
-            trenutnaOcjenaLabel.setText("Trenutna ocjena: " + ocjena);
+            Response odgovor = popisivacCMISKlijent.getOcjena((int) popisivacStatic.getId());
+            if(Response.Status.OK.equals(odgovor.getStatusInfo())) {
+            	int ocjena = odgovor.readEntity(Integer.class);
+            	trenutnaOcjenaLabel.setText("Trenutna ocjena: " + ocjena);
+            }
         });
 
     }

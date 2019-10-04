@@ -5,6 +5,7 @@ import java.io.IOException;
 
 import javax.ws.rs.core.Response;
 
+import eCensus.rest.client.AdministratorAgencijeCMISKlijent;
 import eCensus.rest.client.PowerUserCMISKlijent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -24,8 +25,6 @@ public class KontrolerFormeZaRegistracijuAdministratoraAgencije {
 	@FXML
 	private TextField prezimeTextField;
 	@FXML
-	private TextField jmbgTextField;
-	@FXML
 	private TextField korisnickoImeTextField;
 	@FXML
 	private TextField lozinkaTextField;
@@ -36,15 +35,14 @@ public class KontrolerFormeZaRegistracijuAdministratoraAgencije {
 	private void registrujButtonAction() {
 		String ime = imeTextField.getText();
 		String prezime = prezimeTextField.getText();
-		String jmbg = jmbgTextField.getText();
 		String korisnickoIme = korisnickoImeTextField.getText();
 		String lozinka = lozinkaTextField.getText();
 		String nazivAgencije = nazivAgencijeTextField.getText();
 
-		if(ime.isEmpty() || prezime.isEmpty() || jmbg.isEmpty() || korisnickoIme.isEmpty() || lozinka.isEmpty())
+		if(ime.isEmpty() || prezime.isEmpty() || korisnickoIme.isEmpty() || lozinka.isEmpty())
 			PrikazObavjestenja.prikaziUpozorenje("Morate unijeti sve podatke.");
 		else {
-			PowerUserCMISKlijent klijent = new PowerUserCMISKlijent(KontrolerFormeZaPrijavu.korisnik);
+			AdministratorAgencijeCMISKlijent klijent = new AdministratorAgencijeCMISKlijent(KontrolerFormeZaPrijavu.korisnik);
 			KorisnikSistema administratorAgencije = new AdministratorAgencije(ime, prezime, korisnickoIme, KorisnikSistema.napraviHesLozinke(lozinka), nazivAgencije);
 			Response odgovor = klijent.registrujKorisnika(administratorAgencije);
 			

@@ -25,4 +25,8 @@ public class AdministratorAgencije extends Administrator {
 	public String getNazivAgencije() {
 		return nazivAgencije;
 	}
+	
+	public void setNazivAgencije(String nazivAgencije) {
+		this.nazivAgencije = nazivAgencije;
+	}
 }

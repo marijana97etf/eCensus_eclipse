@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<GridPane fx:id="grid" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: e6e6ff;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.kontroler_formi.KontrolerFormeZaDodjeluPopisnihKrugovaPopisivacu">
+<GridPane fx:id="grid" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: e6e6ff;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.kontroler_formi.KontrolerFormeZaDodjeluPopisnihKrugovaPopisivacu">
   <columnConstraints>
     <ColumnConstraints hgrow="ALWAYS" maxWidth="295.0" minWidth="10.0" percentWidth="32.0" prefWidth="239.0" />
       <ColumnConstraints hgrow="ALWAYS" maxWidth="386.0" minWidth="10.0" percentWidth="58.0" prefWidth="361.0" />
@@ -83,13 +83,13 @@
       </Button>
       <Button mnemonicParsing="false" onAction="#povratak" prefHeight="25.0" prefWidth="81.0" text="Povratak" GridPane.columnIndex="1" GridPane.rowIndex="11" />
       <ImageView fx:id="slikaPopisnogKruga" fitHeight="109.0" fitWidth="146.0" onMouseClicked="#uvecajSliku" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="9" GridPane.valignment="CENTER" />
-      <Label text="Odaberite sliku popisnog kruga:" GridPane.columnIndex="2" GridPane.rowIndex="7" />
-      <ImageView fitHeight="30.0" fitWidth="30.0" onMouseClicked="#prethodniPopisniKrug" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="9">
+      <Label fx:id="odabir" text="Odaberite sliku popisnog kruga:" GridPane.columnIndex="2" GridPane.rowIndex="7" />
+      <ImageView fx:id="lijevo" fitHeight="30.0" fitWidth="30.0" onMouseClicked="#prethodniPopisniKrug" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="9">
          <image>
             <Image url="@../../resources/back.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="30.0" fitWidth="30.0" onMouseClicked="#sljedeciPopisniKrug" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.halignment="LEFT" GridPane.rowIndex="9">
+      <ImageView fx:id="desno" fitHeight="30.0" fitWidth="30.0" onMouseClicked="#sljedeciPopisniKrug" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.halignment="LEFT" GridPane.rowIndex="9">
          <image>
             <Image url="@../../resources/next.png" />
          </image>

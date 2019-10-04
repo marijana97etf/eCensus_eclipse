@@ -685,3 +685,553 @@ Content-Type text/html;charset=utf-8
 <!DOCTYPE log SYSTEM "logger.dtd">
 <log>
 </log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2019-10-04T07:11:36.428996500Z</date>
+  <millis>1570173096428</millis>
+  <nanos>996500</nanos>
+  <sequence>0</sequence>
+  <logger>Main</logger>
+  <level>WARNING</level>
+  <class>controller.kontroler_formi.KontrolerFormeZaPrijavu</class>
+  <method>login</method>
+  <thread>15</thread>
+  <message>Pokušaj prijavljivanja power korisnika u aplikaciji za admina.</message>
+</record>
+<record>
+  <date>2019-10-04T07:12:00.975894800Z</date>
+  <millis>1570173120975</millis>
+  <nanos>894800</nanos>
+  <sequence>1</sequence>
+  <logger>Main</logger>
+  <level>WARNING</level>
+  <class>controller.kontroler_formi.KontrolerFormeZaPrijavu</class>
+  <method>login</method>
+  <thread>15</thread>
+  <message>Pokušaj prijavljivanja power korisnika u aplikaciji za admina.</message>
+</record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2019-10-04T07:13:24.899650600Z</date>
+  <millis>1570173204899</millis>
+  <nanos>650600</nanos>
+  <sequence>0</sequence>
+  <logger>Main</logger>
+  <level>WARNING</level>
+  <class>controller.kontroler_formi.KontrolerFormeZaPrijavu</class>
+  <method>login</method>
+  <thread>15</thread>
+  <message>Pokušaj prijavljivanja power korisnika u aplikaciji za admina.</message>
+</record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2019-10-04T07:27:44.137520500Z</date>
+  <millis>1570174064137</millis>
+  <nanos>520500</nanos>
+  <sequence>0</sequence>
+  <logger>Main</logger>
+  <level>INFO</level>
+  <class>controller.kontroler_formi.KontrolerFormeZaRegistracijuClanaPKLS</class>
+  <method>registruj</method>
+  <thread>15</thread>
+  <message>Uspjesna registracija.</message>
+</record>
+<record>
+  <date>2019-10-04T07:28:11.578229700Z</date>
+  <millis>1570174091578</millis>
+  <nanos>229700</nanos>
+  <sequence>1</sequence>
+  <logger>Main</logger>
+  <level>INFO</level>
+  <class>controller.kontroler_formi.KontrolerFormeZaRegistracijuDEInstruktora</class>
+  <method>registruj</method>
+  <thread>15</thread>
+  <message>Uspješna registracija državno/entitetskog instruktora.</message>
+</record>
+<record>
+  <date>2019-10-04T07:28:30.166537Z</date>
+  <millis>1570174110166</millis>
+  <nanos>537000</nanos>
+  <sequence>2</sequence>
+  <logger>Main</logger>
+  <level>SEVERE</level>
+  <class>util.ConnectionLogger</class>
+  <method>logHeaders</method>
+  <thread>15</thread>
+  <message>405 Method Not Allowed
+Content-Length 1090 
+Date Fri, 04 Oct 2019 07:28:30 GMT 
+Content-Language en 
+Content-Type text/html;charset=utf-8 
+Allow POST,OPTIONS,PUT 
+</message>
+</record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2019-10-04T07:29:45.189669300Z</date>
+  <millis>1570174185189</millis>
+  <nanos>669300</nanos>
+  <sequence>0</sequence>
+  <logger>Main</logger>
+  <level>SEVERE</level>
+  <class>util.ConnectionLogger</class>
+  <method>logHeaders</method>
+  <thread>15</thread>
+  <message>405 Method Not Allowed
+Content-Length 1090 
+Date Fri, 04 Oct 2019 07:29:45 GMT 
+Content-Language en 
+Content-Type text/html;charset=utf-8 
+Allow POST,OPTIONS,PUT 
+</message>
+</record>
+<record>
+  <date>2019-10-04T07:30:51.683090Z</date>
+  <millis>1570174251683</millis>
+  <nanos>90000</nanos>
+  <sequence>1</sequence>
+  <logger>Main</logger>
+  <level>SEVERE</level>
+  <class>util.ConnectionLogger</class>
+  <method>logHeaders</method>
+  <thread>15</thread>
+  <message>405 Method Not Allowed
+Content-Length 1090 
+Date Fri, 04 Oct 2019 07:30:51 GMT 
+Content-Language en 
+Content-Type text/html;charset=utf-8 
+Allow POST,OPTIONS,PUT 
+</message>
+</record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2019-10-04T07:32:18.862951700Z</date>
+  <millis>1570174338862</millis>
+  <nanos>951700</nanos>
+  <sequence>0</sequence>
+  <logger>Main</logger>
+  <level>SEVERE</level>
+  <class>util.ConnectionLogger</class>
+  <method>logHeaders</method>
+  <thread>15</thread>
+  <message>405 Method Not Allowed
+Content-Length 1090 
+Date Fri, 04 Oct 2019 07:32:18 GMT 
+Content-Language en 
+Content-Type text/html;charset=utf-8 
+Allow POST,OPTIONS,PUT 
+</message>
+</record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2019-10-04T07:38:03.170460300Z</date>
+  <millis>1570174683170</millis>
+  <nanos>460300</nanos>
+  <sequence>0</sequence>
+  <logger>Main</logger>
+  <level>INFO</level>
+  <class>controller.kontroler_formi.KontrolerFormeZaRegistracijuClanaPKLS</class>
+  <method>registruj</method>
+  <thread>15</thread>
+  <message>Uspjesna registracija.</message>
+</record>
+<record>
+  <date>2019-10-04T07:38:13.627588400Z</date>
+  <millis>1570174693627</millis>
+  <nanos>588400</nanos>
+  <sequence>1</sequence>
+  <logger>Main</logger>
+  <level>SEVERE</level>
+  <class>util.ConnectionLogger</class>
+  <method>logHeaders</method>
+  <thread>15</thread>
+  <message>405 Method Not Allowed
+Content-Length 1090 
+Date Fri, 04 Oct 2019 07:38:13 GMT 
+Content-Language en 
+Content-Type text/html;charset=utf-8 
+Allow POST,OPTIONS,PUT 
+</message>
+</record>
+<record>
+  <date>2019-10-04T07:39:05.464447600Z</date>
+  <millis>1570174745464</millis>
+  <nanos>447600</nanos>
+  <sequence>2</sequence>
+  <logger>Main</logger>
+  <level>INFO</level>
+  <class>controller.kontroler_formi.KontrolerFormeZaRegistracijuDEInstruktora</class>
+  <method>registruj</method>
+  <thread>15</thread>
+  <message>Uspješna registracija državno/entitetskog instruktora.</message>
+</record>
+<record>
+  <date>2019-10-04T07:39:23.617074500Z</date>
+  <millis>1570174763617</millis>
+  <nanos>74500</nanos>
+  <sequence>3</sequence>
+  <logger>Main</logger>
+  <level>SEVERE</level>
+  <class>util.ConnectionLogger</class>
+  <method>logHeaders</method>
+  <thread>15</thread>
+  <message>405 Method Not Allowed
+Content-Length 1090 
+Date Fri, 04 Oct 2019 07:39:23 GMT 
+Content-Language en 
+Content-Type text/html;charset=utf-8 
+Allow POST,OPTIONS,PUT 
+</message>
+</record>
+<record>
+  <date>2019-10-04T07:39:26.642152200Z</date>
+  <millis>1570174766642</millis>
+  <nanos>152200</nanos>
+  <sequence>4</sequence>
+  <logger>Main</logger>
+  <level>SEVERE</level>
+  <class>util.ConnectionLogger</class>
+  <method>logHeaders</method>
+  <thread>15</thread>
+  <message>405 Method Not Allowed
+Content-Length 1090 
+Date Fri, 04 Oct 2019 07:39:26 GMT 
+Content-Language en 
+Content-Type text/html;charset=utf-8 
+Allow POST,OPTIONS,PUT 
+</message>
+</record>
+<record>
+  <date>2019-10-04T07:39:33.044687600Z</date>
+  <millis>1570174773044</millis>
+  <nanos>687600</nanos>
+  <sequence>5</sequence>
+  <logger>Main</logger>
+  <level>SEVERE</level>
+  <class>util.ConnectionLogger</class>
+  <method>logHeaders</method>
+  <thread>15</thread>
+  <message>405 Method Not Allowed
+Content-Length 1090 
+Date Fri, 04 Oct 2019 07:39:33 GMT 
+Content-Language en 
+Content-Type text/html;charset=utf-8 
+Allow POST,OPTIONS,PUT 
+</message>
+</record>
+<record>
+  <date>2019-10-04T07:39:41.419817100Z</date>
+  <millis>1570174781419</millis>
+  <nanos>817100</nanos>
+  <sequence>6</sequence>
+  <logger>Main</logger>
+  <level>SEVERE</level>
+  <class>util.ConnectionLogger</class>
+  <method>logHeaders</method>
+  <thread>15</thread>
+  <message>405 Method Not Allowed
+Content-Length 1090 
+Date Fri, 04 Oct 2019 07:39:41 GMT 
+Content-Language en 
+Content-Type text/html;charset=utf-8 
+Allow POST,OPTIONS,PUT 
+</message>
+</record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2019-10-04T07:41:07.097813800Z</date>
+  <millis>1570174867097</millis>
+  <nanos>813800</nanos>
+  <sequence>0</sequence>
+  <logger>Main</logger>
+  <level>INFO</level>
+  <class>controller.kontroler_formi.KontrolerFormeZaRegistracijuClanaPKLS</class>
+  <method>registruj</method>
+  <thread>15</thread>
+  <message>Uspjesna registracija.</message>
+</record>
+<record>
+  <date>2019-10-04T07:41:49.459015600Z</date>
+  <millis>1570174909459</millis>
+  <nanos>15600</nanos>
+  <sequence>1</sequence>
+  <logger>Main</logger>
+  <level>INFO</level>
+  <class>controller.kontroler_formi.KontrolerFormeZaRegistracijuPopisivaca</class>
+  <method>registruj</method>
+  <thread>15</thread>
+  <message>Uspješna registracija popisivača.</message>
+</record>
+<record>
+  <date>2019-10-04T07:42:16.911002500Z</date>
+  <millis>1570174936911</millis>
+  <nanos>2500</nanos>
+  <sequence>2</sequence>
+  <logger>Main</logger>
+  <level>INFO</level>
+  <class>controller.kontroler_formi.KontrolerFormeZaRegistracijuOGInstruktora</class>
+  <method>registruj</method>
+  <thread>15</thread>
+  <message>Uspješna registracija opštinskog/gradskog instruktora.</message>
+</record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2019-10-04T07:43:52.474336200Z</date>
+  <millis>1570175032474</millis>
+  <nanos>336200</nanos>
+  <sequence>0</sequence>
+  <logger>Main</logger>
+  <level>INFO</level>
+  <class>controller.kontroler_formi.KontrolerFormeZaRegistracijuPopisivaca</class>
+  <method>registruj</method>
+  <thread>15</thread>
+  <message>Uspješna registracija popisivača.</message>
+</record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2019-10-04T07:50:32.807860400Z</date>
+  <millis>1570175432807</millis>
+  <nanos>860400</nanos>
+  <sequence>0</sequence>
+  <logger>Main</logger>
+  <level>SEVERE</level>
+  <class>util.ConnectionLogger</class>
+  <method>logHeaders</method>
+  <thread>15</thread>
+  <message>405 Method Not Allowed
+Content-Length 1090 
+Date Fri, 04 Oct 2019 07:50:32 GMT 
+Content-Language en 
+Content-Type text/html;charset=utf-8 
+Allow POST,OPTIONS,PUT 
+</message>
+</record>
+<record>
+  <date>2019-10-04T07:50:47.946935100Z</date>
+  <millis>1570175447946</millis>
+  <nanos>935100</nanos>
+  <sequence>1</sequence>
+  <logger>Main</logger>
+  <level>SEVERE</level>
+  <class>util.ConnectionLogger</class>
+  <method>logHeaders</method>
+  <thread>15</thread>
+  <message>405 Method Not Allowed
+Content-Length 1090 
+Date Fri, 04 Oct 2019 07:50:47 GMT 
+Content-Language en 
+Content-Type text/html;charset=utf-8 
+Allow POST,OPTIONS,PUT 
+</message>
+</record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2019-10-04T08:23:24.444458400Z</date>
+  <millis>1570177404444</millis>
+  <nanos>458400</nanos>
+  <sequence>0</sequence>
+  <logger>Main</logger>
+  <level>INFO</level>
+  <class>controller.kontroler_formi.KontrolerFormeZaRegistracijuPopisivaca</class>
+  <method>registruj</method>
+  <thread>15</thread>
+  <message>Uspješna registracija popisivača.</message>
+</record>
+<record>
+  <date>2019-10-04T08:23:57.660252600Z</date>
+  <millis>1570177437660</millis>
+  <nanos>252600</nanos>
+  <sequence>1</sequence>
+  <logger>Main</logger>
+  <level>INFO</level>
+  <class>controller.kontroler_formi.KontrolerFormeZaIzmjenuNalogaPopisivaca</class>
+  <method>izmjeni</method>
+  <thread>15</thread>
+  <message>Uspjesna izmjena.</message>
+</record>
+<record>
+  <date>2019-10-04T08:24:25.625718400Z</date>
+  <millis>1570177465625</millis>
+  <nanos>718400</nanos>
+  <sequence>2</sequence>
+  <logger>Main</logger>
+  <level>INFO</level>
+  <class>controller.kontroler_formi.KontrolerFormeZaPregledNaloga</class>
+  <method>lambda$3</method>
+  <thread>15</thread>
+  <message>Uspješno brisanje.</message>
+</record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2019-10-04T08:37:31.612014700Z</date>
+  <millis>1570178251612</millis>
+  <nanos>14700</nanos>
+  <sequence>0</sequence>
+  <logger>Main</logger>
+  <level>WARNING</level>
+  <class>controller.kontroler_formi.KontrolerFormeZaPrijavu</class>
+  <method>login</method>
+  <thread>15</thread>
+  <message>Pokušaj prijavljivanja popisivača u aplikaciji za admina.</message>
+</record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2019-10-04T14:12:42.487866100Z</date>
+  <millis>1570198362487</millis>
+  <nanos>866100</nanos>
+  <sequence>0</sequence>
+  <logger>Main</logger>
+  <level>INFO</level>
+  <class>controller.kontroler_formi.KontrolerFormeZaRegistracijuClanaPKLS</class>
+  <method>registruj</method>
+  <thread>15</thread>
+  <message>Uspjesna registracija.</message>
+</record>
+<record>
+  <date>2019-10-04T14:13:10.452850600Z</date>
+  <millis>1570198390452</millis>
+  <nanos>850600</nanos>
+  <sequence>1</sequence>
+  <logger>Main</logger>
+  <level>INFO</level>
+  <class>controller.kontroler_formi.KontrolerFormeZaRegistracijuDEInstruktora</class>
+  <method>registruj</method>
+  <thread>15</thread>
+  <message>Uspješna registracija državno/entitetskog instruktora.</message>
+</record>
+<record>
+  <date>2019-10-04T14:13:51.746734200Z</date>
+  <millis>1570198431746</millis>
+  <nanos>734200</nanos>
+  <sequence>2</sequence>
+  <logger>Main</logger>
+  <level>INFO</level>
+  <class>controller.kontroler_formi.KontrolerFormeZaRegistracijuPopisivaca</class>
+  <method>registruj</method>
+  <thread>15</thread>
+  <message>Uspješna registracija popisivača.</message>
+</record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2019-10-04T14:24:41.111461500Z</date>
+  <millis>1570199081111</millis>
+  <nanos>461500</nanos>
+  <sequence>0</sequence>
+  <logger>Main</logger>
+  <level>INFO</level>
+  <class>controller.kontroler_formi.KontrolerFormeZaRegistracijuOGInstruktora</class>
+  <method>registruj</method>
+  <thread>15</thread>
+  <message>Uspješna registracija opštinskog/gradskog instruktora.</message>
+</record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2019-10-04T14:27:36.913283600Z</date>
+  <millis>1570199256913</millis>
+  <nanos>283600</nanos>
+  <sequence>0</sequence>
+  <logger>Main</logger>
+  <level>INFO</level>
+  <class>controller.kontroler_formi.KontrolerFormeZaRegistracijuPopisivaca</class>
+  <method>registruj</method>
+  <thread>15</thread>
+  <message>Uspješna registracija popisivača.</message>
+</record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+</log>

@@ -202,10 +202,12 @@ public class MySQLPopisivacDAO implements PopisivacDAO {
 													"WHERE idOsobe_POPISIVAC = ?;");
 			preparedStatementOcjena.setInt(1, idPopisivaca);
 			ResultSet resultSet = preparedStatementOcjena.executeQuery();
-			resultSet.next();
 			
-			int ocjena = resultSet.getInt("Ocjena");
+			int ocjena = 0;
 			
+			if(resultSet.next()) {
+				ocjena = resultSet.getInt("Ocjena");
+			}
 			preparedStatementOcjena.close();
 			
 			return ocjena;

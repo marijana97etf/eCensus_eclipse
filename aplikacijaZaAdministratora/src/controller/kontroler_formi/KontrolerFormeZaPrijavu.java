@@ -20,6 +20,7 @@ import util.SecureLozinkaFactory;
 import javax.crypto.BadPaddingException;
 import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
+import javax.ws.rs.ProcessingException;
 import javax.ws.rs.core.Response;
 
 import java.io.FileNotFoundException;
@@ -87,7 +88,7 @@ public class KontrolerFormeZaPrijavu implements Initializable {
 					trustStore, trustStoreLozinka, kosinickoImeInput, KorisnikSistema.napraviHesLozinke(password.getText()));
 			odgovor = klijent.post(cmisResursUrl + "/login", kosinickoImeInput);
 		}
-		catch (Throwable ce)
+		catch (ProcessingException ce)
 		{
 			Alert alert = new Alert(Alert.AlertType.ERROR);
 			String nepostojeciNalog = Aplikacija.prevediRecenicu("Konekcija sa serverom nije u redu.");
@@ -136,7 +137,7 @@ public class KontrolerFormeZaPrijavu implements Initializable {
 		} else {
 			Aplikacija.connLogger.logHeaders(Level.SEVERE, odgovor);
 		}
-		
+
 		trenutniKorisnik = korisnikSistema;
 		trenutniKorisnik.setKeyStore(keystore);
 		trenutniKorisnik.setKeyLozinka(keystoreLozinka);

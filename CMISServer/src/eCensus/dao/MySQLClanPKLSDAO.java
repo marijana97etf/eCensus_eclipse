@@ -99,7 +99,7 @@ public class MySQLClanPKLSDAO implements ClanPKLSDAO {
 			preparedStatementAdministrator.executeUpdate();
 			preparedStatementAdministrator.close();
 			
-			PreparedStatement preparedStatementLokalnaVarijabla = connection.prepareStatement("SET @lastID = LAST_INSERT_ID()");
+			PreparedStatement preparedStatementLokalnaVarijabla = connection.prepareStatement("SET @lastID = LAST_INSERT_ID();");
 			preparedStatementLokalnaVarijabla.executeUpdate();
 			preparedStatementLokalnaVarijabla.close();
 			
@@ -165,8 +165,8 @@ public class MySQLClanPKLSDAO implements ClanPKLSDAO {
 			PreparedStatement preparedStatementPopisivac = connection.prepareStatement(
 													"SELECT * " +
 													"FROM osoba Osoba " + 
-													"INNER JOIN clan_pkls ClanPKLS on Osoba.IdOsobe = ClanPKLS.IdOsobe " +
-													"INNER JOIN pkls PKLS on PKLS.IdPKLS = ClanPKLS.IdPKLS " +
+													"INNER JOIN clan_pkls ClanPKLS ON Osoba.IdOsobe = ClanPKLS.IdOsobe " +
+													"INNER JOIN pkls PKLS ON PKLS.IdPKLS = ClanPKLS.IdPKLS " +
 													"WHERE Osoba.KorisnickoIme = ?");
 			preparedStatementPopisivac.setString(1, korisnickoIme);
 			ResultSet resultSet = preparedStatementPopisivac.executeQuery();

@@ -77,7 +77,7 @@ public class KontrolerFormeZaRegistracijuClanaPKLS implements Initializable {
             return;
         }
 
-        KorisnikSistema clanPKLS = new ClanPKLS (
+        ClanPKLS clanPKLS = new ClanPKLS (
                 ime.getText(),
                 prezime.getText(),
                 username.getText(),

@@ -136,7 +136,7 @@
             <Insets left="10.0" right="10.0" />
          </GridPane.margin>
       </Button>
-      <Button mnemonicParsing="false" onAction="#pregledajAktivnostiPopisivaca" prefHeight="40.0" prefWidth="375.0" text="Pregledaj aktivnosti popisivača" GridPane.rowIndex="4">
+      <Button mnemonicParsing="false" onAction="#pregledajAktivnostiPopisivaca" prefHeight="40.0" prefWidth="375.0" text="Pregledaj aktivnosti popisivača" GridPane.halignment="CENTER" GridPane.rowIndex="4">
          <font>
             <Font size="15.0" />
          </font>

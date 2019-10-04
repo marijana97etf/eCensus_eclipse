@@ -10,6 +10,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -53,6 +54,12 @@ public class KontrolerFormeZaDodjeluPopisnihKrugovaPopisivacu implements Initial
     ImageView slikaPopisnogKruga;
     @FXML
     ChoiceBox<String> popisivaciChoiceBox;
+    @FXML
+    ImageView lijevo;
+    @FXML
+    ImageView desno;
+    @FXML
+    Label odabir;
 
     List<Popisivac> popisivaci;
 
@@ -83,10 +90,16 @@ public class KontrolerFormeZaDodjeluPopisnihKrugovaPopisivacu implements Initial
         	popisniKrugovi = ucitajListuPopisnihKrugovaSaServera(wrapper.grad, wrapper.idOpstine);
         	if(popisniKrugovi.size()!=0) {
         		slikaPopisnogKruga.setVisible(true);
+        		desno.setVisible(true);
+        		lijevo.setVisible(true);
+        		odabir.setVisible(true);
              	slikaPopisnogKruga.setImage(new Image(new ByteArrayInputStream(popisniKrugovi.get(index).getSlikaBytes())));
-        	}
-             	else
+        	} else {
+        		desno.setVisible(false);
+        		lijevo.setVisible(false);
         		slikaPopisnogKruga.setVisible(false);
+        		odabir.setVisible(false);
+        	}
         });
         
         OpstinaChoiceBox.setOnAction(e -> {
@@ -94,12 +107,30 @@ public class KontrolerFormeZaDodjeluPopisnihKrugovaPopisivacu implements Initial
         	popisniKrugovi = ucitajListuPopisnihKrugovaSaServera(wrapper.grad, wrapper.idOpstine);
         	if(popisniKrugovi.size()!=0) {
         		slikaPopisnogKruga.setVisible(true);
+        		desno.setVisible(true);
+        		lijevo.setVisible(true);
+        		odabir.setVisible(true);
              	slikaPopisnogKruga.setImage(new Image(new ByteArrayInputStream(popisniKrugovi.get(index).getSlikaBytes())));
-        	} else
+        	} else{
+        		desno.setVisible(false);
+        		lijevo.setVisible(false);
         		slikaPopisnogKruga.setVisible(false);
+        		odabir.setVisible(false);
+        	}
         });
-        if(popisniKrugovi.size()!=0)
-        	slikaPopisnogKruga.setImage(new Image(new ByteArrayInputStream(popisniKrugovi.get(index).getSlikaBytes())));
+        
+        if(popisniKrugovi.size()!=0) {
+    		slikaPopisnogKruga.setVisible(true);
+    		desno.setVisible(true);
+    		lijevo.setVisible(true);
+    		odabir.setVisible(true);
+         	slikaPopisnogKruga.setImage(new Image(new ByteArrayInputStream(popisniKrugovi.get(index).getSlikaBytes())));
+    	} else {
+    		desno.setVisible(false);
+    		lijevo.setVisible(false);
+    		slikaPopisnogKruga.setVisible(false);
+    		odabir.setVisible(false);
+    	}
     }
 
     private List<Popisivac> ucitajListuPopisivacaSaServera() {
@@ -121,6 +152,22 @@ public class KontrolerFormeZaDodjeluPopisnihKrugovaPopisivacu implements Initial
     }
 
     public void dodjeliPopisniKrug(ActionEvent actionEvent) {
+    	if(popisniKrugovi.size() <= index) {
+    		Alert alert = new Alert(Alert.AlertType.WARNING);
+            var uspjesnaPrijavaAdminAgencije=Aplikacija.prevediRecenicu("Niste odabrali popisni krug!");
+            alert.setContentText(uspjesnaPrijavaAdminAgencije);
+            alert.showAndWait();
+    		return;
+    	}
+    	
+    	if(popisivaciChoiceBox.getValue() == null) {
+    		Alert alert = new Alert(Alert.AlertType.WARNING);
+            var uspjesnaPrijavaAdminAgencije=Aplikacija.prevediRecenicu("Niste odabrali popisivača!");
+            alert.setContentText(uspjesnaPrijavaAdminAgencije);
+            alert.showAndWait();
+    		return;
+    	}
+    	
         Popisivac popisivac = popisivaci.stream().filter(e->
                 e.getKorisnickoIme().equals(PromjenaPisma.zamijeniCirilicuLatinicom(popisivaciChoiceBox.getValue()))).findFirst().get();
         PopisniKrug popisniKrug = popisniKrugovi.get(index);

@@ -96,7 +96,7 @@ public class MySQLAdministratorAgencijeDAO implements AdministratorAgencijeDAO {
 			preparedStatementAdministrator.executeUpdate();
 			preparedStatementAdministrator.close();
 			
-			PreparedStatement preparedStatementAdministratorAgencije = connection.prepareStatement("INSERT INTO administrator_agencije(IdOsobe,Naziv) values (LAST_INSERT_ID(),?);");
+			PreparedStatement preparedStatementAdministratorAgencije = connection.prepareStatement("INSERT INTO administrator_agencije(IdOsobe,NazivAgencije) values (LAST_INSERT_ID(),?);");
 			preparedStatementAdministratorAgencije.setString(1, administratorAgencije.getNazivAgencije());
 			preparedStatementAdministratorAgencije.executeUpdate();
 			preparedStatementAdministratorAgencije.close();

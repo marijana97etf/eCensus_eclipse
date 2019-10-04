@@ -41,7 +41,7 @@ public class CMISServis {
 	public Response loginInfo(String korisnickoIme) {
 		KorisnikSistema korisnikSistema = DAOFactory.getMySQLFactoryDAO().getMySQLNaloziDAO().getKorisnikSistema(korisnickoIme);
 		if(korisnikSistema != null) {
-			return Response.status(Status.OK).entity(korisnikSistema.getClass().getName()).build();//Davide cemu ovo sluzi
+			return Response.status(Status.OK).entity(korisnikSistema.getClass().getName()).build();
 		} else {
 			return Response.status(Status.NO_CONTENT).build();
 		}
@@ -71,31 +71,7 @@ public class CMISServis {
 			return Response.status(Status.NO_CONTENT).entity(korisniciSistema).build();
 		}
 	}
-/*
-	protected Response registrujKorisnika(KorisnikSistema korisnikSistema) {
-		if (korisnikSistema == null) {
-			return Response.status(Response.Status.BAD_REQUEST).entity("Korisnik sistema je null").build();
-		}
-		new NaloziDAO().dodajKorisnika(korisnikSistema);
-		return Response.status(Response.Status.CREATED).entity("Korisnik " + korisnikSistema.getKorisnickoIme() + "  uspjesno registrovan.")
-				.build();
-	}
 
-	protected Response azurirajKorisnika(KorisnikSistema korisnikSistema) {
-		if (!new NaloziDAO().sadrziKorisnika(korisnikSistema))
-			return Response.status(Response.Status.BAD_REQUEST).entity("Korisnik nije registrovan.Ne moze se azurirati.").build();
-		new NaloziDAO().azurirajKorisnika(korisnikSistema);
-		return Response.ok().entity("Korisnik " + korisnikSistema.getKorisnickoIme() + "  uspjesno azuriran.").build();
-	}
-
-	protected Response obrisiKorisnika(Long id) {
-		KorisnikSistema korisnik = new NaloziDAO().obrisiKorisnika(id);
-		if (korisnik == null)
-			return Response.status(Response.Status.BAD_REQUEST).entity("Odabrani korisnik nije pronadjen").build();
-		else
-			return Response.status(Response.Status.ACCEPTED).entity("Korisnik sa id = " + id + "  uspjesno obrisan.").build();
-	}
-*/
 	// metode clana PKLS
 	@POST
 	@Path("korisnici/nalozi/clanPKLS")
@@ -413,7 +389,7 @@ public class CMISServis {
 			if(result != 0) {
 				return Response.status(Status.OK).entity(result).build();
 			} else {
-				return Response.status(Status.NO_CONTENT).build();
+				return Response.status(Status.NO_CONTENT).entity(result).build();
 			}
 		}
 		
